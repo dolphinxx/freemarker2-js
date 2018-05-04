@@ -1,0 +1,16 @@
+{
+  "typeRoots": [
+    "./node_modules/@types",
+//    "./j4ts",
+    "./typescript"
+  ],
+  "rootDirs": ".",
+  "compilerOptions": {
+    "module": "amd",
+    "moduleResolution": "node",
+    "noImplicitAny": false,
+    "target": "es6",
+    "lib": ["es5", "es6", "dom"],
+    "outFile": "./dist/build.js"
+  }
+}
