@@ -4,4 +4,4 @@ MaybeEmptyMemberAndArguments["__class"] = "freemarker.ext.beans.MaybeEmptyMember
 
 
 
-var __Function = Function;
+

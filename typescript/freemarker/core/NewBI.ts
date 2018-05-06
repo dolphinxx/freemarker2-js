@@ -1,17 +1,11 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { BeanModel } from '../ext/beans/BeanModel';
-import { BeansWrapper } from '../ext/beans/BeansWrapper';
-import { ObjectWrapper } from '../template/ObjectWrapper';
-import { Template } from '../template/Template';
-import { TemplateException } from '../template/TemplateException';
-import { TemplateMethodModelEx } from '../template/TemplateMethodModelEx';
-import { TemplateModel } from '../template/TemplateModel';
-import { TemplateModelException } from '../template/TemplateModelException';
-import { BuiltIn } from './BuiltIn';
-import { Environment } from './Environment';
-import { Expression } from './Expression';
-import { TemplateClassResolver } from './TemplateClassResolver';
-import { _MiscTemplateException } from './_MiscTemplateException';
+import {BeansWrapper} from '../ext/beans/BeansWrapper';
+import {ObjectWrapper} from '../template/ObjectWrapper';
+import {TemplateMethodModelEx} from '../template/TemplateMethodModelEx';
+import {TemplateModel} from '../template/TemplateModel';
+import {BuiltIn} from './BuiltIn';
+import {_MiscTemplateException} from './_MiscTemplateException';
+import {ClassUtil} from "../template/utility/ClassUtil";
 
 /**
  * A built-in that allows us to instantiate an instance of a java class.
@@ -30,7 +24,7 @@ export class NewBI extends BuiltIn {
             NewBI.JYTHON_MODEL_CLASS = /* forName */eval("freemarker.ext.jython.JythonModel".split('.').slice(-1)[0]);
         } catch(e) {
             NewBI.JYTHON_MODEL_CLASS = null;
-        };
+        }
     }
 
     /**
@@ -38,7 +32,7 @@ export class NewBI extends BuiltIn {
      * @param {Environment} env
      * @return {*}
      */
-    _eval(env : Environment) : TemplateModel {
+    _eval(env : /*Environment*/any) : TemplateModel {
         return new NewBI.ConstructorFunction(this, this.target.evalAndCoerceToPlainText$freemarker_core_Environment(env), env, this.target.getTemplate());
     }
 
@@ -57,18 +51,18 @@ export namespace NewBI {
         public __parent: any;
         cl : any;
 
-        env : Environment;
+        env : /*Environment*/any;
 
-        public constructor(__parent: any, classname : string, env : Environment, template : Template) {
+        public constructor(__parent: any, classname : string, env : /*Environment*/any, template : /*Template*/any) {
             this.__parent = __parent;
             if(this.cl===undefined) this.cl = null;
             if(this.env===undefined) this.env = null;
             this.env = env;
             this.cl = env.getNewBuiltinClassResolver().resolve(classname, env, template);
-            if(!"freemarker.template.TemplateModel".isAssignableFrom(this.cl)) {
+            if(!ClassUtil.isAssignableFrom(this.cl, "freemarker.template.TemplateModel")) {
                 throw new _MiscTemplateException(__parent, env, "Class ", /* getName */(c => c["__class"]?c["__class"]:c["name"])(this.cl), " does not implement freemarker.template.TemplateModel");
             }
-            if(BeanModel.isAssignableFrom(this.cl)) {
+            if(ClassUtil.isAssignableFrom(this.cl, 'freemarker.ext.beans.BeanModel')) {
                 throw new _MiscTemplateException(__parent, env, "Bean Models cannot be instantiated using the ?", __parent.key, " built-in");
             }
             if(NewBI.JYTHON_MODEL_CLASS_$LI$() != null && NewBI.JYTHON_MODEL_CLASS_$LI$().isAssignableFrom(this.cl)) {
@@ -87,10 +81,6 @@ export namespace NewBI {
 
 
 }
-
-
-
-var __Function = Function;
 
 NewBI.JYTHON_MODEL_CLASS_$LI$();
 

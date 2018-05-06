@@ -1,5 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateSourceMatcher } from './TemplateSourceMatcher';
+import {TemplateSourceMatcher} from './TemplateSourceMatcher';
 
 /**
  * @param {String} regex Glob with the syntax defined by {link StringUtil#globToRegularExpression(String)}. Must not

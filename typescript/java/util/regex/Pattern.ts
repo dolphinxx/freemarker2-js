@@ -1,4 +1,6 @@
-// export class Pattern {
+import {StringBuilder} from "../../lang/StringBuilder";
+
+export class Pattern {
 //     /**
 //      * Regular expression modifier values.  Instead of being passed as
 //      * arguments, they can also be passed as inline modifiers.
@@ -12,154 +14,155 @@
 //      * names are available.
 //      */
 //
-//     /**
-//      * Enables Unix lines mode.
-//      *
-//      * <p> In this mode, only the <tt>'\n'</tt> line terminator is recognized
-//      * in the behavior of <tt>.</tt>, <tt>^</tt>, and <tt>$</tt>.
-//      *
-//      * <p> Unix lines mode can also be enabled via the embedded flag
-//      * expression&nbsp;<tt>(?d)</tt>.
-//      */
-//     public static UNIX_LINES:number = 0x01;
-//
-//     /**
-//      * Enables case-insensitive matching.
-//      *
-//      * <p> By default, case-insensitive matching assumes that only characters
-//      * in the US-ASCII charset are being matched.  Unicode-aware
-//      * case-insensitive matching can be enabled by specifying the {@link
-//         * #UNICODE_CASE} flag in conjunction with this flag.
-//      *
-//      * <p> Case-insensitive matching can also be enabled via the embedded flag
-//      * expression&nbsp;<tt>(?i)</tt>.
-//      *
-//      * <p> Specifying this flag may impose a slight performance penalty.  </p>
-//      */
-//     public static CASE_INSENSITIVE:number = 0x02;
-//
-//     /**
-//      * Permits whitespace and comments in pattern.
-//      *
-//      * <p> In this mode, whitespace is ignored, and embedded comments starting
-//      * with <tt>#</tt> are ignored until the end of a line.
-//      *
-//      * <p> Comments mode can also be enabled via the embedded flag
-//      * expression&nbsp;<tt>(?x)</tt>.
-//      */
-//     public static COMMENTS:number = 0x04;
-//
-//     /**
-//      * Enables multiline mode.
-//      *
-//      * <p> In multiline mode the expressions <tt>^</tt> and <tt>$</tt> match
-//      * just after or just before, respectively, a line terminator or the end of
-//      * the input sequence.  By default these expressions only match at the
-//      * beginning and the end of the entire input sequence.
-//      *
-//      * <p> Multiline mode can also be enabled via the embedded flag
-//      * expression&nbsp;<tt>(?m)</tt>.  </p>
-//      */
-//     public static MULTILINE:number = 0x08;
-//
-//     /**
-//      * Enables literal parsing of the pattern.
-//      *
-//      * <p> When this flag is specified then the input string that specifies
-//      * the pattern is treated as a sequence of literal characters.
-//      * Metacharacters or escape sequences in the input sequence will be
-//      * given no special meaning.
-//      *
-//      * <p>The flags CASE_INSENSITIVE and UNICODE_CASE retain their impact on
-//      * matching when used in conjunction with this flag. The other flags
-//      * become superfluous.
-//      *
-//      * <p> There is no embedded flag character for enabling literal parsing.
-//      * @since 1.5
-//      */
-//     public static LITERAL:number = 0x10;
-//
-//     /**
-//      * Enables dotall mode.
-//      *
-//      * <p> In dotall mode, the expression <tt>.</tt> matches any character,
-//      * including a line terminator.  By default this expression does not match
-//      * line terminators.
-//      *
-//      * <p> Dotall mode can also be enabled via the embedded flag
-//      * expression&nbsp;<tt>(?s)</tt>.  (The <tt>s</tt> is a mnemonic for
-//      * "single-line" mode, which is what this is called in Perl.)  </p>
-//      */
-//     public static DOTALL:number = 0x20;
-//
-//     /**
-//      * Enables Unicode-aware case folding.
-//      *
-//      * <p> When this flag is specified then case-insensitive matching, when
-//      * enabled by the {@link #CASE_INSENSITIVE} flag, is done in a manner
-//      * consistent with the Unicode Standard.  By default, case-insensitive
-//      * matching assumes that only characters in the US-ASCII charset are being
-//      * matched.
-//      *
-//      * <p> Unicode-aware case folding can also be enabled via the embedded flag
-//      * expression&nbsp;<tt>(?u)</tt>.
-//      *
-//      * <p> Specifying this flag may impose a performance penalty.  </p>
-//      */
-//     public static UNICODE_CASE:number = 0x40;
-//
-//     /**
-//      * Enables canonical equivalence.
-//      *
-//      * <p> When this flag is specified then two characters will be considered
-//      * to match if, and only if, their full canonical decompositions match.
-//      * The expression <tt>"a&#92;u030A"</tt>, for example, will match the
-//      * string <tt>"&#92;u00E5"</tt> when this flag is specified.  By default,
-//      * matching does not take canonical equivalence into account.
-//      *
-//      * <p> There is no embedded flag character for enabling canonical
-//      * equivalence.
-//      *
-//      * <p> Specifying this flag may impose a performance penalty.  </p>
-//      */
-//     public static CANON_EQ:number = 0x80;
-//
-//     /**
-//      * Enables the Unicode version of <i>Predefined character classes</i> and
-//      * <i>POSIX character classes</i>.
-//      *
-//      * <p> When this flag is specified then the (US-ASCII only)
-//      * <i>Predefined character classes</i> and <i>POSIX character classes</i>
-//      * are in conformance with
-//      * <a href="http://www.unicode.org/reports/tr18/"><i>Unicode Technical
-//      * Standard #18: Unicode Regular Expression</i></a>
-//      * <i>Annex C: Compatibility Properties</i>.
-//      * <p>
-//      * The UNICODE_CHARACTER_CLASS mode can also be enabled via the embedded
-//      * flag expression&nbsp;<tt>(?U)</tt>.
-//      * <p>
-//      * The flag implies UNICODE_CASE, that is, it enables Unicode-aware case
-//      * folding.
-//      * <p>
-//      * Specifying this flag may impose a performance penalty.  </p>
-//      * @since 1.7
-//      */
-//     public static UNICODE_CHARACTER_CLASS:number = 0x100;
-//
-//     /**
-//      * The original regular-expression pattern string.
-//      *
-//      * @serial
-//      */
-//     private pattern:string;
-//
-//     /**
-//      * The original pattern flags.
-//      *
-//      * @serial
-//      */
-//     private flags:number;
-//
+    /**
+     * Enables Unix lines mode.
+     *
+     * <p> In this mode, only the <tt>'\n'</tt> line terminator is recognized
+     * in the behavior of <tt>.</tt>, <tt>^</tt>, and <tt>$</tt>.
+     *
+     * <p> Unix lines mode can also be enabled via the embedded flag
+     * expression&nbsp;<tt>(?d)</tt>.
+     */
+    public static UNIX_LINES:number = 0x01;
+
+    /**
+     * Enables case-insensitive matching.
+     *
+     * <p> By default, case-insensitive matching assumes that only characters
+     * in the US-ASCII charset are being matched.  Unicode-aware
+     * case-insensitive matching can be enabled by specifying the {@link
+        * #UNICODE_CASE} flag in conjunction with this flag.
+     *
+     * <p> Case-insensitive matching can also be enabled via the embedded flag
+     * expression&nbsp;<tt>(?i)</tt>.
+     *
+     * <p> Specifying this flag may impose a slight performance penalty.  </p>
+     */
+    public static CASE_INSENSITIVE:number = 0x02;
+
+    /**
+     * Permits whitespace and comments in pattern.
+     *
+     * <p> In this mode, whitespace is ignored, and embedded comments starting
+     * with <tt>#</tt> are ignored until the end of a line.
+     *
+     * <p> Comments mode can also be enabled via the embedded flag
+     * expression&nbsp;<tt>(?x)</tt>.
+     */
+    public static COMMENTS:number = 0x04;
+
+    /**
+     * Enables multiline mode.
+     *
+     * <p> In multiline mode the expressions <tt>^</tt> and <tt>$</tt> match
+     * just after or just before, respectively, a line terminator or the end of
+     * the input sequence.  By default these expressions only match at the
+     * beginning and the end of the entire input sequence.
+     *
+     * <p> Multiline mode can also be enabled via the embedded flag
+     * expression&nbsp;<tt>(?m)</tt>.  </p>
+     */
+    public static MULTILINE:number = 0x08;
+
+    /**
+     * Enables literal parsing of the pattern.
+     *
+     * <p> When this flag is specified then the input string that specifies
+     * the pattern is treated as a sequence of literal characters.
+     * Metacharacters or escape sequences in the input sequence will be
+     * given no special meaning.
+     *
+     * <p>The flags CASE_INSENSITIVE and UNICODE_CASE retain their impact on
+     * matching when used in conjunction with this flag. The other flags
+     * become superfluous.
+     *
+     * <p> There is no embedded flag character for enabling literal parsing.
+     * @since 1.5
+     */
+    public static LITERAL:number = 0x10;
+
+    /**
+     * Enables dotall mode.
+     *
+     * <p> In dotall mode, the expression <tt>.</tt> matches any character,
+     * including a line terminator.  By default this expression does not match
+     * line terminators.
+     *
+     * <p> Dotall mode can also be enabled via the embedded flag
+     * expression&nbsp;<tt>(?s)</tt>.  (The <tt>s</tt> is a mnemonic for
+     * "single-line" mode, which is what this is called in Perl.)  </p>
+     */
+    public static DOTALL:number = 0x20;
+
+    /**
+     * Enables Unicode-aware case folding.
+     *
+     * <p> When this flag is specified then case-insensitive matching, when
+     * enabled by the {@link #CASE_INSENSITIVE} flag, is done in a manner
+     * consistent with the Unicode Standard.  By default, case-insensitive
+     * matching assumes that only characters in the US-ASCII charset are being
+     * matched.
+     *
+     * <p> Unicode-aware case folding can also be enabled via the embedded flag
+     * expression&nbsp;<tt>(?u)</tt>.
+     *
+     * <p> Specifying this flag may impose a performance penalty.  </p>
+     */
+    public static UNICODE_CASE:number = 0x40;
+
+    /**
+     * Enables canonical equivalence.
+     *
+     * <p> When this flag is specified then two characters will be considered
+     * to match if, and only if, their full canonical decompositions match.
+     * The expression <tt>"a&#92;u030A"</tt>, for example, will match the
+     * string <tt>"&#92;u00E5"</tt> when this flag is specified.  By default,
+     * matching does not take canonical equivalence into account.
+     *
+     * <p> There is no embedded flag character for enabling canonical
+     * equivalence.
+     *
+     * <p> Specifying this flag may impose a performance penalty.  </p>
+     */
+    public static CANON_EQ:number = 0x80;
+
+    /**
+     * Enables the Unicode version of <i>Predefined character classes</i> and
+     * <i>POSIX character classes</i>.
+     *
+     * <p> When this flag is specified then the (US-ASCII only)
+     * <i>Predefined character classes</i> and <i>POSIX character classes</i>
+     * are in conformance with
+     * <a href="http://www.unicode.org/reports/tr18/"><i>Unicode Technical
+     * Standard #18: Unicode Regular Expression</i></a>
+     * <i>Annex C: Compatibility Properties</i>.
+     * <p>
+     * The UNICODE_CHARACTER_CLASS mode can also be enabled via the embedded
+     * flag expression&nbsp;<tt>(?U)</tt>.
+     * <p>
+     * The flag implies UNICODE_CASE, that is, it enables Unicode-aware case
+     * folding.
+     * <p>
+     * Specifying this flag may impose a performance penalty.  </p>
+     * @since 1.7
+     */
+    public static UNICODE_CHARACTER_CLASS:number = 0x100;
+    private regex:RegExp;
+
+    /**
+     * The original regular-expression pattern string.
+     *
+     * @serial
+     */
+    private pattern:string;
+
+    /**
+     * The original pattern flags.
+     *
+     * @serial
+     */
+    private flags:number;
+
 //     /**
 //      * Boolean indicating this Pattern is compiled; this is necessary in order
 //      * to lazily compile deserialized Patterns.
@@ -235,45 +238,35 @@
 //      * (2) There is complement node of Category or Block
 //      */
 //     private transient boolean hasSupplementary;
-//
-//     /**
-//      * Compiles the given regular expression into a pattern.
-//      *
-//      * @param  regex
-//      *         The expression to be compiled
-//      * @return the given regular expression compiled into a pattern
-//      * @throws  PatternSyntaxException
-//      *          If the expression's syntax is invalid
-//      */
-//     public static Pattern compile(String regex) {
-//     return new Pattern(regex, 0);
-// }
-//
-// /**
-//  * Compiles the given regular expression into a pattern with the given
-//  * flags.
-//  *
-//  * @param  regex
-//  *         The expression to be compiled
-//  *
-//  * @param  flags
-//  *         Match flags, a bit mask that may include
-//  *         {@link #CASE_INSENSITIVE}, {@link #MULTILINE}, {@link #DOTALL},
-//  *         {@link #UNICODE_CASE}, {@link #CANON_EQ}, {@link #UNIX_LINES},
-//  *         {@link #LITERAL}, {@link #UNICODE_CHARACTER_CLASS}
-//  *         and {@link #COMMENTS}
-//  *
-//  * @return the given regular expression compiled into a pattern with the given flags
-//  * @throws  IllegalArgumentException
-//  *          If bit values other than those corresponding to the defined
-//  *          match flags are set in <tt>flags</tt>
-//  *
-//  * @throws  PatternSyntaxException
-//  *          If the expression's syntax is invalid
-//  */
-// public static Pattern compile(String regex, int flags) {
-//     return new Pattern(regex, flags);
-// }
+
+/**
+ * Compiles the given regular expression into a pattern with the given
+ * flags.
+ *
+ * @param  regex
+ *         The expression to be compiled
+ *
+ * @param  flags
+ *         Match flags, a bit mask that may include
+ *         {@link #CASE_INSENSITIVE}, {@link #MULTILINE}, {@link #DOTALL},
+ *         {@link #UNICODE_CASE}, {@link #CANON_EQ}, {@link #UNIX_LINES},
+ *         {@link #LITERAL}, {@link #UNICODE_CHARACTER_CLASS}
+ *         and {@link #COMMENTS}
+ *
+ * @return the given regular expression compiled into a pattern with the given flags
+ * @throws  IllegalArgumentException
+ *          If bit values other than those corresponding to the defined
+ *          match flags are set in <tt>flags</tt>
+ *
+ * @throws  PatternSyntaxException
+ *          If the expression's syntax is invalid
+ */
+public static compile( regex:string, flags?:number):Pattern {
+    if(flags === undefined) {
+        flags = 0;
+    }
+    return new Pattern(regex, flags);
+}
 //
 // /**
 //  * Returns the regular expression from which this pattern was compiled.
@@ -494,38 +487,38 @@
 //     return split(input, 0);
 // }
 //
-// /**
-//  * Returns a literal pattern <code>String</code> for the specified
-//  * <code>String</code>.
-//  *
-//  * <p>This method produces a <code>String</code> that can be used to
-//  * create a <code>Pattern</code> that would match the string
-//  * <code>s</code> as if it were a literal pattern.</p> Metacharacters
-//  * or escape sequences in the input sequence will be given no special
-//  * meaning.
-//  *
-//  * @param  s The string to be literalized
-//  * @return  A literal string replacement
-//  * @since 1.5
-//  */
-// public static String quote(String s) {
-//     int slashEIndex = s.indexOf("\\E");
-//     if (slashEIndex == -1)
-//         return "\\Q" + s + "\\E";
-//
-//     StringBuilder sb = new StringBuilder(s.length() * 2);
-//     sb.append("\\Q");
-//     slashEIndex = 0;
-//     int current = 0;
-//     while ((slashEIndex = s.indexOf("\\E", current)) != -1) {
-//         sb.append(s.substring(current, slashEIndex));
-//         current = slashEIndex + 2;
-//         sb.append("\\E\\\\E\\Q");
-//     }
-//     sb.append(s.substring(current, s.length()));
-//     sb.append("\\E");
-//     return sb.toString();
-// }
+/**
+ * Returns a literal pattern <code>String</code> for the specified
+ * <code>String</code>.
+ *
+ * <p>This method produces a <code>String</code> that can be used to
+ * create a <code>Pattern</code> that would match the string
+ * <code>s</code> as if it were a literal pattern.</p> Metacharacters
+ * or escape sequences in the input sequence will be given no special
+ * meaning.
+ *
+ * @param  s The string to be literalized
+ * @return  A literal string replacement
+ * @since 1.5
+ */
+public static quote( s:string):string {
+    let slashEIndex:number = s.indexOf("\\E");
+    if (slashEIndex == -1)
+        return "\\Q" + s + "\\E";
+
+    let sb:StringBuilder = new StringBuilder(s.length * 2);
+    sb.append("\\Q");
+    slashEIndex = 0;
+    let current:number = 0;
+    while ((slashEIndex = s.indexOf("\\E", current)) != -1) {
+        sb.append(s.substring(current, slashEIndex));
+        current = slashEIndex + 2;
+        sb.append("\\E\\\\E\\Q");
+    }
+    sb.append(s.substring(current, s.length));
+    sb.append("\\E");
+    return sb.toString();
+}
 //
 // /**
 //  * Recompile the Pattern instance from a stream.  The original pattern
@@ -549,32 +542,33 @@
 //         compiled = true;
 //     }
 // }
-//
-// /**
-//  * This private constructor is used to create all Patterns. The pattern
-//  * string and match flags are all that is needed to completely describe
-//  * a Pattern. An empty pattern string results in an object tree with
-//  * only a Start node and a LastNode node.
-//  */
-// private Pattern(String p, int f) {
-//     pattern = p;
-//     flags = f;
-//
-//     // to use UNICODE_CASE if UNICODE_CHARACTER_CLASS present
-//     if ((flags & UNICODE_CHARACTER_CLASS) != 0)
-//         flags |= UNICODE_CASE;
-//
-//     // Reset group index count
-//     capturingGroupCount = 1;
-//     localCount = 0;
-//
-//     if (pattern.length() > 0) {
-//         compile();
-//     } else {
-//         root = new Start(lastAccept);
-//         matchRoot = lastAccept;
-//     }
-// }
+
+/**
+ * This private constructor is used to create all Patterns. The pattern
+ * string and match flags are all that is needed to completely describe
+ * a Pattern. An empty pattern string results in an object tree with
+ * only a Start node and a LastNode node.
+ */
+private constructor( p:string, f:number) {
+    this.pattern = p;
+    this.flags = f;
+
+    // to use UNICODE_CASE if UNICODE_CHARACTER_CLASS present
+    if ((this.flags & Pattern.UNICODE_CHARACTER_CLASS) != 0)
+        this.flags |= Pattern.UNICODE_CASE;
+
+    this.regex = new RegExp(p);
+    // Reset group index count
+    // capturingGroupCount = 1;
+    // localCount = 0;
+    //
+    // if (pattern.length() > 0) {
+    //     compile();
+    // } else {
+    //     root = new Start(lastAccept);
+    //     matchRoot = lastAccept;
+    // }
+}
 //
 // /**
 //  * The pattern is converted to normalizedD form and then a pure group
@@ -5074,4 +5068,4 @@
 //     return StreamSupport.stream(Spliterators.spliteratorUnknownSize(
 //         new MatcherIterator(), Spliterator.ORDERED | Spliterator.NONNULL), false);
 // }
-// }
+}

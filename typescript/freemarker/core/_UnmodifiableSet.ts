@@ -1,10 +1,12 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
+import {Set} from "../../java/util/Set";
+
 /**
  * Don't use this; used internally by FreeMarker, might changes without notice.
  * @class
  * @extends AbstractSet
  */
-export abstract class _UnmodifiableSet<E> {
+export abstract class _UnmodifiableSet<E> extends Set<E>{
     /**
      * 
      * @param {*} o
@@ -36,6 +38,7 @@ export abstract class _UnmodifiableSet<E> {
     }
 
     constructor() {
+        super();
     }
 }
 _UnmodifiableSet["__class"] = "freemarker.core._UnmodifiableSet";
@@ -44,4 +47,4 @@ _UnmodifiableSet["__interfaces"] = ["java.util.Collection","java.util.Set","java
 
 
 
-var __Function = Function;
+

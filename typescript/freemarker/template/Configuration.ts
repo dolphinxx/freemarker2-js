@@ -12,7 +12,6 @@ import {BugException} from '../core/BugException';
 import {CSSOutputFormat} from '../core/CSSOutputFormat';
 import {CombinedMarkupOutputFormat} from '../core/CombinedMarkupOutputFormat';
 import {Configurable} from '../core/Configurable';
-import {Environment} from '../core/Environment';
 import {HTMLOutputFormat} from '../core/HTMLOutputFormat';
 import {JSONOutputFormat} from '../core/JSONOutputFormat';
 import {JavaScriptOutputFormat} from '../core/JavaScriptOutputFormat';
@@ -44,7 +43,6 @@ import {StandardCompress} from './utility/StandardCompress';
 import {StringUtil} from './utility/StringUtil';
 import {XmlEscape} from './utility/XmlEscape';
 import {Version} from './Version';
-import {Boolean} from '../../java/lang/Boolean';
 import {_TemplateAPI} from './_TemplateAPI';
 import {TemplateExceptionHandler} from './TemplateExceptionHandler';
 import {AttemptExceptionReporter} from './AttemptExceptionReporter';
@@ -60,6 +58,9 @@ import {TemplateHashModelEx} from './TemplateHashModelEx';
 import {TemplateModelIterator} from './TemplateModelIterator';
 import {TemplateScalarModel} from './TemplateScalarModel';
 import {DefaultObjectWrapperBuilder} from './DefaultObjectWrapperBuilder';
+import {Entry} from "../../java/util/Entry";
+import {Set} from "../../java/util/Set";
+import {Map} from "../../java/util/Map";
 
 /**
  * Creates a new instance and sets which of the non-backward-compatible bugfixes/improvements should be enabled.
@@ -744,11 +745,11 @@ export class Configuration extends Configurable implements ParserConfiguration {
      */
     public static INCOMPATIBLE_ENHANCEMENTS : string = "incompatible_enhancements";
 
-    static __freemarker_template_Configuration_SETTING_NAMES_SNAKE_CASE : Array<any>; public static __freemarker_template_Configuration_SETTING_NAMES_SNAKE_CASE_$LI$() : Array { Configuration.__static_initialize(); if(Configuration.__freemarker_template_Configuration_SETTING_NAMES_SNAKE_CASE == null) Configuration.__freemarker_template_Configuration_SETTING_NAMES_SNAKE_CASE = [Configuration.AUTO_ESCAPING_POLICY_KEY_SNAKE_CASE, Configuration.CACHE_STORAGE_KEY_SNAKE_CASE, Configuration.DEFAULT_ENCODING_KEY_SNAKE_CASE, Configuration.INCOMPATIBLE_IMPROVEMENTS_KEY_SNAKE_CASE, Configuration.INTERPOLATION_SYNTAX_KEY_SNAKE_CASE, Configuration.LOCALIZED_LOOKUP_KEY_SNAKE_CASE, Configuration.NAMING_CONVENTION_KEY_SNAKE_CASE, Configuration.OUTPUT_FORMAT_KEY_SNAKE_CASE, Configuration.RECOGNIZE_STANDARD_FILE_EXTENSIONS_KEY_SNAKE_CASE, Configuration.REGISTERED_CUSTOM_OUTPUT_FORMATS_KEY_SNAKE_CASE, Configuration.STRICT_SYNTAX_KEY_SNAKE_CASE, Configuration.TAB_SIZE_KEY_SNAKE_CASE, Configuration.TAG_SYNTAX_KEY_SNAKE_CASE, Configuration.TEMPLATE_CONFIGURATIONS_KEY_SNAKE_CASE, Configuration.TEMPLATE_LOADER_KEY_SNAKE_CASE, Configuration.TEMPLATE_LOOKUP_STRATEGY_KEY_SNAKE_CASE, Configuration.TEMPLATE_NAME_FORMAT_KEY_SNAKE_CASE, Configuration.TEMPLATE_UPDATE_DELAY_KEY_SNAKE_CASE, Configuration.WHITESPACE_STRIPPING_KEY_SNAKE_CASE]; return Configuration.__freemarker_template_Configuration_SETTING_NAMES_SNAKE_CASE; };
+    static __freemarker_template_Configuration_SETTING_NAMES_SNAKE_CASE : Array<any>; public static __freemarker_template_Configuration_SETTING_NAMES_SNAKE_CASE_$LI$() : Array<any> { Configuration.__static_initialize(); if(Configuration.__freemarker_template_Configuration_SETTING_NAMES_SNAKE_CASE == null) Configuration.__freemarker_template_Configuration_SETTING_NAMES_SNAKE_CASE = [Configuration.AUTO_ESCAPING_POLICY_KEY_SNAKE_CASE, Configuration.CACHE_STORAGE_KEY_SNAKE_CASE, Configuration.DEFAULT_ENCODING_KEY_SNAKE_CASE, Configuration.INCOMPATIBLE_IMPROVEMENTS_KEY_SNAKE_CASE, Configuration.INTERPOLATION_SYNTAX_KEY_SNAKE_CASE, Configuration.LOCALIZED_LOOKUP_KEY_SNAKE_CASE, Configuration.NAMING_CONVENTION_KEY_SNAKE_CASE, Configuration.OUTPUT_FORMAT_KEY_SNAKE_CASE, Configuration.RECOGNIZE_STANDARD_FILE_EXTENSIONS_KEY_SNAKE_CASE, Configuration.REGISTERED_CUSTOM_OUTPUT_FORMATS_KEY_SNAKE_CASE, Configuration.STRICT_SYNTAX_KEY_SNAKE_CASE, Configuration.TAB_SIZE_KEY_SNAKE_CASE, Configuration.TAG_SYNTAX_KEY_SNAKE_CASE, Configuration.TEMPLATE_CONFIGURATIONS_KEY_SNAKE_CASE, Configuration.TEMPLATE_LOADER_KEY_SNAKE_CASE, Configuration.TEMPLATE_LOOKUP_STRATEGY_KEY_SNAKE_CASE, Configuration.TEMPLATE_NAME_FORMAT_KEY_SNAKE_CASE, Configuration.TEMPLATE_UPDATE_DELAY_KEY_SNAKE_CASE, Configuration.WHITESPACE_STRIPPING_KEY_SNAKE_CASE]; return Configuration.__freemarker_template_Configuration_SETTING_NAMES_SNAKE_CASE; };
 
-    static __freemarker_template_Configuration_SETTING_NAMES_CAMEL_CASE : Array<any>; public static __freemarker_template_Configuration_SETTING_NAMES_CAMEL_CASE_$LI$() : Array { Configuration.__static_initialize(); if(Configuration.__freemarker_template_Configuration_SETTING_NAMES_CAMEL_CASE == null) Configuration.__freemarker_template_Configuration_SETTING_NAMES_CAMEL_CASE = [Configuration.AUTO_ESCAPING_POLICY_KEY_CAMEL_CASE, Configuration.CACHE_STORAGE_KEY_CAMEL_CASE, Configuration.DEFAULT_ENCODING_KEY_CAMEL_CASE, Configuration.INCOMPATIBLE_IMPROVEMENTS_KEY_CAMEL_CASE, Configuration.INTERPOLATION_SYNTAX_KEY_CAMEL_CASE, Configuration.LOCALIZED_LOOKUP_KEY_CAMEL_CASE, Configuration.NAMING_CONVENTION_KEY_CAMEL_CASE, Configuration.OUTPUT_FORMAT_KEY_CAMEL_CASE, Configuration.RECOGNIZE_STANDARD_FILE_EXTENSIONS_KEY_CAMEL_CASE, Configuration.REGISTERED_CUSTOM_OUTPUT_FORMATS_KEY_CAMEL_CASE, Configuration.STRICT_SYNTAX_KEY_CAMEL_CASE, Configuration.TAB_SIZE_KEY_CAMEL_CASE, Configuration.TAG_SYNTAX_KEY_CAMEL_CASE, Configuration.TEMPLATE_CONFIGURATIONS_KEY_CAMEL_CASE, Configuration.TEMPLATE_LOADER_KEY_CAMEL_CASE, Configuration.TEMPLATE_LOOKUP_STRATEGY_KEY_CAMEL_CASE, Configuration.TEMPLATE_NAME_FORMAT_KEY_CAMEL_CASE, Configuration.TEMPLATE_UPDATE_DELAY_KEY_CAMEL_CASE, Configuration.WHITESPACE_STRIPPING_KEY_CAMEL_CASE]; return Configuration.__freemarker_template_Configuration_SETTING_NAMES_CAMEL_CASE; };
+    static __freemarker_template_Configuration_SETTING_NAMES_CAMEL_CASE : Array<any>; public static __freemarker_template_Configuration_SETTING_NAMES_CAMEL_CASE_$LI$() : Array<any> { Configuration.__static_initialize(); if(Configuration.__freemarker_template_Configuration_SETTING_NAMES_CAMEL_CASE == null) Configuration.__freemarker_template_Configuration_SETTING_NAMES_CAMEL_CASE = [Configuration.AUTO_ESCAPING_POLICY_KEY_CAMEL_CASE, Configuration.CACHE_STORAGE_KEY_CAMEL_CASE, Configuration.DEFAULT_ENCODING_KEY_CAMEL_CASE, Configuration.INCOMPATIBLE_IMPROVEMENTS_KEY_CAMEL_CASE, Configuration.INTERPOLATION_SYNTAX_KEY_CAMEL_CASE, Configuration.LOCALIZED_LOOKUP_KEY_CAMEL_CASE, Configuration.NAMING_CONVENTION_KEY_CAMEL_CASE, Configuration.OUTPUT_FORMAT_KEY_CAMEL_CASE, Configuration.RECOGNIZE_STANDARD_FILE_EXTENSIONS_KEY_CAMEL_CASE, Configuration.REGISTERED_CUSTOM_OUTPUT_FORMATS_KEY_CAMEL_CASE, Configuration.STRICT_SYNTAX_KEY_CAMEL_CASE, Configuration.TAB_SIZE_KEY_CAMEL_CASE, Configuration.TAG_SYNTAX_KEY_CAMEL_CASE, Configuration.TEMPLATE_CONFIGURATIONS_KEY_CAMEL_CASE, Configuration.TEMPLATE_LOADER_KEY_CAMEL_CASE, Configuration.TEMPLATE_LOOKUP_STRATEGY_KEY_CAMEL_CASE, Configuration.TEMPLATE_NAME_FORMAT_KEY_CAMEL_CASE, Configuration.TEMPLATE_UPDATE_DELAY_KEY_CAMEL_CASE, Configuration.WHITESPACE_STRIPPING_KEY_CAMEL_CASE]; return Configuration.__freemarker_template_Configuration_SETTING_NAMES_CAMEL_CASE; };
 
-    static STANDARD_OUTPUT_FORMATS : Map<any, any>; public static STANDARD_OUTPUT_FORMATS_$LI$() : Map { Configuration.__static_initialize(); return Configuration.STANDARD_OUTPUT_FORMATS; };
+    static STANDARD_OUTPUT_FORMATS : Map<any, any>; public static STANDARD_OUTPUT_FORMATS_$LI$() : Map<any, any> { Configuration.__static_initialize(); return Configuration.STANDARD_OUTPUT_FORMATS; };
 
     static __static_initializer_0() {
         Configuration.STANDARD_OUTPUT_FORMATS = <any>(new Map<any, any>());
@@ -909,25 +910,25 @@ export class Configuration extends Configurable implements ParserConfiguration {
 
     static __static_initializer_1() {
         try {
-            let props : Map<any, any> = ClassUtil.loadProperties(Configuration, Configuration.VERSION_PROPERTIES_PATH);
-            let versionString : string = Configuration.getRequiredVersionProperty(props, "version");
-            let buildDate : Date;
-            {
-                let buildDateStr : string = Configuration.getRequiredVersionProperty(props, "buildTimestamp");
-                if(/* endsWith */((str, searchString) => { let pos = str.length - searchString.length; let lastIndex = str.indexOf(searchString, pos); return lastIndex !== -1 && lastIndex === pos; })(buildDateStr, "Z")) {
-                    buildDateStr = buildDateStr.substring(0, buildDateStr.length - 1) + "+0000";
-                }
-                try {
-                    buildDate = new SimpleDateFormat("yyyy-MM-dd\'T\'HH:mm:ssZ", string.US).parse(buildDateStr);
-                } catch(e) {
-                    buildDate = null;
-                };
-            };
-            let gaeCompliant : boolean = Boolean.valueOf(Configuration.getRequiredVersionProperty(props, "isGAECompliant"));
-            Configuration.VERSION = new Version(versionString, gaeCompliant, buildDate);
+            // let props : Map<any, any> = ClassUtil.loadProperties(Configuration, Configuration.VERSION_PROPERTIES_PATH);
+            // let versionString : string = Configuration.getRequiredVersionProperty(props, "version");
+            // let buildDate : Date;
+            // {
+            //     let buildDateStr : string = Configuration.getRequiredVersionProperty(props, "buildTimestamp");
+            //     if(/* endsWith */((str, searchString) => { let pos = str.length - searchString.length; let lastIndex = str.indexOf(searchString, pos); return lastIndex !== -1 && lastIndex === pos; })(buildDateStr, "Z")) {
+            //         buildDateStr = buildDateStr.substring(0, buildDateStr.length - 1) + "+0000";
+            //     }
+            //     try {
+            //         buildDate = new SimpleDateFormat("yyyy-MM-dd\'T\'HH:mm:ssZ", string.US).parse(buildDateStr);
+            //     } catch(e) {
+            //         buildDate = null;
+            //     };
+            // };
+            // let gaeCompliant : boolean = Boolean.valueOf(Configuration.getRequiredVersionProperty(props, "isGAECompliant"));
+            Configuration.VERSION = new Version('2.3.29-nightly', false, '');
         } catch(e) {
             throw Object.defineProperty(new Error("Failed to load and parse " + Configuration.VERSION_PROPERTIES_PATH), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.lang.RuntimeException','java.lang.Exception'] });
-        };
+        }
     }
 
     static FM_24_DETECTION_CLASS_NAME : string = "freemarker.core._2_4_OrLaterMarker";
@@ -955,7 +956,7 @@ export class Configuration extends Configurable implements ParserConfiguration {
                 fm24detected = false;
 
             }
-        };
+        }
         Configuration.FM_24_DETECTED = fm24detected;
     }
 
@@ -1064,7 +1065,7 @@ export class Configuration extends Configurable implements ParserConfiguration {
             this.sharedVariables = <any>(new Map<any, any>());
             this.rewrappableSharedVariables = null;
             this.defaultEncoding = Configuration.getDefaultDefaultEncoding();
-            this.localeToCharsetMap = <any>(<Map>new Map());
+            this.localeToCharsetMap = <any>(new Map<any, any>());
             if(this.outputFormatExplicitlySet===undefined) this.outputFormatExplicitlySet = false;
             if(this.recognizeStandardFileExtensions===undefined) this.recognizeStandardFileExtensions = null;
             if(this.incompatibleImprovements===undefined) this.incompatibleImprovements = null;
@@ -1125,7 +1126,7 @@ export class Configuration extends Configurable implements ParserConfiguration {
                 this.sharedVariables = <any>(new Map<any, any>());
                 this.rewrappableSharedVariables = null;
                 this.defaultEncoding = Configuration.getDefaultDefaultEncoding();
-                this.localeToCharsetMap = <any>(<Map>new Map());
+                this.localeToCharsetMap = <any>(new Map<any, any>());
                 if(this.outputFormatExplicitlySet===undefined) this.outputFormatExplicitlySet = false;
                 if(this.recognizeStandardFileExtensions===undefined) this.recognizeStandardFileExtensions = null;
                 if(this.incompatibleImprovements===undefined) this.incompatibleImprovements = null;
@@ -1183,19 +1184,20 @@ export class Configuration extends Configurable implements ParserConfiguration {
     }
 
     public static createDefaultTemplateLoader(incompatibleImprovements : Version, existingTemplateLoader : TemplateLoader = null) : TemplateLoader {
-        if(incompatibleImprovements.intValue() < _TemplateAPI.VERSION_INT_2_3_21_$LI$()) {
-            if(existingTemplateLoader != null && existingTemplateLoader instanceof <any>Configuration.LegacyDefaultFileTemplateLoader) {
-                return existingTemplateLoader;
-            }
-            try {
-                return new Configuration.LegacyDefaultFileTemplateLoader();
-            } catch(e) {
-                Configuration.CACHE_LOG_$LI$().warn$java_lang_String$java_lang_Throwable("Couldn\'t create legacy default TemplateLoader which accesses the current directory. (Use new Configuration(Configuration.VERSION_2_3_21) or higher to avoid this.)", e);
-                return null;
-            };
-        } else {
-            return null;
-        }
+        // if(incompatibleImprovements.intValue() < _TemplateAPI.VERSION_INT_2_3_21_$LI$()) {
+        //     if(existingTemplateLoader != null && existingTemplateLoader instanceof <any>Configuration.LegacyDefaultFileTemplateLoader) {
+        //         return existingTemplateLoader;
+        //     }
+        //     try {
+        //         return new Configuration.LegacyDefaultFileTemplateLoader();
+        //     } catch(e) {
+        //         Configuration.CACHE_LOG_$LI$().warn$java_lang_String$java_lang_Throwable("Couldn\'t create legacy default TemplateLoader which accesses the current directory. (Use new Configuration(Configuration.VERSION_2_3_21) or higher to avoid this.)", e);
+        //         return null;
+        //     }
+        // } else {
+        //     return null;
+        // }
+        throw new Error();
     }
 
     getDefaultTemplateLookupStrategy() : TemplateLookupStrategy {
@@ -1281,12 +1283,12 @@ export class Configuration extends Configurable implements ParserConfiguration {
         try {
             let copy : Configuration = <Configuration>/* clone *//* clone */((o:any) => { if(super.clone!=undefined) { return super.clone(); } else { let clone = Object.create(o); for(let p in o) { if (o.hasOwnProperty(p)) clone[p] = o[p]; } return clone; } })(this);
             copy.sharedVariables = <any>(new Map<any, any>());
-            copy.localeToCharsetMap = <any>(<Map>new Map(this.localeToCharsetMap));
+            copy.localeToCharsetMap = <any>(<Map<any, any>>new Map(this.localeToCharsetMap));
             copy.recreateTemplateCacheWith(this.cache.getTemplateLoader(), this.cache.getCacheStorage(), this.cache.getTemplateLookupStrategy(), this.cache.getTemplateNameFormat(), this.cache.getTemplateConfigurations());
             return copy;
         } catch(e) {
             throw new BugException("Cloning failed", e);
-        };
+        }
     }
 
     loadBuiltInSharedVariables() {
@@ -1427,7 +1429,7 @@ export class Configuration extends Configurable implements ParserConfiguration {
                     defaultConfig = new Configuration();
                     Configuration.defaultConfig = defaultConfig;
                 }
-            };
+            }
         }
         return defaultConfig;
     }
@@ -1444,7 +1446,7 @@ export class Configuration extends Configurable implements ParserConfiguration {
     public static setDefaultConfiguration(config : Configuration) {
         {
             Configuration.defaultConfig = config;
-        };
+        }
     }
 
     /**
@@ -1473,7 +1475,7 @@ export class Configuration extends Configurable implements ParserConfiguration {
                 this.recreateTemplateCacheWith(templateLoader, this.cache.getCacheStorage(), this.cache.getTemplateLookupStrategy(), this.cache.getTemplateNameFormat(), this.cache.getTemplateConfigurations());
             }
             this.templateLoaderExplicitlySet = true;
-        };
+        }
     }
 
     /**
@@ -1664,7 +1666,7 @@ export class Configuration extends Configurable implements ParserConfiguration {
                 this.recreateTemplateCacheWith(this.cache.getTemplateLoader(), cacheStorage, this.cache.getTemplateLookupStrategy(), this.cache.getTemplateNameFormat(), this.cache.getTemplateConfigurations());
             }
             this.cacheStorageExplicitlySet = true;
-        };
+        }
     }
 
     /**
@@ -1703,7 +1705,7 @@ export class Configuration extends Configurable implements ParserConfiguration {
                 return null;
             }
             return this.cache.getCacheStorage();
-        };
+        }
     }
 
     /**
@@ -1723,11 +1725,11 @@ export class Configuration extends Configurable implements ParserConfiguration {
      * {link #setServletContextForTemplateLoading(Object, String)} on the other hand will work in all these cases.
      * @param {File} dir
      */
-    public setDirectoryForTemplateLoading(dir : File) {
+    public setDirectoryForTemplateLoading(dir : string) {
         let tl : TemplateLoader = this.getTemplateLoader();
         if(tl != null && tl instanceof <any>FileTemplateLoader) {
-            let path : string = (<FileTemplateLoader><any>tl).baseDir.getCanonicalPath();
-            if(/* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(path,dir.getCanonicalPath()))) return;
+            let path : string = (<FileTemplateLoader><any>tl).baseDir;
+            if(/* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(path,dir))) return;
         }
         this.setTemplateLoader(new FileTemplateLoader(dir));
     }
@@ -1761,7 +1763,7 @@ export class Configuration extends Configurable implements ParserConfiguration {
             this.setTemplateLoader(<TemplateLoader><any>(o => o.newInstance.apply(o, constructorParams))((o => o.getConstructor.apply(o, constructorParamTypes))(webappTemplateLoaderClass)));
         } catch(e) {
             throw new BugException(e);
-        };
+        }
     }
 
     /**
@@ -1840,7 +1842,7 @@ export class Configuration extends Configurable implements ParserConfiguration {
                 this.setSharedVariablesFromRewrappableSharedVariables();
             } catch(e) {
                 throw Object.defineProperty(new Error("Failed to re-wrap earliearly set shared variables with the newly set object wrapper"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.lang.RuntimeException','java.lang.Exception'] });
-            };
+            }
         }
     }
 
@@ -1901,7 +1903,7 @@ export class Configuration extends Configurable implements ParserConfiguration {
     }
 
     static getDefaultLocale() : string {
-        return /* getDefault */(globals.DEFAULT_LOCALE);
+        return /* getDefault */(global.DEFAULT_LOCALE);
     }
 
     /**
@@ -2349,11 +2351,11 @@ export class Configuration extends Configurable implements ParserConfiguration {
                 sb.append("Unregistered output format name, ");
                 sb.append(StringUtil.jQuote$java_lang_Object(name));
                 sb.append(". The output formats registered in the Configuration are: ");
-                let registeredNames : Set = <any>([]);
-                /* addAll */((l1, l2) => l1.push.apply(l1, l2))(registeredNames, /* keySet */((m) => { let r=[]; m.forEach((v, k, m) => r.push(k)); return r; })(<any>Configuration.STANDARD_OUTPUT_FORMATS_$LI$()));
-                /* addAll */((l1, l2) => l1.push.apply(l1, l2))(registeredNames, /* keySet */((m) => { let r=[]; m.forEach((v, k, m) => r.push(k)); return r; })(<any>this.registeredCustomOutputFormats));
+                let registeredNames : Set<any> = new Set<any>();
+                Configuration.STANDARD_OUTPUT_FORMATS_$LI$().forEach((v, k, m) => registeredNames.add(k));
+                this.registeredCustomOutputFormats.forEach((v, k, m) => registeredNames.add(k));
                 let first : boolean = true;
-                for(let index169=0; index169 < registeredNames.length; index169++) {
+                for(let index169=0; index169 < registeredNames.size(); index169++) {
                     let registeredName = registeredNames[index169];
                     {
                         if(first) {
@@ -2425,7 +2427,7 @@ export class Configuration extends Configurable implements ParserConfiguration {
      * {link PlainTextOutputFormat#getName()}.
      * @since 2.3.24
      */
-    public setRegisteredCustomOutputFormats(registeredCustomOutputFormats : Collection) {
+    public setRegisteredCustomOutputFormats(registeredCustomOutputFormats : Array<any>) {
         NullArgumentException.check$java_lang_Object(registeredCustomOutputFormats);
         let m : Map<any, any> = <any>(new Map<any, any>());
         for(let index170=0; index170 < registeredCustomOutputFormats.length; index170++) {
@@ -2462,7 +2464,7 @@ export class Configuration extends Configurable implements ParserConfiguration {
                 }
             }
         }
-        this.registeredCustomOutputFormats = Collections.unmodifiableMap<any, any>(m);
+        this.registeredCustomOutputFormats = m;
         this.clearTemplateCache();
     }
 
@@ -2472,7 +2474,7 @@ export class Configuration extends Configurable implements ParserConfiguration {
      * @since 2.3.24
      * @return {Collection}
      */
-    public getRegisteredCustomOutputFormats() : Collection {
+    public getRegisteredCustomOutputFormats() : Array<any> {
         return /* values */((m) => { let r=[]; m.forEach((v, k, m) => r.push(v)); return r; })(<any>this.registeredCustomOutputFormats);
     }
 
@@ -2541,7 +2543,7 @@ export class Configuration extends Configurable implements ParserConfiguration {
      * @return {boolean}
      */
     public getRecognizeStandardFileExtensions() : boolean {
-        return this.recognizeStandardFileExtensions == null?this.incompatibleImprovements.intValue() >= _TemplateAPI.VERSION_INT_2_3_24_$LI$():this.recognizeStandardFileExtensions;
+        return this.recognizeStandardFileExtensions == null?this.incompatibleImprovements.intValue() >= /*_TemplateAPI.VERSION_INT_2_3_24_$LI$()*/2003024:this.recognizeStandardFileExtensions;
     }
 
     /**
@@ -2964,24 +2966,10 @@ export class Configuration extends Configurable implements ParserConfiguration {
      * @return {String}
      */
     public getEncoding(locale : string) : string {
-        if(/* isEmpty */((m) => { if(m.entries==null) m.entries=[]; return m.entries.length == 0; })(<any>this.localeToCharsetMap)) {
+        if(this.localeToCharsetMap.isEmpty()) {
             return this.defaultEncoding;
         } else {
-            NullArgumentException.check$java_lang_String$java_lang_Object("locale", locale);
             let charset : string = <string>/* get */this.localeToCharsetMap.get(locale.toString());
-            if(charset == null) {
-                if(locale.getVariant().length > 0) {
-                    let l : string = <string>new String(locale.getLanguage(), locale.getCountry());
-                    charset = <string>/* get */this.localeToCharsetMap.get(l.toString());
-                    if(charset != null) {
-                        /* put */this.localeToCharsetMap.set(locale.toString(), charset);
-                    }
-                }
-                charset = <string>/* get */this.localeToCharsetMap.get(locale.getLanguage());
-                if(charset != null) {
-                    /* put */this.localeToCharsetMap.set(locale.toString(), charset);
-                }
-            }
             return charset != null?charset:this.defaultEncoding;
         }
     }
@@ -3082,7 +3070,7 @@ export class Configuration extends Configurable implements ParserConfiguration {
     setSharedVariablesFromRewrappableSharedVariables() {
         if(this.rewrappableSharedVariables == null) return;
         for(let it : any = /* iterator */((a) => { var i = 0; return { next: function() { return i<a.length?a[i++]:null; }, hasNext: function() { return i<a.length; }}})(/* entrySet */((m) => { if(m.entries==null) m.entries=[]; return m.entries; })(<any>this.rewrappableSharedVariables)); it.hasNext(); ) {
-            let ent : Entry = <Entry><any>it.next();
+            let ent : Entry<any, any> = <Entry<any, any>><any>it.next();
             let name : string = <string>ent.getKey();
             let value : any = ent.getValue();
             let valueAsTM : TemplateModel;
@@ -3092,7 +3080,7 @@ export class Configuration extends Configurable implements ParserConfiguration {
                 valueAsTM = this.getObjectWrapper()['wrap$java_lang_Object'](value);
             }
             /* put */this.sharedVariables.set(name, valueAsTM);
-        };
+        }
     }
 
     /**
@@ -3119,7 +3107,7 @@ export class Configuration extends Configurable implements ParserConfiguration {
         let values : TemplateModelIterator = hash.values().iterator();
         while((keys.hasNext())) {
             this.setSharedVariable$java_lang_String$freemarker_template_TemplateModel((<TemplateScalarModel><any>keys.next()).getAsString(), values.next());
-        };
+        }
     }
 
     /**
@@ -3319,17 +3307,17 @@ export class Configuration extends Configurable implements ParserConfiguration {
                 if(value.indexOf('.') === -1) {
                     let strongSize : number = 0;
                     let softSize : number = 0;
-                    let map : Map<any, any> = StringUtil.parseNameValuePairList(value, /* valueOf */new String(Number.MAX_VALUE).toString());
+                    let map : Map<any, any> = StringUtil.parseNameValuePairList(value, /* valueOf */String(Number.MAX_VALUE));
                     let it : any = /* iterator */((a) => { var i = 0; return { next: function() { return i<a.length?a[i++]:null; }, hasNext: function() { return i<a.length; }}})(/* entrySet */((m) => { if(m.entries==null) m.entries=[]; return m.entries; })(<any>map));
                     while((it.hasNext())) {
-                        let ent : Entry = <Entry><any>it.next();
+                        let ent : Entry<any, any> = <Entry<any, any>><any>it.next();
                         let pname : string = <string>ent.getKey();
                         let pvalue : number;
                         try {
                             pvalue = /* parseInt */parseInt(<string>ent.getValue());
                         } catch(e) {
                             throw this.invalidSettingValueException(name, value);
-                        };
+                        }
                         if(/* equalsIgnoreCase */((o1, o2) => o1.toUpperCase() === (o2===null?o2:o2.toUpperCase()))("soft", pname)) {
                             softSize = pvalue;
                         } else if(/* equalsIgnoreCase */((o1, o2) => o1.toUpperCase() === (o2===null?o2:o2.toUpperCase()))("strong", pname)) {
@@ -3337,7 +3325,7 @@ export class Configuration extends Configurable implements ParserConfiguration {
                         } else {
                             throw this.invalidSettingValueException(name, value);
                         }
-                    };
+                    }
                     if(softSize === 0 && strongSize === 0) {
                         throw this.invalidSettingValueException(name, value);
                     }
@@ -3434,7 +3422,7 @@ export class Configuration extends Configurable implements ParserConfiguration {
             }
         } catch(e) {
             throw this.settingValueAssignmentException(name, value, e);
-        };
+        }
         if(unknown) {
             super.setSetting(name, value);
         }
@@ -3444,7 +3432,7 @@ export class Configuration extends Configurable implements ParserConfiguration {
         let ln : number = s.length;
         while((ln > 0 && Character.isWhitespace(s.charAt(ln - 1)))) {
             ln--;
-        };
+        }
         return s.substring(0, ln);
     }
 
@@ -3459,7 +3447,7 @@ export class Configuration extends Configurable implements ParserConfiguration {
      * @since 2.3.24
      * @return {Set}
      */
-    public getSettingNames(camelCase : boolean) : Set {
+    public getSettingNames(camelCase : boolean) : Set<any> {
         return <any>(new _UnmodifiableCompositeSet<string>(super.getSettingNames(camelCase), <any>(new _SortedArraySet<string>(camelCase?Configuration.__freemarker_template_Configuration_SETTING_NAMES_CAMEL_CASE_$LI$():Configuration.__freemarker_template_Configuration_SETTING_NAMES_SNAKE_CASE_$LI$()))));
     }
 
@@ -3482,13 +3470,13 @@ export class Configuration extends Configurable implements ParserConfiguration {
      * 
      * @param {Environment} env
      */
-    doAutoImportsAndIncludes(env : Environment) {
+    doAutoImportsAndIncludes(env : /*Environment*/any) {
         let t : Template = env.getMainTemplate();
         this.doAutoImports(env, t);
         this.doAutoIncludes(env, t);
     }
 
-    doAutoImports(env : Environment, t : Template) {
+    doAutoImports(env : /*Environment*/any, t : Template) {
         let envAutoImports : Map<any, any> = env.getAutoImportsWithoutFallback();
         let tAutoImports : Map<any, any> = t.getAutoImportsWithoutFallback();
         let lazyAutoImports : boolean = env.getLazyAutoImports() != null?env.getLazyAutoImports():env.getLazyImports();
@@ -3532,9 +3520,9 @@ export class Configuration extends Configurable implements ParserConfiguration {
         }
     }
 
-    doAutoIncludes(env : Environment, t : Template) {
-        let tAutoIncludes : List = t.getAutoIncludesWithoutFallback();
-        let envAutoIncludes : List = env.getAutoIncludesWithoutFallback();
+    doAutoIncludes(env : /*Environment*/any, t : Template) {
+        let tAutoIncludes : Array<any> = t.getAutoIncludesWithoutFallback();
+        let envAutoIncludes : Array<any> = env.getAutoIncludesWithoutFallback();
         {
             let array179 = this.getAutoIncludesWithoutFallback();
             for(let index178=0; index178 < array179.length; index178++) {
@@ -3623,18 +3611,18 @@ export class Configuration extends Configurable implements ParserConfiguration {
      * @return {*}
      */
     public static getDefaultObjectWrapper(incompatibleImprovements : Version) : ObjectWrapper {
-        if(incompatibleImprovements.intValue() < _TemplateAPI.VERSION_INT_2_3_21_$LI$()) {
-            return ObjectWrapper.DEFAULT_WRAPPER;
+        if(incompatibleImprovements.intValue() < /*_TemplateAPI.VERSION_INT_2_3_21*/2003021) {
+            return new (require('./DefaultObjectWrapper').DefaultObjectWrapper)();
         } else {
             return new DefaultObjectWrapperBuilder(incompatibleImprovements).build();
         }
     }
 
     public getSupportedBuiltInNames$() : Array<any> {
-        return this.getSupportedBuiltInNames$int(this.getNamingConvention());
+        return this.getSupportedBuiltInNames$int(this.getNamingConvention()).toArray();
     }
 
-    public getSupportedBuiltInNames$int(namingConvention : number) : Set {
+    public getSupportedBuiltInNames$int(namingConvention : number) : Set<any> {
         return _CoreAPI.getSupportedBuiltInNames(namingConvention);
     }
 
@@ -3661,13 +3649,13 @@ export class Configuration extends Configurable implements ParserConfiguration {
         return this.getSupportedBuiltInDirectiveNames$int(this.getNamingConvention());
     }
 
-    public getSupportedBuiltInDirectiveNames$int(namingConvention : number) : Set {
+    public getSupportedBuiltInDirectiveNames$int(namingConvention : number) : Array<any> {
         if(namingConvention === Configuration.AUTO_DETECT_NAMING_CONVENTION) {
-            return _CoreAPI.ALL_BUILT_IN_DIRECTIVE_NAMES_$LI$();
+            return _CoreAPI.ALL_BUILT_IN_DIRECTIVE_NAMES_$LI$().toArray();
         } else if(namingConvention === Configuration.LEGACY_NAMING_CONVENTION) {
-            return _CoreAPI.LEGACY_BUILT_IN_DIRECTIVE_NAMES_$LI$();
+            return _CoreAPI.LEGACY_BUILT_IN_DIRECTIVE_NAMES_$LI$().toArray();
         } else if(namingConvention === Configuration.CAMEL_CASE_NAMING_CONVENTION) {
-            return _CoreAPI.CAMEL_CASE_BUILT_IN_DIRECTIVE_NAMES_$LI$();
+            return _CoreAPI.CAMEL_CASE_BUILT_IN_DIRECTIVE_NAMES_$LI$().toArray();
         } else {
             throw Object.defineProperty(new Error("Unsupported naming convention constant: " + namingConvention), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.lang.RuntimeException','java.lang.IllegalArgumentException','java.lang.Exception'] });
         }
@@ -3691,7 +3679,7 @@ export class Configuration extends Configurable implements ParserConfiguration {
         } else throw new Error('invalid overload');
     }
 
-    static getRequiredVersionProperty(vp : Map, properyName : string) : string {
+    static getRequiredVersionProperty(vp : Map<any, any>, properyName : string) : string {
         let s : string = /* getProperty */vp.get(properyName);
         if(s == null) {
             throw Object.defineProperty(new Error("Version file is corrupt: \"" + properyName + "\" property is missing."), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.lang.RuntimeException','java.lang.Exception'] });
@@ -3706,13 +3694,13 @@ Configuration["__interfaces"] = ["java.lang.Cloneable","freemarker.core.ParserCo
 
 export namespace Configuration {
 
-    export class LegacyDefaultFileTemplateLoader extends FileTemplateLoader {
-        public constructor() {
-            super();
-        }
-    }
-    LegacyDefaultFileTemplateLoader["__class"] = "freemarker.template.Configuration.LegacyDefaultFileTemplateLoader";
-    LegacyDefaultFileTemplateLoader["__interfaces"] = ["freemarker.cache.TemplateLoader"];
+    // export class LegacyDefaultFileTemplateLoader extends FileTemplateLoader {
+    //     public constructor() {
+    //         super();
+    //     }
+    // }
+    // LegacyDefaultFileTemplateLoader["__class"] = "freemarker.template.Configuration.LegacyDefaultFileTemplateLoader";
+    // LegacyDefaultFileTemplateLoader["__interfaces"] = ["freemarker.cache.TemplateLoader"];
 
 
 
@@ -3729,7 +3717,7 @@ export namespace Configuration {
 
 
 
-var __Function = Function;
+
 
 Configuration.defaultConfig_$LI$();
 

@@ -1,10 +1,9 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateException } from '../template/TemplateException';
-import { StandardCompress } from '../template/utility/StandardCompress';
-import { TemplateElement } from './TemplateElement';
-import { TemplateElements } from './TemplateElements';
-import { Environment } from './Environment';
-import { ParameterRole } from './ParameterRole';
+import {StandardCompress} from '../template/utility/StandardCompress';
+import {TemplateElement} from './TemplateElement';
+import {TemplateElements} from './TemplateElements';
+import {Environment} from './Environment';
+import {ParameterRole} from './ParameterRole';
 
 /**
  * An instruction that reduces all sequences of whitespace to a single
@@ -24,7 +23,7 @@ export class CompressedBlock extends TemplateElement {
      * @param {Environment} env
      * @return {Array}
      */
-    accept(env : Environment) : TemplateElement[] {
+    accept(env : /*Environment*/any) : TemplateElement[] {
         let childBuffer : TemplateElement[] = this.getChildBuffer();
         if(childBuffer != null) {
             env.visitAndTransform(childBuffer, StandardCompress.INSTANCE_$LI$(), null);

@@ -1,12 +1,9 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { WrapperTemplateModel } from '../ext/util/WrapperTemplateModel';
-import { WrappingTemplateModel } from './WrappingTemplateModel';
-import { TemplateSequenceModel } from './TemplateSequenceModel';
-import { AdapterTemplateModel } from './AdapterTemplateModel';
-import { ObjectWrapperAndUnwrapper } from './ObjectWrapperAndUnwrapper';
-import { ObjectWrapper } from './ObjectWrapper';
-import { TemplateModel } from './TemplateModel';
-import { TemplateModelException } from './TemplateModelException';
+import {WrapperTemplateModel} from '../ext/util/WrapperTemplateModel';
+import {WrappingTemplateModel} from './WrappingTemplateModel';
+import {TemplateSequenceModel} from './TemplateSequenceModel';
+import {AdapterTemplateModel} from './AdapterTemplateModel';
+import {TemplateModel} from './TemplateModel';
 
 /**
  * Adapts an {@code array} of a non-primitive elements to the corresponding {link TemplateModel} interface(s), most
@@ -39,7 +36,7 @@ export abstract class DefaultArrayAdapter extends WrappingTemplateModel implemen
      * {link ObjectWrapperAndUnwrapper} because of planned future features.
      * @return {DefaultArrayAdapter}
      */
-    public static adapt(array : any, wrapper : ObjectWrapperAndUnwrapper) : DefaultArrayAdapter {
+    public static adapt(array : any, wrapper : any) : DefaultArrayAdapter {
         let componentType : any = (<any>array.constructor).getComponentType();
         if(componentType == null) {
             throw Object.defineProperty(new Error("Not an array"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.lang.RuntimeException','java.lang.IllegalArgumentException','java.lang.Exception'] });
@@ -71,11 +68,11 @@ export abstract class DefaultArrayAdapter extends WrappingTemplateModel implemen
             }
             return new DefaultArrayAdapter.GenericPrimitiveArrayAdapter(array, wrapper);
         } else {
-            return new DefaultArrayAdapter.ObjectArrayAdapter(<Array>array, wrapper);
+            return new DefaultArrayAdapter.ObjectArrayAdapter(<Array<any>>array, wrapper);
         }
     }
 
-    constructor(wrapper : ObjectWrapper) {
+    constructor(wrapper : any) {
         super(wrapper);
     }
 
@@ -96,7 +93,7 @@ export namespace DefaultArrayAdapter {
     export class ObjectArrayAdapter extends DefaultArrayAdapter {
         array : Array<any>;
 
-        constructor(array : Array, wrapper : ObjectWrapper) {
+        constructor(array : Array<any>, wrapper : any) {
             super(wrapper);
             if(this.array===undefined) this.array = null;
             this.array = array;
@@ -128,7 +125,7 @@ export namespace DefaultArrayAdapter {
     export class ByteArrayAdapter extends DefaultArrayAdapter {
         array : number[];
 
-        constructor(array : number[], wrapper : ObjectWrapper) {
+        constructor(array : number[], wrapper : any) {
             super(wrapper);
             if(this.array===undefined) this.array = null;
             this.array = array;
@@ -160,7 +157,7 @@ export namespace DefaultArrayAdapter {
     export class ShortArrayAdapter extends DefaultArrayAdapter {
         array : number[];
 
-        constructor(array : number[], wrapper : ObjectWrapper) {
+        constructor(array : number[], wrapper : any) {
             super(wrapper);
             if(this.array===undefined) this.array = null;
             this.array = array;
@@ -192,7 +189,7 @@ export namespace DefaultArrayAdapter {
     export class IntArrayAdapter extends DefaultArrayAdapter {
         array : number[];
 
-        constructor(array : number[], wrapper : ObjectWrapper) {
+        constructor(array : number[], wrapper : any) {
             super(wrapper);
             if(this.array===undefined) this.array = null;
             this.array = array;
@@ -224,7 +221,7 @@ export namespace DefaultArrayAdapter {
     export class LongArrayAdapter extends DefaultArrayAdapter {
         array : number[];
 
-        constructor(array : number[], wrapper : ObjectWrapper) {
+        constructor(array : number[], wrapper : any) {
             super(wrapper);
             if(this.array===undefined) this.array = null;
             this.array = array;
@@ -256,7 +253,7 @@ export namespace DefaultArrayAdapter {
     export class FloatArrayAdapter extends DefaultArrayAdapter {
         array : number[];
 
-        constructor(array : number[], wrapper : ObjectWrapper) {
+        constructor(array : number[], wrapper : any) {
             super(wrapper);
             if(this.array===undefined) this.array = null;
             this.array = array;
@@ -288,7 +285,7 @@ export namespace DefaultArrayAdapter {
     export class DoubleArrayAdapter extends DefaultArrayAdapter {
         array : number[];
 
-        constructor(array : number[], wrapper : ObjectWrapper) {
+        constructor(array : number[], wrapper : any) {
             super(wrapper);
             if(this.array===undefined) this.array = null;
             this.array = array;
@@ -320,7 +317,7 @@ export namespace DefaultArrayAdapter {
     export class CharArrayAdapter extends DefaultArrayAdapter {
         array : string[];
 
-        constructor(array : string[], wrapper : ObjectWrapper) {
+        constructor(array : string[], wrapper : any) {
             super(wrapper);
             if(this.array===undefined) this.array = null;
             this.array = array;
@@ -352,7 +349,7 @@ export namespace DefaultArrayAdapter {
     export class BooleanArrayAdapter extends DefaultArrayAdapter {
         array : boolean[];
 
-        constructor(array : boolean[], wrapper : ObjectWrapper) {
+        constructor(array : boolean[], wrapper : any) {
             super(wrapper);
             if(this.array===undefined) this.array = null;
             this.array = array;
@@ -391,7 +388,7 @@ export namespace DefaultArrayAdapter {
 
         length : number;
 
-        constructor(array : any, wrapper : ObjectWrapper) {
+        constructor(array : any, wrapper : any) {
             super(wrapper);
             if(this.array===undefined) this.array = null;
             if(this.length===undefined) this.length = 0;
@@ -422,7 +419,3 @@ export namespace DefaultArrayAdapter {
 
 
 }
-
-
-
-var __Function = Function;

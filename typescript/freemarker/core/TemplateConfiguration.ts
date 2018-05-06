@@ -1,18 +1,13 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { Configuration } from '../template/Configuration';
-import { Template } from '../template/Template';
-import { Version } from '../template/Version';
-import { _TemplateAPI } from '../template/_TemplateAPI';
-import { NullArgumentException } from '../template/utility/NullArgumentException';
-import { Configurable } from './Configurable';
-import { ParserConfiguration } from './ParserConfiguration';
-import { Boolean } from '../../java/lang/Boolean';
-import { OutputFormat } from './OutputFormat';
-import { ArithmeticEngine } from './ArithmeticEngine';
-import { TemplateClassResolver } from './TemplateClassResolver';
-import { ObjectWrapper } from '../template/ObjectWrapper';
-import { TemplateExceptionHandler } from '../template/TemplateExceptionHandler';
-import { AttemptExceptionReporter } from '../template/AttemptExceptionReporter';
+import {Configuration} from '../template/Configuration';
+import {Version} from '../template/Version';
+import {_TemplateAPI} from '../template/_TemplateAPI';
+import {NullArgumentException} from '../template/utility/NullArgumentException';
+import {Configurable} from './Configurable';
+import {ParserConfiguration} from './ParserConfiguration';
+import {OutputFormat} from './OutputFormat';
+import {Map} from '../../java/util/Map';
+import {List} from "../../java/util/List";
 
 /**
  * Creates a new instance. The parent will be {link Configuration#getDefaultConfiguration()} initially, but it will
@@ -74,7 +69,7 @@ export class TemplateConfiguration extends Configurable implements ParserConfigu
             }
             return;
         }
-        if((<Configuration>cfg).getIncompatibleImprovements().intValue() < _TemplateAPI.VERSION_INT_2_3_22_$LI$() && this.hasAnyConfigurableSet()) {
+        if((<Configuration>cfg).getIncompatibleImprovements().intValue() < /*_TemplateAPI.VERSION_INT_2_3_22_$LI$()*/2003022 && this.hasAnyConfigurableSet()) {
             throw Object.defineProperty(new Error("This TemplateConfiguration can\'t be associated to a Configuration that has incompatibleImprovements less than 2.3.22, because it changes non-parser settings."), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.IllegalStateException','java.lang.Object','java.lang.RuntimeException','java.lang.Exception'] });
         }
         super.setParent(cfg);
@@ -247,7 +242,7 @@ export class TemplateConfiguration extends Configurable implements ParserConfigu
      * @throws IllegalStateException If the parent configuration wasn't yet set.
      * @param {Template} template
      */
-    public apply(template : Template) {
+    public apply(template : /*Template*/any) {
         let cfg : Configuration = this.getNonNullParentConfiguration();
         if(template.getConfiguration() !== cfg) {
             throw Object.defineProperty(new Error("The argument Template doesn\'t belong to the same Configuration as the TemplateConfiguration"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.lang.RuntimeException','java.lang.IllegalArgumentException','java.lang.Exception'] });
@@ -642,21 +637,17 @@ export class TemplateConfiguration extends Configurable implements ParserConfigu
         return mergedM;
     }
 
-    /*private*/ mergeLists(list1 : List, list2 : List) : List {
+    /*private*/ mergeLists(list1 : List<any>, list2 : List<any>) : List<any> {
         if(list1 == null) return list2;
         if(list2 == null) return list1;
         if(/* isEmpty */(list1.length == 0)) return list2;
         if(/* isEmpty */(list2.length == 0)) return list1;
-        let mergedList : ArrayList = <any>([]);
-        /* addAll */((l1, l2) => l1.push.apply(l1, l2))(mergedList, list1);
-        /* addAll */((l1, l2) => l1.push.apply(l1, l2))(mergedList, list2);
+        let mergedList : List<any> = new List();
+
+        mergedList.addAll(list1);
+        mergedList.addAll(list2);
         return mergedList;
     }
 }
 TemplateConfiguration["__class"] = "freemarker.core.TemplateConfiguration";
 TemplateConfiguration["__interfaces"] = ["freemarker.core.ParserConfiguration"];
-
-
-
-
-var __Function = Function;

@@ -1,7 +1,7 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateCollectionModel } from '../../template/TemplateCollectionModel';
-import { CollectionAdapter } from './CollectionAdapter';
-import { BeansWrapper } from './BeansWrapper';
+import {TemplateCollectionModel} from '../../template/TemplateCollectionModel';
+import {CollectionAdapter} from './CollectionAdapter';
+import {BeansWrapper} from './BeansWrapper';
 
 /**
  * 
@@ -19,4 +19,4 @@ SetAdapter["__interfaces"] = ["freemarker.template.TemplateModelAdapter","java.u
 
 
 
-var __Function = Function;
+

@@ -7,9 +7,9 @@ export class CollectionUtils {
     constructor() {
     }
 
-    public static EMPTY_OBJECT_ARRAY : Array<any>; public static EMPTY_OBJECT_ARRAY_$LI$() : Array { if(CollectionUtils.EMPTY_OBJECT_ARRAY == null) CollectionUtils.EMPTY_OBJECT_ARRAY = []; return CollectionUtils.EMPTY_OBJECT_ARRAY; };
+    public static EMPTY_OBJECT_ARRAY : Array<any>; public static EMPTY_OBJECT_ARRAY_$LI$() : Array<any> { if(CollectionUtils.EMPTY_OBJECT_ARRAY == null) CollectionUtils.EMPTY_OBJECT_ARRAY = []; return CollectionUtils.EMPTY_OBJECT_ARRAY; };
 
-    public static EMPTY_CLASS_ARRAY : Array<any>; public static EMPTY_CLASS_ARRAY_$LI$() : Array { if(CollectionUtils.EMPTY_CLASS_ARRAY == null) CollectionUtils.EMPTY_CLASS_ARRAY = []; return CollectionUtils.EMPTY_CLASS_ARRAY; };
+    public static EMPTY_CLASS_ARRAY : Array<any>; public static EMPTY_CLASS_ARRAY_$LI$() : Array<any> { if(CollectionUtils.EMPTY_CLASS_ARRAY == null) CollectionUtils.EMPTY_CLASS_ARRAY = []; return CollectionUtils.EMPTY_CLASS_ARRAY; };
 
     /**
      * @since 2.3.22
@@ -20,7 +20,7 @@ CollectionUtils["__class"] = "freemarker.template.utility.CollectionUtils";
 
 
 
-var __Function = Function;
+
 
 CollectionUtils.EMPTY_CHAR_ARRAY_$LI$();
 

@@ -1,12 +1,9 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateBooleanModel } from '../template/TemplateBooleanModel';
-import { TemplateException } from '../template/TemplateException';
-import { TemplateModel } from '../template/TemplateModel';
-import { Expression } from './Expression';
-import { Environment } from './Environment';
-import { ParentheticalExpression } from './ParentheticalExpression';
-import { InvalidReferenceException } from './InvalidReferenceException';
-import { ParameterRole } from './ParameterRole';
+import {TemplateBooleanModel} from '../template/TemplateBooleanModel';
+import {TemplateModel} from '../template/TemplateModel';
+import {Expression} from './Expression';
+import {ParentheticalExpression} from './ParentheticalExpression';
+import {ParameterRole} from './ParameterRole';
 
 /**
  * {@code exp??} and {@code (exp)??}
@@ -27,7 +24,7 @@ export class ExistsExpression extends Expression {
      * @param {Environment} env
      * @return {*}
      */
-    _eval(env : Environment) : TemplateModel {
+    _eval(env : /*Environment*/any) : TemplateModel {
         let tm : TemplateModel;
         if(this.exp != null && this.exp instanceof <any>ParentheticalExpression) {
             let lastFIRE : boolean = env.setFastInvalidReferenceExceptions(true);
@@ -37,7 +34,7 @@ export class ExistsExpression extends Expression {
                 tm = null;
             } finally {
                 env.setFastInvalidReferenceExceptions(lastFIRE);
-            };
+            }
         } else {
             tm = this.exp.eval(env);
         }
@@ -109,4 +106,4 @@ ExistsExpression["__class"] = "freemarker.core.ExistsExpression";
 
 
 
-var __Function = Function;
+

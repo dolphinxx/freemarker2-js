@@ -1,7 +1,6 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { Logger } from '../../log/Logger';
-import { System } from '../../../java/lang/System';
-import { StringUtil } from './StringUtil';
+import {Logger} from '../../log/Logger';
+import {StringUtil} from './StringUtil';
 
 /**
  * 
@@ -23,7 +22,7 @@ export class SecurityUtilities {
         } catch(e) {
             SecurityUtilities.LOG_$LI$().warn$java_lang_String("Insufficient permissions to read system property " + StringUtil.jQuoteNoXSS$java_lang_Object(key) + ", using default value " + StringUtil.jQuoteNoXSS$java_lang_Object(defValue));
             return defValue;
-        };
+        }
     }
 
     public static getSystemProperty(key? : any, defValue? : any) : any {
@@ -42,7 +41,7 @@ export class SecurityUtilities {
         } catch(e) {
             SecurityUtilities.LOG_$LI$().warn$java_lang_String("Insufficient permissions to read system property " + StringUtil.jQuote$java_lang_Object(key) + ", using default value " + defValue);
             return defValue;
-        };
+        }
     }
 }
 SecurityUtilities["__class"] = "freemarker.template.utility.SecurityUtilities";
@@ -89,6 +88,6 @@ export namespace SecurityUtilities {
 
 
 
-var __Function = Function;
+
 
 SecurityUtilities.LOG_$LI$();

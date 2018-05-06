@@ -1,18 +1,15 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { SimpleScalar } from '../template/SimpleScalar';
-import { TemplateException } from '../template/TemplateException';
-import { TemplateModel } from '../template/TemplateModel';
-import { TemplateModelException } from '../template/TemplateModelException';
-import { StringWriter } from '../../java/io/StringWriter';
-import { TemplateElement } from './TemplateElement';
-import { Expression } from './Expression';
-import { MarkupOutputFormat } from './MarkupOutputFormat';
-import { TemplateElements } from './TemplateElements';
-import { Environment } from './Environment';
-import { Assignment } from './Assignment';
-import { BugException } from './BugException';
-import { StringBuilder } from '../../java/lang/StringBuilder';
-import { ParameterRole } from './ParameterRole';
+import {SimpleScalar} from '../template/SimpleScalar';
+import {TemplateModel} from '../template/TemplateModel';
+import {StringWriter} from '../../java/io/StringWriter';
+import {TemplateElement} from './TemplateElement';
+import {Expression} from './Expression';
+import {MarkupOutputFormat} from './MarkupOutputFormat';
+import {TemplateElements} from './TemplateElements';
+import {Assignment} from './Assignment';
+import {BugException} from './BugException';
+import {StringBuilder} from '../../java/lang/StringBuilder';
+import {ParameterRole} from './ParameterRole';
 
 /**
  * Like [#local x]...[/#local].
@@ -46,7 +43,7 @@ export class BlockAssignment extends TemplateElement {
      * @param {Environment} env
      * @return {Array}
      */
-    accept(env : Environment) : TemplateElement[] {
+    accept(env : /*Environment*/any) : TemplateElement[] {
         let children : TemplateElement[] = this.getChildBuffer();
         let value : TemplateModel;
         if(children != null) {
@@ -57,7 +54,7 @@ export class BlockAssignment extends TemplateElement {
             value = this.capturedStringToModel("");
         }
         if(this.namespaceExp != null) {
-            (<Environment.Namespace><any>this.namespaceExp.eval(env)).put$java_lang_String$java_lang_Object(this.varName, value);
+            (/*<Environment.Namespace>*/<any>this.namespaceExp.eval(env)).put$java_lang_String$java_lang_Object(this.varName, value);
         } else if(this.scope === Assignment.NAMESPACE) {
             env.setVariable(this.varName, value);
         } else if(this.scope === Assignment.GLOBAL) {

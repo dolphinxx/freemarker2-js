@@ -1,5 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { RightUnboundedRangeModel } from './RightUnboundedRangeModel';
+import {RightUnboundedRangeModel} from './RightUnboundedRangeModel';
 
 /**
  * This exists for backward compatibly, and is used before Incompatible Improvements 2.3.21 only.
@@ -23,4 +23,4 @@ NonListableRightUnboundedRangeModel["__interfaces"] = ["freemarker.template.Temp
 
 
 
-var __Function = Function;
+

@@ -1,20 +1,18 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { CollectionUtils } from '../template/utility/CollectionUtils';
-import { StringUtil } from '../template/utility/StringUtil';
-import { TemplateElement } from './TemplateElement';
-import { Environment } from './Environment';
-import { Writer } from '../../java/io/Writer';
-import { ParameterRole } from './ParameterRole';
-import { TrimInstruction } from './TrimInstruction';
-import { Character } from '../../java/lang/Character';
-import { MixedContent } from './MixedContent';
-import { Macro } from './Macro';
-import { Assignment } from './Assignment';
-import { AssignmentInstruction } from './AssignmentInstruction';
-import { PropertySetting } from './PropertySetting';
-import { LibraryLoad } from './LibraryLoad';
-import { Comment } from './Comment';
-import { System } from '../../java/lang/System';
+import {CollectionUtils} from '../template/utility/CollectionUtils';
+import {StringUtil} from '../template/utility/StringUtil';
+import {TemplateElement} from './TemplateElement';
+import {ParameterRole} from './ParameterRole';
+import {TrimInstruction} from './TrimInstruction';
+import {Character} from '../../java/lang/Character';
+import {MixedContent} from './MixedContent';
+import {Macro} from './Macro';
+import {Assignment} from './Assignment';
+import {AssignmentInstruction} from './AssignmentInstruction';
+import {PropertySetting} from './PropertySetting';
+import {LibraryLoad} from './LibraryLoad';
+import {Comment} from './Comment';
+import {System} from '../../java/lang/System';
 
 /**
  * A TemplateElement representing a block of plain text.
@@ -90,7 +88,7 @@ export class TextBlock extends TemplateElement {
      * @param {Environment} env
      * @return {Array}
      */
-    public accept(env : Environment) : TemplateElement[] {
+    public accept(env : /*Environment*/any) : TemplateElement[] {
         env.getOut().write(this.text);
         return null;
     }
@@ -220,14 +218,14 @@ export class TextBlock extends TemplateElement {
                             let i : number = 0;
                             while((Character.isWhitespace(lastLine[i]))) {
                                 i++;
-                            };
+                            }
                             let printablePart : string[] = TextBlock.substring$char_A$int(lastLine, i);
                             this.text = TextBlock.concat(firstPart, printablePart);
                         }
                     }
                 }
             }
-        };
+        }
         return result;
     }
 
@@ -264,7 +262,7 @@ export class TextBlock extends TemplateElement {
                         let lastNonWS : number = openingPart.length - 1;
                         while((Character.isWhitespace(this.text[lastNonWS]))) {
                             lastNonWS--;
-                        };
+                        }
                         let printablePart : string[] = TextBlock.substring$char_A$int$int(this.text, 0, lastNonWS + 1);
                         if(StringUtil.isTrimmableToEmpty$char_A(trailingPart)) {
                             let trimTrailingPart : boolean = true;
@@ -276,14 +274,14 @@ export class TextBlock extends TemplateElement {
                                     trimTrailingPart = true;
                                     break;
                                 }
-                            };
+                            }
                             if(trimTrailingPart) trailingPart = CollectionUtils.EMPTY_CHAR_ARRAY_$LI$();
                         }
                         this.text = TextBlock.concat(printablePart, trailingPart);
                     }
                 }
             }
-        };
+        }
         return result;
     }
 
@@ -294,7 +292,7 @@ export class TextBlock extends TemplateElement {
             if((c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(c) == '\r'.charCodeAt(0) || (c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(c) == '\n'.charCodeAt(0)) {
                 return i;
             }
-        };
+        }
         return -1;
     }
 
@@ -305,7 +303,7 @@ export class TextBlock extends TemplateElement {
             if((c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(c) == '\r'.charCodeAt(0) || (c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(c) == '\n'.charCodeAt(0)) {
                 return i;
             }
-        };
+        }
         return -1;
     }
 
@@ -333,7 +331,7 @@ export class TextBlock extends TemplateElement {
             if(elem.heedsOpeningWhitespace()) {
                 return 0;
             }
-        };
+        }
         return newlineIndex;
     }
 
@@ -355,7 +353,7 @@ export class TextBlock extends TemplateElement {
             if(elem.heedsTrailingWhitespace()) {
                 return 0;
             }
-        };
+        }
         return this.text.length - (lastNewlineIndex + 1);
     }
 
@@ -375,7 +373,7 @@ export class TextBlock extends TemplateElement {
             if(!Character.isWhitespace(c)) {
                 return true;
             }
-        };
+        }
         return true;
     }
 
@@ -395,7 +393,7 @@ export class TextBlock extends TemplateElement {
             if(!Character.isWhitespace(c)) {
                 return true;
             }
-        };
+        }
         return true;
     }
 
@@ -475,4 +473,4 @@ TextBlock["__class"] = "freemarker.core.TextBlock";
 
 
 
-var __Function = Function;
+

@@ -1,19 +1,19 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { Configuration } from '../template/Configuration';
-import { _TemplateAPI } from '../template/_TemplateAPI';
-import { StringUtil } from '../template/utility/StringUtil';
-import { FMParserConstants } from './FMParserConstants';
-import { FMParser } from './FMParser';
-import { Token } from './Token';
-import { TokenMgrError } from './TokenMgrError';
-import { _CoreStringUtils } from './_CoreStringUtils';
-import { _MessageUtil } from './_MessageUtil';
-import { SimpleCharStream } from './SimpleCharStream';
-import { Character } from '../../java/lang/Character';
-import { System } from '../../java/lang/System';
-import { StringBuilder } from '../../java/lang/StringBuilder';
-import { _CoreAPI } from './_CoreAPI';
-import { Version } from '../template/Version';
+import {Configuration} from '../template/Configuration';
+import {StringUtil} from '../template/utility/StringUtil';
+import {FMParserConstants} from './FMParserConstants';
+import {FMParser} from './FMParser';
+import {Token} from './Token';
+import {TokenMgrError} from './TokenMgrError';
+import {_CoreStringUtils} from './_CoreStringUtils';
+import {_MessageUtil} from './_MessageUtil';
+import {SimpleCharStream} from './SimpleCharStream';
+import {Character} from '../../java/lang/Character';
+import {StringBuilder} from '../../java/lang/StringBuilder';
+import {_CoreAPI} from './_CoreAPI';
+import {PrintStream} from "../../java/io/PrintStream";
+import {System} from "../../java/lang/System";
+import {StringTokenizer} from "../../java/util/StringTokenizer";
 
 /**
  * Constructor.
@@ -96,7 +96,7 @@ export class FMParserTokenManager implements FMParserConstants {
             return;
         }
         this.tagSyntaxEstablished = true;
-        if(this.incompatibleImprovements >= _TemplateAPI.VERSION_INT_2_3_28_$LI$() || this.interpolationSyntax === Configuration.SQUARE_BRACKET_INTERPOLATION_SYNTAX) {
+        if(this.incompatibleImprovements >= /*_TemplateAPI.VERSION_INT_2_3_28_$LI$()*/2003028 || this.interpolationSyntax === Configuration.SQUARE_BRACKET_INTERPOLATION_SYNTAX) {
             let lastChar : string = image.charAt(image.length - 1);
             if((c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(lastChar) == ']'.charCodeAt(0) || (c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(lastChar) == '>'.charCodeAt(0)) {
                 if(!this.squBracTagSyntax && (c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(lastChar) != '>'.charCodeAt(0) || this.squBracTagSyntax && (c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(lastChar) != ']'.charCodeAt(0)) {
@@ -172,7 +172,7 @@ export class FMParserTokenManager implements FMParserConstants {
                 break;
             }
             idx++;
-        };
+        }
         return image.charAt(idx + charIdxInName);
     }
 
@@ -246,10 +246,10 @@ export class FMParserTokenManager implements FMParserConstants {
                 } else if((c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(c) == '\n'.charCodeAt(0)) {
                     return;
                 }
-            };
+            }
         } catch(ioe) {
             this.input_stream.backup(charsRead);
-        };
+        }
     }
 
     /*private*/ ftlHeader(matchedToken : Token) {
@@ -277,7 +277,7 @@ export class FMParserTokenManager implements FMParserConstants {
     /**
      * Debug output.
      */
-    public debugStream : PrintStream = java.lang.System.out;
+    public debugStream : PrintStream = System.out;
 
     /**
      * Set debug output.
@@ -312,7 +312,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(kind > 155) kind = 155;
                             {
                                 this.jjCheckNAdd(6);
-                            };
+                            }
                         } else if((1152956688978935808 & l) !== 0) {
                             if(kind > 156) kind = 156;
                         }
@@ -343,7 +343,7 @@ export class FMParserTokenManager implements FMParserConstants {
                         if(kind > 155) kind = 155;
                         {
                             this.jjCheckNAdd(6);
-                        };
+                        }
                         break;
                     case 7:
                         if((1152956688978935808 & l) !== 0 && kind > 156) kind = 156;
@@ -375,7 +375,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(kind > 155) kind = 155;
                             {
                                 this.jjCheckNAdd(6);
-                            };
+                            }
                         } else if(this.curChar === 91) {
                             if(kind > 156) kind = 156;
                         }
@@ -394,7 +394,7 @@ export class FMParserTokenManager implements FMParserConstants {
                         if(kind > 155) kind = 155;
                         {
                             this.jjCheckNAdd(6);
-                        };
+                        }
                         break;
                     case 7:
                         if(this.curChar === 91 && kind > 156) kind = 156;
@@ -420,7 +420,7 @@ export class FMParserTokenManager implements FMParserConstants {
                         if(kind > 155) kind = 155;
                         {
                             this.jjCheckNAdd(6);
-                        };
+                        }
                         break;
                     default:
                         if(i1 === 0 || l1 === 0 || i2 === 0 || l2 === 0) break; else break;
@@ -438,8 +438,8 @@ export class FMParserTokenManager implements FMParserConstants {
                 this.curChar = (this.input_stream.readChar()).charCodeAt(0);
             } catch(e) {
                 return curPos;
-            };
-        };
+            }
+        }
     }
 
     /*private*/ jjStopStringLiteralDfa_0(pos : number, active0 : number, active1 : number) : number {
@@ -488,7 +488,7 @@ export class FMParserTokenManager implements FMParserConstants {
         } catch(e) {
             this.jjStopStringLiteralDfa_0(0, 0, active1);
             return 1;
-        };
+        }
         switch((this.curChar)) {
         case 61:
             if((active1 & 1048576) !== 0) return this.jjStopAtPos(1, 84);
@@ -754,12 +754,12 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(kind > 80) kind = 80;
                             {
                                 this.jjCheckNAdd(1);
-                            };
+                            }
                         } else if((4294977024 & l) !== 0) {
                             if(kind > 79) kind = 79;
                             {
                                 this.jjCheckNAdd(0);
-                            };
+                            }
                         } else if((1152921607686062080 & l) !== 0) {
                             if(kind > 81) kind = 81;
                         }
@@ -778,14 +778,14 @@ export class FMParserTokenManager implements FMParserConstants {
                         if(kind > 79) kind = 79;
                         {
                             this.jjCheckNAdd(0);
-                        };
+                        }
                         break;
                     case 1:
                         if((-1152921611981039105 & l) === 0) break;
                         if(kind > 80) kind = 80;
                         {
                             this.jjCheckNAdd(1);
-                        };
+                        }
                         break;
                     case 3:
                         if(this.curChar === 60) {
@@ -2026,7 +2026,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(kind > 80) kind = 80;
                             {
                                 this.jjCheckNAdd(1);
-                            };
+                            }
                         } else if((576460752437641216 & l) !== 0) {
                             if(kind > 81) kind = 81;
                         }
@@ -2042,7 +2042,7 @@ export class FMParserTokenManager implements FMParserConstants {
                         if(kind > 80) kind = 80;
                         {
                             this.jjCheckNAdd(1);
-                        };
+                        }
                         break;
                     case 4:
                         if(this.curChar === 116) {
@@ -3616,7 +3616,7 @@ export class FMParserTokenManager implements FMParserConstants {
                         if(kind > 80) kind = 80;
                         {
                             this.jjCheckNAdd(1);
-                        };
+                        }
                         break;
                     case 699:
                     case 700:
@@ -3646,8 +3646,8 @@ export class FMParserTokenManager implements FMParserConstants {
                 this.curChar = (this.input_stream.readChar()).charCodeAt(0);
             } catch(e) {
                 return curPos;
-            };
-        };
+            }
+        }
     }
 
     /*private*/ jjStopStringLiteralDfa_2(pos : number, active0 : number, active1 : number, active2 : number) : number {
@@ -3766,7 +3766,7 @@ export class FMParserTokenManager implements FMParserConstants {
         } catch(e) {
             this.jjStopStringLiteralDfa_2(0, 0, active1, active2);
             return 1;
-        };
+        }
         switch((this.curChar)) {
         case 42:
             if((active1 & 288230376151711744) !== 0) return this.jjStopAtPos(1, 122);
@@ -3812,7 +3812,7 @@ export class FMParserTokenManager implements FMParserConstants {
         } catch(e) {
             this.jjStopStringLiteralDfa_2(1, 0, active1, active2);
             return 2;
-        };
+        }
         switch((this.curChar)) {
         case 42:
             if((active1 & 274877906944) !== 0) return this.jjStopAtPos(2, 102);
@@ -3839,7 +3839,7 @@ export class FMParserTokenManager implements FMParserConstants {
         } catch(e) {
             this.jjStopStringLiteralDfa_2(2, 0, active1, active2);
             return 3;
-        };
+        }
         switch((this.curChar)) {
         case 101:
             if((active1 & 4294967296) !== 0) return this.jjStartNfaWithStates_2(3, 96, 98);
@@ -3861,7 +3861,7 @@ export class FMParserTokenManager implements FMParserConstants {
         } catch(e) {
             this.jjStopStringLiteralDfa_2(3, 0, active1, active2);
             return 4;
-        };
+        }
         switch((this.curChar)) {
         case 101:
             if((active1 & 2147483648) !== 0) return this.jjStartNfaWithStates_2(4, 95, 98);
@@ -3882,7 +3882,7 @@ export class FMParserTokenManager implements FMParserConstants {
             this.curChar = (this.input_stream.readChar()).charCodeAt(0);
         } catch(e) {
             return pos + 1;
-        };
+        }
         return this.jjMoveNfa_2(state, pos + 1);
     }
 
@@ -3910,12 +3910,12 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(kind > 97) kind = 97;
                             {
                                 this.jjCheckNAddStates(343, 345);
-                            };
+                            }
                         } else if((4294977024 & l) !== 0) {
                             if(kind > 85) kind = 85;
                             {
                                 this.jjCheckNAdd(0);
-                            };
+                            }
                         } else if(this.curChar === 38) {
                             this.jjAddStates(346, 351);
                         } else if(this.curChar === 46) {
@@ -3937,7 +3937,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(kind > 141) kind = 141;
                             {
                                 this.jjCheckNAddTwoStates(34, 35);
-                            };
+                            }
                         } else if(this.curChar === 38) {
                             if(kind > 126) kind = 126;
                         } else if(this.curChar === 60) {
@@ -3963,14 +3963,14 @@ export class FMParserTokenManager implements FMParserConstants {
                         if(kind > 141) kind = 141;
                         {
                             this.jjCheckNAddTwoStates(34, 35);
-                        };
+                        }
                         break;
                     case 0:
                         if((4294977024 & l) === 0) break;
                         if(kind > 85) kind = 85;
                         {
                             this.jjCheckNAdd(0);
-                        };
+                        }
                         break;
                     case 3:
                         if(this.curChar === 45 && kind > 86) kind = 86;
@@ -4070,14 +4070,14 @@ export class FMParserTokenManager implements FMParserConstants {
                         if(kind > 141) kind = 141;
                         {
                             this.jjCheckNAddTwoStates(34, 35);
-                        };
+                        }
                         break;
                     case 36:
                         if((288335929267978240 & l) === 0) break;
                         if(kind > 141) kind = 141;
                         {
                             this.jjCheckNAddTwoStates(34, 35);
-                        };
+                        }
                         break;
                     case 39:
                         if(this.curChar === 36) {
@@ -4113,14 +4113,14 @@ export class FMParserTokenManager implements FMParserConstants {
                         if(kind > 97) kind = 97;
                         {
                             this.jjCheckNAddStates(343, 345);
-                        };
+                        }
                         break;
                     case 52:
                         if((287948901175001088 & l) === 0) break;
                         if(kind > 97) kind = 97;
                         {
                             this.jjCheckNAdd(52);
-                        };
+                        }
                         break;
                     case 53:
                         if((287948901175001088 & l) !== 0) {
@@ -4137,7 +4137,7 @@ export class FMParserTokenManager implements FMParserConstants {
                         if(kind > 98) kind = 98;
                         {
                             this.jjCheckNAdd(55);
-                        };
+                        }
                         break;
                     case 72:
                         if(this.curChar === 38) {
@@ -4183,7 +4183,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(kind > 141) kind = 141;
                             {
                                 this.jjCheckNAddTwoStates(34, 35);
-                            };
+                            }
                         } else if(this.curChar === 92) {
                             this.jjAddStates(362, 366);
                         } else if(this.curChar === 91) this.jjstateSet[this.jjnewStateCnt++] = 41; else if(this.curChar === 124) this.jjstateSet[this.jjnewStateCnt++] = 31;
@@ -4207,7 +4207,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(kind > 141) kind = 141;
                             {
                                 this.jjCheckNAddTwoStates(34, 35);
-                            };
+                            }
                         } else if(this.curChar === 92) {
                             this.jjCheckNAdd(36);
                         }
@@ -4266,12 +4266,12 @@ export class FMParserTokenManager implements FMParserConstants {
                     case 21:
                         {
                             this.jjAddStates(373, 374);
-                        };
+                        }
                         break;
                     case 24:
                         {
                             this.jjAddStates(375, 376);
-                        };
+                        }
                         break;
                     case 30:
                     case 31:
@@ -4285,14 +4285,14 @@ export class FMParserTokenManager implements FMParserConstants {
                         if(kind > 141) kind = 141;
                         {
                             this.jjCheckNAddTwoStates(34, 35);
-                        };
+                        }
                         break;
                     case 34:
                         if((576460745995190271 & l) === 0) break;
                         if(kind > 141) kind = 141;
                         {
                             this.jjCheckNAddTwoStates(34, 35);
-                        };
+                        }
                         break;
                     case 35:
                         if(this.curChar === 92) {
@@ -4433,7 +4433,7 @@ export class FMParserTokenManager implements FMParserConstants {
                         if(kind > 141) kind = 141;
                         {
                             this.jjCheckNAddTwoStates(34, 35);
-                        };
+                        }
                         break;
                     case 98:
                     case 34:
@@ -4441,7 +4441,7 @@ export class FMParserTokenManager implements FMParserConstants {
                         if(kind > 141) kind = 141;
                         {
                             this.jjCheckNAddTwoStates(34, 35);
-                        };
+                        }
                         break;
                     case 6:
                         if(FMParserTokenManager.jjCanMove_0(hiByte, i1, i2, l1, l2)) {
@@ -4479,8 +4479,8 @@ export class FMParserTokenManager implements FMParserConstants {
                 this.curChar = (this.input_stream.readChar()).charCodeAt(0);
             } catch(e) {
                 return curPos;
-            };
-        };
+            }
+        }
     }
 
     /*private*/ jjStopStringLiteralDfa_3(pos : number, active0 : number, active1 : number, active2 : number) : number {
@@ -4599,7 +4599,7 @@ export class FMParserTokenManager implements FMParserConstants {
         } catch(e) {
             this.jjStopStringLiteralDfa_3(0, 0, active1, active2);
             return 1;
-        };
+        }
         switch((this.curChar)) {
         case 42:
             if((active1 & 288230376151711744) !== 0) return this.jjStopAtPos(1, 122);
@@ -4645,7 +4645,7 @@ export class FMParserTokenManager implements FMParserConstants {
         } catch(e) {
             this.jjStopStringLiteralDfa_3(1, 0, active1, active2);
             return 2;
-        };
+        }
         switch((this.curChar)) {
         case 42:
             if((active1 & 274877906944) !== 0) return this.jjStopAtPos(2, 102);
@@ -4672,7 +4672,7 @@ export class FMParserTokenManager implements FMParserConstants {
         } catch(e) {
             this.jjStopStringLiteralDfa_3(2, 0, active1, active2);
             return 3;
-        };
+        }
         switch((this.curChar)) {
         case 101:
             if((active1 & 4294967296) !== 0) return this.jjStartNfaWithStates_3(3, 96, 95);
@@ -4694,7 +4694,7 @@ export class FMParserTokenManager implements FMParserConstants {
         } catch(e) {
             this.jjStopStringLiteralDfa_3(3, 0, active1, active2);
             return 4;
-        };
+        }
         switch((this.curChar)) {
         case 101:
             if((active1 & 2147483648) !== 0) return this.jjStartNfaWithStates_3(4, 95, 95);
@@ -4715,7 +4715,7 @@ export class FMParserTokenManager implements FMParserConstants {
             this.curChar = (this.input_stream.readChar()).charCodeAt(0);
         } catch(e) {
             return pos + 1;
-        };
+        }
         return this.jjMoveNfa_3(state, pos + 1);
     }
 
@@ -4736,12 +4736,12 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(kind > 97) kind = 97;
                             {
                                 this.jjCheckNAddStates(377, 379);
-                            };
+                            }
                         } else if((4294977024 & l) !== 0) {
                             if(kind > 85) kind = 85;
                             {
                                 this.jjCheckNAdd(0);
-                            };
+                            }
                         } else if(this.curChar === 38) {
                             this.jjAddStates(380, 385);
                         } else if(this.curChar === 46) {
@@ -4761,7 +4761,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(kind > 141) kind = 141;
                             {
                                 this.jjCheckNAddTwoStates(34, 35);
-                            };
+                            }
                         } else if(this.curChar === 38) {
                             if(kind > 126) kind = 126;
                         } else if(this.curChar === 60) {
@@ -4791,14 +4791,14 @@ export class FMParserTokenManager implements FMParserConstants {
                         if(kind > 141) kind = 141;
                         {
                             this.jjCheckNAddTwoStates(34, 35);
-                        };
+                        }
                         break;
                     case 0:
                         if((4294977024 & l) === 0) break;
                         if(kind > 85) kind = 85;
                         {
                             this.jjCheckNAdd(0);
-                        };
+                        }
                         break;
                     case 3:
                         if(this.curChar === 45 && kind > 86) kind = 86;
@@ -4898,14 +4898,14 @@ export class FMParserTokenManager implements FMParserConstants {
                         if(kind > 141) kind = 141;
                         {
                             this.jjCheckNAddTwoStates(34, 35);
-                        };
+                        }
                         break;
                     case 36:
                         if((288335929267978240 & l) === 0) break;
                         if(kind > 141) kind = 141;
                         {
                             this.jjCheckNAddTwoStates(34, 35);
-                        };
+                        }
                         break;
                     case 39:
                         if(this.curChar === 36) {
@@ -4936,14 +4936,14 @@ export class FMParserTokenManager implements FMParserConstants {
                         if(kind > 97) kind = 97;
                         {
                             this.jjCheckNAddStates(377, 379);
-                        };
+                        }
                         break;
                     case 49:
                         if((287948901175001088 & l) === 0) break;
                         if(kind > 97) kind = 97;
                         {
                             this.jjCheckNAdd(49);
-                        };
+                        }
                         break;
                     case 50:
                         if((287948901175001088 & l) !== 0) {
@@ -4960,7 +4960,7 @@ export class FMParserTokenManager implements FMParserConstants {
                         if(kind > 98) kind = 98;
                         {
                             this.jjCheckNAdd(52);
-                        };
+                        }
                         break;
                     case 69:
                         if(this.curChar === 38) {
@@ -5006,7 +5006,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(kind > 141) kind = 141;
                             {
                                 this.jjCheckNAddTwoStates(34, 35);
-                            };
+                            }
                         } else if(this.curChar === 92) {
                             this.jjAddStates(388, 392);
                         } else if(this.curChar === 91) this.jjstateSet[this.jjnewStateCnt++] = 41; else if(this.curChar === 124) this.jjstateSet[this.jjnewStateCnt++] = 31;
@@ -5027,7 +5027,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(kind > 141) kind = 141;
                             {
                                 this.jjCheckNAddTwoStates(34, 35);
-                            };
+                            }
                         } else if(this.curChar === 92) {
                             this.jjCheckNAdd(36);
                         }
@@ -5086,12 +5086,12 @@ export class FMParserTokenManager implements FMParserConstants {
                     case 21:
                         {
                             this.jjAddStates(373, 374);
-                        };
+                        }
                         break;
                     case 24:
                         {
                             this.jjAddStates(375, 376);
-                        };
+                        }
                         break;
                     case 30:
                     case 31:
@@ -5105,14 +5105,14 @@ export class FMParserTokenManager implements FMParserConstants {
                         if(kind > 141) kind = 141;
                         {
                             this.jjCheckNAddTwoStates(34, 35);
-                        };
+                        }
                         break;
                     case 34:
                         if((576460745995190271 & l) === 0) break;
                         if(kind > 141) kind = 141;
                         {
                             this.jjCheckNAddTwoStates(34, 35);
-                        };
+                        }
                         break;
                     case 35:
                         if(this.curChar === 92) {
@@ -5253,7 +5253,7 @@ export class FMParserTokenManager implements FMParserConstants {
                         if(kind > 141) kind = 141;
                         {
                             this.jjCheckNAddTwoStates(34, 35);
-                        };
+                        }
                         break;
                     case 95:
                     case 34:
@@ -5261,7 +5261,7 @@ export class FMParserTokenManager implements FMParserConstants {
                         if(kind > 141) kind = 141;
                         {
                             this.jjCheckNAddTwoStates(34, 35);
-                        };
+                        }
                         break;
                     case 6:
                         if(FMParserTokenManager.jjCanMove_0(hiByte, i1, i2, l1, l2)) {
@@ -5299,8 +5299,8 @@ export class FMParserTokenManager implements FMParserConstants {
                 this.curChar = (this.input_stream.readChar()).charCodeAt(0);
             } catch(e) {
                 return curPos;
-            };
-        };
+            }
+        }
     }
 
     /*private*/ jjStopStringLiteralDfa_5(pos : number, active0 : number, active1 : number) : number {
@@ -5330,7 +5330,7 @@ export class FMParserTokenManager implements FMParserConstants {
             this.curChar = (this.input_stream.readChar()).charCodeAt(0);
         } catch(e) {
             return pos + 1;
-        };
+        }
         return this.jjMoveNfa_5(state, pos + 1);
     }
 
@@ -5355,7 +5355,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(kind > 87) kind = 87;
                             {
                                 this.jjCheckNAdd(0);
-                            };
+                            }
                         } else if(this.curChar === 45) {
                             this.jjAddStates(393, 394);
                         }
@@ -5365,7 +5365,7 @@ export class FMParserTokenManager implements FMParserConstants {
                         kind = 87;
                         {
                             this.jjCheckNAdd(0);
-                        };
+                        }
                         break;
                     case 2:
                         if(this.curChar === 62) kind = 91;
@@ -5387,7 +5387,7 @@ export class FMParserTokenManager implements FMParserConstants {
                         kind = 87;
                         {
                             this.jjCheckNAdd(0);
-                        };
+                        }
                         break;
                     case 4:
                         if(this.curChar === 93) kind = 91;
@@ -5410,7 +5410,7 @@ export class FMParserTokenManager implements FMParserConstants {
                         if(kind > 87) kind = 87;
                         {
                             this.jjCheckNAdd(0);
-                        };
+                        }
                         break;
                     default:
                         if(i1 === 0 || l1 === 0 || i2 === 0 || l2 === 0) break; else break;
@@ -5428,8 +5428,8 @@ export class FMParserTokenManager implements FMParserConstants {
                 this.curChar = (this.input_stream.readChar()).charCodeAt(0);
             } catch(e) {
                 return curPos;
-            };
-        };
+            }
+        }
     }
 
     /*private*/ jjStopStringLiteralDfa_1(pos : number, active0 : number, active1 : number) : number {
@@ -5468,7 +5468,7 @@ export class FMParserTokenManager implements FMParserConstants {
         } catch(e) {
             this.jjStopStringLiteralDfa_1(0, 0, active1);
             return 1;
-        };
+        }
         switch((this.curChar)) {
         case 61:
             if((active1 & 1048576) !== 0) return this.jjStopAtPos(1, 84);
@@ -5499,12 +5499,12 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(kind > 80) kind = 80;
                             {
                                 this.jjCheckNAdd(1);
-                            };
+                            }
                         } else if((4294977024 & l) !== 0) {
                             if(kind > 79) kind = 79;
                             {
                                 this.jjCheckNAdd(0);
-                            };
+                            }
                         } else if((1152921607686062080 & l) !== 0) {
                             if(kind > 81) kind = 81;
                         }
@@ -5514,14 +5514,14 @@ export class FMParserTokenManager implements FMParserConstants {
                         kind = 79;
                         {
                             this.jjCheckNAdd(0);
-                        };
+                        }
                         break;
                     case 1:
                         if((-1152921611981039105 & l) === 0) break;
                         kind = 80;
                         {
                             this.jjCheckNAdd(1);
-                        };
+                        }
                         break;
                     default:
                         break;
@@ -5536,7 +5536,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(kind > 80) kind = 80;
                             {
                                 this.jjCheckNAdd(1);
-                            };
+                            }
                         } else if((576460752437641216 & l) !== 0) {
                             if(kind > 81) kind = 81;
                         }
@@ -5546,7 +5546,7 @@ export class FMParserTokenManager implements FMParserConstants {
                         kind = 80;
                         {
                             this.jjCheckNAdd(1);
-                        };
+                        }
                         break;
                     default:
                         break;
@@ -5566,7 +5566,7 @@ export class FMParserTokenManager implements FMParserConstants {
                         if(kind > 80) kind = 80;
                         {
                             this.jjCheckNAdd(1);
-                        };
+                        }
                         break;
                     default:
                         if(i1 === 0 || l1 === 0 || i2 === 0 || l2 === 0) break; else break;
@@ -5584,8 +5584,8 @@ export class FMParserTokenManager implements FMParserConstants {
                 this.curChar = (this.input_stream.readChar()).charCodeAt(0);
             } catch(e) {
                 return curPos;
-            };
-        };
+            }
+        }
     }
 
     /*private*/ jjStopStringLiteralDfa_6(pos : number, active0 : number, active1 : number, active2 : number) : number {
@@ -5704,7 +5704,7 @@ export class FMParserTokenManager implements FMParserConstants {
         } catch(e) {
             this.jjStopStringLiteralDfa_6(0, 0, active1, active2);
             return 1;
-        };
+        }
         switch((this.curChar)) {
         case 42:
             if((active1 & 288230376151711744) !== 0) return this.jjStopAtPos(1, 122);
@@ -5750,7 +5750,7 @@ export class FMParserTokenManager implements FMParserConstants {
         } catch(e) {
             this.jjStopStringLiteralDfa_6(1, 0, active1, active2);
             return 2;
-        };
+        }
         switch((this.curChar)) {
         case 42:
             if((active1 & 274877906944) !== 0) return this.jjStopAtPos(2, 102);
@@ -5777,7 +5777,7 @@ export class FMParserTokenManager implements FMParserConstants {
         } catch(e) {
             this.jjStopStringLiteralDfa_6(2, 0, active1, active2);
             return 3;
-        };
+        }
         switch((this.curChar)) {
         case 101:
             if((active1 & 4294967296) !== 0) return this.jjStartNfaWithStates_6(3, 96, 94);
@@ -5799,7 +5799,7 @@ export class FMParserTokenManager implements FMParserConstants {
         } catch(e) {
             this.jjStopStringLiteralDfa_6(3, 0, active1, active2);
             return 4;
-        };
+        }
         switch((this.curChar)) {
         case 101:
             if((active1 & 2147483648) !== 0) return this.jjStartNfaWithStates_6(4, 95, 94);
@@ -5820,7 +5820,7 @@ export class FMParserTokenManager implements FMParserConstants {
             this.curChar = (this.input_stream.readChar()).charCodeAt(0);
         } catch(e) {
             return pos + 1;
-        };
+        }
         return this.jjMoveNfa_6(state, pos + 1);
     }
 
@@ -5855,12 +5855,12 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(kind > 97) kind = 97;
                             {
                                 this.jjCheckNAddStates(395, 397);
-                            };
+                            }
                         } else if((4294977024 & l) !== 0) {
                             if(kind > 151) kind = 151;
                             {
                                 this.jjCheckNAdd(38);
-                            };
+                            }
                         } else if(this.curChar === 38) {
                             this.jjAddStates(398, 403);
                         } else if(this.curChar === 46) {
@@ -5882,7 +5882,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(kind > 141) kind = 141;
                             {
                                 this.jjCheckNAddTwoStates(29, 30);
-                            };
+                            }
                         } else if(this.curChar === 38) {
                             if(kind > 126) kind = 126;
                         } else if(this.curChar === 60) {
@@ -5895,7 +5895,7 @@ export class FMParserTokenManager implements FMParserConstants {
                         if(kind > 141) kind = 141;
                         {
                             this.jjCheckNAddTwoStates(29, 30);
-                        };
+                        }
                         break;
                     case 1:
                         if((-17179869185 & l) !== 0) {
@@ -5984,14 +5984,14 @@ export class FMParserTokenManager implements FMParserConstants {
                         if(kind > 141) kind = 141;
                         {
                             this.jjCheckNAddTwoStates(29, 30);
-                        };
+                        }
                         break;
                     case 31:
                         if((288335929267978240 & l) === 0) break;
                         if(kind > 141) kind = 141;
                         {
                             this.jjCheckNAddTwoStates(29, 30);
-                        };
+                        }
                         break;
                     case 34:
                         if(this.curChar === 36) {
@@ -6011,7 +6011,7 @@ export class FMParserTokenManager implements FMParserConstants {
                         if(kind > 151) kind = 151;
                         {
                             this.jjCheckNAdd(38);
-                        };
+                        }
                         break;
                     case 39:
                         if(this.curChar === 47) {
@@ -6034,14 +6034,14 @@ export class FMParserTokenManager implements FMParserConstants {
                         if(kind > 97) kind = 97;
                         {
                             this.jjCheckNAddStates(395, 397);
-                        };
+                        }
                         break;
                     case 48:
                         if((287948901175001088 & l) === 0) break;
                         if(kind > 97) kind = 97;
                         {
                             this.jjCheckNAdd(48);
-                        };
+                        }
                         break;
                     case 49:
                         if((287948901175001088 & l) !== 0) {
@@ -6058,7 +6058,7 @@ export class FMParserTokenManager implements FMParserConstants {
                         if(kind > 98) kind = 98;
                         {
                             this.jjCheckNAdd(51);
-                        };
+                        }
                         break;
                     case 68:
                         if(this.curChar === 38) {
@@ -6107,7 +6107,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(kind > 141) kind = 141;
                             {
                                 this.jjCheckNAddTwoStates(29, 30);
-                            };
+                            }
                         } else if(this.curChar === 92) {
                             this.jjAddStates(414, 418);
                         } else if(this.curChar === 91) this.jjstateSet[this.jjnewStateCnt++] = 36; else if(this.curChar === 124) this.jjstateSet[this.jjnewStateCnt++] = 26;
@@ -6128,7 +6128,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(kind > 141) kind = 141;
                             {
                                 this.jjCheckNAddTwoStates(29, 30);
-                            };
+                            }
                         } else if(this.curChar === 92) {
                             this.jjCheckNAdd(31);
                         }
@@ -6187,12 +6187,12 @@ export class FMParserTokenManager implements FMParserConstants {
                     case 16:
                         {
                             this.jjAddStates(423, 424);
-                        };
+                        }
                         break;
                     case 19:
                         {
                             this.jjAddStates(425, 426);
-                        };
+                        }
                         break;
                     case 25:
                     case 26:
@@ -6206,14 +6206,14 @@ export class FMParserTokenManager implements FMParserConstants {
                         if(kind > 141) kind = 141;
                         {
                             this.jjCheckNAddTwoStates(29, 30);
-                        };
+                        }
                         break;
                     case 29:
                         if((576460745995190271 & l) === 0) break;
                         if(kind > 141) kind = 141;
                         {
                             this.jjCheckNAddTwoStates(29, 30);
-                        };
+                        }
                         break;
                     case 30:
                         if(this.curChar === 92) {
@@ -6354,7 +6354,7 @@ export class FMParserTokenManager implements FMParserConstants {
                         if(kind > 141) kind = 141;
                         {
                             this.jjCheckNAddTwoStates(29, 30);
-                        };
+                        }
                         break;
                     case 94:
                     case 29:
@@ -6362,7 +6362,7 @@ export class FMParserTokenManager implements FMParserConstants {
                         if(kind > 141) kind = 141;
                         {
                             this.jjCheckNAddTwoStates(29, 30);
-                        };
+                        }
                         break;
                     case 1:
                         if(FMParserTokenManager.jjCanMove_0(hiByte, i1, i2, l1, l2)) {
@@ -6400,8 +6400,8 @@ export class FMParserTokenManager implements FMParserConstants {
                 this.curChar = (this.input_stream.readChar()).charCodeAt(0);
             } catch(e) {
                 return curPos;
-            };
-        };
+            }
+        }
     }
 
     /*private*/ jjStopStringLiteralDfa_4(pos : number, active0 : number, active1 : number, active2 : number) : number {
@@ -6521,7 +6521,7 @@ export class FMParserTokenManager implements FMParserConstants {
         } catch(e) {
             this.jjStopStringLiteralDfa_4(0, 0, active1, active2);
             return 1;
-        };
+        }
         switch((this.curChar)) {
         case 42:
             if((active1 & 288230376151711744) !== 0) return this.jjStopAtPos(1, 122);
@@ -6567,7 +6567,7 @@ export class FMParserTokenManager implements FMParserConstants {
         } catch(e) {
             this.jjStopStringLiteralDfa_4(1, 0, active1, active2);
             return 2;
-        };
+        }
         switch((this.curChar)) {
         case 42:
             if((active1 & 274877906944) !== 0) return this.jjStopAtPos(2, 102);
@@ -6594,7 +6594,7 @@ export class FMParserTokenManager implements FMParserConstants {
         } catch(e) {
             this.jjStopStringLiteralDfa_4(2, 0, active1, active2);
             return 3;
-        };
+        }
         switch((this.curChar)) {
         case 101:
             if((active1 & 4294967296) !== 0) return this.jjStartNfaWithStates_4(3, 96, 100);
@@ -6616,7 +6616,7 @@ export class FMParserTokenManager implements FMParserConstants {
         } catch(e) {
             this.jjStopStringLiteralDfa_4(3, 0, active1, active2);
             return 4;
-        };
+        }
         switch((this.curChar)) {
         case 101:
             if((active1 & 2147483648) !== 0) return this.jjStartNfaWithStates_4(4, 95, 100);
@@ -6637,7 +6637,7 @@ export class FMParserTokenManager implements FMParserConstants {
             this.curChar = (this.input_stream.readChar()).charCodeAt(0);
         } catch(e) {
             return pos + 1;
-        };
+        }
         return this.jjMoveNfa_4(state, pos + 1);
     }
 
@@ -6672,12 +6672,12 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(kind > 97) kind = 97;
                             {
                                 this.jjCheckNAddStates(427, 429);
-                            };
+                            }
                         } else if((4294977024 & l) !== 0) {
                             if(kind > 85) kind = 85;
                             {
                                 this.jjCheckNAdd(0);
-                            };
+                            }
                         } else if(this.curChar === 38) {
                             this.jjAddStates(430, 435);
                         } else if(this.curChar === 46) {
@@ -6701,7 +6701,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(kind > 141) kind = 141;
                             {
                                 this.jjCheckNAddTwoStates(34, 35);
-                            };
+                            }
                         } else if(this.curChar === 38) {
                             if(kind > 126) kind = 126;
                         } else if(this.curChar === 60) {
@@ -6720,14 +6720,14 @@ export class FMParserTokenManager implements FMParserConstants {
                         if(kind > 141) kind = 141;
                         {
                             this.jjCheckNAddTwoStates(34, 35);
-                        };
+                        }
                         break;
                     case 0:
                         if((4294977024 & l) === 0) break;
                         if(kind > 85) kind = 85;
                         {
                             this.jjCheckNAdd(0);
-                        };
+                        }
                         break;
                     case 3:
                         if(this.curChar === 45 && kind > 86) kind = 86;
@@ -6827,14 +6827,14 @@ export class FMParserTokenManager implements FMParserConstants {
                         if(kind > 141) kind = 141;
                         {
                             this.jjCheckNAddTwoStates(34, 35);
-                        };
+                        }
                         break;
                     case 36:
                         if((288335929267978240 & l) === 0) break;
                         if(kind > 141) kind = 141;
                         {
                             this.jjCheckNAddTwoStates(34, 35);
-                        };
+                        }
                         break;
                     case 39:
                         if(this.curChar === 36) {
@@ -6859,7 +6859,7 @@ export class FMParserTokenManager implements FMParserConstants {
                         if(kind > 152) kind = 152;
                         {
                             this.jjCheckNAdd(44);
-                        };
+                        }
                         break;
                     case 45:
                         if(this.curChar === 47) {
@@ -6882,14 +6882,14 @@ export class FMParserTokenManager implements FMParserConstants {
                         if(kind > 97) kind = 97;
                         {
                             this.jjCheckNAddStates(427, 429);
-                        };
+                        }
                         break;
                     case 54:
                         if((287948901175001088 & l) === 0) break;
                         if(kind > 97) kind = 97;
                         {
                             this.jjCheckNAdd(54);
-                        };
+                        }
                         break;
                     case 55:
                         if((287948901175001088 & l) !== 0) {
@@ -6906,7 +6906,7 @@ export class FMParserTokenManager implements FMParserConstants {
                         if(kind > 98) kind = 98;
                         {
                             this.jjCheckNAdd(57);
-                        };
+                        }
                         break;
                     case 74:
                         if(this.curChar === 38) {
@@ -6955,7 +6955,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(kind > 141) kind = 141;
                             {
                                 this.jjCheckNAddTwoStates(34, 35);
-                            };
+                            }
                         } else if(this.curChar === 92) {
                             this.jjAddStates(440, 444);
                         } else if(this.curChar === 91) this.jjstateSet[this.jjnewStateCnt++] = 41; else if(this.curChar === 124) this.jjstateSet[this.jjnewStateCnt++] = 31;
@@ -6976,7 +6976,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(kind > 141) kind = 141;
                             {
                                 this.jjCheckNAddTwoStates(34, 35);
-                            };
+                            }
                         } else if(this.curChar === 92) {
                             this.jjCheckNAdd(36);
                         }
@@ -7035,12 +7035,12 @@ export class FMParserTokenManager implements FMParserConstants {
                     case 21:
                         {
                             this.jjAddStates(373, 374);
-                        };
+                        }
                         break;
                     case 24:
                         {
                             this.jjAddStates(375, 376);
-                        };
+                        }
                         break;
                     case 30:
                     case 31:
@@ -7054,14 +7054,14 @@ export class FMParserTokenManager implements FMParserConstants {
                         if(kind > 141) kind = 141;
                         {
                             this.jjCheckNAddTwoStates(34, 35);
-                        };
+                        }
                         break;
                     case 34:
                         if((576460745995190271 & l) === 0) break;
                         if(kind > 141) kind = 141;
                         {
                             this.jjCheckNAddTwoStates(34, 35);
-                        };
+                        }
                         break;
                     case 35:
                         if(this.curChar === 92) {
@@ -7202,7 +7202,7 @@ export class FMParserTokenManager implements FMParserConstants {
                         if(kind > 141) kind = 141;
                         {
                             this.jjCheckNAddTwoStates(34, 35);
-                        };
+                        }
                         break;
                     case 100:
                     case 34:
@@ -7210,7 +7210,7 @@ export class FMParserTokenManager implements FMParserConstants {
                         if(kind > 141) kind = 141;
                         {
                             this.jjCheckNAddTwoStates(34, 35);
-                        };
+                        }
                         break;
                     case 6:
                         if(FMParserTokenManager.jjCanMove_0(hiByte, i1, i2, l1, l2)) {
@@ -7248,8 +7248,8 @@ export class FMParserTokenManager implements FMParserConstants {
                 this.curChar = (this.input_stream.readChar()).charCodeAt(0);
             } catch(e) {
                 return curPos;
-            };
-        };
+            }
+        }
     }
 
     static jjnextStates : number[]; public static jjnextStates_$LI$() : number[] { if(FMParserTokenManager.jjnextStates == null) FMParserTokenManager.jjnextStates = [10, 12, 4, 5, 3, 4, 5, 697, 712, 369, 370, 371, 372, 373, 374, 375, 376, 377, 378, 379, 380, 381, 382, 383, 384, 385, 386, 387, 388, 389, 390, 391, 392, 393, 394, 395, 396, 397, 398, 404, 405, 413, 414, 423, 424, 431, 432, 443, 444, 455, 456, 467, 468, 477, 478, 488, 489, 499, 500, 512, 513, 522, 523, 539, 540, 551, 552, 570, 571, 583, 584, 597, 598, 608, 609, 610, 611, 612, 613, 614, 615, 616, 617, 618, 619, 620, 621, 622, 623, 624, 625, 626, 636, 637, 638, 650, 651, 656, 662, 663, 665, 12, 21, 24, 31, 36, 45, 50, 58, 65, 70, 77, 84, 90, 98, 105, 114, 120, 130, 136, 141, 148, 153, 161, 174, 183, 199, 209, 218, 227, 234, 242, 253, 262, 269, 277, 278, 286, 291, 296, 305, 314, 321, 331, 339, 350, 357, 367, 5, 6, 14, 15, 38, 41, 47, 48, 178, 179, 187, 188, 201, 202, 211, 212, 222, 223, 229, 230, 231, 236, 237, 238, 244, 245, 246, 255, 256, 257, 264, 265, 266, 271, 272, 273, 279, 280, 281, 283, 284, 285, 288, 289, 290, 293, 294, 295, 298, 299, 307, 308, 309, 323, 324, 325, 341, 342, 343, 361, 362, 400, 401, 407, 408, 416, 417, 426, 427, 434, 435, 446, 447, 460, 461, 470, 471, 480, 481, 491, 492, 502, 503, 515, 516, 527, 528, 544, 545, 556, 557, 573, 574, 586, 587, 600, 601, 628, 629, 642, 643, 700, 701, 703, 708, 709, 704, 710, 703, 705, 706, 708, 709, 369, 370, 371, 372, 373, 374, 375, 376, 377, 378, 379, 380, 381, 382, 383, 384, 385, 386, 387, 388, 389, 390, 391, 392, 393, 394, 395, 396, 397, 667, 668, 669, 670, 671, 672, 673, 674, 675, 676, 677, 678, 679, 680, 681, 682, 683, 684, 609, 610, 611, 612, 613, 614, 615, 616, 617, 618, 619, 620, 621, 622, 623, 624, 625, 685, 637, 686, 651, 689, 692, 663, 693, 193, 198, 562, 567, 658, 659, 699, 711, 708, 709, 52, 53, 54, 75, 78, 81, 85, 86, 95, 48, 50, 44, 45, 13, 14, 17, 6, 7, 10, 61, 63, 65, 68, 71, 20, 23, 8, 11, 15, 18, 21, 22, 24, 25, 49, 50, 51, 72, 75, 78, 82, 83, 92, 45, 47, 58, 60, 62, 65, 68, 3, 5, 48, 49, 50, 71, 74, 77, 81, 82, 91, 44, 46, 40, 41, 8, 9, 12, 1, 2, 5, 57, 59, 61, 64, 67, 3, 6, 10, 13, 16, 17, 19, 20, 54, 55, 56, 77, 80, 83, 87, 88, 97, 50, 52, 46, 47, 63, 65, 67, 70, 73]; return FMParserTokenManager.jjnextStates; };
@@ -7317,7 +7317,7 @@ export class FMParserTokenManager implements FMParserConstants {
     /**
      * Token literal values.
      */
-    public static jjstrLiteralImages : Array<any>; public static jjstrLiteralImages_$LI$() : Array { if(FMParserTokenManager.jjstrLiteralImages == null) FMParserTokenManager.jjstrLiteralImages = ["", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, "${", "#{", "[=", null, null, null, null, null, null, null, null, null, null, "false", "true", null, null, ".", "..", null, "..*", "?", "??", "=", "==", "!=", "+=", "-=", "*=", "/=", "%=", "++", "--", null, null, null, null, "+", "-", "*", "**", "...", "/", "%", null, null, "!", ",", ";", ":", "[", "]", "(", ")", "{", "}", "in", "as", "using", null, null, null, null, null, null, ">", null, ">", ">=", null, null, null, null, null, null]; return FMParserTokenManager.jjstrLiteralImages; };
+    public static jjstrLiteralImages : Array<any>; public static jjstrLiteralImages_$LI$() : Array<any> { if(FMParserTokenManager.jjstrLiteralImages == null) FMParserTokenManager.jjstrLiteralImages = ["", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, "${", "#{", "[=", null, null, null, null, null, null, null, null, null, null, "false", "true", null, null, ".", "..", null, "..*", "?", "??", "=", "==", "!=", "+=", "-=", "*=", "/=", "%=", "++", "--", null, null, null, null, "+", "-", "*", "**", "...", "/", "%", null, null, "!", ",", ";", ":", "[", "]", "(", ")", "{", "}", "in", "as", "using", null, null, null, null, null, null, ">", null, ">", ">=", null, null, null, null, null, null]; return FMParserTokenManager.jjstrLiteralImages; };
 
     jjFillToken() : Token {
         let t : Token;
@@ -7367,7 +7367,7 @@ export class FMParserTokenManager implements FMParserConstants {
                 this.jjmatchedPos = -1;
                 matchedToken = this.jjFillToken();
                 return matchedToken;
-            };
+            }
             this.image = this.jjimage;
             this.image.setLength(0);
             this.jjimageLen = 0;
@@ -7403,7 +7403,7 @@ export class FMParserTokenManager implements FMParserConstants {
                     while(((this.curChar < 64 && (4611686018427387904 & (1 << this.curChar)) !== 0) || (this.curChar >> 6) === 1 && (536870912 & (1 << (this.curChar & 63))) !== 0)) this.curChar = (this.input_stream.BeginToken()).charCodeAt(0);
                 } catch(e1) {
                     continue EOFLoop;
-                };
+                }
                 this.jjmatchedKind = 2147483647;
                 this.jjmatchedPos = 0;
                 curPos = this.jjMoveStringLiteralDfa0_5();
@@ -7446,13 +7446,13 @@ export class FMParserTokenManager implements FMParserConstants {
                     error_line++;
                     error_column = 0;
                 } else error_column++;
-            };
+            }
             if(!EOFSeen) {
                 this.input_stream.backup(1);
                 error_after = curPos <= 1?"":this.input_stream.GetImage();
             }
             throw new TokenMgrError(EOFSeen, this.curLexState, error_line, error_column, error_after, String.fromCharCode(this.curChar), TokenMgrError.LEXICAL_ERROR);
-        };
+        }
     }
 
     SkipLexicalActions(matchedToken : Token) {
@@ -7758,7 +7758,7 @@ export class FMParserTokenManager implements FMParserConstants {
             break;
         case 78:
             this.image.append(this.input_stream.GetSuffix(this.jjimageLen + (this.lengthOfMatch = this.jjmatchedPos + 1)));
-            if(!this.tagSyntaxEstablished && this.incompatibleImprovements < _TemplateAPI.VERSION_INT_2_3_19_$LI$()) {
+            if(!this.tagSyntaxEstablished && this.incompatibleImprovements < /*_TemplateAPI.VERSION_INT_2_3_19_$LI$()*/2003019) {
                 matchedToken.kind = FMParserConstants.STATIC_TEXT_NON_WS;
             } else {
                 let firstChar : string = matchedToken.image.charAt(0);
@@ -7774,7 +7774,7 @@ export class FMParserTokenManager implements FMParserConstants {
                     let dn : string = matchedToken.image;
                     let index : number = dn.indexOf('#');
                     dn = dn.substring(index + 1);
-                    if(/* contains */(_CoreAPI.ALL_BUILT_IN_DIRECTIVE_NAMES_$LI$().indexOf(<any>(dn)) >= 0)) {
+                    if(/* contains */(_CoreAPI.ALL_BUILT_IN_DIRECTIVE_NAMES_$LI$().contains((dn)))) {
                         throw new TokenMgrError("#" + dn + " is an existing directive, but the tag is malformed.  (See FreeMarker Manual / Directive Reference.)", TokenMgrError.LEXICAL_ERROR, matchedToken.beginLine, matchedToken.beginColumn + 1, matchedToken.endLine, matchedToken.endColumn);
                     }
                     let tip : string = null;
@@ -7833,7 +7833,7 @@ export class FMParserTokenManager implements FMParserConstants {
             } else if(this.interpolationSyntax === Configuration.SQUARE_BRACKET_INTERPOLATION_SYNTAX && this.postInterpolationLexState !== -1) {
                 this.endInterpolation(matchedToken);
             } else {
-                if(!this.squBracTagSyntax && (this.incompatibleImprovements >= _TemplateAPI.VERSION_INT_2_3_28_$LI$() || this.interpolationSyntax === Configuration.SQUARE_BRACKET_INTERPOLATION_SYNTAX) || this.postInterpolationLexState !== -1) {
+                if(!this.squBracTagSyntax && (this.incompatibleImprovements >= /*_TemplateAPI.VERSION_INT_2_3_28_$LI$()*/2003028 || this.interpolationSyntax === Configuration.SQUARE_BRACKET_INTERPOLATION_SYNTAX) || this.postInterpolationLexState !== -1) {
                     throw this.newUnexpectedClosingTokenException(matchedToken);
                 }
                 matchedToken.kind = FMParserConstants.DIRECTIVE_END;
@@ -7886,7 +7886,7 @@ export class FMParserTokenManager implements FMParserConstants {
                     if((c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(c) != '\\'.charCodeAt(0)) {
                         newS[dstIdx++] = c;
                     }
-                };
+                }
                 matchedToken.image = newS.join('').substr(0, dstIdx);
             }
             break;
@@ -7912,7 +7912,7 @@ export class FMParserTokenManager implements FMParserConstants {
             break;
         case 148:
             this.image.append(this.input_stream.GetSuffix(this.jjimageLen + (this.lengthOfMatch = this.jjmatchedPos + 1)));
-            if(this.tagSyntaxEstablished && (this.incompatibleImprovements >= _TemplateAPI.VERSION_INT_2_3_28_$LI$() || this.interpolationSyntax === Configuration.SQUARE_BRACKET_INTERPOLATION_SYNTAX)) {
+            if(this.tagSyntaxEstablished && (this.incompatibleImprovements >= /*_TemplateAPI.VERSION_INT_2_3_28_$LI$()*/2003028 || this.interpolationSyntax === Configuration.SQUARE_BRACKET_INTERPOLATION_SYNTAX)) {
                 let image : string = matchedToken.image;
                 let lastChar : string = image.charAt(image.length - 1);
                 if(!this.squBracTagSyntax && (c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(lastChar) != '>'.charCodeAt(0) || this.squBracTagSyntax && (c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(lastChar) != ']'.charCodeAt(0)) {
@@ -8000,7 +8000,7 @@ export class FMParserTokenManager implements FMParserConstants {
             if(this.lengthOfMatch===undefined) this.lengthOfMatch = 0;
             if(this.curChar===undefined) this.curChar = 0;
             this.postInterpolationLexState = -1;
-            this.debugStream = java.lang.System.out;
+            this.debugStream = System.out;
             this.curLexState = 0;
             this.defaultLexState = 0;
             this.jjrounds = (s => { let a=[]; while(s-->0) a.push(0); return a; })(713);
@@ -8062,7 +8062,7 @@ export class FMParserTokenManager implements FMParserConstants {
             if(this.lengthOfMatch===undefined) this.lengthOfMatch = 0;
             if(this.curChar===undefined) this.curChar = 0;
             this.postInterpolationLexState = -1;
-            this.debugStream = java.lang.System.out;
+            this.debugStream = System.out;
             this.curLexState = 0;
             this.defaultLexState = 0;
             this.jjrounds = (s => { let a=[]; while(s-->0) a.push(0); return a; })(713);
@@ -8142,7 +8142,7 @@ export class FMParserTokenManager implements FMParserConstants {
     /**
      * Lexer state names.
      */
-    public static lexStateNames : Array<any>; public static lexStateNames_$LI$() : Array { if(FMParserTokenManager.lexStateNames == null) FMParserTokenManager.lexStateNames = ["DEFAULT", "NO_DIRECTIVE", "FM_EXPRESSION", "IN_PAREN", "NAMED_PARAMETER_EXPRESSION", "EXPRESSION_COMMENT", "NO_SPACE_EXPRESSION", "NO_PARSE"]; return FMParserTokenManager.lexStateNames; };
+    public static lexStateNames : Array<any>; public static lexStateNames_$LI$() : Array<any> { if(FMParserTokenManager.lexStateNames == null) FMParserTokenManager.lexStateNames = ["DEFAULT", "NO_DIRECTIVE", "FM_EXPRESSION", "IN_PAREN", "NAMED_PARAMETER_EXPRESSION", "EXPRESSION_COMMENT", "NO_SPACE_EXPRESSION", "NO_PARSE"]; return FMParserTokenManager.lexStateNames; };
 
     /**
      * Lex State array.
@@ -8175,7 +8175,7 @@ FMParserTokenManager["__interfaces"] = ["freemarker.core.FMParserConstants"];
 
 
 
-var __Function = Function;
+
 
 FMParserTokenManager.jjtoSkip_$LI$();
 

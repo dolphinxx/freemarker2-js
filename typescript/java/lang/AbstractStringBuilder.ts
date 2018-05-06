@@ -1,6 +1,8 @@
 /* Generated from Java with JSweet 2.0.0-SNAPSHOT - http://www.jsweet.org */
+import {Character} from "./Character";
+
 /**
- * A base class to share implementation between {@link StringBuffer} and {@link StringBuilder}.
+ * A base class to share implementation between {link StringBuffer} and {@link StringBuilder}.
  * <p>
  * Most methods will give expected performance results. Exception is {@link #setCharAt(int, char)},
  * which is O(n), and thus should not be used many times on the same <code>StringBuffer</code>.
@@ -24,12 +26,12 @@ export abstract class AbstractStringBuilder {
         if (newLength < oldLength) {
             this.string = this.string.substring(0, newLength);
         } else if (newLength > oldLength) {
-            this.string += /* valueOf */new String(new Array(newLength - oldLength)).toString();
+            this.string += /* valueOf */String(new Array(newLength - oldLength));
         }
     }
 
     public capacity(): number {
-        return javaemul.internal.IntegerHelper.MAX_VALUE;
+        return 0x7fffffff;
     }
 
     public ensureCapacity(ignoredCapacity: number) {
@@ -43,12 +45,9 @@ export abstract class AbstractStringBuilder {
     }
 
     public getChars(srcStart: number, srcEnd: number, dst: string[], dstStart: number) {
-        javaemul.internal.InternalPreconditions.checkStringBounds(srcStart, srcEnd, this.length());
-        javaemul.internal.InternalPreconditions.checkStringBounds(dstStart, dstStart + (srcEnd - srcStart), dst.length);
         while ((srcStart < srcEnd)) {
             dst[dstStart++] = this.string.charAt(srcStart++);
         }
-        ;
     }
 
     /**
@@ -58,7 +57,7 @@ export abstract class AbstractStringBuilder {
      * @param {string} x
      */
     public setCharAt(index: number, x: string) {
-        this.replace0(index, index + 1, /* valueOf */new String(x).toString());
+        this.replace0(index, index + 1, /* valueOf */String(x));
     }
 
     public subSequence(start: number, end: number): any {
@@ -73,12 +72,11 @@ export abstract class AbstractStringBuilder {
         return this.string.substring(begin, end);
     }
 
-    public substring(begin?: any, end?: any): any {
-        if (((typeof begin === 'number') || begin === null) && ((typeof end === 'number') || end === null)) {
-            return <any>this.substring$int$int(begin, end);
-        } else if (((typeof begin === 'number') || begin === null) && end === undefined) {
+    public substring(begin: number, end?: number): any {
+        if (end === undefined) {
             return <any>this.substring$int(begin);
-        } else throw new Error('invalid overload');
+        }
+        return <any>this.substring$int$int(begin, end);
     }
 
     public indexOf$java_lang_String(x: string): number {
@@ -89,12 +87,11 @@ export abstract class AbstractStringBuilder {
         return this.string.indexOf(x, start);
     }
 
-    public indexOf(x?: any, start?: any): any {
-        if (((typeof x === 'string') || x === null) && ((typeof start === 'number') || start === null)) {
-            return <any>this.indexOf$java_lang_String$int(x, start);
-        } else if (((typeof x === 'string') || x === null) && start === undefined) {
+    public indexOf(x: string, start?: number): any {
+        if (start === undefined) {
             return <any>this.indexOf$java_lang_String(x);
-        } else throw new Error('invalid overload');
+        }
+        return <any>this.indexOf$java_lang_String$int(x, start);
     }
 
     public lastIndexOf$java_lang_String(s: string): number {
@@ -105,12 +102,11 @@ export abstract class AbstractStringBuilder {
         return this.string.lastIndexOf(s, start);
     }
 
-    public lastIndexOf(s?: any, start?: any): any {
-        if (((typeof s === 'string') || s === null) && ((typeof start === 'number') || start === null)) {
-            return <any>this.lastIndexOf$java_lang_String$int(s, start);
-        } else if (((typeof s === 'string') || s === null) && start === undefined) {
+    public lastIndexOf(s: string, start?: number): any {
+        if (start === undefined) {
             return <any>this.lastIndexOf$java_lang_String(s);
-        } else throw new Error('invalid overload');
+        }
+        return <any>this.lastIndexOf$java_lang_String$int(s, start);
     }
 
     /**
@@ -129,7 +125,7 @@ export abstract class AbstractStringBuilder {
     }
 
     appendCodePoint0(x: number) {
-        this.string += /* valueOf */new String(/* toChars */String.fromCharCode(x)).toString();
+        this.string += /* valueOf */String(/* toChars */String.fromCharCode(x));
     }
 
     replace0(start: number, end: number, toInsert: string) {
@@ -145,12 +141,11 @@ export abstract class AbstractStringBuilder {
         buffer[0] = this.string.charAt(length - 1);
         for (let i: number = 1; i < length; i++) {
             buffer[i] = this.string.charAt(length - 1 - i);
-            if (javaemul.internal.CharacterHelper.isSurrogatePair(buffer[i], buffer[i - 1])) {
+            if (Character.isSurrogatePair(buffer[i], buffer[i - 1])) {
                 AbstractStringBuilder.swap(buffer, i - 1, i);
             }
         }
-        ;
-        this.string = <string>new String(buffer);
+        this.string = <string>String(buffer);
     }
 
     /*private*/

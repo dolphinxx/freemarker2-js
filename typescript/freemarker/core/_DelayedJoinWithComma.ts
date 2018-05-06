@@ -1,6 +1,6 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { _DelayedConversionToString } from './_DelayedConversionToString';
-import { StringBuilder } from '../../java/lang/StringBuilder';
+import {_DelayedConversionToString} from './_DelayedConversionToString';
+import {StringBuilder} from '../../java/lang/StringBuilder';
 
 /**
  * Don't use this; used internally by FreeMarker, might changes without notice.
@@ -24,12 +24,12 @@ export class _DelayedJoinWithComma extends _DelayedConversionToString {
         for(let i : number = 0; i < items.length; i++) {
             if(i !== 0) totalLength += 2;
             totalLength += items[i].length;
-        };
+        }
         let sb : StringBuilder = new StringBuilder("");
         for(let i : number = 0; i < items.length; i++) {
             if(i !== 0) sb.append(", ");
             sb.append(items[i]);
-        };
+        }
         return sb.toString();
     }
 }
@@ -37,4 +37,4 @@ _DelayedJoinWithComma["__class"] = "freemarker.core._DelayedJoinWithComma";
 
 
 
-var __Function = Function;
+

@@ -1,18 +1,16 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { KeyValuePairIterator } from '../template/KeyValuePairIterator';
-import { SimpleCollection } from '../template/SimpleCollection';
-import { TemplateCollectionModel } from '../template/TemplateCollectionModel';
-import { TemplateException } from '../template/TemplateException';
-import { TemplateHashModelEx2 } from '../template/TemplateHashModelEx2';
-import { TemplateModel } from '../template/TemplateModel';
-import { TemplateScalarModel } from '../template/TemplateScalarModel';
-import { TemplateSequenceModel } from '../template/TemplateSequenceModel';
-import { Constants } from '../template/utility/Constants';
-import { Expression } from './Expression';
-import { Environment } from './Environment';
-import { ParentheticalExpression } from './ParentheticalExpression';
-import { InvalidReferenceException } from './InvalidReferenceException';
-import { ParameterRole } from './ParameterRole';
+import {KeyValuePairIterator} from '../template/KeyValuePairIterator';
+import {SimpleCollection} from '../template/SimpleCollection';
+import {TemplateCollectionModel} from '../template/TemplateCollectionModel';
+import {TemplateHashModelEx2} from '../template/TemplateHashModelEx2';
+import {TemplateModel} from '../template/TemplateModel';
+import {TemplateScalarModel} from '../template/TemplateScalarModel';
+import {TemplateSequenceModel} from '../template/TemplateSequenceModel';
+import {Constants} from '../template/utility/Constants';
+import {Expression} from './Expression';
+import {Environment} from './Environment';
+import {ParentheticalExpression} from './ParentheticalExpression';
+import {ParameterRole} from './ParameterRole';
 
 /**
  * {@code exp!defExp}, {@code (exp)!defExp} and the same two with {@code (exp)!}.
@@ -41,7 +39,7 @@ export class DefaultToExpression extends Expression {
      * @param {Environment} env
      * @return {*}
      */
-    _eval(env : Environment) : TemplateModel {
+    _eval(env : /*Environment*/any) : TemplateModel {
         let left : TemplateModel;
         if(this.lho != null && this.lho instanceof <any>ParentheticalExpression) {
             let lastFIRE : boolean = env.setFastInvalidReferenceExceptions(true);
@@ -51,7 +49,7 @@ export class DefaultToExpression extends Expression {
                 left = null;
             } finally {
                 env.setFastInvalidReferenceExceptions(lastFIRE);
-            };
+            }
         } else {
             left = this.lho.eval(env);
         }

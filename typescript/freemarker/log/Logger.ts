@@ -176,4 +176,4 @@ Logger["__class"] = "freemarker.log.Logger";
 
 
 
-var __Function = Function;
+

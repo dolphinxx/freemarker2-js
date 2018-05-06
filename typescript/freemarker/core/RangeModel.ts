@@ -1,9 +1,8 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { SimpleNumber } from '../template/SimpleNumber';
-import { TemplateModel } from '../template/TemplateModel';
-import { TemplateModelException } from '../template/TemplateModelException';
-import { TemplateSequenceModel } from '../template/TemplateSequenceModel';
-import { _TemplateModelException } from './_TemplateModelException';
+import {SimpleNumber} from '../template/SimpleNumber';
+import {TemplateModel} from '../template/TemplateModel';
+import {TemplateSequenceModel} from '../template/TemplateSequenceModel';
+import {_TemplateModelException} from './_TemplateModelException';
 
 export abstract class RangeModel implements TemplateSequenceModel {
     /*private*/ begin : number;
@@ -49,4 +48,4 @@ RangeModel["__interfaces"] = ["freemarker.template.TemplateSequenceModel","freem
 
 
 
-var __Function = Function;
+

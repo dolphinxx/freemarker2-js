@@ -1,14 +1,12 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateException } from '../template/TemplateException';
-import { TemplateModel } from '../template/TemplateModel';
-import { TemplateModelException } from '../template/TemplateModelException';
-import { TemplateElement } from './TemplateElement';
-import { Environment } from './Environment';
-import { StringBuilder } from '../../java/lang/StringBuilder';
-import { Expression } from './Expression';
-import { ParameterRole } from './ParameterRole';
-import { LocalContext } from './LocalContext';
-import { Macro } from './Macro';
+import {TemplateModel} from '../template/TemplateModel';
+import {TemplateElement} from './TemplateElement';
+import {Environment} from './Environment';
+import {StringBuilder} from '../../java/lang/StringBuilder';
+import {Expression} from './Expression';
+import {ParameterRole} from './ParameterRole';
+import {LocalContext} from './LocalContext';
+import {Macro} from './Macro';
 
 /**
  * An instruction that processes the nested block within a macro instruction.
@@ -39,7 +37,7 @@ export class BodyInstruction extends TemplateElement {
      * @param {Environment} env
      * @return {Array}
      */
-    accept(env : Environment) : TemplateElement[] {
+    accept(env : /*Environment*/any) : TemplateElement[] {
         let bodyContext : BodyInstruction.Context = new BodyInstruction.Context(this, env);
         env.invokeNestedContent(bodyContext);
         return null;
@@ -58,7 +56,7 @@ export class BodyInstruction extends TemplateElement {
             for(let i : number = 0; i < /* size */(<number>this.bodyParameters.length); i++) {
                 sb.append(' ');
                 sb.append((<Expression>/* get */this.bodyParameters[i]).getCanonicalForm());
-            };
+            }
         }
         if(canonical) sb.append('>');
         return sb.toString();
@@ -133,7 +131,7 @@ export namespace BodyInstruction {
 
         bodyVars : Environment.Namespace;
 
-        constructor(__parent: any, env : Environment) {
+        constructor(__parent: any, env : /*Environment*/any) {
             this.__parent = __parent;
             if(this.invokingMacroContext===undefined) this.invokingMacroContext = null;
             if(this.bodyVars===undefined) this.bodyVars = null;
@@ -150,7 +148,7 @@ export namespace BodyInstruction {
                         }
                         this.bodyVars.put$java_lang_String$java_lang_Object(bodyParameterName, tm);
                     }
-                };
+                }
             }
         }
 

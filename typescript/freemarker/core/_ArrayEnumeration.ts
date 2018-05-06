@@ -12,7 +12,7 @@ export class _ArrayEnumeration {
 
     /*private*/ nextIndex : number;
 
-    public constructor(array : Array, size : number) {
+    public constructor(array : Array<any>, size : number) {
         if(this.array===undefined) this.array = null;
         if(this.size===undefined) this.size = 0;
         if(this.nextIndex===undefined) this.nextIndex = 0;
@@ -38,4 +38,4 @@ _ArrayEnumeration["__interfaces"] = ["java.util.Enumeration"];
 
 
 
-var __Function = Function;
+

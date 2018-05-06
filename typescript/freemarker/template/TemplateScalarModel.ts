@@ -1,7 +1,6 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateModel } from './TemplateModel';
-import { SimpleScalar } from './SimpleScalar';
-import { TemplateModelException } from './TemplateModelException';
+import {TemplateModel} from './TemplateModel';
+import {SimpleScalar} from './SimpleScalar';
 
 /**
  * "string" template language data-type; like in Java, an unmodifiable UNICODE character sequence.
@@ -32,4 +31,4 @@ export namespace TemplateScalarModel {
 
 
 
-var __Function = Function;
+

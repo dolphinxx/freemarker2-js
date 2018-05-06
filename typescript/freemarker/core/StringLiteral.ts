@@ -1,26 +1,23 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { Configuration } from '../template/Configuration';
-import { SimpleScalar } from '../template/SimpleScalar';
-import { Template } from '../template/Template';
-import { TemplateException } from '../template/TemplateException';
-import { TemplateModel } from '../template/TemplateModel';
-import { TemplateScalarModel } from '../template/TemplateScalarModel';
-import { StringUtil } from '../template/utility/StringUtil';
-import { StringReader } from '../../java/io/StringReader';
-import { Expression } from './Expression';
-import { FMParser } from './FMParser';
-import { OutputFormat } from './OutputFormat';
-import { ParseException } from './ParseException';
-import { ParserConfiguration } from './ParserConfiguration';
-import { SimpleCharStream } from './SimpleCharStream';
-import { FMParserTokenManager } from './FMParserTokenManager';
-import { Environment } from './Environment';
-import { StringBuilder } from '../../java/lang/StringBuilder';
-import { TemplateMarkupOutputModel } from './TemplateMarkupOutputModel';
-import { Interpolation } from './Interpolation';
-import { MarkupOutputFormat } from './MarkupOutputFormat';
-import { EvalUtil } from './EvalUtil';
-import { ParameterRole } from './ParameterRole';
+import {Configuration} from '../template/Configuration';
+import {SimpleScalar} from '../template/SimpleScalar';
+import {Template} from '../template/Template';
+import {TemplateModel} from '../template/TemplateModel';
+import {TemplateScalarModel} from '../template/TemplateScalarModel';
+import {StringUtil} from '../template/utility/StringUtil';
+import {StringReader} from '../../java/io/StringReader';
+import {Expression} from './Expression';
+import {FMParser} from './FMParser';
+import {OutputFormat} from './OutputFormat';
+import {ParserConfiguration} from './ParserConfiguration';
+import {SimpleCharStream} from './SimpleCharStream';
+import {FMParserTokenManager} from './FMParserTokenManager';
+import {Environment} from './Environment';
+import {StringBuilder} from '../../java/lang/StringBuilder';
+import {TemplateMarkupOutputModel} from './TemplateMarkupOutputModel';
+import {Interpolation} from './Interpolation';
+import {EvalUtil} from './EvalUtil';
+import {ParameterRole} from './ParameterRole';
 
 export class StringLiteral extends Expression implements TemplateScalarModel {
     /*private*/ value : string;
@@ -56,11 +53,11 @@ export class StringLiteral extends Expression implements TemplateScalarModel {
                     this.dynamicValue = parser.StaticTextAndInterpolations();
                 } finally {
                     parser.tearDownStringLiteralMode(parentParser);
-                };
+                }
             } catch(e) {
                 e.setTemplateName(parentTemplate.getSourceName());
                 throw e;
-            };
+            }
             this.constantValue = null;
         }
     }
@@ -70,7 +67,7 @@ export class StringLiteral extends Expression implements TemplateScalarModel {
      * @param {Environment} env
      * @return {*}
      */
-    _eval(env : Environment) : TemplateModel {
+    _eval(env : /*Environment*/any) : TemplateModel {
         if(this.dynamicValue == null) {
             return new SimpleScalar(this.value);
         } else {
@@ -214,4 +211,4 @@ StringLiteral["__interfaces"] = ["freemarker.template.TemplateScalarModel","free
 
 
 
-var __Function = Function;
+

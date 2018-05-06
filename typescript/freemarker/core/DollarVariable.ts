@@ -1,22 +1,19 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { Configuration } from '../template/Configuration';
-import { TemplateException } from '../template/TemplateException';
-import { StringUtil } from '../template/utility/StringUtil';
-import { Writer } from '../../java/io/Writer';
-import { Interpolation } from './Interpolation';
-import { Expression } from './Expression';
-import { OutputFormat } from './OutputFormat';
-import { MarkupOutputFormat } from './MarkupOutputFormat';
-import { TemplateElement } from './TemplateElement';
-import { Environment } from './Environment';
-import { TemplateMarkupOutputModel } from './TemplateMarkupOutputModel';
-import { _TemplateModelException } from './_TemplateModelException';
-import { _DelayedToString } from './_DelayedToString';
-import { EvalUtil } from './EvalUtil';
-import { TemplateModel } from '../template/TemplateModel';
-import { StringBuilder } from '../../java/lang/StringBuilder';
-import { Template } from '../template/Template';
-import { ParameterRole } from './ParameterRole';
+import {Configuration} from '../template/Configuration';
+import {StringUtil} from '../template/utility/StringUtil';
+import {Writer} from '../../java/io/Writer';
+import {Interpolation} from './Interpolation';
+import {Expression} from './Expression';
+import {OutputFormat} from './OutputFormat';
+import {MarkupOutputFormat} from './MarkupOutputFormat';
+import {TemplateElement} from './TemplateElement';
+import {Environment} from './Environment';
+import {TemplateMarkupOutputModel} from './TemplateMarkupOutputModel';
+import {_TemplateModelException} from './_TemplateModelException';
+import {_DelayedToString} from './_DelayedToString';
+import {EvalUtil} from './EvalUtil';
+import {StringBuilder} from '../../java/lang/StringBuilder';
+import {ParameterRole} from './ParameterRole';
 
 /**
  * An interpolation like <code>${exp}</code> or {@code [=exp]}. The class name is the remnant of old times, but as
@@ -62,7 +59,7 @@ export class DollarVariable extends Interpolation {
      * @param {Environment} env
      * @return {Array}
      */
-    accept(env : Environment) : TemplateElement[] {
+    accept(env : /*Environment*/any) : TemplateElement[] {
         let moOrStr : any = this.calculateInterpolatedStringOrMarkup(env);
         let out : Writer = env.getOut();
         if(typeof moOrStr === 'string') {
@@ -98,7 +95,7 @@ export class DollarVariable extends Interpolation {
      * @param {Environment} env
      * @return {Object}
      */
-    calculateInterpolatedStringOrMarkup(env : Environment) : any {
+    calculateInterpolatedStringOrMarkup(env : /*Environment*/any) : any {
         return EvalUtil.coerceModelToStringOrMarkup$freemarker_template_TemplateModel$freemarker_core_Expression$java_lang_String$freemarker_core_Environment(this.escapedExpression.eval(env), this.escapedExpression, null, env);
     }
 

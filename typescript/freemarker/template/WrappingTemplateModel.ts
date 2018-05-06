@@ -1,8 +1,7 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { ObjectWrapper } from './ObjectWrapper';
-import { DefaultObjectWrapper } from './DefaultObjectWrapper';
-import { TemplateModel } from './TemplateModel';
-import { TemplateModelException } from './TemplateModelException';
+import {TemplateModel} from './TemplateModel';
+import {TemplateModelException} from './TemplateModelException';
+import {DefaultObjectWrapper} from "./DefaultObjectWrapper";
 
 /**
  * Convenience base-class for containers that wrap their contained arbitrary Java objects into {link TemplateModel}
@@ -13,9 +12,9 @@ export abstract class WrappingTemplateModel {
     /**
      * @deprecated Because it's a VM-wide modifiable field
      */
-    static defaultObjectWrapper : ObjectWrapper; public static defaultObjectWrapper_$LI$() : ObjectWrapper { if(WrappingTemplateModel.defaultObjectWrapper == null) WrappingTemplateModel.defaultObjectWrapper = DefaultObjectWrapper.instance_$LI$(); return WrappingTemplateModel.defaultObjectWrapper; };
+    static defaultObjectWrapper : any = new DefaultObjectWrapper();
 
-    /*private*/ objectWrapper : ObjectWrapper;
+    /*private*/ objectWrapper : any;
 
     /**
      * Sets the default object wrapper that is used when a wrapping template
@@ -30,7 +29,7 @@ export abstract class WrappingTemplateModel {
      * might use FreeMarker internally.
      * @param {*} objectWrapper
      */
-    public static setDefaultObjectWrapper(objectWrapper : ObjectWrapper) {
+    public static setDefaultObjectWrapper(objectWrapper : any) {
         WrappingTemplateModel.defaultObjectWrapper = objectWrapper;
     }
 
@@ -45,8 +44,8 @@ export abstract class WrappingTemplateModel {
      * @deprecated Don't depend on this object, as it can be replace by anybody in the same JVM.
      * @return {*}
      */
-    public static getDefaultObjectWrapper() : ObjectWrapper {
-        return WrappingTemplateModel.defaultObjectWrapper_$LI$();
+    public static getDefaultObjectWrapper() : any {
+        return WrappingTemplateModel.defaultObjectWrapper;
     }
 
     public constructor(objectWrapper? : any) {
@@ -55,22 +54,22 @@ export abstract class WrappingTemplateModel {
             if(this.objectWrapper===undefined) this.objectWrapper = null;
             if(this.objectWrapper===undefined) this.objectWrapper = null;
             (() => {
-                this.objectWrapper = objectWrapper != null?objectWrapper:WrappingTemplateModel.defaultObjectWrapper_$LI$();
+                this.objectWrapper = objectWrapper != null?objectWrapper:WrappingTemplateModel.defaultObjectWrapper;
                 if(this.objectWrapper == null) {
-                    this.objectWrapper = WrappingTemplateModel.defaultObjectWrapper = new DefaultObjectWrapper();
+                    this.objectWrapper = WrappingTemplateModel.defaultObjectWrapper = new (require('./DefaultObjectWrapper').DefaultObjectWrapper)();
                 }
             })();
         } else if(objectWrapper === undefined) {
             let __args = Array.prototype.slice.call(arguments);
             {
                 let __args = Array.prototype.slice.call(arguments);
-                let objectWrapper : any = WrappingTemplateModel.defaultObjectWrapper_$LI$();
+                let objectWrapper : any = WrappingTemplateModel.defaultObjectWrapper;
                 if(this.objectWrapper===undefined) this.objectWrapper = null;
                 if(this.objectWrapper===undefined) this.objectWrapper = null;
                 (() => {
-                    this.objectWrapper = objectWrapper != null?objectWrapper:WrappingTemplateModel.defaultObjectWrapper_$LI$();
+                    this.objectWrapper = objectWrapper != null?objectWrapper:WrappingTemplateModel.defaultObjectWrapper;
                     if(this.objectWrapper == null) {
-                        this.objectWrapper = WrappingTemplateModel.defaultObjectWrapper = new DefaultObjectWrapper();
+                        this.objectWrapper = WrappingTemplateModel.defaultObjectWrapper = new (require('./DefaultObjectWrapper').DefaultObjectWrapper)();
                     }
                 })();
             }
@@ -81,11 +80,11 @@ export abstract class WrappingTemplateModel {
      * Returns the object wrapper instance used by this wrapping template model.
      * @return {*}
      */
-    public getObjectWrapper() : ObjectWrapper {
+    public getObjectWrapper() : any {
         return this.objectWrapper;
     }
 
-    public setObjectWrapper(objectWrapper : ObjectWrapper) {
+    public setObjectWrapper(objectWrapper : any) {
         this.objectWrapper = objectWrapper;
     }
 
@@ -103,9 +102,3 @@ export abstract class WrappingTemplateModel {
     }
 }
 WrappingTemplateModel["__class"] = "freemarker.template.WrappingTemplateModel";
-
-
-
-var __Function = Function;
-
-WrappingTemplateModel.defaultObjectWrapper_$LI$();

@@ -1,17 +1,16 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { BugException } from '../../core/BugException';
-import { ObjectWrapperAndUnwrapper } from '../../template/ObjectWrapperAndUnwrapper';
-import { TemplateModel } from '../../template/TemplateModel';
-import { TemplateModelException } from '../../template/TemplateModelException';
-import { OverloadedMethodsSubset } from './OverloadedMethodsSubset';
-import { CallableMemberDescriptor } from './CallableMemberDescriptor';
-import { MaybeEmptyMemberAndArguments } from './MaybeEmptyMemberAndArguments';
-import { BeansWrapper } from './BeansWrapper';
-import { EmptyMemberAndArguments } from './EmptyMemberAndArguments';
-import { MaybeEmptyCallableMemberDescriptor } from './MaybeEmptyCallableMemberDescriptor';
-import { MemberAndArguments } from './MemberAndArguments';
-import { EmptyCallableMemberDescriptor } from './EmptyCallableMemberDescriptor';
-import { System } from '../../../java/lang/System';
+import {BugException} from '../../core/BugException';
+import {ObjectWrapperAndUnwrapper} from '../../template/ObjectWrapperAndUnwrapper';
+import {TemplateModel} from '../../template/TemplateModel';
+import {OverloadedMethodsSubset} from './OverloadedMethodsSubset';
+import {CallableMemberDescriptor} from './CallableMemberDescriptor';
+import {MaybeEmptyMemberAndArguments} from './MaybeEmptyMemberAndArguments';
+import {BeansWrapper} from './BeansWrapper';
+import {EmptyMemberAndArguments} from './EmptyMemberAndArguments';
+import {MaybeEmptyCallableMemberDescriptor} from './MaybeEmptyCallableMemberDescriptor';
+import {MemberAndArguments} from './MemberAndArguments';
+import {EmptyCallableMemberDescriptor} from './EmptyCallableMemberDescriptor';
+import {System} from '../../../java/lang/System';
 
 /**
  * Stores the varargs methods for a {link OverloadedMethods} object.
@@ -28,7 +27,7 @@ export class OverloadedVarArgsMethods extends OverloadedMethodsSubset {
      * @param {CallableMemberDescriptor} memberDesc
      * @return {Array}
      */
-    preprocessParameterTypes(memberDesc : CallableMemberDescriptor) : Array {
+    preprocessParameterTypes(memberDesc : CallableMemberDescriptor) : Array<any> {
         let preprocessedParamTypes : Array<any> = /* clone */memberDesc.getParamTypes().slice(0);
         let ln : number = preprocessedParamTypes.length;
         let varArgsCompType : any = preprocessedParamTypes[ln - 1].getComponentType();
@@ -53,7 +52,7 @@ export class OverloadedVarArgsMethods extends OverloadedMethodsSubset {
                 this.widenHintsToCommonSupertypes(paramCount, previousHints, this.getTypeFlags(i));
                 break;
             }
-        };
+        }
         if(paramCount + 1 < unwrappingHintsByParamCount.length) {
             let oneLongerHints : Array<any> = unwrappingHintsByParamCount[paramCount + 1];
             if(oneLongerHints != null) {
@@ -62,7 +61,7 @@ export class OverloadedVarArgsMethods extends OverloadedMethodsSubset {
         }
         for(let i : number = paramCount + 1; i < unwrappingHintsByParamCount.length; i++) {
             this.widenHintsToCommonSupertypes(i, paramTypes, paramNumericalTypes);
-        };
+        }
         if(paramCount > 0) {
             this.widenHintsToCommonSupertypes(paramCount - 1, paramTypes, paramNumericalTypes);
         }
@@ -78,12 +77,12 @@ export class OverloadedVarArgsMethods extends OverloadedMethodsSubset {
         let min : number = Math.min(wideningTypesLen, typesToWidenLen);
         for(let i : number = 0; i < min; ++i) {
             typesToWiden[i] = this.getCommonSupertypeForUnwrappingHint(typesToWiden[i], wideningTypes[i]);
-        };
+        }
         if(typesToWidenLen > wideningTypesLen) {
             let varargsComponentType : any = wideningTypes[wideningTypesLen - 1];
             for(let i : number = wideningTypesLen; i < typesToWidenLen; ++i) {
                 typesToWiden[i] = this.getCommonSupertypeForUnwrappingHint(typesToWiden[i], varargsComponentType);
-            };
+            }
         }
         if(this.bugfixed) {
             this.mergeInTypesFlags(paramCountOfWidened, wideningTypeFlags);
@@ -124,9 +123,9 @@ export class OverloadedVarArgsMethods extends OverloadedMethodsSubset {
                     continue outer;
                 }
                 pojoArgs[i] = pojo;
-            };
+            }
             break outer;
-        };
+        }
         let maybeEmtpyMemberDesc : MaybeEmptyCallableMemberDescriptor = this.getMemberDescriptorForArgs(pojoArgs, true);
         if(maybeEmtpyMemberDesc != null && maybeEmtpyMemberDesc instanceof <any>CallableMemberDescriptor) {
             let memberDesc : CallableMemberDescriptor = <CallableMemberDescriptor>maybeEmtpyMemberDesc;
@@ -179,7 +178,7 @@ export class OverloadedVarArgsMethods extends OverloadedMethodsSubset {
                     return i + 1;
                 }
                 /* set */(varargs[i - fixArgCount]=i - fixArgCount);
-            };
+            }
             packedArgs[fixArgCount] = varargs;
             return packedArgs;
         } else {
@@ -198,4 +197,4 @@ OverloadedVarArgsMethods["__class"] = "freemarker.ext.beans.OverloadedVarArgsMet
 
 
 
-var __Function = Function;
+

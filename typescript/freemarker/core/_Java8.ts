@@ -14,4 +14,4 @@ export interface _Java8 {
 }
 
 
-var __Function = Function;
+

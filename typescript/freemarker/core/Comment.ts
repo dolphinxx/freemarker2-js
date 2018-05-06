@@ -1,8 +1,7 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { StringUtil } from '../template/utility/StringUtil';
-import { TemplateElement } from './TemplateElement';
-import { Environment } from './Environment';
-import { ParameterRole } from './ParameterRole';
+import {StringUtil} from '../template/utility/StringUtil';
+import {TemplateElement} from './TemplateElement';
+import {ParameterRole} from './ParameterRole';
 
 /**
  * <b>Internal API - subject to change:</b> A template element where the content is ignored, a Comment.
@@ -26,7 +25,7 @@ export class Comment extends TemplateElement {
      * @param {Environment} env
      * @return {Array}
      */
-    accept(env : Environment) : TemplateElement[] {
+    accept(env : /*Environment*/any) : TemplateElement[] {
         return null;
     }
 

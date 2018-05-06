@@ -1,5 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateDateModel } from './TemplateDateModel';
+import {TemplateDateModel} from './TemplateDateModel';
 
 /**
  * Creates a new date model wrapping the specified date object and
@@ -107,4 +107,4 @@ SimpleDate["__interfaces"] = ["freemarker.template.TemplateDateModel","freemarke
 
 
 
-var __Function = Function;
+

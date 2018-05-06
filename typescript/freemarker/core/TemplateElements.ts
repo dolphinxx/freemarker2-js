@@ -1,9 +1,8 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { CollectionUtils } from '../template/utility/CollectionUtils';
-import { TemplateElement } from './TemplateElement';
-import { TextBlock } from './TextBlock';
-import { MixedContent } from './MixedContent';
-import { Template } from '../template/Template';
+import {CollectionUtils} from '../template/utility/CollectionUtils';
+import {TemplateElement} from './TemplateElement';
+import {TextBlock} from './TextBlock';
+import {MixedContent} from './MixedContent';
 
 /**
  * Holds an buffer (array) of {link TemplateElement}-s with the count of the utilized items in it. The un-utilized tail
@@ -80,6 +79,6 @@ TemplateElements["__class"] = "freemarker.core.TemplateElements";
 
 
 
-var __Function = Function;
+
 
 TemplateElements.EMPTY_$LI$();

@@ -1,16 +1,15 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateException } from '../template/TemplateException';
-import { TemplateModel } from '../template/TemplateModel';
-import { _TemplateAPI } from '../template/_TemplateAPI';
-import { Expression } from './Expression';
-import { Environment } from './Environment';
-import { BoundedRangeModel } from './BoundedRangeModel';
-import { ListableRightUnboundedRangeModel } from './ListableRightUnboundedRangeModel';
-import { NonListableRightUnboundedRangeModel } from './NonListableRightUnboundedRangeModel';
-import { NonBooleanException } from './NonBooleanException';
-import { BugException } from './BugException';
-import { ParameterRole } from './ParameterRole';
-import { Configuration } from '../template/Configuration';
+import {TemplateModel} from '../template/TemplateModel';
+import {_TemplateAPI} from '../template/_TemplateAPI';
+import {Expression} from './Expression';
+import {BoundedRangeModel} from './BoundedRangeModel';
+import {ListableRightUnboundedRangeModel} from './ListableRightUnboundedRangeModel';
+import {NonListableRightUnboundedRangeModel} from './NonListableRightUnboundedRangeModel';
+import {NonBooleanException} from './NonBooleanException';
+import {BugException} from './BugException';
+import {ParameterRole} from './ParameterRole';
+import {Configuration} from '../template/Configuration';
+import {ClassUtil} from "../template/utility/ClassUtil";
 
 /**
  * A class that represents a Range between two integers.
@@ -51,27 +50,27 @@ export class Range extends Expression {
      * @param {Environment} env
      * @return {*}
      */
-    _eval(env : Environment) : TemplateModel {
+    _eval(env : /*Environment*/any) : TemplateModel {
         let begin : number = /* intValue */(this.lho.evalToNumber(env)|0);
         if(this.endType !== Range.END_UNBOUND) {
             let lhoValue : number = /* intValue */(this.rho.evalToNumber(env)|0);
             return new BoundedRangeModel(begin, this.endType !== Range.END_SIZE_LIMITED?lhoValue:begin + lhoValue, this.endType === Range.END_INCLUSIVE, this.endType === Range.END_SIZE_LIMITED);
         } else {
-            return _TemplateAPI.getTemplateLanguageVersionAsInt$freemarker_core_TemplateObject(this) >= _TemplateAPI.VERSION_INT_2_3_21_$LI$()?new ListableRightUnboundedRangeModel(begin):new NonListableRightUnboundedRangeModel(begin);
+            return _TemplateAPI.getTemplateLanguageVersionAsInt$freemarker_core_TemplateObject(this) >= /*_TemplateAPI.VERSION_INT_2_3_21_$LI$()*/2003021?new ListableRightUnboundedRangeModel(begin):new NonListableRightUnboundedRangeModel(begin);
         }
     }
 
     public evalToBoolean(env? : any, cfg? : any) : any {
-        if(((env != null && env instanceof <any>Environment) || env === null) && ((cfg != null && cfg instanceof <any>Configuration) || cfg === null)) {
+        if(((ClassUtil.isInstanceOf(env, 'freemarker.core.Environment')) || env === null) && ((cfg != null && cfg instanceof <any>Configuration) || cfg === null)) {
             super.evalToBoolean(env, cfg);
-        } else if(((env != null && env instanceof <any>Environment) || env === null) && cfg === undefined) {
+        } else if(((ClassUtil.isInstanceOf(env, 'freemarker.core.Environment')) || env === null) && cfg === undefined) {
             return <any>this.evalToBoolean$freemarker_core_Environment(env);
         } else if(((env != null && env instanceof <any>Configuration) || env === null) && cfg === undefined) {
             return <any>this.evalToBoolean$freemarker_template_Configuration(env);
         } else throw new Error('invalid overload');
     }
 
-    evalToBoolean$freemarker_core_Environment(env : Environment) : boolean {
+    evalToBoolean$freemarker_core_Environment(env : /*Environment*/any) : boolean {
         throw new NonBooleanException(this, new BoundedRangeModel(0, 0, false, false), env);
     }
 
@@ -160,4 +159,4 @@ Range["__class"] = "freemarker.core.Range";
 
 
 
-var __Function = Function;
+

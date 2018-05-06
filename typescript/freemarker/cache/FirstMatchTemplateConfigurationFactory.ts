@@ -1,9 +1,9 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateConfiguration } from '../core/TemplateConfiguration';
-import { Configuration } from '../template/Configuration';
-import { StringUtil } from '../template/utility/StringUtil';
-import { TemplateConfigurationFactory } from './TemplateConfigurationFactory';
-import { TemplateConfigurationFactoryException } from './TemplateConfigurationFactoryException';
+import {TemplateConfiguration} from '../core/TemplateConfiguration';
+import {Configuration} from '../template/Configuration';
+import {StringUtil} from '../template/utility/StringUtil';
+import {TemplateConfigurationFactory} from './TemplateConfigurationFactory';
+import {TemplateConfigurationFactoryException} from './TemplateConfigurationFactoryException';
 
 /**
  * Returns the first non-{@code null} result of the child factories, ignoring all further child factories. The child

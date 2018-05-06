@@ -1,14 +1,12 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { _MessageUtil } from '../../core/_MessageUtil';
-import { KeyValuePair } from '../KeyValuePair';
-import { KeyValuePairIterator } from '../KeyValuePairIterator';
-import { TemplateHashModelEx } from '../TemplateHashModelEx';
-import { TemplateHashModelEx2 } from '../TemplateHashModelEx2';
-import { TemplateModel } from '../TemplateModel';
-import { TemplateModelException } from '../TemplateModelException';
-import { TemplateModelIterator } from '../TemplateModelIterator';
-import { TemplateScalarModel } from '../TemplateScalarModel';
-import { TemplateCollectionModel } from '../TemplateCollectionModel';
+import {_MessageUtil} from '../../core/_MessageUtil';
+import {KeyValuePair} from '../KeyValuePair';
+import {KeyValuePairIterator} from '../KeyValuePairIterator';
+import {TemplateHashModelEx} from '../TemplateHashModelEx';
+import {TemplateHashModelEx2} from '../TemplateHashModelEx2';
+import {TemplateModel} from '../TemplateModel';
+import {TemplateModelIterator} from '../TemplateModelIterator';
+import {TemplateScalarModel} from '../TemplateScalarModel';
 
 /**
  * Static utility method related to {link TemplateModel}-s that didn't fit elsewhere.
@@ -92,4 +90,4 @@ export namespace TemplateModelUtils {
 
 
 
-var __Function = Function;
+

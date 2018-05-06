@@ -1,23 +1,21 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateException } from '../template/TemplateException';
-import { TemplateModel } from '../template/TemplateModel';
-import { TemplateNumberModel } from '../template/TemplateNumberModel';
-import { TemplateScalarModel } from '../template/TemplateScalarModel';
-import { TemplateElement } from './TemplateElement';
-import { Expression } from './Expression';
-import { FMParserConstants } from './FMParserConstants';
-import { ArithmeticExpression } from './ArithmeticExpression';
-import { BugException } from './BugException';
-import { Environment } from './Environment';
-import { NonNamespaceException } from './NonNamespaceException';
-import { InvalidReferenceException } from './InvalidReferenceException';
-import { AddConcatExpression } from './AddConcatExpression';
-import { EvalUtil } from './EvalUtil';
-import { NonNumericalException } from './NonNumericalException';
-import { StringBuilder } from '../../java/lang/StringBuilder';
-import { AssignmentInstruction } from './AssignmentInstruction';
-import { _CoreStringUtils } from './_CoreStringUtils';
-import { ParameterRole } from './ParameterRole';
+import {TemplateModel} from '../template/TemplateModel';
+import {TemplateNumberModel} from '../template/TemplateNumberModel';
+import {TemplateScalarModel} from '../template/TemplateScalarModel';
+import {TemplateElement} from './TemplateElement';
+import {Expression} from './Expression';
+import {FMParserConstants} from './FMParserConstants';
+import {ArithmeticExpression} from './ArithmeticExpression';
+import {BugException} from './BugException';
+import {NonNamespaceException} from './NonNamespaceException';
+import {InvalidReferenceException} from './InvalidReferenceException';
+import {AddConcatExpression} from './AddConcatExpression';
+import {EvalUtil} from './EvalUtil';
+import {NonNumericalException} from './NonNumericalException';
+import {StringBuilder} from '../../java/lang/StringBuilder';
+import {AssignmentInstruction} from './AssignmentInstruction';
+import {_CoreStringUtils} from './_CoreStringUtils';
+import {ParameterRole} from './ParameterRole';
 
 /**
  * An instruction that makes a single assignment, like [#local x=1].
@@ -104,8 +102,8 @@ export class Assignment extends TemplateElement {
      * @param {Environment} env
      * @return {Array}
      */
-    accept(env : Environment) : TemplateElement[] {
-        let namespace : Environment.Namespace;
+    accept(env : /*Environment*/any) : TemplateElement[] {
+        let namespace : /*Environment.Namespace*/any;
         if(this.namespaceExp == null) {
             switch((this.scope)) {
             case 2 /* LOCAL */:
@@ -123,10 +121,10 @@ export class Assignment extends TemplateElement {
         } else {
             let namespaceTM : TemplateModel = this.namespaceExp.eval(env);
             try {
-                namespace = <Environment.Namespace><any>namespaceTM;
+                namespace = /*<Environment.Namespace>*/<any>namespaceTM;
             } catch(e) {
                 throw new NonNamespaceException(this.namespaceExp, namespaceTM, env);
-            };
+            }
             if(namespace == null) {
                 throw InvalidReferenceException.getInstance$freemarker_core_Expression$freemarker_core_Environment(this.namespaceExp, env);
             }

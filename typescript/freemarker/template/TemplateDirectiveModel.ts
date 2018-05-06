@@ -1,8 +1,8 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { Environment } from '../core/Environment';
-import { TemplateModel } from './TemplateModel';
-import { TemplateDirectiveBody } from './TemplateDirectiveBody';
-import { TemplateException } from './TemplateException';
+import {TemplateModel} from './TemplateModel';
+import {TemplateDirectiveBody} from './TemplateDirectiveBody';
+import {TemplateException} from './TemplateException';
+import {Map} from '../../java/util/Map';
 
 /**
  * "directive" template language data type: used as user-defined directives
@@ -48,8 +48,8 @@ export interface TemplateDirectiveModel extends TemplateModel {
      * @throws IOException       When writing the template output fails. Other {link IOException}-s should be catched in this
      * method and wrapped into {link TemplateException}.
      */
-    execute(env : Environment, params : Map<any, any>, loopVars : TemplateModel[], body : TemplateDirectiveBody);
+    execute(env : /*Environment*/any, params : Map<any, any>, loopVars : TemplateModel[], body : TemplateDirectiveBody);
 }
 
 
-var __Function = Function;
+

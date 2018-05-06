@@ -1,5 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { OutputFormat } from './OutputFormat';
+import {OutputFormat} from './OutputFormat';
 
 /**
  * Represents the plain text output format (MIME type "text/plain", name "plainText"). This format doesn't support
@@ -50,6 +50,6 @@ PlainTextOutputFormat["__class"] = "freemarker.core.PlainTextOutputFormat";
 
 
 
-var __Function = Function;
+
 
 PlainTextOutputFormat.INSTANCE_$LI$();

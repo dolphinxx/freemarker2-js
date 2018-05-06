@@ -1,7 +1,6 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { Configuration } from '../Configuration';
-import { Template } from '../Template';
-import { System } from '../../../java/lang/System';
+import {Configuration} from '../Configuration';
+import {Template} from '../Template';
 
 /**
  * Read in a template and convert it to a canonical format.
@@ -31,8 +30,8 @@ export class ToCanonical {
             } catch(e) {
                 console.error("Error converting file: " + f);
                 console.error(e.message, e);
-            };
-        };
+            }
+        }
     }
 
     static convertFile(f : File) {
@@ -47,7 +46,7 @@ export class ToCanonical {
             template.dump$java_io_Writer(output);
         } finally {
             output.close();
-        };
+        }
     }
 
     static usage() {
@@ -58,7 +57,7 @@ ToCanonical["__class"] = "freemarker.template.utility.ToCanonical";
 
 
 
-var __Function = Function;
+
 
 ToCanonical.config_$LI$();
 

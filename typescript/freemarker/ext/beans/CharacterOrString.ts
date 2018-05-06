@@ -25,4 +25,4 @@ CharacterOrString["__class"] = "freemarker.ext.beans.CharacterOrString";
 
 
 
-var __Function = Function;
+

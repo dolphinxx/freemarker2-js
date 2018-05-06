@@ -1,24 +1,20 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { SimpleScalar } from '../template/SimpleScalar';
-import { SimpleSequence } from '../template/SimpleSequence';
-import { TemplateBooleanModel } from '../template/TemplateBooleanModel';
-import { TemplateCollectionModel } from '../template/TemplateCollectionModel';
-import { TemplateException } from '../template/TemplateException';
-import { TemplateMethodModel } from '../template/TemplateMethodModel';
-import { TemplateModel } from '../template/TemplateModel';
-import { TemplateModelException } from '../template/TemplateModelException';
-import { TemplateModelIterator } from '../template/TemplateModelIterator';
-import { TemplateScalarModel } from '../template/TemplateScalarModel';
-import { TemplateSequenceModel } from '../template/TemplateSequenceModel';
-import { StringUtil } from '../template/utility/StringUtil';
-import { BuiltIn } from './BuiltIn';
-import { Environment } from './Environment';
-import { Expression } from './Expression';
-import { UnexpectedTypeException } from './UnexpectedTypeException';
-import { BuiltInForString } from './BuiltInForString';
-import { RegexpHelper } from './RegexpHelper';
-import { Boolean } from '../../java/lang/Boolean';
-import { _TemplateModelException } from './_TemplateModelException';
+import {SimpleScalar} from '../template/SimpleScalar';
+import {SimpleSequence} from '../template/SimpleSequence';
+import {TemplateBooleanModel} from '../template/TemplateBooleanModel';
+import {TemplateCollectionModel} from '../template/TemplateCollectionModel';
+import {TemplateMethodModel} from '../template/TemplateMethodModel';
+import {TemplateModel} from '../template/TemplateModel';
+import {TemplateModelIterator} from '../template/TemplateModelIterator';
+import {TemplateScalarModel} from '../template/TemplateScalarModel';
+import {TemplateSequenceModel} from '../template/TemplateSequenceModel';
+import {StringUtil} from '../template/utility/StringUtil';
+import {BuiltIn} from './BuiltIn';
+import {Environment} from './Environment';
+import {UnexpectedTypeException} from './UnexpectedTypeException';
+import {BuiltInForString} from './BuiltInForString';
+import {RegexpHelper} from './RegexpHelper';
+import {_TemplateModelException} from './_TemplateModelException';
 
 /**
  * Contains the string built-ins that correspond to basic regular expressions operations.
@@ -39,7 +35,7 @@ export namespace BuiltInsForStringsRegexp {
          * @param {Environment} env
          * @return {*}
          */
-        _eval(env : Environment) : TemplateModel {
+        _eval(env : /*Environment*/any) : TemplateModel {
             let targetModel : TemplateModel = this.target.eval(env);
             this.assertNonNull(targetModel, env);
             if(targetModel != null && targetModel instanceof <any>BuiltInsForStringsRegexp.RegexMatchModel) {
@@ -67,7 +63,7 @@ export namespace BuiltInsForStringsRegexp {
          * @param {Environment} env
          * @return {*}
          */
-        calculateResult(s : string, env : Environment) : TemplateModel {
+        calculateResult(s : string, env : /*Environment*/any) : TemplateModel {
             return new matchesBI.MatcherBuilder(this, s);
         }
 
@@ -118,7 +114,7 @@ export namespace BuiltInsForStringsRegexp {
          * @param {Environment} env
          * @return {*}
          */
-        calculateResult(s : string, env : Environment) : TemplateModel {
+        calculateResult(s : string, env : /*Environment*/any) : TemplateModel {
             return new replace_reBI.ReplaceMethod(this, s);
         }
 
@@ -225,7 +221,7 @@ export namespace BuiltInsForStringsRegexp {
             let matcher : Matcher = this.pattern.matcher(this.input);
             while((matcher.find())) {
                 /* add */(matchingInputParts.push(new RegexMatchModel.MatchWithGroups(this.input, matcher))>0);
-            };
+            }
             this.matchingInputParts = matchingInputParts;
             return matchingInputParts;
         }
@@ -276,7 +272,7 @@ export namespace BuiltInsForStringsRegexp {
                 this.groupsSeq = new SimpleSequence(grpCount);
                 for(let i : number = 0; i < grpCount; i++) {
                     this.groupsSeq.add$java_lang_Object(matcher.group(i));
-                };
+                }
             }
 
             public getAsString() : string {
@@ -295,7 +291,7 @@ export namespace BuiltInsForStringsRegexp {
                     return new SimpleScalar(this.firedEntireInputMatcher.group(i));
                 } catch(e) {
                     throw new _TemplateModelException(e, "Failed to read regular expression match group");
-                };
+                }
             }
 
             public size() : number {
@@ -303,7 +299,7 @@ export namespace BuiltInsForStringsRegexp {
                     return this.firedEntireInputMatcher.groupCount() + 1;
                 } catch(e) {
                     throw new _TemplateModelException(e, "Failed to get regular expression match group count");
-                };
+                }
             }
 
             constructor(__parent: any, private firedEntireInputMatcher: any) {
@@ -344,7 +340,7 @@ export namespace BuiltInsForStringsRegexp {
                         return <TemplateModel><any>/* get */matchingInputParts[this.nextIdx++];
                     } catch(e) {
                         throw new _TemplateModelException(e, "There were no more regular expression matches");
-                    };
+                    }
                 }
             }
 
@@ -371,7 +367,7 @@ export namespace BuiltInsForStringsRegexp {
                     return <TemplateModel><any>/* get */this.matchingInputParts[this.nextIdx++];
                 } catch(e) {
                     throw new _TemplateModelException(e, "There were no more regular expression matches");
-                };
+                }
             }
 
             constructor(__parent: any, private matchingInputParts: any) {

@@ -1,13 +1,12 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateException } from '../template/TemplateException';
-import { TemplateElement } from './TemplateElement';
-import { TemplateElements } from './TemplateElements';
-import { Environment } from './Environment';
-import { IteratorBlock } from './IteratorBlock';
-import { _MiscTemplateException } from './_MiscTemplateException';
-import { StringBuilder } from '../../java/lang/StringBuilder';
-import { _CoreStringUtils } from './_CoreStringUtils';
-import { ParameterRole } from './ParameterRole';
+import {TemplateElement} from './TemplateElement';
+import {TemplateElements} from './TemplateElements';
+import {Environment} from './Environment';
+import {IteratorBlock} from './IteratorBlock';
+import {_MiscTemplateException} from './_MiscTemplateException';
+import {StringBuilder} from '../../java/lang/StringBuilder';
+import {_CoreStringUtils} from './_CoreStringUtils';
+import {ParameterRole} from './ParameterRole';
 
 /**
  * An #items element.
@@ -33,7 +32,7 @@ export class Items extends TemplateElement {
      * @param {Environment} env
      * @return {Array}
      */
-    accept(env : Environment) : TemplateElement[] {
+    accept(env : /*Environment*/any) : TemplateElement[] {
         let iterCtx : IteratorBlock.IterationContext = IteratorBlock.findEnclosingIterationContext(env, null);
         if(iterCtx == null) {
             throw new _MiscTemplateException(env, this.getNodeTypeSymbol(), " without iteration in context");
@@ -138,4 +137,4 @@ Items["__class"] = "freemarker.core.Items";
 
 
 
-var __Function = Function;
+

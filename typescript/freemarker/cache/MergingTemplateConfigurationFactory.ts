@@ -1,8 +1,7 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateConfiguration } from '../core/TemplateConfiguration';
-import { Configuration } from '../template/Configuration';
-import { TemplateConfigurationFactory } from './TemplateConfigurationFactory';
-import { TemplateConfigurationFactoryException } from './TemplateConfigurationFactoryException';
+import {TemplateConfiguration} from '../core/TemplateConfiguration';
+import {Configuration} from '../template/Configuration';
+import {TemplateConfigurationFactory} from './TemplateConfigurationFactory';
 
 /**
  * Returns the merged results of all the child factories. The factories are merged in the order as they were added.

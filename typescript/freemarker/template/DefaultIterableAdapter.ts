@@ -1,16 +1,13 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { WrapperTemplateModel } from '../ext/util/WrapperTemplateModel';
-import { ObjectWrapperWithAPISupport } from './utility/ObjectWrapperWithAPISupport';
-import { WrappingTemplateModel } from './WrappingTemplateModel';
-import { TemplateCollectionModel } from './TemplateCollectionModel';
-import { AdapterTemplateModel } from './AdapterTemplateModel';
-import { TemplateModelWithAPISupport } from './TemplateModelWithAPISupport';
-import { TemplateModelIterator } from './TemplateModelIterator';
-import { IteratorToTemplateModelIteratorAdapter } from './IteratorToTemplateModelIteratorAdapter';
-import { ObjectWrapper } from './ObjectWrapper';
-import { TemplateModel } from './TemplateModel';
-import { TemplateModelException } from './TemplateModelException';
-import { TemplateHashModel } from './TemplateHashModel';
+import {WrapperTemplateModel} from '../ext/util/WrapperTemplateModel';
+import {ObjectWrapperWithAPISupport} from './utility/ObjectWrapperWithAPISupport';
+import {WrappingTemplateModel} from './WrappingTemplateModel';
+import {TemplateCollectionModel} from './TemplateCollectionModel';
+import {AdapterTemplateModel} from './AdapterTemplateModel';
+import {TemplateModelWithAPISupport} from './TemplateModelWithAPISupport';
+import {TemplateModelIterator} from './TemplateModelIterator';
+import {IteratorToTemplateModelIteratorAdapter} from './IteratorToTemplateModelIteratorAdapter';
+import {TemplateModel} from './TemplateModel';
 
 /**
  * Adapts an {link Iterable} to the corresponding {link TemplateModel} interface(s), most importantly to
@@ -74,4 +71,4 @@ DefaultIterableAdapter["__interfaces"] = ["freemarker.ext.util.WrapperTemplateMo
 
 
 
-var __Function = Function;
+

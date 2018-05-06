@@ -1,7 +1,7 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { UndeclaredThrowableException } from '../template/utility/UndeclaredThrowableException';
-import { ConcurrentCacheStorage } from './ConcurrentCacheStorage';
-import { CacheStorageWithGetSize } from './CacheStorageWithGetSize';
+import {UndeclaredThrowableException} from '../template/utility/UndeclaredThrowableException';
+import {ConcurrentCacheStorage} from './ConcurrentCacheStorage';
+import {CacheStorageWithGetSize} from './CacheStorageWithGetSize';
 
 /**
  * Soft cache storage is a cache storage that uses {link SoftReference} objects to hold the objects it was passed,
@@ -113,11 +113,11 @@ export class SoftCacheStorage implements ConcurrentCacheStorage, CacheStorageWit
                         throw new UndeclaredThrowableException(e);
 
                     }
-                };
+                }
             } else if(/* get */this.map.get(key) === ref) {
                 /* remove */this.map.delete(key);
             }
-        };
+        }
     }
 
     static getAtomicRemoveMethod() : Function {
@@ -134,7 +134,7 @@ export class SoftCacheStorage implements ConcurrentCacheStorage, CacheStorageWit
                 throw new UndeclaredThrowableException(e);
 
             }
-        };
+        }
     }
 }
 SoftCacheStorage["__class"] = "freemarker.cache.SoftCacheStorage";

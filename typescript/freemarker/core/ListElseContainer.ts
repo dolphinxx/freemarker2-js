@@ -1,11 +1,10 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateException } from '../template/TemplateException';
-import { TemplateElement } from './TemplateElement';
-import { IteratorBlock } from './IteratorBlock';
-import { ElseOfList } from './ElseOfList';
-import { Environment } from './Environment';
-import { StringBuilder } from '../../java/lang/StringBuilder';
-import { ParameterRole } from './ParameterRole';
+import {TemplateElement} from './TemplateElement';
+import {IteratorBlock} from './IteratorBlock';
+import {ElseOfList} from './ElseOfList';
+import {Environment} from './Environment';
+import {StringBuilder} from '../../java/lang/StringBuilder';
+import {ParameterRole} from './ParameterRole';
 
 export class ListElseContainer extends TemplateElement {
     /*private*/ listPart : IteratorBlock;
@@ -28,7 +27,7 @@ export class ListElseContainer extends TemplateElement {
      * @param {Environment} env
      * @return {Array}
      */
-    accept(env : Environment) : TemplateElement[] {
+    accept(env : /*Environment*/any) : TemplateElement[] {
         if(!this.listPart.acceptWithResult(env)) {
             return this.elsePart.accept(env);
         }
@@ -62,7 +61,7 @@ export class ListElseContainer extends TemplateElement {
             for(let i : number = 0; i < ln; i++) {
                 let element : TemplateElement = this.getChild(i);
                 buf.append(element.dump$boolean(canonical));
-            };
+            }
             buf.append("</#list>");
             return buf.toString();
         } else {
@@ -108,4 +107,4 @@ ListElseContainer["__class"] = "freemarker.core.ListElseContainer";
 
 
 
-var __Function = Function;
+

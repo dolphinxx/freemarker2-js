@@ -1,6 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateModel } from './TemplateModel';
-import { TemplateModelException } from './TemplateModelException';
+import {TemplateModel} from './TemplateModel';
 
 /**
  * "number" template language data type; an object that stores a number. There's only one numerical type as far as the
@@ -22,4 +21,4 @@ export interface TemplateNumberModel extends TemplateModel {
 }
 
 
-var __Function = Function;
+

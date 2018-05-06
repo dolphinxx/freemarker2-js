@@ -1,5 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { OutputFormat } from './OutputFormat';
+import {OutputFormat} from './OutputFormat';
 
 /**
  * Represents the output format used when the template output format is undecided. This is the default output format if
@@ -49,6 +49,6 @@ UndefinedOutputFormat["__class"] = "freemarker.core.UndefinedOutputFormat";
 
 
 
-var __Function = Function;
+
 
 UndefinedOutputFormat.INSTANCE_$LI$();

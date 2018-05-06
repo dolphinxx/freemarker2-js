@@ -1,19 +1,16 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { _DelayedShortClassName } from '../core/_DelayedShortClassName';
-import { _TemplateModelException } from '../core/_TemplateModelException';
-import { WrapperTemplateModel } from '../ext/util/WrapperTemplateModel';
-import { ObjectWrapperWithAPISupport } from './utility/ObjectWrapperWithAPISupport';
-import { WrappingTemplateModel } from './WrappingTemplateModel';
-import { TemplateCollectionModelEx } from './TemplateCollectionModelEx';
-import { AdapterTemplateModel } from './AdapterTemplateModel';
-import { TemplateModelWithAPISupport } from './TemplateModelWithAPISupport';
-import { TemplateModelIterator } from './TemplateModelIterator';
-import { IteratorToTemplateModelIteratorAdapter } from './IteratorToTemplateModelIteratorAdapter';
-import { ObjectWrapper } from './ObjectWrapper';
-import { TemplateModel } from './TemplateModel';
-import { TemplateModelException } from './TemplateModelException';
-import { ObjectWrapperAndUnwrapper } from './ObjectWrapperAndUnwrapper';
-import { TemplateHashModel } from './TemplateHashModel';
+import {_DelayedShortClassName} from '../core/_DelayedShortClassName';
+import {_TemplateModelException} from '../core/_TemplateModelException';
+import {WrapperTemplateModel} from '../ext/util/WrapperTemplateModel';
+import {ObjectWrapperWithAPISupport} from './utility/ObjectWrapperWithAPISupport';
+import {WrappingTemplateModel} from './WrappingTemplateModel';
+import {TemplateCollectionModelEx} from './TemplateCollectionModelEx';
+import {AdapterTemplateModel} from './AdapterTemplateModel';
+import {TemplateModelWithAPISupport} from './TemplateModelWithAPISupport';
+import {TemplateModelIterator} from './TemplateModelIterator';
+import {IteratorToTemplateModelIteratorAdapter} from './IteratorToTemplateModelIteratorAdapter';
+import {TemplateModel} from './TemplateModel';
+import {ObjectWrapperAndUnwrapper} from './ObjectWrapperAndUnwrapper';
 
 /**
  * Adapts a non-{link List} Java {link Collection} to the corresponding {link TemplateModel} interface(s), most
@@ -82,7 +79,7 @@ export class DefaultNonListCollectionAdapter extends WrappingTemplateModel imple
             return /* contains */(this.collection.indexOf(<any>(itemPojo)) >= 0);
         } catch(e) {
             throw new _TemplateModelException(e, "Failed to check if the collection contains the item. Probably the item\'s Java type, ", itemPojo != null?new _DelayedShortClassName((<any>itemPojo.constructor)):"Null", ", doesn\'t match the type of (some of) the collection items; see cause exception.");
-        };
+        }
     }
 
     public getAPI() : TemplateModel {
@@ -95,4 +92,4 @@ DefaultNonListCollectionAdapter["__interfaces"] = ["freemarker.template.Template
 
 
 
-var __Function = Function;
+

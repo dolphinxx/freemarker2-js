@@ -1,5 +1,4 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { GeneralPurposeNothing } from './GeneralPurposeNothing';
 
 /**
  * The common super-interface of the interfaces that stand for the FreeMarker Template Language (FTL) data types.
@@ -33,9 +32,9 @@ export namespace TemplateModel {
      * an empty string, false, empty sequence, empty hash, and
      * null-returning method model.
      */
-    export let NOTHING : TemplateModel = GeneralPurposeNothing.getInstance();
+    export let NOTHING : TemplateModel = null;
 }
 
 
 
-var __Function = Function;
+

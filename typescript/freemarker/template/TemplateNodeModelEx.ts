@@ -1,6 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateNodeModel } from './TemplateNodeModel';
-import { TemplateModelException } from './TemplateModelException';
+import {TemplateNodeModel} from './TemplateNodeModel';
 
 /**
  * A {link TemplateNodeModel} that supports navigating to the previous and next sibling nodes.
@@ -21,4 +20,4 @@ export interface TemplateNodeModelEx extends TemplateNodeModel {
 }
 
 
-var __Function = Function;
+

@@ -1,6 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { Writer } from '../../java/io/Writer';
-import { TemplateException } from './TemplateException';
+import {Writer} from '../../java/io/Writer';
 
 /**
  * Represents the nested content of a directive ({link TemplateDirectiveModel}) invocation. An implementation of this
@@ -25,4 +24,4 @@ export interface TemplateDirectiveBody {
 }
 
 
-var __Function = Function;
+

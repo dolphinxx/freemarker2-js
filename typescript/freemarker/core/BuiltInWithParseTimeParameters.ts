@@ -1,11 +1,10 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { SpecialBuiltIn } from './SpecialBuiltIn';
-import { Token } from './Token';
-import { ParseException } from './ParseException';
-import { StringBuilder } from '../../java/lang/StringBuilder';
-import { Expression } from './Expression';
-import { ParameterRole } from './ParameterRole';
-import { Template } from '../template/Template';
+import {SpecialBuiltIn} from './SpecialBuiltIn';
+import {Token} from './Token';
+import {ParseException} from './ParseException';
+import {StringBuilder} from '../../java/lang/StringBuilder';
+import {Expression} from './Expression';
+import {ParameterRole} from './ParameterRole';
 
 export abstract class BuiltInWithParseTimeParameters extends SpecialBuiltIn {
     abstract bindToParameters(parameters : Array<any>, openParen : Token, closeParen : Token);
@@ -26,7 +25,7 @@ export abstract class BuiltInWithParseTimeParameters extends SpecialBuiltIn {
             }
             let arg : Expression = <Expression>/* get */args[i];
             buf.append(arg.getCanonicalForm());
-        };
+        }
         buf.append(")");
         return buf.toString();
     }

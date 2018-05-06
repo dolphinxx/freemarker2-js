@@ -1,6 +1,6 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { SerializableTemplateBooleanModel } from './SerializableTemplateBooleanModel';
-import { TemplateBooleanModel } from './TemplateBooleanModel';
+import {SerializableTemplateBooleanModel} from './SerializableTemplateBooleanModel';
+import {TemplateBooleanModel} from './TemplateBooleanModel';
 
 /**
  * Used for the {link TemplateBooleanModel#FALSE} singleton.
@@ -24,4 +24,4 @@ TrueTemplateBooleanModel["__interfaces"] = ["freemarker.template.SerializableTem
 
 
 
-var __Function = Function;
+

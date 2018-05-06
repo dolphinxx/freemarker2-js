@@ -1,16 +1,12 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { MalformedTemplateNameException } from '../template/MalformedTemplateNameException';
-import { Template } from '../template/Template';
-import { TemplateException } from '../template/TemplateException';
-import { TemplateElement } from './TemplateElement';
-import { Expression } from './Expression';
-import { Environment } from './Environment';
-import { _MiscTemplateException } from './_MiscTemplateException';
-import { _DelayedJQuote } from './_DelayedJQuote';
-import { _DelayedGetMessage } from './_DelayedGetMessage';
-import { StringBuilder } from '../../java/lang/StringBuilder';
-import { _CoreStringUtils } from './_CoreStringUtils';
-import { ParameterRole } from './ParameterRole';
+import {TemplateElement} from './TemplateElement';
+import {Expression} from './Expression';
+import {_MiscTemplateException} from './_MiscTemplateException';
+import {_DelayedJQuote} from './_DelayedJQuote';
+import {_DelayedGetMessage} from './_DelayedGetMessage';
+import {StringBuilder} from '../../java/lang/StringBuilder';
+import {_CoreStringUtils} from './_CoreStringUtils';
+import {ParameterRole} from './ParameterRole';
 
 /**
  * <b>Internal API - subject to change:</b> Represents an import via {@code #import}.
@@ -25,7 +21,7 @@ export class LibraryLoad extends TemplateElement {
 
     /*private*/ targetNsVarName : string;
 
-    constructor(template : Template, templateName : Expression, targetNsVarName : string) {
+    constructor(template : /*Template*/any, templateName : Expression, targetNsVarName : string) {
         super();
         if(this.importedTemplateNameExp===undefined) this.importedTemplateNameExp = null;
         if(this.targetNsVarName===undefined) this.targetNsVarName = null;
@@ -38,19 +34,19 @@ export class LibraryLoad extends TemplateElement {
      * @param {Environment} env
      * @return {Array}
      */
-    accept(env : Environment) : TemplateElement[] {
+    accept(env : /*Environment*/any) : TemplateElement[] {
         let importedTemplateName : string = this.importedTemplateNameExp.evalAndCoerceToPlainText$freemarker_core_Environment(env);
         let fullImportedTemplateName : string;
         try {
             fullImportedTemplateName = env.toFullTemplateName(this.getTemplate().getName(), importedTemplateName);
         } catch(e) {
             throw new _MiscTemplateException(e, env, "Malformed template name ", new _DelayedJQuote(e.getTemplateName()), ":\n", e.getMalformednessDescription());
-        };
+        }
         try {
             env.importLib$java_lang_String$java_lang_String(fullImportedTemplateName, this.targetNsVarName);
         } catch(e) {
             throw new _MiscTemplateException(e, env, "Template importing failed (for parameter value ", new _DelayedJQuote(importedTemplateName), "):\n", new _DelayedGetMessage(e));
-        };
+        }
         return null;
     }
 
@@ -147,7 +143,3 @@ export class LibraryLoad extends TemplateElement {
     }
 }
 LibraryLoad["__class"] = "freemarker.core.LibraryLoad";
-
-
-
-var __Function = Function;

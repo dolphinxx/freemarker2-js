@@ -1,7 +1,8 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateException } from '../template/TemplateException';
-import { PrintWriter } from '../../java/io/PrintWriter';
-import { Environment } from './Environment';
+import {TemplateException} from '../template/TemplateException';
+import {PrintWriter} from '../../java/io/PrintWriter';
+import {ClassUtil} from "../template/utility/ClassUtil";
+import {PrintStream} from "../../java/io/PrintStream";
 
 /**
  * This exception is thrown when a <tt>#stop</tt> directive is encountered.
@@ -10,11 +11,11 @@ import { Environment } from './Environment';
  */
 export class StopException extends TemplateException {
     public constructor(env? : any, s? : any) {
-        if(((env != null && env instanceof <any>Environment) || env === null) && ((typeof s === 'string') || s === null)) {
+        if(((ClassUtil.isInstanceOf(env, 'freemarker.core.Environment')) || env === null) && ((typeof s === 'string') || s === null)) {
             let __args = Array.prototype.slice.call(arguments);
             super(s, env);
             (<any>Object).setPrototypeOf(this, StopException.prototype);
-        } else if(((env != null && env instanceof <any>Environment) || env === null) && s === undefined) {
+        } else if(((ClassUtil.isInstanceOf(env, 'freemarker.core.Environment')) || env === null) && s === undefined) {
             let __args = Array.prototype.slice.call(arguments);
             super(env);
             (<any>Object).setPrototypeOf(this, StopException.prototype);
@@ -28,8 +29,8 @@ export class StopException extends TemplateException {
             if(msg != null && !/* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(msg,""))) {
                 pw.println("\nCause given: " + msg);
             } else pw.println();
-            console.error(super.message, super);
-        };
+            console.error(super.message);
+        }
     }
 
     /**
@@ -51,8 +52,8 @@ export class StopException extends TemplateException {
             if(msg != null && !/* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(msg,""))) {
                 ps.println("\nCause given: " + msg);
             } else ps.println();
-            console.error(super.message, super);
-        };
+            console.error(super.message);
+        }
     }
 }
 StopException["__class"] = "freemarker.core.StopException";
@@ -61,4 +62,4 @@ StopException["__interfaces"] = ["java.io.Serializable"];
 
 
 
-var __Function = Function;
+

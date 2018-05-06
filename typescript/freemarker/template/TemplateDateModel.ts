@@ -1,6 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateModel } from './TemplateModel';
-import { TemplateModelException } from './TemplateModelException';
+import {TemplateModel} from './TemplateModel';
 
 /**
  * "date", "time" and "date-time" template language data types: corresponds to {link java.util.Date}. Contrary to Java,
@@ -54,4 +53,4 @@ export namespace TemplateDateModel {
 
 
 
-var __Function = Function;
+

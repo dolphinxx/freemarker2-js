@@ -1,18 +1,18 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { _DelayedFTLTypeDescription } from '../../core/_DelayedFTLTypeDescription';
-import { _DelayedToString } from '../../core/_DelayedToString';
-import { _ErrorDescriptionBuilder } from '../../core/_ErrorDescriptionBuilder';
-import { _TemplateModelException } from '../../core/_TemplateModelException';
-import { _UnexpectedTypeErrorExplainerTemplateModel } from '../../core/_UnexpectedTypeErrorExplainerTemplateModel';
-import { SimpleNumber } from '../../template/SimpleNumber';
-import { TemplateMethodModelEx } from '../../template/TemplateMethodModelEx';
-import { TemplateModel } from '../../template/TemplateModel';
-import { TemplateModelException } from '../../template/TemplateModelException';
-import { TemplateSequenceModel } from '../../template/TemplateSequenceModel';
-import { SimpleMethod } from './SimpleMethod';
-import { BeansWrapper } from './BeansWrapper';
-import { _MethodUtil } from './_MethodUtil';
-import { Character } from '../../../java/lang/Character';
+import {_DelayedFTLTypeDescription} from '../../core/_DelayedFTLTypeDescription';
+import {_DelayedToString} from '../../core/_DelayedToString';
+import {_ErrorDescriptionBuilder} from '../../core/_ErrorDescriptionBuilder';
+import {_TemplateModelException} from '../../core/_TemplateModelException';
+import {_UnexpectedTypeErrorExplainerTemplateModel} from '../../core/_UnexpectedTypeErrorExplainerTemplateModel';
+import {SimpleNumber} from '../../template/SimpleNumber';
+import {TemplateMethodModelEx} from '../../template/TemplateMethodModelEx';
+import {TemplateModel} from '../../template/TemplateModel';
+import {TemplateModelException} from '../../template/TemplateModelException';
+import {TemplateSequenceModel} from '../../template/TemplateSequenceModel';
+import {SimpleMethod} from './SimpleMethod';
+import {BeansWrapper} from './BeansWrapper';
+import {_MethodUtil} from './_MethodUtil';
+import {Character} from '../../../java/lang/Character';
 
 /**
  * A class that will wrap a reflected method call into a
@@ -54,7 +54,7 @@ export class SimpleMethodModel extends SimpleMethod implements TemplateMethodMod
                 throw _MethodUtil.newInvocationTemplateModelException$java_lang_Object$java_lang_reflect_Member$java_lang_Throwable(this.object, this.getMember(), e);
 
             }
-        };
+        }
     }
 
     public get(s? : any) : any {
@@ -84,7 +84,7 @@ export class SimpleMethodModel extends SimpleMethod implements TemplateMethodMod
      * @param {Array} expectedClasses
      * @return {Array}
      */
-    public explainTypeError(expectedClasses : Array) : Array {
+    public explainTypeError(expectedClasses : Array) : Array<any> {
         let member : Member = this.getMember();
         if(!(member != null && (member instanceof Function))) {
             return null;
@@ -110,4 +110,4 @@ SimpleMethodModel["__interfaces"] = ["freemarker.template.TemplateMethodModel","
 
 
 
-var __Function = Function;
+

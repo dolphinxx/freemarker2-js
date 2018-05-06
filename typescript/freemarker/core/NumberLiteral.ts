@@ -1,11 +1,10 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { SimpleNumber } from '../template/SimpleNumber';
-import { TemplateException } from '../template/TemplateException';
-import { TemplateModel } from '../template/TemplateModel';
-import { TemplateNumberModel } from '../template/TemplateNumberModel';
-import { Expression } from './Expression';
-import { Environment } from './Environment';
-import { ParameterRole } from './ParameterRole';
+import {SimpleNumber} from '../template/SimpleNumber';
+import {TemplateModel} from '../template/TemplateModel';
+import {TemplateNumberModel} from '../template/TemplateNumberModel';
+import {Expression} from './Expression';
+import {Environment} from './Environment';
+import {ParameterRole} from './ParameterRole';
 
 /**
  * A simple implementation of the <tt>TemplateNumberModel</tt>
@@ -28,19 +27,19 @@ export class NumberLiteral extends Expression implements TemplateNumberModel {
      * @param {Environment} env
      * @return {*}
      */
-    _eval(env : Environment) : TemplateModel {
+    _eval(env : /*Environment*/any) : TemplateModel {
         return new SimpleNumber(this.value);
     }
 
     public evalAndCoerceToPlainText(env? : any, seqTip? : any) : any {
-        if(((env != null && env instanceof <any>Environment) || env === null) && ((typeof seqTip === 'string') || seqTip === null)) {
+        if(((ClassUtil.isInstanceOf(env, 'freemarker.core.Environment')) || env === null) && ((typeof seqTip === 'string') || seqTip === null)) {
             super.evalAndCoerceToPlainText(env, seqTip);
-        } else if(((env != null && env instanceof <any>Environment) || env === null) && seqTip === undefined) {
+        } else if(((ClassUtil.isInstanceOf(env, 'freemarker.core.Environment')) || env === null) && seqTip === undefined) {
             return <any>this.evalAndCoerceToPlainText$freemarker_core_Environment(env);
         } else throw new Error('invalid overload');
     }
 
-    public evalAndCoerceToPlainText$freemarker_core_Environment(env : Environment) : string {
+    public evalAndCoerceToPlainText$freemarker_core_Environment(env : /*Environment*/any) : string {
         return env.formatNumberToPlainText$freemarker_template_TemplateNumberModel$freemarker_core_Expression$boolean(this, this, false);
     }
 
@@ -119,4 +118,4 @@ NumberLiteral["__interfaces"] = ["freemarker.template.TemplateNumberModel","free
 
 
 
-var __Function = Function;
+

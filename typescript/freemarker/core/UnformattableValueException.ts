@@ -1,5 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateValueFormatException } from './TemplateValueFormatException';
+import {TemplateValueFormatException} from './TemplateValueFormatException';
 
 /**
  * Thrown when a {link TemplateModel} can't be formatted because of the value/properties of it are outside of that the
@@ -31,4 +31,4 @@ UnformattableValueException["__interfaces"] = ["java.io.Serializable"];
 
 
 
-var __Function = Function;
+

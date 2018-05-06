@@ -1,14 +1,12 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateException } from '../template/TemplateException';
-import { TemplateModel } from '../template/TemplateModel';
-import { MarkupOutputFormat } from './MarkupOutputFormat';
-import { Environment } from './Environment';
-import { TemplateMarkupOutputModel } from './TemplateMarkupOutputModel';
-import { MarkupOutputFormatBoundBuiltIn } from './MarkupOutputFormatBoundBuiltIn';
-import { Expression } from './Expression';
-import { EvalUtil } from './EvalUtil';
-import { _TemplateModelException } from './_TemplateModelException';
-import { _DelayedToString } from './_DelayedToString';
+import {TemplateModel} from '../template/TemplateModel';
+import {MarkupOutputFormat} from './MarkupOutputFormat';
+import {Environment} from './Environment';
+import {TemplateMarkupOutputModel} from './TemplateMarkupOutputModel';
+import {MarkupOutputFormatBoundBuiltIn} from './MarkupOutputFormatBoundBuiltIn';
+import {EvalUtil} from './EvalUtil';
+import {_TemplateModelException} from './_TemplateModelException';
+import {_DelayedToString} from './_DelayedToString';
 
 export class BuiltInsForOutputFormatRelated {}
 BuiltInsForOutputFormatRelated["__class"] = "freemarker.core.BuiltInsForOutputFormatRelated";
@@ -17,7 +15,7 @@ BuiltInsForOutputFormatRelated["__class"] = "freemarker.core.BuiltInsForOutputFo
 export namespace BuiltInsForOutputFormatRelated {
 
     export abstract class AbstractConverterBI extends MarkupOutputFormatBoundBuiltIn {
-        calculateResult$freemarker_core_Environment(env : Environment) : TemplateModel {
+        calculateResult$freemarker_core_Environment(env : /*Environment*/any) : TemplateModel {
             let lhoTM : TemplateModel = this.target.eval(env);
             let lhoMOOrStr : any = EvalUtil.coerceModelToStringOrMarkup$freemarker_template_TemplateModel$freemarker_core_Expression$java_lang_String$freemarker_core_Environment(lhoTM, this.target, null, env);
             let contextOF : MarkupOutputFormat<any> = this.outputFormat;
@@ -38,12 +36,12 @@ export namespace BuiltInsForOutputFormatRelated {
             }
         }
 
-        public calculateResult$java_lang_String$freemarker_core_MarkupOutputFormat$freemarker_core_Environment(lho : string, outputFormat : MarkupOutputFormat<any>, env : Environment) : TemplateModel { throw new Error('cannot invoke abstract overloaded method... check your argument(s) type(s)'); }
+        public calculateResult$java_lang_String$freemarker_core_MarkupOutputFormat$freemarker_core_Environment(lho : string, outputFormat : MarkupOutputFormat<any>, env : /*Environment*/any) : TemplateModel { throw new Error('cannot invoke abstract overloaded method... check your argument(s) type(s)'); }
 
         public calculateResult(lho? : any, outputFormat? : any, env? : any) : any {
-            if(((typeof lho === 'string') || lho === null) && ((outputFormat != null && outputFormat instanceof <any>MarkupOutputFormat) || outputFormat === null) && ((env != null && env instanceof <any>Environment) || env === null)) {
+            if(((typeof lho === 'string') || lho === null) && ((outputFormat != null && outputFormat instanceof <any>MarkupOutputFormat) || outputFormat === null) && ((ClassUtil.isInstanceOf(env, 'freemarker.core.Environment')) || env === null)) {
                 return <any>this.calculateResult$java_lang_String$freemarker_core_MarkupOutputFormat$freemarker_core_Environment(lho, outputFormat, env);
-            } else if(((lho != null && lho instanceof <any>Environment) || lho === null) && outputFormat === undefined && env === undefined) {
+            } else if(((ClassUtil.isInstanceOf(lho, 'freemarker.core.Environment')) || lho === null) && outputFormat === undefined && env === undefined) {
                 return <any>this.calculateResult$freemarker_core_Environment(lho);
             } else throw new Error('invalid overload');
         }
@@ -58,7 +56,7 @@ export namespace BuiltInsForOutputFormatRelated {
 
 
     export class no_escBI extends BuiltInsForOutputFormatRelated.AbstractConverterBI {
-        public calculateResult$java_lang_String$freemarker_core_MarkupOutputFormat$freemarker_core_Environment(lho : string, outputFormat : MarkupOutputFormat<any>, env : Environment) : TemplateModel {
+        public calculateResult$java_lang_String$freemarker_core_MarkupOutputFormat$freemarker_core_Environment(lho : string, outputFormat : MarkupOutputFormat<any>, env : /*Environment*/any) : TemplateModel {
             return outputFormat.fromMarkup(lho);
         }
 
@@ -70,9 +68,9 @@ export namespace BuiltInsForOutputFormatRelated {
          * @return {*}
          */
         public calculateResult(lho? : any, outputFormat? : any, env? : any) : any {
-            if(((typeof lho === 'string') || lho === null) && ((outputFormat != null && outputFormat instanceof <any>MarkupOutputFormat) || outputFormat === null) && ((env != null && env instanceof <any>Environment) || env === null)) {
+            if(((typeof lho === 'string') || lho === null) && ((outputFormat != null && outputFormat instanceof <any>MarkupOutputFormat) || outputFormat === null) && ((ClassUtil.isInstanceOf(env, 'freemarker.core.Environment')) || env === null)) {
                 return <any>this.calculateResult$java_lang_String$freemarker_core_MarkupOutputFormat$freemarker_core_Environment(lho, outputFormat, env);
-            } else if(((lho != null && lho instanceof <any>Environment) || lho === null) && outputFormat === undefined && env === undefined) {
+            } else if(((ClassUtil.isInstanceOf(lho, 'freemarker.core.Environment')) || lho === null) && outputFormat === undefined && env === undefined) {
                 return <any>this.calculateResult$freemarker_core_Environment(lho);
             } else throw new Error('invalid overload');
         }
@@ -87,7 +85,7 @@ export namespace BuiltInsForOutputFormatRelated {
 
 
     export class escBI extends BuiltInsForOutputFormatRelated.AbstractConverterBI {
-        public calculateResult$java_lang_String$freemarker_core_MarkupOutputFormat$freemarker_core_Environment(lho : string, outputFormat : MarkupOutputFormat<any>, env : Environment) : TemplateModel {
+        public calculateResult$java_lang_String$freemarker_core_MarkupOutputFormat$freemarker_core_Environment(lho : string, outputFormat : MarkupOutputFormat<any>, env : /*Environment*/any) : TemplateModel {
             return outputFormat.fromPlainTextByEscaping(lho);
         }
 
@@ -99,9 +97,9 @@ export namespace BuiltInsForOutputFormatRelated {
          * @return {*}
          */
         public calculateResult(lho? : any, outputFormat? : any, env? : any) : any {
-            if(((typeof lho === 'string') || lho === null) && ((outputFormat != null && outputFormat instanceof <any>MarkupOutputFormat) || outputFormat === null) && ((env != null && env instanceof <any>Environment) || env === null)) {
+            if(((typeof lho === 'string') || lho === null) && ((outputFormat != null && outputFormat instanceof <any>MarkupOutputFormat) || outputFormat === null) && ((ClassUtil.isInstanceOf(env, 'freemarker.core.Environment')) || env === null)) {
                 return <any>this.calculateResult$java_lang_String$freemarker_core_MarkupOutputFormat$freemarker_core_Environment(lho, outputFormat, env);
-            } else if(((lho != null && lho instanceof <any>Environment) || lho === null) && outputFormat === undefined && env === undefined) {
+            } else if(((ClassUtil.isInstanceOf(lho, 'freemarker.core.Environment')) || lho === null) && outputFormat === undefined && env === undefined) {
                 return <any>this.calculateResult$freemarker_core_Environment(lho);
             } else throw new Error('invalid overload');
         }

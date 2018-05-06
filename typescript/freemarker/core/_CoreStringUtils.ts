@@ -1,9 +1,8 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { Configuration } from '../template/Configuration';
-import { StringUtil } from '../template/utility/StringUtil';
-import { BugException } from './BugException';
-import { Character } from '../../java/lang/Character';
-import { StringBuilder } from '../../java/lang/StringBuilder';
+import {StringUtil} from '../template/utility/StringUtil';
+import {BugException} from './BugException';
+import {Character} from '../../java/lang/Character';
+import {StringBuilder} from '../../java/lang/StringBuilder';
 
 /**
  * For internal use only; don't depend on this, there's no backward compatibility guarantee at all!
@@ -35,7 +34,7 @@ export class _CoreStringUtils {
                     break scanForQuotationType;
                 }
             }
-        };
+        }
         switch((quotationType).charCodeAt(0)) {
         case 0:
             return name;
@@ -58,6 +57,7 @@ export class _CoreStringUtils {
      * @param {String} name
      */
     public static getIdentifierNamingConvention(name : string) : number {
+        const Configuration = require('../template/Configuration').Configuration;
         let ln : number = name.length;
         for(let i : number = 0; i < ln; i++) {
             let c : string = name.charAt(i);
@@ -67,7 +67,7 @@ export class _CoreStringUtils {
             if(_CoreStringUtils.isUpperUSASCII(c)) {
                 return Configuration.CAMEL_CASE_NAMING_CONVENTION;
             }
-        };
+        }
         return Configuration.AUTO_DETECT_NAMING_CONVENTION;
     }
 
@@ -81,7 +81,7 @@ export class _CoreStringUtils {
         let i : number = 0;
         while((i < camelCaseName.length && Character.isLowerCase(camelCaseName.charAt(i)))) {
             i++;
-        };
+        }
         if(i === camelCaseName.length) {
             return camelCaseName;
         }
@@ -96,7 +96,7 @@ export class _CoreStringUtils {
                 sb.append(c);
             }
             i++;
-        };
+        }
         return sb.toString();
     }
 
@@ -108,4 +108,4 @@ _CoreStringUtils["__class"] = "freemarker.core._CoreStringUtils";
 
 
 
-var __Function = Function;
+

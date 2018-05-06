@@ -1,10 +1,8 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { SimpleScalar } from '../template/SimpleScalar';
-import { TemplateModel } from '../template/TemplateModel';
-import { TemplateModelException } from '../template/TemplateModelException';
-import { BuiltInForMarkupOutput } from './BuiltInForMarkupOutput';
-import { TemplateMarkupOutputModel } from './TemplateMarkupOutputModel';
-import { MarkupOutputFormat } from './MarkupOutputFormat';
+import {SimpleScalar} from '../template/SimpleScalar';
+import {TemplateModel} from '../template/TemplateModel';
+import {BuiltInForMarkupOutput} from './BuiltInForMarkupOutput';
+import {TemplateMarkupOutputModel} from './TemplateMarkupOutputModel';
 
 /**
  * A holder for builtins that operate exclusively on markup output left-hand value.

@@ -1,29 +1,28 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { EmptyMap } from '../template/EmptyMap';
-import { TemplateDirectiveModel } from '../template/TemplateDirectiveModel';
-import { TemplateException } from '../template/TemplateException';
-import { TemplateModel } from '../template/TemplateModel';
-import { TemplateTransformModel } from '../template/TemplateTransformModel';
-import { ObjectFactory } from '../template/utility/ObjectFactory';
-import { StringUtil } from '../template/utility/StringUtil';
-import { TemplateElement } from './TemplateElement';
-import { DirectiveCallPlace } from './DirectiveCallPlace';
-import { Expression } from './Expression';
-import { TemplateElements } from './TemplateElements';
-import { Environment } from './Environment';
-import { Macro } from './Macro';
-import { _MiscTemplateException } from './_MiscTemplateException';
-import { _DelayedJQuote } from './_DelayedJQuote';
-import { InvalidReferenceException } from './InvalidReferenceException';
-import { NonUserDefinedDirectiveLikeException } from './NonUserDefinedDirectiveLikeException';
-import { StringBuilder } from '../../java/lang/StringBuilder';
-import { _MessageUtil } from './_MessageUtil';
-import { _CoreStringUtils } from './_CoreStringUtils';
-import { Identifier } from './Identifier';
-import { Dot } from './Dot';
-import { ParameterRole } from './ParameterRole';
-import { MiscUtil } from './MiscUtil';
-import { CallPlaceCustomDataInitializationException } from './CallPlaceCustomDataInitializationException';
+import {EmptyMap} from '../template/EmptyMap';
+import {TemplateDirectiveModel} from '../template/TemplateDirectiveModel';
+import {TemplateModel} from '../template/TemplateModel';
+import {TemplateTransformModel} from '../template/TemplateTransformModel';
+import {ObjectFactory} from '../template/utility/ObjectFactory';
+import {StringUtil} from '../template/utility/StringUtil';
+import {TemplateElement} from './TemplateElement';
+import {DirectiveCallPlace} from './DirectiveCallPlace';
+import {Expression} from './Expression';
+import {TemplateElements} from './TemplateElements';
+import {Environment} from './Environment';
+import {Macro} from './Macro';
+import {_MiscTemplateException} from './_MiscTemplateException';
+import {_DelayedJQuote} from './_DelayedJQuote';
+import {InvalidReferenceException} from './InvalidReferenceException';
+import {NonUserDefinedDirectiveLikeException} from './NonUserDefinedDirectiveLikeException';
+import {StringBuilder} from '../../java/lang/StringBuilder';
+import {_MessageUtil} from './_MessageUtil';
+import {_CoreStringUtils} from './_CoreStringUtils';
+import {Identifier} from './Identifier';
+import {Dot} from './Dot';
+import {ParameterRole} from './ParameterRole';
+import {MiscUtil} from './MiscUtil';
+import {CallPlaceCustomDataInitializationException} from './CallPlaceCustomDataInitializationException';
 
 /**
  * An element for the unified macro/transform syntax.
@@ -101,7 +100,7 @@ export class UnifiedCall extends TemplateElement implements DirectiveCallPlace {
      * @param {Environment} env
      * @return {Array}
      */
-    accept(env : Environment) : TemplateElement[] {
+    accept(env : /*Environment*/any) : TemplateElement[] {
         let tm : TemplateModel = this.nameExp.eval(env);
         if(tm === Macro.DO_NOTHING_MACRO_$LI$()) return null;
         if(tm != null && tm instanceof <any>Macro) {
@@ -122,7 +121,7 @@ export class UnifiedCall extends TemplateElement implements DirectiveCallPlace {
                         let valueExp : Expression = <Expression>entry.getValue();
                         let value : TemplateModel = valueExp.eval(env);
                         /* put */args.set(key, value);
-                    };
+                    }
                 } else {
                     args = EmptyMap.instance_$LI$();
                 }
@@ -166,7 +165,7 @@ export class UnifiedCall extends TemplateElement implements DirectiveCallPlace {
                 }
                 sb.append(' ');
                 sb.append(argExp.getCanonicalForm());
-            };
+            }
         } else {
             let entries : Array<any> = this.getSortedNamedArgs();
             for(let i : number = 0; i < /* size */(<number>entries.length); i++) {
@@ -176,7 +175,7 @@ export class UnifiedCall extends TemplateElement implements DirectiveCallPlace {
                 sb.append(_CoreStringUtils.toFTLTopLevelIdentifierReference(<string>entry.getKey()));
                 sb.append('=');
                 _MessageUtil.appendExpressionAsUntearable(sb, argExp);
-            };
+            }
         }
         if(this.bodyParameterNames != null && !/* isEmpty */(this.bodyParameterNames.length == 0)) {
             sb.append("; ");
@@ -185,7 +184,7 @@ export class UnifiedCall extends TemplateElement implements DirectiveCallPlace {
                     sb.append(", ");
                 }
                 sb.append(_CoreStringUtils.toFTLTopLevelIdentifierReference(<string>/* get */this.bodyParameterNames[i]));
-            };
+            }
         }
         if(canonical) {
             if(this.getChildCount() === 0) {
@@ -308,7 +307,7 @@ export class UnifiedCall extends TemplateElement implements DirectiveCallPlace {
                     customDataHolder = this.createNewCustomData(providerIdentity, objectFactory);
                     this.customDataHolder = customDataHolder;
                 }
-            };
+            }
         }
         if(customDataHolder.providerIdentity !== providerIdentity) {
             {
@@ -317,7 +316,7 @@ export class UnifiedCall extends TemplateElement implements DirectiveCallPlace {
                     customDataHolder = this.createNewCustomData(providerIdentity, objectFactory);
                     this.customDataHolder = customDataHolder;
                 }
-            };
+            }
         }
         return customDataHolder.customData;
     }
@@ -329,7 +328,7 @@ export class UnifiedCall extends TemplateElement implements DirectiveCallPlace {
             customData = objectFactory.createObject();
         } catch(e) {
             throw new CallPlaceCustomDataInitializationException("Failed to initialize custom data for provider identity " + StringUtil.tryToString(provierIdentity) + " via factory " + StringUtil.tryToString(objectFactory), e);
-        };
+        }
         if(customData == null) {
             throw Object.defineProperty(new Error("ObjectFactory.createObject() has returned null"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.lang.RuntimeException','java.lang.NullPointerException','java.lang.Exception'] });
         }
@@ -389,4 +388,4 @@ export namespace UnifiedCall {
 
 
 
-var __Function = Function;
+

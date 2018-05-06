@@ -1,25 +1,23 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { SimpleScalar } from '../template/SimpleScalar';
-import { SimpleSequence } from '../template/SimpleSequence';
-import { TemplateException } from '../template/TemplateException';
-import { TemplateHashModel } from '../template/TemplateHashModel';
-import { TemplateModel } from '../template/TemplateModel';
-import { TemplateNumberModel } from '../template/TemplateNumberModel';
-import { TemplateScalarModel } from '../template/TemplateScalarModel';
-import { TemplateSequenceModel } from '../template/TemplateSequenceModel';
-import { _TemplateAPI } from '../template/_TemplateAPI';
-import { Constants } from '../template/utility/Constants';
-import { Expression } from './Expression';
-import { Environment } from './Environment';
-import { InvalidReferenceException } from './InvalidReferenceException';
-import { EvalUtil } from './EvalUtil';
-import { RangeModel } from './RangeModel';
-import { UnexpectedTypeException } from './UnexpectedTypeException';
-import { Range } from './Range';
-import { NonStringException } from './NonStringException';
-import { _MiscTemplateException } from './_MiscTemplateException';
-import { NonHashException } from './NonHashException';
-import { ParameterRole } from './ParameterRole';
+import {SimpleScalar} from '../template/SimpleScalar';
+import {SimpleSequence} from '../template/SimpleSequence';
+import {TemplateHashModel} from '../template/TemplateHashModel';
+import {TemplateModel} from '../template/TemplateModel';
+import {TemplateScalarModel} from '../template/TemplateScalarModel';
+import {TemplateSequenceModel} from '../template/TemplateSequenceModel';
+import {_TemplateAPI} from '../template/_TemplateAPI';
+import {Constants} from '../template/utility/Constants';
+import {Expression} from './Expression';
+import {InvalidReferenceException} from './InvalidReferenceException';
+import {EvalUtil} from './EvalUtil';
+import {RangeModel} from './RangeModel';
+import {UnexpectedTypeException} from './UnexpectedTypeException';
+import {Range} from './Range';
+import {NonStringException} from './NonStringException';
+import {_MiscTemplateException} from './_MiscTemplateException';
+import {NonHashException} from './NonHashException';
+import {ParameterRole} from './ParameterRole';
+import {List} from "../../java/util/List";
 
 /**
  * {@code target[keyExpression]}, where, in FM 2.3, {@code keyExpression} can be string, a number or a range,
@@ -48,7 +46,7 @@ export class DynamicKeyName extends Expression {
      * @param {Environment} env
      * @return {*}
      */
-    _eval(env : Environment) : TemplateModel {
+    _eval(env : /*Environment*/any) : TemplateModel {
         let targetModel : TemplateModel = this.target.eval(env);
         if(targetModel == null) {
             if(env.isClassicCompatible()) {
@@ -79,17 +77,17 @@ export class DynamicKeyName extends Expression {
         throw new UnexpectedTypeException(this.keyExpression, keyModel, "number, range, or string", ["freemarker.template.TemplateNumberModel", "freemarker.template.TemplateScalarModel", Range], env);
     }
 
-    static NUMERICAL_KEY_LHO_EXPECTED_TYPES : Array<any>; public static NUMERICAL_KEY_LHO_EXPECTED_TYPES_$LI$() : Array { DynamicKeyName.__static_initialize(); return DynamicKeyName.NUMERICAL_KEY_LHO_EXPECTED_TYPES; };
+    static NUMERICAL_KEY_LHO_EXPECTED_TYPES : Array<any>; public static NUMERICAL_KEY_LHO_EXPECTED_TYPES_$LI$() : Array<any> { DynamicKeyName.__static_initialize(); return DynamicKeyName.NUMERICAL_KEY_LHO_EXPECTED_TYPES; };
 
     static __static_initializer_0() {
         DynamicKeyName.NUMERICAL_KEY_LHO_EXPECTED_TYPES = (s => { let a=[]; while(s-->0) a.push(null); return a; })(1 + NonStringException.STRING_COERCABLE_TYPES.length);
         DynamicKeyName.NUMERICAL_KEY_LHO_EXPECTED_TYPES_$LI$()[0] = "freemarker.template.TemplateSequenceModel";
         for(let i : number = 0; i < NonStringException.STRING_COERCABLE_TYPES_$LI$().length; i++) {
             DynamicKeyName.NUMERICAL_KEY_LHO_EXPECTED_TYPES_$LI$()[i + 1] = NonStringException.STRING_COERCABLE_TYPES_$LI$()[i];
-        };
+        }
     }
 
-    /*private*/ dealWithNumericalKey(targetModel : TemplateModel, index : number, env : Environment) : TemplateModel {
+    /*private*/ dealWithNumericalKey(targetModel : TemplateModel, index : number, env : /*Environment*/any) : TemplateModel {
         if(targetModel != null && (targetModel["__interfaces"] != null && targetModel["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0 || targetModel.constructor != null && targetModel.constructor["__interfaces"] != null && targetModel.constructor["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0)) {
             let tsm : TemplateSequenceModel = <TemplateSequenceModel><any>targetModel;
             let size : number;
@@ -97,7 +95,7 @@ export class DynamicKeyName extends Expression {
                 size = tsm.size();
             } catch(e) {
                 size = Number.MAX_VALUE;
-            };
+            }
             return index < size?tsm['get$int'](index):null;
         }
         try {
@@ -112,20 +110,20 @@ export class DynamicKeyName extends Expression {
                     throw new _MiscTemplateException("String index out of range: The index was ", index, " (0-based), but the length of the string is only ", s.length, ".");
                 }
                 throw Object.defineProperty(new Error("Can\'t explain exception"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.lang.RuntimeException','java.lang.Exception'] });
-            };
+            }
         } catch(e) {
             throw new UnexpectedTypeException(this.target, targetModel, "sequence or " + NonStringException.STRING_COERCABLE_TYPES_DESC, DynamicKeyName.NUMERICAL_KEY_LHO_EXPECTED_TYPES_$LI$(), ((targetModel != null && (targetModel["__interfaces"] != null && targetModel["__interfaces"].indexOf("freemarker.template.TemplateHashModel") >= 0 || targetModel.constructor != null && targetModel.constructor["__interfaces"] != null && targetModel.constructor["__interfaces"].indexOf("freemarker.template.TemplateHashModel") >= 0))?"You had a numberical value inside the []. Currently that\'s only supported for sequences (lists) and strings. To get a Map item with a non-string key, use myMap?api.get(myKey).":null), env);
-        };
+        }
     }
 
-    /*private*/ dealWithStringKey(targetModel : TemplateModel, key : string, env : Environment) : TemplateModel {
+    /*private*/ dealWithStringKey(targetModel : TemplateModel, key : string, env : /*Environment*/any) : TemplateModel {
         if(targetModel != null && (targetModel["__interfaces"] != null && targetModel["__interfaces"].indexOf("freemarker.template.TemplateHashModel") >= 0 || targetModel.constructor != null && targetModel.constructor["__interfaces"] != null && targetModel.constructor["__interfaces"].indexOf("freemarker.template.TemplateHashModel") >= 0)) {
             return (<TemplateHashModel><any>targetModel)['get$java_lang_String'](key);
         }
         throw new NonHashException(this.target, targetModel, env);
     }
 
-    /*private*/ dealWithRangeKey(targetModel : TemplateModel, range : RangeModel, env : Environment) : TemplateModel {
+    /*private*/ dealWithRangeKey(targetModel : TemplateModel, range : RangeModel, env : /*Environment*/any) : TemplateModel {
         let targetSeq : TemplateSequenceModel;
         let targetStr : string;
         if(targetModel != null && (targetModel["__interfaces"] != null && targetModel["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0 || targetModel.constructor != null && targetModel.constructor["__interfaces"] != null && targetModel.constructor["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0)) {
@@ -137,7 +135,7 @@ export class DynamicKeyName extends Expression {
                 targetStr = this.target.evalAndCoerceToPlainText$freemarker_core_Environment(env);
             } catch(e) {
                 throw new UnexpectedTypeException(this.target, this.target.eval(env), "sequence or " + NonStringException.STRING_COERCABLE_TYPES_DESC, DynamicKeyName.NUMERICAL_KEY_LHO_EXPECTED_TYPES_$LI$(), env);
-            };
+            }
         }
         let size : number = range.size();
         let rightUnbounded : boolean = range.isRightUnbounded();
@@ -184,7 +182,7 @@ export class DynamicKeyName extends Expression {
             for(let i : number = 0; i < resultSize; i++) {
                 /* add */(list.push(targetSeq['get$int'](srcIdx))>0);
                 srcIdx += step;
-            };
+            }
             return new SimpleSequence(list, null);
         } else {
             let exclEndIdx : number;
@@ -202,7 +200,7 @@ export class DynamicKeyName extends Expression {
     }
 
     /*private*/ emptyResult(seq : boolean) : TemplateModel {
-        return seq?(_TemplateAPI.getTemplateLanguageVersionAsInt$freemarker_core_TemplateObject(this) < _TemplateAPI.VERSION_INT_2_3_21_$LI$()?new SimpleSequence(Collections.EMPTY_LIST, null):Constants.EMPTY_SEQUENCE_$LI$()):TemplateScalarModel.EMPTY_STRING;
+        return seq?(_TemplateAPI.getTemplateLanguageVersionAsInt$freemarker_core_TemplateObject(this) < /*_TemplateAPI.VERSION_INT_2_3_21_$LI$()*/2003021?new SimpleSequence(new List(), null):Constants.EMPTY_SEQUENCE_$LI$()):TemplateScalarModel.EMPTY_STRING;
     }
 
     /**

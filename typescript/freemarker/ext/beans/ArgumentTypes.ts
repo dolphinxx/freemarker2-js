@@ -1,18 +1,16 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { BugException } from '../../core/BugException';
-import { TemplateModel } from '../../template/TemplateModel';
-import { TemplateModelException } from '../../template/TemplateModelException';
-import { ClassUtil } from '../../template/utility/ClassUtil';
-import { MaybeEmptyCallableMemberDescriptor } from './MaybeEmptyCallableMemberDescriptor';
-import { ReflectionCallableMemberDescriptor } from './ReflectionCallableMemberDescriptor';
-import { CallableMemberDescriptor } from './CallableMemberDescriptor';
-import { EmptyCallableMemberDescriptor } from './EmptyCallableMemberDescriptor';
-import { OverloadedNumberUtil } from './OverloadedNumberUtil';
-import { _MethodUtil } from './_MethodUtil';
-import { Character } from '../../../java/lang/Character';
-import { CharacterOrString } from './CharacterOrString';
-import { Boolean } from '../../../java/lang/Boolean';
-import { BeansWrapper } from './BeansWrapper';
+import {BugException} from '../../core/BugException';
+import {TemplateModel} from '../../template/TemplateModel';
+import {ClassUtil} from '../../template/utility/ClassUtil';
+import {MaybeEmptyCallableMemberDescriptor} from './MaybeEmptyCallableMemberDescriptor';
+import {ReflectionCallableMemberDescriptor} from './ReflectionCallableMemberDescriptor';
+import {CallableMemberDescriptor} from './CallableMemberDescriptor';
+import {EmptyCallableMemberDescriptor} from './EmptyCallableMemberDescriptor';
+import {OverloadedNumberUtil} from './OverloadedNumberUtil';
+import {_MethodUtil} from './_MethodUtil';
+import {CharacterOrString} from './CharacterOrString';
+import {Boolean} from '../../../java/lang/Boolean';
+import {BeansWrapper} from './BeansWrapper';
 
 /**
  * The argument types of a method call; usable as cache key.
@@ -49,7 +47,7 @@ export class ArgumentTypes {
         for(let i : number = 0; i < ln; ++i) {
             let arg : any = args[i];
             typesTmp[i] = arg == null?(bugfixed?ArgumentTypes.Null:Object):(<any>arg.constructor);
-        };
+        }
         this.types = typesTmp;
         this.bugfixed = bugfixed;
     }
@@ -62,7 +60,7 @@ export class ArgumentTypes {
         let hash : number = 0;
         for(let i : number = 0; i < this.types.length; ++i) {
             hash ^= /* hashCode */(<any>((o: any) => { if(o.hashCode) { return o.hashCode(); } else { return o.toString(); } })(this.types[i]));
-        };
+        }
         return hash;
     }
 
@@ -81,7 +79,7 @@ export class ArgumentTypes {
                 if(cs.types[i] !== this.types[i]) {
                     return false;
                 }
-            };
+            }
             return true;
         }
         return false;
@@ -114,7 +112,7 @@ export class ArgumentTypes {
                     } else if(cmpRes < 0) {
                         lessSpecific = true;
                     }
-                };
+                }
                 if(!lessSpecific) {
                     /* addLast */(maximals.push(applicable)>0);
                 }
@@ -292,7 +290,7 @@ export class ArgumentTypes {
                 if(firstWinerParamList === 0 && winerParam !== 0) {
                     firstWinerParamList = winerParam;
                 }
-            };
+            }
             if(paramList1VeryStrongWinCnt !== paramList2VeryStrongWinCnt) {
                 return paramList1VeryStrongWinCnt - paramList2VeryStrongWinCnt;
             } else if(paramList1StrongWinCnt !== paramList2StrongWinCnt) {
@@ -334,7 +332,7 @@ export class ArgumentTypes {
                     paramTypes1HasAMoreSpecific = paramTypes1HasAMoreSpecific || _MethodUtil.isMoreOrSameSpecificParameterType(paramType1, paramType2, false, 0) !== 0;
                     paramTypes2HasAMoreSpecific = paramTypes2HasAMoreSpecific || _MethodUtil.isMoreOrSameSpecificParameterType(paramType2, paramType1, false, 0) !== 0;
                 }
-            };
+            }
             if(paramTypes1HasAMoreSpecific) {
                 return paramTypes2HasAMoreSpecific?0:1;
             } else if(paramTypes2HasAMoreSpecific) {
@@ -447,7 +445,7 @@ export class ArgumentTypes {
             if(maxDifficulty < difficulty) {
                 maxDifficulty = difficulty;
             }
-        };
+        }
         if(varArg) {
             let varArgParamType : any = paramTypes[fl].getComponentType();
             for(let i : number = fl; i < cl; ++i) {
@@ -458,7 +456,7 @@ export class ArgumentTypes {
                 if(maxDifficulty < difficulty) {
                     maxDifficulty = difficulty;
                 }
-            };
+            }
         }
         return maxDifficulty;
     }
@@ -628,7 +626,7 @@ export namespace ArgumentTypes {
          * 
          * @return {Array}
          */
-        getParamTypes() : Array {
+        getParamTypes() : Array<any> {
             return this.callableMemberDesc.getParamTypes();
         }
 
@@ -660,7 +658,7 @@ export namespace ArgumentTypes {
                         args[i] = (<CharacterOrString>arg).getAsString();
                     }
                 }
-            };
+            }
         }
     }
     SpecialConversionCallableMemberDescriptor["__class"] = "freemarker.ext.beans.ArgumentTypes.SpecialConversionCallableMemberDescriptor";
@@ -669,4 +667,4 @@ export namespace ArgumentTypes {
 
 
 
-var __Function = Function;
+

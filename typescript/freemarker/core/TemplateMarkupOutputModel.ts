@@ -1,6 +1,6 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateModel } from '../template/TemplateModel';
-import { MarkupOutputFormat } from './MarkupOutputFormat';
+import {TemplateModel} from '../template/TemplateModel';
+import {MarkupOutputFormat} from './MarkupOutputFormat';
 
 /**
  * "markup output" template language data-type; stores markup (some kind of "rich text" / structured format, as opposed
@@ -31,4 +31,4 @@ export interface TemplateMarkupOutputModel<MO extends TemplateMarkupOutputModel<
 }
 
 
-var __Function = Function;
+

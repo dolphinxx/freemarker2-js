@@ -1,5 +1,7 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { System } from '../../../java/lang/System';
+import {System} from '../../../java/lang/System';
+import {Entry} from "../../../java/util/Entry";
+import {Set} from "../../../java/util/Set";
 
 /**
  * Constructs a new, empty map with the specified initial
@@ -18,7 +20,7 @@ export class IdentityHashMap {
     /**
      * The hash table data.
      */
-    /*private*/ table : IdentityHashMap.Entry[];
+    /*private*/ table : Entry<any, any>[];
 
     /**
      * The total number of mappings in the hash table.
@@ -182,11 +184,17 @@ export class IdentityHashMap {
      * specified value.
      */
     public containsValue(value : any) : boolean {
-        let tab : IdentityHashMap.Entry[] = this.table;
+        let tab : Entry<any, any>[] = this.table;
         if(value == null) {
-            for(let i : number = tab.length; i-- > 0; ) for(let e : IdentityHashMap.Entry = tab[i]; e != null; e = e.next) if(e.value == null) return true;;;
+            for (let i: number = tab.length; i-- > 0;) for (let e: Entry<any, any> = tab[i]; e != null; e = e.next) if (e.value == null) return true;
         } else {
-            for(let i : number = tab.length; i-- > 0; ) for(let e : IdentityHashMap.Entry = tab[i]; e != null; e = e.next) if(/* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(value,e.value))) return true;;;
+            for (let i: number = tab.length; i-- > 0;) for (let e: Entry<any, any> = tab[i]; e != null; e = e.next) if (/* equals */(<any>((o1: any, o2: any) => {
+                if (o1 && o1.equals) {
+                    return o1.equals(o2);
+                } else {
+                    return o1 === o2;
+                }
+            })(value, e.value))) return true;
         }
         return false;
     }
@@ -200,13 +208,13 @@ export class IdentityHashMap {
      * key.
      */
     public containsKey(key : any) : boolean {
-        let tab : IdentityHashMap.Entry[] = this.table;
+        let tab : Entry<any, any>[] = this.table;
         if(key != null) {
-            let hash : number = java.lang.System.identityHashCode(key);
+            let hash : number = System.identityHashCode(key);
             let index : number = (hash & 2147483647) % tab.length;
-            for(let e : IdentityHashMap.Entry = tab[index]; e != null; e = e.next) if(e.hash === hash && key === e.key) return true;;
+            for (let e: Entry<any, any> = tab[index]; e != null; e = e.next) if (e.hash === hash && key === e.key) return true;
         } else {
-            for(let e : IdentityHashMap.Entry = tab[0]; e != null; e = e.next) if(e.key == null) return true;;
+            for (let e: Entry<any, any> = tab[0]; e != null; e = e.next) if (e.key == null) return true;
         }
         return false;
     }
@@ -223,13 +231,13 @@ export class IdentityHashMap {
      * @return {Object} the value to which this map maps the specified key.
      */
     public get(key : any) : any {
-        let tab : IdentityHashMap.Entry[] = this.table;
+        let tab : Entry<any, any>[] = this.table;
         if(key != null) {
-            let hash : number = java.lang.System.identityHashCode(key);
+            let hash : number = System.identityHashCode(key);
             let index : number = (hash & 2147483647) % tab.length;
-            for(let e : IdentityHashMap.Entry = tab[index]; e != null; e = e.next) if((e.hash === hash) && key === e.key) return e.value;;
+            for (let e: Entry<any, any> = tab[index]; e != null; e = e.next) if ((e.hash === hash) && key === e.key) return e.value;
         } else {
-            for(let e : IdentityHashMap.Entry = tab[0]; e != null; e = e.next) if(e.key == null) return e.value;;
+            for (let e: Entry<any, any> = tab[0]; e != null; e = e.next) if (e.key == null) return e.value;
         }
         return null;
     }
@@ -242,21 +250,21 @@ export class IdentityHashMap {
      */
     rehash() {
         let oldCapacity : number = this.table.length;
-        let oldMap : IdentityHashMap.Entry[] = this.table;
+        let oldMap : Entry<any, any>[] = this.table;
         let newCapacity : number = oldCapacity * 2 + 1;
-        let newMap : IdentityHashMap.Entry[] = (s => { let a=[]; while(s-->0) a.push(null); return a; })(newCapacity);
+        let newMap : Entry<any, any>[] = (s => { let a=[]; while(s-->0) a.push(null); return a; })(newCapacity);
         this.modCount++;
         this.threshold = (<number>((<any>Math).fround(newCapacity * this.__loadFactor))|0);
         this.table = newMap;
         for(let i : number = oldCapacity; i-- > 0; ) {
-            for(let old : IdentityHashMap.Entry = oldMap[i]; old != null; ) {
-                let e : IdentityHashMap.Entry = old;
+            for(let old : Entry<any, any> = oldMap[i]; old != null; ) {
+                let e : Entry<any, any> = old;
                 old = old.next;
                 let index : number = (e.hash & 2147483647) % newCapacity;
                 e.next = newMap[index];
                 newMap[index] = e;
-            };
-        };
+            }
+        }
     }
 
     /**
@@ -272,27 +280,27 @@ export class IdentityHashMap {
      * <tt>null</tt> with the specified key.
      */
     public put(key : any, value : any) : any {
-        let tab : IdentityHashMap.Entry[] = this.table;
+        let tab : Entry<any, any>[] = this.table;
         let hash : number = 0;
         let index : number = 0;
         if(key != null) {
-            hash = java.lang.System.identityHashCode(key);
+            hash = System.identityHashCode(key);
             index = (hash & 2147483647) % tab.length;
-            for(let e : IdentityHashMap.Entry = tab[index]; e != null; e = e.next) {
+            for(let e : Entry<any, any> = tab[index]; e != null; e = e.next) {
                 if((e.hash === hash) && key === e.key) {
                     let old : any = e.value;
                     e.value = value;
                     return old;
                 }
-            };
+            }
         } else {
-            for(let e : IdentityHashMap.Entry = tab[0]; e != null; e = e.next) {
+            for(let e : Entry<any, any> = tab[0]; e != null; e = e.next) {
                 if(e.key == null) {
                     let old : any = e.value;
                     e.value = value;
                     return old;
                 }
-            };
+            }
         }
         this.modCount++;
         if(this.count >= this.threshold) {
@@ -300,7 +308,7 @@ export class IdentityHashMap {
             tab = this.table;
             index = (hash & 2147483647) % tab.length;
         }
-        let e : IdentityHashMap.Entry = new IdentityHashMap.Entry(hash, key, value, tab[index]);
+        let e : Entry<any, any> = new Entry<any, any>(hash, key, value, tab[index]);
         tab[index] = e;
         this.count++;
         return null;
@@ -316,11 +324,11 @@ export class IdentityHashMap {
      * with the specified key.
      */
     public remove(key : any) : any {
-        let tab : IdentityHashMap.Entry[] = this.table;
+        let tab : Entry<any, any>[] = this.table;
         if(key != null) {
-            let hash : number = java.lang.System.identityHashCode(key);
+            let hash : number = System.identityHashCode(key);
             let index : number = (hash & 2147483647) % tab.length;
-            for(let e : IdentityHashMap.Entry = tab[index], prev : IdentityHashMap.Entry = null; e != null; prev = e, e = e.next) {
+            for(let e : Entry<any, any> = tab[index], prev : Entry<any, any> = null; e != null; prev = e, e = e.next) {
                 if((e.hash === hash) && key === e.key) {
                     this.modCount++;
                     if(prev != null) prev.next = e.next; else tab[index] = e.next;
@@ -329,9 +337,9 @@ export class IdentityHashMap {
                     e.value = null;
                     return oldValue;
                 }
-            };
+            }
         } else {
-            for(let e : IdentityHashMap.Entry = tab[0], prev : IdentityHashMap.Entry = null; e != null; prev = e, e = e.next) {
+            for(let e : Entry<any, any> = tab[0], prev : Entry<any, any> = null; e != null; prev = e, e = e.next) {
                 if(e.key == null) {
                     this.modCount++;
                     if(prev != null) prev.next = e.next; else tab[0] = e.next;
@@ -340,7 +348,7 @@ export class IdentityHashMap {
                     e.value = null;
                     return oldValue;
                 }
-            };
+            }
         }
         return null;
     }
@@ -356,16 +364,16 @@ export class IdentityHashMap {
     public putAll(t : Map<any, any>) {
         let i : any = /* iterator */((a) => { var i = 0; return { next: function() { return i<a.length?a[i++]:null; }, hasNext: function() { return i<a.length; }}})(/* entrySet */((m) => { if(m.entries==null) m.entries=[]; return m.entries; })(<any>t));
         while((i.hasNext())) {
-            let e : Entry = <Entry><any>i.next();
+            let e : Entry<any, any> = <Entry<any, any>><any>i.next();
             this.put(e.getKey(), e.getValue());
-        };
+        }
     }
 
     /**
      * Removes all mappings from this map.
      */
     public clear() {
-        let tab : IdentityHashMap.Entry[] = this.table;
+        let tab : Entry<any, any>[] = this.table;
         this.modCount++;
         for(let index : number = tab.length; --index >= 0; ) tab[index] = null;
         this.count = 0;
@@ -378,25 +386,26 @@ export class IdentityHashMap {
      * @return {Object} a shallow copy of this map.
      */
     public clone() : any {
-        try {
-            let t : IdentityHashMap = <IdentityHashMap>/* clone */(m => { if(m.entries==null) m.entries=[]; let c = {entries: []}; for(let i=0;i<m.entries.length;i++) { let k = m.entries[i].key, v = m.entries[i].value; c.entries[i] = {key:k,value:v,getKey: function() { return this.key }, getValue: function() { return this.value }}; } return c; })(super);
-            t.table = (s => { let a=[]; while(s-->0) a.push(null); return a; })(this.table.length);
-            for(let i : number = this.table.length; i-- > 0; ) {
-                t.table[i] = (this.table[i] != null)?<IdentityHashMap.Entry>/* clone *//* clone */((o:any) => { if(o.clone!=undefined) { return (<any>o).clone(); } else { let clone = Object.create(o); for(let p in o) { if (o.hasOwnProperty(p)) clone[p] = o[p]; } return clone; } })(this.table[i]):null;
-            };
-            t.__keySet = null;
-            t.__entrySet = null;
-            t.__values = null;
-            t.modCount = 0;
-            return t;
-        } catch(e) {
-            throw Object.defineProperty(new Error(), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.VirtualMachineError','java.lang.InternalError','java.lang.Error','java.lang.Object'] });
-        };
+        // try {
+        //     let t : IdentityHashMap = <IdentityHashMap>/* clone */(m => { if(m.entries==null) m.entries=[]; let c = {entries: []}; for(let i=0;i<m.entries.length;i++) { let k = m.entries[i].key, v = m.entries[i].value; c.entries[i] = {key:k,value:v,getKey: function() { return this.key }, getValue: function() { return this.value }}; } return c; })(super);
+        //     t.table = (s => { let a=[]; while(s-->0) a.push(null); return a; })(this.table.length);
+        //     for(let i : number = this.table.length; i-- > 0; ) {
+        //         t.table[i] = (this.table[i] != null)?<Entry<any, any>>/* clone *//* clone */((o:any) => { if(o.clone!=undefined) { return (<any>o).clone(); } else { let clone = Object.create(o); for(let p in o) { if (o.hasOwnProperty(p)) clone[p] = o[p]; } return clone; } })(this.table[i]):null;
+        //     };
+        //     t.__keySet = null;
+        //     t.__entrySet = null;
+        //     t.__values = null;
+        //     t.modCount = 0;
+        //     return t;
+        // } catch(e) {
+        //     throw Object.defineProperty(new Error(), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.VirtualMachineError','java.lang.InternalError','java.lang.Error','java.lang.Object'] });
+        // };
+        throw new Error();
     }
 
-    /*private*/ __keySet : Array<any> = null;
+    /*private*/ __keySet : Set<any> = null;
 
-    /*private*/ __entrySet : Array<any> = null;
+    /*private*/ __entrySet : Set<Entry<any, any>> = null;
 
     /*private*/ __values : Array<any> = null;
 
@@ -411,7 +420,7 @@ export class IdentityHashMap {
      * 
      * @return {Set} a set view of the keys contained in this map.
      */
-    public keySet() : Array<any> {
+    public keySet() : Set<Entry<any, any>> {
         if(this.__keySet == null) {
             this.__keySet = new IdentityHashMap.IdentityHashMap$0(this);
         }
@@ -449,7 +458,7 @@ export class IdentityHashMap {
      * @return {Set} a collection view of the mappings contained in this map.
      * see java.util.Map.Entry
      */
-    public entrySet() : Array<any> {
+    public entrySet() : Set<Entry<any, any>> {
         if(this.__entrySet == null) {
             this.__entrySet = new IdentityHashMap.IdentityHashMap$2(this);
         }
@@ -485,18 +494,18 @@ export class IdentityHashMap {
      * @param {ObjectOutputStream} s
      * @private
      */
-    writeObject(s : ObjectOutputStream) {
+    writeObject(s : any/*ObjectOutputStream*/) {
         s.defaultWriteObject();
         s.writeInt(this.table.length);
         s.writeInt(this.count);
         for(let index : number = this.table.length - 1; index >= 0; index--) {
-            let entry : IdentityHashMap.Entry = this.table[index];
+            let entry : Entry<any, any> = this.table[index];
             while((entry != null)) {
                 s.writeObject(entry.key);
                 s.writeObject(entry.value);
                 entry = entry.next;
-            };
-        };
+            }
+        }
     }
 
     /**
@@ -505,7 +514,7 @@ export class IdentityHashMap {
      * @param {ObjectInputStream} s
      * @private
      */
-    readObject(s : ObjectInputStream) {
+    readObject(s : any/*ObjectInputStream*/) {
         s.defaultReadObject();
         let numBuckets : number = s.readInt();
         this.table = (s => { let a=[]; while(s-->0) a.push(null); return a; })(numBuckets);
@@ -514,7 +523,7 @@ export class IdentityHashMap {
             let key : any = s.readObject();
             let value : any = s.readObject();
             this.put(key, value);
-        };
+        }
     }
 
     capacity() : number {
@@ -531,85 +540,6 @@ IdentityHashMap["__interfaces"] = ["java.lang.Cloneable","java.util.Map","java.i
 
 
 export namespace IdentityHashMap {
-
-    /**
-     * IdentityHashMap collision list entry.
-     * @class
-     */
-    export class Entry {
-        hash : number;
-
-        key : any;
-
-        value : any;
-
-        next : IdentityHashMap.Entry;
-
-        constructor(hash : number, key : any, value : any, next : IdentityHashMap.Entry) {
-            if(this.hash===undefined) this.hash = 0;
-            if(this.key===undefined) this.key = null;
-            if(this.value===undefined) this.value = null;
-            if(this.next===undefined) this.next = null;
-            this.hash = hash;
-            this.key = key;
-            this.value = value;
-            this.next = next;
-        }
-
-        /**
-         * 
-         * @return {Object}
-         */
-        clone() : any {
-            return new IdentityHashMap.Entry(this.hash, this.key, this.value, (this.next == null?null:<IdentityHashMap.Entry>/* clone *//* clone */((o:any) => { if(o.clone!=undefined) { return (<any>o).clone(); } else { let clone = Object.create(o); for(let p in o) { if (o.hasOwnProperty(p)) clone[p] = o[p]; } return clone; } })(this.next)));
-        }
-
-        public getKey() : any {
-            return this.key;
-        }
-
-        public getValue() : any {
-            return this.value;
-        }
-
-        public setValue(value : any) : any {
-            let oldValue : any = this.value;
-            this.value = value;
-            return oldValue;
-        }
-
-        /**
-         * 
-         * @param {Object} o
-         * @return {boolean}
-         */
-        public equals(o : any) : boolean {
-            if(!(o != null && (o["__interfaces"] != null && o["__interfaces"].indexOf("java.util.Map.Entry") >= 0 || o.constructor != null && o.constructor["__interfaces"] != null && o.constructor["__interfaces"].indexOf("java.util.Map.Entry") >= 0))) return false;
-            let e : Entry = <Entry><any>o;
-            return (this.key === e.getKey()) && (this.value == null?e.getValue() == null:/* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(this.value,e.getValue())));
-        }
-
-        /**
-         * 
-         * @return {number}
-         */
-        public hashCode() : number {
-            return this.hash ^ (this.value == null?0:/* hashCode */(<any>((o: any) => { if(o.hashCode) { return o.hashCode(); } else { return o.toString(); } })(this.value)));
-        }
-
-        /**
-         * 
-         * @return {String}
-         */
-        public toString() : string {
-            return this.key + "=" + this.value;
-        }
-    }
-    Entry["__class"] = "freemarker.ext.util.IdentityHashMap.Entry";
-    Entry["__interfaces"] = ["java.util.Map.Entry"];
-
-
-
     export class EmptyHashIterator {
         constructor() {
         }
@@ -633,13 +563,13 @@ export namespace IdentityHashMap {
 
     export class HashIterator {
         public __parent: any;
-        table : IdentityHashMap.Entry[];
+        table : Entry<any, any>[];
 
         index : number;
 
-        entry : IdentityHashMap.Entry;
+        entry : Entry<any, any>;
 
-        lastReturned : IdentityHashMap.Entry;
+        lastReturned : Entry<any, any>;
 
         type : number;
 
@@ -662,9 +592,9 @@ export namespace IdentityHashMap {
         }
 
         public hasNext() : boolean {
-            let e : IdentityHashMap.Entry = this.entry;
+            let e : Entry<any, any> = this.entry;
             let i : number = this.index;
-            let t : IdentityHashMap.Entry[] = this.table;
+            let t : Entry<any, any>[] = this.table;
             while((e == null && i > 0)) e = t[--i];
             this.entry = e;
             this.index = i;
@@ -673,14 +603,14 @@ export namespace IdentityHashMap {
 
         public next() : any {
             if(this.__parent.modCount !== this.expectedModCount) throw Object.defineProperty(new Error(), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.lang.RuntimeException','java.util.ConcurrentModificationException','java.lang.Exception'] });
-            let et : IdentityHashMap.Entry = this.entry;
+            let et : Entry<any, any> = this.entry;
             let i : number = this.index;
-            let t : IdentityHashMap.Entry[] = this.table;
+            let t : Entry<any, any>[] = this.table;
             while((et == null && i > 0)) et = t[--i];
             this.entry = et;
             this.index = i;
             if(et != null) {
-                let e : IdentityHashMap.Entry = this.lastReturned = this.entry;
+                let e : Entry<any, any> = this.lastReturned = this.entry;
                 this.entry = e.next;
                 return this.type === IdentityHashMap.KEYS?e.key:(this.type === IdentityHashMap.VALUES?e.value:e);
             }
@@ -690,9 +620,9 @@ export namespace IdentityHashMap {
         public remove() {
             if(this.lastReturned == null) throw Object.defineProperty(new Error(), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.IllegalStateException','java.lang.Object','java.lang.RuntimeException','java.lang.Exception'] });
             if(this.__parent.modCount !== this.expectedModCount) throw Object.defineProperty(new Error(), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.lang.RuntimeException','java.util.ConcurrentModificationException','java.lang.Exception'] });
-            let tab : IdentityHashMap.Entry[] = this.table;
+            let tab : Entry<any, any>[] = this.table;
             let index : number = (this.lastReturned.hash & 2147483647) % tab.length;
-            for(let e : IdentityHashMap.Entry = tab[index], prev : IdentityHashMap.Entry = null; e != null; prev = e, e = e.next) {
+            for(let e : Entry<any, any> = tab[index], prev : Entry<any, any> = null; e != null; prev = e, e = e.next) {
                 if(e === this.lastReturned) {
                     this.__parent.modCount++;
                     this.expectedModCount++;
@@ -701,7 +631,7 @@ export namespace IdentityHashMap {
                     this.lastReturned = null;
                     return;
                 }
-            };
+            }
             throw Object.defineProperty(new Error(), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.lang.RuntimeException','java.util.ConcurrentModificationException','java.lang.Exception'] });
         }
     }
@@ -710,7 +640,7 @@ export namespace IdentityHashMap {
 
 
 
-    export class IdentityHashMap$0 {
+    export class IdentityHashMap$0 extends Set<Entry<any, any>>{
         public __parent: any;
         /**
          * 
@@ -756,6 +686,7 @@ export namespace IdentityHashMap {
         }
 
         constructor(__parent: any) {
+            super();
             this.__parent = __parent;
         }
     }
@@ -763,7 +694,7 @@ export namespace IdentityHashMap {
 
 
 
-    export class IdentityHashMap$1 {
+    export class IdentityHashMap$1 extends Array{
         public __parent: any;
         /**
          * 
@@ -798,6 +729,7 @@ export namespace IdentityHashMap {
         }
 
         constructor(__parent: any) {
+            super();
             this.__parent = __parent;
         }
     }
@@ -805,7 +737,7 @@ export namespace IdentityHashMap {
 
 
 
-    export class IdentityHashMap$2 {
+    export class IdentityHashMap$2 extends Set<Entry<any, any>>{
         public __parent: any;
         /**
          * 
@@ -822,12 +754,12 @@ export namespace IdentityHashMap {
          */
         public contains(o : any) : boolean {
             if(!(o != null && (o["__interfaces"] != null && o["__interfaces"].indexOf("java.util.Map.Entry") >= 0 || o.constructor != null && o.constructor["__interfaces"] != null && o.constructor["__interfaces"].indexOf("java.util.Map.Entry") >= 0))) return false;
-            let entry : Entry = <Entry><any>o;
+            let entry : Entry<any, any> = <Entry<any, any>><any>o;
             let key : any = entry.getKey();
-            let tab : IdentityHashMap.Entry[] = this.__parent.table;
-            let hash : number = (key == null?0:java.lang.System.identityHashCode(key));
+            let tab : Entry<any, any>[] = this.__parent.table;
+            let hash : number = (key == null?0:System.identityHashCode(key));
             let index : number = (hash & 2147483647) % tab.length;
-            for(let e : IdentityHashMap.Entry = tab[index]; e != null; e = e.next) if(e.hash === hash && e.equals(entry)) return true;;
+            for (let e: Entry<any, any> = tab[index]; e != null; e = e.next) if (e.hash === hash && e.equals(entry)) return true;
             return false;
         }
 
@@ -838,12 +770,12 @@ export namespace IdentityHashMap {
          */
         public remove(o : any) : boolean {
             if(!(o != null && (o["__interfaces"] != null && o["__interfaces"].indexOf("java.util.Map.Entry") >= 0 || o.constructor != null && o.constructor["__interfaces"] != null && o.constructor["__interfaces"].indexOf("java.util.Map.Entry") >= 0))) return false;
-            let entry : Entry = <Entry><any>o;
+            let entry : Entry<any, any> = <Entry<any, any>><any>o;
             let key : any = entry.getKey();
-            let tab : IdentityHashMap.Entry[] = this.__parent.table;
-            let hash : number = (key == null?0:java.lang.System.identityHashCode(key));
+            let tab : Entry<any, any>[] = this.__parent.table;
+            let hash : number = (key == null?0:System.identityHashCode(key));
             let index : number = (hash & 2147483647) % tab.length;
-            for(let e : IdentityHashMap.Entry = tab[index], prev : IdentityHashMap.Entry = null; e != null; prev = e, e = e.next) {
+            for(let e : Entry<any, any> = tab[index], prev : Entry<any, any> = null; e != null; prev = e, e = e.next) {
                 if(e.hash === hash && e.equals(entry)) {
                     this.__parent.modCount++;
                     if(prev != null) prev.next = e.next; else tab[index] = e.next;
@@ -851,7 +783,7 @@ export namespace IdentityHashMap {
                     e.value = null;
                     return true;
                 }
-            };
+            }
             return false;
         }
 
@@ -871,6 +803,7 @@ export namespace IdentityHashMap {
         }
 
         constructor(__parent: any) {
+            super();
             this.__parent = __parent;
         }
     }
@@ -881,6 +814,6 @@ export namespace IdentityHashMap {
 
 
 
-var __Function = Function;
+
 
 IdentityHashMap.emptyHashIterator_$LI$();

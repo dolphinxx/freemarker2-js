@@ -1,5 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { BeansWrapper } from './BeansWrapper';
+import {BeansWrapper} from './BeansWrapper';
 
 /**
  * Used for customizing how the methods are visible from templates, via
@@ -69,8 +69,8 @@ export interface MethodAppearanceFineTuner {
      * behavior of {link BeansWrapper}, so you don't have to do anything with this
      * when you don't want to change the default behavior.
      */
-    process(__in : BeansWrapper.MethodAppearanceDecisionInput, out : BeansWrapper.MethodAppearanceDecision);
+    process(__in : /*BeansWrapper.MethodAppearanceDecisionInput*/any, out : /*BeansWrapper.MethodAppearanceDecision*/any);
 }
 
 
-var __Function = Function;
+

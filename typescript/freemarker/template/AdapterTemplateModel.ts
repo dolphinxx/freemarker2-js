@@ -1,5 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateModel } from './TemplateModel';
+import {TemplateModel} from './TemplateModel';
 
 /**
  * A {link TemplateModel} that can be unwrapped and then it considers a provided desired (hint) class. This is
@@ -33,4 +33,4 @@ export interface AdapterTemplateModel extends TemplateModel {
 }
 
 
-var __Function = Function;
+

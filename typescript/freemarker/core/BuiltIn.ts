@@ -1,41 +1,19 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { Configuration } from '../template/Configuration';
-import { TemplateDateModel } from '../template/TemplateDateModel';
-import { TemplateModel } from '../template/TemplateModel';
-import { TemplateModelException } from '../template/TemplateModelException';
-import { TemplateNumberModel } from '../template/TemplateNumberModel';
-import { TemplateScalarModel } from '../template/TemplateScalarModel';
-import { DateUtil } from '../template/utility/DateUtil';
-import { StringUtil } from '../template/utility/StringUtil';
-import { Expression } from './Expression';
-import { BuiltInsForNumbers } from './BuiltInsForNumbers';
-import { BuiltInsForStringsMisc } from './BuiltInsForStringsMisc';
-import { BuiltInsForNodes } from './BuiltInsForNodes';
-import { BuiltInsForMultipleTypes } from './BuiltInsForMultipleTypes';
-import { BuiltInsForStringsBasic } from './BuiltInsForStringsBasic';
-import { BuiltInsForDates } from './BuiltInsForDates';
-import { BuiltInsForExistenceHandling } from './BuiltInsForExistenceHandling';
-import { BuiltInsForOutputFormatRelated } from './BuiltInsForOutputFormatRelated';
-import { BuiltInsForSequences } from './BuiltInsForSequences';
-import { BuiltInsForLoopVariables } from './BuiltInsForLoopVariables';
-import { BuiltInsForStringsEncoding } from './BuiltInsForStringsEncoding';
-import { Interpret } from './Interpret';
-import { Boolean } from '../../java/lang/Boolean';
-import { BuiltInsForHashes } from './BuiltInsForHashes';
-import { NewBI } from './NewBI';
-import { BuiltInsForMarkupOutputs } from './BuiltInsForMarkupOutputs';
-import { BuiltInsWithParseTimeParameters } from './BuiltInsWithParseTimeParameters';
-import { BuiltInsForStringsRegexp } from './BuiltInsForStringsRegexp';
-import { Token } from './Token';
-import { FMParserTokenManager } from './FMParserTokenManager';
-import { ParseException } from './ParseException';
-import { StringBuilder } from '../../java/lang/StringBuilder';
-import { Version } from '../template/Version';
-import { _CoreStringUtils } from './_CoreStringUtils';
-import { ICIChainMember } from './ICIChainMember';
-import { _MessageUtil } from './_MessageUtil';
-import { EvalUtil } from './EvalUtil';
-import { ParameterRole } from './ParameterRole';
+import {TemplateDateModel} from '../template/TemplateDateModel';
+import {TemplateModel} from '../template/TemplateModel';
+import {TemplateModelException} from '../template/TemplateModelException';
+import {DateUtil} from '../template/utility/DateUtil';
+import {StringUtil} from '../template/utility/StringUtil';
+import {Expression} from './Expression';
+import {Set} from '../../java/util/Set';
+import {Token} from './Token';
+import {StringBuilder} from '../../java/lang/StringBuilder';
+import {_CoreStringUtils} from './_CoreStringUtils';
+import {ICIChainMember} from './ICIChainMember';
+import {_MessageUtil} from './_MessageUtil';
+import {ParameterRole} from './ParameterRole';
+import {Map} from "../../java/util/Map";
+import {List} from "../../java/util/List";
 
 /**
  * The {@code ?} operator used for things like {@code foo?upper_case}.
@@ -43,203 +21,203 @@ import { ParameterRole } from './ParameterRole';
  * @class
  */
 export abstract class BuiltIn extends Expression {
-    static __static_initialized : boolean = false;
-    static __static_initialize() { if(!BuiltIn.__static_initialized) { BuiltIn.__static_initialized = true; BuiltIn.__static_initializer_0(); } }
-
     target : Expression;
 
     key : string;
 
-    static CAMEL_CASE_NAMES : Set; public static CAMEL_CASE_NAMES_$LI$() : Set { BuiltIn.__static_initialize(); if(BuiltIn.CAMEL_CASE_NAMES == null) BuiltIn.CAMEL_CASE_NAMES = <any>([]); return BuiltIn.CAMEL_CASE_NAMES; };
+    static CAMEL_CASE_NAMES : Set<any> = new Set();
 
-    static SNAKE_CASE_NAMES : Set; public static SNAKE_CASE_NAMES_$LI$() : Set { BuiltIn.__static_initialize(); if(BuiltIn.SNAKE_CASE_NAMES == null) BuiltIn.SNAKE_CASE_NAMES = <any>([]); return BuiltIn.SNAKE_CASE_NAMES; };
+    static SNAKE_CASE_NAMES : Set<any> = new Set();
 
     static NUMBER_OF_BIS : number = 268;
 
-    static BUILT_INS_BY_NAME : HashMap; public static BUILT_INS_BY_NAME_$LI$() : HashMap { BuiltIn.__static_initialize(); if(BuiltIn.BUILT_INS_BY_NAME == null) BuiltIn.BUILT_INS_BY_NAME = <any>(new Map<any, any>()); return BuiltIn.BUILT_INS_BY_NAME; };
+    static BUILT_INS_BY_NAME : Map<any, any> = new Map();
 
     static __static_initializer_0() {
-        BuiltIn.putBI("abs", new BuiltInsForNumbers.absBI());
-        BuiltIn.putBI("absolute_template_name", "absoluteTemplateName", new BuiltInsForStringsMisc.absolute_template_nameBI());
-        BuiltIn.putBI("ancestors", new BuiltInsForNodes.ancestorsBI());
-        BuiltIn.putBI("api", new BuiltInsForMultipleTypes.apiBI());
-        BuiltIn.putBI("boolean", new BuiltInsForStringsMisc.booleanBI());
-        BuiltIn.putBI("byte", new BuiltInsForNumbers.byteBI());
-        BuiltIn.putBI("c", new BuiltInsForMultipleTypes.cBI());
-        BuiltIn.putBI("cap_first", "capFirst", new BuiltInsForStringsBasic.cap_firstBI());
-        BuiltIn.putBI("capitalize", new BuiltInsForStringsBasic.capitalizeBI());
-        BuiltIn.putBI("ceiling", new BuiltInsForNumbers.ceilingBI());
-        BuiltIn.putBI("children", new BuiltInsForNodes.childrenBI());
-        BuiltIn.putBI("chop_linebreak", "chopLinebreak", new BuiltInsForStringsBasic.chop_linebreakBI());
-        BuiltIn.putBI("contains", new BuiltInsForStringsBasic.containsBI());
-        BuiltIn.putBI("date", new BuiltInsForMultipleTypes.dateBI(TemplateDateModel.DATE));
-        BuiltIn.putBI("date_if_unknown", "dateIfUnknown", new BuiltInsForDates.dateType_if_unknownBI(TemplateDateModel.DATE));
-        BuiltIn.putBI("datetime", new BuiltInsForMultipleTypes.dateBI(TemplateDateModel.DATETIME));
-        BuiltIn.putBI("datetime_if_unknown", "datetimeIfUnknown", new BuiltInsForDates.dateType_if_unknownBI(TemplateDateModel.DATETIME));
-        BuiltIn.putBI("default", new BuiltInsForExistenceHandling.defaultBI());
-        BuiltIn.putBI("double", new BuiltInsForNumbers.doubleBI());
-        BuiltIn.putBI("ends_with", "endsWith", new BuiltInsForStringsBasic.ends_withBI());
-        BuiltIn.putBI("ensure_ends_with", "ensureEndsWith", new BuiltInsForStringsBasic.ensure_ends_withBI());
-        BuiltIn.putBI("ensure_starts_with", "ensureStartsWith", new BuiltInsForStringsBasic.ensure_starts_withBI());
-        BuiltIn.putBI("esc", new BuiltInsForOutputFormatRelated.escBI());
-        BuiltIn.putBI("eval", new BuiltInsForStringsMisc.evalBI());
-        BuiltIn.putBI("exists", new BuiltInsForExistenceHandling.existsBI());
-        BuiltIn.putBI("first", new BuiltInsForSequences.firstBI());
-        BuiltIn.putBI("float", new BuiltInsForNumbers.floatBI());
-        BuiltIn.putBI("floor", new BuiltInsForNumbers.floorBI());
-        BuiltIn.putBI("chunk", new BuiltInsForSequences.chunkBI());
-        BuiltIn.putBI("counter", new BuiltInsForLoopVariables.counterBI());
-        BuiltIn.putBI("item_cycle", "itemCycle", new BuiltInsForLoopVariables.item_cycleBI());
-        BuiltIn.putBI("has_api", "hasApi", new BuiltInsForMultipleTypes.has_apiBI());
-        BuiltIn.putBI("has_content", "hasContent", new BuiltInsForExistenceHandling.has_contentBI());
-        BuiltIn.putBI("has_next", "hasNext", new BuiltInsForLoopVariables.has_nextBI());
-        BuiltIn.putBI("html", new BuiltInsForStringsEncoding.htmlBI());
-        BuiltIn.putBI("if_exists", "ifExists", new BuiltInsForExistenceHandling.if_existsBI());
-        BuiltIn.putBI("index", new BuiltInsForLoopVariables.indexBI());
-        BuiltIn.putBI("index_of", "indexOf", new BuiltInsForStringsBasic.index_ofBI(false));
-        BuiltIn.putBI("int", new BuiltInsForNumbers.intBI());
-        BuiltIn.putBI("interpret", new Interpret());
-        BuiltIn.putBI("is_boolean", "isBoolean", new BuiltInsForMultipleTypes.is_booleanBI());
-        BuiltIn.putBI("is_collection", "isCollection", new BuiltInsForMultipleTypes.is_collectionBI());
-        BuiltIn.putBI("is_collection_ex", "isCollectionEx", new BuiltInsForMultipleTypes.is_collection_exBI());
-        let bi : BuiltInsForMultipleTypes.is_dateLikeBI = new BuiltInsForMultipleTypes.is_dateLikeBI();
-        BuiltIn.putBI("is_date", "isDate", bi);
-        BuiltIn.putBI("is_date_like", "isDateLike", bi);
-        BuiltIn.putBI("is_date_only", "isDateOnly", new BuiltInsForMultipleTypes.is_dateOfTypeBI(TemplateDateModel.DATE));
-        BuiltIn.putBI("is_even_item", "isEvenItem", new BuiltInsForLoopVariables.is_even_itemBI());
-        BuiltIn.putBI("is_first", "isFirst", new BuiltInsForLoopVariables.is_firstBI());
-        BuiltIn.putBI("is_last", "isLast", new BuiltInsForLoopVariables.is_lastBI());
-        BuiltIn.putBI("is_unknown_date_like", "isUnknownDateLike", new BuiltInsForMultipleTypes.is_dateOfTypeBI(TemplateDateModel.UNKNOWN));
-        BuiltIn.putBI("is_datetime", "isDatetime", new BuiltInsForMultipleTypes.is_dateOfTypeBI(TemplateDateModel.DATETIME));
-        BuiltIn.putBI("is_directive", "isDirective", new BuiltInsForMultipleTypes.is_directiveBI());
-        BuiltIn.putBI("is_enumerable", "isEnumerable", new BuiltInsForMultipleTypes.is_enumerableBI());
-        BuiltIn.putBI("is_hash_ex", "isHashEx", new BuiltInsForMultipleTypes.is_hash_exBI());
-        BuiltIn.putBI("is_hash", "isHash", new BuiltInsForMultipleTypes.is_hashBI());
-        BuiltIn.putBI("is_infinite", "isInfinite", new BuiltInsForNumbers.is_infiniteBI());
-        BuiltIn.putBI("is_indexable", "isIndexable", new BuiltInsForMultipleTypes.is_indexableBI());
-        BuiltIn.putBI("is_macro", "isMacro", new BuiltInsForMultipleTypes.is_macroBI());
-        BuiltIn.putBI("is_markup_output", "isMarkupOutput", new BuiltInsForMultipleTypes.is_markup_outputBI());
-        BuiltIn.putBI("is_method", "isMethod", new BuiltInsForMultipleTypes.is_methodBI());
-        BuiltIn.putBI("is_nan", "isNan", new BuiltInsForNumbers.is_nanBI());
-        BuiltIn.putBI("is_node", "isNode", new BuiltInsForMultipleTypes.is_nodeBI());
-        BuiltIn.putBI("is_number", "isNumber", new BuiltInsForMultipleTypes.is_numberBI());
-        BuiltIn.putBI("is_odd_item", "isOddItem", new BuiltInsForLoopVariables.is_odd_itemBI());
-        BuiltIn.putBI("is_sequence", "isSequence", new BuiltInsForMultipleTypes.is_sequenceBI());
-        BuiltIn.putBI("is_string", "isString", new BuiltInsForMultipleTypes.is_stringBI());
-        BuiltIn.putBI("is_time", "isTime", new BuiltInsForMultipleTypes.is_dateOfTypeBI(TemplateDateModel.TIME));
-        BuiltIn.putBI("is_transform", "isTransform", new BuiltInsForMultipleTypes.is_transformBI());
-        BuiltIn.putBI("iso_utc", "isoUtc", new BuiltInsForDates.iso_utc_or_local_BI(null, DateUtil.ACCURACY_SECONDS, true));
-        BuiltIn.putBI("iso_utc_fz", "isoUtcFZ", new BuiltInsForDates.iso_utc_or_local_BI(true, DateUtil.ACCURACY_SECONDS, true));
-        BuiltIn.putBI("iso_utc_nz", "isoUtcNZ", new BuiltInsForDates.iso_utc_or_local_BI(false, DateUtil.ACCURACY_SECONDS, true));
-        BuiltIn.putBI("iso_utc_ms", "isoUtcMs", new BuiltInsForDates.iso_utc_or_local_BI(null, DateUtil.ACCURACY_MILLISECONDS, true));
-        BuiltIn.putBI("iso_utc_ms_nz", "isoUtcMsNZ", new BuiltInsForDates.iso_utc_or_local_BI(false, DateUtil.ACCURACY_MILLISECONDS, true));
-        BuiltIn.putBI("iso_utc_m", "isoUtcM", new BuiltInsForDates.iso_utc_or_local_BI(null, DateUtil.ACCURACY_MINUTES, true));
-        BuiltIn.putBI("iso_utc_m_nz", "isoUtcMNZ", new BuiltInsForDates.iso_utc_or_local_BI(false, DateUtil.ACCURACY_MINUTES, true));
-        BuiltIn.putBI("iso_utc_h", "isoUtcH", new BuiltInsForDates.iso_utc_or_local_BI(null, DateUtil.ACCURACY_HOURS, true));
-        BuiltIn.putBI("iso_utc_h_nz", "isoUtcHNZ", new BuiltInsForDates.iso_utc_or_local_BI(false, DateUtil.ACCURACY_HOURS, true));
-        BuiltIn.putBI("iso_local", "isoLocal", new BuiltInsForDates.iso_utc_or_local_BI(null, DateUtil.ACCURACY_SECONDS, false));
-        BuiltIn.putBI("iso_local_nz", "isoLocalNZ", new BuiltInsForDates.iso_utc_or_local_BI(false, DateUtil.ACCURACY_SECONDS, false));
-        BuiltIn.putBI("iso_local_ms", "isoLocalMs", new BuiltInsForDates.iso_utc_or_local_BI(null, DateUtil.ACCURACY_MILLISECONDS, false));
-        BuiltIn.putBI("iso_local_ms_nz", "isoLocalMsNZ", new BuiltInsForDates.iso_utc_or_local_BI(false, DateUtil.ACCURACY_MILLISECONDS, false));
-        BuiltIn.putBI("iso_local_m", "isoLocalM", new BuiltInsForDates.iso_utc_or_local_BI(null, DateUtil.ACCURACY_MINUTES, false));
-        BuiltIn.putBI("iso_local_m_nz", "isoLocalMNZ", new BuiltInsForDates.iso_utc_or_local_BI(false, DateUtil.ACCURACY_MINUTES, false));
-        BuiltIn.putBI("iso_local_h", "isoLocalH", new BuiltInsForDates.iso_utc_or_local_BI(null, DateUtil.ACCURACY_HOURS, false));
-        BuiltIn.putBI("iso_local_h_nz", "isoLocalHNZ", new BuiltInsForDates.iso_utc_or_local_BI(false, DateUtil.ACCURACY_HOURS, false));
-        BuiltIn.putBI("iso", new BuiltInsForDates.iso_BI(null, DateUtil.ACCURACY_SECONDS));
-        BuiltIn.putBI("iso_nz", "isoNZ", new BuiltInsForDates.iso_BI(false, DateUtil.ACCURACY_SECONDS));
-        BuiltIn.putBI("iso_ms", "isoMs", new BuiltInsForDates.iso_BI(null, DateUtil.ACCURACY_MILLISECONDS));
-        BuiltIn.putBI("iso_ms_nz", "isoMsNZ", new BuiltInsForDates.iso_BI(false, DateUtil.ACCURACY_MILLISECONDS));
-        BuiltIn.putBI("iso_m", "isoM", new BuiltInsForDates.iso_BI(null, DateUtil.ACCURACY_MINUTES));
-        BuiltIn.putBI("iso_m_nz", "isoMNZ", new BuiltInsForDates.iso_BI(false, DateUtil.ACCURACY_MINUTES));
-        BuiltIn.putBI("iso_h", "isoH", new BuiltInsForDates.iso_BI(null, DateUtil.ACCURACY_HOURS));
-        BuiltIn.putBI("iso_h_nz", "isoHNZ", new BuiltInsForDates.iso_BI(false, DateUtil.ACCURACY_HOURS));
-        BuiltIn.putBI("j_string", "jString", new BuiltInsForStringsEncoding.j_stringBI());
-        BuiltIn.putBI("join", new BuiltInsForSequences.joinBI());
-        BuiltIn.putBI("js_string", "jsString", new BuiltInsForStringsEncoding.js_stringBI());
-        BuiltIn.putBI("json_string", "jsonString", new BuiltInsForStringsEncoding.json_stringBI());
-        BuiltIn.putBI("keep_after", "keepAfter", new BuiltInsForStringsBasic.keep_afterBI());
-        BuiltIn.putBI("keep_before", "keepBefore", new BuiltInsForStringsBasic.keep_beforeBI());
-        BuiltIn.putBI("keep_after_last", "keepAfterLast", new BuiltInsForStringsBasic.keep_after_lastBI());
-        BuiltIn.putBI("keep_before_last", "keepBeforeLast", new BuiltInsForStringsBasic.keep_before_lastBI());
-        BuiltIn.putBI("keys", new BuiltInsForHashes.keysBI());
-        BuiltIn.putBI("last_index_of", "lastIndexOf", new BuiltInsForStringsBasic.index_ofBI(true));
-        BuiltIn.putBI("last", new BuiltInsForSequences.lastBI());
-        BuiltIn.putBI("left_pad", "leftPad", new BuiltInsForStringsBasic.padBI(true));
-        BuiltIn.putBI("length", new BuiltInsForStringsBasic.lengthBI());
-        BuiltIn.putBI("long", new BuiltInsForNumbers.longBI());
-        BuiltIn.putBI("lower_abc", "lowerAbc", new BuiltInsForNumbers.lower_abcBI());
-        BuiltIn.putBI("lower_case", "lowerCase", new BuiltInsForStringsBasic.lower_caseBI());
-        BuiltIn.putBI("namespace", new BuiltInsForMultipleTypes.namespaceBI());
-        BuiltIn.putBI("new", new NewBI());
-        BuiltIn.putBI("markup_string", "markupString", new BuiltInsForMarkupOutputs.markup_stringBI());
-        BuiltIn.putBI("node_name", "nodeName", new BuiltInsForNodes.node_nameBI());
-        BuiltIn.putBI("node_namespace", "nodeNamespace", new BuiltInsForNodes.node_namespaceBI());
-        BuiltIn.putBI("node_type", "nodeType", new BuiltInsForNodes.node_typeBI());
-        BuiltIn.putBI("no_esc", "noEsc", new BuiltInsForOutputFormatRelated.no_escBI());
-        BuiltIn.putBI("max", new BuiltInsForSequences.maxBI());
-        BuiltIn.putBI("min", new BuiltInsForSequences.minBI());
-        BuiltIn.putBI("number", new BuiltInsForStringsMisc.numberBI());
-        BuiltIn.putBI("number_to_date", "numberToDate", new BuiltInsForNumbers.number_to_dateBI(TemplateDateModel.DATE));
-        BuiltIn.putBI("number_to_time", "numberToTime", new BuiltInsForNumbers.number_to_dateBI(TemplateDateModel.TIME));
-        BuiltIn.putBI("number_to_datetime", "numberToDatetime", new BuiltInsForNumbers.number_to_dateBI(TemplateDateModel.DATETIME));
-        BuiltIn.putBI("parent", new BuiltInsForNodes.parentBI());
-        BuiltIn.putBI("previous_sibling", "previousSibling", new BuiltInsForNodes.previousSiblingBI());
-        BuiltIn.putBI("next_sibling", "nextSibling", new BuiltInsForNodes.nextSiblingBI());
-        BuiltIn.putBI("item_parity", "itemParity", new BuiltInsForLoopVariables.item_parityBI());
-        BuiltIn.putBI("item_parity_cap", "itemParityCap", new BuiltInsForLoopVariables.item_parity_capBI());
-        BuiltIn.putBI("reverse", new BuiltInsForSequences.reverseBI());
-        BuiltIn.putBI("right_pad", "rightPad", new BuiltInsForStringsBasic.padBI(false));
-        BuiltIn.putBI("root", new BuiltInsForNodes.rootBI());
-        BuiltIn.putBI("round", new BuiltInsForNumbers.roundBI());
-        BuiltIn.putBI("remove_ending", "removeEnding", new BuiltInsForStringsBasic.remove_endingBI());
-        BuiltIn.putBI("remove_beginning", "removeBeginning", new BuiltInsForStringsBasic.remove_beginningBI());
-        BuiltIn.putBI("rtf", new BuiltInsForStringsEncoding.rtfBI());
-        BuiltIn.putBI("seq_contains", "seqContains", new BuiltInsForSequences.seq_containsBI());
-        BuiltIn.putBI("seq_index_of", "seqIndexOf", new BuiltInsForSequences.seq_index_ofBI(true));
-        BuiltIn.putBI("seq_last_index_of", "seqLastIndexOf", new BuiltInsForSequences.seq_index_ofBI(false));
-        BuiltIn.putBI("sequence", new BuiltInsForSequences.sequenceBI());
-        BuiltIn.putBI("short", new BuiltInsForNumbers.shortBI());
-        BuiltIn.putBI("size", new BuiltInsForMultipleTypes.sizeBI());
-        BuiltIn.putBI("sort_by", "sortBy", new BuiltInsForSequences.sort_byBI());
-        BuiltIn.putBI("sort", new BuiltInsForSequences.sortBI());
-        BuiltIn.putBI("split", new BuiltInsForStringsBasic.split_BI());
-        BuiltIn.putBI("switch", new BuiltInsWithParseTimeParameters.switch_BI());
-        BuiltIn.putBI("starts_with", "startsWith", new BuiltInsForStringsBasic.starts_withBI());
-        BuiltIn.putBI("string", new BuiltInsForMultipleTypes.stringBI());
-        BuiltIn.putBI("substring", new BuiltInsForStringsBasic.substringBI());
-        BuiltIn.putBI("then", new BuiltInsWithParseTimeParameters.then_BI());
-        BuiltIn.putBI("time", new BuiltInsForMultipleTypes.dateBI(TemplateDateModel.TIME));
-        BuiltIn.putBI("time_if_unknown", "timeIfUnknown", new BuiltInsForDates.dateType_if_unknownBI(TemplateDateModel.TIME));
-        BuiltIn.putBI("trim", new BuiltInsForStringsBasic.trimBI());
-        BuiltIn.putBI("uncap_first", "uncapFirst", new BuiltInsForStringsBasic.uncap_firstBI());
-        BuiltIn.putBI("upper_abc", "upperAbc", new BuiltInsForNumbers.upper_abcBI());
-        BuiltIn.putBI("upper_case", "upperCase", new BuiltInsForStringsBasic.upper_caseBI());
-        BuiltIn.putBI("url", new BuiltInsForStringsEncoding.urlBI());
-        BuiltIn.putBI("url_path", "urlPath", new BuiltInsForStringsEncoding.urlPathBI());
-        BuiltIn.putBI("values", new BuiltInsForHashes.valuesBI());
-        BuiltIn.putBI("web_safe", "webSafe", /* get */BuiltIn.BUILT_INS_BY_NAME_$LI$().get("html"));
-        BuiltIn.putBI("word_list", "wordList", new BuiltInsForStringsBasic.word_listBI());
-        BuiltIn.putBI("xhtml", new BuiltInsForStringsEncoding.xhtmlBI());
-        BuiltIn.putBI("xml", new BuiltInsForStringsEncoding.xmlBI());
-        BuiltIn.putBI("matches", new BuiltInsForStringsRegexp.matchesBI());
-        BuiltIn.putBI("groups", new BuiltInsForStringsRegexp.groupsBI());
-        BuiltIn.putBI("replace", new BuiltInsForStringsRegexp.replace_reBI());
-        if(BuiltIn.NUMBER_OF_BIS < /* size */((m) => { let r=0; m.forEach((v, k, m) => r++); return r; })(<any>BuiltIn.BUILT_INS_BY_NAME_$LI$())) {
-            throw Object.defineProperty(new Error("Update NUMBER_OF_BIS! Should be: " + /* size */((m) => { let r=0; m.forEach((v, k, m) => r++); return r; })(<any>BuiltIn.BUILT_INS_BY_NAME_$LI$())), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object','java.lang.AssertionError'] });
+        BuiltIn.putBINames("abs");
+        BuiltIn.putBINames("absolute_template_name", "absoluteTemplateName");
+        BuiltIn.putBINames("ancestors");
+        BuiltIn.putBINames("api");
+        BuiltIn.putBINames("boolean");
+        BuiltIn.putBINames("byte");
+        BuiltIn.putBINames("c");
+        BuiltIn.putBINames("cap_first", "capFirst");
+        BuiltIn.putBINames("capitalize");
+        BuiltIn.putBINames("ceiling");
+        BuiltIn.putBINames("children");
+        BuiltIn.putBINames("chop_linebreak", "chopLinebreak");
+        BuiltIn.putBINames("contains");
+        BuiltIn.putBINames("date");
+        BuiltIn.putBINames("date_if_unknown", "dateIfUnknown");
+        BuiltIn.putBINames("datetime");
+        BuiltIn.putBINames("datetime_if_unknown", "datetimeIfUnknown");
+        BuiltIn.putBINames("default");
+        BuiltIn.putBINames("double");
+        BuiltIn.putBINames("ends_with", "endsWith");
+        BuiltIn.putBINames("ensure_ends_with", "ensureEndsWith");
+        BuiltIn.putBINames("ensure_starts_with", "ensureStartsWith");
+        BuiltIn.putBINames("esc");
+        BuiltIn.putBINames("eval");
+        BuiltIn.putBINames("exists");
+        BuiltIn.putBINames("first");
+        BuiltIn.putBINames("float");
+        BuiltIn.putBINames("floor");
+        BuiltIn.putBINames("chunk");
+        BuiltIn.putBINames("counter");
+        BuiltIn.putBINames("item_cycle", "itemCycle");
+        BuiltIn.putBINames("has_api", "hasApi");
+        BuiltIn.putBINames("has_content", "hasContent");
+        BuiltIn.putBINames("has_next", "hasNext");
+        BuiltIn.putBINames("html");
+        BuiltIn.putBINames("if_exists", "ifExists");
+        BuiltIn.putBINames("index");
+        BuiltIn.putBINames("index_of", "indexOf");
+        BuiltIn.putBINames("int");
+        BuiltIn.putBINames("interpret");
+        BuiltIn.putBINames("is_boolean", "isBoolean");
+        BuiltIn.putBINames("is_collection", "isCollection");
+        BuiltIn.putBINames("is_collection_ex", "isCollectionEx");
+        BuiltIn.putBINames("is_date", "isDate");
+        BuiltIn.putBINames("is_date_like", "isDateLike");
+        BuiltIn.putBINames("is_date_only", "isDateOnly");
+        BuiltIn.putBINames("is_even_item", "isEvenItem");
+        BuiltIn.putBINames("is_first", "isFirst");
+        BuiltIn.putBINames("is_last", "isLast");
+        BuiltIn.putBINames("is_unknown_date_like", "isUnknownDateLike");
+        BuiltIn.putBINames("is_datetime", "isDatetime");
+        BuiltIn.putBINames("is_directive", "isDirective");
+        BuiltIn.putBINames("is_enumerable", "isEnumerable");
+        BuiltIn.putBINames("is_hash_ex", "isHashEx");
+        BuiltIn.putBINames("is_hash", "isHash");
+        BuiltIn.putBINames("is_infinite", "isInfinite");
+        BuiltIn.putBINames("is_indexable", "isIndexable");
+        BuiltIn.putBINames("is_macro", "isMacro");
+        BuiltIn.putBINames("is_markup_output", "isMarkupOutput");
+        BuiltIn.putBINames("is_method", "isMethod");
+        BuiltIn.putBINames("is_nan", "isNan");
+        BuiltIn.putBINames("is_node", "isNode");
+        BuiltIn.putBINames("is_number", "isNumber");
+        BuiltIn.putBINames("is_odd_item", "isOddItem");
+        BuiltIn.putBINames("is_sequence", "isSequence");
+        BuiltIn.putBINames("is_string", "isString");
+        BuiltIn.putBINames("is_time", "isTime");
+        BuiltIn.putBINames("is_transform", "isTransform");
+        BuiltIn.putBINames("iso_utc", "isoUtc");
+        BuiltIn.putBINames("iso_utc_fz", "isoUtcFZ");
+        BuiltIn.putBINames("iso_utc_nz", "isoUtcNZ");
+        BuiltIn.putBINames("iso_utc_ms", "isoUtcMs");
+        BuiltIn.putBINames("iso_utc_ms_nz", "isoUtcMsNZ");
+        BuiltIn.putBINames("iso_utc_m", "isoUtcM");
+        BuiltIn.putBINames("iso_utc_m_nz", "isoUtcMNZ");
+        BuiltIn.putBINames("iso_utc_h", "isoUtcH");
+        BuiltIn.putBINames("iso_utc_h_nz", "isoUtcHNZ");
+        BuiltIn.putBINames("iso_local", "isoLocal");
+        BuiltIn.putBINames("iso_local_nz", "isoLocalNZ");
+        BuiltIn.putBINames("iso_local_ms", "isoLocalMs");
+        BuiltIn.putBINames("iso_local_ms_nz", "isoLocalMsNZ");
+        BuiltIn.putBINames("iso_local_m", "isoLocalM");
+        BuiltIn.putBINames("iso_local_m_nz", "isoLocalMNZ");
+        BuiltIn.putBINames("iso_local_h", "isoLocalH");
+        BuiltIn.putBINames("iso_local_h_nz", "isoLocalHNZ");
+        BuiltIn.putBINames("iso");
+        BuiltIn.putBINames("iso_nz", "isoNZ");
+        BuiltIn.putBINames("iso_ms", "isoMs");
+        BuiltIn.putBINames("iso_ms_nz", "isoMsNZ");
+        BuiltIn.putBINames("iso_m", "isoM");
+        BuiltIn.putBINames("iso_m_nz", "isoMNZ");
+        BuiltIn.putBINames("iso_h", "isoH");
+        BuiltIn.putBINames("iso_h_nz", "isoHNZ");
+        BuiltIn.putBINames("j_string", "jString");
+        BuiltIn.putBINames("join");
+        BuiltIn.putBINames("js_string", "jsString");
+        BuiltIn.putBINames("json_string", "jsonString");
+        BuiltIn.putBINames("keep_after", "keepAfter");
+        BuiltIn.putBINames("keep_before", "keepBefore");
+        BuiltIn.putBINames("keep_after_last", "keepAfterLast");
+        BuiltIn.putBINames("keep_before_last", "keepBeforeLast");
+        BuiltIn.putBINames("keys");
+        BuiltIn.putBINames("last_index_of", "lastIndexOf");
+        BuiltIn.putBINames("last");
+        BuiltIn.putBINames("left_pad", "leftPad");
+        BuiltIn.putBINames("length");
+        BuiltIn.putBINames("long");
+        BuiltIn.putBINames("lower_abc", "lowerAbc");
+        BuiltIn.putBINames("lower_case", "lowerCase");
+        BuiltIn.putBINames("namespace");
+        BuiltIn.putBINames("new");
+        BuiltIn.putBINames("markup_string", "markupString");
+        BuiltIn.putBINames("node_name", "nodeName");
+        BuiltIn.putBINames("node_namespace", "nodeNamespace");
+        BuiltIn.putBINames("node_type", "nodeType");
+        BuiltIn.putBINames("no_esc", "noEsc");
+        BuiltIn.putBINames("max");
+        BuiltIn.putBINames("min");
+        BuiltIn.putBINames("number");
+        BuiltIn.putBINames("number_to_date", "numberToDate");
+        BuiltIn.putBINames("number_to_time", "numberToTime");
+        BuiltIn.putBINames("number_to_datetime", "numberToDatetime");
+        BuiltIn.putBINames("parent");
+        BuiltIn.putBINames("previous_sibling", "previousSibling");
+        BuiltIn.putBINames("next_sibling", "nextSibling");
+        BuiltIn.putBINames("item_parity", "itemParity");
+        BuiltIn.putBINames("item_parity_cap", "itemParityCap");
+        BuiltIn.putBINames("reverse");
+        BuiltIn.putBINames("right_pad", "rightPad");
+        BuiltIn.putBINames("root");
+        BuiltIn.putBINames("round");
+        BuiltIn.putBINames("remove_ending", "removeEnding");
+        BuiltIn.putBINames("remove_beginning", "removeBeginning");
+        BuiltIn.putBINames("rtf");
+        BuiltIn.putBINames("seq_contains", "seqContains");
+        BuiltIn.putBINames("seq_index_of", "seqIndexOf");
+        BuiltIn.putBINames("seq_last_index_of", "seqLastIndexOf");
+        BuiltIn.putBINames("sequence");
+        BuiltIn.putBINames("short");
+        BuiltIn.putBINames("size");
+        BuiltIn.putBINames("sort_by", "sortBy");
+        BuiltIn.putBINames("sort");
+        BuiltIn.putBINames("split");
+        BuiltIn.putBINames("switch");
+        BuiltIn.putBINames("starts_with", "startsWith");
+        BuiltIn.putBINames("string");
+        BuiltIn.putBINames("substring");
+        BuiltIn.putBINames("then");
+        BuiltIn.putBINames("time");
+        BuiltIn.putBINames("time_if_unknown", "timeIfUnknown");
+        BuiltIn.putBINames("trim");
+        BuiltIn.putBINames("uncap_first", "uncapFirst");
+        BuiltIn.putBINames("upper_abc", "upperAbc");
+        BuiltIn.putBINames("upper_case", "upperCase");
+        BuiltIn.putBINames("url");
+        BuiltIn.putBINames("url_path", "urlPath");
+        BuiltIn.putBINames("values");
+        BuiltIn.putBINames("web_safe", "webSafe");
+        BuiltIn.putBINames("word_list", "wordList");
+        BuiltIn.putBINames("xhtml");
+        BuiltIn.putBINames("xml");
+        BuiltIn.putBINames("matches");
+        BuiltIn.putBINames("groups");
+        BuiltIn.putBINames("replace");
+    }
+
+    public static putBINames(nameSnakeCase:string, nameCamelCase?:string) {
+        BuiltIn.SNAKE_CASE_NAMES.add(nameSnakeCase);
+        if(nameCamelCase !== undefined) {
+            BuiltIn.CAMEL_CASE_NAMES.add(nameCamelCase);
         }
     }
 
     /*private*/ static putBI$java_lang_String$freemarker_core_BuiltIn(name : string, bi : BuiltIn) {
-        /* put */BuiltIn.BUILT_INS_BY_NAME_$LI$().set(name, bi);
-        /* add */((s, e) => { if(s.indexOf(e)==-1) { s.push(e); return true; } else { return false; } })(BuiltIn.SNAKE_CASE_NAMES_$LI$(), name);
-        /* add */((s, e) => { if(s.indexOf(e)==-1) { s.push(e); return true; } else { return false; } })(BuiltIn.CAMEL_CASE_NAMES_$LI$(), name);
+        /* put */BuiltIn.BUILT_INS_BY_NAME.set(name, bi);
+        BuiltIn.SNAKE_CASE_NAMES.add(name);
+        BuiltIn.CAMEL_CASE_NAMES.add(name);
     }
 
     public static putBI$java_lang_String$java_lang_String$freemarker_core_BuiltIn(nameSnakeCase : string, nameCamelCase : string, bi : BuiltIn) {
-        /* put */BuiltIn.BUILT_INS_BY_NAME_$LI$().set(nameSnakeCase, bi);
-        /* put */BuiltIn.BUILT_INS_BY_NAME_$LI$().set(nameCamelCase, bi);
-        /* add */((s, e) => { if(s.indexOf(e)==-1) { s.push(e); return true; } else { return false; } })(BuiltIn.SNAKE_CASE_NAMES_$LI$(), nameSnakeCase);
-        /* add */((s, e) => { if(s.indexOf(e)==-1) { s.push(e); return true; } else { return false; } })(BuiltIn.CAMEL_CASE_NAMES_$LI$(), nameCamelCase);
+        /* put */BuiltIn.BUILT_INS_BY_NAME.set(nameSnakeCase, bi);
+        /* put */BuiltIn.BUILT_INS_BY_NAME.set(nameCamelCase, bi);
+        BuiltIn.SNAKE_CASE_NAMES.add(nameSnakeCase);
+        BuiltIn.CAMEL_CASE_NAMES.add(nameCamelCase);
     }
 
     public static putBI(nameSnakeCase? : any, nameCamelCase? : any, bi? : any) : any {
@@ -250,6 +228,548 @@ export abstract class BuiltIn extends Expression {
         } else throw new Error('invalid overload');
     }
 
+    static getBuiltInByName(name: string): BuiltIn {
+        switch (name) {
+            case "abs":
+                return new (require('./BuiltInsForNumbers').BuiltInsForNumbers).absBI();
+            case "absolute_template_name":
+                return new (require('./BuiltInsForStringsMisc').BuiltInsForStringsMisc).absolute_template_nameBI();
+            case "absoluteTemplateName":
+                return new (require('./BuiltInsForStringsMisc').BuiltInsForStringsMisc).absolute_template_nameBI();
+            case "ancestors":
+                return new (require('./BuiltInsForNodes').BuiltInsForNodes).ancestorsBI();
+            case "api":
+                return new (require('./BuiltInsForMultipleTypes').BuiltInsForMultipleTypes).apiBI();
+            case "boolean":
+                return new (require('./BuiltInsForStringsMisc').BuiltInsForStringsMisc).booleanBI();
+            case "byte":
+                return new (require('./BuiltInsForNumbers').BuiltInsForNumbers).byteBI();
+            case "c":
+                return new (require('./BuiltInsForMultipleTypes').BuiltInsForMultipleTypes).cBI();
+            case "cap_first":
+                return new (require('./BuiltInsForStringsBasic').BuiltInsForStringsBasic).cap_firstBI();
+            case "capFirst":
+                return new (require('./BuiltInsForStringsBasic').BuiltInsForStringsBasic).cap_firstBI();
+            case "capitalize":
+                return new (require('./BuiltInsForStringsBasic').BuiltInsForStringsBasic).capitalizeBI();
+            case "ceiling":
+                return new (require('./BuiltInsForNumbers').BuiltInsForNumbers).ceilingBI();
+            case "children":
+                return new (require('./BuiltInsForNodes').BuiltInsForNodes).childrenBI();
+            case "chop_linebreak":
+                return new (require('./BuiltInsForStringsBasic').BuiltInsForStringsBasic).chop_linebreakBI();
+            case "chopLinebreak":
+                return new (require('./BuiltInsForStringsBasic').BuiltInsForStringsBasic).chop_linebreakBI();
+            case "contains":
+                return new (require('./BuiltInsForStringsBasic').BuiltInsForStringsBasic).containsBI();
+            case "date":
+                return new (require('./BuiltInsForMultipleTypes').BuiltInsForMultipleTypes).dateBI(TemplateDateModel.DATE);
+            case "date_if_unknown":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).dateType_if_unknownBI(TemplateDateModel.DATE);
+            case "dateIfUnknown":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).dateType_if_unknownBI(TemplateDateModel.DATE);
+            case "datetime":
+                return new (require('./BuiltInsForMultipleTypes').BuiltInsForMultipleTypes).dateBI(TemplateDateModel.DATETIME);
+            case "datetime_if_unknown":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).dateType_if_unknownBI(TemplateDateModel.DATETIME);
+            case "datetimeIfUnknown":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).dateType_if_unknownBI(TemplateDateModel.DATETIME);
+            case "default":
+                return new (require('./BuiltInsForExistenceHandling').BuiltInsForExistenceHandling).defaultBI();
+            case "double":
+                return new (require('./BuiltInsForNumbers').BuiltInsForNumbers).doubleBI();
+            case "ends_with":
+                return new (require('./BuiltInsForStringsBasic').BuiltInsForStringsBasic).ends_withBI();
+            case "endsWith":
+                return new (require('./BuiltInsForStringsBasic').BuiltInsForStringsBasic).ends_withBI();
+            case "ensure_ends_with":
+                return new (require('./BuiltInsForStringsBasic').BuiltInsForStringsBasic).ensure_ends_withBI();
+            case "ensureEndsWith":
+                return new (require('./BuiltInsForStringsBasic').BuiltInsForStringsBasic).ensure_ends_withBI();
+            case "ensure_starts_with":
+                return new (require('./BuiltInsForStringsBasic').BuiltInsForStringsBasic).ensure_starts_withBI();
+            case "ensureStartsWith":
+                return new (require('./BuiltInsForStringsBasic').BuiltInsForStringsBasic).ensure_starts_withBI();
+            case "esc":
+                return new (require('./BuiltInsForOutputFormatRelated').BuiltInsForOutputFormatRelated).escBI();
+            case "eval":
+                return new (require('./BuiltInsForStringsMisc').BuiltInsForStringsMisc).evalBI();
+            case "exists":
+                return new (require('./BuiltInsForExistenceHandling').BuiltInsForExistenceHandling).existsBI();
+            case "first":
+                return new (require('./BuiltInsForSequences').BuiltInsForSequences).firstBI();
+            case "float":
+                return new (require('./BuiltInsForNumbers').BuiltInsForNumbers).floatBI();
+            case "floor":
+                return new (require('./BuiltInsForNumbers').BuiltInsForNumbers).floorBI();
+            case "chunk":
+                return new (require('./BuiltInsForSequences').BuiltInsForSequences).chunkBI();
+            case "counter":
+                return new (require('./BuiltInsForLoopVariables').BuiltInsForLoopVariables).counterBI();
+            case "item_cycle":
+                return new (require('./BuiltInsForLoopVariables').BuiltInsForLoopVariables).item_cycleBI();
+            case "itemCycle":
+                return new (require('./BuiltInsForLoopVariables').BuiltInsForLoopVariables).item_cycleBI();
+            case "has_api":
+                return new (require('./BuiltInsForMultipleTypes').BuiltInsForMultipleTypes).has_apiBI();
+            case "hasApi":
+                return new (require('./BuiltInsForMultipleTypes').BuiltInsForMultipleTypes).has_apiBI();
+            case "has_content":
+                return new (require('./BuiltInsForExistenceHandling').BuiltInsForExistenceHandling).has_contentBI();
+            case "hasContent":
+                return new (require('./BuiltInsForExistenceHandling').BuiltInsForExistenceHandling).has_contentBI();
+            case "has_next":
+                return new (require('./BuiltInsForLoopVariables').BuiltInsForLoopVariables).has_nextBI();
+            case "hasNext":
+                return new (require('./BuiltInsForLoopVariables').BuiltInsForLoopVariables).has_nextBI();
+            case "html":
+                return new (require('./BuiltInsForStringsEncoding').BuiltInsForStringsEncoding).htmlBI();
+            case "if_exists":
+                return new (require('./BuiltInsForExistenceHandling').BuiltInsForExistenceHandling).if_existsBI();
+            case "ifExists":
+                return new (require('./BuiltInsForExistenceHandling').BuiltInsForExistenceHandling).if_existsBI();
+            case "index":
+                return new (require('./BuiltInsForLoopVariables').BuiltInsForLoopVariables).indexBI();
+            case "index_of":
+                return new (require('./BuiltInsForStringsBasic').BuiltInsForStringsBasic).index_ofBI(false);
+            case "indexOf":
+                return new (require('./BuiltInsForStringsBasic').BuiltInsForStringsBasic).index_ofBI(false);
+            case "int":
+                return new (require('./BuiltInsForNumbers').BuiltInsForNumbers).intBI();
+            case "interpret":
+                return new (require('./Interpret').Interpret)();
+            case "is_boolean":
+                return new (require('./BuiltInsForMultipleTypes').BuiltInsForMultipleTypes).is_booleanBI();
+            case "isBoolean":
+                return new (require('./BuiltInsForMultipleTypes').BuiltInsForMultipleTypes).is_booleanBI();
+            case "is_collection":
+                return new (require('./BuiltInsForMultipleTypes').BuiltInsForMultipleTypes).is_collectionBI();
+            case "isCollection":
+                return new (require('./BuiltInsForMultipleTypes').BuiltInsForMultipleTypes).is_collectionBI();
+            case "is_collection_ex":
+                return new (require('./BuiltInsForMultipleTypes').BuiltInsForMultipleTypes).is_collection_exBI();
+            case "isCollectionEx":
+                return new (require('./BuiltInsForMultipleTypes').BuiltInsForMultipleTypes).is_collection_exBI();
+            case "is_date":
+                return new (require('./BuiltInsForMultipleTypes').BuiltInsForMultipleTypes).is_dateLikeBI();
+            case "isDate":
+                return new (require('./BuiltInsForMultipleTypes').BuiltInsForMultipleTypes).is_dateLikeBI();
+            case "is_date_like":
+                return new (require('./BuiltInsForMultipleTypes').BuiltInsForMultipleTypes).is_dateLikeBI();
+            case "isDateLike":
+                return new (require('./BuiltInsForMultipleTypes').BuiltInsForMultipleTypes).is_dateLikeBI();
+            case "is_date_only":
+                return new (require('./BuiltInsForMultipleTypes').BuiltInsForMultipleTypes).is_dateOfTypeBI(TemplateDateModel.DATE);
+            case "isDateOnly":
+                return new (require('./BuiltInsForMultipleTypes').BuiltInsForMultipleTypes).is_dateOfTypeBI(TemplateDateModel.DATE);
+            case "is_even_item":
+                return new (require('./BuiltInsForLoopVariables').BuiltInsForLoopVariables).is_even_itemBI();
+            case "isEvenItem":
+                return new (require('./BuiltInsForLoopVariables').BuiltInsForLoopVariables).is_even_itemBI();
+            case "is_first":
+                return new (require('./BuiltInsForLoopVariables').BuiltInsForLoopVariables).is_firstBI();
+            case "isFirst":
+                return new (require('./BuiltInsForLoopVariables').BuiltInsForLoopVariables).is_firstBI();
+            case "is_last":
+                return new (require('./BuiltInsForLoopVariables').BuiltInsForLoopVariables).is_lastBI();
+            case "isLast":
+                return new (require('./BuiltInsForLoopVariables').BuiltInsForLoopVariables).is_lastBI();
+            case "is_unknown_date_like":
+                return new (require('./BuiltInsForMultipleTypes').BuiltInsForMultipleTypes).is_dateOfTypeBI(TemplateDateModel.UNKNOWN);
+            case "isUnknownDateLike":
+                return new (require('./BuiltInsForMultipleTypes').BuiltInsForMultipleTypes).is_dateOfTypeBI(TemplateDateModel.UNKNOWN);
+            case "is_datetime":
+                return new (require('./BuiltInsForMultipleTypes').BuiltInsForMultipleTypes).is_dateOfTypeBI(TemplateDateModel.DATETIME);
+            case "isDatetime":
+                return new (require('./BuiltInsForMultipleTypes').BuiltInsForMultipleTypes).is_dateOfTypeBI(TemplateDateModel.DATETIME);
+            case "is_directive":
+                return new (require('./BuiltInsForMultipleTypes').BuiltInsForMultipleTypes).is_directiveBI();
+            case "isDirective":
+                return new (require('./BuiltInsForMultipleTypes').BuiltInsForMultipleTypes).is_directiveBI();
+            case "is_enumerable":
+                return new (require('./BuiltInsForMultipleTypes').BuiltInsForMultipleTypes).is_enumerableBI();
+            case "isEnumerable":
+                return new (require('./BuiltInsForMultipleTypes').BuiltInsForMultipleTypes).is_enumerableBI();
+            case "is_hash_ex":
+                return new (require('./BuiltInsForMultipleTypes').BuiltInsForMultipleTypes).is_hash_exBI();
+            case "isHashEx":
+                return new (require('./BuiltInsForMultipleTypes').BuiltInsForMultipleTypes).is_hash_exBI();
+            case "is_hash":
+                return new (require('./BuiltInsForMultipleTypes').BuiltInsForMultipleTypes).is_hashBI();
+            case "isHash":
+                return new (require('./BuiltInsForMultipleTypes').BuiltInsForMultipleTypes).is_hashBI();
+            case "is_infinite":
+                return new (require('./BuiltInsForNumbers').BuiltInsForNumbers).is_infiniteBI();
+            case "isInfinite":
+                return new (require('./BuiltInsForNumbers').BuiltInsForNumbers).is_infiniteBI();
+            case "is_indexable":
+                return new (require('./BuiltInsForMultipleTypes').BuiltInsForMultipleTypes).is_indexableBI();
+            case "isIndexable":
+                return new (require('./BuiltInsForMultipleTypes').BuiltInsForMultipleTypes).is_indexableBI();
+            case "is_macro":
+                return new (require('./BuiltInsForMultipleTypes').BuiltInsForMultipleTypes).is_macroBI();
+            case "isMacro":
+                return new (require('./BuiltInsForMultipleTypes').BuiltInsForMultipleTypes).is_macroBI();
+            case "is_markup_output":
+                return new (require('./BuiltInsForMultipleTypes').BuiltInsForMultipleTypes).is_markup_outputBI();
+            case "isMarkupOutput":
+                return new (require('./BuiltInsForMultipleTypes').BuiltInsForMultipleTypes).is_markup_outputBI();
+            case "is_method":
+                return new (require('./BuiltInsForMultipleTypes').BuiltInsForMultipleTypes).is_methodBI();
+            case "isMethod":
+                return new (require('./BuiltInsForMultipleTypes').BuiltInsForMultipleTypes).is_methodBI();
+            case "is_nan":
+                return new (require('./BuiltInsForNumbers').BuiltInsForNumbers).is_nanBI();
+            case "isNan":
+                return new (require('./BuiltInsForNumbers').BuiltInsForNumbers).is_nanBI();
+            case "is_node":
+                return new (require('./BuiltInsForMultipleTypes').BuiltInsForMultipleTypes).is_nodeBI();
+            case "isNode":
+                return new (require('./BuiltInsForMultipleTypes').BuiltInsForMultipleTypes).is_nodeBI();
+            case "is_number":
+                return new (require('./BuiltInsForMultipleTypes').BuiltInsForMultipleTypes).is_numberBI();
+            case "isNumber":
+                return new (require('./BuiltInsForMultipleTypes').BuiltInsForMultipleTypes).is_numberBI();
+            case "is_odd_item":
+                return new (require('./BuiltInsForLoopVariables').BuiltInsForLoopVariables).is_odd_itemBI();
+            case "isOddItem":
+                return new (require('./BuiltInsForLoopVariables').BuiltInsForLoopVariables).is_odd_itemBI();
+            case "is_sequence":
+                return new (require('./BuiltInsForMultipleTypes').BuiltInsForMultipleTypes).is_sequenceBI();
+            case "isSequence":
+                return new (require('./BuiltInsForMultipleTypes').BuiltInsForMultipleTypes).is_sequenceBI();
+            case "is_string":
+                return new (require('./BuiltInsForMultipleTypes').BuiltInsForMultipleTypes).is_stringBI();
+            case "isString":
+                return new (require('./BuiltInsForMultipleTypes').BuiltInsForMultipleTypes).is_stringBI();
+            case "is_time":
+                return new (require('./BuiltInsForMultipleTypes').BuiltInsForMultipleTypes).is_dateOfTypeBI(TemplateDateModel.TIME);
+            case "isTime":
+                return new (require('./BuiltInsForMultipleTypes').BuiltInsForMultipleTypes).is_dateOfTypeBI(TemplateDateModel.TIME);
+            case "is_transform":
+                return new (require('./BuiltInsForMultipleTypes').BuiltInsForMultipleTypes).is_transformBI();
+            case "isTransform":
+                return new (require('./BuiltInsForMultipleTypes').BuiltInsForMultipleTypes).is_transformBI();
+            case "iso_utc":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).iso_utc_or_local_BI(null, DateUtil.ACCURACY_SECONDS, true);
+            case "isoUtc":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).iso_utc_or_local_BI(null, DateUtil.ACCURACY_SECONDS, true);
+            case "iso_utc_fz":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).iso_utc_or_local_BI(true, DateUtil.ACCURACY_SECONDS, true);
+            case "isoUtcFZ":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).iso_utc_or_local_BI(true, DateUtil.ACCURACY_SECONDS, true);
+            case "iso_utc_nz":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).iso_utc_or_local_BI(false, DateUtil.ACCURACY_SECONDS, true);
+            case "isoUtcNZ":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).iso_utc_or_local_BI(false, DateUtil.ACCURACY_SECONDS, true);
+            case "iso_utc_ms":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).iso_utc_or_local_BI(null, DateUtil.ACCURACY_MILLISECONDS, true);
+            case "isoUtcMs":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).iso_utc_or_local_BI(null, DateUtil.ACCURACY_MILLISECONDS, true);
+            case "iso_utc_ms_nz":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).iso_utc_or_local_BI(false, DateUtil.ACCURACY_MILLISECONDS, true);
+            case "isoUtcMsNZ":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).iso_utc_or_local_BI(false, DateUtil.ACCURACY_MILLISECONDS, true);
+            case "iso_utc_m":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).iso_utc_or_local_BI(null, DateUtil.ACCURACY_MINUTES, true);
+            case "isoUtcM":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).iso_utc_or_local_BI(null, DateUtil.ACCURACY_MINUTES, true);
+            case "iso_utc_m_nz":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).iso_utc_or_local_BI(false, DateUtil.ACCURACY_MINUTES, true);
+            case "isoUtcMNZ":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).iso_utc_or_local_BI(false, DateUtil.ACCURACY_MINUTES, true);
+            case "iso_utc_h":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).iso_utc_or_local_BI(null, DateUtil.ACCURACY_HOURS, true);
+            case "isoUtcH":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).iso_utc_or_local_BI(null, DateUtil.ACCURACY_HOURS, true);
+            case "iso_utc_h_nz":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).iso_utc_or_local_BI(false, DateUtil.ACCURACY_HOURS, true);
+            case "isoUtcHNZ":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).iso_utc_or_local_BI(false, DateUtil.ACCURACY_HOURS, true);
+            case "iso_local":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).iso_utc_or_local_BI(null, DateUtil.ACCURACY_SECONDS, false);
+            case "isoLocal":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).iso_utc_or_local_BI(null, DateUtil.ACCURACY_SECONDS, false);
+            case "iso_local_nz":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).iso_utc_or_local_BI(false, DateUtil.ACCURACY_SECONDS, false);
+            case "isoLocalNZ":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).iso_utc_or_local_BI(false, DateUtil.ACCURACY_SECONDS, false);
+            case "iso_local_ms":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).iso_utc_or_local_BI(null, DateUtil.ACCURACY_MILLISECONDS, false);
+            case "isoLocalMs":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).iso_utc_or_local_BI(null, DateUtil.ACCURACY_MILLISECONDS, false);
+            case "iso_local_ms_nz":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).iso_utc_or_local_BI(false, DateUtil.ACCURACY_MILLISECONDS, false);
+            case "isoLocalMsNZ":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).iso_utc_or_local_BI(false, DateUtil.ACCURACY_MILLISECONDS, false);
+            case "iso_local_m":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).iso_utc_or_local_BI(null, DateUtil.ACCURACY_MINUTES, false);
+            case "isoLocalM":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).iso_utc_or_local_BI(null, DateUtil.ACCURACY_MINUTES, false);
+            case "iso_local_m_nz":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).iso_utc_or_local_BI(false, DateUtil.ACCURACY_MINUTES, false);
+            case "isoLocalMNZ":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).iso_utc_or_local_BI(false, DateUtil.ACCURACY_MINUTES, false);
+            case "iso_local_h":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).iso_utc_or_local_BI(null, DateUtil.ACCURACY_HOURS, false);
+            case "isoLocalH":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).iso_utc_or_local_BI(null, DateUtil.ACCURACY_HOURS, false);
+            case "iso_local_h_nz":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).iso_utc_or_local_BI(false, DateUtil.ACCURACY_HOURS, false);
+            case "isoLocalHNZ":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).iso_utc_or_local_BI(false, DateUtil.ACCURACY_HOURS, false);
+            case "iso":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).iso_BI(null, DateUtil.ACCURACY_SECONDS);
+            case "iso_nz":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).iso_BI(false, DateUtil.ACCURACY_SECONDS);
+            case "isoNZ":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).iso_BI(false, DateUtil.ACCURACY_SECONDS);
+            case "iso_ms":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).iso_BI(null, DateUtil.ACCURACY_MILLISECONDS);
+            case "isoMs":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).iso_BI(null, DateUtil.ACCURACY_MILLISECONDS);
+            case "iso_ms_nz":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).iso_BI(false, DateUtil.ACCURACY_MILLISECONDS);
+            case "isoMsNZ":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).iso_BI(false, DateUtil.ACCURACY_MILLISECONDS);
+            case "iso_m":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).iso_BI(null, DateUtil.ACCURACY_MINUTES);
+            case "isoM":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).iso_BI(null, DateUtil.ACCURACY_MINUTES);
+            case "iso_m_nz":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).iso_BI(false, DateUtil.ACCURACY_MINUTES);
+            case "isoMNZ":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).iso_BI(false, DateUtil.ACCURACY_MINUTES);
+            case "iso_h":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).iso_BI(null, DateUtil.ACCURACY_HOURS);
+            case "isoH":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).iso_BI(null, DateUtil.ACCURACY_HOURS);
+            case "iso_h_nz":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).iso_BI(false, DateUtil.ACCURACY_HOURS);
+            case "isoHNZ":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).iso_BI(false, DateUtil.ACCURACY_HOURS);
+            case "j_string":
+                return new (require('./BuiltInsForStringsEncoding').BuiltInsForStringsEncoding).j_stringBI();
+            case "jString":
+                return new (require('./BuiltInsForStringsEncoding').BuiltInsForStringsEncoding).j_stringBI();
+            case "join":
+                return new (require('./BuiltInsForSequences').BuiltInsForSequences).joinBI();
+            case "js_string":
+                return new (require('./BuiltInsForStringsEncoding').BuiltInsForStringsEncoding).js_stringBI();
+            case "jsString":
+                return new (require('./BuiltInsForStringsEncoding').BuiltInsForStringsEncoding).js_stringBI();
+            case "json_string":
+                return new (require('./BuiltInsForStringsEncoding').BuiltInsForStringsEncoding).json_stringBI();
+            case "jsonString":
+                return new (require('./BuiltInsForStringsEncoding').BuiltInsForStringsEncoding).json_stringBI();
+            case "keep_after":
+                return new (require('./BuiltInsForStringsBasic').BuiltInsForStringsBasic).keep_afterBI();
+            case "keepAfter":
+                return new (require('./BuiltInsForStringsBasic').BuiltInsForStringsBasic).keep_afterBI();
+            case "keep_before":
+                return new (require('./BuiltInsForStringsBasic').BuiltInsForStringsBasic).keep_beforeBI();
+            case "keepBefore":
+                return new (require('./BuiltInsForStringsBasic').BuiltInsForStringsBasic).keep_beforeBI();
+            case "keep_after_last":
+                return new (require('./BuiltInsForStringsBasic').BuiltInsForStringsBasic).keep_after_lastBI();
+            case "keepAfterLast":
+                return new (require('./BuiltInsForStringsBasic').BuiltInsForStringsBasic).keep_after_lastBI();
+            case "keep_before_last":
+                return new (require('./BuiltInsForStringsBasic').BuiltInsForStringsBasic).keep_before_lastBI();
+            case "keepBeforeLast":
+                return new (require('./BuiltInsForStringsBasic').BuiltInsForStringsBasic).keep_before_lastBI();
+            case "keys":
+                return new (require('./BuiltInsForHashes').BuiltInsForHashes).keysBI();
+            case "last_index_of":
+                return new (require('./BuiltInsForStringsBasic').BuiltInsForStringsBasic).index_ofBI(true);
+            case "lastIndexOf":
+                return new (require('./BuiltInsForStringsBasic').BuiltInsForStringsBasic).index_ofBI(true);
+            case "last":
+                return new (require('./BuiltInsForSequences').BuiltInsForSequences).lastBI();
+            case "left_pad":
+                return new (require('./BuiltInsForStringsBasic').BuiltInsForStringsBasic).padBI(true);
+            case "leftPad":
+                return new (require('./BuiltInsForStringsBasic').BuiltInsForStringsBasic).padBI(true);
+            case "length":
+                return new (require('./BuiltInsForStringsBasic').BuiltInsForStringsBasic).lengthBI();
+            case "long":
+                return new (require('./BuiltInsForNumbers').BuiltInsForNumbers).longBI();
+            case "lower_abc":
+                return new (require('./BuiltInsForNumbers').BuiltInsForNumbers).lower_abcBI();
+            case "lowerAbc":
+                return new (require('./BuiltInsForNumbers').BuiltInsForNumbers).lower_abcBI();
+            case "lower_case":
+                return new (require('./BuiltInsForStringsBasic').BuiltInsForStringsBasic).lower_caseBI();
+            case "lowerCase":
+                return new (require('./BuiltInsForStringsBasic').BuiltInsForStringsBasic).lower_caseBI();
+            case "namespace":
+                return new (require('./BuiltInsForMultipleTypes').BuiltInsForMultipleTypes).namespaceBI();
+            case "new":
+                return new (require('./NewBI').NewBI)();
+            case "markup_string":
+                return new (require('./BuiltInsForMarkupOutputs').BuiltInsForMarkupOutputs).markup_stringBI();
+            case "markupString":
+                return new (require('./BuiltInsForMarkupOutputs').BuiltInsForMarkupOutputs).markup_stringBI();
+            case "node_name":
+                return new (require('./BuiltInsForNodes').BuiltInsForNodes).node_nameBI();
+            case "nodeName":
+                return new (require('./BuiltInsForNodes').BuiltInsForNodes).node_nameBI();
+            case "node_namespace":
+                return new (require('./BuiltInsForNodes').BuiltInsForNodes).node_namespaceBI();
+            case "nodeNamespace":
+                return new (require('./BuiltInsForNodes').BuiltInsForNodes).node_namespaceBI();
+            case "node_type":
+                return new (require('./BuiltInsForNodes').BuiltInsForNodes).node_typeBI();
+            case "nodeType":
+                return new (require('./BuiltInsForNodes').BuiltInsForNodes).node_typeBI();
+            case "no_esc":
+                return new (require('./BuiltInsForOutputFormatRelated').BuiltInsForOutputFormatRelated).no_escBI();
+            case "noEsc":
+                return new (require('./BuiltInsForOutputFormatRelated').BuiltInsForOutputFormatRelated).no_escBI();
+            case "max":
+                return new (require('./BuiltInsForSequences').BuiltInsForSequences).maxBI();
+            case "min":
+                return new (require('./BuiltInsForSequences').BuiltInsForSequences).minBI();
+            case "number":
+                return new (require('./BuiltInsForStringsMisc').BuiltInsForStringsMisc).numberBI();
+            case "number_to_date":
+                return new (require('./BuiltInsForNumbers').BuiltInsForNumbers).number_to_dateBI(TemplateDateModel.DATE);
+            case "numberToDate":
+                return new (require('./BuiltInsForNumbers').BuiltInsForNumbers).number_to_dateBI(TemplateDateModel.DATE);
+            case "number_to_time":
+                return new (require('./BuiltInsForNumbers').BuiltInsForNumbers).number_to_dateBI(TemplateDateModel.TIME);
+            case "numberToTime":
+                return new (require('./BuiltInsForNumbers').BuiltInsForNumbers).number_to_dateBI(TemplateDateModel.TIME);
+            case "number_to_datetime":
+                return new (require('./BuiltInsForNumbers').BuiltInsForNumbers).number_to_dateBI(TemplateDateModel.DATETIME);
+            case "numberToDatetime":
+                return new (require('./BuiltInsForNumbers').BuiltInsForNumbers).number_to_dateBI(TemplateDateModel.DATETIME);
+            case "parent":
+                return new (require('./BuiltInsForNodes').BuiltInsForNodes).parentBI();
+            case "previous_sibling":
+                return new (require('./BuiltInsForNodes').BuiltInsForNodes).previousSiblingBI();
+            case "previousSibling":
+                return new (require('./BuiltInsForNodes').BuiltInsForNodes).previousSiblingBI();
+            case "next_sibling":
+                return new (require('./BuiltInsForNodes').BuiltInsForNodes).nextSiblingBI();
+            case "nextSibling":
+                return new (require('./BuiltInsForNodes').BuiltInsForNodes).nextSiblingBI();
+            case "item_parity":
+                return new (require('./BuiltInsForLoopVariables').BuiltInsForLoopVariables).item_parityBI();
+            case "itemParity":
+                return new (require('./BuiltInsForLoopVariables').BuiltInsForLoopVariables).item_parityBI();
+            case "item_parity_cap":
+                return new (require('./BuiltInsForLoopVariables').BuiltInsForLoopVariables).item_parity_capBI();
+            case "itemParityCap":
+                return new (require('./BuiltInsForLoopVariables').BuiltInsForLoopVariables).item_parity_capBI();
+            case "reverse":
+                return new (require('./BuiltInsForSequences').BuiltInsForSequences).reverseBI();
+            case "right_pad":
+                return new (require('./BuiltInsForStringsBasic').BuiltInsForStringsBasic).padBI(false);
+            case "rightPad":
+                return new (require('./BuiltInsForStringsBasic').BuiltInsForStringsBasic).padBI(false);
+            case "root":
+                return new (require('./BuiltInsForNodes').BuiltInsForNodes).rootBI();
+            case "round":
+                return new (require('./BuiltInsForNumbers').BuiltInsForNumbers).roundBI();
+            case "remove_ending":
+                return new (require('./BuiltInsForStringsBasic').BuiltInsForStringsBasic).remove_endingBI();
+            case "removeEnding":
+                return new (require('./BuiltInsForStringsBasic').BuiltInsForStringsBasic).remove_endingBI();
+            case "remove_beginning":
+                return new (require('./BuiltInsForStringsBasic').BuiltInsForStringsBasic).remove_beginningBI();
+            case "removeBeginning":
+                return new (require('./BuiltInsForStringsBasic').BuiltInsForStringsBasic).remove_beginningBI();
+            case "rtf":
+                return new (require('./BuiltInsForStringsEncoding').BuiltInsForStringsEncoding).rtfBI();
+            case "seq_contains":
+                return new (require('./BuiltInsForSequences').BuiltInsForSequences).seq_containsBI();
+            case "seqContains":
+                return new (require('./BuiltInsForSequences').BuiltInsForSequences).seq_containsBI();
+            case "seq_index_of":
+                return new (require('./BuiltInsForSequences').BuiltInsForSequences).seq_index_ofBI(true);
+            case "seqIndexOf":
+                return new (require('./BuiltInsForSequences').BuiltInsForSequences).seq_index_ofBI(true);
+            case "seq_last_index_of":
+                return new (require('./BuiltInsForSequences').BuiltInsForSequences).seq_index_ofBI(false);
+            case "seqLastIndexOf":
+                return new (require('./BuiltInsForSequences').BuiltInsForSequences).seq_index_ofBI(false);
+            case "sequence":
+                return new (require('./BuiltInsForSequences').BuiltInsForSequences).sequenceBI();
+            case "short":
+                return new (require('./BuiltInsForNumbers').BuiltInsForNumbers).shortBI();
+            case "size":
+                return new (require('./BuiltInsForMultipleTypes').BuiltInsForMultipleTypes).sizeBI();
+            case "sort_by":
+                return new (require('./BuiltInsForSequences').BuiltInsForSequences).sort_byBI();
+            case "sortBy":
+                return new (require('./BuiltInsForSequences').BuiltInsForSequences).sort_byBI();
+            case "sort":
+                return new (require('./BuiltInsForSequences').BuiltInsForSequences).sortBI();
+            case "split":
+                return new (require('./BuiltInsForStringsBasic').BuiltInsForStringsBasic).split_BI();
+            case "switch":
+                return new (require('./BuiltInsWithParseTimeParameters').BuiltInsWithParseTimeParameters).switch_BI();
+            case "starts_with":
+                return new (require('./BuiltInsForStringsBasic').BuiltInsForStringsBasic).starts_withBI();
+            case "startsWith":
+                return new (require('./BuiltInsForStringsBasic').BuiltInsForStringsBasic).starts_withBI();
+            case "string":
+                return new (require('./BuiltInsForMultipleTypes').BuiltInsForMultipleTypes).stringBI();
+            case "substring":
+                return new (require('./BuiltInsForStringsBasic').BuiltInsForStringsBasic).substringBI();
+            case "then":
+                return new (require('./BuiltInsWithParseTimeParameters').BuiltInsWithParseTimeParameters).then_BI();
+            case "time":
+                return new (require('./BuiltInsForMultipleTypes').BuiltInsForMultipleTypes).dateBI(TemplateDateModel.TIME);
+            case "time_if_unknown":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).dateType_if_unknownBI(TemplateDateModel.TIME);
+            case "timeIfUnknown":
+                return new (require('./BuiltInsForDates').BuiltInsForDates).dateType_if_unknownBI(TemplateDateModel.TIME);
+            case "trim":
+                return new (require('./BuiltInsForStringsBasic').BuiltInsForStringsBasic).trimBI();
+            case "uncap_first":
+                return new (require('./BuiltInsForStringsBasic').BuiltInsForStringsBasic).uncap_firstBI();
+            case "uncapFirst":
+                return new (require('./BuiltInsForStringsBasic').BuiltInsForStringsBasic).uncap_firstBI();
+            case "upper_abc":
+                return new (require('./BuiltInsForNumbers').BuiltInsForNumbers).upper_abcBI();
+            case "upperAbc":
+                return new (require('./BuiltInsForNumbers').BuiltInsForNumbers).upper_abcBI();
+            case "upper_case":
+                return new (require('./BuiltInsForStringsBasic').BuiltInsForStringsBasic).upper_caseBI();
+            case "upperCase":
+                return new (require('./BuiltInsForStringsBasic').BuiltInsForStringsBasic).upper_caseBI();
+            case "url":
+                return new (require('./BuiltInsForStringsEncoding').BuiltInsForStringsEncoding).urlBI();
+            case "url_path":
+                return new (require('./BuiltInsForStringsEncoding').BuiltInsForStringsEncoding).urlPathBI();
+            case "urlPath":
+                return new (require('./BuiltInsForStringsEncoding').BuiltInsForStringsEncoding).urlPathBI();
+            case "values":
+                return new (require('./BuiltInsForHashes').BuiltInsForHashes).valuesBI();
+            case "web_safe":
+                return /* get */BuiltIn.BUILT_INS_BY_NAME.get("html");
+            case "webSafe":
+                return /* get */BuiltIn.BUILT_INS_BY_NAME.get("html");
+            case "word_list":
+                return new (require('./BuiltInsForStringsBasic').BuiltInsForStringsBasic).word_listBI();
+            case "wordList":
+                return new (require('./BuiltInsForStringsBasic').BuiltInsForStringsBasic).word_listBI();
+            case "xhtml":
+                return new (require('./BuiltInsForStringsEncoding').BuiltInsForStringsEncoding).xhtmlBI();
+            case "xml":
+                return new (require('./BuiltInsForStringsEncoding').BuiltInsForStringsEncoding).xmlBI();
+            case "matches":
+                return new (require('./BuiltInsForStringsRegexp').BuiltInsForStringsRegexp).matchesBI();
+            case "groups":
+                return new (require('./BuiltInsForStringsRegexp').BuiltInsForStringsRegexp).groupsBI();
+            case "replace":
+                return new (require('./BuiltInsForStringsRegexp').BuiltInsForStringsRegexp).replace_reBI();
+        }
+        return null;
+    }
+
     /**
      * @param {Expression} target Left-hand-operand expression
      * @param {Token} keyTk  Built-in name token
@@ -257,21 +777,22 @@ export abstract class BuiltIn extends Expression {
      * @param {FMParserTokenManager} tokenManager
      * @return {BuiltIn}
      */
-    static newBuiltIn(incompatibleImprovements : number, target : Expression, keyTk : Token, tokenManager : FMParserTokenManager) : BuiltIn {
+    static newBuiltIn(incompatibleImprovements : number, target : Expression, keyTk : Token, tokenManager : /*FMParserTokenManager*/any) : BuiltIn {
+        const Configuration = require('../template/Configuration').Configuration;
         let key : string = keyTk.image;
-        let bi : BuiltIn = /* get */BuiltIn.BUILT_INS_BY_NAME_$LI$().get(key);
+        let bi : BuiltIn = BuiltIn.getBuiltInByName(key);
         if(bi == null) {
             let buf : StringBuilder = new StringBuilder("Unknown built-in: ").append(StringUtil.jQuote$java_lang_Object(key)).append(". ");
             buf.append("Help (latest version): https://freemarker.apache.org/docs/ref_builtins.html; you\'re using FreeMarker ").append(Configuration.getVersion()).append(".\nThe alphabetical list of built-ins:");
-            let names : Array<any> = <any>([]);
-            /* addAll */((l1, l2) => l1.push.apply(l1, l2))(names, /* keySet */((m) => { let r=[]; m.forEach((v, k, m) => r.push(k)); return r; })(<any>BuiltIn.BUILT_INS_BY_NAME_$LI$()));
+            let names : List<any> = new List<any>();
+            names.addAll(BuiltIn.BUILT_INS_BY_NAME.keySet());
             /* sort */names.sort();
             let lastLetter : string = String.fromCharCode(0);
             let shownNamingConvention : number;
             {
                 let namingConvention : number = tokenManager.namingConvention;
                 shownNamingConvention = namingConvention !== Configuration.AUTO_DETECT_NAMING_CONVENTION?namingConvention:Configuration.LEGACY_NAMING_CONVENTION;
-            };
+            }
             let first : boolean = true;
             for(let it : any = /* iterator */((a) => { var i = 0; return { next: function() { return i<a.length?a[i++]:null; }, hasNext: function() { return i<a.length; }}})(names); it.hasNext(); ) {
                 let correctName : string = <string>it.next();
@@ -289,24 +810,24 @@ export abstract class BuiltIn extends Expression {
                     }
                     buf.append(correctName);
                 }
-            };
-            throw new ParseException(buf.toString(), null, keyTk);
+            }
+            throw new (require('./ParseException').ParseException)(buf.toString(), null, keyTk);
         }
         while(((bi != null && (bi["__interfaces"] != null && bi["__interfaces"].indexOf("freemarker.core.ICIChainMember") >= 0 || bi.constructor != null && bi.constructor["__interfaces"] != null && bi.constructor["__interfaces"].indexOf("freemarker.core.ICIChainMember") >= 0)) && incompatibleImprovements < (<ICIChainMember><any>bi).getMinimumICIVersion())) {
             bi = <BuiltIn>(<ICIChainMember><any>bi).getPreviousICIChainMember();
-        };
+        }
         try {
             bi = <BuiltIn>/* clone *//* clone */((o:any) => { if(o.clone!=undefined) { return (<any>o).clone(); } else { let clone = Object.create(o); for(let p in o) { if (o.hasOwnProperty(p)) clone[p] = o[p]; } return clone; } })(bi);
         } catch(e) {
             throw Object.defineProperty(new Error(), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.VirtualMachineError','java.lang.InternalError','java.lang.Error','java.lang.Object'] });
-        };
+        }
         bi.key = key;
         bi.target = target;
         return bi;
     }
 
     /**
-     * 
+     *
      * @return {String}
      */
     public getCanonicalForm() : string {
@@ -314,7 +835,7 @@ export abstract class BuiltIn extends Expression {
     }
 
     /**
-     * 
+     *
      * @return {String}
      */
     getNodeTypeSymbol() : string {
@@ -322,7 +843,7 @@ export abstract class BuiltIn extends Expression {
     }
 
     /**
-     * 
+     *
      * @return {boolean}
      */
     isLiteral() : boolean {
@@ -344,15 +865,16 @@ export abstract class BuiltIn extends Expression {
     }
 
     public checkMethodArgCount(args? : any, minCnt? : any, maxCnt? : any) : any {
-        if(((args != null && (args instanceof Array)) || args === null) && ((typeof minCnt === 'number') || minCnt === null) && ((typeof maxCnt === 'number') || maxCnt === null)) {
-            return <any>this.checkMethodArgCount$java_util_List$int$int(args, minCnt, maxCnt);
-        } else if(((typeof args === 'number') || args === null) && ((typeof minCnt === 'number') || minCnt === null) && ((typeof maxCnt === 'number') || maxCnt === null)) {
-            return <any>this.checkMethodArgCount$int$int$int(args, minCnt, maxCnt);
-        } else if(((args != null && (args instanceof Array)) || args === null) && ((typeof minCnt === 'number') || minCnt === null) && maxCnt === undefined) {
-            return <any>this.checkMethodArgCount$java_util_List$int(args, minCnt);
-        } else if(((typeof args === 'number') || args === null) && ((typeof minCnt === 'number') || minCnt === null) && maxCnt === undefined) {
-            return <any>this.checkMethodArgCount$int$int(args, minCnt);
-        } else throw new Error('invalid overload');
+        if(arguments.length === 2) {
+            if(typeof arguments[0] === 'number') {
+                return this.checkMethodArgCount$int$int(<number>arguments[0], <number>arguments[1]);
+            }
+            return this.checkMethodArgCount$java_util_List$int(<Array<any>>arguments[0], <number>arguments[1]);
+        }
+        if(typeof arguments[0] === 'number') {
+            return this.checkMethodArgCount$int$int$int(<number>arguments[0], <number>arguments[1], <number>arguments[2]);
+        }
+        return this.checkMethodArgCount$java_util_List$int$int(<Array<any>>arguments[0], <number>arguments[1], <number>arguments[2]);
     }
 
     checkMethodArgCount$int$int$int(argCnt : number, minCnt : number, maxCnt : number) {
@@ -383,7 +905,7 @@ export abstract class BuiltIn extends Expression {
         if(!(arg != null && (arg["__interfaces"] != null && arg["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0 || arg.constructor != null && arg.constructor["__interfaces"] != null && arg.constructor["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0))) {
             throw _MessageUtil.newMethodArgMustBeStringException("?" + this.key, argIdx, arg);
         } else {
-            return EvalUtil.modelToString(<TemplateScalarModel><any>arg, null, null);
+            return (require('./EvalUtil').EvalUtil).modelToString(/*<TemplateScalarModel>*/<any>arg, null, null);
         }
     }
 
@@ -398,20 +920,20 @@ export abstract class BuiltIn extends Expression {
         if(!(arg != null && (arg["__interfaces"] != null && arg["__interfaces"].indexOf("freemarker.template.TemplateNumberModel") >= 0 || arg.constructor != null && arg.constructor["__interfaces"] != null && arg.constructor["__interfaces"].indexOf("freemarker.template.TemplateNumberModel") >= 0))) {
             throw _MessageUtil.newMethodArgMustBeNumberException("?" + this.key, argIdx, arg);
         } else {
-            return EvalUtil.modelToNumber(<TemplateNumberModel><any>arg, null);
+            return (require('./EvalUtil').EvalUtil).modelToNumber(/*<TemplateNumberModel>*/<any>arg, null);
         }
     }
 
-    newMethodArgInvalidValueException(argIdx : number, details : Array) : TemplateModelException {
+    newMethodArgInvalidValueException(argIdx : number, details : Array<any>) : TemplateModelException {
         return _MessageUtil.newMethodArgInvalidValueException.apply(null, ["?" + this.key, argIdx].concat(<any[]>details));
     }
 
-    newMethodArgsInvalidValueException(details : Array) : TemplateModelException {
+    newMethodArgsInvalidValueException(details : Array<any>) : TemplateModelException {
         return _MessageUtil.newMethodArgsInvalidValueException.apply(null, ["?" + this.key].concat(<any[]>details));
     }
 
     /**
-     * 
+     *
      * @param {String} replacedIdentifier
      * @param {Expression} replacement
      * @param {Expression.ReplacemenetState} replacementState
@@ -424,11 +946,11 @@ export abstract class BuiltIn extends Expression {
             return clone;
         } catch(e) {
             throw Object.defineProperty(new Error("Internal error: " + e), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.lang.RuntimeException','java.lang.Exception'] });
-        };
+        }
     }
 
     /**
-     * 
+     *
      * @return {number}
      */
     getParameterCount() : number {
@@ -436,7 +958,7 @@ export abstract class BuiltIn extends Expression {
     }
 
     /**
-     * 
+     *
      * @param {number} idx
      * @return {Object}
      */
@@ -452,16 +974,16 @@ export abstract class BuiltIn extends Expression {
     }
 
     /**
-     * 
+     *
      * @param {number} idx
      * @return {ParameterRole}
      */
     getParameterRole(idx : number) : ParameterRole {
         switch((idx)) {
         case 0:
-            return ParameterRole.LEFT_HAND_OPERAND_$LI$();
+            return ParameterRole.LEFT_HAND_OPERAND;
         case 1:
-            return ParameterRole.RIGHT_HAND_OPERAND_$LI$();
+            return ParameterRole.RIGHT_HAND_OPERAND;
         default:
             throw Object.defineProperty(new Error(), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.IndexOutOfBoundsException','java.lang.Object','java.lang.RuntimeException','java.lang.Exception'] });
         }
@@ -475,15 +997,3 @@ export abstract class BuiltIn extends Expression {
 }
 BuiltIn["__class"] = "freemarker.core.BuiltIn";
 BuiltIn["__interfaces"] = ["java.lang.Cloneable"];
-
-
-
-
-
-BuiltIn.BUILT_INS_BY_NAME_$LI$();
-
-BuiltIn.SNAKE_CASE_NAMES_$LI$();
-
-BuiltIn.CAMEL_CASE_NAMES_$LI$();
-
-BuiltIn.__static_initialize();

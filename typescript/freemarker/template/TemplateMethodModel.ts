@@ -1,6 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateModel } from './TemplateModel';
-import { TemplateModelException } from './TemplateModelException';
+import {TemplateModel} from './TemplateModel';
 
 /**
  * "method" template language data type: Objects that act like functions. The name comes from that their original
@@ -33,4 +32,4 @@ export interface TemplateMethodModel extends TemplateModel {
 }
 
 
-var __Function = Function;
+

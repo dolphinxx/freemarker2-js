@@ -1,22 +1,20 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateMarkupOutputModel } from '../../core/TemplateMarkupOutputModel';
-import { _DelayedConversionToString } from '../../core/_DelayedConversionToString';
-import { _ErrorDescriptionBuilder } from '../../core/_ErrorDescriptionBuilder';
-import { _TemplateModelException } from '../../core/_TemplateModelException';
-import { TemplateModel } from '../../template/TemplateModel';
-import { TemplateModelException } from '../../template/TemplateModelException';
-import { ClassUtil } from '../../template/utility/ClassUtil';
-import { OverloadedMethodsSubset } from './OverloadedMethodsSubset';
-import { OverloadedFixArgsMethods } from './OverloadedFixArgsMethods';
-import { ReflectionCallableMemberDescriptor } from './ReflectionCallableMemberDescriptor';
-import { OverloadedVarArgsMethods } from './OverloadedVarArgsMethods';
-import { MemberAndArguments } from './MemberAndArguments';
-import { BeansWrapper } from './BeansWrapper';
-import { MaybeEmptyMemberAndArguments } from './MaybeEmptyMemberAndArguments';
-import { EmptyMemberAndArguments } from './EmptyMemberAndArguments';
-import { StringBuilder } from '../../../java/lang/StringBuilder';
-import { CallableMemberDescriptor } from './CallableMemberDescriptor';
-import { SimpleMethodModel } from './SimpleMethodModel';
+import {_DelayedConversionToString} from '../../core/_DelayedConversionToString';
+import {_ErrorDescriptionBuilder} from '../../core/_ErrorDescriptionBuilder';
+import {_TemplateModelException} from '../../core/_TemplateModelException';
+import {TemplateModel} from '../../template/TemplateModel';
+import {ClassUtil} from '../../template/utility/ClassUtil';
+import {OverloadedMethodsSubset} from './OverloadedMethodsSubset';
+import {OverloadedFixArgsMethods} from './OverloadedFixArgsMethods';
+import {ReflectionCallableMemberDescriptor} from './ReflectionCallableMemberDescriptor';
+import {OverloadedVarArgsMethods} from './OverloadedVarArgsMethods';
+import {MemberAndArguments} from './MemberAndArguments';
+import {BeansWrapper} from './BeansWrapper';
+import {MaybeEmptyMemberAndArguments} from './MaybeEmptyMemberAndArguments';
+import {EmptyMemberAndArguments} from './EmptyMemberAndArguments';
+import {StringBuilder} from '../../../java/lang/StringBuilder';
+import {CallableMemberDescriptor} from './CallableMemberDescriptor';
+import {SimpleMethodModel} from './SimpleMethodModel';
 
 /**
  * Used instead of {link java.lang.reflect.Method} or {link java.lang.reflect.Constructor} for overloaded methods and
@@ -84,7 +82,7 @@ export class OverloadedMethods {
         throw new _TemplateModelException(edb);
     }
 
-    toCompositeErrorMessage(fixArgsEmptyRes : EmptyMemberAndArguments, varargsEmptyRes : EmptyMemberAndArguments, tmArgs : Array<any>) : Array {
+    toCompositeErrorMessage(fixArgsEmptyRes : EmptyMemberAndArguments, varargsEmptyRes : EmptyMemberAndArguments, tmArgs : Array<any>) : Array<any> {
         let argsErrorMsg : Array<any>;
         if(varargsEmptyRes != null) {
             if(fixArgsEmptyRes == null || fixArgsEmptyRes.isNumberOfArgumentsWrong()) {
@@ -98,7 +96,7 @@ export class OverloadedMethods {
         return argsErrorMsg;
     }
 
-    toErrorMessage(res : EmptyMemberAndArguments, tmArgs : Array<any>) : Array {
+    toErrorMessage(res : EmptyMemberAndArguments, tmArgs : Array<any>) : Array<any> {
         let unwrappedArgs : Array<any> = res.getUnwrappedArguments();
         return [res.getErrorDescription(), tmArgs != null?["\nThe FTL type of the argument values were: ", this.getTMActualParameterTypes(tmArgs), "."]:"", unwrappedArgs != null?["\nThe Java type of the argument values were: ", this.getUnwrappedActualParameterTypes(unwrappedArgs) + "."]:""];
     }
@@ -137,16 +135,16 @@ export class OverloadedMethods {
                             return;
                         }
                     }
-                };
+                }
             }
-        };
+        }
     }
 
     getTMActualParameterTypes(__arguments : Array<any>) : _DelayedConversionToString {
         let argumentTypeDescs : Array<any> = (s => { let a=[]; while(s-->0) a.push(null); return a; })(/* size */(<number>__arguments.length));
         for(let i : number = 0; i < /* size */(<number>__arguments.length); i++) {
             argumentTypeDescs[i] = ClassUtil.getFTLTypeDescription(<TemplateModel><any>/* get */__arguments[i]);
-        };
+        }
         return new OverloadedMethods.OverloadedMethods$1(this, argumentTypeDescs);
     }
 
@@ -155,7 +153,7 @@ export class OverloadedMethods {
         for(let i : number = 0; i < unwrappedArgs.length; i++) {
             let unwrappedArg : any = unwrappedArgs[i];
             argumentTypes[i] = unwrappedArg != null?(<any>unwrappedArg.constructor):null;
-        };
+        }
         return new OverloadedMethods.OverloadedMethods$2(this, argumentTypes);
     }
 }
@@ -182,7 +180,7 @@ export namespace OverloadedMethods {
             for(let i : number = 0; i < argTypes.length; i++) {
                 if(i !== 0) sb.append(", ");
                 sb.append(this.argumentToString(argTypes[i]));
-            };
+            }
             return sb.toString();
         }
 
@@ -211,7 +209,7 @@ export namespace OverloadedMethods {
                     let callableMemberDesc : CallableMemberDescriptor = <CallableMemberDescriptor>fixArgMethodsIter.next();
                     /* add */((s, e) => { if(s.indexOf(e)==-1) { s.push(e); return true; } else { return false; } })(fixArgMethods, callableMemberDesc);
                     sb.append(callableMemberDesc.getDeclaration());
-                };
+                }
                 if(varargMethodsIter != null) {
                     while((varargMethodsIter.hasNext())) {
                         let callableMemberDesc : CallableMemberDescriptor = <CallableMemberDescriptor>varargMethodsIter.next();
@@ -220,7 +218,7 @@ export namespace OverloadedMethods {
                             sb.append("    ");
                             sb.append(callableMemberDesc.getDeclaration());
                         }
-                    };
+                    }
                 }
                 return sb.toString();
             } else {
@@ -274,4 +272,4 @@ export namespace OverloadedMethods {
 
 
 
-var __Function = Function;
+

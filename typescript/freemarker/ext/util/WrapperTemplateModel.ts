@@ -1,5 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateModel } from '../../template/TemplateModel';
+import {TemplateModel} from '../../template/TemplateModel';
 
 /**
  * A generic interface for template models that wrap some underlying
@@ -17,4 +17,4 @@ export interface WrapperTemplateModel extends TemplateModel {
 }
 
 
-var __Function = Function;
+

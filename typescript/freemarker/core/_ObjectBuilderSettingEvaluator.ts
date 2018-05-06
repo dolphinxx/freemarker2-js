@@ -1,40 +1,13 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { AndMatcher } from '../cache/AndMatcher';
-import { ConditionalTemplateConfigurationFactory } from '../cache/ConditionalTemplateConfigurationFactory';
-import { FileExtensionMatcher } from '../cache/FileExtensionMatcher';
-import { FileNameGlobMatcher } from '../cache/FileNameGlobMatcher';
-import { FirstMatchTemplateConfigurationFactory } from '../cache/FirstMatchTemplateConfigurationFactory';
-import { MergingTemplateConfigurationFactory } from '../cache/MergingTemplateConfigurationFactory';
-import { NotMatcher } from '../cache/NotMatcher';
-import { OrMatcher } from '../cache/OrMatcher';
-import { PathGlobMatcher } from '../cache/PathGlobMatcher';
-import { PathRegexMatcher } from '../cache/PathRegexMatcher';
-import { BeansWrapper } from '../ext/beans/BeansWrapper';
-import { Configuration } from '../template/Configuration';
-import { DefaultObjectWrapper } from '../template/DefaultObjectWrapper';
-import { SimpleObjectWrapper } from '../template/SimpleObjectWrapper';
-import { TemplateHashModel } from '../template/TemplateHashModel';
-import { TemplateMethodModelEx } from '../template/TemplateMethodModelEx';
-import { TemplateModel } from '../template/TemplateModel';
-import { TemplateModelException } from '../template/TemplateModelException';
-import { Version } from '../template/Version';
-import { ClassUtil } from '../template/utility/ClassUtil';
-import { StringUtil } from '../template/utility/StringUtil';
-import { WriteProtectable } from '../template/utility/WriteProtectable';
-import { _SettingEvaluationEnvironment } from './_SettingEvaluationEnvironment';
-import { _ObjectBuilderSettingEvaluationException } from './_ObjectBuilderSettingEvaluationException';
-import { Boolean } from '../../java/lang/Boolean';
-import { StringBuilder } from '../../java/lang/StringBuilder';
-import { Character } from '../../java/lang/Character';
-import { ParseException } from './ParseException';
-import { TemplateConfiguration } from './TemplateConfiguration';
-import { HTMLOutputFormat } from './HTMLOutputFormat';
-import { XHTMLOutputFormat } from './XHTMLOutputFormat';
-import { XMLOutputFormat } from './XMLOutputFormat';
-import { RTFOutputFormat } from './RTFOutputFormat';
-import { PlainTextOutputFormat } from './PlainTextOutputFormat';
-import { UndefinedOutputFormat } from './UndefinedOutputFormat';
-import { BugException } from './BugException';
+import {BeansWrapper} from '../ext/beans/BeansWrapper';
+import {StringUtil} from '../template/utility/StringUtil';
+import {_SettingEvaluationEnvironment} from './_SettingEvaluationEnvironment';
+import {_ObjectBuilderSettingEvaluationException} from './_ObjectBuilderSettingEvaluationException';
+import {StringBuilder} from '../../java/lang/StringBuilder';
+import {Character} from '../../java/lang/Character';
+import {BugException} from './BugException';
+import {Map} from "../../java/util/Map";
+import {List} from "../../java/util/List";
 
 /**
  * Don't use this; used internally by FreeMarker, might changes without notice.
@@ -107,7 +80,7 @@ export class _ObjectBuilderSettingEvaluator {
         } catch(e) {
             e.rethrowLegacy();
             value = null;
-        };
+        }
         this.skipWS();
         if(this.pos !== this.src.length) {
             throw new _ObjectBuilderSettingEvaluationException("end-of-expression", this.src, this.pos);
@@ -134,38 +107,39 @@ export class _ObjectBuilderSettingEvaluator {
     }
 
     fetchBuilderCall(optional : boolean, topLevel : boolean) : any {
-        let startPos : number = this.pos;
-        let exp : _ObjectBuilderSettingEvaluator.BuilderCallExpression = new _ObjectBuilderSettingEvaluator.BuilderCallExpression(this);
-        exp.canBeStaticField = true;
-        let fetchedClassName : string = this.fetchClassName(optional);
-        {
-            if(fetchedClassName == null) {
-                if(!optional) {
-                    throw new _ObjectBuilderSettingEvaluationException("class name", this.src, this.pos);
-                }
-                return _ObjectBuilderSettingEvaluator.VOID_$LI$();
-            }
-            exp.className = _ObjectBuilderSettingEvaluator.shorthandToFullQualified(fetchedClassName);
-            if(!/* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(fetchedClassName,exp.className))) {
-                this.modernMode = true;
-                exp.canBeStaticField = false;
-            }
-        };
-        this.skipWS();
-        let openParen : string = this.fetchOptionalChar("(");
-        if((c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(openParen) == 0 && !topLevel) {
-            if(fetchedClassName.indexOf('.') !== -1) {
-                exp.mustBeStaticField = true;
-            } else {
-                this.pos = startPos;
-                return _ObjectBuilderSettingEvaluator.VOID_$LI$();
-            }
-        }
-        if((c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(openParen) != 0) {
-            this.fetchParameterListInto(exp);
-            exp.canBeStaticField = false;
-        }
-        return exp;
+        // let startPos : number = this.pos;
+        // let exp : _ObjectBuilderSettingEvaluator.BuilderCallExpression = new _ObjectBuilderSettingEvaluator.BuilderCallExpression(this);
+        // exp.canBeStaticField = true;
+        // let fetchedClassName : string = this.fetchClassName(optional);
+        // {
+        //     if(fetchedClassName == null) {
+        //         if(!optional) {
+        //             throw new _ObjectBuilderSettingEvaluationException("class name", this.src, this.pos);
+        //         }
+        //         return _ObjectBuilderSettingEvaluator.VOID_$LI$();
+        //     }
+        //     exp.className = _ObjectBuilderSettingEvaluator.shorthandToFullQualified(fetchedClassName);
+        //     if(!/* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(fetchedClassName,exp.className))) {
+        //         this.modernMode = true;
+        //         exp.canBeStaticField = false;
+        //     }
+        // };
+        // this.skipWS();
+        // let openParen : string = this.fetchOptionalChar("(");
+        // if((c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(openParen) == 0 && !topLevel) {
+        //     if(fetchedClassName.indexOf('.') !== -1) {
+        //         exp.mustBeStaticField = true;
+        //     } else {
+        //         this.pos = startPos;
+        //         return _ObjectBuilderSettingEvaluator.VOID_$LI$();
+        //     }
+        // }
+        // if((c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(openParen) != 0) {
+        //     this.fetchParameterListInto(exp);
+        //     exp.canBeStaticField = false;
+        // }
+        // return exp;
+        throw new Error();
     }
 
     fetchParameterListInto(exp : _ObjectBuilderSettingEvaluator.ExpressionWithParameters) {
@@ -272,7 +246,7 @@ export class _ObjectBuilderSettingEvaluator {
                 break seekClassNameEnd;
             }
             this.pos++;
-        };
+        }
         return this.src.substring(startPos, this.pos);
     }
 
@@ -307,101 +281,102 @@ export class _ObjectBuilderSettingEvaluator {
     }
 
     fetchNumberLike(optional : boolean, resultCoerced : boolean) : any {
-        let startPos : number = this.pos;
-        let isVersion : boolean = false;
-        let hasDot : boolean = false;
-        seekTokenEnd: while((true)) {
-            if(this.pos === this.src.length) {
-                break seekTokenEnd;
-            }
-            let c : string = this.src.charAt(this.pos);
-            if((c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(c) == '.'.charCodeAt(0)) {
-                if(hasDot) {
-                    isVersion = true;
-                } else {
-                    hasDot = true;
-                }
-            } else if(!(this.isASCIIDigit(c) || (c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(c) == '-'.charCodeAt(0))) {
-                break seekTokenEnd;
-            }
-            this.pos++;
-        };
-        if(startPos === this.pos) {
-            if(optional) {
-                return _ObjectBuilderSettingEvaluator.VOID_$LI$();
-            } else {
-                throw new _ObjectBuilderSettingEvaluationException("number-like", this.src, this.pos);
-            }
-        }
-        let numStr : string = this.src.substring(startPos, this.pos);
-        if(isVersion) {
-            try {
-                return new Version(numStr);
-            } catch(e) {
-                throw new _ObjectBuilderSettingEvaluationException("Malformed version number: " + numStr, e);
-            };
-        } else {
-            let typePostfix : string = null;
-            seekTypePostfixEnd: while((true)) {
-                if(this.pos === this.src.length) {
-                    break seekTypePostfixEnd;
-                }
-                let c : string = this.src.charAt(this.pos);
-                if(Character.isLetter(c)) {
-                    if(typePostfix == null) {
-                        typePostfix = /* valueOf */new String(c).toString();
-                    } else {
-                        typePostfix += c;
-                    }
-                } else {
-                    break seekTypePostfixEnd;
-                }
-                this.pos++;
-            };
-            try {
-                if(/* endsWith */((str, searchString) => { let pos = str.length - searchString.length; let lastIndex = str.indexOf(searchString, pos); return lastIndex !== -1 && lastIndex === pos; })(numStr, ".")) {
-                    throw Object.defineProperty(new Error("A number can\'t end with a dot"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.NumberFormatException','java.lang.Object','java.lang.RuntimeException','java.lang.IllegalArgumentException','java.lang.Exception'] });
-                }
-                if(/* startsWith */((str, searchString, position = 0) => str.substr(position, searchString.length) === searchString)(numStr, ".") || /* startsWith */((str, searchString, position = 0) => str.substr(position, searchString.length) === searchString)(numStr, "-.") || /* startsWith */((str, searchString, position = 0) => str.substr(position, searchString.length) === searchString)(numStr, "+.")) {
-                    throw Object.defineProperty(new Error("A number can\'t start with a dot"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.NumberFormatException','java.lang.Object','java.lang.RuntimeException','java.lang.IllegalArgumentException','java.lang.Exception'] });
-                }
-                if(typePostfix == null) {
-                    if(numStr.indexOf('.') === -1) {
-                        let biNum : BigInteger = new BigInteger(numStr);
-                        let bitLength : number = biNum.bitLength();
-                        if(bitLength <= 31) {
-                            return biNum.intValue();
-                        } else if(bitLength <= 63) {
-                            return biNum.longValue();
-                        } else {
-                            return biNum;
-                        }
-                    } else {
-                        if(resultCoerced) {
-                            return new BigDecimal(numStr);
-                        } else {
-                            return parseFloat(numStr);
-                        }
-                    }
-                } else {
-                    if(/* equalsIgnoreCase */((o1, o2) => o1.toUpperCase() === (o2===null?o2:o2.toUpperCase()))(typePostfix, "l")) {
-                        return parseFloat(numStr);
-                    } else if(/* equalsIgnoreCase */((o1, o2) => o1.toUpperCase() === (o2===null?o2:o2.toUpperCase()))(typePostfix, "bi")) {
-                        return new BigInteger(numStr);
-                    } else if(/* equalsIgnoreCase */((o1, o2) => o1.toUpperCase() === (o2===null?o2:o2.toUpperCase()))(typePostfix, "bd")) {
-                        return new BigDecimal(numStr);
-                    } else if(/* equalsIgnoreCase */((o1, o2) => o1.toUpperCase() === (o2===null?o2:o2.toUpperCase()))(typePostfix, "d")) {
-                        return parseFloat(numStr);
-                    } else if(/* equalsIgnoreCase */((o1, o2) => o1.toUpperCase() === (o2===null?o2:o2.toUpperCase()))(typePostfix, "f")) {
-                        return parseFloat(numStr);
-                    } else {
-                        throw new _ObjectBuilderSettingEvaluationException("Unrecognized number type postfix: " + typePostfix);
-                    }
-                }
-            } catch(e) {
-                throw new _ObjectBuilderSettingEvaluationException("Malformed number: " + numStr, e);
-            };
-        }
+        // let startPos : number = this.pos;
+        // let isVersion : boolean = false;
+        // let hasDot : boolean = false;
+        // seekTokenEnd: while((true)) {
+        //     if(this.pos === this.src.length) {
+        //         break seekTokenEnd;
+        //     }
+        //     let c : string = this.src.charAt(this.pos);
+        //     if((c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(c) == '.'.charCodeAt(0)) {
+        //         if(hasDot) {
+        //             isVersion = true;
+        //         } else {
+        //             hasDot = true;
+        //         }
+        //     } else if(!(this.isASCIIDigit(c) || (c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(c) == '-'.charCodeAt(0))) {
+        //         break seekTokenEnd;
+        //     }
+        //     this.pos++;
+        // };
+        // if(startPos === this.pos) {
+        //     if(optional) {
+        //         return _ObjectBuilderSettingEvaluator.VOID_$LI$();
+        //     } else {
+        //         throw new _ObjectBuilderSettingEvaluationException("number-like", this.src, this.pos);
+        //     }
+        // }
+        // let numStr : string = this.src.substring(startPos, this.pos);
+        // if(isVersion) {
+        //     try {
+        //         return new Version(numStr);
+        //     } catch(e) {
+        //         throw new _ObjectBuilderSettingEvaluationException("Malformed version number: " + numStr, e);
+        //     };
+        // } else {
+        //     let typePostfix : string = null;
+        //     seekTypePostfixEnd: while((true)) {
+        //         if(this.pos === this.src.length) {
+        //             break seekTypePostfixEnd;
+        //         }
+        //         let c : string = this.src.charAt(this.pos);
+        //         if(Character.isLetter(c)) {
+        //             if(typePostfix == null) {
+        //                 typePostfix = /* valueOf */new String(c).toString();
+        //             } else {
+        //                 typePostfix += c;
+        //             }
+        //         } else {
+        //             break seekTypePostfixEnd;
+        //         }
+        //         this.pos++;
+        //     };
+        //     try {
+        //         if(/* endsWith */((str, searchString) => { let pos = str.length - searchString.length; let lastIndex = str.indexOf(searchString, pos); return lastIndex !== -1 && lastIndex === pos; })(numStr, ".")) {
+        //             throw Object.defineProperty(new Error("A number can\'t end with a dot"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.NumberFormatException','java.lang.Object','java.lang.RuntimeException','java.lang.IllegalArgumentException','java.lang.Exception'] });
+        //         }
+        //         if(/* startsWith */((str, searchString, position = 0) => str.substr(position, searchString.length) === searchString)(numStr, ".") || /* startsWith */((str, searchString, position = 0) => str.substr(position, searchString.length) === searchString)(numStr, "-.") || /* startsWith */((str, searchString, position = 0) => str.substr(position, searchString.length) === searchString)(numStr, "+.")) {
+        //             throw Object.defineProperty(new Error("A number can\'t start with a dot"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.NumberFormatException','java.lang.Object','java.lang.RuntimeException','java.lang.IllegalArgumentException','java.lang.Exception'] });
+        //         }
+        //         if(typePostfix == null) {
+        //             if(numStr.indexOf('.') === -1) {
+        //                 let biNum : BigInteger = new BigInteger(numStr);
+        //                 let bitLength : number = biNum.bitLength();
+        //                 if(bitLength <= 31) {
+        //                     return biNum.intValue();
+        //                 } else if(bitLength <= 63) {
+        //                     return biNum.longValue();
+        //                 } else {
+        //                     return biNum;
+        //                 }
+        //             } else {
+        //                 if(resultCoerced) {
+        //                     return new BigDecimal(numStr);
+        //                 } else {
+        //                     return parseFloat(numStr);
+        //                 }
+        //             }
+        //         } else {
+        //             if(/* equalsIgnoreCase */((o1, o2) => o1.toUpperCase() === (o2===null?o2:o2.toUpperCase()))(typePostfix, "l")) {
+        //                 return parseFloat(numStr);
+        //             } else if(/* equalsIgnoreCase */((o1, o2) => o1.toUpperCase() === (o2===null?o2:o2.toUpperCase()))(typePostfix, "bi")) {
+        //                 return new BigInteger(numStr);
+        //             } else if(/* equalsIgnoreCase */((o1, o2) => o1.toUpperCase() === (o2===null?o2:o2.toUpperCase()))(typePostfix, "bd")) {
+        //                 return new BigDecimal(numStr);
+        //             } else if(/* equalsIgnoreCase */((o1, o2) => o1.toUpperCase() === (o2===null?o2:o2.toUpperCase()))(typePostfix, "d")) {
+        //                 return parseFloat(numStr);
+        //             } else if(/* equalsIgnoreCase */((o1, o2) => o1.toUpperCase() === (o2===null?o2:o2.toUpperCase()))(typePostfix, "f")) {
+        //                 return parseFloat(numStr);
+        //             } else {
+        //                 throw new _ObjectBuilderSettingEvaluationException("Unrecognized number type postfix: " + typePostfix);
+        //             }
+        //         }
+        //     } catch(e) {
+        //         throw new _ObjectBuilderSettingEvaluationException("Malformed number: " + numStr, e);
+        //     };
+        // }
+        throw new Error();
     }
 
     fetchStringLiteral(optional : boolean) : any {
@@ -449,7 +424,7 @@ export class _ObjectBuilderSettingEvaluator {
                 }
             }
             this.pos++;
-        };
+        }
         if(startPos === this.pos) {
             if(optional) {
                 return _ObjectBuilderSettingEvaluator.VOID_$LI$();
@@ -463,7 +438,7 @@ export class _ObjectBuilderSettingEvaluator {
             return raw?sInside:StringUtil.FTLStringLiteralDec(sInside);
         } catch(e) {
             throw new _ObjectBuilderSettingEvaluationException("Malformed string literal: " + sInside, e);
-        };
+        }
     }
 
     fetchListLiteral(optional : boolean) : any {
@@ -486,7 +461,7 @@ export class _ObjectBuilderSettingEvaluator {
             }
             listExp.addItem(this.fetchValue(false, false, false, true));
             this.skipWS();
-        };
+        }
     }
 
     fetchMapLiteral(optional : boolean) : any {
@@ -514,7 +489,7 @@ export class _ObjectBuilderSettingEvaluator {
             let value : any = this.fetchValue(false, false, false, true);
             mapExp.addItem(new _ObjectBuilderSettingEvaluator.KeyValuePair(key, value));
             this.skipWS();
-        };
+        }
     }
 
     skipWS() {
@@ -527,7 +502,7 @@ export class _ObjectBuilderSettingEvaluator {
                 return;
             }
             this.pos++;
-        };
+        }
     }
 
     fetchOptionalChar(expectedChars : string) : string {
@@ -552,7 +527,7 @@ export class _ObjectBuilderSettingEvaluator {
                     sb.append(" or ");
                 }
                 sb.append(StringUtil.jQuote$java_lang_Object(expectedChars.substring(i, i + 1)));
-            };
+            }
             throw new _ObjectBuilderSettingEvaluationException(sb.toString(), this.src, this.pos);
         }
     }
@@ -569,92 +544,93 @@ export class _ObjectBuilderSettingEvaluator {
         return this.isIdentifierStart(c) || this.isASCIIDigit(c);
     }
 
-    static shorthandToFullQualified(className : string) : string {
-        if(_ObjectBuilderSettingEvaluator.SHORTHANDS == null) {
-            _ObjectBuilderSettingEvaluator.SHORTHANDS = <any>(new Map<any, any>());
-            _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, DefaultObjectWrapper);
-            _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, BeansWrapper);
-            _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, SimpleObjectWrapper);
-            _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, TemplateConfiguration);
-            _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, PathGlobMatcher);
-            _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, FileNameGlobMatcher);
-            _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, FileExtensionMatcher);
-            _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, PathRegexMatcher);
-            _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, AndMatcher);
-            _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, OrMatcher);
-            _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, NotMatcher);
-            _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, ConditionalTemplateConfigurationFactory);
-            _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, MergingTemplateConfigurationFactory);
-            _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, FirstMatchTemplateConfigurationFactory);
-            _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, HTMLOutputFormat);
-            _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, XHTMLOutputFormat);
-            _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, XMLOutputFormat);
-            _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, RTFOutputFormat);
-            _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, PlainTextOutputFormat);
-            _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, UndefinedOutputFormat);
-            _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, String);
-            /* put */_ObjectBuilderSettingEvaluator.SHORTHANDS.set("TimeZone", "freemarker.core._TimeZone");
-            _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, Configuration);
-        }
-        let fullClassName : string = /* get */_ObjectBuilderSettingEvaluator.SHORTHANDS.get(className);
-        return fullClassName == null?className:fullClassName;
-    }
+    // static shorthandToFullQualified(className : string) : string {
+    //     if(_ObjectBuilderSettingEvaluator.SHORTHANDS == null) {
+    //         _ObjectBuilderSettingEvaluator.SHORTHANDS = <any>(new Map<any, any>());
+    //         _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, DefaultObjectWrapper);
+    //         _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, BeansWrapper);
+    //         _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, SimpleObjectWrapper);
+    //         _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, TemplateConfiguration);
+    //         _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, PathGlobMatcher);
+    //         _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, FileNameGlobMatcher);
+    //         _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, FileExtensionMatcher);
+    //         _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, PathRegexMatcher);
+    //         _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, AndMatcher);
+    //         _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, OrMatcher);
+    //         _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, NotMatcher);
+    //         _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, ConditionalTemplateConfigurationFactory);
+    //         _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, MergingTemplateConfigurationFactory);
+    //         _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, FirstMatchTemplateConfigurationFactory);
+    //         _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, HTMLOutputFormat);
+    //         _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, XHTMLOutputFormat);
+    //         _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, XMLOutputFormat);
+    //         _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, RTFOutputFormat);
+    //         _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, PlainTextOutputFormat);
+    //         _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, UndefinedOutputFormat);
+    //         _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, String);
+    //         /* put */_ObjectBuilderSettingEvaluator.SHORTHANDS.set("TimeZone", "freemarker.core._TimeZone");
+    //         _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, Configuration);
+    //     }
+    //     let fullClassName : string = /* get */_ObjectBuilderSettingEvaluator.SHORTHANDS.get(className);
+    //     return fullClassName == null?className:fullClassName;
+    // }
 
     static addWithSimpleName(map : Map<any, any>, pClass : any) {
         /* put */map.set(/* getSimpleName */(c => c["__class"]?c["__class"].substring(c["__class"].lastIndexOf('.')+1):c["name"].substring(c["name"].lastIndexOf('.')+1))(pClass), /* getName */(c => c["__class"]?c["__class"]:c["name"])(pClass));
     }
 
     setJavaBeanProperties(bean : any, namedParamNames : Array<any>, namedParamValues : Array<any>) {
-        if(/* isEmpty */(namedParamNames.length == 0)) {
-            return;
-        }
-        let cl : any = (<any>bean.constructor);
-        let beanPropSetters : Map<any, any>;
-        try {
-            let propDescs : Array<any> = Introspector.getBeanInfo(cl).getPropertyDescriptors();
-            beanPropSetters = <any>(new Map<any, any>());
-            for(let i : number = 0; i < propDescs.length; i++) {
-                let propDesc : PropertyDescriptor = propDescs[i];
-                let writeMethod : Function = propDesc.getWriteMethod();
-                if(writeMethod != null) {
-                    /* put */beanPropSetters.set(propDesc.getName(), writeMethod);
-                }
-            };
-        } catch(e) {
-            throw new _ObjectBuilderSettingEvaluationException("Failed to inspect " + /* getName */(c => c["__class"]?c["__class"]:c["name"])(cl) + " class", e);
-        };
-        let beanTM : TemplateHashModel = null;
-        for(let i : number = 0; i < /* size */(<number>namedParamNames.length); i++) {
-            let name : string = <string>/* get */namedParamNames[i];
-            if(!/* containsKey */beanPropSetters.has(name)) {
-                throw new _ObjectBuilderSettingEvaluationException("The " + /* getName */(c => c["__class"]?c["__class"]:c["name"])(cl) + " class has no writeable JavaBeans property called " + StringUtil.jQuote$java_lang_Object(name) + ".");
-            }
-            let beanPropSetter : Function = <Function>/* put */beanPropSetters.set(name, null);
-            if(beanPropSetter == null) {
-                throw new _ObjectBuilderSettingEvaluationException("JavaBeans property " + StringUtil.jQuote$java_lang_Object(name) + " is set twice.");
-            }
-            try {
-                if(beanTM == null) {
-                    let wrappedObj : TemplateModel = this.env.getObjectWrapper().wrap$java_lang_Object(bean);
-                    if(!(wrappedObj != null && (wrappedObj["__interfaces"] != null && wrappedObj["__interfaces"].indexOf("freemarker.template.TemplateHashModel") >= 0 || wrappedObj.constructor != null && wrappedObj.constructor["__interfaces"] != null && wrappedObj.constructor["__interfaces"].indexOf("freemarker.template.TemplateHashModel") >= 0))) {
-                        throw new _ObjectBuilderSettingEvaluationException("The " + /* getName */(c => c["__class"]?c["__class"]:c["name"])(cl) + " class is not a wrapped as TemplateHashModel.");
-                    }
-                    beanTM = <TemplateHashModel><any>wrappedObj;
-                }
-                let m : TemplateModel = beanTM['get$java_lang_String'](/* getName */beanPropSetter.name);
-                if(m == null) {
-                    throw new _ObjectBuilderSettingEvaluationException("Can\'t find " + beanPropSetter + " as FreeMarker method.");
-                }
-                if(!(m != null && (m["__interfaces"] != null && m["__interfaces"].indexOf("freemarker.template.TemplateMethodModelEx") >= 0 || m.constructor != null && m.constructor["__interfaces"] != null && m.constructor["__interfaces"].indexOf("freemarker.template.TemplateMethodModelEx") >= 0))) {
-                    throw new _ObjectBuilderSettingEvaluationException(StringUtil.jQuote$java_lang_Object(/* getName */beanPropSetter.name) + " wasn\'t a TemplateMethodModelEx.");
-                }
-                let args : Array<any> = <any>([]);
-                /* add */(args.push(this.env.getObjectWrapper().wrap$java_lang_Object(/* get */namedParamValues[i]))>0);
-                (<TemplateMethodModelEx><any>m).exec(args);
-            } catch(e) {
-                throw new _ObjectBuilderSettingEvaluationException("Failed to set " + StringUtil.jQuote$java_lang_Object(name), e);
-            };
-        };
+        // if(/* isEmpty */(namedParamNames.length == 0)) {
+        //     return;
+        // }
+        // let cl : any = (<any>bean.constructor);
+        // let beanPropSetters : Map<any, any>;
+        // try {
+        //     let propDescs : Array<any> = Introspector.getBeanInfo(cl).getPropertyDescriptors();
+        //     beanPropSetters = <any>(new Map<any, any>());
+        //     for(let i : number = 0; i < propDescs.length; i++) {
+        //         let propDesc : PropertyDescriptor = propDescs[i];
+        //         let writeMethod : Function = propDesc.getWriteMethod();
+        //         if(writeMethod != null) {
+        //             /* put */beanPropSetters.set(propDesc.getName(), writeMethod);
+        //         }
+        //     };
+        // } catch(e) {
+        //     throw new _ObjectBuilderSettingEvaluationException("Failed to inspect " + /* getName */(c => c["__class"]?c["__class"]:c["name"])(cl) + " class", e);
+        // };
+        // let beanTM : TemplateHashModel = null;
+        // for(let i : number = 0; i < /* size */(<number>namedParamNames.length); i++) {
+        //     let name : string = <string>/* get */namedParamNames[i];
+        //     if(!/* containsKey */beanPropSetters.has(name)) {
+        //         throw new _ObjectBuilderSettingEvaluationException("The " + /* getName */(c => c["__class"]?c["__class"]:c["name"])(cl) + " class has no writeable JavaBeans property called " + StringUtil.jQuote$java_lang_Object(name) + ".");
+        //     }
+        //     let beanPropSetter : Function = <Function>/* put */beanPropSetters.set(name, null);
+        //     if(beanPropSetter == null) {
+        //         throw new _ObjectBuilderSettingEvaluationException("JavaBeans property " + StringUtil.jQuote$java_lang_Object(name) + " is set twice.");
+        //     }
+        //     try {
+        //         if(beanTM == null) {
+        //             let wrappedObj : TemplateModel = this.env.getObjectWrapper().wrap$java_lang_Object(bean);
+        //             if(!(wrappedObj != null && (wrappedObj["__interfaces"] != null && wrappedObj["__interfaces"].indexOf("freemarker.template.TemplateHashModel") >= 0 || wrappedObj.constructor != null && wrappedObj.constructor["__interfaces"] != null && wrappedObj.constructor["__interfaces"].indexOf("freemarker.template.TemplateHashModel") >= 0))) {
+        //                 throw new _ObjectBuilderSettingEvaluationException("The " + /* getName */(c => c["__class"]?c["__class"]:c["name"])(cl) + " class is not a wrapped as TemplateHashModel.");
+        //             }
+        //             beanTM = <TemplateHashModel><any>wrappedObj;
+        //         }
+        //         let m : TemplateModel = beanTM['get$java_lang_String'](/* getName */beanPropSetter.name);
+        //         if(m == null) {
+        //             throw new _ObjectBuilderSettingEvaluationException("Can\'t find " + beanPropSetter + " as FreeMarker method.");
+        //         }
+        //         if(!(m != null && (m["__interfaces"] != null && m["__interfaces"].indexOf("freemarker.template.TemplateMethodModelEx") >= 0 || m.constructor != null && m.constructor["__interfaces"] != null && m.constructor["__interfaces"].indexOf("freemarker.template.TemplateMethodModelEx") >= 0))) {
+        //             throw new _ObjectBuilderSettingEvaluationException(StringUtil.jQuote$java_lang_Object(/* getName */beanPropSetter.name) + " wasn\'t a TemplateMethodModelEx.");
+        //         }
+        //         let args : Array<any> = <any>([]);
+        //         /* add */(args.push(this.env.getObjectWrapper().wrap$java_lang_Object(/* get */namedParamValues[i]))>0);
+        //         (<TemplateMethodModelEx><any>m).exec(args);
+        //     } catch(e) {
+        //         throw new _ObjectBuilderSettingEvaluationException("Failed to set " + StringUtil.jQuote$java_lang_Object(name), e);
+        //     };
+        // };
+        throw new Error();
     }
 }
 _ObjectBuilderSettingEvaluator["__class"] = "freemarker.core._ObjectBuilderSettingEvaluator";
@@ -829,132 +805,134 @@ export namespace _ObjectBuilderSettingEvaluator {
          * @return {Object}
          */
         eval() : any {
-            if(this.mustBeStaticField) {
-                if(!this.canBeStaticField) {
-                    throw new BugException();
-                }
-                return this.getStaticFieldValue(this.className);
-            }
-            let cl : any;
-            if(!this.__parent.modernMode) {
-                try {
-                    try {
-                        return /* newInstance */new (ClassUtil.forName(this.className))();
-                    } catch(__e) {
-                        if(__e != null && (__e["__classes"] && __e["__classes"].indexOf("java.lang.InstantiationException") >= 0)) {
-                            let e : Error = <Error>__e;
-                            throw new _ObjectBuilderSettingEvaluator.LegacyExceptionWrapperSettingEvaluationExpression(e);
-
-                        }
-                        if(__e != null && (__e["__classes"] && __e["__classes"].indexOf("java.lang.IllegalAccessException") >= 0)) {
-                            let e : Error = <Error>__e;
-                            throw new _ObjectBuilderSettingEvaluator.LegacyExceptionWrapperSettingEvaluationExpression(e);
-
-                        }
-                        if(__e != null && (__e["__classes"] && __e["__classes"].indexOf("java.lang.ClassNotFoundException") >= 0)) {
-                            let e : Error = <Error>__e;
-                            throw new _ObjectBuilderSettingEvaluator.LegacyExceptionWrapperSettingEvaluationExpression(e);
-
-                        }
-                    };
-                } catch(e) {
-                    if(!this.canBeStaticField || this.className.indexOf('.') === -1) {
-                        throw e;
-                    }
-                    try {
-                        return this.getStaticFieldValue(this.className);
-                    } catch(e2) {
-                        throw e;
-                    };
-                };
-            }
-            let clIsBuilderClass : boolean;
-            try {
-                cl = ClassUtil.forName(this.className + _ObjectBuilderSettingEvaluator.BUILDER_CLASS_POSTFIX);
-                clIsBuilderClass = true;
-            } catch(e) {
-                clIsBuilderClass = false;
-                try {
-                    cl = ClassUtil.forName(this.className);
-                } catch(e2) {
-                    let failedToGetAsStaticField : boolean;
-                    if(this.canBeStaticField) {
-                        try {
-                            return this.getStaticFieldValue(this.className);
-                        } catch(e3) {
-                            failedToGetAsStaticField = true;
-                        };
-                    } else {
-                        failedToGetAsStaticField = false;
-                    }
-                    throw new _ObjectBuilderSettingEvaluationException("Failed to get class " + StringUtil.jQuote$java_lang_Object(this.className) + (failedToGetAsStaticField?" (also failed to resolve name as static field)":"") + ".", e2);
-                };
-            };
-            if(!clIsBuilderClass && this.hasNoParameters()) {
-                try {
-                    let f : Field = /* getField */((c,p) => { return {owner:c,name:p}; })(cl,_ObjectBuilderSettingEvaluator.INSTANCE_FIELD_NAME);
-                    if((f.getModifiers() & (Modifier.PUBLIC | Modifier.STATIC)) === (Modifier.PUBLIC | Modifier.STATIC)) {
-                        return /* get */null[f.name];
-                    }
-                } catch(__e) {
-                    if(__e != null && (__e["__classes"] && __e["__classes"].indexOf("java.lang.NoSuchFieldException") >= 0)) {
-                        let e : Error = <Error>__e;
-
-                    }
-                    if(__e != null && (__e["__classes"] && __e["__classes"].indexOf("java.lang.Exception") >= 0) || __e != null && __e instanceof <any>Error) {
-                        let e : Error = <Error>__e;
-                        throw new _ObjectBuilderSettingEvaluationException("Error when trying to access " + StringUtil.jQuote$java_lang_Object(this.className) + "." + _ObjectBuilderSettingEvaluator.INSTANCE_FIELD_NAME, e);
-
-                    }
-                };
-            }
-            let constructorResult : any = this.callConstructor(cl);
-            this.__parent.setJavaBeanProperties(constructorResult, this.namedParamNames, this.namedParamValues);
-            let result : any;
-            if(clIsBuilderClass) {
-                result = this.callBuild(constructorResult);
-            } else {
-                if(constructorResult != null && (constructorResult["__interfaces"] != null && constructorResult["__interfaces"].indexOf("freemarker.template.utility.WriteProtectable") >= 0 || constructorResult.constructor != null && constructorResult.constructor["__interfaces"] != null && constructorResult.constructor["__interfaces"].indexOf("freemarker.template.utility.WriteProtectable") >= 0)) {
-                    (<WriteProtectable><any>constructorResult).writeProtect();
-                }
-                result = constructorResult;
-            }
-            return result;
+            // if(this.mustBeStaticField) {
+            //     if(!this.canBeStaticField) {
+            //         throw new BugException();
+            //     }
+            //     return this.getStaticFieldValue(this.className);
+            // }
+            // let cl : any;
+            // if(!this.__parent.modernMode) {
+            //     try {
+            //         try {
+            //             return /* newInstance */new (ClassUtil.forName(this.className))();
+            //         } catch(__e) {
+            //             if(__e != null && (__e["__classes"] && __e["__classes"].indexOf("java.lang.InstantiationException") >= 0)) {
+            //                 let e : Error = <Error>__e;
+            //                 throw new _ObjectBuilderSettingEvaluator.LegacyExceptionWrapperSettingEvaluationExpression(e);
+            //
+            //             }
+            //             if(__e != null && (__e["__classes"] && __e["__classes"].indexOf("java.lang.IllegalAccessException") >= 0)) {
+            //                 let e : Error = <Error>__e;
+            //                 throw new _ObjectBuilderSettingEvaluator.LegacyExceptionWrapperSettingEvaluationExpression(e);
+            //
+            //             }
+            //             if(__e != null && (__e["__classes"] && __e["__classes"].indexOf("java.lang.ClassNotFoundException") >= 0)) {
+            //                 let e : Error = <Error>__e;
+            //                 throw new _ObjectBuilderSettingEvaluator.LegacyExceptionWrapperSettingEvaluationExpression(e);
+            //
+            //             }
+            //         };
+            //     } catch(e) {
+            //         if(!this.canBeStaticField || this.className.indexOf('.') === -1) {
+            //             throw e;
+            //         }
+            //         try {
+            //             return this.getStaticFieldValue(this.className);
+            //         } catch(e2) {
+            //             throw e;
+            //         };
+            //     };
+            // }
+            // let clIsBuilderClass : boolean;
+            // try {
+            //     cl = ClassUtil.forName(this.className + _ObjectBuilderSettingEvaluator.BUILDER_CLASS_POSTFIX);
+            //     clIsBuilderClass = true;
+            // } catch(e) {
+            //     clIsBuilderClass = false;
+            //     try {
+            //         cl = ClassUtil.forName(this.className);
+            //     } catch(e2) {
+            //         let failedToGetAsStaticField : boolean;
+            //         if(this.canBeStaticField) {
+            //             try {
+            //                 return this.getStaticFieldValue(this.className);
+            //             } catch(e3) {
+            //                 failedToGetAsStaticField = true;
+            //             };
+            //         } else {
+            //             failedToGetAsStaticField = false;
+            //         }
+            //         throw new _ObjectBuilderSettingEvaluationException("Failed to get class " + StringUtil.jQuote$java_lang_Object(this.className) + (failedToGetAsStaticField?" (also failed to resolve name as static field)":"") + ".", e2);
+            //     };
+            // };
+            // if(!clIsBuilderClass && this.hasNoParameters()) {
+            //     try {
+            //         let f : Field = /* getField */((c,p) => { return {owner:c,name:p}; })(cl,_ObjectBuilderSettingEvaluator.INSTANCE_FIELD_NAME);
+            //         if((f.getModifiers() & (Modifier.PUBLIC | Modifier.STATIC)) === (Modifier.PUBLIC | Modifier.STATIC)) {
+            //             return /* get */null[f.name];
+            //         }
+            //     } catch(__e) {
+            //         if(__e != null && (__e["__classes"] && __e["__classes"].indexOf("java.lang.NoSuchFieldException") >= 0)) {
+            //             let e : Error = <Error>__e;
+            //
+            //         }
+            //         if(__e != null && (__e["__classes"] && __e["__classes"].indexOf("java.lang.Exception") >= 0) || __e != null && __e instanceof <any>Error) {
+            //             let e : Error = <Error>__e;
+            //             throw new _ObjectBuilderSettingEvaluationException("Error when trying to access " + StringUtil.jQuote$java_lang_Object(this.className) + "." + _ObjectBuilderSettingEvaluator.INSTANCE_FIELD_NAME, e);
+            //
+            //         }
+            //     };
+            // }
+            // let constructorResult : any = this.callConstructor(cl);
+            // this.__parent.setJavaBeanProperties(constructorResult, this.namedParamNames, this.namedParamValues);
+            // let result : any;
+            // if(clIsBuilderClass) {
+            //     result = this.callBuild(constructorResult);
+            // } else {
+            //     if(constructorResult != null && (constructorResult["__interfaces"] != null && constructorResult["__interfaces"].indexOf("freemarker.template.utility.WriteProtectable") >= 0 || constructorResult.constructor != null && constructorResult.constructor["__interfaces"] != null && constructorResult.constructor["__interfaces"].indexOf("freemarker.template.utility.WriteProtectable") >= 0)) {
+            //         (<WriteProtectable><any>constructorResult).writeProtect();
+            //     }
+            //     result = constructorResult;
+            // }
+            // return result;
+            throw new Error();
         }
 
         getStaticFieldValue(dottedName : string) : any {
-            let lastDotIdx : number = dottedName.lastIndexOf('.');
-            if(lastDotIdx === -1) {
-                throw Object.defineProperty(new Error(), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.lang.RuntimeException','java.lang.IllegalArgumentException','java.lang.Exception'] });
-            }
-            let className : string = _ObjectBuilderSettingEvaluator.shorthandToFullQualified(dottedName.substring(0, lastDotIdx));
-            let fieldName : string = dottedName.substring(lastDotIdx + 1);
-            let cl : any;
-            try {
-                cl = ClassUtil.forName(className);
-            } catch(e) {
-                throw new _ObjectBuilderSettingEvaluationException("Failed to get field\'s parent class, " + StringUtil.jQuote$java_lang_Object(className) + ".", e);
-            };
-            let field : Field;
-            try {
-                field = /* getField */((c,p) => { return {owner:c,name:p}; })(cl,fieldName);
-            } catch(e) {
-                throw new _ObjectBuilderSettingEvaluationException("Failed to get field " + StringUtil.jQuote$java_lang_Object(fieldName) + " from class " + StringUtil.jQuote$java_lang_Object(className) + ".", e);
-            };
-            if((field.getModifiers() & Modifier.STATIC) === 0) {
-                throw new _ObjectBuilderSettingEvaluationException("Referred field isn\'t static: " + field);
-            }
-            if((field.getModifiers() & Modifier.PUBLIC) === 0) {
-                throw new _ObjectBuilderSettingEvaluationException("Referred field isn\'t public: " + field);
-            }
-            if(/* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(/* getName */field.name,_ObjectBuilderSettingEvaluator.INSTANCE_FIELD_NAME))) {
-                throw new _ObjectBuilderSettingEvaluationException("The " + _ObjectBuilderSettingEvaluator.INSTANCE_FIELD_NAME + " field is only accessible through pseudo-constructor call: " + className + "()");
-            }
-            try {
-                return /* get */null[field.name];
-            } catch(e) {
-                throw new _ObjectBuilderSettingEvaluationException("Failed to get field value: " + field, e);
-            };
+            // let lastDotIdx : number = dottedName.lastIndexOf('.');
+            // if(lastDotIdx === -1) {
+            //     throw Object.defineProperty(new Error(), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.lang.RuntimeException','java.lang.IllegalArgumentException','java.lang.Exception'] });
+            // }
+            // let className : string = _ObjectBuilderSettingEvaluator.shorthandToFullQualified(dottedName.substring(0, lastDotIdx));
+            // let fieldName : string = dottedName.substring(lastDotIdx + 1);
+            // let cl : any;
+            // try {
+            //     cl = ClassUtil.forName(className);
+            // } catch(e) {
+            //     throw new _ObjectBuilderSettingEvaluationException("Failed to get field\'s parent class, " + StringUtil.jQuote$java_lang_Object(className) + ".", e);
+            // };
+            // let field : Field;
+            // try {
+            //     field = /* getField */((c,p) => { return {owner:c,name:p}; })(cl,fieldName);
+            // } catch(e) {
+            //     throw new _ObjectBuilderSettingEvaluationException("Failed to get field " + StringUtil.jQuote$java_lang_Object(fieldName) + " from class " + StringUtil.jQuote$java_lang_Object(className) + ".", e);
+            // };
+            // if((field.getModifiers() & Modifier.STATIC) === 0) {
+            //     throw new _ObjectBuilderSettingEvaluationException("Referred field isn\'t static: " + field);
+            // }
+            // if((field.getModifiers() & Modifier.PUBLIC) === 0) {
+            //     throw new _ObjectBuilderSettingEvaluationException("Referred field isn\'t public: " + field);
+            // }
+            // if(/* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(/* getName */field.name,_ObjectBuilderSettingEvaluator.INSTANCE_FIELD_NAME))) {
+            //     throw new _ObjectBuilderSettingEvaluationException("The " + _ObjectBuilderSettingEvaluator.INSTANCE_FIELD_NAME + " field is only accessible through pseudo-constructor call: " + className + "()");
+            // }
+            // try {
+            //     return /* get */null[field.name];
+            // } catch(e) {
+            //     throw new _ObjectBuilderSettingEvaluationException("Failed to get field value: " + field, e);
+            // };
+            throw new Error();
         }
 
         callConstructor(cl : any) : any {
@@ -963,7 +941,7 @@ export namespace _ObjectBuilderSettingEvaluator {
                     return /* newInstance */new (cl)();
                 } catch(e) {
                     throw new _ObjectBuilderSettingEvaluationException("Failed to call " + /* getName */(c => c["__class"]?c["__class"]:c["name"])(cl) + " 0-argument constructor", e);
-                };
+                }
             } else {
                 let ow : BeansWrapper = this.__parent.env.getObjectWrapper();
                 let tmArgs : Array<any> = <any>([]);
@@ -972,44 +950,45 @@ export namespace _ObjectBuilderSettingEvaluator {
                         /* add */(tmArgs.push(ow.wrap$java_lang_Object(/* get */this.positionalParamValues[i]))>0);
                     } catch(e) {
                         throw new _ObjectBuilderSettingEvaluationException("Failed to wrap arg #" + (i + 1), e);
-                    };
-                };
+                    }
+                }
                 try {
                     return ow.newInstance(cl, tmArgs);
                 } catch(e) {
                     throw new _ObjectBuilderSettingEvaluationException("Failed to call " + /* getName */(c => c["__class"]?c["__class"]:c["name"])(cl) + " constructor", e);
-                };
+                }
             }
         }
 
         callBuild(constructorResult : any) : any {
-            let cl : any = (<any>constructorResult.constructor);
-            let buildMethod : Function;
-            try {
-                buildMethod = /* getMethod */((c,p) => { if(c.prototype.hasOwnProperty(p) && typeof c.prototype[p] == 'function') return {owner:c,name:p,fn:c.prototype[p]}; else return null; })((<any>constructorResult.constructor),_ObjectBuilderSettingEvaluator.BUILD_METHOD_NAME);
-            } catch(__e) {
-                if(__e != null && (__e["__classes"] && __e["__classes"].indexOf("java.lang.NoSuchMethodException") >= 0)) {
-                    let e : Error = <Error>__e;
-                    throw new _ObjectBuilderSettingEvaluationException("The " + /* getName */(c => c["__class"]?c["__class"]:c["name"])(cl) + " builder class must have a public " + _ObjectBuilderSettingEvaluator.BUILD_METHOD_NAME + "() method", e);
-
-                }
-                if(__e != null && (__e["__classes"] && __e["__classes"].indexOf("java.lang.Exception") >= 0) || __e != null && __e instanceof <any>Error) {
-                    let e : Error = <Error>__e;
-                    throw new _ObjectBuilderSettingEvaluationException("Failed to get the " + _ObjectBuilderSettingEvaluator.BUILD_METHOD_NAME + "() method of the " + /* getName */(c => c["__class"]?c["__class"]:c["name"])(cl) + " builder class", e);
-
-                }
-            };
-            try {
-                return /* invoke */buildMethod.fn.apply(constructorResult, [<Array>null]);
-            } catch(e) {
-                let cause : Error;
-                if(e != null && (e["__classes"] && e["__classes"].indexOf("java.lang.reflect.InvocationTargetException") >= 0)) {
-                    cause = (<Error>e).getTargetException();
-                } else {
-                    cause = e;
-                }
-                throw new _ObjectBuilderSettingEvaluationException("Failed to call " + _ObjectBuilderSettingEvaluator.BUILD_METHOD_NAME + "() method on " + /* getName */(c => c["__class"]?c["__class"]:c["name"])(cl) + " instance", cause);
-            };
+            // let cl : any = (<any>constructorResult.constructor);
+            // let buildMethod : Function;
+            // try {
+            //     buildMethod = /* getMethod */((c,p) => { if(c.prototype.hasOwnProperty(p) && typeof c.prototype[p] == 'function') return {owner:c,name:p,fn:c.prototype[p]}; else return null; })((<any>constructorResult.constructor),_ObjectBuilderSettingEvaluator.BUILD_METHOD_NAME);
+            // } catch(__e) {
+            //     if(__e != null && (__e["__classes"] && __e["__classes"].indexOf("java.lang.NoSuchMethodException") >= 0)) {
+            //         let e : Error = <Error>__e;
+            //         throw new _ObjectBuilderSettingEvaluationException("The " + /* getName */(c => c["__class"]?c["__class"]:c["name"])(cl) + " builder class must have a public " + _ObjectBuilderSettingEvaluator.BUILD_METHOD_NAME + "() method", e);
+            //
+            //     }
+            //     if(__e != null && (__e["__classes"] && __e["__classes"].indexOf("java.lang.Exception") >= 0) || __e != null && __e instanceof <any>Error) {
+            //         let e : Error = <Error>__e;
+            //         throw new _ObjectBuilderSettingEvaluationException("Failed to get the " + _ObjectBuilderSettingEvaluator.BUILD_METHOD_NAME + "() method of the " + /* getName */(c => c["__class"]?c["__class"]:c["name"])(cl) + " builder class", e);
+            //
+            //     }
+            // };
+            // try {
+            //     return /* invoke */buildMethod.fn.apply(constructorResult, [<Array>null]);
+            // } catch(e) {
+            //     let cause : Error;
+            //     if(e != null && (e["__classes"] && e["__classes"].indexOf("java.lang.reflect.InvocationTargetException") >= 0)) {
+            //         cause = (<Error>e).getTargetException();
+            //     } else {
+            //         cause = e;
+            //     }
+            //     throw new _ObjectBuilderSettingEvaluationException("Failed to call " + _ObjectBuilderSettingEvaluator.BUILD_METHOD_NAME + "() method on " + /* getName */(c => c["__class"]?c["__class"]:c["name"])(cl) + " instance", cause);
+            // };
+            throw new Error();
         }
 
         hasNoParameters() : boolean {
@@ -1069,6 +1048,6 @@ export namespace _ObjectBuilderSettingEvaluator {
 
 
 
-var __Function = Function;
+
 
 _ObjectBuilderSettingEvaluator.VOID_$LI$();

@@ -1,5 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { InvalidFormatStringException } from './InvalidFormatStringException';
+import {InvalidFormatStringException} from './InvalidFormatStringException';
 
 /**
  * @since 2.3.24
@@ -27,4 +27,4 @@ UndefinedCustomFormatException["__interfaces"] = ["java.io.Serializable"];
 
 
 
-var __Function = Function;
+

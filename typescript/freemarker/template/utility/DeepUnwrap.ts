@@ -1,21 +1,22 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { Environment } from '../../core/Environment';
-import { WrapperTemplateModel } from '../../ext/util/WrapperTemplateModel';
-import { AdapterTemplateModel } from '../AdapterTemplateModel';
-import { KeyValuePair } from '../KeyValuePair';
-import { KeyValuePairIterator } from '../KeyValuePairIterator';
-import { ObjectWrapper } from '../ObjectWrapper';
-import { TemplateBooleanModel } from '../TemplateBooleanModel';
-import { TemplateCollectionModel } from '../TemplateCollectionModel';
-import { TemplateDateModel } from '../TemplateDateModel';
-import { TemplateHashModelEx } from '../TemplateHashModelEx';
-import { TemplateHashModelEx2 } from '../TemplateHashModelEx2';
-import { TemplateModel } from '../TemplateModel';
-import { TemplateModelException } from '../TemplateModelException';
-import { TemplateModelIterator } from '../TemplateModelIterator';
-import { TemplateNumberModel } from '../TemplateNumberModel';
-import { TemplateScalarModel } from '../TemplateScalarModel';
-import { TemplateSequenceModel } from '../TemplateSequenceModel';
+import {Environment} from '../../core/Environment';
+import {WrapperTemplateModel} from '../../ext/util/WrapperTemplateModel';
+import {AdapterTemplateModel} from '../AdapterTemplateModel';
+import {KeyValuePair} from '../KeyValuePair';
+import {KeyValuePairIterator} from '../KeyValuePairIterator';
+import {ObjectWrapper} from '../ObjectWrapper';
+import {TemplateBooleanModel} from '../TemplateBooleanModel';
+import {TemplateCollectionModel} from '../TemplateCollectionModel';
+import {TemplateDateModel} from '../TemplateDateModel';
+import {TemplateHashModelEx} from '../TemplateHashModelEx';
+import {TemplateHashModelEx2} from '../TemplateHashModelEx2';
+import {TemplateModel} from '../TemplateModel';
+import {TemplateModelException} from '../TemplateModelException';
+import {TemplateModelIterator} from '../TemplateModelIterator';
+import {TemplateNumberModel} from '../TemplateNumberModel';
+import {TemplateScalarModel} from '../TemplateScalarModel';
+import {TemplateSequenceModel} from '../TemplateSequenceModel';
+import {Map} from "../../../java/util/Map";
 
 /**
  * Utility methods for unwrapping {link TemplateModel}-s.
@@ -90,7 +91,7 @@ export class DeepUnwrap {
             let list : Array<any> = <any>([]);
             for(let i : number = 0; i < size; ++i) {
                 /* add */(list.push(DeepUnwrap.unwrap$freemarker_template_TemplateModel$freemarker_template_TemplateModel$boolean(seq['get$int'](i), nullModel, permissive))>0);
-            };
+            }
             return list;
         }
         if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateCollectionModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateCollectionModel") >= 0)) {
@@ -99,7 +100,7 @@ export class DeepUnwrap {
             let it : TemplateModelIterator = coll.iterator();
             while((it.hasNext())) {
                 /* add */(list.push(DeepUnwrap.unwrap$freemarker_template_TemplateModel$freemarker_template_TemplateModel$boolean(it.next(), nullModel, permissive))>0);
-            };
+            }
             return list;
         }
         if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateHashModelEx") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateHashModelEx") >= 0)) {
@@ -110,13 +111,13 @@ export class DeepUnwrap {
                 while((kvps.hasNext())) {
                     let kvp : KeyValuePair = kvps.next();
                     /* put */map.set(DeepUnwrap.unwrap$freemarker_template_TemplateModel$freemarker_template_TemplateModel$boolean(kvp.getKey(), nullModel, permissive), DeepUnwrap.unwrap$freemarker_template_TemplateModel$freemarker_template_TemplateModel$boolean(kvp.getValue(), nullModel, permissive));
-                };
+                }
             } else {
                 let keys : TemplateModelIterator = hash.keys().iterator();
                 while((keys.hasNext())) {
                     let key : string = <string>DeepUnwrap.unwrap$freemarker_template_TemplateModel$freemarker_template_TemplateModel$boolean(keys.next(), nullModel, permissive);
                     /* put */map.set(key, DeepUnwrap.unwrap$freemarker_template_TemplateModel$freemarker_template_TemplateModel$boolean(hash['get$java_lang_String'](key), nullModel, permissive));
-                };
+                }
             }
             return map;
         }
@@ -140,6 +141,6 @@ DeepUnwrap["__class"] = "freemarker.template.utility.DeepUnwrap";
 
 
 
-var __Function = Function;
+
 
 DeepUnwrap.OBJECT_CLASS_$LI$();

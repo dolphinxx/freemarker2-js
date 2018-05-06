@@ -1,5 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { _DelayedConversionToString } from './_DelayedConversionToString';
+import {_DelayedConversionToString} from './_DelayedConversionToString';
 
 /**
  * 1 to "1st", 2 to "2nd", etc.
@@ -38,4 +38,4 @@ _DelayedOrdinal["__class"] = "freemarker.core._DelayedOrdinal";
 
 
 
-var __Function = Function;
+

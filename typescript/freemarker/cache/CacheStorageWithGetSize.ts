@@ -1,5 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { CacheStorage } from './CacheStorage';
+import {CacheStorage} from './CacheStorage';
 
 /**
  * A cache storage that has a {@code getSize()} method for returning the current number of cache entries.

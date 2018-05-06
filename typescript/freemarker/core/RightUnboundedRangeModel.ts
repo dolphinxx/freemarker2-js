@@ -1,5 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { RangeModel } from './RangeModel';
+import {RangeModel} from './RangeModel';
 
 export abstract class RightUnboundedRangeModel extends RangeModel {
     constructor(begin : number) {
@@ -44,4 +44,4 @@ RightUnboundedRangeModel["__interfaces"] = ["freemarker.template.TemplateSequenc
 
 
 
-var __Function = Function;
+

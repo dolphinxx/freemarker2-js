@@ -1,5 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { SimpleSequence } from './SimpleSequence';
+import {SimpleSequence} from './SimpleSequence';
 
 /**
  * This is a trivial subclass that exists for backward compatibility
@@ -30,4 +30,4 @@ SimpleList["__interfaces"] = ["freemarker.template.TemplateSequenceModel","freem
 
 
 
-var __Function = Function;
+

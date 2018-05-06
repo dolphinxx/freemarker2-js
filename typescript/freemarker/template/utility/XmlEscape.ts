@@ -1,6 +1,6 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateTransformModel } from '../TemplateTransformModel';
-import { Writer } from '../../../java/io/Writer';
+import {TemplateTransformModel} from '../TemplateTransformModel';
+import {Writer} from '../../../java/io/Writer';
 
 /**
  * Performs an XML escaping of a given template fragment. Specifically,
@@ -90,7 +90,7 @@ export namespace XmlEscape {
                     lastoff = i + 1;
                     break;
                 }
-            };
+            }
             let remaining : number = lastpos - lastoff;
             if(remaining > 0) {
                 this.out.write(cbuf, lastoff, remaining);
@@ -135,7 +135,7 @@ export namespace XmlEscape {
 
 
 
-var __Function = Function;
+
 
 XmlEscape.APOS_$LI$();
 

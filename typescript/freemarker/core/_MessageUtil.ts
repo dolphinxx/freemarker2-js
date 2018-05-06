@@ -1,40 +1,16 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { Template } from '../template/Template';
-import { TemplateException } from '../template/TemplateException';
-import { TemplateHashModelEx } from '../template/TemplateHashModelEx';
-import { TemplateHashModelEx2 } from '../template/TemplateHashModelEx2';
-import { TemplateModel } from '../template/TemplateModel';
-import { TemplateModelException } from '../template/TemplateModelException';
-import { StringUtil } from '../template/utility/StringUtil';
-import { Macro } from './Macro';
-import { TemplateObject } from './TemplateObject';
-import { StringBuilder } from '../../java/lang/StringBuilder';
-import { Expression } from './Expression';
-import { NumberLiteral } from './NumberLiteral';
-import { StringLiteral } from './StringLiteral';
-import { BooleanLiteral } from './BooleanLiteral';
-import { ListLiteral } from './ListLiteral';
-import { HashLiteral } from './HashLiteral';
-import { Identifier } from './Identifier';
-import { Dot } from './Dot';
-import { DynamicKeyName } from './DynamicKeyName';
-import { MethodCall } from './MethodCall';
-import { BuiltIn } from './BuiltIn';
-import { ExistsExpression } from './ExistsExpression';
-import { ParentheticalExpression } from './ParentheticalExpression';
-import { _TemplateModelException } from './_TemplateModelException';
-import { _DelayedAOrAn } from './_DelayedAOrAn';
-import { _DelayedFTLTypeDescription } from './_DelayedFTLTypeDescription';
-import { Environment } from './Environment';
-import { _MiscTemplateException } from './_MiscTemplateException';
-import { UnknownDateTypeFormattingUnsupportedException } from './UnknownDateTypeFormattingUnsupportedException';
-import { _ErrorDescriptionBuilder } from './_ErrorDescriptionBuilder';
-import { TemplateDateFormat } from './TemplateDateFormat';
-import { TemplateValueFormatException } from './TemplateValueFormatException';
-import { _DelayedJQuote } from './_DelayedJQuote';
-import { TemplateNumberFormat } from './TemplateNumberFormat';
-import { _DelayedShortClassName } from './_DelayedShortClassName';
-import { Character } from '../../java/lang/Character';
+import {StringUtil} from '../template/utility/StringUtil';
+import {StringBuilder} from '../../java/lang/StringBuilder';
+import {ExistsExpression} from './ExistsExpression';
+import {_DelayedAOrAn} from './_DelayedAOrAn';
+import {_DelayedFTLTypeDescription} from './_DelayedFTLTypeDescription';
+import {_MiscTemplateException} from './_MiscTemplateException';
+import {_ErrorDescriptionBuilder} from './_ErrorDescriptionBuilder';
+import {_DelayedJQuote} from './_DelayedJQuote';
+import {_DelayedShortClassName} from './_DelayedShortClassName';
+import {Character} from '../../java/lang/Character';
+import {ClassUtil} from "../template/utility/ClassUtil";
+import {TemplateModel} from "../template/TemplateModel";
 
 /**
  * Used internally only, might changes without notice!
@@ -48,7 +24,7 @@ export class _MessageUtil {
 
     static UNKNOWN_DATE_TYPE_ERROR_TIP : string = "Use ?date, ?time, or ?datetime to tell FreeMarker the exact type.";
 
-    static UNKNOWN_DATE_TO_STRING_TIPS : Array<any>; public static UNKNOWN_DATE_TO_STRING_TIPS_$LI$() : Array { if(_MessageUtil.UNKNOWN_DATE_TO_STRING_TIPS == null) _MessageUtil.UNKNOWN_DATE_TO_STRING_TIPS = [_MessageUtil.UNKNOWN_DATE_TYPE_ERROR_TIP, "If you need a particular format only once, use ?string(pattern), like ?string(\'dd.MM.yyyy HH:mm:ss\'), to specify which fields to display. "]; return _MessageUtil.UNKNOWN_DATE_TO_STRING_TIPS; };
+    static UNKNOWN_DATE_TO_STRING_TIPS : Array<any>; public static UNKNOWN_DATE_TO_STRING_TIPS_$LI$() : Array<any> { if(_MessageUtil.UNKNOWN_DATE_TO_STRING_TIPS == null) _MessageUtil.UNKNOWN_DATE_TO_STRING_TIPS = [_MessageUtil.UNKNOWN_DATE_TYPE_ERROR_TIP, "If you need a particular format only once, use ?string(pattern), like ?string(\'dd.MM.yyyy HH:mm:ss\'), to specify which fields to display. "]; return _MessageUtil.UNKNOWN_DATE_TO_STRING_TIPS; };
 
     static EMBEDDED_MESSAGE_BEGIN : string = "---begin-message---\n";
 
@@ -57,12 +33,12 @@ export class _MessageUtil {
     constructor() {
     }
 
-    public static formatLocationForSimpleParsingError$freemarker_template_Template$int$int(template : Template, line : number, column : number) : string {
+    public static formatLocationForSimpleParsingError$freemarker_template_Template$int$int(template : /*Template*/any, line : number, column : number) : string {
         return _MessageUtil.formatLocation$java_lang_String$freemarker_template_Template$int$int("in", template, line, column);
     }
 
     public static formatLocationForSimpleParsingError(template? : any, line? : any, column? : any) : any {
-        if(((template != null && template instanceof <any>Template) || template === null) && ((typeof line === 'number') || line === null) && ((typeof column === 'number') || column === null)) {
+        if(((ClassUtil.isInstanceOf(template, 'freemarker.template.Template')) || template === null) && ((typeof line === 'number') || line === null) && ((typeof column === 'number') || column === null)) {
             return <any>_MessageUtil.formatLocationForSimpleParsingError$freemarker_template_Template$int$int(template, line, column);
         } else if(((typeof template === 'string') || template === null) && ((typeof line === 'number') || line === null) && ((typeof column === 'number') || column === null)) {
             return <any>_MessageUtil.formatLocationForSimpleParsingError$java_lang_String$int$int(template, line, column);
@@ -73,12 +49,12 @@ export class _MessageUtil {
         return _MessageUtil.formatLocation$java_lang_String$java_lang_String$int$int("in", templateSourceName, line, column);
     }
 
-    public static formatLocationForDependentParsingError$freemarker_template_Template$int$int(template : Template, line : number, column : number) : string {
+    public static formatLocationForDependentParsingError$freemarker_template_Template$int$int(template : /*Template*/any, line : number, column : number) : string {
         return _MessageUtil.formatLocation$java_lang_String$freemarker_template_Template$int$int("on", template, line, column);
     }
 
     public static formatLocationForDependentParsingError(template? : any, line? : any, column? : any) : any {
-        if(((template != null && template instanceof <any>Template) || template === null) && ((typeof line === 'number') || line === null) && ((typeof column === 'number') || column === null)) {
+        if(((ClassUtil.isInstanceOf(template, 'freemarker.template.Template')) || template === null) && ((typeof line === 'number') || line === null) && ((typeof column === 'number') || column === null)) {
             return <any>_MessageUtil.formatLocationForDependentParsingError$freemarker_template_Template$int$int(template, line, column);
         } else if(((typeof template === 'string') || template === null) && ((typeof line === 'number') || line === null) && ((typeof column === 'number') || column === null)) {
             return <any>_MessageUtil.formatLocationForDependentParsingError$java_lang_String$int$int(template, line, column);
@@ -89,22 +65,22 @@ export class _MessageUtil {
         return _MessageUtil.formatLocation$java_lang_String$java_lang_String$int$int("on", templateSourceName, line, column);
     }
 
-    public static formatLocationForEvaluationError$freemarker_template_Template$int$int(template : Template, line : number, column : number) : string {
+    public static formatLocationForEvaluationError$freemarker_template_Template$int$int(template : /*Template*/any, line : number, column : number) : string {
         return _MessageUtil.formatLocation$java_lang_String$freemarker_template_Template$int$int("at", template, line, column);
     }
 
     public static formatLocationForEvaluationError(template? : any, line? : any, column? : any) : any {
-        if(((template != null && template instanceof <any>Template) || template === null) && ((typeof line === 'number') || line === null) && ((typeof column === 'number') || column === null)) {
+        if(((ClassUtil.isInstanceOf(template, 'freemarker.template.Template')) || template === null) && ((typeof line === 'number') || line === null) && ((typeof column === 'number') || column === null)) {
             return <any>_MessageUtil.formatLocationForEvaluationError$freemarker_template_Template$int$int(template, line, column);
-        } else if(((template != null && template instanceof <any>Macro) || template === null) && ((typeof line === 'number') || line === null) && ((typeof column === 'number') || column === null)) {
+        } else if(((ClassUtil.isInstanceOf(template, 'freemarker.core.Macro')) || template === null) && ((typeof line === 'number') || line === null) && ((typeof column === 'number') || column === null)) {
             return <any>_MessageUtil.formatLocationForEvaluationError$freemarker_core_Macro$int$int(template, line, column);
         } else if(((typeof template === 'string') || template === null) && ((typeof line === 'number') || line === null) && ((typeof column === 'number') || column === null)) {
             return <any>_MessageUtil.formatLocationForEvaluationError$java_lang_String$int$int(template, line, column);
         } else throw new Error('invalid overload');
     }
 
-    static formatLocationForEvaluationError$freemarker_core_Macro$int$int(macro : Macro, line : number, column : number) : string {
-        let t : Template = macro.getTemplate();
+    static formatLocationForEvaluationError$freemarker_core_Macro$int$int(macro : /*Macro*/any, line : number, column : number) : string {
+        let t : /*Template*/any = macro.getTemplate();
         return _MessageUtil.formatLocation$java_lang_String$java_lang_String$java_lang_String$boolean$int$int("at", t != null?t.getSourceName():null, macro.getName(), macro.isFunction(), line, column);
     }
 
@@ -112,7 +88,7 @@ export class _MessageUtil {
         return _MessageUtil.formatLocation$java_lang_String$java_lang_String$int$int("at", templateSourceName, line, column);
     }
 
-    /*private*/ static formatLocation$java_lang_String$freemarker_template_Template$int$int(preposition : string, template : Template, line : number, column : number) : string {
+    /*private*/ static formatLocation$java_lang_String$freemarker_template_Template$int$int(preposition : string, template : /*Template*/any, line : number, column : number) : string {
         return _MessageUtil.formatLocation$java_lang_String$java_lang_String$int$int(preposition, template != null?template.getSourceName():null, line, column);
     }
 
@@ -134,7 +110,7 @@ export class _MessageUtil {
     public static formatLocation(preposition? : any, templateSourceName? : any, macroOrFuncName? : any, isFunction? : any, line? : any, column? : any) : any {
         if(((typeof preposition === 'string') || preposition === null) && ((typeof templateSourceName === 'string') || templateSourceName === null) && ((typeof macroOrFuncName === 'string') || macroOrFuncName === null) && ((typeof isFunction === 'boolean') || isFunction === null) && ((typeof line === 'number') || line === null) && ((typeof column === 'number') || column === null)) {
             return <any>_MessageUtil.formatLocation$java_lang_String$java_lang_String$java_lang_String$boolean$int$int(preposition, templateSourceName, macroOrFuncName, isFunction, line, column);
-        } else if(((typeof preposition === 'string') || preposition === null) && ((templateSourceName != null && templateSourceName instanceof <any>Template) || templateSourceName === null) && ((typeof macroOrFuncName === 'number') || macroOrFuncName === null) && ((typeof isFunction === 'number') || isFunction === null) && line === undefined && column === undefined) {
+        } else if(((typeof preposition === 'string') || preposition === null) && ((ClassUtil.isInstanceOf(templateSourceName, 'freemarker.template.Template')) || templateSourceName === null) && ((typeof macroOrFuncName === 'number') || macroOrFuncName === null) && ((typeof isFunction === 'number') || isFunction === null) && line === undefined && column === undefined) {
             return <any>_MessageUtil.formatLocation$java_lang_String$freemarker_template_Template$int$int(preposition, templateSourceName, macroOrFuncName, isFunction);
         } else if(((typeof preposition === 'string') || preposition === null) && ((typeof templateSourceName === 'string') || templateSourceName === null) && ((typeof macroOrFuncName === 'number') || macroOrFuncName === null) && ((typeof isFunction === 'number') || isFunction === null) && line === undefined && column === undefined) {
             return <any>_MessageUtil.formatLocation$java_lang_String$java_lang_String$int$int(preposition, templateSourceName, macroOrFuncName, isFunction);
@@ -142,7 +118,7 @@ export class _MessageUtil {
     }
 
     static formatPosition(line : number, column : number) : string {
-        return "line " + (line >= 0?line:line - (TemplateObject.RUNTIME_EVAL_LINE_DISPLACEMENT - 1)) + ", column " + column;
+        return "line " + (line >= 0?line:line - ((require('./TemplateObject').TemplateObject).RUNTIME_EVAL_LINE_DISPLACEMENT - 1)) + ", column " + column;
     }
 
     /**
@@ -189,53 +165,53 @@ export class _MessageUtil {
         }
     }
 
-    public static appendExpressionAsUntearable(sb : StringBuilder, argExp : Expression) : StringBuilder {
-        let needParen : boolean = !(argExp != null && argExp instanceof <any>NumberLiteral) && !(argExp != null && argExp instanceof <any>StringLiteral) && !(argExp != null && argExp instanceof <any>BooleanLiteral) && !(argExp != null && argExp instanceof <any>ListLiteral) && !(argExp != null && argExp instanceof <any>HashLiteral) && !(argExp != null && argExp instanceof <any>Identifier) && !(argExp != null && argExp instanceof <any>Dot) && !(argExp != null && argExp instanceof <any>DynamicKeyName) && !(argExp != null && argExp instanceof <any>MethodCall) && !(argExp != null && argExp instanceof <any>BuiltIn) && !(argExp != null && argExp instanceof <any>ExistsExpression) && !(argExp != null && argExp instanceof <any>ParentheticalExpression);
+    public static appendExpressionAsUntearable(sb : StringBuilder, argExp : /*Expression*/any) : StringBuilder {
+        let needParen : boolean = !(argExp != null && argExp instanceof <any>(require('./NumberLiteral').NumberLiteral)) && !(argExp != null && argExp instanceof <any>(require('./StringLiteral').StringLiteral)) && !(argExp != null && argExp instanceof <any>(require('./BooleanLiteral').BooleanLiteral)) && !(argExp != null && argExp instanceof <any>(require('./ListLiteral').ListLiteral)) && !(argExp != null && argExp instanceof <any>(require('./HashLiteral').HashLiteral)) && !(argExp != null && argExp instanceof <any>(require('./Identifier').Identifier)) && !(argExp != null && argExp instanceof <any>(require('./Dot').Dot)) && !(argExp != null && argExp instanceof <any>(require('./DynamicKeyName').DynamicKeyName)) && !(argExp != null && argExp instanceof <any>(require('./MethodCall').MethodCall)) && !(argExp != null && argExp instanceof <any>(require('./BuiltIn').BuiltIn)) && !(argExp != null && argExp instanceof <any>ExistsExpression) && !(argExp != null && argExp instanceof <any>(require('./ParentheticalExpression').ParentheticalExpression));
         if(needParen) sb.append('(');
         sb.append(argExp.getCanonicalForm());
         if(needParen) sb.append(')');
         return sb;
     }
 
-    public static newArgCntError$java_lang_String$int$int(methodName : string, argCnt : number, expectedCnt : number) : TemplateModelException {
+    public static newArgCntError$java_lang_String$int$int(methodName : string, argCnt : number, expectedCnt : number) : /*TemplateModelException*/any {
         return _MessageUtil.newArgCntError$java_lang_String$int$int$int(methodName, argCnt, expectedCnt, expectedCnt);
     }
 
-    public static newArgCntError$java_lang_String$int$int$int(methodName : string, argCnt : number, minCnt : number, maxCnt : number) : TemplateModelException {
+    public static newArgCntError$java_lang_String$int$int$int(methodName : string, argCnt : number, minCnt : number, maxCnt : number) : /*TemplateModelException*/any {
         let desc : Array<any> = <any>([]);
-        /* add */(desc.push(methodName)>0);
-        /* add */(desc.push("(")>0);
-        if(maxCnt !== 0) /* add */(desc.push("...")>0);
-        /* add */(desc.push(") expects ")>0);
+        /* add */desc.push(" to ");
+        /* add */desc.push(" to ");
+        if(maxCnt !== 0) /* add */desc.push(" to ");
+        /* add */desc.push(") expects ");
         if(minCnt === maxCnt) {
             if(maxCnt === 0) {
-                /* add */(desc.push("no")>0);
+                /* add */desc.push(" to ");
             } else {
-                /* add */(desc.push(maxCnt)>0);
+                /* add */desc.push(" to ");
             }
         } else if(maxCnt - minCnt === 1) {
-            /* add */(desc.push(minCnt)>0);
-            /* add */(desc.push(" or ")>0);
-            /* add */(desc.push(maxCnt)>0);
+            /* add */desc.push(minCnt);
+            /* add */desc.push(" or ");
+            /* add */desc.push(maxCnt);
         } else {
-            /* add */(desc.push(minCnt)>0);
+            /* add */desc.push(minCnt);
             if(maxCnt !== Number.MAX_VALUE) {
-                /* add */(desc.push(" to ")>0);
-                /* add */(desc.push(maxCnt)>0);
+                /* add */desc.push(" to ");
+                /* add */desc.push(" to ");
             } else {
-                /* add */(desc.push(" or more (unlimited)")>0);
+                /* add */desc.push(" or more (unlimited)");
             }
         }
-        /* add */(desc.push(" argument")>0);
-        if(maxCnt > 1) /* add */(desc.push("s")>0);
-        /* add */(desc.push(" but has received ")>0);
+        /* add */desc.push(" to ");
+        if(maxCnt > 1) /* add */desc.push(" to ");
+        /* add */desc.push(" to ");
         if(argCnt === 0) {
-            /* add */(desc.push("none")>0);
+            /* add */desc.push(" to ");
         } else {
-            /* add */(desc.push(argCnt)>0);
+            /* add */desc.push(" to ");
         }
-        /* add */(desc.push(".")>0);
-        return <any>new (__Function.prototype.bind.apply(_TemplateModelException, [null].concat(<any[]>/* toArray */desc.slice(0))));
+        /* add */desc.push(" to ");
+        return <any>new (__Function.prototype.bind.apply((require('./_TemplateModelException')._TemplateModelException), [null].concat(<any[]>/* toArray */desc.slice(0))));
     }
 
     public static newArgCntError(methodName? : any, argCnt? : any, minCnt? : any, maxCnt? : any) : any {
@@ -246,32 +222,32 @@ export class _MessageUtil {
         } else throw new Error('invalid overload');
     }
 
-    public static newMethodArgMustBeStringException(methodName : string, argIdx : number, arg : TemplateModel) : TemplateModelException {
+    public static newMethodArgMustBeStringException(methodName : string, argIdx : number, arg : TemplateModel) : /*TemplateModelException*/any {
         return _MessageUtil.newMethodArgUnexpectedTypeException(methodName, argIdx, "string", arg);
     }
 
-    public static newMethodArgMustBeNumberException(methodName : string, argIdx : number, arg : TemplateModel) : TemplateModelException {
+    public static newMethodArgMustBeNumberException(methodName : string, argIdx : number, arg : TemplateModel) : /*TemplateModelException*/any {
         return _MessageUtil.newMethodArgUnexpectedTypeException(methodName, argIdx, "number", arg);
     }
 
-    public static newMethodArgMustBeBooleanException(methodName : string, argIdx : number, arg : TemplateModel) : TemplateModelException {
+    public static newMethodArgMustBeBooleanException(methodName : string, argIdx : number, arg : TemplateModel) : /*TemplateModelException*/any {
         return _MessageUtil.newMethodArgUnexpectedTypeException(methodName, argIdx, "boolean", arg);
     }
 
-    public static newMethodArgMustBeExtendedHashException(methodName : string, argIdx : number, arg : TemplateModel) : TemplateModelException {
+    public static newMethodArgMustBeExtendedHashException(methodName : string, argIdx : number, arg : TemplateModel) : /*TemplateModelException*/any {
         return _MessageUtil.newMethodArgUnexpectedTypeException(methodName, argIdx, "extended hash", arg);
     }
 
-    public static newMethodArgMustBeSequenceException(methodName : string, argIdx : number, arg : TemplateModel) : TemplateModelException {
+    public static newMethodArgMustBeSequenceException(methodName : string, argIdx : number, arg : TemplateModel) : /*TemplateModelException*/any {
         return _MessageUtil.newMethodArgUnexpectedTypeException(methodName, argIdx, "sequence", arg);
     }
 
-    public static newMethodArgMustBeSequenceOrCollectionException(methodName : string, argIdx : number, arg : TemplateModel) : TemplateModelException {
+    public static newMethodArgMustBeSequenceOrCollectionException(methodName : string, argIdx : number, arg : TemplateModel) : /*TemplateModelException*/any {
         return _MessageUtil.newMethodArgUnexpectedTypeException(methodName, argIdx, "sequence or collection", arg);
     }
 
-    public static newMethodArgUnexpectedTypeException(methodName : string, argIdx : number, expectedType : string, arg : TemplateModel) : TemplateModelException {
-        return new _TemplateModelException(methodName, "(...) expects ", new _DelayedAOrAn(expectedType), " as argument #", argIdx + 1, ", but received ", new _DelayedAOrAn(new _DelayedFTLTypeDescription(arg)), ".");
+    public static newMethodArgUnexpectedTypeException(methodName : string, argIdx : number, expectedType : string, arg : TemplateModel) : /*TemplateModelException*/any {
+        return new (require('./_TemplateModelException')._TemplateModelException)(methodName, "(...) expects ", new _DelayedAOrAn(expectedType), " as argument #", argIdx + 1, ", but received ", new _DelayedAOrAn(new _DelayedFTLTypeDescription(arg)), ".");
     }
 
     /**
@@ -281,8 +257,8 @@ export class _MessageUtil {
      * @param {Array} details
      * @return {TemplateModelException}
      */
-    public static newMethodArgInvalidValueException(methodName : string, argIdx : number, ...details : Array) : TemplateModelException {
-        return <any>new (__Function.prototype.bind.apply(_TemplateModelException, [null, methodName, "(...) argument #", argIdx + 1, " had invalid value: "].concat(<any[]>details)));
+    public static newMethodArgInvalidValueException(methodName : string, argIdx : number, ...details : any[]) : /*TemplateModelException*/any {
+        return <any>new (__Function.prototype.bind.apply((require('./_TemplateModelException')._TemplateModelException), [null, methodName, "(...) argument #", argIdx + 1, " had invalid value: "].concat(<any[]>details)));
     }
 
     /**
@@ -291,30 +267,32 @@ export class _MessageUtil {
      * @param {Array} details
      * @return {TemplateModelException}
      */
-    public static newMethodArgsInvalidValueException(methodName : string, ...details : Array) : TemplateModelException {
-        return <any>new (__Function.prototype.bind.apply(_TemplateModelException, [null, methodName, "(...) arguments have invalid value: "].concat(<any[]>details)));
+    public static newMethodArgsInvalidValueException(methodName : string, ...details : any[]) : /*TemplateModelException*/any {
+        return <any>new (__Function.prototype.bind.apply((require('./_TemplateModelException')._TemplateModelException), [null, methodName, "(...) arguments have invalid value: "].concat(<any[]>details)));
     }
 
-    public static newInstantiatingClassNotAllowedException(className : string, env : Environment) : TemplateException {
+    public static newInstantiatingClassNotAllowedException(className : string, env : /*Environment*/any) : /*TemplateException*/any {
         return new _MiscTemplateException(env, "Instantiating ", className, " is not allowed in the template for security reasons.");
     }
 
-    public static newCantFormatUnknownTypeDateException(dateSourceExpr : Expression, cause : UnknownDateTypeFormattingUnsupportedException) : _TemplateModelException {
-        return new _TemplateModelException(cause, null, (o => o.tips.apply(o, _MessageUtil.UNKNOWN_DATE_TO_STRING_TIPS_$LI$()))(new _ErrorDescriptionBuilder(_MessageUtil.UNKNOWN_DATE_TO_STRING_ERROR_MESSAGE).blame(dateSourceExpr)));
+    public static newCantFormatUnknownTypeDateException(dateSourceExpr : /*Expression*/any, cause : /*UnknownDateTypeFormattingUnsupportedException*/any) : /*_TemplateModelException*/any {
+        return new (require('./_TemplateModelException')._TemplateModelException)(cause, null, (o => o.tips.apply(o, _MessageUtil.UNKNOWN_DATE_TO_STRING_TIPS_$LI$()))(new _ErrorDescriptionBuilder(_MessageUtil.UNKNOWN_DATE_TO_STRING_ERROR_MESSAGE).blame(dateSourceExpr)));
     }
 
-    public static newCantFormatDateException(format : TemplateDateFormat, dataSrcExp : Expression, e : TemplateValueFormatException, useTempModelExc : boolean) : TemplateException {
-        let desc : _ErrorDescriptionBuilder = new _ErrorDescriptionBuilder("Failed to format date/time/datetime with format ", new _DelayedJQuote(format.getDescription()), ": ", e.message).blame(dataSrcExp);
-        return useTempModelExc?new _TemplateModelException(e, null, desc):new _MiscTemplateException(e, null, desc);
+    public static newCantFormatDateException(format : /*TemplateDateFormat*/any, dataSrcExp : /*Expression*/any, e : /*TemplateValueFormatException*/any, useTempModelExc : boolean) : /*TemplateException*/any {
+        let desc : _ErrorDescriptionBuilder = new _ErrorDescriptionBuilder(["Failed to format date/time/datetime with format ", new _DelayedJQuote(format.getDescription()), ": ", e.message]).blame(dataSrcExp);
+        return useTempModelExc?new (require('./_TemplateModelException')._TemplateModelException)(e, null, desc):new _MiscTemplateException(e, null, desc);
     }
 
-    public static newCantFormatNumberException(format : TemplateNumberFormat, dataSrcExp : Expression, e : TemplateValueFormatException, useTempModelExc : boolean) : TemplateException {
-        let desc : _ErrorDescriptionBuilder = new _ErrorDescriptionBuilder("Failed to format number with format ", new _DelayedJQuote(format.getDescription()), ": ", e.message).blame(dataSrcExp);
-        return useTempModelExc?new _TemplateModelException(e, null, desc):new _MiscTemplateException(e, null, desc);
+    public static newCantFormatNumberException(format : /*TemplateNumberFormat*/any, dataSrcExp : /*Expression*/any, e : /*TemplateValueFormatException*/any, useTempModelExc : boolean) : /*TemplateException*/any {
+        let desc : _ErrorDescriptionBuilder = new _ErrorDescriptionBuilder(["Failed to format number with format ", new _DelayedJQuote(format.getDescription()), ": ", e.message]).blame(dataSrcExp);
+        return useTempModelExc?new (require('./_TemplateModelException')._TemplateModelException)(e, null, desc):new _MiscTemplateException(e, null, desc);
     }
 
-    public static newKeyValuePairListingNonStringKeyExceptionMessage(key : TemplateModel, listedHashEx : TemplateHashModelEx) : TemplateModelException {
-        return new _TemplateModelException(new _ErrorDescriptionBuilder("When listing key-value pairs of traditional hash implementations, all keys must be strings, but one of them was ", new _DelayedAOrAn(new _DelayedFTLTypeDescription(key)), ".").tip("The listed value\'s TemplateModel class was ", new _DelayedShortClassName((<any>listedHashEx.constructor)), ", which doesn\'t implement ", new _DelayedShortClassName("freemarker.template.TemplateHashModelEx2"), ", which leads to this restriction."));
+    public static newKeyValuePairListingNonStringKeyExceptionMessage(key : TemplateModel, listedHashEx : /*TemplateHashModelEx*/any) : /*TemplateModelException*/any {
+        return new (require('./_TemplateModelException')._TemplateModelException)(new _ErrorDescriptionBuilder(
+            ["When listing key-value pairs of traditional hash implementations, all keys must be strings, but one of them was ",
+            new _DelayedAOrAn(new _DelayedFTLTypeDescription(key)), "."]).tip(["The listed value\'s TemplateModel class was ", new _DelayedShortClassName((<any>listedHashEx.constructor)), ", which doesn\'t implement ", new _DelayedShortClassName("freemarker.template.TemplateHashModelEx2"), ", which leads to this restriction."]));
     }
 
     /**
@@ -352,6 +330,6 @@ _MessageUtil["__class"] = "freemarker.core._MessageUtil";
 
 
 
-var __Function = Function;
+
 
 _MessageUtil.UNKNOWN_DATE_TO_STRING_TIPS_$LI$();

@@ -1,17 +1,16 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { Environment } from '../core/Environment';
-import { Expression } from '../core/Expression';
-import { TemplateElement } from '../core/TemplateElement';
-import { TemplateObject } from '../core/TemplateObject';
-import { _CoreAPI } from '../core/_CoreAPI';
-import { _ErrorDescriptionBuilder } from '../core/_ErrorDescriptionBuilder';
-import { CollectionUtils } from './utility/CollectionUtils';
-import { PrintWriter } from '../../java/io/PrintWriter';
-import { StringWriter } from '../../java/io/StringWriter';
-import { Template } from './Template';
-import { PrintWriterStackTraceWriter } from './PrintWriterStackTraceWriter';
-import { PrintStreamStackTraceWriter } from './PrintStreamStackTraceWriter';
-import { StackTraceWriter } from './StackTraceWriter';
+import {Expression} from '../core/Expression';
+import {TemplateElement} from '../core/TemplateElement';
+import {TemplateObject} from '../core/TemplateObject';
+import {_ErrorDescriptionBuilder} from '../core/_ErrorDescriptionBuilder';
+import {CollectionUtils} from './utility/CollectionUtils';
+import {PrintWriter} from '../../java/io/PrintWriter';
+import {StringWriter} from '../../java/io/StringWriter';
+import {PrintWriterStackTraceWriter} from './PrintWriterStackTraceWriter';
+import {PrintStreamStackTraceWriter} from './PrintStreamStackTraceWriter';
+import {StackTraceWriter} from './StackTraceWriter';
+import {PrintStream} from "../../java/io/PrintStream";
+import {ClassUtil} from "./utility/ClassUtil";
 
 /**
  * The same as {link #TemplateException(String, Throwable, Environment)}; it's exists only for binary
@@ -27,7 +26,7 @@ export class TemplateException extends Error {
 
     /*private*/ descriptionBuilder : _ErrorDescriptionBuilder;
 
-    /*private*/ env : Environment;
+    /*private*/ env : /*Environment*/any;
 
     /*private*/ blamedExpression : Expression;
 
@@ -66,7 +65,7 @@ export class TemplateException extends Error {
     /*private*/ messageWasAlreadyPrintedForThisTrace : boolean;
 
     public constructor(renderedDescription? : any, cause? : any, env? : any, blamedExpression? : any, descriptionBuilder? : any) {
-        if(((typeof renderedDescription === 'string') || renderedDescription === null) && ((cause != null && (cause["__classes"] && cause["__classes"].indexOf("java.lang.Throwable") >= 0) || cause != null && cause instanceof <any>Error) || cause === null) && ((env != null && env instanceof <any>Environment) || env === null) && ((blamedExpression != null && blamedExpression instanceof <any>Expression) || blamedExpression === null) && ((descriptionBuilder != null && descriptionBuilder instanceof <any>_ErrorDescriptionBuilder) || descriptionBuilder === null)) {
+        if(((typeof renderedDescription === 'string') || renderedDescription === null) && ((cause != null && (cause["__classes"] && cause["__classes"].indexOf("java.lang.Throwable") >= 0) || cause != null && cause instanceof <any>Error) || cause === null) && ((ClassUtil.isInstanceOf(env, 'freemarker.template.Environment')) || env === null) && ((blamedExpression != null && blamedExpression instanceof <any>Expression) || blamedExpression === null) && ((descriptionBuilder != null && descriptionBuilder instanceof <any>_ErrorDescriptionBuilder) || descriptionBuilder === null)) {
             let __args = Array.prototype.slice.call(arguments);
             super(cause); this.message=cause;
             if(this.descriptionBuilder===undefined) this.descriptionBuilder = null;
@@ -110,14 +109,14 @@ export class TemplateException extends Error {
             if(this.endColumnNumber===undefined) this.endColumnNumber = null;
             if(this.messageWasAlreadyPrintedForThisTrace===undefined) this.messageWasAlreadyPrintedForThisTrace = false;
             (() => {
-                if(env == null) env = Environment.getCurrentEnvironment();
+                // if(env == null) env = Environment.getCurrentEnvironment();
                 this.env = env;
                 this.blamedExpression = blamedExpression;
                 this.descriptionBuilder = descriptionBuilder;
                 this.description = renderedDescription;
-                if(env != null) this.ftlInstructionStackSnapshot = _CoreAPI.getInstructionStackSnapshot(env);
+                // if(env != null) this.ftlInstructionStackSnapshot = _CoreAPI.getInstructionStackSnapshot(env);
             })();
-        } else if(((renderedDescription != null && (renderedDescription["__classes"] && renderedDescription["__classes"].indexOf("java.lang.Throwable") >= 0) || renderedDescription != null && renderedDescription instanceof <any>Error) || renderedDescription === null) && ((cause != null && cause instanceof <any>Environment) || cause === null) && ((env != null && env instanceof <any>Expression) || env === null) && ((blamedExpression != null && blamedExpression instanceof <any>_ErrorDescriptionBuilder) || blamedExpression === null) && descriptionBuilder === undefined) {
+        } else if(((renderedDescription != null && (renderedDescription["__classes"] && renderedDescription["__classes"].indexOf("java.lang.Throwable") >= 0) || renderedDescription != null && renderedDescription instanceof <any>Error) || renderedDescription === null) && ((ClassUtil.isInstanceOf(cause, 'freemarker.template.Environment')) || cause === null) && ((env != null && env instanceof <any>Expression) || env === null) && ((blamedExpression != null && blamedExpression instanceof <any>_ErrorDescriptionBuilder) || blamedExpression === null) && descriptionBuilder === undefined) {
             let __args = Array.prototype.slice.call(arguments);
             let cause : any = __args[0];
             let env : any = __args[1];
@@ -169,15 +168,15 @@ export class TemplateException extends Error {
                 if(this.endColumnNumber===undefined) this.endColumnNumber = null;
                 if(this.messageWasAlreadyPrintedForThisTrace===undefined) this.messageWasAlreadyPrintedForThisTrace = false;
                 (() => {
-                    if(env == null) env = Environment.getCurrentEnvironment();
+                    // if(env == null) env = Environment.getCurrentEnvironment();
                     this.env = env;
                     this.blamedExpression = blamedExpression;
                     this.descriptionBuilder = descriptionBuilder;
                     this.description = renderedDescription;
-                    if(env != null) this.ftlInstructionStackSnapshot = _CoreAPI.getInstructionStackSnapshot(env);
+                    // if(env != null) this.ftlInstructionStackSnapshot = _CoreAPI.getInstructionStackSnapshot(env);
                 })();
             }
-        } else if(((typeof renderedDescription === 'string') || renderedDescription === null) && ((cause != null && (cause["__classes"] && cause["__classes"].indexOf("java.lang.Exception") >= 0) || cause != null && cause instanceof <any>Error) || cause === null) && ((env != null && env instanceof <any>Environment) || env === null) && blamedExpression === undefined && descriptionBuilder === undefined) {
+        } else if(((typeof renderedDescription === 'string') || renderedDescription === null) && ((cause != null && (cause["__classes"] && cause["__classes"].indexOf("java.lang.Exception") >= 0) || cause != null && cause instanceof <any>Error) || cause === null) && ((ClassUtil.isInstanceOf(env, 'freemarker.template.Environment')) || env === null) && blamedExpression === undefined && descriptionBuilder === undefined) {
             let __args = Array.prototype.slice.call(arguments);
             let description : any = __args[0];
             {
@@ -227,15 +226,15 @@ export class TemplateException extends Error {
                 if(this.endColumnNumber===undefined) this.endColumnNumber = null;
                 if(this.messageWasAlreadyPrintedForThisTrace===undefined) this.messageWasAlreadyPrintedForThisTrace = false;
                 (() => {
-                    if(env == null) env = Environment.getCurrentEnvironment();
+                    // if(env == null) env = Environment.getCurrentEnvironment();
                     this.env = env;
                     this.blamedExpression = blamedExpression;
                     this.descriptionBuilder = descriptionBuilder;
                     this.description = renderedDescription;
-                    if(env != null) this.ftlInstructionStackSnapshot = _CoreAPI.getInstructionStackSnapshot(env);
+                    // if(env != null) this.ftlInstructionStackSnapshot = _CoreAPI.getInstructionStackSnapshot(env);
                 })();
             }
-        } else if(((typeof renderedDescription === 'string') || renderedDescription === null) && ((cause != null && (cause["__classes"] && cause["__classes"].indexOf("java.lang.Throwable") >= 0) || cause != null && cause instanceof <any>Error) || cause === null) && ((env != null && env instanceof <any>Environment) || env === null) && blamedExpression === undefined && descriptionBuilder === undefined) {
+        } else if(((typeof renderedDescription === 'string') || renderedDescription === null) && ((cause != null && (cause["__classes"] && cause["__classes"].indexOf("java.lang.Throwable") >= 0) || cause != null && cause instanceof <any>Error) || cause === null) && ((ClassUtil.isInstanceOf(env, 'freemarker.template.Environment')) || env === null) && blamedExpression === undefined && descriptionBuilder === undefined) {
             let __args = Array.prototype.slice.call(arguments);
             let description : any = __args[0];
             {
@@ -285,15 +284,15 @@ export class TemplateException extends Error {
                 if(this.endColumnNumber===undefined) this.endColumnNumber = null;
                 if(this.messageWasAlreadyPrintedForThisTrace===undefined) this.messageWasAlreadyPrintedForThisTrace = false;
                 (() => {
-                    if(env == null) env = Environment.getCurrentEnvironment();
+                    // if(env == null) env = Environment.getCurrentEnvironment();
                     this.env = env;
                     this.blamedExpression = blamedExpression;
                     this.descriptionBuilder = descriptionBuilder;
                     this.description = renderedDescription;
-                    if(env != null) this.ftlInstructionStackSnapshot = _CoreAPI.getInstructionStackSnapshot(env);
+                    // if(env != null) this.ftlInstructionStackSnapshot = _CoreAPI.getInstructionStackSnapshot(env);
                 })();
             }
-        } else if(((typeof renderedDescription === 'string') || renderedDescription === null) && ((cause != null && cause instanceof <any>Environment) || cause === null) && env === undefined && blamedExpression === undefined && descriptionBuilder === undefined) {
+        } else if(((typeof renderedDescription === 'string') || renderedDescription === null) && ((ClassUtil.isInstanceOf(cause, 'freemarker.template.Environment')) || cause === null) && env === undefined && blamedExpression === undefined && descriptionBuilder === undefined) {
             let __args = Array.prototype.slice.call(arguments);
             let description : any = __args[0];
             let env : any = __args[1];
@@ -347,16 +346,16 @@ export class TemplateException extends Error {
                     if(this.endColumnNumber===undefined) this.endColumnNumber = null;
                     if(this.messageWasAlreadyPrintedForThisTrace===undefined) this.messageWasAlreadyPrintedForThisTrace = false;
                     (() => {
-                        if(env == null) env = Environment.getCurrentEnvironment();
+                        // if(env == null) env = Environment.getCurrentEnvironment();
                         this.env = env;
                         this.blamedExpression = blamedExpression;
                         this.descriptionBuilder = descriptionBuilder;
                         this.description = renderedDescription;
-                        if(env != null) this.ftlInstructionStackSnapshot = _CoreAPI.getInstructionStackSnapshot(env);
+                        // if(env != null) this.ftlInstructionStackSnapshot = _CoreAPI.getInstructionStackSnapshot(env);
                     })();
                 }
             }
-        } else if(((renderedDescription != null && (renderedDescription["__classes"] && renderedDescription["__classes"].indexOf("java.lang.Exception") >= 0) || renderedDescription != null && renderedDescription instanceof <any>Error) || renderedDescription === null) && ((cause != null && cause instanceof <any>Environment) || cause === null) && env === undefined && blamedExpression === undefined && descriptionBuilder === undefined) {
+        } else if(((renderedDescription != null && (renderedDescription["__classes"] && renderedDescription["__classes"].indexOf("java.lang.Exception") >= 0) || renderedDescription != null && renderedDescription instanceof <any>Error) || renderedDescription === null) && ((ClassUtil.isInstanceOf(cause, 'freemarker.template.Environment')) || cause === null) && env === undefined && blamedExpression === undefined && descriptionBuilder === undefined) {
             let __args = Array.prototype.slice.call(arguments);
             let cause : any = __args[0];
             let env : any = __args[1];
@@ -410,16 +409,16 @@ export class TemplateException extends Error {
                     if(this.endColumnNumber===undefined) this.endColumnNumber = null;
                     if(this.messageWasAlreadyPrintedForThisTrace===undefined) this.messageWasAlreadyPrintedForThisTrace = false;
                     (() => {
-                        if(env == null) env = Environment.getCurrentEnvironment();
+                        // if(env == null) env = Environment.getCurrentEnvironment();
                         this.env = env;
                         this.blamedExpression = blamedExpression;
                         this.descriptionBuilder = descriptionBuilder;
                         this.description = renderedDescription;
-                        if(env != null) this.ftlInstructionStackSnapshot = _CoreAPI.getInstructionStackSnapshot(env);
+                        // if(env != null) this.ftlInstructionStackSnapshot = _CoreAPI.getInstructionStackSnapshot(env);
                     })();
                 }
             }
-        } else if(((renderedDescription != null && (renderedDescription["__classes"] && renderedDescription["__classes"].indexOf("java.lang.Throwable") >= 0) || renderedDescription != null && renderedDescription instanceof <any>Error) || renderedDescription === null) && ((cause != null && cause instanceof <any>Environment) || cause === null) && env === undefined && blamedExpression === undefined && descriptionBuilder === undefined) {
+        } else if(((renderedDescription != null && (renderedDescription["__classes"] && renderedDescription["__classes"].indexOf("java.lang.Throwable") >= 0) || renderedDescription != null && renderedDescription instanceof <any>Error) || renderedDescription === null) && ((ClassUtil.isInstanceOf(cause, 'freemarker.template.Environment')) || cause === null) && env === undefined && blamedExpression === undefined && descriptionBuilder === undefined) {
             let __args = Array.prototype.slice.call(arguments);
             let cause : any = __args[0];
             let env : any = __args[1];
@@ -473,16 +472,16 @@ export class TemplateException extends Error {
                     if(this.endColumnNumber===undefined) this.endColumnNumber = null;
                     if(this.messageWasAlreadyPrintedForThisTrace===undefined) this.messageWasAlreadyPrintedForThisTrace = false;
                     (() => {
-                        if(env == null) env = Environment.getCurrentEnvironment();
+                        // if(env == null) env = Environment.getCurrentEnvironment();
                         this.env = env;
                         this.blamedExpression = blamedExpression;
                         this.descriptionBuilder = descriptionBuilder;
                         this.description = renderedDescription;
-                        if(env != null) this.ftlInstructionStackSnapshot = _CoreAPI.getInstructionStackSnapshot(env);
+                        // if(env != null) this.ftlInstructionStackSnapshot = _CoreAPI.getInstructionStackSnapshot(env);
                     })();
                 }
             }
-        } else if(((renderedDescription != null && renderedDescription instanceof <any>Environment) || renderedDescription === null) && cause === undefined && env === undefined && blamedExpression === undefined && descriptionBuilder === undefined) {
+        } else if(((ClassUtil.isInstanceOf(renderedDescription, 'freemarker.template.Environment')) || renderedDescription === null) && cause === undefined && env === undefined && blamedExpression === undefined && descriptionBuilder === undefined) {
             let __args = Array.prototype.slice.call(arguments);
             let env : any = __args[0];
             {
@@ -536,12 +535,12 @@ export class TemplateException extends Error {
                     if(this.endColumnNumber===undefined) this.endColumnNumber = null;
                     if(this.messageWasAlreadyPrintedForThisTrace===undefined) this.messageWasAlreadyPrintedForThisTrace = false;
                     (() => {
-                        if(env == null) env = Environment.getCurrentEnvironment();
+                        // if(env == null) env = Environment.getCurrentEnvironment();
                         this.env = env;
                         this.blamedExpression = blamedExpression;
                         this.descriptionBuilder = descriptionBuilder;
                         this.description = renderedDescription;
-                        if(env != null) this.ftlInstructionStackSnapshot = _CoreAPI.getInstructionStackSnapshot(env);
+                        // if(env != null) this.ftlInstructionStackSnapshot = _CoreAPI.getInstructionStackSnapshot(env);
                     })();
                 }
             }
@@ -559,7 +558,7 @@ export class TemplateException extends Error {
         }
         let stackTopFew : string = this.getFTLInstructionStackTopFew();
         if(stackTopFew != null) {
-            this.message = this.messageWithoutStackTop + "\n\n" + _CoreAPI.ERROR_MESSAGE_HR + "\n" + TemplateException.FTL_INSTRUCTION_STACK_TRACE_TITLE + "\n" + stackTopFew + _CoreAPI.ERROR_MESSAGE_HR;
+            this.message = this.messageWithoutStackTop + "\n\n" + (require('../core/_CoreAPI')._CoreAPI).ERROR_MESSAGE_HR + "\n" + TemplateException.FTL_INSTRUCTION_STACK_TRACE_TITLE + "\n" + stackTopFew + (require('../core/_CoreAPI')._CoreAPI).ERROR_MESSAGE_HR;
             this.messageWithoutStackTop = this.message.substring(0, this.messageWithoutStackTop.length);
         } else {
             this.message = this.messageWithoutStackTop;
@@ -570,7 +569,7 @@ export class TemplateException extends Error {
         if(!this.positionsCalculated) {
             let templateObject : TemplateObject = this.blamedExpression != null?this.blamedExpression:(this.ftlInstructionStackSnapshot != null && this.ftlInstructionStackSnapshot.length !== 0?this.ftlInstructionStackSnapshot[0]:null);
             if(templateObject != null && templateObject.getBeginLine() > 0) {
-                let template : Template = templateObject.getTemplate();
+                let template : /*Template*/any = templateObject.getTemplate();
                 this.templateName = template != null?template.getName():null;
                 this.templateSourceName = template != null?template.getSourceName():null;
                 this.lineNumber = templateObject.getBeginLine();
@@ -601,7 +600,7 @@ export class TemplateException extends Error {
             if(this.renderedFtlInstructionStackSnapshot == null) {
                 let sw : StringWriter = new StringWriter();
                 let pw : PrintWriter = new PrintWriter(sw);
-                _CoreAPI.outputInstructionStack(this.ftlInstructionStackSnapshot, false, pw);
+                (require('../core/_CoreAPI')._CoreAPI).outputInstructionStack(this.ftlInstructionStackSnapshot, false, pw);
                 pw.close();
                 if(this.renderedFtlInstructionStackSnapshot == null) {
                     this.renderedFtlInstructionStackSnapshot = sw.toString();
@@ -623,7 +622,7 @@ export class TemplateException extends Error {
                     s = "";
                 } else {
                     let sw : StringWriter = new StringWriter();
-                    _CoreAPI.outputInstructionStack(this.ftlInstructionStackSnapshot, true, sw);
+                    (require('../core/_CoreAPI')._CoreAPI).outputInstructionStack(this.ftlInstructionStackSnapshot, true, sw);
                     s = sw.toString();
                 }
                 if(this.renderedFtlInstructionStackSnapshotTop == null) {
@@ -663,7 +662,7 @@ export class TemplateException extends Error {
      * @return {Environment} the execution environment in which the exception occurred.
      * {@code null} if the exception was deserialized.
      */
-    public getEnvironment() : Environment {
+    public getEnvironment() : /*Environment*/any {
         return this.env;
     }
 
@@ -721,10 +720,10 @@ export class TemplateException extends Error {
             if(stackTrace != null) {
                 out['println$java_lang_Object'](this.getMessageWithoutStackTop());
                 out.println();
-                out['println$java_lang_Object'](_CoreAPI.ERROR_MESSAGE_HR);
+                out['println$java_lang_Object']((require('../core/_CoreAPI')._CoreAPI).ERROR_MESSAGE_HR);
                 out['println$java_lang_Object'](TemplateException.FTL_INSTRUCTION_STACK_TRACE_TITLE);
                 out.print(stackTrace);
-                out['println$java_lang_Object'](_CoreAPI.ERROR_MESSAGE_HR);
+                out['println$java_lang_Object']((require('../core/_CoreAPI')._CoreAPI).ERROR_MESSAGE_HR);
             } else {
                 ftlStackTrace = false;
                 javaStackTrace = true;
@@ -734,13 +733,13 @@ export class TemplateException extends Error {
             if(ftlStackTrace) {
                 out.println();
                 out['println$java_lang_Object']("Java stack trace (for programmers):");
-                out['println$java_lang_Object'](_CoreAPI.ERROR_MESSAGE_HR);
+                out['println$java_lang_Object']((require('../core/_CoreAPI')._CoreAPI).ERROR_MESSAGE_HR);
                 this.messageWasAlreadyPrintedForThisTrace = true;
                 try {
                     out.printStandardStackTrace(this);
                 } finally {
                     this.messageWasAlreadyPrintedForThisTrace = false;
-                };
+                }
             } else {
                 out.printStandardStackTrace(this);
             }
@@ -748,21 +747,21 @@ export class TemplateException extends Error {
                 let causeCause : Error = (<Error>null);
                 if(causeCause == null) {
                     try {
-                        let m : Function = /* getMethod */((c,p) => { if(c.prototype.hasOwnProperty(p) && typeof c.prototype[p] == 'function') return {owner:c,name:p,fn:c.prototype[p]}; else return null; })((<any>(<Error>null).constructor),"getRootCause");
-                        let rootCause : Error = <Error>/* invoke */m.fn.apply((<Error>null), [CollectionUtils.EMPTY_OBJECT_ARRAY_$LI$()]);
+                        let m : Function = /* getMethod */((c,p) => { if(c.prototype.hasOwnProperty(p) && typeof c.prototype[p] == 'function') return c.prototype[p]; else return null; })((<any>(<Error>null).constructor),"getRootCause");
+                        let rootCause : Error = <Error>/* invoke */m.apply((<Error>null), [CollectionUtils.EMPTY_OBJECT_ARRAY_$LI$()]);
                         if(rootCause != null) {
                             out['println$java_lang_Object']("ServletException root cause: ");
                             out.printStandardStackTrace(rootCause);
                         }
                     } catch(exc) {
-                    };
+                    }
                 }
             }
         }
     }
 
     public printStandardStackTrace$java_io_PrintStream(ps : PrintStream) {
-        console.error(super.message, super);
+        console.error(super.message);
     }
 
     /**
@@ -780,7 +779,7 @@ export class TemplateException extends Error {
     }
 
     public printStandardStackTrace$java_io_PrintWriter(pw : PrintWriter) {
-        console.error(super.message, super);
+        console.error(super.message);
     }
 
     /**
@@ -915,7 +914,7 @@ export class TemplateException extends Error {
         return this.blamedExpression;
     }
 
-    /*private*/ writeObject(out : ObjectOutputStream) {
+    /*private*/ writeObject(out : /*ObjectOutputStream*/any) {
         this.getFTLInstructionStack();
         this.getFTLInstructionStackTopFew();
         this.getDescription();
@@ -924,7 +923,7 @@ export class TemplateException extends Error {
         out.defaultWriteObject();
     }
 
-    /*private*/ readObject(__in : ObjectInputStream) {
+    /*private*/ readObject(__in : /*ObjectInputStream*/any) {
         this.lock = <any>new Object();
         __in.defaultReadObject();
     }
@@ -935,4 +934,4 @@ TemplateException["__interfaces"] = ["java.io.Serializable"];
 
 
 
-var __Function = Function;
+

@@ -1,6 +1,6 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { UnformattableValueException } from './UnformattableValueException';
-import { _MessageUtil } from './_MessageUtil';
+import {UnformattableValueException} from './UnformattableValueException';
+import {_MessageUtil} from './_MessageUtil';
 
 /**
  * Thrown when a {link TemplateDateModel} can't be formatted because its type is {link TemplateDateModel#UNKNOWN}.
@@ -21,4 +21,4 @@ UnknownDateTypeFormattingUnsupportedException["__interfaces"] = ["java.io.Serial
 
 
 
-var __Function = Function;
+

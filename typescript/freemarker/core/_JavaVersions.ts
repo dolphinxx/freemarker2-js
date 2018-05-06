@@ -1,9 +1,9 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { Logger } from '../log/Logger';
-import { Version } from '../template/Version';
-import { SecurityUtilities } from '../template/utility/SecurityUtilities';
-import { _Java6 } from './_Java6';
-import { _Java8 } from './_Java8';
+import {Logger} from '../log/Logger';
+import {Version} from '../template/Version';
+import {SecurityUtilities} from '../template/utility/SecurityUtilities';
+import {_Java6} from './_Java6';
+import {_Java8} from './_Java8';
 
 /**
  * Used internally only, might changes without notice!
@@ -26,14 +26,14 @@ export class _JavaVersions {
                 let v : Version = new Version(vStr);
                 result = v.getMajor() === 1 && v.getMinor() >= 6 || v.getMajor() > 1;
             } catch(e) {
-            };
+            }
         }
         if(vStr == null) {
             try {
                 /* forName */eval("java.util.ServiceLoader".split('.').slice(-1)[0]);
                 result = true;
             } catch(e) {
-            };
+            }
         }
         _JavaVersions.IS_AT_LEAST_6 = result;
     }
@@ -49,9 +49,9 @@ export class _JavaVersions {
                 try {
                     Logger.getLogger("freemarker.runtime").error("Failed to access Java 6 functionality", e);
                 } catch(e2) {
-                };
+                }
                 java6 = null;
-            };
+            }
         } else {
             java6 = null;
         }
@@ -68,13 +68,13 @@ export class _JavaVersions {
                 let v : Version = new Version(vStr);
                 result = v.getMajor() === 1 && v.getMinor() >= 8 || v.getMajor() > 1;
             } catch(e) {
-            };
+            }
         } else {
             try {
                 /* forName */eval("java.time.Instant".split('.').slice(-1)[0]);
                 result = true;
             } catch(e) {
-            };
+            }
         }
         _JavaVersions.IS_AT_LEAST_8 = result;
     }
@@ -93,9 +93,9 @@ export class _JavaVersions {
                 try {
                     Logger.getLogger("freemarker.runtime").error("Failed to access Java 8 functionality", e);
                 } catch(e2) {
-                };
+                }
                 java8 = null;
-            };
+            }
         } else {
             java8 = null;
         }
@@ -106,7 +106,7 @@ _JavaVersions["__class"] = "freemarker.core._JavaVersions";
 
 
 
-var __Function = Function;
+
 
 _JavaVersions.JAVA_8_$LI$();
 

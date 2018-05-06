@@ -1,10 +1,6 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateException } from '../template/TemplateException';
-import { TemplateModel } from '../template/TemplateModel';
-import { TemplateModelException } from '../template/TemplateModelException';
-import { BuiltIn } from './BuiltIn';
-import { Environment } from './Environment';
-import { Expression } from './Expression';
+import {TemplateModel} from '../template/TemplateModel';
+import {BuiltIn} from './BuiltIn';
 
 export abstract class BuiltInForNumber extends BuiltIn {
     /**
@@ -12,7 +8,7 @@ export abstract class BuiltInForNumber extends BuiltIn {
      * @param {Environment} env
      * @return {*}
      */
-    _eval(env : Environment) : TemplateModel {
+    _eval(env : /*Environment*/any) : TemplateModel {
         let model : TemplateModel = this.target.eval(env);
         return this.calculateResult(this.target.modelToNumber(model, env), model);
     }

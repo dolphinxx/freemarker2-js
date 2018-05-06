@@ -1,7 +1,7 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { Environment } from '../core/Environment';
-import { LoggingAttemptExceptionReporter } from './LoggingAttemptExceptionReporter';
-import { TemplateException } from './TemplateException';
+import {Environment} from '../core/Environment';
+import {LoggingAttemptExceptionReporter} from './LoggingAttemptExceptionReporter';
+import {TemplateException} from './TemplateException';
 
 /**
  * Used for the {link Configurable#setAttemptExceptionReporter(AttemptExceptionReporter) attempt_exception_reported}
@@ -14,7 +14,7 @@ export interface AttemptExceptionReporter {
      * @param {TemplateException} te
      * @param {Environment} env
      */
-    report(te : TemplateException, env : Environment);
+    report(te : TemplateException, env : /*Environment*/any);
 }
 
 export namespace AttemptExceptionReporter {
@@ -34,4 +34,4 @@ export namespace AttemptExceptionReporter {
 
 
 
-var __Function = Function;
+

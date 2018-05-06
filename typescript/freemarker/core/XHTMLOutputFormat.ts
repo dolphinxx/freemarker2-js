@@ -1,8 +1,8 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { StringUtil } from '../template/utility/StringUtil';
-import { Writer } from '../../java/io/Writer';
-import { CommonMarkupOutputFormat } from './CommonMarkupOutputFormat';
-import { TemplateXHTMLOutputModel } from './TemplateXHTMLOutputModel';
+import {StringUtil} from '../template/utility/StringUtil';
+import {Writer} from '../../java/io/Writer';
+import {CommonMarkupOutputFormat} from './CommonMarkupOutputFormat';
+import {TemplateXHTMLOutputModel} from './TemplateXHTMLOutputModel';
 
 /**
  * Represents the XML output format (MIME type "application/xhtml+xml", name "XHTML"). This format escapes by default
@@ -90,6 +90,6 @@ XHTMLOutputFormat["__class"] = "freemarker.core.XHTMLOutputFormat";
 
 
 
-var __Function = Function;
+
 
 XHTMLOutputFormat.INSTANCE_$LI$();

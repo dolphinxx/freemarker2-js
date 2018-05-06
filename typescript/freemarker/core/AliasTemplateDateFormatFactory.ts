@@ -1,12 +1,11 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { StringUtil } from '../template/utility/StringUtil';
-import { TemplateDateFormatFactory } from './TemplateDateFormatFactory';
-import { TemplateDateFormat } from './TemplateDateFormat';
-import { Environment } from './Environment';
-import { TemplateValueFormatException } from './TemplateValueFormatException';
-import { TemplateFormatUtil } from './TemplateFormatUtil';
-import { _CoreLocaleUtils } from './_CoreLocaleUtils';
-import { AliasTargetTemplateValueFormatException } from './AliasTargetTemplateValueFormatException';
+import {StringUtil} from '../template/utility/StringUtil';
+import {TemplateDateFormatFactory} from './TemplateDateFormatFactory';
+import {TemplateDateFormat} from './TemplateDateFormat';
+import {Environment} from './Environment';
+import {TemplateFormatUtil} from './TemplateFormatUtil';
+import {_CoreLocaleUtils} from './_CoreLocaleUtils';
+import {AliasTargetTemplateValueFormatException} from './AliasTargetTemplateValueFormatException';
 
 /**
  * @param {String} defaultTargetFormatString    The format string this format will be an alias to if there's no locale-specific format string for the
@@ -62,7 +61,7 @@ export class AliasTemplateDateFormatFactory extends TemplateDateFormatFactory {
      * @param {Environment} env
      * @return {TemplateDateFormat}
      */
-    public get(params : string, dateType : number, locale : string, timeZone : string, zonelessInput : boolean, env : Environment) : TemplateDateFormat {
+    public get(params : string, dateType : number, locale : string, timeZone : string, zonelessInput : boolean, env : /*Environment*/any) : TemplateDateFormat {
         TemplateFormatUtil.checkHasNoParameters(params);
         try {
             let targetFormatString : string;
@@ -71,7 +70,7 @@ export class AliasTemplateDateFormatFactory extends TemplateDateFormatFactory {
                 targetFormatString = /* get */this.localizedTargetFormatStrings.get(lookupLocale);
                 while((targetFormatString == null && (lookupLocale = _CoreLocaleUtils.getLessSpecificLocale(lookupLocale)) != null)) {
                     targetFormatString = /* get */this.localizedTargetFormatStrings.get(lookupLocale);
-                };
+                }
             } else {
                 targetFormatString = null;
             }
@@ -81,7 +80,7 @@ export class AliasTemplateDateFormatFactory extends TemplateDateFormatFactory {
             return env.getTemplateDateFormat$java_lang_String$int$java_util_Locale$java_util_TimeZone$boolean(targetFormatString, dateType, locale, timeZone, zonelessInput);
         } catch(e) {
             throw new AliasTargetTemplateValueFormatException("Failed to create format based on target format string,  " + StringUtil.jQuote$java_lang_Object(params) + ". Reason given: " + e.message, e);
-        };
+        }
     }
 }
 AliasTemplateDateFormatFactory["__class"] = "freemarker.core.AliasTemplateDateFormatFactory";

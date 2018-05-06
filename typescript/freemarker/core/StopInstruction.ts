@@ -1,11 +1,10 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateException } from '../template/TemplateException';
-import { TemplateElement } from './TemplateElement';
-import { Expression } from './Expression';
-import { Environment } from './Environment';
-import { StopException } from './StopException';
-import { StringBuilder } from '../../java/lang/StringBuilder';
-import { ParameterRole } from './ParameterRole';
+import {TemplateElement} from './TemplateElement';
+import {Expression} from './Expression';
+import {Environment} from './Environment';
+import {StopException} from './StopException';
+import {StringBuilder} from '../../java/lang/StringBuilder';
+import {ParameterRole} from './ParameterRole';
 
 /**
  * Represents a &lt;stop&gt; instruction to abort template processing.
@@ -26,7 +25,7 @@ export class StopInstruction extends TemplateElement {
      * @param {Environment} env
      * @return {Array}
      */
-    accept(env : Environment) : TemplateElement[] {
+    accept(env : /*Environment*/any) : TemplateElement[] {
         if(this.exp == null) {
             throw new StopException(env);
         }
@@ -105,4 +104,4 @@ StopInstruction["__class"] = "freemarker.core.StopInstruction";
 
 
 
-var __Function = Function;
+

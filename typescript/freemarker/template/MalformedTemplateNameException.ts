@@ -1,5 +1,4 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { StringUtil } from './utility/StringUtil';
 
 /**
  * Indicates that the template name given was malformed according the {link TemplateNameFormat} in use. Note that for
@@ -42,4 +41,4 @@ MalformedTemplateNameException["__interfaces"] = ["java.io.Serializable"];
 
 
 
-var __Function = Function;
+

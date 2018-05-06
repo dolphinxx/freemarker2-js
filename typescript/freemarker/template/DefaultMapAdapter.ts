@@ -13,6 +13,7 @@ import {TemplateCollectionModel} from './TemplateCollectionModel';
 import {SimpleCollection} from './SimpleCollection';
 import {KeyValuePairIterator} from './KeyValuePairIterator';
 import {MapKeyValuePairIterator} from './MapKeyValuePairIterator';
+import {Map} from "../../java/util/Map";
 
 /**
  * Adapts a {link Map} to the corresponding {link TemplateModel} interface(s), most importantly to
@@ -67,7 +68,7 @@ export class DefaultMapAdapter extends WrappingTemplateModel implements Template
                 throw new _TemplateModelException(e, "NullPointerException while getting Map entry with String key ", new _DelayedJQuote(key));
 
             }
-        };
+        }
         if(val == null) {
             if(key.length === 1 && !(this.map != null && (this.map["__interfaces"] != null && this.map["__interfaces"].indexOf("java.util.SortedMap") >= 0 || this.map.constructor != null && this.map.constructor["__interfaces"] != null && this.map.constructor["__interfaces"].indexOf("java.util.SortedMap") >= 0))) {
                 let charKey : string = key.charAt(0);
@@ -92,7 +93,7 @@ export class DefaultMapAdapter extends WrappingTemplateModel implements Template
                         throw new _TemplateModelException(e, "NullPointerException while getting Map entry with Character key ", new _DelayedJQuote(charKey));
 
                     }
-                };
+                }
             } else {
                 let wrappedNull : TemplateModel = this.wrap(null);
                 if(wrappedNull == null || !/* containsKey */this.map.has(key)) {
@@ -149,4 +150,4 @@ DefaultMapAdapter["__interfaces"] = ["freemarker.ext.util.WrapperTemplateModel",
 
 
 
-var __Function = Function;
+

@@ -1,10 +1,7 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { ISOLikeTemplateDateFormatFactory } from './ISOLikeTemplateDateFormatFactory';
-import { TemplateDateFormat } from './TemplateDateFormat';
-import { Environment } from './Environment';
-import { UnknownDateTypeFormattingUnsupportedException } from './UnknownDateTypeFormattingUnsupportedException';
-import { InvalidFormatParametersException } from './InvalidFormatParametersException';
-import { ISOTemplateDateFormat } from './ISOTemplateDateFormat';
+import {ISOLikeTemplateDateFormatFactory} from './ISOLikeTemplateDateFormatFactory';
+import {TemplateDateFormat} from './TemplateDateFormat';
+import {ISOTemplateDateFormat} from './ISOTemplateDateFormat';
 
 export class ISOTemplateDateFormatFactory extends ISOLikeTemplateDateFormatFactory {
     static INSTANCE : ISOTemplateDateFormatFactory; public static INSTANCE_$LI$() : ISOTemplateDateFormatFactory { if(ISOTemplateDateFormatFactory.INSTANCE == null) ISOTemplateDateFormatFactory.INSTANCE = new ISOTemplateDateFormatFactory(); return ISOTemplateDateFormatFactory.INSTANCE; };
@@ -23,7 +20,7 @@ export class ISOTemplateDateFormatFactory extends ISOLikeTemplateDateFormatFacto
      * @param {Environment} env
      * @return {TemplateDateFormat}
      */
-    public get(params : string, dateType : number, locale : string, timeZone : string, zonelessInput : boolean, env : Environment) : TemplateDateFormat {
+    public get(params : string, dateType : number, locale : string, timeZone : string, zonelessInput : boolean, env : /*Environment*/any) : TemplateDateFormat {
         return new ISOTemplateDateFormat(params, 3, dateType, zonelessInput, timeZone, this, env);
     }
 }
@@ -31,6 +28,6 @@ ISOTemplateDateFormatFactory["__class"] = "freemarker.core.ISOTemplateDateFormat
 
 
 
-var __Function = Function;
+
 
 ISOTemplateDateFormatFactory.INSTANCE_$LI$();

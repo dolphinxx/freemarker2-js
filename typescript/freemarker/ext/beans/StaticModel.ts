@@ -1,15 +1,13 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { Logger } from '../../log/Logger';
-import { TemplateCollectionModel } from '../../template/TemplateCollectionModel';
-import { TemplateHashModelEx } from '../../template/TemplateHashModelEx';
-import { TemplateModel } from '../../template/TemplateModel';
-import { TemplateModelException } from '../../template/TemplateModelException';
-import { BeansWrapper } from './BeansWrapper';
-import { ObjectWrapper } from '../../template/ObjectWrapper';
-import { ClassIntrospector } from './ClassIntrospector';
-import { OverloadedMethods } from './OverloadedMethods';
-import { SimpleMethodModel } from './SimpleMethodModel';
-import { OverloadedMethodsModel } from './OverloadedMethodsModel';
+import {Logger} from '../../log/Logger';
+import {TemplateCollectionModel} from '../../template/TemplateCollectionModel';
+import {TemplateHashModelEx} from '../../template/TemplateHashModelEx';
+import {TemplateModel} from '../../template/TemplateModel';
+import {TemplateModelException} from '../../template/TemplateModelException';
+import {BeansWrapper} from './BeansWrapper';
+import {OverloadedMethods} from './OverloadedMethods';
+import {SimpleMethodModel} from './SimpleMethodModel';
+import {OverloadedMethodsModel} from './OverloadedMethodsModel';
 
 /**
  * Wraps the static fields and methods of a class in a
@@ -45,7 +43,7 @@ export class StaticModel implements TemplateHashModelEx {
                 return this.wrapper.getOuterIdentity()['wrap$java_lang_Object'](/* get */null[(<Field>model).name]);
             } catch(e) {
                 throw new TemplateModelException("Illegal access for field " + key + " of class " + /* getName */(c => c["__class"]?c["__class"]:c["name"])(this.clazz));
-            };
+            }
         }
         throw new TemplateModelException("No such key: " + key + " in class " + /* getName */(c => c["__class"]?c["__class"]:c["name"])(this.clazz));
     }
@@ -98,9 +96,11 @@ export class StaticModel implements TemplateHashModelEx {
                 if(Modifier.isFinal(mod)) try {
                     /* put */this.map.set(/* getName */field.name, this.wrapper.getOuterIdentity()['wrap$java_lang_Object'](/* get */null[field.name]));
                 } catch(e) {
-                }; else /* put */this.map.set(/* getName */field.name, field);
+                }
+            else /* put */
+                this.map.set(/* getName */field.name, field);
             }
-        };
+        }
         if(this.wrapper.getExposureLevel() < BeansWrapper.EXPOSE_PROPERTIES_ONLY) {
             let methods : Array<any> = /* getMethods */(c => { let m = []; for (let p in c.prototype) if(c.prototype.hasOwnProperty(p) && typeof c.prototype[p] == 'function') m.push({owner:c,name:p,fn:c.prototype[p]}); return m; })(this.clazz);
             for(let i : number = 0; i < methods.length; ++i) {
@@ -126,7 +126,7 @@ export class StaticModel implements TemplateHashModelEx {
                         /* put */this.map.set(name, method);
                     }
                 }
-            };
+            }
             for(let entries : any = /* iterator */((a) => { var i = 0; return { next: function() { return i<a.length?a[i++]:null; }, hasNext: function() { return i<a.length; }}})(/* entrySet */((m) => { if(m.entries==null) m.entries=[]; return m.entries; })(<any>this.map)); entries.hasNext(); ) {
                 let entry : Entry = <Entry><any>entries.next();
                 let value : any = entry.getValue();
@@ -136,7 +136,7 @@ export class StaticModel implements TemplateHashModelEx {
                 } else if(value != null && value instanceof <any>OverloadedMethods) {
                     entry.setValue(new OverloadedMethodsModel(null, <OverloadedMethods>value, this.wrapper));
                 }
-            };
+            }
         }
     }
 }
@@ -146,6 +146,6 @@ StaticModel["__interfaces"] = ["freemarker.template.TemplateHashModel","freemark
 
 
 
-var __Function = Function;
+
 
 StaticModel.LOG_$LI$();

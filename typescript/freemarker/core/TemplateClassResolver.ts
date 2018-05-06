@@ -1,12 +1,10 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { Template } from '../template/Template';
-import { TemplateException } from '../template/TemplateException';
-import { ClassUtil } from '../template/utility/ClassUtil';
-import { Execute } from '../template/utility/Execute';
-import { ObjectConstructor } from '../template/utility/ObjectConstructor';
-import { Environment } from './Environment';
-import { _MiscTemplateException } from './_MiscTemplateException';
-import { _MessageUtil } from './_MessageUtil';
+import {TemplateException} from '../template/TemplateException';
+import {ClassUtil} from '../template/utility/ClassUtil';
+import {Execute} from '../template/utility/Execute';
+import {ObjectConstructor} from '../template/utility/ObjectConstructor';
+import {_MiscTemplateException} from './_MiscTemplateException';
+import {_MessageUtil} from './_MessageUtil';
 
 /**
  * Used by built-ins and other template language features that get a class
@@ -34,10 +32,55 @@ export interface TemplateClassResolver {
      * accessed from a template for security reasons.
      * @return {*}
      */
-    resolve(className : string, env : Environment, template : Template) : any;
+    resolve(className : string, env : /*Environment*/any, template : /*Template*/any) : any;
 }
 
 export namespace TemplateClassResolver {
+
+    export class TemplateClassResolver$0 implements TemplateClassResolver {
+        public resolve(className : string, env : /*Environment*/any, template : /*Template*/any) : any {
+            try {
+                return ClassUtil.forName(className);
+            } catch(e) {
+                throw new _MiscTemplateException(e, env);
+            }
+        }
+
+        constructor() {
+        }
+    }
+    TemplateClassResolver$0["__interfaces"] = ["freemarker.core.TemplateClassResolver"];
+
+
+
+    export class TemplateClassResolver$1 implements TemplateClassResolver {
+        public resolve(className : string, env : /*Environment*/any, template : /*Template*/any) : any {
+            if(/* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(className,/* getName */(c => c["__class"]?c["__class"]:c["name"])(ObjectConstructor))) || /* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(className,/* getName */(c => c["__class"]?c["__class"]:c["name"])(Execute))) || /* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(className,"freemarker.template.utility.JythonRuntime"))) {
+                throw _MessageUtil.newInstantiatingClassNotAllowedException(className, env);
+            }
+            try {
+                return ClassUtil.forName(className);
+            } catch(e) {
+                throw new _MiscTemplateException(e, env);
+            }
+        }
+
+        constructor() {
+        }
+    }
+    TemplateClassResolver$1["__interfaces"] = ["freemarker.core.TemplateClassResolver"];
+
+
+
+    export class TemplateClassResolver$2 implements TemplateClassResolver {
+        public resolve(className : string, env : /*Environment*/any, template : /*Template*/any) : any {
+            throw _MessageUtil.newInstantiatingClassNotAllowedException(className, env);
+        }
+
+        constructor() {
+        }
+    }
+    TemplateClassResolver$2["__interfaces"] = ["freemarker.core.TemplateClassResolver"];
 
     /**
      * Simply calls {link ClassUtil#forName(String)}.
@@ -55,58 +98,3 @@ export namespace TemplateClassResolver {
      */
     export let ALLOWS_NOTHING_RESOLVER : TemplateClassResolver = new TemplateClassResolver.TemplateClassResolver$2();
 }
-
-
-export namespace TemplateClassResolver {
-
-    export class TemplateClassResolver$0 implements TemplateClassResolver {
-        public resolve(className : string, env : Environment, template : Template) : any {
-            try {
-                return ClassUtil.forName(className);
-            } catch(e) {
-                throw new _MiscTemplateException(e, env);
-            };
-        }
-
-        constructor() {
-        }
-    }
-    TemplateClassResolver$0["__interfaces"] = ["freemarker.core.TemplateClassResolver"];
-
-
-
-    export class TemplateClassResolver$1 implements TemplateClassResolver {
-        public resolve(className : string, env : Environment, template : Template) : any {
-            if(/* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(className,/* getName */(c => c["__class"]?c["__class"]:c["name"])(ObjectConstructor))) || /* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(className,/* getName */(c => c["__class"]?c["__class"]:c["name"])(Execute))) || /* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(className,"freemarker.template.utility.JythonRuntime"))) {
-                throw _MessageUtil.newInstantiatingClassNotAllowedException(className, env);
-            }
-            try {
-                return ClassUtil.forName(className);
-            } catch(e) {
-                throw new _MiscTemplateException(e, env);
-            };
-        }
-
-        constructor() {
-        }
-    }
-    TemplateClassResolver$1["__interfaces"] = ["freemarker.core.TemplateClassResolver"];
-
-
-
-    export class TemplateClassResolver$2 implements TemplateClassResolver {
-        public resolve(className : string, env : Environment, template : Template) : any {
-            throw _MessageUtil.newInstantiatingClassNotAllowedException(className, env);
-        }
-
-        constructor() {
-        }
-    }
-    TemplateClassResolver$2["__interfaces"] = ["freemarker.core.TemplateClassResolver"];
-
-
-}
-
-
-
-var __Function = Function;

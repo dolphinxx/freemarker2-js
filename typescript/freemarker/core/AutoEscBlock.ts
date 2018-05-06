@@ -1,8 +1,8 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateElement } from './TemplateElement';
-import { TemplateElements } from './TemplateElements';
-import { Environment } from './Environment';
-import { ParameterRole } from './ParameterRole';
+import {TemplateElement} from './TemplateElement';
+import {TemplateElements} from './TemplateElements';
+import {Environment} from './Environment';
+import {ParameterRole} from './ParameterRole';
 
 /**
  * An #autoEsc element
@@ -20,7 +20,7 @@ export class AutoEscBlock extends TemplateElement {
      * @param {Environment} env
      * @return {Array}
      */
-    accept(env : Environment) : TemplateElement[] {
+    accept(env : /*Environment*/any) : TemplateElement[] {
         return this.getChildBuffer();
     }
 

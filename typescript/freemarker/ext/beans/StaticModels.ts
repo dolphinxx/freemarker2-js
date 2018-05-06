@@ -1,9 +1,8 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateModel } from '../../template/TemplateModel';
-import { TemplateModelException } from '../../template/TemplateModelException';
-import { ClassBasedModelFactory } from './ClassBasedModelFactory';
-import { BeansWrapper } from './BeansWrapper';
-import { StaticModel } from './StaticModel';
+import {TemplateModel} from '../../template/TemplateModel';
+import {ClassBasedModelFactory} from './ClassBasedModelFactory';
+import {BeansWrapper} from './BeansWrapper';
+import {StaticModel} from './StaticModel';
 
 /**
  * Utility class for instantiating {link StaticModel} instances from
@@ -34,4 +33,4 @@ StaticModels["__interfaces"] = ["freemarker.template.TemplateHashModel","freemar
 
 
 
-var __Function = Function;
+

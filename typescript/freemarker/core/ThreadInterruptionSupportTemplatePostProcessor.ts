@@ -1,12 +1,11 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { Template } from '../template/Template';
-import { TemplateException } from '../template/TemplateException';
-import { TemplatePostProcessor } from './TemplatePostProcessor';
-import { TemplatePostProcessorException } from './TemplatePostProcessorException';
-import { TemplateElement } from './TemplateElement';
-import { Environment } from './Environment';
-import { ParameterRole } from './ParameterRole';
-import { FlowControlException } from './FlowControlException';
+import {Template} from '../template/Template';
+import {TemplatePostProcessor} from './TemplatePostProcessor';
+import {TemplatePostProcessorException} from './TemplatePostProcessorException';
+import {TemplateElement} from './TemplateElement';
+import {Environment} from './Environment';
+import {ParameterRole} from './ParameterRole';
+import {FlowControlException} from './FlowControlException';
 
 /**
  * Not yet public; subject to change.
@@ -47,13 +46,13 @@ export class ThreadInterruptionSupportTemplatePostProcessor extends TemplatePost
         let childCount : number = te.getChildCount();
         for(let i : number = 0; i < childCount; i++) {
             this.addInterruptionChecks(te.getChild(i));
-        };
+        }
         if(te.isNestedBlockRepeater()) {
             try {
                 te.addChild$int$freemarker_core_TemplateElement(0, new ThreadInterruptionSupportTemplatePostProcessor.ThreadInterruptionCheck(te));
             } catch(e) {
                 throw new TemplatePostProcessorException("Unexpected error; see cause", e);
-            };
+            }
         }
     }
 }
@@ -79,7 +78,7 @@ export namespace ThreadInterruptionSupportTemplatePostProcessor {
          * @param {Environment} env
          * @return {Array}
          */
-        accept(env : Environment) : TemplateElement[] {
+        accept(env : /*Environment*/any) : TemplateElement[] {
             if(java.lang.Thread.currentThread().isInterrupted()) {
                 throw new ThreadInterruptionSupportTemplatePostProcessor.TemplateProcessingThreadInterruptedException();
             }
@@ -169,4 +168,4 @@ export namespace ThreadInterruptionSupportTemplatePostProcessor {
 
 
 
-var __Function = Function;
+

@@ -1,12 +1,12 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { _DelayedJQuote } from '../../core/_DelayedJQuote';
-import { _TemplateModelException } from '../../core/_TemplateModelException';
-import { TemplateHashModel } from '../../template/TemplateHashModel';
-import { TemplateModel } from '../../template/TemplateModel';
-import { TemplateModelException } from '../../template/TemplateModelException';
-import { ClassUtil } from '../../template/utility/ClassUtil';
-import { BeansWrapper } from './BeansWrapper';
-import { ClassIntrospector } from './ClassIntrospector';
+import {_DelayedJQuote} from '../../core/_DelayedJQuote';
+import {_TemplateModelException} from '../../core/_TemplateModelException';
+import {TemplateHashModel} from '../../template/TemplateHashModel';
+import {TemplateModel} from '../../template/TemplateModel';
+import {TemplateModelException} from '../../template/TemplateModelException';
+import {ClassUtil} from '../../template/utility/ClassUtil';
+import {BeansWrapper} from './BeansWrapper';
+import {ClassIntrospector} from './ClassIntrospector';
 
 /**
  * Base class for hash models keyed by Java class names.
@@ -33,7 +33,7 @@ export abstract class ClassBasedModelFactory implements TemplateHashModel {
             } else {
                 throw new _TemplateModelException(e, "Failed to get valeu for key ", new _DelayedJQuote(key), "; see cause exception.");
             }
-        };
+        }
     }
 
     public get(key? : any) : any {
@@ -46,7 +46,7 @@ export abstract class ClassBasedModelFactory implements TemplateHashModel {
         {
             let model : TemplateModel = <TemplateModel><any>/* get */this.cache.get(key);
             if(model != null) return model;
-        };
+        }
         let classIntrospector : ClassIntrospector;
         let classIntrospectorClearingCounter : number;
         let sharedLock : any = this.wrapper.getSharedIntrospectionLock();
@@ -59,13 +59,13 @@ export abstract class ClassBasedModelFactory implements TemplateHashModel {
                     model = <TemplateModel><any>/* get */this.cache.get(key);
                 } catch(e) {
                     throw Object.defineProperty(new Error("Class inrospection data lookup aborded: " + e), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.lang.RuntimeException','java.lang.Exception'] });
-                };
-            };
+                }
+            }
             if(model != null) return model;
             /* add */((s, e) => { if(s.indexOf(e)==-1) { s.push(e); return true; } else { return false; } })(this.classIntrospectionsInProgress, key);
             classIntrospector = this.wrapper.getClassIntrospector();
             classIntrospectorClearingCounter = classIntrospector.getClearingCounter();
-        };
+        }
         try {
             let clazz : any = ClassUtil.forName(key);
             classIntrospector.get(clazz);
@@ -75,27 +75,27 @@ export abstract class ClassBasedModelFactory implements TemplateHashModel {
                     if(classIntrospector === this.wrapper.getClassIntrospector() && classIntrospectorClearingCounter === classIntrospector.getClearingCounter()) {
                         /* put */this.cache.set(key, model);
                     }
-                };
+                }
             }
             return model;
         } finally {
             {
                 /* remove */(a => { let index = a.indexOf(key); if(index>=0) { a.splice(index, 1); return true; } else { return false; }})(this.classIntrospectionsInProgress);
                 sharedLock.notifyAll();
-            };
-        };
+            }
+        }
     }
 
     clearCache() {
         {
             /* clear */(<any>this.cache).clear();
-        };
+        }
     }
 
     removeFromCache(clazz : any) {
         {
             /* remove */this.cache.delete(/* getName */(c => c["__class"]?c["__class"]:c["name"])(clazz));
-        };
+        }
     }
 
     public isEmpty() : boolean {
@@ -114,4 +114,4 @@ ClassBasedModelFactory["__interfaces"] = ["freemarker.template.TemplateHashModel
 
 
 
-var __Function = Function;
+

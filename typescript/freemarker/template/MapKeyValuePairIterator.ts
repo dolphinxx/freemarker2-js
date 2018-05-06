@@ -1,9 +1,11 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { KeyValuePairIterator } from './KeyValuePairIterator';
-import { ObjectWrapper } from './ObjectWrapper';
-import { KeyValuePair } from './KeyValuePair';
-import { TemplateModel } from './TemplateModel';
-import { TemplateModelException } from './TemplateModelException';
+import {KeyValuePairIterator} from './KeyValuePairIterator';
+import {ObjectWrapper} from './ObjectWrapper';
+import {KeyValuePair} from './KeyValuePair';
+import {TemplateModel} from './TemplateModel';
+import {Entry} from "../../java/util/Entry";
+import {Iterator} from "../../java/util/Iterator";
+import {Map} from "../../java/util/Map";
 
 /**
  * Implementation of {link KeyValuePairIterator} for a {link TemplateHashModelEx2} that wraps or otherwise uses a
@@ -15,14 +17,14 @@ import { TemplateModelException } from './TemplateModelException';
  * @class
  */
 export class MapKeyValuePairIterator implements KeyValuePairIterator {
-    /*private*/ entrySetIterator : Iterator;
+    /*private*/ entrySetIterator : Iterator<any>;
 
     /*private*/ objectWrapper : ObjectWrapper;
 
-    public constructor<K, V>(map : Map, objectWrapper : ObjectWrapper) {
+    public constructor(map : Map<any, any>, objectWrapper : /*ObjectWrapper*/any) {
         if(this.entrySetIterator===undefined) this.entrySetIterator = null;
         if(this.objectWrapper===undefined) this.objectWrapper = null;
-        this.entrySetIterator = /* iterator */((a) => { var i = 0; return { next: function() { return i<a.length?a[i++]:null; }, hasNext: function() { return i<a.length; }}})(/* entrySet */((m) => { if(m.entries==null) m.entries=[]; return m.entries; })(<any>(<Map<any, any>><any>map)));
+        this.entrySetIterator = map.iterator();
         this.objectWrapper = objectWrapper;
     }
 
@@ -31,7 +33,7 @@ export class MapKeyValuePairIterator implements KeyValuePairIterator {
     }
 
     public next() : KeyValuePair {
-        let entry : Entry = this.entrySetIterator.next();
+        let entry : Entry<any, any> = this.entrySetIterator.next();
         return new MapKeyValuePairIterator.MapKeyValuePairIterator$0(this, entry);
     }
 
@@ -67,4 +69,4 @@ export namespace MapKeyValuePairIterator {
 
 
 
-var __Function = Function;
+

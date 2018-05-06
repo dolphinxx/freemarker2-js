@@ -1,7 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { ObjectWrapper } from './ObjectWrapper';
-import { TemplateModel } from './TemplateModel';
-import { TemplateModelException } from './TemplateModelException';
+import {ObjectWrapper} from './ObjectWrapper';
 
 /**
  * <b>Experimental - subject to change:</b> Adds functionality to {link ObjectWrapper} that creates a plain Java object
@@ -35,9 +33,9 @@ export namespace ObjectWrapperAndUnwrapper {
      * 
      * @since 2.3.22
      */
-    export let CANT_UNWRAP_TO_TARGET_CLASS : any = <any>new Object();
+    export let CANT_UNWRAP_TO_TARGET_CLASS : any = <any>{};
 }
 
 
 
-var __Function = Function;
+

@@ -1,5 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { _DelayedConversionToString } from './_DelayedConversionToString';
+import {_DelayedConversionToString} from './_DelayedConversionToString';
 
 /**
  * Don't use this; used internally by FreeMarker, might changes without notice.
@@ -26,4 +26,4 @@ _DelayedGetMessage["__class"] = "freemarker.core._DelayedGetMessage";
 
 
 
-var __Function = Function;
+

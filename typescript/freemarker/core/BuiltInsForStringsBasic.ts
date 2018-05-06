@@ -1,25 +1,23 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { ObjectWrapper } from '../template/ObjectWrapper';
-import { SimpleNumber } from '../template/SimpleNumber';
-import { SimpleScalar } from '../template/SimpleScalar';
-import { SimpleSequence } from '../template/SimpleSequence';
-import { TemplateBooleanModel } from '../template/TemplateBooleanModel';
-import { TemplateException } from '../template/TemplateException';
-import { TemplateMethodModel } from '../template/TemplateMethodModel';
-import { TemplateMethodModelEx } from '../template/TemplateMethodModelEx';
-import { TemplateModel } from '../template/TemplateModel';
-import { TemplateModelException } from '../template/TemplateModelException';
-import { TemplateScalarModel } from '../template/TemplateScalarModel';
-import { StringUtil } from '../template/utility/StringUtil';
-import { BuiltInForString } from './BuiltInForString';
-import { Environment } from './Environment';
-import { Character } from '../../java/lang/Character';
-import { StringBuilder } from '../../java/lang/StringBuilder';
-import { BuiltIn } from './BuiltIn';
-import { Expression } from './Expression';
-import { RegexpHelper } from './RegexpHelper';
-import { _TemplateModelException } from './_TemplateModelException';
-import { _MessageUtil } from './_MessageUtil';
+import {ObjectWrapper} from '../template/ObjectWrapper';
+import {SimpleNumber} from '../template/SimpleNumber';
+import {SimpleScalar} from '../template/SimpleScalar';
+import {SimpleSequence} from '../template/SimpleSequence';
+import {TemplateBooleanModel} from '../template/TemplateBooleanModel';
+import {TemplateMethodModel} from '../template/TemplateMethodModel';
+import {TemplateMethodModelEx} from '../template/TemplateMethodModelEx';
+import {TemplateModel} from '../template/TemplateModel';
+import {TemplateModelException} from '../template/TemplateModelException';
+import {TemplateScalarModel} from '../template/TemplateScalarModel';
+import {StringUtil} from '../template/utility/StringUtil';
+import {BuiltInForString} from './BuiltInForString';
+import {Environment} from './Environment';
+import {Character} from '../../java/lang/Character';
+import {StringBuilder} from '../../java/lang/StringBuilder';
+import {BuiltIn} from './BuiltIn';
+import {RegexpHelper} from './RegexpHelper';
+import {_TemplateModelException} from './_TemplateModelException';
+import {_MessageUtil} from './_MessageUtil';
 
 export class BuiltInsForStringsBasic {
     constructor() {
@@ -37,12 +35,12 @@ export namespace BuiltInsForStringsBasic {
          * @param {Environment} env
          * @return {*}
          */
-        calculateResult(s : string, env : Environment) : TemplateModel {
+        calculateResult(s : string, env : /*Environment*/any) : TemplateModel {
             let i : number = 0;
             let ln : number = s.length;
             while((i < ln && Character.isWhitespace(s.charAt(i)))) {
                 i++;
-            };
+            }
             if(i < ln) {
                 let b : StringBuilder = new StringBuilder(s);
                 b.setCharAt(i, Character.toUpperCase(s.charAt(i)));
@@ -67,7 +65,7 @@ export namespace BuiltInsForStringsBasic {
          * @param {Environment} env
          * @return {*}
          */
-        calculateResult(s : string, env : Environment) : TemplateModel {
+        calculateResult(s : string, env : /*Environment*/any) : TemplateModel {
             return new SimpleScalar(StringUtil.capitalize(s));
         }
 
@@ -87,7 +85,7 @@ export namespace BuiltInsForStringsBasic {
          * @param {Environment} env
          * @return {*}
          */
-        calculateResult(s : string, env : Environment) : TemplateModel {
+        calculateResult(s : string, env : /*Environment*/any) : TemplateModel {
             return new SimpleScalar(StringUtil.chomp(s));
         }
 
@@ -106,7 +104,7 @@ export namespace BuiltInsForStringsBasic {
          * @param {Environment} env
          * @return {*}
          */
-        _eval(env : Environment) : TemplateModel {
+        _eval(env : /*Environment*/any) : TemplateModel {
             return new containsBI.BIMethod(this, this.target.evalAndCoerceToStringOrUnsupportedMarkup$freemarker_core_Environment$java_lang_String(env, "For sequences/collections (lists and such) use \"?seq_contains\" instead."));
         }
 
@@ -150,7 +148,7 @@ export namespace BuiltInsForStringsBasic {
          * @param {Environment} env
          * @return {*}
          */
-        calculateResult(s : string, env : Environment) : TemplateModel {
+        calculateResult(s : string, env : /*Environment*/any) : TemplateModel {
             return new ends_withBI.BIMethod(this, s);
         }
 
@@ -194,7 +192,7 @@ export namespace BuiltInsForStringsBasic {
          * @param {Environment} env
          * @return {*}
          */
-        calculateResult(s : string, env : Environment) : TemplateModel {
+        calculateResult(s : string, env : /*Environment*/any) : TemplateModel {
             return new ensure_ends_withBI.BIMethod(this, s);
         }
 
@@ -239,7 +237,7 @@ export namespace BuiltInsForStringsBasic {
          * @param {Environment} env
          * @return {*}
          */
-        calculateResult(s : string, env : Environment) : TemplateModel {
+        calculateResult(s : string, env : /*Environment*/any) : TemplateModel {
             return new ensure_starts_withBI.BIMethod(this, s);
         }
 
@@ -312,7 +310,7 @@ export namespace BuiltInsForStringsBasic {
          * @param {Environment} env
          * @return {*}
          */
-        _eval(env : Environment) : TemplateModel {
+        _eval(env : /*Environment*/any) : TemplateModel {
             return new index_ofBI.BIMethod(this, this.target.evalAndCoerceToStringOrUnsupportedMarkup$freemarker_core_Environment$java_lang_String(env, "For sequences/collections (lists and such) use \"?seq_index_of\" instead."));
         }
     }
@@ -359,7 +357,7 @@ export namespace BuiltInsForStringsBasic {
          * @param {Environment} env
          * @return {*}
          */
-        calculateResult(s : string, env : Environment) : TemplateModel {
+        calculateResult(s : string, env : /*Environment*/any) : TemplateModel {
             return new keep_afterBI.KeepAfterMethod(this, s);
         }
 
@@ -426,7 +424,7 @@ export namespace BuiltInsForStringsBasic {
          * @param {Environment} env
          * @return {*}
          */
-        calculateResult(s : string, env : Environment) : TemplateModel {
+        calculateResult(s : string, env : /*Environment*/any) : TemplateModel {
             return new keep_after_lastBI.KeepAfterMethod(this, s);
         }
 
@@ -477,7 +475,7 @@ export namespace BuiltInsForStringsBasic {
                             startIndex = matcher.end();
                             while((matcher.find(matcher.start() + 1))) {
                                 startIndex = matcher.end();
-                            };
+                            }
                         } else {
                             startIndex = -1;
                         }
@@ -500,7 +498,7 @@ export namespace BuiltInsForStringsBasic {
          * @param {Environment} env
          * @return {*}
          */
-        calculateResult(s : string, env : Environment) : TemplateModel {
+        calculateResult(s : string, env : /*Environment*/any) : TemplateModel {
             return new keep_beforeBI.KeepUntilMethod(this, s);
         }
 
@@ -564,7 +562,7 @@ export namespace BuiltInsForStringsBasic {
          * @param {Environment} env
          * @return {*}
          */
-        calculateResult(s : string, env : Environment) : TemplateModel {
+        calculateResult(s : string, env : /*Environment*/any) : TemplateModel {
             return new keep_before_lastBI.KeepUntilMethod(this, s);
         }
 
@@ -612,7 +610,7 @@ export namespace BuiltInsForStringsBasic {
                             stopIndex = matcher.start();
                             while((matcher.find(stopIndex + 1))) {
                                 stopIndex = matcher.start();
-                            };
+                            }
                         } else {
                             stopIndex = -1;
                         }
@@ -635,7 +633,7 @@ export namespace BuiltInsForStringsBasic {
          * @param {Environment} env
          * @return {*}
          */
-        calculateResult(s : string, env : Environment) : TemplateModel {
+        calculateResult(s : string, env : /*Environment*/any) : TemplateModel {
             return new SimpleNumber(s.length);
         }
 
@@ -655,7 +653,7 @@ export namespace BuiltInsForStringsBasic {
          * @param {Environment} env
          * @return {*}
          */
-        calculateResult(s : string, env : Environment) : TemplateModel {
+        calculateResult(s : string, env : /*Environment*/any) : TemplateModel {
             return new SimpleScalar(/* toLowerCase */s.toLowerCase());
         }
 
@@ -683,7 +681,7 @@ export namespace BuiltInsForStringsBasic {
          * @param {Environment} env
          * @return {*}
          */
-        calculateResult(s : string, env : Environment) : TemplateModel {
+        calculateResult(s : string, env : /*Environment*/any) : TemplateModel {
             return new padBI.BIMethod(this, s);
         }
     }
@@ -718,7 +716,7 @@ export namespace BuiltInsForStringsBasic {
                         } else {
                             throw new _TemplateModelException(e, "?", this.__parent.key, "(...) failed: ", e);
                         }
-                    };
+                    }
                 } else {
                     return new SimpleScalar(this.__parent.leftPadder?StringUtil.leftPad$java_lang_String$int(this.s, width):StringUtil.rightPad$java_lang_String$int(this.s, width));
                 }
@@ -738,7 +736,7 @@ export namespace BuiltInsForStringsBasic {
          * @param {Environment} env
          * @return {*}
          */
-        calculateResult(s : string, env : Environment) : TemplateModel {
+        calculateResult(s : string, env : /*Environment*/any) : TemplateModel {
             return new remove_beginningBI.BIMethod(this, s);
         }
 
@@ -783,7 +781,7 @@ export namespace BuiltInsForStringsBasic {
          * @param {Environment} env
          * @return {*}
          */
-        calculateResult(s : string, env : Environment) : TemplateModel {
+        calculateResult(s : string, env : /*Environment*/any) : TemplateModel {
             return new remove_endingBI.BIMethod(this, s);
         }
 
@@ -828,7 +826,7 @@ export namespace BuiltInsForStringsBasic {
          * @param {Environment} env
          * @return {*}
          */
-        calculateResult(s : string, env : Environment) : TemplateModel {
+        calculateResult(s : string, env : /*Environment*/any) : TemplateModel {
             return new split_BI.SplitMethod(this, s);
         }
 
@@ -883,7 +881,7 @@ export namespace BuiltInsForStringsBasic {
          * @param {Environment} env
          * @return {*}
          */
-        calculateResult(s : string, env : Environment) : TemplateModel {
+        calculateResult(s : string, env : /*Environment*/any) : TemplateModel {
             return new starts_withBI.BIMethod(this, s);
         }
 
@@ -927,7 +925,7 @@ export namespace BuiltInsForStringsBasic {
          * @param {Environment} env
          * @return {*}
          */
-        calculateResult(s : string, env : Environment) : TemplateModel {
+        calculateResult(s : string, env : /*Environment*/any) : TemplateModel {
             return new substringBI.substringBI$0(this, s);
         }
 
@@ -995,7 +993,7 @@ export namespace BuiltInsForStringsBasic {
          * @param {Environment} env
          * @return {*}
          */
-        calculateResult(s : string, env : Environment) : TemplateModel {
+        calculateResult(s : string, env : /*Environment*/any) : TemplateModel {
             return new SimpleScalar(s.trim());
         }
 
@@ -1015,12 +1013,12 @@ export namespace BuiltInsForStringsBasic {
          * @param {Environment} env
          * @return {*}
          */
-        calculateResult(s : string, env : Environment) : TemplateModel {
+        calculateResult(s : string, env : /*Environment*/any) : TemplateModel {
             let i : number = 0;
             let ln : number = s.length;
             while((i < ln && Character.isWhitespace(s.charAt(i)))) {
                 i++;
-            };
+            }
             if(i < ln) {
                 let b : StringBuilder = new StringBuilder(s);
                 b.setCharAt(i, Character.toLowerCase(s.charAt(i)));
@@ -1045,7 +1043,7 @@ export namespace BuiltInsForStringsBasic {
          * @param {Environment} env
          * @return {*}
          */
-        calculateResult(s : string, env : Environment) : TemplateModel {
+        calculateResult(s : string, env : /*Environment*/any) : TemplateModel {
             return new SimpleScalar(/* toUpperCase */s.toUpperCase());
         }
 
@@ -1065,12 +1063,12 @@ export namespace BuiltInsForStringsBasic {
          * @param {Environment} env
          * @return {*}
          */
-        calculateResult(s : string, env : Environment) : TemplateModel {
+        calculateResult(s : string, env : /*Environment*/any) : TemplateModel {
             let result : SimpleSequence = new SimpleSequence();
             let st : StringTokenizer = new StringTokenizer(s);
             while((st.hasMoreTokens())) {
                 result.add$java_lang_Object(st.nextToken());
-            };
+            }
             return result;
         }
 

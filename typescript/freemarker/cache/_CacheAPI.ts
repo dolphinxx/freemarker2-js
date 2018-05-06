@@ -1,6 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { MalformedTemplateNameException } from '../template/MalformedTemplateNameException';
-import { TemplateNameFormat } from './TemplateNameFormat';
+import {TemplateNameFormat} from './TemplateNameFormat';
 
 /**
  * For internal use only; don't depend on this, there's no backward compatibility guarantee at all!

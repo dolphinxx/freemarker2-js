@@ -1,6 +1,6 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { ConcurrentCacheStorage } from './ConcurrentCacheStorage';
-import { CacheStorageWithGetSize } from './CacheStorageWithGetSize';
+import {ConcurrentCacheStorage} from './ConcurrentCacheStorage';
+import {CacheStorageWithGetSize} from './CacheStorageWithGetSize';
 
 /**
  * Strong cache storage is a cache storage that simply wraps a {link Map}. It holds a strong reference to all objects

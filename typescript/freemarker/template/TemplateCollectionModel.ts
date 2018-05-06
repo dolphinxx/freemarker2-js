@@ -1,7 +1,6 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateModel } from './TemplateModel';
-import { TemplateModelIterator } from './TemplateModelIterator';
-import { TemplateModelException } from './TemplateModelException';
+import {TemplateModel} from './TemplateModel';
+import {TemplateModelIterator} from './TemplateModelIterator';
 
 /**
  * "collection" template language data type: a collection of values that can be enumerated, but can't be or not meant to
@@ -34,4 +33,4 @@ export interface TemplateCollectionModel extends TemplateModel {
 }
 
 
-var __Function = Function;
+

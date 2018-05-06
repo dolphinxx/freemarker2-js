@@ -16,4 +16,4 @@ export interface WriteProtectable {
 }
 
 
-var __Function = Function;
+

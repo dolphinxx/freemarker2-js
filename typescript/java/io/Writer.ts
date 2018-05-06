@@ -2,6 +2,7 @@
     import {Appendable} from '../lang/Appendable';
     import {Closeable} from './Closeable';
     import {Flushable} from "./Flushable";
+import {NullPointerException} from "../lang/NullPointerException";
 
 /**
      * JSweet implementation.
@@ -12,7 +13,7 @@
 
         static WRITE_BUFFER_SIZE : number = 1024;
 
-        lock : any;
+        protected lock : any;
 
         public constructor(lock? : any) {
             if(((lock != null) || lock === null)) {
@@ -23,7 +24,7 @@
                 this.lock = null;
                 (() => {
                     if(lock == null) {
-                        throw new java.lang.NullPointerException();
+                        throw new NullPointerException();
                     }
                     this.lock = lock;
                 })();

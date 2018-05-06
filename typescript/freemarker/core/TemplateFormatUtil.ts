@@ -1,9 +1,8 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateDateModel } from '../template/TemplateDateModel';
-import { TemplateModelException } from '../template/TemplateModelException';
-import { TemplateNumberModel } from '../template/TemplateNumberModel';
-import { InvalidFormatParametersException } from './InvalidFormatParametersException';
-import { EvalUtil } from './EvalUtil';
+import {TemplateDateModel} from '../template/TemplateDateModel';
+import {TemplateNumberModel} from '../template/TemplateNumberModel';
+import {InvalidFormatParametersException} from './InvalidFormatParametersException';
+import {EvalUtil} from './EvalUtil';
 
 /**
  * Utility classes for implementing {link TemplateValueFormat}-s.
@@ -57,4 +56,4 @@ TemplateFormatUtil["__class"] = "freemarker.core.TemplateFormatUtil";
 
 
 
-var __Function = Function;
+

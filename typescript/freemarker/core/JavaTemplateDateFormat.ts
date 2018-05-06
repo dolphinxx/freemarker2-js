@@ -1,9 +1,8 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateDateModel } from '../template/TemplateDateModel';
-import { TemplateModelException } from '../template/TemplateModelException';
-import { TemplateDateFormat } from './TemplateDateFormat';
-import { TemplateFormatUtil } from './TemplateFormatUtil';
-import { UnparsableValueException } from './UnparsableValueException';
+import {TemplateDateModel} from '../template/TemplateDateModel';
+import {TemplateDateFormat} from './TemplateDateFormat';
+import {TemplateFormatUtil} from './TemplateFormatUtil';
+import {UnparsableValueException} from './UnparsableValueException';
 
 /**
  * Java {link DateFormat}-based format.
@@ -40,7 +39,7 @@ export class JavaTemplateDateFormat extends TemplateDateFormat {
             return this.javaDateFormat.parse(s);
         } catch(e) {
             throw new UnparsableValueException(e.message, e);
-        };
+        }
     }
 
     /**
@@ -71,4 +70,4 @@ JavaTemplateDateFormat["__class"] = "freemarker.core.JavaTemplateDateFormat";
 
 
 
-var __Function = Function;
+

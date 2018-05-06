@@ -1,5 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { Writer } from '../../../java/io/Writer';
+import {Writer} from '../../../java/io/Writer';
 
 /**
  * A {link Writer} that simply drops what it gets.
@@ -8,10 +8,11 @@ import { Writer } from '../../../java/io/Writer';
  * @extends Writer
  * @class
  */
-export class NullWriter {
+export class NullWriter extends Writer{
     public static INSTANCE : NullWriter; public static INSTANCE_$LI$() : NullWriter { if(NullWriter.INSTANCE == null) NullWriter.INSTANCE = (() => { let __o : any = new NullWriter(); __o.__delegate = new NullWriter(); return __o; })(); return NullWriter.INSTANCE; };
 
     constructor() {
+        super();
     }
 
     public write$char_A$int$int(cbuf : string[], off : number, len : number) {
@@ -96,6 +97,6 @@ NullWriter["__interfaces"] = ["java.lang.Appendable","java.io.Closeable","java.l
 
 
 
-var __Function = Function;
+
 
 NullWriter.INSTANCE_$LI$();

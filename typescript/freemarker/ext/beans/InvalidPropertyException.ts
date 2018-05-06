@@ -1,5 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateModelException } from '../../template/TemplateModelException';
+import {TemplateModelException} from '../../template/TemplateModelException';
 
 /**
  * An exception thrown when there is an attempt to access
@@ -20,4 +20,4 @@ InvalidPropertyException["__interfaces"] = ["java.io.Serializable"];
 
 
 
-var __Function = Function;
+

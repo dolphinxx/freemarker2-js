@@ -1,116 +1,116 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { Configuration } from '../template/Configuration';
-import { SimpleScalar } from '../template/SimpleScalar';
-import { Template } from '../template/Template';
-import { TemplateBooleanModel } from '../template/TemplateBooleanModel';
-import { TemplateCollectionModel } from '../template/TemplateCollectionModel';
-import { TemplateHashModelEx } from '../template/TemplateHashModelEx';
-import { TemplateModel } from '../template/TemplateModel';
-import { TemplateModelException } from '../template/TemplateModelException';
-import { TemplateModelIterator } from '../template/TemplateModelIterator';
-import { TemplateScalarModel } from '../template/TemplateScalarModel';
-import { Version } from '../template/Version';
-import { _TemplateAPI } from '../template/_TemplateAPI';
-import { ClassUtil } from '../template/utility/ClassUtil';
-import { CollectionUtils } from '../template/utility/CollectionUtils';
-import { DeepUnwrap } from '../template/utility/DeepUnwrap';
-import { NullArgumentException } from '../template/utility/NullArgumentException';
-import { StringUtil } from '../template/utility/StringUtil';
-import { Reader } from '../../java/io/Reader';
-import { StringReader } from '../../java/io/StringReader';
-import { FMParserConstants } from './FMParserConstants';
-import { OutputFormat } from './OutputFormat';
-import { ParserConfiguration } from './ParserConfiguration';
-import { SimpleCharStream } from './SimpleCharStream';
-import { FMParserTokenManager } from './FMParserTokenManager';
-import { LegacyConstructorParserConfiguration } from './LegacyConstructorParserConfiguration';
-import { Boolean } from '../../java/lang/Boolean';
-import { ArithmeticEngine } from './ArithmeticEngine';
-import { Token } from './Token';
-import { HTMLOutputFormat } from './HTMLOutputFormat';
-import { XMLOutputFormat } from './XMLOutputFormat';
-import { UnregisteredOutputFormatException } from './UnregisteredOutputFormatException';
-import { BugException } from './BugException';
-import { MarkupOutputFormat } from './MarkupOutputFormat';
-import { Expression } from './Expression';
-import { ParseException } from './ParseException';
-import { StringLiteral } from './StringLiteral';
-import { NumberLiteral } from './NumberLiteral';
-import { BooleanLiteral } from './BooleanLiteral';
-import { HashLiteral } from './HashLiteral';
-import { ListLiteral } from './ListLiteral';
-import { EscapeBlock } from './EscapeBlock';
-import { MethodCall } from './MethodCall';
-import { Identifier } from './Identifier';
-import { BuiltinVariable } from './BuiltinVariable';
-import { ParentheticalExpression } from './ParentheticalExpression';
-import { NotExpression } from './NotExpression';
-import { UnaryPlusMinusExpression } from './UnaryPlusMinusExpression';
-import { AddConcatExpression } from './AddConcatExpression';
-import { ArithmeticExpression } from './ArithmeticExpression';
-import { ComparisonExpression } from './ComparisonExpression';
-import { Range } from './Range';
-import { AndExpression } from './AndExpression';
-import { OrExpression } from './OrExpression';
-import { DefaultToExpression } from './DefaultToExpression';
-import { ExistsExpression } from './ExistsExpression';
-import { BuiltIn } from './BuiltIn';
-import { SpecialBuiltIn } from './SpecialBuiltIn';
-import { BuiltInForLoopVariable } from './BuiltInForLoopVariable';
-import { BuiltInBannedWhenAutoEscaping } from './BuiltInBannedWhenAutoEscaping';
-import { MarkupOutputFormatBoundBuiltIn } from './MarkupOutputFormatBoundBuiltIn';
-import { OutputFormatBoundBuiltIn } from './OutputFormatBoundBuiltIn';
-import { BuiltInWithParseTimeParameters } from './BuiltInWithParseTimeParameters';
-import { Character } from '../../java/lang/Character';
-import { Dot } from './Dot';
-import { DynamicKeyName } from './DynamicKeyName';
-import { DollarVariable } from './DollarVariable';
-import { NonStringException } from './NonStringException';
-import { NumericalOutput } from './NumericalOutput';
-import { TemplateElement } from './TemplateElement';
-import { TemplateElements } from './TemplateElements';
-import { IfBlock } from './IfBlock';
-import { ConditionalBlock } from './ConditionalBlock';
-import { AttemptBlock } from './AttemptBlock';
-import { RecoveryBlock } from './RecoveryBlock';
-import { ElseOfList } from './ElseOfList';
-import { IteratorBlock } from './IteratorBlock';
-import { ListElseContainer } from './ListElseContainer';
-import { Items } from './Items';
-import { Sep } from './Sep';
-import { VisitNode } from './VisitNode';
-import { RecurseNode } from './RecurseNode';
-import { FallbackInstruction } from './FallbackInstruction';
-import { BreakInstruction } from './BreakInstruction';
-import { ContinueInstruction } from './ContinueInstruction';
-import { ReturnInstruction } from './ReturnInstruction';
-import { StopInstruction } from './StopInstruction';
-import { BodyInstruction } from './BodyInstruction';
-import { FlushInstruction } from './FlushInstruction';
-import { TrimInstruction } from './TrimInstruction';
-import { Assignment } from './Assignment';
-import { AssignmentInstruction } from './AssignmentInstruction';
-import { BlockAssignment } from './BlockAssignment';
-import { Include } from './Include';
-import { LibraryLoad } from './LibraryLoad';
-import { Macro } from './Macro';
-import { CompressedBlock } from './CompressedBlock';
-import { UnifiedCall } from './UnifiedCall';
-import { Comment } from './Comment';
-import { StringBuilder } from '../../java/lang/StringBuilder';
-import { TextBlock } from './TextBlock';
-import { TransformBlock } from './TransformBlock';
-import { SwitchBlock } from './SwitchBlock';
-import { MixedContent } from './MixedContent';
-import { Case } from './Case';
-import { NoEscapeBlock } from './NoEscapeBlock';
-import { OutputFormatBlock } from './OutputFormatBlock';
-import { CombinedMarkupOutputFormat } from './CombinedMarkupOutputFormat';
-import { AutoEscBlock } from './AutoEscBlock';
-import { NoAutoEscBlock } from './NoAutoEscBlock';
-import { PropertySetting } from './PropertySetting';
-import { Interpolation } from './Interpolation';
-import { InputStream } from '../../java/io/InputStream';
+import {Configuration} from '../template/Configuration';
+import {SimpleScalar} from '../template/SimpleScalar';
+import {Template} from '../template/Template';
+import {TemplateBooleanModel} from '../template/TemplateBooleanModel';
+import {TemplateCollectionModel} from '../template/TemplateCollectionModel';
+import {TemplateHashModelEx} from '../template/TemplateHashModelEx';
+import {TemplateModel} from '../template/TemplateModel';
+import {TemplateModelIterator} from '../template/TemplateModelIterator';
+import {TemplateScalarModel} from '../template/TemplateScalarModel';
+import {Version} from '../template/Version';
+import {_TemplateAPI} from '../template/_TemplateAPI';
+import {ClassUtil} from '../template/utility/ClassUtil';
+import {CollectionUtils} from '../template/utility/CollectionUtils';
+import {DeepUnwrap} from '../template/utility/DeepUnwrap';
+import {NullArgumentException} from '../template/utility/NullArgumentException';
+import {StringUtil} from '../template/utility/StringUtil';
+import {Reader} from '../../java/io/Reader';
+import {StringReader} from '../../java/io/StringReader';
+import {FMParserConstants} from './FMParserConstants';
+import {OutputFormat} from './OutputFormat';
+import {ParserConfiguration} from './ParserConfiguration';
+import {SimpleCharStream} from './SimpleCharStream';
+import {FMParserTokenManager} from './FMParserTokenManager';
+import {LegacyConstructorParserConfiguration} from './LegacyConstructorParserConfiguration';
+import {Token} from './Token';
+import {HTMLOutputFormat} from './HTMLOutputFormat';
+import {XMLOutputFormat} from './XMLOutputFormat';
+import {UnregisteredOutputFormatException} from './UnregisteredOutputFormatException';
+import {BugException} from './BugException';
+import {MarkupOutputFormat} from './MarkupOutputFormat';
+import {Expression} from './Expression';
+import {ParseException} from './ParseException';
+import {StringLiteral} from './StringLiteral';
+import {NumberLiteral} from './NumberLiteral';
+import {BooleanLiteral} from './BooleanLiteral';
+import {HashLiteral} from './HashLiteral';
+import {ListLiteral} from './ListLiteral';
+import {EscapeBlock} from './EscapeBlock';
+import {MethodCall} from './MethodCall';
+import {Identifier} from './Identifier';
+import {BuiltinVariable} from './BuiltinVariable';
+import {ParentheticalExpression} from './ParentheticalExpression';
+import {NotExpression} from './NotExpression';
+import {UnaryPlusMinusExpression} from './UnaryPlusMinusExpression';
+import {AddConcatExpression} from './AddConcatExpression';
+import {ArithmeticExpression} from './ArithmeticExpression';
+import {ComparisonExpression} from './ComparisonExpression';
+import {Range} from './Range';
+import {AndExpression} from './AndExpression';
+import {OrExpression} from './OrExpression';
+import {DefaultToExpression} from './DefaultToExpression';
+import {ExistsExpression} from './ExistsExpression';
+import {BuiltIn} from './BuiltIn';
+import {SpecialBuiltIn} from './SpecialBuiltIn';
+import {BuiltInForLoopVariable} from './BuiltInForLoopVariable';
+import {BuiltInBannedWhenAutoEscaping} from './BuiltInBannedWhenAutoEscaping';
+import {MarkupOutputFormatBoundBuiltIn} from './MarkupOutputFormatBoundBuiltIn';
+import {OutputFormatBoundBuiltIn} from './OutputFormatBoundBuiltIn';
+import {BuiltInWithParseTimeParameters} from './BuiltInWithParseTimeParameters';
+import {Character} from '../../java/lang/Character';
+import {Dot} from './Dot';
+import {DynamicKeyName} from './DynamicKeyName';
+import {DollarVariable} from './DollarVariable';
+import {NonStringException} from './NonStringException';
+import {NumericalOutput} from './NumericalOutput';
+import {TemplateElement} from './TemplateElement';
+import {TemplateElements} from './TemplateElements';
+import {IfBlock} from './IfBlock';
+import {ConditionalBlock} from './ConditionalBlock';
+import {AttemptBlock} from './AttemptBlock';
+import {RecoveryBlock} from './RecoveryBlock';
+import {ElseOfList} from './ElseOfList';
+import {IteratorBlock} from './IteratorBlock';
+import {ListElseContainer} from './ListElseContainer';
+import {Items} from './Items';
+import {Sep} from './Sep';
+import {VisitNode} from './VisitNode';
+import {RecurseNode} from './RecurseNode';
+import {FallbackInstruction} from './FallbackInstruction';
+import {BreakInstruction} from './BreakInstruction';
+import {ContinueInstruction} from './ContinueInstruction';
+import {ReturnInstruction} from './ReturnInstruction';
+import {StopInstruction} from './StopInstruction';
+import {BodyInstruction} from './BodyInstruction';
+import {FlushInstruction} from './FlushInstruction';
+import {TrimInstruction} from './TrimInstruction';
+import {Assignment} from './Assignment';
+import {AssignmentInstruction} from './AssignmentInstruction';
+import {BlockAssignment} from './BlockAssignment';
+import {Include} from './Include';
+import {LibraryLoad} from './LibraryLoad';
+import {Macro} from './Macro';
+import {CompressedBlock} from './CompressedBlock';
+import {UnifiedCall} from './UnifiedCall';
+import {Comment} from './Comment';
+import {StringBuilder} from '../../java/lang/StringBuilder';
+import {TextBlock} from './TextBlock';
+import {TransformBlock} from './TransformBlock';
+import {SwitchBlock} from './SwitchBlock';
+import {MixedContent} from './MixedContent';
+import {Case} from './Case';
+import {NoEscapeBlock} from './NoEscapeBlock';
+import {OutputFormatBlock} from './OutputFormatBlock';
+import {CombinedMarkupOutputFormat} from './CombinedMarkupOutputFormat';
+import {AutoEscBlock} from './AutoEscBlock';
+import {NoAutoEscBlock} from './NoAutoEscBlock';
+import {PropertySetting} from './PropertySetting';
+import {Interpolation} from './Interpolation';
+import {InputStream} from '../../java/io/InputStream';
+import {StringTokenizer} from "../../java/util/StringTokenizer";
+import {Map} from "../../java/util/Map";
+import {List} from "../../java/util/List";
 
 /**
  * @Deprecated This is an internal API of FreeMarker; will be changed in 2.4.
@@ -197,7 +197,7 @@ export class FMParser implements FMParserConstants {
             return new Template(null, new StringReader(""), Configuration.getDefaultConfiguration());
         } catch(e) {
             throw Object.defineProperty(new Error("Failed to create dummy template"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.lang.RuntimeException','java.lang.Exception'] });
-        };
+        }
     }
 
     public constructor(template? : any, reader? : any, strictSyntaxMode? : any, whitespaceStripping? : any, tagSyntax? : any, namingConvention? : any, incompatibleImprovements? : any) {
@@ -308,7 +308,7 @@ export class FMParser implements FMParserConstants {
                                 this.autoEscapingPolicy = Configuration.ENABLE_IF_DEFAULT_AUTO_ESCAPING_POLICY;
                                 this.outputFormat = outputFormatFromExt;
                             }
-                        };
+                        }
                         this.recalculateAutoEscapingField();
                         this.token_source.setParser(this);
                         this.token_source.strictSyntaxMode = pCfg.getStrictSyntaxMode();
@@ -459,7 +459,7 @@ export class FMParser implements FMParserConstants {
                                     this.autoEscapingPolicy = Configuration.ENABLE_IF_DEFAULT_AUTO_ESCAPING_POLICY;
                                     this.outputFormat = outputFormatFromExt;
                                 }
-                            };
+                            }
                             this.recalculateAutoEscapingField();
                             this.token_source.setParser(this);
                             this.token_source.strictSyntaxMode = pCfg.getStrictSyntaxMode();
@@ -613,7 +613,7 @@ export class FMParser implements FMParserConstants {
                                         this.autoEscapingPolicy = Configuration.ENABLE_IF_DEFAULT_AUTO_ESCAPING_POLICY;
                                         this.outputFormat = outputFormatFromExt;
                                     }
-                                };
+                                }
                                 this.recalculateAutoEscapingField();
                                 this.token_source.setParser(this);
                                 this.token_source.strictSyntaxMode = pCfg.getStrictSyntaxMode();
@@ -771,7 +771,7 @@ export class FMParser implements FMParserConstants {
                                             this.autoEscapingPolicy = Configuration.ENABLE_IF_DEFAULT_AUTO_ESCAPING_POLICY;
                                             this.outputFormat = outputFormatFromExt;
                                         }
-                                    };
+                                    }
                                     this.recalculateAutoEscapingField();
                                     this.token_source.setParser(this);
                                     this.token_source.strictSyntaxMode = pCfg.getStrictSyntaxMode();
@@ -915,7 +915,7 @@ export class FMParser implements FMParserConstants {
                         this.autoEscapingPolicy = Configuration.ENABLE_IF_DEFAULT_AUTO_ESCAPING_POLICY;
                         this.outputFormat = outputFormatFromExt;
                     }
-                };
+                }
                 this.recalculateAutoEscapingField();
                 this.token_source.setParser(this);
                 this.token_source.strictSyntaxMode = pCfg.getStrictSyntaxMode();
@@ -1056,7 +1056,7 @@ export class FMParser implements FMParserConstants {
                             this.autoEscapingPolicy = Configuration.ENABLE_IF_DEFAULT_AUTO_ESCAPING_POLICY;
                             this.outputFormat = outputFormatFromExt;
                         }
-                    };
+                    }
                     this.recalculateAutoEscapingField();
                     this.token_source.setParser(this);
                     this.token_source.strictSyntaxMode = pCfg.getStrictSyntaxMode();
@@ -1163,7 +1163,7 @@ export class FMParser implements FMParserConstants {
                     this.jj_input_stream = new SimpleCharStream(stream, encoding, 1, 1);
                 } catch(e) {
                     throw Object.defineProperty(new Error(e.message), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.lang.RuntimeException','java.lang.Exception'] });
-                };
+                }
                 this.token_source = new FMParserTokenManager(this.jj_input_stream);
                 this.token = new Token();
                 this.jj_ntk = -1;
@@ -1294,7 +1294,7 @@ export class FMParser implements FMParserConstants {
                                                 this.autoEscapingPolicy = Configuration.ENABLE_IF_DEFAULT_AUTO_ESCAPING_POLICY;
                                                 this.outputFormat = outputFormatFromExt;
                                             }
-                                        };
+                                        }
                                         this.recalculateAutoEscapingField();
                                         this.token_source.setParser(this);
                                         this.token_source.strictSyntaxMode = pCfg.getStrictSyntaxMode();
@@ -1408,7 +1408,7 @@ export class FMParser implements FMParserConstants {
                         this.jj_input_stream = new SimpleCharStream(stream, encoding, 1, 1);
                     } catch(e) {
                         throw Object.defineProperty(new Error(e.message), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.lang.RuntimeException','java.lang.Exception'] });
-                    };
+                    }
                     this.token_source = new FMParserTokenManager(this.jj_input_stream);
                     this.token = new Token();
                     this.jj_ntk = -1;
@@ -1579,8 +1579,8 @@ export class FMParser implements FMParserConstants {
         this.token_source.SwitchTo(FMParserConstants.NO_DIRECTIVE);
         this.outputFormat = outputFormat;
         this.recalculateAutoEscapingField();
-        if(this.incompatibleImprovements < _TemplateAPI.VERSION_INT_2_3_24_$LI$()) {
-            this.incompatibleImprovements = _TemplateAPI.VERSION_INT_2_3_0_$LI$();
+        if(this.incompatibleImprovements < /*_TemplateAPI.VERSION_INT_2_3_24_$LI$()*/2003024) {
+            this.incompatibleImprovements = /*_TemplateAPI.VERSION_INT_2_3_0_$LI$()*/2003000;
         }
         this.iteratorBlockContexts = parentParser.iteratorBlockContexts;
     }
@@ -1624,7 +1624,7 @@ export class FMParser implements FMParserConstants {
             }
         } catch(e) {
             throw new BugException("Unregistered std format", e);
-        };
+        }
         return null;
     }
 
@@ -1768,7 +1768,7 @@ export class FMParser implements FMParserConstants {
 
     escapedExpression(exp : Expression) : Expression {
         if(!/* isEmpty */(this.escapes.length == 0)) {
-            return (<EscapeBlock>this.escapes.getFirst()).doEscape(exp);
+            return (<EscapeBlock>this.escapes[0]).doEscape(exp);
         } else {
             return exp;
         }
@@ -1780,19 +1780,19 @@ export class FMParser implements FMParserConstants {
             tm = exp.eval(null);
         } catch(e) {
             throw new ParseException(e.message + "\nCould not evaluate expression: " + exp.getCanonicalForm(), exp, e);
-        };
+        }
         if(tm != null && (tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.template.TemplateBooleanModel") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.template.TemplateBooleanModel") >= 0)) {
             try {
                 return (<TemplateBooleanModel><any>tm).getAsBoolean();
             } catch(tme) {
-            };
+            }
         }
         if(legacyCompat && (tm != null && (tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0))) {
             try {
                 return StringUtil.getYesNo((<TemplateScalarModel><any>tm).getAsString());
             } catch(e) {
                 throw new ParseException(e.message + "\nExpecting boolean (true/false), found: " + exp.getCanonicalForm(), exp);
-            };
+            }
         }
         throw new ParseException("Expecting boolean (true/false) parameter", exp);
     }
@@ -1831,7 +1831,7 @@ export class FMParser implements FMParserConstants {
                 }
                 return;
             }
-        };
+        }
         throw new ParseException("The left hand operand of ?" + biName.image + " must be a loop variable, but there\'s no loop variable in scope with this name: " + loopVarName, lhoExp);
     }
 
@@ -1850,7 +1850,7 @@ export class FMParser implements FMParserConstants {
         exp = this.OrExpression();
         {
             if("" != null) return exp;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -1874,8 +1874,8 @@ export class FMParser implements FMParserConstants {
             case 152 /* TERMINATING_EXCLAM */:
                 {
                     break;
-                };
-            default:
+                }
+                default:
                 this.jj_la1[0] = this.jj_gen;
                 break label_1;
             }
@@ -1884,42 +1884,42 @@ export class FMParser implements FMParserConstants {
                 {
                     exp = this.DotVariable(exp);
                     break;
-                };
-            case 132 /* OPEN_BRACKET */:
+                }
+                case 132 /* OPEN_BRACKET */:
                 {
                     exp = this.DynamicKey(exp);
                     break;
-                };
-            case 134 /* OPEN_PAREN */:
+                }
+                case 134 /* OPEN_PAREN */:
                 {
                     exp = this.MethodArgs(exp);
                     break;
-                };
-            case 103 /* BUILT_IN */:
+                }
+                case 103 /* BUILT_IN */:
                 {
                     exp = this.BuiltIn(exp);
                     break;
-                };
-            case 128 /* EXCLAM */:
+                }
+                case 128 /* EXCLAM */:
             case 152 /* TERMINATING_EXCLAM */:
                 {
                     exp = this.DefaultTo(exp);
                     break;
-                };
-            case 104 /* EXISTS */:
+                }
+                case 104 /* EXISTS */:
                 {
                     exp = this.Exists(exp);
                     break;
-                };
-            default:
+                }
+                default:
                 this.jj_la1[1] = this.jj_gen;
                 this.jj_consume_token(-1);
                 throw new ParseException();
             }
-        };
+        }
         {
             if("" != null) return exp;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -1937,52 +1937,52 @@ export class FMParser implements FMParserConstants {
             {
                 exp = this.NumberLiteral();
                 break;
-            };
-        case 136 /* OPENING_CURLY_BRACKET */:
+            }
+            case 136 /* OPENING_CURLY_BRACKET */:
             {
                 exp = this.HashLiteral();
                 break;
-            };
-        case 93 /* STRING_LITERAL */:
+            }
+            case 93 /* STRING_LITERAL */:
         case 94 /* RAW_STRING */:
             {
                 exp = this.StringLiteral(true);
                 break;
-            };
-        case 95 /* FALSE */:
+            }
+            case 95 /* FALSE */:
         case 96 /* TRUE */:
             {
                 exp = this.BooleanLiteral();
                 break;
-            };
-        case 132 /* OPEN_BRACKET */:
+            }
+            case 132 /* OPEN_BRACKET */:
             {
                 exp = this.ListLiteral();
                 break;
-            };
-        case 141 /* ID */:
+            }
+            case 141 /* ID */:
             {
                 exp = this.Identifier();
                 break;
-            };
-        case 134 /* OPEN_PAREN */:
+            }
+            case 134 /* OPEN_PAREN */:
             {
                 exp = this.Parenthesis();
                 break;
-            };
-        case 99 /* DOT */:
+            }
+            case 99 /* DOT */:
             {
                 exp = this.BuiltinVariable();
                 break;
-            };
-        default:
+            }
+            default:
             this.jj_la1[2] = this.jj_gen;
             this.jj_consume_token(-1);
             throw new ParseException();
         }
         {
             if("" != null) return exp;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -1998,7 +1998,7 @@ export class FMParser implements FMParserConstants {
         result.setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_Token(this.template, start, end);
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -2019,13 +2019,13 @@ export class FMParser implements FMParserConstants {
             {
                 result = this.UnaryPlusMinusExpression();
                 break;
-            };
-        case 128 /* EXCLAM */:
+            }
+            case 128 /* EXCLAM */:
             {
                 result = this.NotExpression();
                 break;
-            };
-        case 93 /* STRING_LITERAL */:
+            }
+            case 93 /* STRING_LITERAL */:
         case 94 /* RAW_STRING */:
         case 95 /* FALSE */:
         case 96 /* TRUE */:
@@ -2039,15 +2039,15 @@ export class FMParser implements FMParserConstants {
             {
                 result = this.PrimaryExpression();
                 break;
-            };
-        default:
+            }
+            default:
             this.jj_la1[3] = this.jj_gen;
             this.jj_consume_token(-1);
             throw new ParseException();
         }
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -2063,22 +2063,22 @@ export class FMParser implements FMParserConstants {
             case 128 /* EXCLAM */:
                 {
                     break;
-                };
-            default:
+                }
+                default:
                 this.jj_la1[4] = this.jj_gen;
                 break label_2;
             }
-        };
+        }
         exp = this.PrimaryExpression();
         for(let i : number = 0; i < /* size */(<number>nots.length); i++) {
             result = new NotExpression(exp);
             let tok : Token = <Token>/* get */nots[/* size */(<number>nots.length) - i - 1];
             result.setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_TemplateObject(this.template, tok, exp);
             exp = result;
-        };
+        }
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -2092,14 +2092,14 @@ export class FMParser implements FMParserConstants {
             {
                 t = this.jj_consume_token(FMParserConstants.PLUS);
                 break;
-            };
-        case 120 /* MINUS */:
+            }
+            case 120 /* MINUS */:
             {
                 t = this.jj_consume_token(FMParserConstants.MINUS);
                 isMinus = true;
                 break;
-            };
-        default:
+            }
+            default:
             this.jj_la1[5] = this.jj_gen;
             this.jj_consume_token(-1);
             throw new ParseException();
@@ -2109,7 +2109,7 @@ export class FMParser implements FMParserConstants {
         result.setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_TemplateObject(this.template, t, exp);
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -2131,14 +2131,14 @@ export class FMParser implements FMParserConstants {
                     this.jj_consume_token(FMParserConstants.PLUS);
                     plus = true;
                     break;
-                };
-            case 120 /* MINUS */:
+                }
+                case 120 /* MINUS */:
                 {
                     this.jj_consume_token(FMParserConstants.MINUS);
                     plus = false;
                     break;
-                };
-            default:
+                }
+                default:
                 this.jj_la1[6] = this.jj_gen;
                 this.jj_consume_token(-1);
                 throw new ParseException();
@@ -2153,10 +2153,10 @@ export class FMParser implements FMParserConstants {
             }
             result.setLocation$freemarker_template_Template$freemarker_core_TemplateObject$freemarker_core_TemplateObject(this.template, lhs, rhs);
             lhs = result;
-        };
+        }
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -2183,20 +2183,20 @@ export class FMParser implements FMParserConstants {
                     this.jj_consume_token(FMParserConstants.TIMES);
                     operation = ArithmeticExpression.TYPE_MULTIPLICATION;
                     break;
-                };
-            case 124 /* DIVIDE */:
+                }
+                case 124 /* DIVIDE */:
                 {
                     this.jj_consume_token(FMParserConstants.DIVIDE);
                     operation = ArithmeticExpression.TYPE_DIVISION;
                     break;
-                };
-            case 125 /* PERCENT */:
+                }
+                case 125 /* PERCENT */:
                 {
                     this.jj_consume_token(FMParserConstants.PERCENT);
                     operation = ArithmeticExpression.TYPE_MODULO;
                     break;
-                };
-            default:
+                }
+                default:
                 this.jj_la1[7] = this.jj_gen;
                 this.jj_consume_token(-1);
                 throw new ParseException();
@@ -2207,10 +2207,10 @@ export class FMParser implements FMParserConstants {
             result = new ArithmeticExpression(lhs, rhs, operation);
             result.setLocation$freemarker_template_Template$freemarker_core_TemplateObject$freemarker_core_TemplateObject(this.template, lhs, rhs);
             lhs = result;
-        };
+        }
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -2227,18 +2227,18 @@ export class FMParser implements FMParserConstants {
                 {
                     t = this.jj_consume_token(FMParserConstants.NOT_EQUALS);
                     break;
-                };
-            case 105 /* EQUALS */:
+                }
+                case 105 /* EQUALS */:
                 {
                     t = this.jj_consume_token(FMParserConstants.EQUALS);
                     break;
-                };
-            case 106 /* DOUBLE_EQUALS */:
+                }
+                case 106 /* DOUBLE_EQUALS */:
                 {
                     t = this.jj_consume_token(FMParserConstants.DOUBLE_EQUALS);
                     break;
-                };
-            default:
+                }
+                default:
                 this.jj_la1[8] = this.jj_gen;
                 this.jj_consume_token(-1);
                 throw new ParseException();
@@ -2254,7 +2254,7 @@ export class FMParser implements FMParserConstants {
         }
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -2271,33 +2271,33 @@ export class FMParser implements FMParserConstants {
                 {
                     t = this.jj_consume_token(FMParserConstants.NATURAL_GTE);
                     break;
-                };
-            case 118 /* ESCAPED_GTE */:
+                }
+                case 118 /* ESCAPED_GTE */:
                 {
                     t = this.jj_consume_token(FMParserConstants.ESCAPED_GTE);
                     break;
-                };
-            case 149 /* NATURAL_GT */:
+                }
+                case 149 /* NATURAL_GT */:
                 {
                     t = this.jj_consume_token(FMParserConstants.NATURAL_GT);
                     break;
-                };
-            case 117 /* ESCAPED_GT */:
+                }
+                case 117 /* ESCAPED_GT */:
                 {
                     t = this.jj_consume_token(FMParserConstants.ESCAPED_GT);
                     break;
-                };
-            case 116 /* LESS_THAN_EQUALS */:
+                }
+                case 116 /* LESS_THAN_EQUALS */:
                 {
                     t = this.jj_consume_token(FMParserConstants.LESS_THAN_EQUALS);
                     break;
-                };
-            case 115 /* LESS_THAN */:
+                }
+                case 115 /* LESS_THAN */:
                 {
                     t = this.jj_consume_token(FMParserConstants.LESS_THAN);
                     break;
-                };
-            default:
+                }
+                default:
                 this.jj_la1[9] = this.jj_gen;
                 this.jj_consume_token(-1);
                 throw new ParseException();
@@ -2315,7 +2315,7 @@ export class FMParser implements FMParserConstants {
         }
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -2342,22 +2342,22 @@ export class FMParser implements FMParserConstants {
                                 this.jj_consume_token(FMParserConstants.DOT_DOT_LESS);
                                 endType = Range.END_EXCLUSIVE;
                                 break;
-                            };
-                        case 102 /* DOT_DOT_ASTERISK */:
+                            }
+                            case 102 /* DOT_DOT_ASTERISK */:
                             {
                                 this.jj_consume_token(FMParserConstants.DOT_DOT_ASTERISK);
                                 endType = Range.END_SIZE_LIMITED;
                                 break;
-                            };
-                        default:
+                            }
+                            default:
                             this.jj_la1[10] = this.jj_gen;
                             this.jj_consume_token(-1);
                             throw new ParseException();
                         }
                         rhs = this.AdditiveExpression();
                         break;
-                    };
-                case 100 /* DOT_DOT */:
+                    }
+                    case 100 /* DOT_DOT */:
                     {
                         dotDot = this.jj_consume_token(FMParserConstants.DOT_DOT);
                         endType = Range.END_UNBOUND;
@@ -2367,8 +2367,8 @@ export class FMParser implements FMParserConstants {
                         } else {
                         }
                         break;
-                    };
-                default:
+                    }
+                    default:
                     this.jj_la1[11] = this.jj_gen;
                     this.jj_consume_token(-1);
                     throw new ParseException();
@@ -2385,13 +2385,13 @@ export class FMParser implements FMParserConstants {
                 }
                 result = range;
                 break;
-            };
-        default:
+            }
+            default:
             this.jj_la1[12] = this.jj_gen;
         }
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -2413,10 +2413,10 @@ export class FMParser implements FMParserConstants {
             result = new AndExpression(lhs, rhs);
             result.setLocation$freemarker_template_Template$freemarker_core_TemplateObject$freemarker_core_TemplateObject(this.template, lhs, rhs);
             lhs = result;
-        };
+        }
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -2438,10 +2438,10 @@ export class FMParser implements FMParserConstants {
             result = new OrExpression(lhs, rhs);
             result.setLocation$freemarker_template_Template$freemarker_core_TemplateObject$freemarker_core_TemplateObject(this.template, lhs, rhs);
             lhs = result;
-        };
+        }
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -2456,7 +2456,7 @@ export class FMParser implements FMParserConstants {
         result.setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_Token(this.template, begin, end);
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -2468,13 +2468,13 @@ export class FMParser implements FMParserConstants {
             {
                 t = this.jj_consume_token(FMParserConstants.INTEGER);
                 break;
-            };
-        case 98 /* DECIMAL */:
+            }
+            case 98 /* DECIMAL */:
             {
                 t = this.jj_consume_token(FMParserConstants.DECIMAL);
                 break;
-            };
-        default:
+            }
+            default:
             this.jj_la1[13] = this.jj_gen;
             this.jj_consume_token(-1);
             throw new ParseException();
@@ -2485,7 +2485,7 @@ export class FMParser implements FMParserConstants {
         result.setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_Token(this.template, startToken, t);
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -2496,7 +2496,7 @@ export class FMParser implements FMParserConstants {
         id.setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_Token(this.template, t, t);
         {
             if("" != null) return id;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -2507,21 +2507,21 @@ export class FMParser implements FMParserConstants {
             {
                 exp = this.Identifier();
                 break;
-            };
-        case 93 /* STRING_LITERAL */:
+            }
+            case 93 /* STRING_LITERAL */:
         case 94 /* RAW_STRING */:
             {
                 exp = this.StringLiteral(false);
                 break;
-            };
-        default:
+            }
+            default:
             this.jj_la1[14] = this.jj_gen;
             this.jj_consume_token(-1);
             throw new ParseException();
         }
         {
             if("" != null) return exp;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -2545,7 +2545,7 @@ export class FMParser implements FMParserConstants {
         result.setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_Token(this.template, dot, name);
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -2557,8 +2557,8 @@ export class FMParser implements FMParserConstants {
             {
                 t = this.jj_consume_token(FMParserConstants.TERMINATING_EXCLAM);
                 break;
-            };
-        case 128 /* EXCLAM */:
+            }
+            case 128 /* EXCLAM */:
             {
                 t = this.jj_consume_token(FMParserConstants.EXCLAM);
                 if(this.jj_2_8(2147483647)) {
@@ -2566,8 +2566,8 @@ export class FMParser implements FMParserConstants {
                 } else {
                 }
                 break;
-            };
-        default:
+            }
+            default:
             this.jj_la1[15] = this.jj_gen;
             this.jj_consume_token(-1);
             throw new ParseException();
@@ -2580,7 +2580,7 @@ export class FMParser implements FMParserConstants {
         }
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -2591,7 +2591,7 @@ export class FMParser implements FMParserConstants {
         result.setLocation$freemarker_template_Template$freemarker_core_TemplateObject$freemarker_core_Token(this.template, exp, t);
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -2609,47 +2609,47 @@ export class FMParser implements FMParserConstants {
         if(!(result != null && result instanceof <any>SpecialBuiltIn)) {
             {
                 if("" != null) return result;
-            };
+            }
         }
         if(result != null && result instanceof <any>BuiltInForLoopVariable) {
             if(!(lhoExp != null && lhoExp instanceof <any>Identifier)) {
                 {
                     if(true) throw new ParseException("Expression used as the left hand operand of ?" + t.image + " must be a simple loop variable name.", lhoExp);
-                };
+                }
             }
             let loopVarName : string = (<Identifier>lhoExp).getName();
             this.checkLoopVariableBuiltInLHO(loopVarName, lhoExp, t);
             (<BuiltInForLoopVariable>result).bindToLoopVariable(loopVarName);
             {
                 if("" != null) return result;
-            };
+            }
         }
         if(result != null && result instanceof <any>BuiltInBannedWhenAutoEscaping) {
             if((this.outputFormat != null && this.outputFormat instanceof <any>MarkupOutputFormat) && this.autoEscaping) {
                 {
                     if(true) throw new ParseException("Using ?" + t.image + " (legacy escaping) is not allowed when auto-escaping is on with a markup output format (" + this.outputFormat.getName() + "), to avoid double-escaping mistakes.", this.template, t);
-                };
+                }
             }
             {
                 if("" != null) return result;
-            };
+            }
         }
         if(result != null && result instanceof <any>MarkupOutputFormatBoundBuiltIn) {
             if(!(this.outputFormat != null && this.outputFormat instanceof <any>MarkupOutputFormat)) {
                 {
                     if(true) throw new ParseException("?" + t.image + " can\'t be used here, as the current output format isn\'t a markup (escaping) format: " + this.outputFormat, this.template, t);
-                };
+                }
             }
             (<MarkupOutputFormatBoundBuiltIn>result).bindToMarkupOutputFormat(<MarkupOutputFormat<any>>this.outputFormat);
             {
                 if("" != null) return result;
-            };
+            }
         }
         if(result != null && result instanceof <any>OutputFormatBoundBuiltIn) {
             (<OutputFormatBoundBuiltIn>result).bindToOutputFormat(this.outputFormat, this.autoEscapingPolicy);
             {
                 if("" != null) return result;
-            };
+            }
         }
         if(result != null && result instanceof <any>BuiltInWithParseTimeParameters) {
             openParen = this.jj_consume_token(FMParserConstants.OPEN_PAREN);
@@ -2659,13 +2659,13 @@ export class FMParser implements FMParserConstants {
             (<BuiltInWithParseTimeParameters>result).bindToParameters(args, openParen, closeParen);
             {
                 if("" != null) return result;
-            };
+            }
         } else {
         }
         {
-            if(true) throw Object.defineProperty(new Error("Unhandled " + /* getName */(c => c["__class"]?c["__class"]:c["name"])(SpecialBuiltIn) + " subclass: " + (<any>result.constructor)), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object','java.lang.AssertionError'] });
-        };
-        throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
+            /*if(true) */throw Object.defineProperty(new Error("Unhandled " + /* getName */(c => c["__class"]?c["__class"]:c["name"])(SpecialBuiltIn) + " subclass: " + (<any>result.constructor)), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object','java.lang.AssertionError'] });
+        }
+        // throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
     /**
@@ -2681,18 +2681,18 @@ export class FMParser implements FMParserConstants {
             {
                 t = this.jj_consume_token(FMParserConstants.ID);
                 break;
-            };
-        case 121 /* TIMES */:
+            }
+            case 121 /* TIMES */:
             {
                 t = this.jj_consume_token(FMParserConstants.TIMES);
                 break;
-            };
-        case 122 /* DOUBLE_STAR */:
+            }
+            case 122 /* DOUBLE_STAR */:
             {
                 t = this.jj_consume_token(FMParserConstants.DOUBLE_STAR);
                 break;
-            };
-        case 95 /* FALSE */:
+            }
+            case 95 /* FALSE */:
         case 96 /* TRUE */:
         case 115 /* LESS_THAN */:
         case 116 /* LESS_THAN_EQUALS */:
@@ -2707,48 +2707,48 @@ export class FMParser implements FMParserConstants {
                     {
                         t = this.jj_consume_token(FMParserConstants.LESS_THAN);
                         break;
-                    };
-                case 116 /* LESS_THAN_EQUALS */:
+                    }
+                    case 116 /* LESS_THAN_EQUALS */:
                     {
                         t = this.jj_consume_token(FMParserConstants.LESS_THAN_EQUALS);
                         break;
-                    };
-                case 117 /* ESCAPED_GT */:
+                    }
+                    case 117 /* ESCAPED_GT */:
                     {
                         t = this.jj_consume_token(FMParserConstants.ESCAPED_GT);
                         break;
-                    };
-                case 118 /* ESCAPED_GTE */:
+                    }
+                    case 118 /* ESCAPED_GTE */:
                     {
                         t = this.jj_consume_token(FMParserConstants.ESCAPED_GTE);
                         break;
-                    };
-                case 95 /* FALSE */:
+                    }
+                    case 95 /* FALSE */:
                     {
                         t = this.jj_consume_token(FMParserConstants.FALSE);
                         break;
-                    };
-                case 96 /* TRUE */:
+                    }
+                    case 96 /* TRUE */:
                     {
                         t = this.jj_consume_token(FMParserConstants.TRUE);
                         break;
-                    };
-                case 138 /* IN */:
+                    }
+                    case 138 /* IN */:
                     {
                         t = this.jj_consume_token(FMParserConstants.IN);
                         break;
-                    };
-                case 139 /* AS */:
+                    }
+                    case 139 /* AS */:
                     {
                         t = this.jj_consume_token(FMParserConstants.AS);
                         break;
-                    };
-                case 140 /* USING */:
+                    }
+                    case 140 /* USING */:
                     {
                         t = this.jj_consume_token(FMParserConstants.USING);
                         break;
-                    };
-                default:
+                    }
+                    default:
                     this.jj_la1[16] = this.jj_gen;
                     this.jj_consume_token(-1);
                     throw new ParseException();
@@ -2756,11 +2756,11 @@ export class FMParser implements FMParserConstants {
                 if(!Character.isLetter(t.image.charAt(0))) {
                     {
                         if(true) throw new ParseException(t.image + " is not a valid identifier.", this.template, t);
-                    };
+                    }
                 }
                 break;
-            };
-        default:
+            }
+            default:
             this.jj_la1[17] = this.jj_gen;
             this.jj_consume_token(-1);
             throw new ParseException();
@@ -2772,7 +2772,7 @@ export class FMParser implements FMParserConstants {
         dot.setLocation$freemarker_template_Template$freemarker_core_TemplateObject$freemarker_core_Token(this.template, exp, t);
         {
             if("" != null) return dot;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -2794,7 +2794,7 @@ export class FMParser implements FMParserConstants {
         dkn.setLocation$freemarker_template_Template$freemarker_core_TemplateObject$freemarker_core_Token(this.template, exp, t);
         {
             if("" != null) return dkn;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -2809,12 +2809,11 @@ export class FMParser implements FMParserConstants {
         this.jj_consume_token(FMParserConstants.OPEN_PAREN);
         args = this.PositionalArgs();
         end = this.jj_consume_token(FMParserConstants.CLOSE_PAREN);
-        args.trimToSize();
         let result : MethodCall = new MethodCall(exp, args);
         result.setLocation$freemarker_template_Template$freemarker_core_TemplateObject$freemarker_core_Token(this.template, exp, end);
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -2826,14 +2825,14 @@ export class FMParser implements FMParserConstants {
             {
                 t = this.jj_consume_token(FMParserConstants.STRING_LITERAL);
                 break;
-            };
-        case 94 /* RAW_STRING */:
+            }
+            case 94 /* RAW_STRING */:
             {
                 t = this.jj_consume_token(FMParserConstants.RAW_STRING);
                 raw = true;
                 break;
-            };
-        default:
+            }
+            default:
             this.jj_la1[18] = this.jj_gen;
             this.jj_consume_token(-1);
             throw new ParseException();
@@ -2851,8 +2850,8 @@ export class FMParser implements FMParserConstants {
                 pe.endColumnNumber = t.endColumn;
                 {
                     if(true) throw pe;
-                };
-            };
+                }
+            }
         }
         let result : StringLiteral = new StringLiteral(s);
         result.setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_Token(this.template, t, t);
@@ -2864,7 +2863,7 @@ export class FMParser implements FMParserConstants {
         }
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -2877,14 +2876,14 @@ export class FMParser implements FMParserConstants {
                 t = this.jj_consume_token(FMParserConstants.FALSE);
                 result = new BooleanLiteral(false);
                 break;
-            };
-        case 96 /* TRUE */:
+            }
+            case 96 /* TRUE */:
             {
                 t = this.jj_consume_token(FMParserConstants.TRUE);
                 result = new BooleanLiteral(true);
                 break;
-            };
-        default:
+            }
+            default:
             this.jj_la1[19] = this.jj_gen;
             this.jj_consume_token(-1);
             throw new ParseException();
@@ -2892,7 +2891,7 @@ export class FMParser implements FMParserConstants {
         result.setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_Token(this.template, t, t);
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -2926,13 +2925,13 @@ export class FMParser implements FMParserConstants {
                     {
                         this.jj_consume_token(FMParserConstants.COMMA);
                         break;
-                    };
-                case 131 /* COLON */:
+                    }
+                    case 131 /* COLON */:
                     {
                         this.jj_consume_token(FMParserConstants.COLON);
                         break;
-                    };
-                default:
+                    }
+                    default:
                     this.jj_la1[20] = this.jj_gen;
                     this.jj_consume_token(-1);
                     throw new ParseException();
@@ -2946,8 +2945,8 @@ export class FMParser implements FMParserConstants {
                     case 129 /* COMMA */:
                         {
                             break;
-                        };
-                    default:
+                        }
+                        default:
                         this.jj_la1[21] = this.jj_gen;
                         break label_7;
                     }
@@ -2958,13 +2957,13 @@ export class FMParser implements FMParserConstants {
                         {
                             this.jj_consume_token(FMParserConstants.COMMA);
                             break;
-                        };
-                    case 131 /* COLON */:
+                        }
+                        case 131 /* COLON */:
                         {
                             this.jj_consume_token(FMParserConstants.COLON);
                             break;
-                        };
-                    default:
+                        }
+                        default:
                         this.jj_la1[22] = this.jj_gen;
                         this.jj_consume_token(-1);
                         throw new ParseException();
@@ -2973,10 +2972,10 @@ export class FMParser implements FMParserConstants {
                     this.stringLiteralOnly(key);
                     /* add */(keys.push(key)>0);
                     /* add */(values.push(value)>0);
-                };
+                }
                 break;
-            };
-        default:
+            }
+            default:
             this.jj_la1[23] = this.jj_gen;
         }
         end = this.jj_consume_token(FMParserConstants.CLOSING_CURLY_BRACKET);
@@ -2984,7 +2983,7 @@ export class FMParser implements FMParserConstants {
         result.setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_Token(this.template, begin, end);
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -3003,15 +3002,15 @@ export class FMParser implements FMParserConstants {
                 exp = this.Expression();
                 end = this.jj_consume_token(FMParserConstants.CLOSING_CURLY_BRACKET);
                 break;
-            };
-        case 84 /* SQUARE_BRACKET_INTERPOLATION_OPENING */:
+            }
+            case 84 /* SQUARE_BRACKET_INTERPOLATION_OPENING */:
             {
                 begin = this.jj_consume_token(FMParserConstants.SQUARE_BRACKET_INTERPOLATION_OPENING);
                 exp = this.Expression();
                 end = this.jj_consume_token(FMParserConstants.CLOSE_BRACKET);
                 break;
-            };
-        default:
+            }
+            default:
             this.jj_la1[24] = this.jj_gen;
             this.jj_consume_token(-1);
             throw new ParseException();
@@ -3022,7 +3021,7 @@ export class FMParser implements FMParserConstants {
         result.setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_Token(this.template, begin, end);
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -3044,8 +3043,8 @@ export class FMParser implements FMParserConstants {
                 this.jj_consume_token(FMParserConstants.SEMICOLON);
                 fmt = this.jj_consume_token(FMParserConstants.ID);
                 break;
-            };
-        default:
+            }
+            default:
             this.jj_la1[25] = this.jj_gen;
         }
         end = this.jj_consume_token(FMParserConstants.CLOSING_CURLY_BRACKET);
@@ -3076,7 +3075,7 @@ export class FMParser implements FMParserConstants {
                         default:
                             {
                                 if(true) throw new ParseException("Invalid formatting string", this.template, fmt);
-                            };
+                            }
                         }
                         type = '-';
                     } else if(/* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(token,"m"))) {
@@ -3086,30 +3085,28 @@ export class FMParser implements FMParserConstants {
                     } else {
                         {
                             if(true) throw new ParseException();
-                        };
+                        }
                     }
                 } catch(__e) {
                     if(__e != null && __e instanceof <any>ParseException) {
                         let e : ParseException = <ParseException>__e;
                         {
                             if(true) throw new ParseException("Invalid format specifier " + fmt.image, this.template, fmt);
-                        };
-
+                        }
                     }
                     if(__e != null && (__e["__classes"] && __e["__classes"].indexOf("java.lang.NumberFormatException") >= 0)) {
                         let e : Error = <Error>__e;
                         {
                             if(true) throw new ParseException("Invalid number in the format specifier " + fmt.image, this.template, fmt);
-                        };
-
+                        }
                     }
-                };
-            };
+                }
+            }
             if(maxFrac === -1) {
                 if(minFrac === -1) {
                     {
                         if(true) throw new ParseException("Invalid format specification, at least one of m and M must be specified!", this.template, fmt);
-                    };
+                    }
                 }
                 maxFrac = minFrac;
             } else if(minFrac === -1) {
@@ -3118,12 +3115,12 @@ export class FMParser implements FMParserConstants {
             if(minFrac > maxFrac) {
                 {
                     if(true) throw new ParseException("Invalid format specification, min cannot be greater than max!", this.template, fmt);
-                };
+                }
             }
             if(minFrac > 50 || maxFrac > 50) {
                 {
                     if(true) throw new ParseException("Cannot specify more than 50 fraction digits", this.template, fmt);
-                };
+                }
             }
             result = new NumericalOutput(exp, minFrac, maxFrac, autoEscOF);
         } else {
@@ -3132,7 +3129,7 @@ export class FMParser implements FMParserConstants {
         result.setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_Token(this.template, begin, end);
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -3156,8 +3153,8 @@ export class FMParser implements FMParserConstants {
             case 9 /* ELSE_IF */:
                 {
                     break;
-                };
-            default:
+                }
+                default:
                 this.jj_la1[26] = this.jj_gen;
                 break label_8;
             }
@@ -3168,7 +3165,7 @@ export class FMParser implements FMParserConstants {
             cblock = new ConditionalBlock(condition, children, ConditionalBlock.TYPE_ELSE_IF);
             cblock.setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_Token$freemarker_core_TemplateElements(this.template, t, end, children);
             ifBlock.addBlock(cblock);
-        };
+        }
         switch(((this.jj_ntk === -1)?this.jj_ntk_f():this.jj_ntk)) {
         case 54 /* ELSE */:
             {
@@ -3178,15 +3175,15 @@ export class FMParser implements FMParserConstants {
                 cblock.setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_Token$freemarker_core_TemplateElements(this.template, t, t, children);
                 ifBlock.addBlock(cblock);
                 break;
-            };
-        default:
+            }
+            default:
             this.jj_la1[27] = this.jj_gen;
         }
         end = this.jj_consume_token(FMParserConstants.END_IF);
         ifBlock.setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_Token(this.template, start, end);
         {
             if("" != null) return ifBlock;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -3203,13 +3200,13 @@ export class FMParser implements FMParserConstants {
             {
                 end = this.jj_consume_token(FMParserConstants.END_RECOVER);
                 break;
-            };
-        case 41 /* END_ATTEMPT */:
+            }
+            case 41 /* END_ATTEMPT */:
             {
                 end = this.jj_consume_token(FMParserConstants.END_ATTEMPT);
                 break;
-            };
-        default:
+            }
+            default:
             this.jj_la1[28] = this.jj_gen;
             this.jj_consume_token(-1);
             throw new ParseException();
@@ -3218,7 +3215,7 @@ export class FMParser implements FMParserConstants {
         result.setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_Token(this.template, start, end);
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -3231,7 +3228,7 @@ export class FMParser implements FMParserConstants {
         result.setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_Token$freemarker_core_TemplateElements(this.template, start, start, children);
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -3257,13 +3254,13 @@ export class FMParser implements FMParserConstants {
                         this.jj_consume_token(FMParserConstants.COMMA);
                         loopVar2 = this.jj_consume_token(FMParserConstants.ID);
                         break;
-                    };
-                default:
+                    }
+                    default:
                     this.jj_la1[29] = this.jj_gen;
                 }
                 break;
-            };
-        default:
+            }
+            default:
             this.jj_la1[30] = this.jj_gen;
         }
         this.jj_consume_token(FMParserConstants.DIRECTIVE_END);
@@ -3278,7 +3275,7 @@ export class FMParser implements FMParserConstants {
                 if(/* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(iterCtx.loopVar2Name,iterCtx.loopVarName))) {
                     {
                         if(true) throw new ParseException("The key and value loop variable names must differ, but both were: " + iterCtx.loopVarName, this.template, start);
-                    };
+                    }
                 }
             }
         }
@@ -3289,7 +3286,7 @@ export class FMParser implements FMParserConstants {
         } else if(iterCtx.kind !== FMParser.ITERATOR_BLOCK_KIND_ITEMS) {
             {
                 if(true) throw new ParseException("#list must have either \"as loopVar\" parameter or nested #items that belongs to it.", this.template, start);
-            };
+            }
         }
         this.popIteratorBlockContext();
         switch(((this.jj_ntk === -1)?this.jj_ntk_f():this.jj_ntk)) {
@@ -3297,8 +3294,8 @@ export class FMParser implements FMParserConstants {
             {
                 elseOfList = this.ElseOfList();
                 break;
-            };
-        default:
+            }
+            default:
             this.jj_la1[31] = this.jj_gen;
         }
         end = this.jj_consume_token(FMParserConstants.END_LIST);
@@ -3313,7 +3310,7 @@ export class FMParser implements FMParserConstants {
         }
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -3326,7 +3323,7 @@ export class FMParser implements FMParserConstants {
         result.setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_Token$freemarker_core_TemplateElements(this.template, start, start, children);
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -3355,7 +3352,7 @@ export class FMParser implements FMParserConstants {
         result.setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_Token(this.template, start, end);
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -3374,8 +3371,8 @@ export class FMParser implements FMParserConstants {
                 this.jj_consume_token(FMParserConstants.COMMA);
                 loopVar2 = this.jj_consume_token(FMParserConstants.ID);
                 break;
-            };
-        default:
+            }
+            default:
             this.jj_la1[32] = this.jj_gen;
         }
         this.jj_consume_token(FMParserConstants.DIRECTIVE_END);
@@ -3383,7 +3380,7 @@ export class FMParser implements FMParserConstants {
         if(iterCtx == null) {
             {
                 if(true) throw new ParseException("#items must be inside a #list block.", this.template, start);
-            };
+            }
         }
         if(iterCtx.loopVarName != null) {
             let msg : string;
@@ -3396,7 +3393,7 @@ export class FMParser implements FMParserConstants {
             }
             {
                 if(true) throw new ParseException(msg, this.template, start);
-            };
+            }
         }
         iterCtx.kind = FMParser.ITERATOR_BLOCK_KIND_ITEMS;
         iterCtx.loopVarName = loopVar.image;
@@ -3406,7 +3403,7 @@ export class FMParser implements FMParserConstants {
             if(/* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(iterCtx.loopVar2Name,iterCtx.loopVarName))) {
                 {
                     if(true) throw new ParseException("The key and value loop variable names must differ, but both were: " + iterCtx.loopVarName, this.template, start);
-                };
+                }
             }
         }
         this.breakableDirectiveNesting++;
@@ -3421,7 +3418,7 @@ export class FMParser implements FMParserConstants {
         result.setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_Token(this.template, start, end);
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -3434,7 +3431,7 @@ export class FMParser implements FMParserConstants {
         if(this.peekIteratorBlockContext() == null) {
             {
                 if(true) throw new ParseException("#sep must be inside a #list (or " + this.forEachDirectiveSymbol() + ") block.", this.template, start);
-            };
+            }
         }
         children = this.MixedContentElements();
         switch(((this.jj_ntk === -1)?this.jj_ntk_f():this.jj_ntk)) {
@@ -3442,8 +3439,8 @@ export class FMParser implements FMParserConstants {
             {
                 end = this.jj_consume_token(FMParserConstants.END_SEP);
                 break;
-            };
-        default:
+            }
+            default:
             this.jj_la1[33] = this.jj_gen;
         }
         let result : Sep = new Sep(children);
@@ -3454,7 +3451,7 @@ export class FMParser implements FMParserConstants {
         }
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -3471,8 +3468,8 @@ export class FMParser implements FMParserConstants {
                 this.jj_consume_token(FMParserConstants.USING);
                 namespaces = this.Expression();
                 break;
-            };
-        default:
+            }
+            default:
             this.jj_la1[34] = this.jj_gen;
         }
         end = this.LooseDirectiveEnd();
@@ -3480,7 +3477,7 @@ export class FMParser implements FMParserConstants {
         result.setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_Token(this.template, start, end);
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -3494,8 +3491,8 @@ export class FMParser implements FMParserConstants {
             {
                 start = this.jj_consume_token(FMParserConstants.SIMPLE_RECURSE);
                 break;
-            };
-        case 68 /* RECURSE */:
+            }
+            case 68 /* RECURSE */:
             {
                 start = this.jj_consume_token(FMParserConstants.RECURSE);
                 switch(((this.jj_ntk === -1)?this.jj_ntk_f():this.jj_ntk)) {
@@ -3516,8 +3513,8 @@ export class FMParser implements FMParserConstants {
                     {
                         node = this.Expression();
                         break;
-                    };
-                default:
+                    }
+                    default:
                     this.jj_la1[35] = this.jj_gen;
                 }
                 switch(((this.jj_ntk === -1)?this.jj_ntk_f():this.jj_ntk)) {
@@ -3526,14 +3523,14 @@ export class FMParser implements FMParserConstants {
                         this.jj_consume_token(FMParserConstants.USING);
                         namespaces = this.Expression();
                         break;
-                    };
-                default:
+                    }
+                    default:
                     this.jj_la1[36] = this.jj_gen;
                 }
                 end = this.LooseDirectiveEnd();
                 break;
-            };
-        default:
+            }
+            default:
             this.jj_la1[37] = this.jj_gen;
             this.jj_consume_token(-1);
             throw new ParseException();
@@ -3543,7 +3540,7 @@ export class FMParser implements FMParserConstants {
         result.setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_Token(this.template, start, end);
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -3553,13 +3550,13 @@ export class FMParser implements FMParserConstants {
         if(!this.inMacro) {
             {
                 if(true) throw new ParseException("Cannot fall back outside a macro.", this.template, tok);
-            };
+            }
         }
         let result : FallbackInstruction = new FallbackInstruction();
         result.setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_Token(this.template, tok, tok);
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -3573,13 +3570,13 @@ export class FMParser implements FMParserConstants {
         if(this.breakableDirectiveNesting < 1) {
             {
                 if(true) throw new ParseException(start.image + " must be nested inside a directive that supports it:  #list with \"as\", #items, #switch (or the deprecated " + this.forEachDirectiveSymbol() + ")", this.template, start);
-            };
+            }
         }
         let result : BreakInstruction = new BreakInstruction();
         result.setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_Token(this.template, start, start);
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -3593,13 +3590,13 @@ export class FMParser implements FMParserConstants {
         if(this.continuableDirectiveNesting < 1) {
             {
                 if(true) throw new ParseException(start.image + " must be nested inside a directive that supports it:  #list with \"as\", #items (or the deprecated " + this.forEachDirectiveSymbol() + ")", this.template, start);
-            };
+            }
         }
         let result : ContinueInstruction = new ContinueInstruction();
         result.setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_Token(this.template, start, start);
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -3618,15 +3615,15 @@ export class FMParser implements FMParserConstants {
                 start = this.jj_consume_token(FMParserConstants.SIMPLE_RETURN);
                 end = start;
                 break;
-            };
-        case 26 /* RETURN */:
+            }
+            case 26 /* RETURN */:
             {
                 start = this.jj_consume_token(FMParserConstants.RETURN);
                 exp = this.Expression();
                 end = this.LooseDirectiveEnd();
                 break;
-            };
-        default:
+            }
+            default:
             this.jj_la1[38] = this.jj_gen;
             this.jj_consume_token(-1);
             throw new ParseException();
@@ -3635,26 +3632,26 @@ export class FMParser implements FMParserConstants {
             if(exp != null) {
                 {
                     if(true) throw new ParseException("A macro cannot return a value", this.template, start);
-                };
+                }
             }
         } else if(this.inFunction) {
             if(exp == null) {
                 {
                     if(true) throw new ParseException("A function must return a value", this.template, start);
-                };
+                }
             }
         } else {
             if(exp == null) {
                 {
                     if(true) throw new ParseException("A return instruction can only occur inside a macro or function", this.template, start);
-                };
+                }
             }
         }
         let result : ReturnInstruction = new ReturnInstruction(exp);
         result.setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_Token(this.template, start, end);
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -3666,15 +3663,15 @@ export class FMParser implements FMParserConstants {
             {
                 start = this.jj_consume_token(FMParserConstants.HALT);
                 break;
-            };
-        case 25 /* STOP */:
+            }
+            case 25 /* STOP */:
             {
                 start = this.jj_consume_token(FMParserConstants.STOP);
                 exp = this.Expression();
                 this.LooseDirectiveEnd();
                 break;
-            };
-        default:
+            }
+            default:
             this.jj_la1[39] = this.jj_gen;
             this.jj_consume_token(-1);
             throw new ParseException();
@@ -3683,7 +3680,7 @@ export class FMParser implements FMParserConstants {
         result.setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_Token(this.template, start, start);
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -3699,8 +3696,8 @@ export class FMParser implements FMParserConstants {
                 result = new BodyInstruction(null);
                 result.setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_Token(this.template, t, t);
                 break;
-            };
-        case 66 /* NESTED */:
+            }
+            case 66 /* NESTED */:
             {
                 t = this.jj_consume_token(FMParserConstants.NESTED);
                 bodyParameters = this.PositionalArgs();
@@ -3708,8 +3705,8 @@ export class FMParser implements FMParserConstants {
                 result = new BodyInstruction(bodyParameters);
                 result.setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_Token(this.template, t, end);
                 break;
-            };
-        default:
+            }
+            default:
             this.jj_la1[40] = this.jj_gen;
             this.jj_consume_token(-1);
             throw new ParseException();
@@ -3717,11 +3714,11 @@ export class FMParser implements FMParserConstants {
         if(!this.inMacro) {
             {
                 if(true) throw new ParseException("Cannot use a " + t.image + " instruction outside a macro.", this.template, t);
-            };
+            }
         }
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -3732,7 +3729,7 @@ export class FMParser implements FMParserConstants {
         result.setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_Token(this.template, t, t);
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -3745,26 +3742,26 @@ export class FMParser implements FMParserConstants {
                 t = this.jj_consume_token(FMParserConstants.TRIM);
                 result = new TrimInstruction(true, true);
                 break;
-            };
-        case 61 /* LTRIM */:
+            }
+            case 61 /* LTRIM */:
             {
                 t = this.jj_consume_token(FMParserConstants.LTRIM);
                 result = new TrimInstruction(true, false);
                 break;
-            };
-        case 62 /* RTRIM */:
+            }
+            case 62 /* RTRIM */:
             {
                 t = this.jj_consume_token(FMParserConstants.RTRIM);
                 result = new TrimInstruction(false, true);
                 break;
-            };
-        case 63 /* NOTRIM */:
+            }
+            case 63 /* NOTRIM */:
             {
                 t = this.jj_consume_token(FMParserConstants.NOTRIM);
                 result = new TrimInstruction(false, false);
                 break;
-            };
-        default:
+            }
+            default:
             this.jj_la1[41] = this.jj_gen;
             this.jj_consume_token(-1);
             throw new ParseException();
@@ -3772,7 +3769,7 @@ export class FMParser implements FMParserConstants {
         result.setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_Token(this.template, t, t);
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -3795,14 +3792,14 @@ export class FMParser implements FMParserConstants {
                 start = this.jj_consume_token(FMParserConstants.ASSIGN);
                 scope = Assignment.NAMESPACE;
                 break;
-            };
-        case 17 /* GLOBALASSIGN */:
+            }
+            case 17 /* GLOBALASSIGN */:
             {
                 start = this.jj_consume_token(FMParserConstants.GLOBALASSIGN);
                 scope = Assignment.GLOBAL;
                 break;
-            };
-        case 18 /* LOCALASSIGN */:
+            }
+            case 18 /* LOCALASSIGN */:
             {
                 start = this.jj_consume_token(FMParserConstants.LOCALASSIGN);
                 scope = Assignment.LOCAL;
@@ -3810,11 +3807,11 @@ export class FMParser implements FMParserConstants {
                 if(!this.inMacro && !this.inFunction) {
                     {
                         if(true) throw new ParseException("Local variable assigned outside a macro.", this.template, start);
-                    };
+                    }
                 }
                 break;
-            };
-        default:
+            }
+            default:
             this.jj_la1[42] = this.jj_gen;
             this.jj_consume_token(-1);
             throw new ParseException();
@@ -3844,33 +3841,33 @@ export class FMParser implements FMParserConstants {
                             {
                                 this.jj_consume_token(FMParserConstants.EQUALS);
                                 break;
-                            };
-                        case 108 /* PLUS_EQUALS */:
+                            }
+                            case 108 /* PLUS_EQUALS */:
                             {
                                 this.jj_consume_token(FMParserConstants.PLUS_EQUALS);
                                 break;
-                            };
-                        case 109 /* MINUS_EQUALS */:
+                            }
+                            case 109 /* MINUS_EQUALS */:
                             {
                                 this.jj_consume_token(FMParserConstants.MINUS_EQUALS);
                                 break;
-                            };
-                        case 110 /* TIMES_EQUALS */:
+                            }
+                            case 110 /* TIMES_EQUALS */:
                             {
                                 this.jj_consume_token(FMParserConstants.TIMES_EQUALS);
                                 break;
-                            };
-                        case 111 /* DIV_EQUALS */:
+                            }
+                            case 111 /* DIV_EQUALS */:
                             {
                                 this.jj_consume_token(FMParserConstants.DIV_EQUALS);
                                 break;
-                            };
-                        case 112 /* MOD_EQUALS */:
+                            }
+                            case 112 /* MOD_EQUALS */:
                             {
                                 this.jj_consume_token(FMParserConstants.MOD_EQUALS);
                                 break;
-                            };
-                        default:
+                            }
+                            default:
                             this.jj_la1[43] = this.jj_gen;
                             this.jj_consume_token(-1);
                             throw new ParseException();
@@ -3878,8 +3875,8 @@ export class FMParser implements FMParserConstants {
                         equalsOp = this.token;
                         exp = this.Expression();
                         break;
-                    };
-                case 113 /* PLUS_PLUS */:
+                    }
+                    case 113 /* PLUS_PLUS */:
                 case 114 /* MINUS_MINUS */:
                     {
                         switch(((this.jj_ntk === -1)?this.jj_ntk_f():this.jj_ntk)) {
@@ -3887,13 +3884,13 @@ export class FMParser implements FMParserConstants {
                             {
                                 this.jj_consume_token(FMParserConstants.PLUS_PLUS);
                                 break;
-                            };
-                        case 114 /* MINUS_MINUS */:
+                            }
+                            case 114 /* MINUS_MINUS */:
                             {
                                 this.jj_consume_token(FMParserConstants.MINUS_MINUS);
                                 break;
-                            };
-                        default:
+                            }
+                            default:
                             this.jj_la1[44] = this.jj_gen;
                             this.jj_consume_token(-1);
                             throw new ParseException();
@@ -3901,8 +3898,8 @@ export class FMParser implements FMParserConstants {
                         equalsOp = this.token;
                         exp = null;
                         break;
-                    };
-                default:
+                    }
+                    default:
                     this.jj_la1[45] = this.jj_gen;
                     this.jj_consume_token(-1);
                     throw new ParseException();
@@ -3924,8 +3921,8 @@ export class FMParser implements FMParserConstants {
                         {
                             this.jj_consume_token(FMParserConstants.COMMA);
                             break;
-                        };
-                    default:
+                        }
+                        default:
                         this.jj_la1[46] = this.jj_gen;
                     }
                     nameExp = this.IdentifierOrStringLiteral();
@@ -3943,33 +3940,33 @@ export class FMParser implements FMParserConstants {
                                 {
                                     this.jj_consume_token(FMParserConstants.EQUALS);
                                     break;
-                                };
-                            case 108 /* PLUS_EQUALS */:
+                                }
+                                case 108 /* PLUS_EQUALS */:
                                 {
                                     this.jj_consume_token(FMParserConstants.PLUS_EQUALS);
                                     break;
-                                };
-                            case 109 /* MINUS_EQUALS */:
+                                }
+                                case 109 /* MINUS_EQUALS */:
                                 {
                                     this.jj_consume_token(FMParserConstants.MINUS_EQUALS);
                                     break;
-                                };
-                            case 110 /* TIMES_EQUALS */:
+                                }
+                                case 110 /* TIMES_EQUALS */:
                                 {
                                     this.jj_consume_token(FMParserConstants.TIMES_EQUALS);
                                     break;
-                                };
-                            case 111 /* DIV_EQUALS */:
+                                }
+                                case 111 /* DIV_EQUALS */:
                                 {
                                     this.jj_consume_token(FMParserConstants.DIV_EQUALS);
                                     break;
-                                };
-                            case 112 /* MOD_EQUALS */:
+                                }
+                                case 112 /* MOD_EQUALS */:
                                 {
                                     this.jj_consume_token(FMParserConstants.MOD_EQUALS);
                                     break;
-                                };
-                            default:
+                                }
+                                default:
                                 this.jj_la1[47] = this.jj_gen;
                                 this.jj_consume_token(-1);
                                 throw new ParseException();
@@ -3977,8 +3974,8 @@ export class FMParser implements FMParserConstants {
                             equalsOp = this.token;
                             exp = this.Expression();
                             break;
-                        };
-                    case 113 /* PLUS_PLUS */:
+                        }
+                        case 113 /* PLUS_PLUS */:
                     case 114 /* MINUS_MINUS */:
                         {
                             switch(((this.jj_ntk === -1)?this.jj_ntk_f():this.jj_ntk)) {
@@ -3986,13 +3983,13 @@ export class FMParser implements FMParserConstants {
                                 {
                                     this.jj_consume_token(FMParserConstants.PLUS_PLUS);
                                     break;
-                                };
-                            case 114 /* MINUS_MINUS */:
+                                }
+                                case 114 /* MINUS_MINUS */:
                                 {
                                     this.jj_consume_token(FMParserConstants.MINUS_MINUS);
                                     break;
-                                };
-                            default:
+                                }
+                                default:
                                 this.jj_la1[48] = this.jj_gen;
                                 this.jj_consume_token(-1);
                                 throw new ParseException();
@@ -4000,8 +3997,8 @@ export class FMParser implements FMParserConstants {
                             equalsOp = this.token;
                             exp = null;
                             break;
-                        };
-                    default:
+                        }
+                        default:
                         this.jj_la1[49] = this.jj_gen;
                         this.jj_consume_token(-1);
                         throw new ParseException();
@@ -4013,7 +4010,7 @@ export class FMParser implements FMParserConstants {
                         ass.setLocation$freemarker_template_Template$freemarker_core_TemplateObject$freemarker_core_Token(this.template, nameExp, equalsOp);
                     }
                     /* add */(assignments.push(ass)>0);
-                };
+                }
                 switch(((this.jj_ntk === -1)?this.jj_ntk_f():this.jj_ntk)) {
                 case 138 /* IN */:
                     {
@@ -4022,11 +4019,11 @@ export class FMParser implements FMParserConstants {
                         if(scope !== Assignment.NAMESPACE) {
                             {
                                 if(true) throw new ParseException("Cannot assign to namespace here.", this.template, id);
-                            };
+                            }
                         }
                         break;
-                    };
-                default:
+                    }
+                    default:
                     this.jj_la1[50] = this.jj_gen;
                 }
                 end = this.LooseDirectiveEnd();
@@ -4036,21 +4033,21 @@ export class FMParser implements FMParserConstants {
                     a.setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_Token(this.template, start, end);
                     {
                         if("" != null) return a;
-                    };
+                    }
                 } else {
                     let ai : AssignmentInstruction = new AssignmentInstruction(scope);
                     for(let i : number = 0; i < /* size */(<number>assignments.length); i++) {
                         ai.addAssignment(<Assignment>/* get */assignments[i]);
-                    };
+                    }
                     ai.setNamespaceExp(nsExp);
                     ai.setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_Token(this.template, start, end);
                     {
                         if("" != null) return ai;
-                    };
+                    }
                 }
                 break;
-            };
-        case 138 /* IN */:
+            }
+            case 138 /* IN */:
         case 147 /* DIRECTIVE_END */:
             {
                 switch(((this.jj_ntk === -1)?this.jj_ntk_f():this.jj_ntk)) {
@@ -4061,11 +4058,11 @@ export class FMParser implements FMParserConstants {
                         if(scope !== Assignment.NAMESPACE) {
                             {
                                 if(true) throw new ParseException("Cannot assign to namespace here.", this.template, id);
-                            };
+                            }
                         }
                         break;
-                    };
-                default:
+                    }
+                    default:
                     this.jj_la1[51] = this.jj_gen;
                 }
                 this.jj_consume_token(FMParserConstants.DIRECTIVE_END);
@@ -4077,29 +4074,29 @@ export class FMParser implements FMParserConstants {
                         if(scope !== Assignment.LOCAL) {
                             {
                                 if(true) throw new ParseException("Mismatched assignment tags.", this.template, end);
-                            };
+                            }
                         }
                         break;
-                    };
-                case 45 /* END_ASSIGN */:
+                    }
+                    case 45 /* END_ASSIGN */:
                     {
                         end = this.jj_consume_token(FMParserConstants.END_ASSIGN);
                         if(scope !== Assignment.NAMESPACE) {
                             {
                                 if(true) throw new ParseException("Mismatched assignment tags.", this.template, end);
-                            };
+                            }
                         }
                         break;
-                    };
-                case 44 /* END_GLOBAL */:
+                    }
+                    case 44 /* END_GLOBAL */:
                     {
                         end = this.jj_consume_token(FMParserConstants.END_GLOBAL);
                         if(scope !== Assignment.GLOBAL) {
                             if(true) throw new ParseException("Mismatched assignment tags", this.template, end);
                         }
                         break;
-                    };
-                default:
+                    }
+                    default:
                     this.jj_la1[52] = this.jj_gen;
                     this.jj_consume_token(-1);
                     throw new ParseException();
@@ -4108,10 +4105,10 @@ export class FMParser implements FMParserConstants {
                 ba.setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_Token(this.template, start, end);
                 {
                     if("" != null) return ba;
-                };
+                }
                 break;
-            };
-        default:
+            }
+            default:
             this.jj_la1[53] = this.jj_gen;
             this.jj_consume_token(-1);
             throw new ParseException();
@@ -4135,8 +4132,8 @@ export class FMParser implements FMParserConstants {
             {
                 this.jj_consume_token(FMParserConstants.SEMICOLON);
                 break;
-            };
-        default:
+            }
+            default:
             this.jj_la1[54] = this.jj_gen;
         }
         label_10: while((true)) {
@@ -4144,8 +4141,8 @@ export class FMParser implements FMParserConstants {
             case 141 /* ID */:
                 {
                     break;
-                };
-            default:
+                }
+                default:
                 this.jj_la1[55] = this.jj_gen;
                 break label_10;
             }
@@ -4164,15 +4161,15 @@ export class FMParser implements FMParserConstants {
                 let correctedName : string = /* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(attString,"ignoreMissing"))?"ignore_missing":null;
                 {
                     if(true) throw new ParseException("Unsupported named #include parameter: \"" + attString + "\". Supported parameters are: \"parse\", \"encoding\", \"ignore_missing\"." + (correctedName == null?"":" Supporting camelCase parameter names is planned for FreeMarker 2.4.0; check if an update is available, and if it indeed supports camel case."), this.template, att);
-                };
+                }
             }
-        };
+        }
         end = this.LooseDirectiveEnd();
         let result : Include = new Include(this.template, nameExp, encodingExp, parseExp, ignoreMissingExp);
         result.setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_Token(this.template, start, end);
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -4191,7 +4188,7 @@ export class FMParser implements FMParserConstants {
         this.template.addImport(result);
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -4205,7 +4202,7 @@ export class FMParser implements FMParserConstants {
         let args : Map<any, any> = <any>(new Map<any, any>());
         let defNames : Array<any> = <any>([]);
         let defValue : Expression = null;
-        let lastIteratorBlockContexts : Array<any>;
+        let lastIteratorBlockContexts : List<any>;
         let lastBreakableDirectiveNesting : number;
         let lastContiunableDirectiveNesting : number;
         let children : TemplateElements;
@@ -4218,14 +4215,14 @@ export class FMParser implements FMParserConstants {
             {
                 start = this.jj_consume_token(FMParserConstants.MACRO);
                 break;
-            };
-        case 21 /* FUNCTION */:
+            }
+            case 21 /* FUNCTION */:
             {
                 start = this.jj_consume_token(FMParserConstants.FUNCTION);
                 isFunction = true;
                 break;
-            };
-        default:
+            }
+            default:
             this.jj_la1[56] = this.jj_gen;
             this.jj_consume_token(-1);
             throw new ParseException();
@@ -4233,7 +4230,7 @@ export class FMParser implements FMParserConstants {
         if(this.inMacro || this.inFunction) {
             {
                 if(true) throw new ParseException("Macro or function definitions can\'t be nested into each other.", this.template, start);
-            };
+            }
         }
         if(isFunction) this.inFunction = true; else this.inMacro = true;
         nameExp = this.IdentifierOrStringLiteral();
@@ -4243,8 +4240,8 @@ export class FMParser implements FMParserConstants {
             {
                 this.jj_consume_token(FMParserConstants.OPEN_PAREN);
                 break;
-            };
-        default:
+            }
+            default:
             this.jj_la1[57] = this.jj_gen;
         }
         label_11: while((true)) {
@@ -4252,8 +4249,8 @@ export class FMParser implements FMParserConstants {
             case 141 /* ID */:
                 {
                     break;
-                };
-            default:
+                }
+                default:
                 this.jj_la1[58] = this.jj_gen;
                 break label_11;
             }
@@ -4265,8 +4262,8 @@ export class FMParser implements FMParserConstants {
                     this.jj_consume_token(FMParserConstants.ELLIPSIS);
                     isCatchAll = true;
                     break;
-                };
-            default:
+                }
+                default:
                 this.jj_la1[59] = this.jj_gen;
             }
             switch(((this.jj_ntk === -1)?this.jj_ntk_f():this.jj_ntk)) {
@@ -4277,8 +4274,8 @@ export class FMParser implements FMParserConstants {
                     /* add */(defNames.push(arg.image)>0);
                     hasDefaults = true;
                     break;
-                };
-            default:
+                }
+                default:
                 this.jj_la1[60] = this.jj_gen;
             }
             switch(((this.jj_ntk === -1)?this.jj_ntk_f():this.jj_ntk)) {
@@ -4286,20 +4283,20 @@ export class FMParser implements FMParserConstants {
                 {
                     this.jj_consume_token(FMParserConstants.COMMA);
                     break;
-                };
-            default:
+                }
+                default:
                 this.jj_la1[61] = this.jj_gen;
             }
             if(catchAll != null) {
                 {
                     if(true) throw new ParseException("There may only be one \"catch-all\" parameter in a macro declaration, and it must be the last parameter.", this.template, arg);
-                };
+                }
             }
             if(isCatchAll) {
                 if(defValue != null) {
                     {
                         if(true) throw new ParseException("\"Catch-all\" macro parameter may not have a default value.", this.template, arg);
-                    };
+                    }
                 }
                 catchAll = arg.image;
             } else {
@@ -4307,24 +4304,24 @@ export class FMParser implements FMParserConstants {
                 if(hasDefaults && defValue == null) {
                     {
                         if(true) throw new ParseException("In a macro declaration, parameters without a default value must all occur before the parameters with default values.", this.template, arg);
-                    };
+                    }
                 }
                 /* put */args.set(arg.image, defValue);
             }
-        };
+        }
         switch(((this.jj_ntk === -1)?this.jj_ntk_f():this.jj_ntk)) {
         case 135 /* CLOSE_PAREN */:
             {
                 this.jj_consume_token(FMParserConstants.CLOSE_PAREN);
                 break;
-            };
-        default:
+            }
+            default:
             this.jj_la1[62] = this.jj_gen;
         }
         this.jj_consume_token(FMParserConstants.DIRECTIVE_END);
         lastIteratorBlockContexts = this.iteratorBlockContexts;
         this.iteratorBlockContexts = null;
-        if(this.incompatibleImprovements >= _TemplateAPI.VERSION_INT_2_3_23_$LI$()) {
+        if(this.incompatibleImprovements >= /*_TemplateAPI.VERSION_INT_2_3_23_$LI$()*/2003023) {
             lastBreakableDirectiveNesting = this.breakableDirectiveNesting;
             lastContiunableDirectiveNesting = this.continuableDirectiveNesting;
             this.breakableDirectiveNesting = 0;
@@ -4342,22 +4339,22 @@ export class FMParser implements FMParserConstants {
                     if(true) throw new ParseException("Expected function end tag here.", this.template, end);
                 }
                 break;
-            };
-        case 46 /* END_FUNCTION */:
+            }
+            case 46 /* END_FUNCTION */:
             {
                 end = this.jj_consume_token(FMParserConstants.END_FUNCTION);
                 if(!isFunction) {
                     if(true) throw new ParseException("Expected macro end tag here.", this.template, end);
                 }
                 break;
-            };
-        default:
+            }
+            default:
             this.jj_la1[63] = this.jj_gen;
             this.jj_consume_token(-1);
             throw new ParseException();
         }
         this.iteratorBlockContexts = lastIteratorBlockContexts;
-        if(this.incompatibleImprovements >= _TemplateAPI.VERSION_INT_2_3_23_$LI$()) {
+        if(this.incompatibleImprovements >= /*_TemplateAPI.VERSION_INT_2_3_23_$LI$()*/2003023) {
             this.breakableDirectiveNesting = lastBreakableDirectiveNesting;
             this.continuableDirectiveNesting = lastContiunableDirectiveNesting;
         }
@@ -4367,7 +4364,7 @@ export class FMParser implements FMParserConstants {
         this.template.addMacro(result);
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -4382,7 +4379,7 @@ export class FMParser implements FMParserConstants {
         cb.setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_Token(this.template, start, end);
         {
             if("" != null) return cb;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -4409,8 +4406,8 @@ export class FMParser implements FMParserConstants {
             {
                 this.jj_consume_token(FMParserConstants.TERMINATING_WHITESPACE);
                 break;
-            };
-        default:
+            }
+            default:
             this.jj_la1[64] = this.jj_gen;
         }
         if(this.jj_2_10(2147483647)) {
@@ -4432,8 +4429,8 @@ export class FMParser implements FMParserConstants {
                             {
                                 this.jj_consume_token(FMParserConstants.TERMINATING_WHITESPACE);
                                 break;
-                            };
-                        default:
+                            }
+                            default:
                             this.jj_la1[65] = this.jj_gen;
                         }
                         t = this.jj_consume_token(FMParserConstants.ID);
@@ -4444,8 +4441,8 @@ export class FMParser implements FMParserConstants {
                             case 151 /* TERMINATING_WHITESPACE */:
                                 {
                                     break;
-                                };
-                            default:
+                                }
+                                default:
                                 this.jj_la1[66] = this.jj_gen;
                                 break label_12;
                             }
@@ -4454,8 +4451,8 @@ export class FMParser implements FMParserConstants {
                                 {
                                     this.jj_consume_token(FMParserConstants.TERMINATING_WHITESPACE);
                                     break;
-                                };
-                            default:
+                                }
+                                default:
                                 this.jj_la1[67] = this.jj_gen;
                             }
                             this.jj_consume_token(FMParserConstants.COMMA);
@@ -4464,21 +4461,21 @@ export class FMParser implements FMParserConstants {
                                 {
                                     this.jj_consume_token(FMParserConstants.TERMINATING_WHITESPACE);
                                     break;
-                                };
-                            default:
+                                }
+                                default:
                                 this.jj_la1[68] = this.jj_gen;
                             }
                             t = this.jj_consume_token(FMParserConstants.ID);
                             /* add */(bodyParameters.push(t.image)>0);
-                        };
+                        }
                         break;
-                    };
-                default:
+                    }
+                    default:
                     this.jj_la1[69] = this.jj_gen;
                 }
                 break;
-            };
-        default:
+            }
+            default:
             this.jj_la1[70] = this.jj_gen;
         }
         switch(((this.jj_ntk === -1)?this.jj_ntk_f():this.jj_ntk)) {
@@ -4487,8 +4484,8 @@ export class FMParser implements FMParserConstants {
                 end = this.jj_consume_token(FMParserConstants.EMPTY_DIRECTIVE_END);
                 children = TemplateElements.EMPTY_$LI$();
                 break;
-            };
-        case 147 /* DIRECTIVE_END */:
+            }
+            case 147 /* DIRECTIVE_END */:
             {
                 this.jj_consume_token(FMParserConstants.DIRECTIVE_END);
                 if(bodyParameters != null && this.iteratorBlockContexts != null && !/* isEmpty */(this.iteratorBlockContexts.length == 0)) {
@@ -4507,32 +4504,32 @@ export class FMParser implements FMParserConstants {
                                 }
                                 break walkCtxSack;
                             }
-                        };
-                    };
+                        }
+                    }
                 }
                 children = this.MixedContentElements();
                 end = this.jj_consume_token(FMParserConstants.UNIFIED_CALL_END);
                 for(let i : number = 0; i < pushedCtxCount; i++) {
                     this.popIteratorBlockContext();
-                };
+                }
                 let endTagName : string = end.image.substring(3, end.image.length - 1).trim();
                 if(endTagName.length > 0) {
                     if(startTagNameExp == null) {
                         {
                             if(true) throw new ParseException("Expecting </@>", this.template, end);
-                        };
+                        }
                     } else {
                         let startTagName : string = startTagNameExp.getCanonicalForm();
                         if(!/* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(endTagName,startTagName))) {
                             {
                                 if(true) throw new ParseException("Expecting </@> or </@" + startTagName + ">", this.template, end);
-                            };
+                            }
                         }
                     }
                 }
                 break;
-            };
-        default:
+            }
+            default:
             this.jj_la1[71] = this.jj_gen;
             this.jj_consume_token(-1);
             throw new ParseException();
@@ -4541,7 +4538,7 @@ export class FMParser implements FMParserConstants {
         result.setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_Token(this.template, start, end);
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -4569,8 +4566,8 @@ export class FMParser implements FMParserConstants {
                 {
                     this.jj_consume_token(FMParserConstants.CLOSE_PAREN);
                     break;
-                };
-            default:
+                }
+                default:
                 this.jj_la1[72] = this.jj_gen;
             }
         }
@@ -4585,7 +4582,7 @@ export class FMParser implements FMParserConstants {
         result.setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_Token(this.template, start, end);
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -4604,16 +4601,16 @@ export class FMParser implements FMParserConstants {
             case 141 /* ID */:
                 {
                     break;
-                };
-            default:
+                }
+                default:
                 this.jj_la1[73] = this.jj_gen;
                 break label_13;
             }
-        };
+        }
         this.token_source.inInvocation = false;
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -4657,8 +4654,8 @@ export class FMParser implements FMParserConstants {
                     case 141 /* ID */:
                         {
                             break;
-                        };
-                    default:
+                        }
+                        default:
                         this.jj_la1[74] = this.jj_gen;
                         break label_14;
                     }
@@ -4667,21 +4664,21 @@ export class FMParser implements FMParserConstants {
                         {
                             this.jj_consume_token(FMParserConstants.COMMA);
                             break;
-                        };
-                    default:
+                        }
+                        default:
                         this.jj_la1[75] = this.jj_gen;
                     }
                     arg = this.Expression();
                     /* add */(result.push(arg)>0);
-                };
+                }
                 break;
-            };
-        default:
+            }
+            default:
             this.jj_la1[76] = this.jj_gen;
         }
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -4694,13 +4691,13 @@ export class FMParser implements FMParserConstants {
             {
                 start = this.jj_consume_token(FMParserConstants.COMMENT);
                 break;
-            };
-        case 34 /* TERSE_COMMENT */:
+            }
+            case 34 /* TERSE_COMMENT */:
             {
                 start = this.jj_consume_token(FMParserConstants.TERSE_COMMENT);
                 break;
-            };
-        default:
+            }
+            default:
             this.jj_la1[77] = this.jj_gen;
             this.jj_consume_token(-1);
             throw new ParseException();
@@ -4710,7 +4707,7 @@ export class FMParser implements FMParserConstants {
         result.setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_Token(this.template, start, end);
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -4724,7 +4721,7 @@ export class FMParser implements FMParserConstants {
         result.setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_Token(this.template, start, end);
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -4743,8 +4740,8 @@ export class FMParser implements FMParserConstants {
             {
                 this.jj_consume_token(FMParserConstants.SEMICOLON);
                 break;
-            };
-        default:
+            }
+            default:
             this.jj_la1[78] = this.jj_gen;
         }
         label_15: while((true)) {
@@ -4752,8 +4749,8 @@ export class FMParser implements FMParserConstants {
             case 141 /* ID */:
                 {
                     break;
-                };
-            default:
+                }
+                default:
                 this.jj_la1[79] = this.jj_gen;
                 break label_15;
             }
@@ -4762,21 +4759,21 @@ export class FMParser implements FMParserConstants {
             argExp = this.Expression();
             if(args == null) args = <any>(new Map<any, any>());
             /* put */args.set(argName.image, argExp);
-        };
+        }
         switch(((this.jj_ntk === -1)?this.jj_ntk_f():this.jj_ntk)) {
         case 148 /* EMPTY_DIRECTIVE_END */:
             {
                 end = this.jj_consume_token(FMParserConstants.EMPTY_DIRECTIVE_END);
                 break;
-            };
-        case 147 /* DIRECTIVE_END */:
+            }
+            case 147 /* DIRECTIVE_END */:
             {
                 this.jj_consume_token(FMParserConstants.DIRECTIVE_END);
                 children = this.MixedContentElements();
                 end = this.jj_consume_token(FMParserConstants.END_TRANSFORM);
                 break;
-            };
-        default:
+            }
+            default:
             this.jj_la1[80] = this.jj_gen;
             this.jj_consume_token(-1);
             throw new ParseException();
@@ -4785,7 +4782,7 @@ export class FMParser implements FMParserConstants {
         result.setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_Token(this.template, start, end);
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -4807,8 +4804,8 @@ export class FMParser implements FMParserConstants {
             {
                 ignoredSectionBeforeFirstCase = this.WhitespaceAndComments();
                 break;
-            };
-        default:
+            }
+            default:
             this.jj_la1[81] = this.jj_gen;
         }
         this.breakableDirectiveNesting++;
@@ -4823,7 +4820,7 @@ export class FMParser implements FMParserConstants {
                         if(defaultFound) {
                             {
                                 if(true) throw new ParseException("You can only have one default case in a switch statement", this.template, start);
-                            };
+                            }
                         }
                         defaultFound = true;
                     }
@@ -4833,24 +4830,24 @@ export class FMParser implements FMParserConstants {
                     case 64 /* DEFAUL */:
                         {
                             break;
-                        };
-                    default:
+                        }
+                        default:
                         this.jj_la1[82] = this.jj_gen;
                         break label_16;
                     }
-                };
+                }
                 switch(((this.jj_ntk === -1)?this.jj_ntk_f():this.jj_ntk)) {
                 case 79 /* STATIC_TEXT_WS */:
                     {
                         this.jj_consume_token(FMParserConstants.STATIC_TEXT_WS);
                         break;
-                    };
-                default:
+                    }
+                    default:
                     this.jj_la1[83] = this.jj_gen;
                 }
                 break;
-            };
-        default:
+            }
+            default:
             this.jj_la1[84] = this.jj_gen;
         }
         end = this.jj_consume_token(FMParserConstants.END_SWITCH);
@@ -4858,7 +4855,7 @@ export class FMParser implements FMParserConstants {
         switchBlock.setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_Token(this.template, start, end);
         {
             if("" != null) return switchBlock;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -4873,14 +4870,14 @@ export class FMParser implements FMParserConstants {
                 exp = this.Expression();
                 this.jj_consume_token(FMParserConstants.DIRECTIVE_END);
                 break;
-            };
-        case 64 /* DEFAUL */:
+            }
+            case 64 /* DEFAUL */:
             {
                 start = this.jj_consume_token(FMParserConstants.DEFAUL);
                 exp = null;
                 break;
-            };
-        default:
+            }
+            default:
             this.jj_la1[85] = this.jj_gen;
             this.jj_consume_token(-1);
             throw new ParseException();
@@ -4890,7 +4887,7 @@ export class FMParser implements FMParserConstants {
         result.setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_Token$freemarker_core_TemplateElements(this.template, start, start, children);
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -4904,7 +4901,7 @@ export class FMParser implements FMParserConstants {
         if((this.outputFormat != null && this.outputFormat instanceof <any>MarkupOutputFormat) && this.autoEscaping) {
             {
                 if(true) throw new ParseException("Using the \"escape\" directive (legacy escaping) is not allowed when auto-escaping is on with a markup output format (" + this.outputFormat.getName() + "), to avoid confusion and double-escaping mistakes.", this.template, start);
-            };
+            }
         }
         variable = this.jj_consume_token(FMParserConstants.ID);
         this.jj_consume_token(FMParserConstants.AS);
@@ -4914,12 +4911,12 @@ export class FMParser implements FMParserConstants {
         /* addFirst */this.escapes.unshift(result);
         children = this.MixedContentElements();
         result.setContent(children);
-        this.escapes.removeFirst();
+        this.escapes./*removeFirst()*/shift();
         end = this.jj_consume_token(FMParserConstants.END_ESCAPE);
         result.setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_Token(this.template, start, end);
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -4931,9 +4928,9 @@ export class FMParser implements FMParserConstants {
         if(/* isEmpty */(this.escapes.length == 0)) {
             {
                 if(true) throw new ParseException("#noescape with no matching #escape encountered.", this.template, start);
-            };
+            }
         }
-        let escape : any = this.escapes.removeFirst();
+        let escape : any = this.escapes.shift();
         children = this.MixedContentElements();
         end = this.jj_consume_token(FMParserConstants.END_NOESCAPE);
         /* addFirst */this.escapes.unshift(escape);
@@ -4941,7 +4938,7 @@ export class FMParser implements FMParserConstants {
         result.setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_Token(this.template, start, end);
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -4957,7 +4954,7 @@ export class FMParser implements FMParserConstants {
         if(!paramExp.isLiteral()) {
             {
                 if(true) throw new ParseException("Parameter expression must be parse-time evaluable (constant): " + paramExp.getCanonicalForm(), paramExp);
-            };
+            }
         }
         let paramTM : TemplateModel;
         try {
@@ -4965,8 +4962,8 @@ export class FMParser implements FMParserConstants {
         } catch(e) {
             {
                 if(true) throw new ParseException("Could not evaluate expression (on parse-time): " + paramExp.getCanonicalForm() + "\nUnderlying cause: " + e, paramExp, e);
-            };
-        };
+            }
+        }
         let paramStr : string;
         if(paramTM != null && (paramTM["__interfaces"] != null && paramTM["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0 || paramTM.constructor != null && paramTM.constructor["__interfaces"] != null && paramTM.constructor["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0)) {
             try {
@@ -4974,12 +4971,12 @@ export class FMParser implements FMParserConstants {
             } catch(e) {
                 {
                     if(true) throw new ParseException("Could not evaluate expression (on parse-time): " + paramExp.getCanonicalForm() + "\nUnderlying cause: " + e, paramExp, e);
-                };
-            };
+                }
+            }
         } else {
             {
                 if(true) throw new ParseException("Parameter must be a string, but was: " + ClassUtil.getFTLTypeDescription(paramTM), paramExp);
-            };
+            }
         }
         lastOutputFormat = this.outputFormat;
         try {
@@ -4987,18 +4984,18 @@ export class FMParser implements FMParserConstants {
                 if(!/* endsWith */((str, searchString) => { let pos = str.length - searchString.length; let lastIndex = str.indexOf(searchString, pos); return lastIndex !== -1 && lastIndex === pos; })(paramStr, "}")) {
                     {
                         if(true) throw new ParseException("Output format name that starts with \'{\' must end with \'}\': " + paramStr, this.template, start);
-                    };
+                    }
                 }
                 let innerOutputFormat : OutputFormat = this.template.getConfiguration().getOutputFormat$java_lang_String(paramStr.substring(1, paramStr.length - 1));
                 if(!(innerOutputFormat != null && innerOutputFormat instanceof <any>MarkupOutputFormat)) {
                     {
                         if(true) throw new ParseException("The output format inside the {...} must be a markup format, but was: " + innerOutputFormat, this.template, start);
-                    };
+                    }
                 }
                 if(!(this.outputFormat != null && this.outputFormat instanceof <any>MarkupOutputFormat)) {
                     {
                         if(true) throw new ParseException("The current output format must be a markup format when using {...}, but was: " + this.outputFormat, this.template, start);
-                    };
+                    }
                 }
                 this.outputFormat = new CombinedMarkupOutputFormat(<MarkupOutputFormat<any>>this.outputFormat, <MarkupOutputFormat<any>>innerOutputFormat);
             } else {
@@ -5010,17 +5007,15 @@ export class FMParser implements FMParserConstants {
                 let e : Error = <Error>__e;
                 {
                     if(true) throw new ParseException("Invalid format name: " + e.message, this.template, start, (<Error>null));
-                };
-
+                }
             }
             if(__e != null && __e instanceof <any>UnregisteredOutputFormatException) {
                 let e : UnregisteredOutputFormatException = <UnregisteredOutputFormatException>__e;
                 {
                     if(true) throw new ParseException(e.message, this.template, start, (<Error>null));
-                };
-
+                }
             }
-        };
+        }
         children = this.MixedContentElements();
         end = this.jj_consume_token(FMParserConstants.END_OUTPUTFORMAT);
         let result : OutputFormatBlock = new OutputFormatBlock(children, paramExp);
@@ -5029,7 +5024,7 @@ export class FMParser implements FMParserConstants {
         this.recalculateAutoEscapingField();
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -5051,7 +5046,7 @@ export class FMParser implements FMParserConstants {
         this.recalculateAutoEscapingField();
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -5072,7 +5067,7 @@ export class FMParser implements FMParserConstants {
         this.recalculateAutoEscapingField();
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -5087,20 +5082,20 @@ export class FMParser implements FMParserConstants {
             {
                 t = this.jj_consume_token(FMParserConstants.DIRECTIVE_END);
                 break;
-            };
-        case 148 /* EMPTY_DIRECTIVE_END */:
+            }
+            case 148 /* EMPTY_DIRECTIVE_END */:
             {
                 t = this.jj_consume_token(FMParserConstants.EMPTY_DIRECTIVE_END);
                 break;
-            };
-        default:
+            }
+            default:
             this.jj_la1[86] = this.jj_gen;
             this.jj_consume_token(-1);
             throw new ParseException();
         }
         {
             if("" != null) return t;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -5119,7 +5114,7 @@ export class FMParser implements FMParserConstants {
         result.setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_Token(this.template, start, end);
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -5134,186 +5129,186 @@ export class FMParser implements FMParserConstants {
             {
                 tp = this.If();
                 break;
-            };
-        case 10 /* LIST */:
+            }
+            case 10 /* LIST */:
             {
                 tp = this.List();
                 break;
-            };
-        case 13 /* FOREACH */:
+            }
+            case 13 /* FOREACH */:
             {
                 tp = this.ForEach();
                 break;
-            };
-        case 16 /* ASSIGN */:
+            }
+            case 16 /* ASSIGN */:
         case 17 /* GLOBALASSIGN */:
         case 18 /* LOCALASSIGN */:
             {
                 tp = this.Assign();
                 break;
-            };
-        case 19 /* _INCLUDE */:
+            }
+            case 19 /* _INCLUDE */:
             {
                 tp = this.Include();
                 break;
-            };
-        case 20 /* IMPORT */:
+            }
+            case 20 /* IMPORT */:
             {
                 tp = this.Import();
                 break;
-            };
-        case 21 /* FUNCTION */:
+            }
+            case 21 /* FUNCTION */:
         case 22 /* MACRO */:
             {
                 tp = this.Macro();
                 break;
-            };
-        case 32 /* COMPRESS */:
+            }
+            case 32 /* COMPRESS */:
             {
                 tp = this.Compress();
                 break;
-            };
-        case 74 /* UNIFIED_CALL */:
+            }
+            case 74 /* UNIFIED_CALL */:
             {
                 tp = this.UnifiedMacroTransform();
                 break;
-            };
-        case 11 /* ITEMS */:
+            }
+            case 11 /* ITEMS */:
             {
                 tp = this.Items();
                 break;
-            };
-        case 12 /* SEP */:
+            }
+            case 12 /* SEP */:
             {
                 tp = this.Sep();
                 break;
-            };
-        case 27 /* CALL */:
+            }
+            case 27 /* CALL */:
             {
                 tp = this.Call();
                 break;
-            };
-        case 33 /* COMMENT */:
+            }
+            case 33 /* COMMENT */:
         case 34 /* TERSE_COMMENT */:
             {
                 tp = this.Comment();
                 break;
-            };
-        case 35 /* NOPARSE */:
+            }
+            case 35 /* NOPARSE */:
             {
                 tp = this.NoParse();
                 break;
-            };
-        case 23 /* TRANSFORM */:
+            }
+            case 23 /* TRANSFORM */:
             {
                 tp = this.Transform();
                 break;
-            };
-        case 14 /* SWITCH */:
+            }
+            case 14 /* SWITCH */:
             {
                 tp = this.Switch();
                 break;
-            };
-        case 28 /* SETTING */:
+            }
+            case 28 /* SETTING */:
             {
                 tp = this.Setting();
                 break;
-            };
-        case 55 /* BREAK */:
+            }
+            case 55 /* BREAK */:
             {
                 tp = this.Break();
                 break;
-            };
-        case 56 /* CONTINUE */:
+            }
+            case 56 /* CONTINUE */:
             {
                 tp = this.Continue();
                 break;
-            };
-        case 26 /* RETURN */:
+            }
+            case 26 /* RETURN */:
         case 57 /* SIMPLE_RETURN */:
             {
                 tp = this.Return();
                 break;
-            };
-        case 25 /* STOP */:
+            }
+            case 25 /* STOP */:
         case 58 /* HALT */:
             {
                 tp = this.Stop();
                 break;
-            };
-        case 59 /* FLUSH */:
+            }
+            case 59 /* FLUSH */:
             {
                 tp = this.Flush();
                 break;
-            };
-        case 60 /* TRIM */:
+            }
+            case 60 /* TRIM */:
         case 61 /* LTRIM */:
         case 62 /* RTRIM */:
         case 63 /* NOTRIM */:
             {
                 tp = this.Trim();
                 break;
-            };
-        case 65 /* SIMPLE_NESTED */:
+            }
+            case 65 /* SIMPLE_NESTED */:
         case 66 /* NESTED */:
             {
                 tp = this.Nested();
                 break;
-            };
-        case 70 /* ESCAPE */:
+            }
+            case 70 /* ESCAPE */:
             {
                 tp = this.Escape();
                 break;
-            };
-        case 72 /* NOESCAPE */:
+            }
+            case 72 /* NOESCAPE */:
             {
                 tp = this.NoEscape();
                 break;
-            };
-        case 24 /* VISIT */:
+            }
+            case 24 /* VISIT */:
             {
                 tp = this.Visit();
                 break;
-            };
-        case 67 /* SIMPLE_RECURSE */:
+            }
+            case 67 /* SIMPLE_RECURSE */:
         case 68 /* RECURSE */:
             {
                 tp = this.Recurse();
                 break;
-            };
-        case 69 /* FALLBACK */:
+            }
+            case 69 /* FALLBACK */:
             {
                 tp = this.FallBack();
                 break;
-            };
-        case 6 /* ATTEMPT */:
+            }
+            case 6 /* ATTEMPT */:
             {
                 tp = this.Attempt();
                 break;
-            };
-        case 29 /* OUTPUTFORMAT */:
+            }
+            case 29 /* OUTPUTFORMAT */:
             {
                 tp = this.OutputFormat();
                 break;
-            };
-        case 30 /* AUTOESC */:
+            }
+            case 30 /* AUTOESC */:
             {
                 tp = this.AutoEsc();
                 break;
-            };
-        case 31 /* NOAUTOESC */:
+            }
+            case 31 /* NOAUTOESC */:
             {
                 tp = this.NoAutoEsc();
                 break;
-            };
-        default:
+            }
+            default:
             this.jj_la1[87] = this.jj_gen;
             this.jj_consume_token(-1);
             throw new ParseException();
         }
         {
             if("" != null) return tp;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -5334,18 +5329,18 @@ export class FMParser implements FMParserConstants {
                 {
                     t = this.jj_consume_token(FMParserConstants.STATIC_TEXT_WS);
                     break;
-                };
-            case 80 /* STATIC_TEXT_NON_WS */:
+                }
+                case 80 /* STATIC_TEXT_NON_WS */:
                 {
                     t = this.jj_consume_token(FMParserConstants.STATIC_TEXT_NON_WS);
                     break;
-                };
-            case 81 /* STATIC_TEXT_FALSE_ALARM */:
+                }
+                case 81 /* STATIC_TEXT_FALSE_ALARM */:
                 {
                     t = this.jj_consume_token(FMParserConstants.STATIC_TEXT_FALSE_ALARM);
                     break;
-                };
-            default:
+                }
+                default:
                 this.jj_la1[88] = this.jj_gen;
                 this.jj_consume_token(-1);
                 throw new ParseException();
@@ -5360,12 +5355,12 @@ export class FMParser implements FMParserConstants {
             case 81 /* STATIC_TEXT_FALSE_ALARM */:
                 {
                     break;
-                };
-            default:
+                }
+                default:
                 this.jj_la1[89] = this.jj_gen;
                 break label_17;
             }
-        };
+        }
         if(this.stripText && this.mixedContentNesting === 1 && !this.preventStrippings) {
             if("" != null) return null;
         }
@@ -5373,7 +5368,7 @@ export class FMParser implements FMParserConstants {
         result.setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_Token(this.template, start, t);
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -5388,7 +5383,7 @@ export class FMParser implements FMParserConstants {
         result.setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_Token(this.template, t, t);
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -5409,23 +5404,23 @@ export class FMParser implements FMParserConstants {
                 {
                     t = this.jj_consume_token(FMParserConstants.KEEP_GOING);
                     break;
-                };
-            case 154 /* MAYBE_END */:
+                }
+                case 154 /* MAYBE_END */:
                 {
                     t = this.jj_consume_token(FMParserConstants.MAYBE_END);
                     break;
-                };
-            case 153 /* TERSE_COMMENT_END */:
+                }
+                case 153 /* TERSE_COMMENT_END */:
                 {
                     t = this.jj_consume_token(FMParserConstants.TERSE_COMMENT_END);
                     break;
-                };
-            case 156 /* LONE_LESS_THAN_OR_DASH */:
+                }
+                case 156 /* LONE_LESS_THAN_OR_DASH */:
                 {
                     t = this.jj_consume_token(FMParserConstants.LONE_LESS_THAN_OR_DASH);
                     break;
-                };
-            default:
+                }
+                default:
                 this.jj_la1[90] = this.jj_gen;
                 this.jj_consume_token(-1);
                 throw new ParseException();
@@ -5438,21 +5433,21 @@ export class FMParser implements FMParserConstants {
             case 156 /* LONE_LESS_THAN_OR_DASH */:
                 {
                     break;
-                };
-            default:
+                }
+                default:
                 this.jj_la1[91] = this.jj_gen;
                 break label_18;
             }
-        };
+        }
         buf.setLength(buf.length() - t.image.length);
-        if(!/* endsWith */((str, searchString) => { let pos = str.length - searchString.length; let lastIndex = str.indexOf(searchString, pos); return lastIndex !== -1 && lastIndex === pos; })(t.image, ";") && _TemplateAPI.getTemplateLanguageVersionAsInt$freemarker_template_Template(this.template) >= _TemplateAPI.VERSION_INT_2_3_21_$LI$()) {
+        if(!/* endsWith */((str, searchString) => { let pos = str.length - searchString.length; let lastIndex = str.indexOf(searchString, pos); return lastIndex !== -1 && lastIndex === pos; })(t.image, ";") && _TemplateAPI.getTemplateLanguageVersionAsInt$freemarker_template_Template(this.template) >= /*_TemplateAPI.VERSION_INT_2_3_21_$LI$()*/2003021) {
             {
                 if(true) throw new ParseException("Unclosed \"" + start.image + "\"", this.template, start);
-            };
+            }
         }
         {
             if("" != null) return t;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -5515,8 +5510,8 @@ export class FMParser implements FMParserConstants {
             case 84 /* SQUARE_BRACKET_INTERPOLATION_OPENING */:
                 {
                     break;
-                };
-            default:
+                }
+                default:
                 this.jj_la1[92] = this.jj_gen;
                 break label_19;
             }
@@ -5527,19 +5522,19 @@ export class FMParser implements FMParserConstants {
                 {
                     elem = this.PCData();
                     break;
-                };
-            case 82 /* DOLLAR_INTERPOLATION_OPENING */:
+                }
+                case 82 /* DOLLAR_INTERPOLATION_OPENING */:
             case 84 /* SQUARE_BRACKET_INTERPOLATION_OPENING */:
                 {
                     elem = this.StringOutput();
                     break;
-                };
-            case 83 /* HASH_INTERPOLATION_OPENING */:
+                }
+                case 83 /* HASH_INTERPOLATION_OPENING */:
                 {
                     elem = this.NumericalOutput();
                     break;
-                };
-            case 6 /* ATTEMPT */:
+                }
+                case 6 /* ATTEMPT */:
             case 8 /* IF */:
             case 10 /* LIST */:
             case 11 /* ITEMS */:
@@ -5586,8 +5581,8 @@ export class FMParser implements FMParserConstants {
                 {
                     elem = this.FreemarkerDirective();
                     break;
-                };
-            default:
+                }
+                default:
                 this.jj_la1[93] = this.jj_gen;
                 this.jj_consume_token(-1);
                 throw new ParseException();
@@ -5600,16 +5595,16 @@ export class FMParser implements FMParserConstants {
                     let newChildBuffer : TemplateElement[] = (s => { let a=[]; while(s-->0) a.push(null); return a; })(childCount * 2);
                     for(let i : number = 0; i < childBuffer.length; i++) {
                         newChildBuffer[i] = childBuffer[i];
-                    };
+                    }
                     childBuffer = newChildBuffer;
                 }
                 childBuffer[childCount - 1] = elem;
             }
-        };
+        }
         this.mixedContentNesting--;
         {
             if("" != null) return childBuffer != null?new TemplateElements(childBuffer, childCount):TemplateElements.EMPTY_$LI$();
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -5632,19 +5627,19 @@ export class FMParser implements FMParserConstants {
                 {
                     elem = this.PCData();
                     break;
-                };
-            case 82 /* DOLLAR_INTERPOLATION_OPENING */:
+                }
+                case 82 /* DOLLAR_INTERPOLATION_OPENING */:
             case 84 /* SQUARE_BRACKET_INTERPOLATION_OPENING */:
                 {
                     elem = this.StringOutput();
                     break;
-                };
-            case 83 /* HASH_INTERPOLATION_OPENING */:
+                }
+                case 83 /* HASH_INTERPOLATION_OPENING */:
                 {
                     elem = this.NumericalOutput();
                     break;
-                };
-            case 6 /* ATTEMPT */:
+                }
+                case 6 /* ATTEMPT */:
             case 8 /* IF */:
             case 10 /* LIST */:
             case 11 /* ITEMS */:
@@ -5691,8 +5686,8 @@ export class FMParser implements FMParserConstants {
                 {
                     elem = this.FreemarkerDirective();
                     break;
-                };
-            default:
+                }
+                default:
                 this.jj_la1[94] = this.jj_gen;
                 this.jj_consume_token(-1);
                 throw new ParseException();
@@ -5754,17 +5749,17 @@ export class FMParser implements FMParserConstants {
             case 84 /* SQUARE_BRACKET_INTERPOLATION_OPENING */:
                 {
                     break;
-                };
-            default:
+                }
+                default:
                 this.jj_la1[95] = this.jj_gen;
                 break label_20;
             }
-        };
+        }
         this.mixedContentNesting--;
         mixedContent.setLocation$freemarker_template_Template$freemarker_core_TemplateObject$freemarker_core_TemplateObject(this.template, begin, elem);
         {
             if("" != null) return mixedContent;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -5834,13 +5829,13 @@ export class FMParser implements FMParserConstants {
             {
                 tp = this.MixedContent();
                 break;
-            };
-        default:
+            }
+            default:
             this.jj_la1[96] = this.jj_gen;
         }
         {
             if("" != null) return tp != null?tp:new TextBlock(CollectionUtils.EMPTY_CHAR_ARRAY_$LI$(), false);
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -5861,19 +5856,19 @@ export class FMParser implements FMParserConstants {
                 {
                     elem = this.PCData();
                     break;
-                };
-            case 82 /* DOLLAR_INTERPOLATION_OPENING */:
+                }
+                case 82 /* DOLLAR_INTERPOLATION_OPENING */:
             case 84 /* SQUARE_BRACKET_INTERPOLATION_OPENING */:
                 {
                     elem = this.StringOutput();
                     break;
-                };
-            case 83 /* HASH_INTERPOLATION_OPENING */:
+                }
+                case 83 /* HASH_INTERPOLATION_OPENING */:
                 {
                     elem = this.NumericalOutput();
                     break;
-                };
-            default:
+                }
+                default:
                 this.jj_la1[97] = this.jj_gen;
                 this.jj_consume_token(-1);
                 throw new ParseException();
@@ -5891,16 +5886,16 @@ export class FMParser implements FMParserConstants {
             case 84 /* SQUARE_BRACKET_INTERPOLATION_OPENING */:
                 {
                     break;
-                };
-            default:
+                }
+                default:
                 this.jj_la1[98] = this.jj_gen;
                 break label_21;
             }
-        };
+        }
         nodes.setLocation$freemarker_template_Template$freemarker_core_TemplateObject$freemarker_core_TemplateObject(this.template, begin, elem);
         {
             if("" != null) return nodes;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -5918,14 +5913,14 @@ export class FMParser implements FMParserConstants {
                 {
                     elem = this.WhitespaceText();
                     break;
-                };
-            case 33 /* COMMENT */:
+                }
+                case 33 /* COMMENT */:
             case 34 /* TERSE_COMMENT */:
                 {
                     elem = this.Comment();
                     break;
-                };
-            default:
+                }
+                default:
                 this.jj_la1[99] = this.jj_gen;
                 this.jj_consume_token(-1);
                 throw new ParseException();
@@ -5942,21 +5937,21 @@ export class FMParser implements FMParserConstants {
             case 79 /* STATIC_TEXT_WS */:
                 {
                     break;
-                };
-            default:
+                }
+                default:
                 this.jj_la1[100] = this.jj_gen;
                 break label_22;
             }
-        };
+        }
         if(begin == null || this.stripWhitespace && !this.preventStrippings && nodes.getChildCount() === 1 && (nodes.getChild(0) != null && nodes.getChild(0) instanceof <any>TextBlock)) {
             {
                 if("" != null) return null;
-            };
+            }
         }
         nodes.setLocation$freemarker_template_Template$freemarker_core_TemplateObject$freemarker_core_TemplateObject(this.template, begin, elem);
         {
             if("" != null) return nodes;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -5969,8 +5964,8 @@ export class FMParser implements FMParserConstants {
             {
                 this.jj_consume_token(FMParserConstants.STATIC_TEXT_WS);
                 break;
-            };
-        default:
+            }
+            default:
             this.jj_la1[101] = this.jj_gen;
         }
         switch(((this.jj_ntk === -1)?this.jj_ntk_f():this.jj_ntk)) {
@@ -5978,8 +5973,8 @@ export class FMParser implements FMParserConstants {
             {
                 this.jj_consume_token(FMParserConstants.TRIVIAL_FTL_HEADER);
                 break;
-            };
-        case 76 /* FTL_HEADER */:
+            }
+            case 76 /* FTL_HEADER */:
             {
                 this.jj_consume_token(FMParserConstants.FTL_HEADER);
                 label_23: while((true)) {
@@ -5987,8 +5982,8 @@ export class FMParser implements FMParserConstants {
                     case 141 /* ID */:
                         {
                             break;
-                        };
-                    default:
+                        }
+                        default:
                         this.jj_la1[102] = this.jj_gen;
                         break label_23;
                     }
@@ -6003,27 +5998,27 @@ export class FMParser implements FMParserConstants {
                     } catch(e) {
                         {
                             if(true) throw new ParseException("Could not evaluate expression (on parse-time): " + exp.getCanonicalForm() + " \nUnderlying cause: " + e, exp, e);
-                        };
-                    };
+                        }
+                    }
                     let vs : string = null;
                     if(value != null && (value["__interfaces"] != null && value["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0 || value.constructor != null && value.constructor["__interfaces"] != null && value.constructor["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0)) {
                         try {
                             vs = (<TemplateScalarModel><any>exp).getAsString();
                         } catch(tme) {
-                        };
+                        }
                     }
                     if(this.template != null) {
                         if(/* equalsIgnoreCase */((o1, o2) => o1.toUpperCase() === (o2===null?o2:o2.toUpperCase()))(ks, "encoding")) {
                             if(vs == null) {
                                 {
                                     if(true) throw new ParseException("Expected a string constant for \"" + ks + "\".", exp);
-                                };
+                                }
                             }
                             let encoding : string = this.template.getEncoding();
                             if(encoding != null && !/* equalsIgnoreCase */((o1, o2) => o1.toUpperCase() === (o2===null?o2:o2.toUpperCase()))(encoding, vs)) {
                                 {
                                     if(true) throw new Template.WrongEncodingException(vs, encoding);
-                                };
+                                }
                             }
                         } else if(/* equalsIgnoreCase */((o1, o2) => o1.toUpperCase() === (o2===null?o2:o2.toUpperCase()))(ks, "STRIP_WHITESPACE") || /* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(ks,"stripWhitespace"))) {
                             this.stripWhitespace = this.getBoolean(exp, true);
@@ -6044,7 +6039,7 @@ export class FMParser implements FMParserConstants {
                             if(vs == null) {
                                 {
                                     if(true) throw new ParseException("Expected a string constant for \"" + ks + "\".", exp);
-                                };
+                                }
                             }
                             try {
                                 this.outputFormat = this.template.getConfiguration().getOutputFormat$java_lang_String(vs);
@@ -6053,17 +6048,15 @@ export class FMParser implements FMParserConstants {
                                     let e : Error = <Error>__e;
                                     {
                                         if(true) throw new ParseException("Invalid format name: " + e.message, exp, (<Error>null));
-                                    };
-
+                                    }
                                 }
                                 if(__e != null && __e instanceof <any>UnregisteredOutputFormatException) {
                                     let e : UnregisteredOutputFormatException = <UnregisteredOutputFormatException>__e;
                                     {
                                         if(true) throw new ParseException(e.message, exp, (<Error>null));
-                                    };
-
+                                    }
                                 }
-                            };
+                            }
                             this.recalculateAutoEscapingField();
                             _TemplateAPI.setOutputFormat(this.template, this.outputFormat);
                             _TemplateAPI.setAutoEscaping(this.template, this.autoEscaping);
@@ -6071,7 +6064,7 @@ export class FMParser implements FMParserConstants {
                             if(!(value != null && (value["__interfaces"] != null && value["__interfaces"].indexOf("freemarker.template.TemplateHashModelEx") >= 0 || value.constructor != null && value.constructor["__interfaces"] != null && value.constructor["__interfaces"].indexOf("freemarker.template.TemplateHashModelEx") >= 0))) {
                                 {
                                     if(true) throw new ParseException("Expecting a hash of prefixes to namespace URI\'s.", exp);
-                                };
+                                }
                             }
                             let prefixMap : TemplateHashModelEx = <TemplateHashModelEx><any>value;
                             try {
@@ -6082,7 +6075,7 @@ export class FMParser implements FMParserConstants {
                                     if(!(valueModel != null && (valueModel["__interfaces"] != null && valueModel["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0 || valueModel.constructor != null && valueModel.constructor["__interfaces"] != null && valueModel.constructor["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0))) {
                                         {
                                             if(true) throw new ParseException("Non-string value in prefix to namespace hash.", exp);
-                                        };
+                                        }
                                     }
                                     let nsURI : string = (<TemplateScalarModel><any>valueModel).getAsString();
                                     try {
@@ -6090,16 +6083,16 @@ export class FMParser implements FMParserConstants {
                                     } catch(iae) {
                                         {
                                             if(true) throw new ParseException(iae.message, exp);
-                                        };
-                                    };
-                                };
+                                        }
+                                    }
+                                }
                             } catch(tme) {
-                            };
+                            }
                         } else if(/* equalsIgnoreCase */((o1, o2) => o1.toUpperCase() === (o2===null?o2:o2.toUpperCase()))(ks, "attributes")) {
                             if(!(value != null && (value["__interfaces"] != null && value["__interfaces"].indexOf("freemarker.template.TemplateHashModelEx") >= 0 || value.constructor != null && value.constructor["__interfaces"] != null && value.constructor["__interfaces"].indexOf("freemarker.template.TemplateHashModelEx") >= 0))) {
                                 {
                                     if(true) throw new ParseException("Expecting a hash of attribute names to values.", exp);
-                                };
+                                }
                             }
                             let attributeMap : TemplateHashModelEx = <TemplateHashModelEx><any>value;
                             try {
@@ -6108,9 +6101,9 @@ export class FMParser implements FMParserConstants {
                                     let attName : string = (<TemplateScalarModel><any>it.next()).getAsString();
                                     let attValue : any = DeepUnwrap.unwrap$freemarker_template_TemplateModel(attributeMap['get$java_lang_String'](attName));
                                     this.template.setCustomAttribute$java_lang_Object$java_lang_Object(attName, attValue);
-                                };
+                                }
                             } catch(tme) {
-                            };
+                            }
                         } else {
                             let correctName : string;
                             if(/* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(ks,"charset"))) {
@@ -6126,17 +6119,17 @@ export class FMParser implements FMParserConstants {
                             }
                             {
                                 if(true) throw new ParseException("Unknown FTL header parameter: " + key.image + (correctName == null?"":". You may meant: " + correctName), this.template, key);
-                            };
+                            }
                         }
                     }
-                };
+                }
                 if(autoEscRequester != null) {
                     this.checkCurrentOutputFormatCanEscape(autoEscRequester);
                 }
                 this.LooseDirectiveEnd();
                 break;
-            };
-        default:
+            }
+            default:
             this.jj_la1[103] = this.jj_gen;
             this.jj_consume_token(-1);
             throw new ParseException();
@@ -6157,23 +6150,23 @@ export class FMParser implements FMParserConstants {
                 {
                     this.jj_consume_token(FMParserConstants.COMMA);
                     break;
-                };
-            default:
+                }
+                default:
                 this.jj_la1[104] = this.jj_gen;
             }
             switch(((this.jj_ntk === -1)?this.jj_ntk_f():this.jj_ntk)) {
             case 141 /* ID */:
                 {
                     break;
-                };
-            default:
+                }
+                default:
                 this.jj_la1[105] = this.jj_gen;
                 break label_24;
             }
-        };
+        }
         {
             if("" != null) return result;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -6186,7 +6179,7 @@ export class FMParser implements FMParserConstants {
         let t : Token;
         let interpolation : Interpolation;
         let staticTextCollector : StringBuilder = null;
-        let parts : ArrayList = <any>([]);
+        let parts : List = new List();
         label_25: while((true)) {
             switch(((this.jj_ntk === -1)?this.jj_ntk_f():this.jj_ntk)) {
             case 79 /* STATIC_TEXT_WS */:
@@ -6197,8 +6190,8 @@ export class FMParser implements FMParserConstants {
             case 84 /* SQUARE_BRACKET_INTERPOLATION_OPENING */:
                 {
                     break;
-                };
-            default:
+                }
+                default:
                 this.jj_la1[106] = this.jj_gen;
                 break label_25;
             }
@@ -6212,18 +6205,18 @@ export class FMParser implements FMParserConstants {
                         {
                             t = this.jj_consume_token(FMParserConstants.STATIC_TEXT_WS);
                             break;
-                        };
-                    case 80 /* STATIC_TEXT_NON_WS */:
+                        }
+                        case 80 /* STATIC_TEXT_NON_WS */:
                         {
                             t = this.jj_consume_token(FMParserConstants.STATIC_TEXT_NON_WS);
                             break;
-                        };
-                    case 81 /* STATIC_TEXT_FALSE_ALARM */:
+                        }
+                        case 81 /* STATIC_TEXT_FALSE_ALARM */:
                         {
                             t = this.jj_consume_token(FMParserConstants.STATIC_TEXT_FALSE_ALARM);
                             break;
-                        };
-                    default:
+                        }
+                        default:
                         this.jj_la1[107] = this.jj_gen;
                         this.jj_consume_token(-1);
                         throw new ParseException();
@@ -6237,8 +6230,8 @@ export class FMParser implements FMParserConstants {
                         }
                     }
                     break;
-                };
-            case 82 /* DOLLAR_INTERPOLATION_OPENING */:
+                }
+                case 82 /* DOLLAR_INTERPOLATION_OPENING */:
             case 83 /* HASH_INTERPOLATION_OPENING */:
             case 84 /* SQUARE_BRACKET_INTERPOLATION_OPENING */:
                 {
@@ -6256,20 +6249,20 @@ export class FMParser implements FMParserConstants {
                     }
                     /* add */(parts.push(interpolation)>0);
                     break;
-                };
-            default:
+                }
+                default:
                 this.jj_la1[108] = this.jj_gen;
                 this.jj_consume_token(-1);
                 throw new ParseException();
             }
-        };
+        }
         if(staticTextCollector != null && staticTextCollector.length() !== 0) {
             /* add */(parts.push(staticTextCollector.toString())>0);
         }
-        parts.trimToSize();
+        // parts.trimToSize();
         {
             if("" != null) return parts;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -6294,7 +6287,7 @@ export class FMParser implements FMParserConstants {
         root.setFieldsForRootElement();
         {
             if("" != null) return root;
-        };
+        }
         throw Object.defineProperty(new Error("Missing return statement in function"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
     }
 
@@ -6307,7 +6300,7 @@ export class FMParser implements FMParserConstants {
             return true;
         } finally {
             this.jj_save(0, xla);
-        };
+        }
     }
 
     jj_2_2(xla : number) : boolean {
@@ -6319,7 +6312,7 @@ export class FMParser implements FMParserConstants {
             return true;
         } finally {
             this.jj_save(1, xla);
-        };
+        }
     }
 
     jj_2_3(xla : number) : boolean {
@@ -6331,7 +6324,7 @@ export class FMParser implements FMParserConstants {
             return true;
         } finally {
             this.jj_save(2, xla);
-        };
+        }
     }
 
     jj_2_4(xla : number) : boolean {
@@ -6343,7 +6336,7 @@ export class FMParser implements FMParserConstants {
             return true;
         } finally {
             this.jj_save(3, xla);
-        };
+        }
     }
 
     jj_2_5(xla : number) : boolean {
@@ -6355,7 +6348,7 @@ export class FMParser implements FMParserConstants {
             return true;
         } finally {
             this.jj_save(4, xla);
-        };
+        }
     }
 
     jj_2_6(xla : number) : boolean {
@@ -6367,7 +6360,7 @@ export class FMParser implements FMParserConstants {
             return true;
         } finally {
             this.jj_save(5, xla);
-        };
+        }
     }
 
     jj_2_7(xla : number) : boolean {
@@ -6379,7 +6372,7 @@ export class FMParser implements FMParserConstants {
             return true;
         } finally {
             this.jj_save(6, xla);
-        };
+        }
     }
 
     jj_2_8(xla : number) : boolean {
@@ -6391,7 +6384,7 @@ export class FMParser implements FMParserConstants {
             return true;
         } finally {
             this.jj_save(7, xla);
-        };
+        }
     }
 
     jj_2_9(xla : number) : boolean {
@@ -6403,7 +6396,7 @@ export class FMParser implements FMParserConstants {
             return true;
         } finally {
             this.jj_save(8, xla);
-        };
+        }
     }
 
     jj_2_10(xla : number) : boolean {
@@ -6415,7 +6408,7 @@ export class FMParser implements FMParserConstants {
             return true;
         } finally {
             this.jj_save(9, xla);
-        };
+        }
     }
 
     jj_2_11(xla : number) : boolean {
@@ -6427,7 +6420,7 @@ export class FMParser implements FMParserConstants {
             return true;
         } finally {
             this.jj_save(10, xla);
-        };
+        }
     }
 
     jj_2_12(xla : number) : boolean {
@@ -6439,7 +6432,7 @@ export class FMParser implements FMParserConstants {
             return true;
         } finally {
             this.jj_save(11, xla);
-        };
+        }
     }
 
     jj_2_13(xla : number) : boolean {
@@ -6451,7 +6444,7 @@ export class FMParser implements FMParserConstants {
             return true;
         } finally {
             this.jj_save(12, xla);
-        };
+        }
     }
 
     jj_2_14(xla : number) : boolean {
@@ -6463,7 +6456,7 @@ export class FMParser implements FMParserConstants {
             return true;
         } finally {
             this.jj_save(13, xla);
-        };
+        }
     }
 
     jj_2_15(xla : number) : boolean {
@@ -6475,7 +6468,7 @@ export class FMParser implements FMParserConstants {
             return true;
         } finally {
             this.jj_save(14, xla);
-        };
+        }
     }
 
     jj_3R_60() : boolean {
@@ -6743,7 +6736,7 @@ export class FMParser implements FMParserConstants {
                 this.jj_scanpos = xsp;
                 break;
             }
-        };
+        }
         return false;
     }
 
@@ -6785,7 +6778,7 @@ export class FMParser implements FMParserConstants {
                 this.jj_scanpos = xsp;
                 break;
             }
-        };
+        }
         return false;
     }
 
@@ -6798,7 +6791,7 @@ export class FMParser implements FMParserConstants {
                 this.jj_scanpos = xsp;
                 break;
             }
-        };
+        }
         return false;
     }
 
@@ -6828,7 +6821,7 @@ export class FMParser implements FMParserConstants {
                 this.jj_scanpos = xsp;
                 break;
             }
-        };
+        }
         return false;
     }
 
@@ -6931,7 +6924,7 @@ export class FMParser implements FMParserConstants {
                 this.jj_scanpos = xsp;
                 break;
             }
-        };
+        }
         return false;
     }
 
@@ -6944,7 +6937,7 @@ export class FMParser implements FMParserConstants {
                 this.jj_scanpos = xsp;
                 break;
             }
-        };
+        }
         return false;
     }
 
@@ -7057,7 +7050,7 @@ export class FMParser implements FMParserConstants {
                 this.jj_scanpos = xsp;
                 break;
             }
-        };
+        }
         return this.jj_3R_47();
     }
 
@@ -7200,7 +7193,7 @@ export class FMParser implements FMParserConstants {
                 this.jj_scanpos = xsp;
                 break;
             }
-        };
+        }
         return false;
     }
 
@@ -7325,7 +7318,7 @@ export class FMParser implements FMParserConstants {
             this.jj_input_stream.ReInit$java_io_InputStream$java_lang_String$int$int(stream, encoding, 1, 1);
         } catch(e) {
             throw Object.defineProperty(new Error(e.message), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.lang.RuntimeException','java.lang.Exception'] });
-        };
+        }
         this.token_source.ReInit$freemarker_core_SimpleCharStream(this.jj_input_stream);
         this.token = new Token();
         this.jj_ntk = -1;
@@ -7390,8 +7383,8 @@ export class FMParser implements FMParserConstants {
                     while((c != null)) {
                         if(c.gen < this.jj_gen) c.first = null;
                         c = c.next;
-                    };
-                };
+                    }
+                }
             }
             return this.token;
         }
@@ -7419,7 +7412,7 @@ export class FMParser implements FMParserConstants {
             while((tok != null && tok !== this.jj_scanpos)) {
                 i++;
                 tok = tok.next;
-            };
+            }
             if(tok != null) this.jj_add_error_token(kind, i);
         }
         if(this.jj_scanpos.kind !== kind) return true;
@@ -7447,7 +7440,7 @@ export class FMParser implements FMParserConstants {
         let t : Token = this.token;
         for(let i : number = 0; i < index; i++) {
             if(t.next != null) t = t.next; else t = t.next = this.token_source.getNextToken();
-        };
+        }
         return t;
     }
 
@@ -7475,7 +7468,7 @@ export class FMParser implements FMParserConstants {
             this.jj_expentry = (s => { let a=[]; while(s-->0) a.push(0); return a; })(this.jj_endpos);
             for(let i : number = 0; i < this.jj_endpos; i++) {
                 this.jj_expentry[i] = this.jj_lasttokens[i];
-            };
+            }
             for(let index138=0; index138 < this.jj_expentries.length; index138++) {
                 let oldentry = this.jj_expentries[index138];
                 {
@@ -7486,7 +7479,7 @@ export class FMParser implements FMParserConstants {
                                 isMatched = false;
                                 break;
                             }
-                        };
+                        }
                         if(isMatched) {
                             /* add */(this.jj_expentries.push(this.jj_expentry)>0);
                             break;
@@ -7529,23 +7522,23 @@ export class FMParser implements FMParserConstants {
                     if((FMParser.jj_la1_4_$LI$()[i] & (1 << j)) !== 0) {
                         la1tokens[128 + j] = true;
                     }
-                };
+                }
             }
-        };
+        }
         for(let i : number = 0; i < 157; i++) {
             if(la1tokens[i]) {
                 this.jj_expentry = [0];
                 this.jj_expentry[0] = i;
                 /* add */(this.jj_expentries.push(this.jj_expentry)>0);
             }
-        };
+        }
         this.jj_endpos = 0;
         this.jj_rescan_token();
         this.jj_add_error_token(0, 0);
         let exptokseq : number[][] = (s => { let a=[]; while(s-->0) a.push(null); return a; })(/* size */(<number>this.jj_expentries.length));
         for(let i : number = 0; i < /* size */(<number>this.jj_expentries.length); i++) {
             exptokseq[i] = /* get */this.jj_expentries[i];
-        };
+        }
         return new ParseException(this.token, exptokseq, FMParserConstants.tokenImage);
     }
 
@@ -7621,8 +7614,8 @@ export class FMParser implements FMParserConstants {
                     p = p.next;
                 } while((p != null));
             } catch(ls) {
-            };
-        };
+            }
+        }
         this.jj_rescan = false;
     }
 
@@ -7634,7 +7627,7 @@ export class FMParser implements FMParserConstants {
                 break;
             }
             p = p.next;
-        };
+        }
         p.gen = this.jj_gen + xla - this.jj_la;
         p.first = this.token;
         p.arg = xla;
@@ -7713,7 +7706,7 @@ export namespace FMParser {
 
 
 
-var __Function = Function;
+
 
 FMParser.jj_la1_4_$LI$();
 

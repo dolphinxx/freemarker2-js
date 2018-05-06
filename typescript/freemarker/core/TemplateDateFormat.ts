@@ -1,8 +1,8 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateDateModel } from '../template/TemplateDateModel';
-import { TemplateModelException } from '../template/TemplateModelException';
-import { TemplateValueFormat } from './TemplateValueFormat';
-import { TemplateValueFormatException } from './TemplateValueFormatException';
+import {TemplateDateModel} from '../template/TemplateDateModel';
+import {TemplateModelException} from '../template/TemplateModelException';
+import {TemplateValueFormat} from './TemplateValueFormat';
+import {TemplateValueFormatException} from './TemplateValueFormatException';
 
 /**
  * Represents a date/time/dateTime format; used in templates for formatting and parsing with that format. This is
@@ -78,4 +78,4 @@ TemplateDateFormat["__class"] = "freemarker.core.TemplateDateFormat";
 
 
 
-var __Function = Function;
+

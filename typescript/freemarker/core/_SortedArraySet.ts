@@ -1,6 +1,8 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { _UnmodifiableSet } from './_UnmodifiableSet';
-import { _ArrayIterator } from './_ArrayIterator';
+import {_UnmodifiableSet} from './_UnmodifiableSet';
+import {_ArrayIterator} from './_ArrayIterator';
+import {Collection} from "../../java/util/Collection";
+import {Iterator as _Iterator} from "../../java/util/Iterator";
 
 /**
  * Don't use this; used internally by FreeMarker, might changes without notice.
@@ -8,7 +10,7 @@ import { _ArrayIterator } from './_ArrayIterator';
  * @class
  * @extends _UnmodifiableSet
  */
-export class _SortedArraySet<E> extends _UnmodifiableSet<E> {
+export class _SortedArraySet<E = any> extends _UnmodifiableSet<E> {
     /*private*/ array : E[];
 
     public constructor(array : E[]) {
@@ -31,14 +33,14 @@ export class _SortedArraySet<E> extends _UnmodifiableSet<E> {
      * @return {boolean}
      */
     public contains(o : any) : boolean {
-        return Arrays.binarySearch(this.array, o) >= 0;
+        return this.array.indexOf(o) !== -1;
     }
 
     /**
      * 
      * @return {Iterator}
      */
-    public iterator() : Iterator {
+    public iterator() : _Iterator {
         return new _ArrayIterator(this.array);
     }
 
@@ -100,4 +102,4 @@ _SortedArraySet["__interfaces"] = ["java.util.Collection","java.util.Set","java.
 
 
 
-var __Function = Function;
+

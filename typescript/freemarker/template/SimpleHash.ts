@@ -1,18 +1,18 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { _DelayedJQuote } from '../core/_DelayedJQuote';
-import { _TemplateModelException } from '../core/_TemplateModelException';
-import { BeansWrapper } from '../ext/beans/BeansWrapper';
-import { WrappingTemplateModel } from './WrappingTemplateModel';
-import { TemplateHashModelEx2 } from './TemplateHashModelEx2';
-import { ObjectWrapper } from './ObjectWrapper';
-import { TemplateBooleanModel } from './TemplateBooleanModel';
-import { TemplateModel } from './TemplateModel';
-import { TemplateModelException } from './TemplateModelException';
-import { Character } from '../../java/lang/Character';
-import { TemplateCollectionModel } from './TemplateCollectionModel';
-import { SimpleCollection } from './SimpleCollection';
-import { KeyValuePairIterator } from './KeyValuePairIterator';
-import { MapKeyValuePairIterator } from './MapKeyValuePairIterator';
+import {_DelayedJQuote} from '../core/_DelayedJQuote';
+import {_TemplateModelException} from '../core/_TemplateModelException';
+import {WrappingTemplateModel} from './WrappingTemplateModel';
+import {TemplateHashModelEx2} from './TemplateHashModelEx2';
+import {ObjectWrapper} from './ObjectWrapper';
+import {TemplateBooleanModel} from './TemplateBooleanModel';
+import {TemplateModel} from './TemplateModel';
+import {TemplateModelException} from './TemplateModelException';
+import {TemplateCollectionModel} from './TemplateCollectionModel';
+import {SimpleCollection} from './SimpleCollection';
+import {KeyValuePairIterator} from './KeyValuePairIterator';
+import {MapKeyValuePairIterator} from './MapKeyValuePairIterator';
+import {Entry} from "../../java/util/Entry";
+import {Map} from "../../java/util/Map";
 
 /**
  * Creates a new hash by shallow-coping (possibly cloning) the underlying map; in many applications you should use
@@ -48,14 +48,10 @@ export class SimpleHash extends WrappingTemplateModel implements TemplateHashMod
                 try {
                     mapCopy = this.copyMap(map);
                 } catch(cme) {
-                    try {
-                        java.lang.Thread.sleep(5);
-                    } catch(ie) {
-                    };
                     {
                         mapCopy = this.copyMap(map);
-                    };
-                };
+                    }
+                }
                 this.map = mapCopy;
             })();
         } else if(((map != null && (map instanceof Map)) || map === null) && wrapper === undefined) {
@@ -75,14 +71,10 @@ export class SimpleHash extends WrappingTemplateModel implements TemplateHashMod
                     try {
                         mapCopy = this.copyMap(map);
                     } catch(cme) {
-                        try {
-                            java.lang.Thread.sleep(5);
-                        } catch(ie) {
-                        };
                         {
                             mapCopy = this.copyMap(map);
-                        };
-                    };
+                        }
+                    }
                     this.map = mapCopy;
                 })();
             }
@@ -119,17 +111,20 @@ export class SimpleHash extends WrappingTemplateModel implements TemplateHashMod
     }
 
     copyMap(map : Map<any, any>) : Map<any, any> {
-        if(map != null && (map instanceof Map)) {
-            return <Map<any, any>><any>/* clone */(m => { if(m.entries==null) m.entries=[]; let c = {entries: []}; for(let i=0;i<m.entries.length;i++) { let k = m.entries[i].key, v = m.entries[i].value; c.entries[i] = {key:k,value:v,getKey: function() { return this.key }, getValue: function() { return this.value }}; } return c; })((<Map<any, any>><any>map));
-        }
-        if(map != null && (map["__interfaces"] != null && map["__interfaces"].indexOf("java.util.SortedMap") >= 0 || map.constructor != null && map.constructor["__interfaces"] != null && map.constructor["__interfaces"].indexOf("java.util.SortedMap") >= 0)) {
-            if(map != null && (map instanceof Map)) {
-                return <Map<any, any>><any>/* clone */(m => { if(m.entries==null) m.entries=[]; let c = {entries: []}; for(let i=0;i<m.entries.length;i++) { let k = m.entries[i].key, v = m.entries[i].value; c.entries[i] = {key:k,value:v,getKey: function() { return this.key }, getValue: function() { return this.value }}; } return c; })((<Map<any, any>><any>map));
-            } else {
-                return <any>(new Map<any, any>());
-            }
-        }
-        return <any>(new Map<any, any>());
+        const result = new Map();
+        map.forEach((v, k, m) => result.set(k, v));
+        return result;
+        // if(map != null && (map instanceof Map)) {
+        //     return <Map<any, any>><any>/* clone */(m => { if(m.entries==null) m.entries=[]; let c = {entries: []}; for(let i=0;i<m.entries.length;i++) { let k = m.entries[i].key, v = m.entries[i].value; c.entries[i] = {key:k,value:v,getKey: function() { return this.key }, getValue: function() { return this.value }}; } return c; })((<Map<any, any>><any>map));
+        // }
+        // if(map != null && (map["__interfaces"] != null && map["__interfaces"].indexOf("java.util.SortedMap") >= 0 || map.constructor != null && map.constructor["__interfaces"] != null && map.constructor["__interfaces"].indexOf("java.util.SortedMap") >= 0)) {
+        //     if(map != null && (map instanceof Map)) {
+        //         return <Map<any, any>><any>/* clone */(m => { if(m.entries==null) m.entries=[]; let c = {entries: []}; for(let i=0;i<m.entries.length;i++) { let k = m.entries[i].key, v = m.entries[i].value; c.entries[i] = {key:k,value:v,getKey: function() { return this.key }, getValue: function() { return this.value }}; } return c; })((<Map<any, any>><any>map));
+        //     } else {
+        //         return <any>(new Map<any, any>());
+        //     }
+        // }
+        // return <any>(new Map<any, any>());
     }
 
     public put$java_lang_String$java_lang_Object(key : string, value : any) {
@@ -171,7 +166,7 @@ export class SimpleHash extends WrappingTemplateModel implements TemplateHashMod
                 throw new _TemplateModelException(e, "NullPointerException while getting Map entry with String key ", new _DelayedJQuote(key));
 
             }
-        };
+        }
         let putKey : any = null;
         if(result == null) {
             if(key.length === 1 && !(this.map != null && (this.map["__interfaces"] != null && this.map["__interfaces"].indexOf("java.util.SortedMap") >= 0 || this.map.constructor != null && this.map.constructor["__interfaces"] != null && this.map.constructor["__interfaces"].indexOf("java.util.SortedMap") >= 0))) {
@@ -192,7 +187,7 @@ export class SimpleHash extends WrappingTemplateModel implements TemplateHashMod
                         throw new _TemplateModelException(e, "NullPointerException while getting Map entry with Character key ", new _DelayedJQuote(key));
 
                     }
-                };
+                }
             }
             if(putKey == null) {
                 if(!/* containsKey */this.map.has(key)) {
@@ -213,7 +208,7 @@ export class SimpleHash extends WrappingTemplateModel implements TemplateHashMod
                 /* put */this.map.set(putKey, tm);
             } catch(e) {
                 this.putFailed = true;
-            };
+            }
         }
         return tm;
     }
@@ -251,9 +246,9 @@ export class SimpleHash extends WrappingTemplateModel implements TemplateHashMod
      */
     public putAll(m : Map<any, any>) {
         for(let it : any = /* iterator */((a) => { var i = 0; return { next: function() { return i<a.length?a[i++]:null; }, hasNext: function() { return i<a.length; }}})(/* entrySet */((m) => { if(m.entries==null) m.entries=[]; return m.entries; })(<any>m)); it.hasNext(); ) {
-            let entry : Entry = <Entry><any>it.next();
+            let entry : Entry<any, any> = <Entry<any, any>><any>it.next();
             this.put$java_lang_String$java_lang_Object(<string>entry.getKey(), entry.getValue());
-        };
+        }
     }
 
     /**
@@ -272,17 +267,17 @@ export class SimpleHash extends WrappingTemplateModel implements TemplateHashMod
                 m = <Map<any, any>><any>/* newInstance */new (mapClass)();
             } catch(e) {
                 throw new TemplateModelException("Error instantiating map of type " + /* getName */(c => c["__class"]?c["__class"]:c["name"])(mapClass) + "\n" + e.message);
-            };
-            let bw : BeansWrapper = BeansWrapper.getDefaultInstance();
+            }
+            let bw : /*BeansWrapper*/any = (require('../ext/beans/BeansWrapper').BeansWrapper).getDefaultInstance();
             for(let it : any = /* iterator */((a) => { var i = 0; return { next: function() { return i<a.length?a[i++]:null; }, hasNext: function() { return i<a.length; }}})(/* entrySet */((m) => { if(m.entries==null) m.entries=[]; return m.entries; })(<any>this.map)); it.hasNext(); ) {
-                let entry : Entry = <Entry><any>it.next();
+                let entry : Entry<any, any> = <Entry<any, any>><any>it.next();
                 let key : any = entry.getKey();
                 let value : any = entry.getValue();
                 if(value != null && (value["__interfaces"] != null && value["__interfaces"].indexOf("freemarker.template.TemplateModel") >= 0 || value.constructor != null && value.constructor["__interfaces"] != null && value.constructor["__interfaces"].indexOf("freemarker.template.TemplateModel") >= 0)) {
                     value = bw.unwrap$freemarker_template_TemplateModel(<TemplateModel><any>value);
                 }
                 /* put */m.set(key, value);
-            };
+            }
             this.unwrappedMap = m;
         }
         return this.unwrappedMap;
@@ -336,7 +331,7 @@ export namespace SimpleHash {
         public isEmpty() : boolean {
             {
                 return this.isEmpty();
-            };
+            }
         }
 
         /**
@@ -357,13 +352,13 @@ export namespace SimpleHash {
         public put$java_lang_String$java_lang_Object(key : string, obj : any) {
             {
                 this.put$java_lang_String$java_lang_Object(key, obj);
-            };
+            }
         }
 
         public get$java_lang_String(key : string) : TemplateModel {
             {
                 return this.get$java_lang_String(key);
-            };
+            }
         }
 
         /**
@@ -384,7 +379,7 @@ export namespace SimpleHash {
         public remove(key : string) {
             {
                 this.remove(key);
-            };
+            }
         }
 
         /**
@@ -394,7 +389,7 @@ export namespace SimpleHash {
         public size() : number {
             {
                 return this.size();
-            };
+            }
         }
 
         /**
@@ -404,7 +399,7 @@ export namespace SimpleHash {
         public keys() : TemplateCollectionModel {
             {
                 return this.keys();
-            };
+            }
         }
 
         /**
@@ -414,7 +409,7 @@ export namespace SimpleHash {
         public values() : TemplateCollectionModel {
             {
                 return this.values();
-            };
+            }
         }
 
         /**
@@ -424,7 +419,7 @@ export namespace SimpleHash {
         public keyValuePairIterator() : KeyValuePairIterator {
             {
                 return this.keyValuePairIterator();
-            };
+            }
         }
 
         /**
@@ -434,7 +429,7 @@ export namespace SimpleHash {
         public toMap() : Map<any, any> {
             {
                 return this.toMap();
-            };
+            }
         }
 
         constructor(__parent: any) {
@@ -450,4 +445,4 @@ export namespace SimpleHash {
 
 
 
-var __Function = Function;
+

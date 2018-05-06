@@ -1,7 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateConfiguration } from '../core/TemplateConfiguration';
-import { Configuration } from '../template/Configuration';
-import { TemplateConfigurationFactoryException } from './TemplateConfigurationFactoryException';
+import {TemplateConfigurationFactoryException} from './TemplateConfigurationFactoryException';
 
 /**
  * Creates (or returns) {link TemplateConfiguration}-s for template sources.
@@ -10,7 +8,7 @@ import { TemplateConfigurationFactoryException } from './TemplateConfigurationFa
  * @class
  */
 export abstract class TemplateConfigurationFactory {
-    /*private*/ cfg : Configuration;
+    /*private*/ cfg : /*Configuration*/any;
 
     /**
      * Returns (maybe creates) the {link TemplateConfiguration} for the given template source.
@@ -24,7 +22,7 @@ export abstract class TemplateConfigurationFactory {
      * fails.
      * @throws TemplateConfigurationFactoryException If there's a problem that's specific to the factory logic.
      */
-    public abstract get(sourceName : string, templateSource : any) : TemplateConfiguration;
+    public abstract get(sourceName : string, templateSource : any) : /*TemplateConfiguration*/any;
 
     /**
      * Binds this {link TemplateConfigurationFactory} to a {link Configuration}. Once it's bound, it can't be bound to
@@ -32,7 +30,7 @@ export abstract class TemplateConfigurationFactory {
      * {link Configuration#setTemplateConfigurations(TemplateConfigurationFactory)}.
      * @param {Configuration} cfg
      */
-    public setConfiguration(cfg : Configuration) {
+    public setConfiguration(cfg : /*Configuration*/any) {
         if(this.cfg != null) {
             if(cfg !== this.cfg) {
                 throw Object.defineProperty(new Error("The TemplateConfigurationFactory is already bound to another Configuration"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.IllegalStateException','java.lang.Object','java.lang.RuntimeException','java.lang.Exception'] });
@@ -49,7 +47,7 @@ export abstract class TemplateConfigurationFactory {
      * {link Configuration}.
      * @return {Configuration}
      */
-    public getConfiguration() : Configuration {
+    public getConfiguration() : /*Configuration*/any {
         return this.cfg;
     }
 
@@ -60,7 +58,7 @@ export abstract class TemplateConfigurationFactory {
      * "children" of this object, not on the children of the children.
      * @param {Configuration} cfg
      */
-    abstract setConfigurationOfChildren(cfg : Configuration);
+    abstract setConfigurationOfChildren(cfg : /*Configuration*/any);
 
     constructor() {
         if(this.cfg===undefined) this.cfg = null;

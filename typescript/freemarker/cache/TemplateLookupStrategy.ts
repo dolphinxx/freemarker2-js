@@ -1,6 +1,6 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateLookupResult } from './TemplateLookupResult';
-import { TemplateLookupContext } from './TemplateLookupContext';
+import {TemplateLookupResult} from './TemplateLookupResult';
+import {TemplateLookupContext} from './TemplateLookupContext';
 
 /**
  * Finds the {link TemplateLoader}-level (storage-level) template source for the template name with which the template

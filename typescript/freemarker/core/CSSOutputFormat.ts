@@ -1,5 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { OutputFormat } from './OutputFormat';
+import {OutputFormat} from './OutputFormat';
 
 /**
  * Represents the CSS output format (MIME type "text/css", name "CSS"). This format doesn't support escaping.

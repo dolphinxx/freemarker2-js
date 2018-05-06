@@ -1,8 +1,8 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateElement } from './TemplateElement';
-import { Environment } from './Environment';
-import { BreakOrContinueException } from './BreakOrContinueException';
-import { ParameterRole } from './ParameterRole';
+import {TemplateElement} from './TemplateElement';
+import {Environment} from './Environment';
+import {BreakOrContinueException} from './BreakOrContinueException';
+import {ParameterRole} from './ParameterRole';
 
 /**
  * Represents a &lt;break&gt; instruction to break out of a loop.
@@ -15,7 +15,7 @@ export class ContinueInstruction extends TemplateElement {
      * @param {Environment} env
      * @return {Array}
      */
-    accept(env : Environment) : TemplateElement[] {
+    accept(env : /*Environment*/any) : TemplateElement[] {
         throw BreakOrContinueException.CONTINUE_INSTANCE_$LI$();
     }
 

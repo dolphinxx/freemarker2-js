@@ -1,6 +1,6 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { ClassUtil } from '../template/utility/ClassUtil';
-import { StringUtil } from '../template/utility/StringUtil';
+import {ClassUtil} from '../template/utility/ClassUtil';
+import {StringUtil} from '../template/utility/StringUtil';
 
 /**
  * Represents an output format. If you need auto-escaping, see its subclass, {link MarkupOutputFormat}.
@@ -65,4 +65,4 @@ OutputFormat["__class"] = "freemarker.core.OutputFormat";
 
 
 
-var __Function = Function;
+

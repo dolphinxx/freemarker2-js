@@ -1,27 +1,22 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { AdapterTemplateModel } from '../template/AdapterTemplateModel';
-import { SimpleDate } from '../template/SimpleDate';
-import { SimpleScalar } from '../template/SimpleScalar';
-import { TemplateDateModel } from '../template/TemplateDateModel';
-import { TemplateException } from '../template/TemplateException';
-import { TemplateMethodModelEx } from '../template/TemplateMethodModelEx';
-import { TemplateModel } from '../template/TemplateModel';
-import { TemplateModelException } from '../template/TemplateModelException';
-import { TemplateScalarModel } from '../template/TemplateScalarModel';
-import { _TemplateAPI } from '../template/_TemplateAPI';
-import { DateUtil } from '../template/utility/DateUtil';
-import { UnrecognizedTimeZoneException } from '../template/utility/UnrecognizedTimeZoneException';
-import { BuiltIn } from './BuiltIn';
-import { Environment } from './Environment';
-import { Expression } from './Expression';
-import { EvalUtil } from './EvalUtil';
-import { BuiltInForDate } from './BuiltInForDate';
-import { _TemplateModelException } from './_TemplateModelException';
-import { _DelayedJQuote } from './_DelayedJQuote';
-import { _MessageUtil } from './_MessageUtil';
-import { Boolean } from '../../java/lang/Boolean';
-import { _MiscTemplateException } from './_MiscTemplateException';
-import { _ErrorDescriptionBuilder } from './_ErrorDescriptionBuilder';
+import {AdapterTemplateModel} from '../template/AdapterTemplateModel';
+import {SimpleDate} from '../template/SimpleDate';
+import {SimpleScalar} from '../template/SimpleScalar';
+import {TemplateDateModel} from '../template/TemplateDateModel';
+import {TemplateMethodModelEx} from '../template/TemplateMethodModelEx';
+import {TemplateModel} from '../template/TemplateModel';
+import {TemplateScalarModel} from '../template/TemplateScalarModel';
+import {_TemplateAPI} from '../template/_TemplateAPI';
+import {DateUtil} from '../template/utility/DateUtil';
+import {BuiltIn} from './BuiltIn';
+import {Environment} from './Environment';
+import {EvalUtil} from './EvalUtil';
+import {BuiltInForDate} from './BuiltInForDate';
+import {_TemplateModelException} from './_TemplateModelException';
+import {_DelayedJQuote} from './_DelayedJQuote';
+import {_MessageUtil} from './_MessageUtil';
+import {_MiscTemplateException} from './_MiscTemplateException';
+import {_ErrorDescriptionBuilder} from './_ErrorDescriptionBuilder';
 
 /**
  * A holder for built-ins that operate exclusively on date left-hand values.
@@ -50,7 +45,7 @@ export namespace BuiltInsForDates {
          * @param {Environment} env
          * @return {*}
          */
-        _eval(env : Environment) : TemplateModel {
+        _eval(env : /*Environment*/any) : TemplateModel {
             let model : TemplateModel = this.target.eval(env);
             if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateDateModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateDateModel") >= 0)) {
                 let tdm : TemplateDateModel = <TemplateDateModel><any>model;
@@ -64,7 +59,7 @@ export namespace BuiltInsForDates {
             }
         }
 
-        calculateResult(date : Date, dateType : number, env : Environment) : TemplateModel {
+        calculateResult(date : Date, dateType : number, env : /*Environment*/any) : TemplateModel {
             return null;
         }
     }
@@ -92,7 +87,7 @@ export namespace BuiltInsForDates {
             }
         }
 
-        shouldShowOffset(date : Date, dateType : number, env : Environment) : boolean {
+        shouldShowOffset(date : Date, dateType : number, env : /*Environment*/any) : boolean {
             if(dateType === TemplateDateModel.DATE) {
                 return false;
             } else if(this.showOffset != null) {
@@ -124,7 +119,7 @@ export namespace BuiltInsForDates {
          * @param {Environment} env
          * @return {*}
          */
-        calculateResult(date : Date, dateType : number, env : Environment) : TemplateModel {
+        calculateResult(date : Date, dateType : number, env : /*Environment*/any) : TemplateModel {
             this.checkDateTypeNotUnknown(dateType);
             return new iso_BI.Result(this, date, dateType, env);
         }
@@ -144,7 +139,7 @@ export namespace BuiltInsForDates {
 
             env : Environment;
 
-            constructor(__parent: any, date : Date, dateType : number, env : Environment) {
+            constructor(__parent: any, date : Date, dateType : number, env : /*Environment*/any) {
                 this.__parent = __parent;
                 if(this.date===undefined) this.date = null;
                 if(this.dateType===undefined) this.dateType = 0;
@@ -167,7 +162,7 @@ export namespace BuiltInsForDates {
                         tzArg = DateUtil.getTimeZone(tzName);
                     } catch(e) {
                         throw new _TemplateModelException("The time zone string specified for ?", this.__parent.key, "(...) is not recognized as a valid time zone name: ", new _DelayedJQuote(tzName));
-                    };
+                    }
                 } else {
                     throw _MessageUtil.newMethodArgUnexpectedTypeException("?" + this.__parent.key, 0, "string or java.util.TimeZone", tzArgTM);
                 }
@@ -203,7 +198,7 @@ export namespace BuiltInsForDates {
          * @param {Environment} env
          * @return {*}
          */
-        calculateResult(date : Date, dateType : number, env : Environment) : TemplateModel {
+        calculateResult(date : Date, dateType : number, env : /*Environment*/any) : TemplateModel {
             this.checkDateTypeNotUnknown(dateType);
             return new SimpleScalar(DateUtil.dateToISO8601String(date, dateType !== TemplateDateModel.TIME, dateType !== TemplateDateModel.DATE, this.shouldShowOffset(date, dateType, env), this.accuracy, this.useUTC?DateUtil.UTC_$LI$():env.shouldUseSQLDTTZ((<any>date.constructor))?env.getSQLDateAndTimeTimeZone():env.getTimeZone(), env.getISOBuiltInCalendarFactory()));
         }

@@ -44,7 +44,7 @@ export class DefaultListAdapter extends WrappingTemplateModel implements Templat
      * @return {DefaultListAdapter}
      */
     public static adapt(list : Array<any>, wrapper : RichObjectWrapper) : DefaultListAdapter {
-        return (list != null && list instanceof <any>AbstractSequentialList)?new DefaultListAdapter.DefaultListAdapterWithCollectionSupport(list, wrapper):new DefaultListAdapter(list, wrapper);
+        return new DefaultListAdapter(list, wrapper);
     }
 
     constructor(list : Array<any>, wrapper : RichObjectWrapper) {
@@ -103,4 +103,4 @@ export namespace DefaultListAdapter {
 
 
 
-var __Function = Function;
+

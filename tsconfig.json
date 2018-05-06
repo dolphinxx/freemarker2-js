@@ -10,7 +10,7 @@
     "moduleResolution": "node",
     "noImplicitAny": false,
     "target": "es6",
-    "lib": ["es5", "es6", "dom"],
+    "lib": ["es5", "dom"],
     "outFile": "./dist/build.js"
   }
 }

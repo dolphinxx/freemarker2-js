@@ -1,4 +1,8 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
+import {Entry} from "../../java/util/Entry";
+import {Set} from "../../java/util/Set";
+import {Map} from "../../java/util/Map";
+
 /**
  * Read-only empty map. {link #remove(Object)}, {link #clear()} and
  * {link #putAll(Map)} with an empty {link Map} as parameter are supported
@@ -21,8 +25,8 @@ export class EmptyMap {
         return false;
     }
 
-    public entrySet() : Array<any> {
-        return Collections.EMPTY_SET;
+    public entrySet() : Set<Entry<any, any>> {
+        return new Set();
     }
 
     public get(arg0 : any) : any {
@@ -33,8 +37,8 @@ export class EmptyMap {
         return true;
     }
 
-    public keySet() : Array<any> {
-        return Collections.EMPTY_SET;
+    public keySet() : Set<any> {
+        return new Set();
     }
 
     public put(arg0 : any, arg1 : any) : any {
@@ -56,7 +60,7 @@ export class EmptyMap {
     }
 
     public values() : Array<any> {
-        return Collections.EMPTY_LIST;
+        return [];
     }
 
     constructor() {
@@ -68,6 +72,6 @@ EmptyMap["__interfaces"] = ["java.lang.Cloneable","java.util.Map"];
 
 
 
-var __Function = Function;
+
 
 EmptyMap.instance_$LI$();

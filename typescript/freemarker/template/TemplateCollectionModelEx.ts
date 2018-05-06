@@ -1,6 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateCollectionModel } from './TemplateCollectionModel';
-import { TemplateModelException } from './TemplateModelException';
+import {TemplateCollectionModel} from './TemplateCollectionModel';
 
 /**
  * "collection" template language data type: Adds size/emptiness querybility to
@@ -27,4 +26,4 @@ export interface TemplateCollectionModelEx extends TemplateCollectionModel {
 }
 
 
-var __Function = Function;
+

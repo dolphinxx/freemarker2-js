@@ -1,6 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateModelException } from './TemplateModelException';
-import { KeyValuePair } from './KeyValuePair';
+import {KeyValuePair} from './KeyValuePair';
 
 /**
  * Iterates over the key-value pairs in a hash. This is very similar to an {link Iterator}, but has a fixed item
@@ -26,4 +25,4 @@ export interface KeyValuePairIterator {
 }
 
 
-var __Function = Function;
+

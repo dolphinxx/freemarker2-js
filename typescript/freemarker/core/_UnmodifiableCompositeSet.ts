@@ -1,5 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { _UnmodifiableSet } from './_UnmodifiableSet';
+import {_UnmodifiableSet} from './_UnmodifiableSet';
 
 /**
  * Don't use this; used internally by FreeMarker, might changes without notice.
@@ -110,4 +110,4 @@ export namespace _UnmodifiableCompositeSet {
 
 
 
-var __Function = Function;
+

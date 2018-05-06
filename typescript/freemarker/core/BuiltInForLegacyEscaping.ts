@@ -1,13 +1,10 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateException } from '../template/TemplateException';
-import { TemplateModel } from '../template/TemplateModel';
-import { BuiltInBannedWhenAutoEscaping } from './BuiltInBannedWhenAutoEscaping';
-import { Environment } from './Environment';
-import { Expression } from './Expression';
-import { EvalUtil } from './EvalUtil';
-import { TemplateMarkupOutputModel } from './TemplateMarkupOutputModel';
-import { MarkupOutputFormat } from './MarkupOutputFormat';
-import { NonStringException } from './NonStringException';
+import {TemplateModel} from '../template/TemplateModel';
+import {BuiltInBannedWhenAutoEscaping} from './BuiltInBannedWhenAutoEscaping';
+import {Environment} from './Environment';
+import {EvalUtil} from './EvalUtil';
+import {TemplateMarkupOutputModel} from './TemplateMarkupOutputModel';
+import {NonStringException} from './NonStringException';
 
 /**
  * A string built-in whose usage is banned when auto-escaping with a markup-output format is active.
@@ -21,7 +18,7 @@ export abstract class BuiltInForLegacyEscaping extends BuiltInBannedWhenAutoEsca
      * @param {Environment} env
      * @return {*}
      */
-    _eval(env : Environment) : TemplateModel {
+    _eval(env : /*Environment*/any) : TemplateModel {
         let tm : TemplateModel = this.target.eval(env);
         let moOrStr : any = EvalUtil.coerceModelToStringOrMarkup$freemarker_template_TemplateModel$freemarker_core_Expression$java_lang_String$freemarker_core_Environment(tm, this.target, null, env);
         if(typeof moOrStr === 'string') {
@@ -35,7 +32,7 @@ export abstract class BuiltInForLegacyEscaping extends BuiltInBannedWhenAutoEsca
         }
     }
 
-    abstract calculateResult(s : string, env : Environment) : TemplateModel;
+    abstract calculateResult(s : string, env : /*Environment*/any) : TemplateModel;
 
     constructor() {
         super();

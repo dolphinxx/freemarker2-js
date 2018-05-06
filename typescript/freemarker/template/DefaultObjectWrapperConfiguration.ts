@@ -1,8 +1,7 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { BeansWrapperConfiguration } from '../ext/beans/BeansWrapperConfiguration';
-import { Version } from './Version';
-import { DefaultObjectWrapper } from './DefaultObjectWrapper';
-import { _TemplateAPI } from './_TemplateAPI';
+import {BeansWrapperConfiguration} from '../ext/beans/BeansWrapperConfiguration';
+import {Version} from './Version';
+import {DefaultObjectWrapper} from './DefaultObjectWrapper';
 
 /**
  * Holds {link DefaultObjectWrapper} configuration settings and defines their defaults.
@@ -27,7 +26,7 @@ export abstract class DefaultObjectWrapperConfiguration extends BeansWrapperConf
         if(this.useAdaptersForContainers===undefined) this.useAdaptersForContainers = false;
         if(this.forceLegacyNonListCollections===undefined) this.forceLegacyNonListCollections = false;
         if(this.iterableSupport===undefined) this.iterableSupport = false;
-        this.useAdaptersForContainers = this.getIncompatibleImprovements().intValue() >= _TemplateAPI.VERSION_INT_2_3_22_$LI$();
+        this.useAdaptersForContainers = this.getIncompatibleImprovements().intValue() >= /*_TemplateAPI.VERSION_INT_2_3_22*/2003022;
         this.forceLegacyNonListCollections = true;
     }
 
@@ -113,4 +112,4 @@ DefaultObjectWrapperConfiguration["__interfaces"] = ["java.lang.Cloneable"];
 
 
 
-var __Function = Function;
+

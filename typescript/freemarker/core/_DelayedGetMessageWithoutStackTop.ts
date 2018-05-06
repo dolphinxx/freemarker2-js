@@ -1,6 +1,6 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateException } from '../template/TemplateException';
-import { _DelayedConversionToString } from './_DelayedConversionToString';
+import {TemplateException} from '../template/TemplateException';
+import {_DelayedConversionToString} from './_DelayedConversionToString';
 
 /**
  * Don't use this; used internally by FreeMarker, might changes without notice.
@@ -26,4 +26,4 @@ _DelayedGetMessageWithoutStackTop["__class"] = "freemarker.core._DelayedGetMessa
 
 
 
-var __Function = Function;
+

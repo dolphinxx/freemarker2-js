@@ -1,6 +1,6 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { _DelayedConversionToString } from './_DelayedConversionToString';
-import { TemplateObject } from './TemplateObject';
+import {_DelayedConversionToString} from './_DelayedConversionToString';
+import {TemplateObject} from './TemplateObject';
 
 /**
  * Don't use this; used internally by FreeMarker, might changes without notice.
@@ -23,11 +23,11 @@ export class _DelayedGetCanonicalForm extends _DelayedConversionToString {
             return (<TemplateObject>obj).getCanonicalForm();
         } catch(e) {
             return "{Error getting canonical form}";
-        };
+        }
     }
 }
 _DelayedGetCanonicalForm["__class"] = "freemarker.core._DelayedGetCanonicalForm";
 
 
 
-var __Function = Function;
+

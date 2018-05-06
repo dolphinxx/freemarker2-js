@@ -1,12 +1,12 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { ObjectWrapper } from '../../template/ObjectWrapper';
-import { TemplateDateModel } from '../../template/TemplateDateModel';
-import { Version } from '../../template/Version';
-import { _TemplateAPI } from '../../template/_TemplateAPI';
-import { ClassIntrospectorBuilder } from './ClassIntrospectorBuilder';
-import { BeansWrapper } from './BeansWrapper';
-import { MethodAppearanceFineTuner } from './MethodAppearanceFineTuner';
-import { MethodSorter } from './MethodSorter';
+import {ObjectWrapper} from '../../template/ObjectWrapper';
+import {TemplateDateModel} from '../../template/TemplateDateModel';
+import {Version} from '../../template/Version';
+import {_TemplateAPI} from '../../template/_TemplateAPI';
+import {ClassIntrospectorBuilder} from './ClassIntrospectorBuilder';
+import {BeansWrapper} from './BeansWrapper';
+import {MethodAppearanceFineTuner} from './MethodAppearanceFineTuner';
+import {MethodSorter} from './MethodSorter';
 
 /**
  * Holds {link BeansWrapper} configuration settings and defines their defaults.
@@ -57,7 +57,7 @@ export abstract class BeansWrapperConfiguration {
                 _TemplateAPI.checkVersionNotNullAndSupported(incompatibleImprovements);
                 incompatibleImprovements = isIncompImprsAlreadyNormalized?incompatibleImprovements:BeansWrapper.normalizeIncompatibleImprovementsVersion(incompatibleImprovements);
                 this.incompatibleImprovements = incompatibleImprovements;
-                this.preferIndexedReadMethod = incompatibleImprovements.intValue() < _TemplateAPI.VERSION_INT_2_3_27_$LI$();
+                this.preferIndexedReadMethod = incompatibleImprovements.intValue() < /*_TemplateAPI.VERSION_INT_2_3_27*/2003027;
                 this.classIntrospectorBuilder = new ClassIntrospectorBuilder(incompatibleImprovements);
             })();
         } else if(((incompatibleImprovements != null && incompatibleImprovements instanceof <any>Version) || incompatibleImprovements === null) && isIncompImprsAlreadyNormalized === undefined) {
@@ -80,7 +80,7 @@ export abstract class BeansWrapperConfiguration {
                     _TemplateAPI.checkVersionNotNullAndSupported(incompatibleImprovements);
                     incompatibleImprovements = isIncompImprsAlreadyNormalized?incompatibleImprovements:BeansWrapper.normalizeIncompatibleImprovementsVersion(incompatibleImprovements);
                     this.incompatibleImprovements = incompatibleImprovements;
-                    this.preferIndexedReadMethod = incompatibleImprovements.intValue() < _TemplateAPI.VERSION_INT_2_3_27_$LI$();
+                    this.preferIndexedReadMethod = incompatibleImprovements.intValue() < /*_TemplateAPI.VERSION_INT_2_3_27*/2003027;
                     this.classIntrospectorBuilder = new ClassIntrospectorBuilder(incompatibleImprovements);
                 })();
             }
@@ -135,7 +135,7 @@ export abstract class BeansWrapperConfiguration {
             return clone;
         } catch(e) {
             throw Object.defineProperty(new Error("Failed to clone BeansWrapperConfiguration"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.lang.RuntimeException','java.lang.Exception'] });
-        };
+        }
     }
 
     public isSimpleMapWrapper() : boolean {
@@ -287,4 +287,4 @@ BeansWrapperConfiguration["__interfaces"] = ["java.lang.Cloneable"];
 
 
 
-var __Function = Function;
+

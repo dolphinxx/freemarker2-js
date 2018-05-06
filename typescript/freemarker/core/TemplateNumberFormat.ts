@@ -1,9 +1,9 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateModelException } from '../template/TemplateModelException';
-import { TemplateNumberModel } from '../template/TemplateNumberModel';
-import { TemplateValueFormat } from './TemplateValueFormat';
-import { TemplateValueFormatException } from './TemplateValueFormatException';
-import { ParsingNotSupportedException } from './ParsingNotSupportedException';
+import {TemplateModelException} from '../template/TemplateModelException';
+import {TemplateNumberModel} from '../template/TemplateNumberModel';
+import {TemplateValueFormat} from './TemplateValueFormat';
+import {TemplateValueFormatException} from './TemplateValueFormatException';
+import {ParsingNotSupportedException} from './ParsingNotSupportedException';
 
 /**
  * Represents a number format; used in templates for formatting and parsing with that format. This is similar to Java's
@@ -75,4 +75,4 @@ TemplateNumberFormat["__class"] = "freemarker.core.TemplateNumberFormat";
 
 
 
-var __Function = Function;
+

@@ -1,19 +1,17 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { KeyValuePair } from '../template/KeyValuePair';
-import { KeyValuePairIterator } from '../template/KeyValuePairIterator';
-import { SimpleSequence } from '../template/SimpleSequence';
-import { TemplateCollectionModel } from '../template/TemplateCollectionModel';
-import { TemplateException } from '../template/TemplateException';
-import { TemplateHashModelEx2 } from '../template/TemplateHashModelEx2';
-import { TemplateModel } from '../template/TemplateModel';
-import { TemplateModelException } from '../template/TemplateModelException';
-import { TemplateModelIterator } from '../template/TemplateModelIterator';
-import { _TemplateAPI } from '../template/_TemplateAPI';
-import { Expression } from './Expression';
-import { Environment } from './Environment';
-import { StringBuilder } from '../../java/lang/StringBuilder';
-import { CollectionAndSequence } from './CollectionAndSequence';
-import { ParameterRole } from './ParameterRole';
+import {KeyValuePair} from '../template/KeyValuePair';
+import {KeyValuePairIterator} from '../template/KeyValuePairIterator';
+import {SimpleSequence} from '../template/SimpleSequence';
+import {TemplateCollectionModel} from '../template/TemplateCollectionModel';
+import {TemplateHashModelEx2} from '../template/TemplateHashModelEx2';
+import {TemplateModel} from '../template/TemplateModel';
+import {TemplateModelIterator} from '../template/TemplateModelIterator';
+import {_TemplateAPI} from '../template/_TemplateAPI';
+import {StringBuilder} from '../../java/lang/StringBuilder';
+import {CollectionAndSequence} from './CollectionAndSequence';
+import {ParameterRole} from './ParameterRole';
+import {Expression} from "./Expression";
+import {Map} from "../../java/util/Map";
 
 export class HashLiteral extends Expression {
     /*private*/ keys : Array<any>;
@@ -30,8 +28,6 @@ export class HashLiteral extends Expression {
         this.keys = keys;
         this.values = values;
         this.size = /* size */(<number>keys.length);
-        keys.trimToSize();
-        values.trimToSize();
     }
 
     /**
@@ -39,7 +35,7 @@ export class HashLiteral extends Expression {
      * @param {Environment} env
      * @return {*}
      */
-    _eval(env : Environment) : TemplateModel {
+    _eval(env : /*Environment*/any) : TemplateModel {
         return new HashLiteral.SequenceHash(this, env);
     }
 
@@ -58,7 +54,7 @@ export class HashLiteral extends Expression {
             if(i !== this.size - 1) {
                 buf.append(", ");
             }
-        };
+        }
         buf.append("}");
         return buf.toString();
     }
@@ -85,7 +81,7 @@ export class HashLiteral extends Expression {
             if(!key.isLiteral() || !value.isLiteral()) {
                 return false;
             }
-        };
+        }
         return true;
     }
 
@@ -100,11 +96,11 @@ export class HashLiteral extends Expression {
         let clonedKeys : Array<any> = <Array<any>>/* clone *//* clone */((o:any) => { if(o.clone!=undefined) { return (<any>o).clone(); } else { let clone = Object.create(o); for(let p in o) { if (o.hasOwnProperty(p)) clone[p] = o[p]; } return clone; } })(this.keys);
         for(let iter : any = /* listIterator */((a) => { var i = 0; return { next: function() { return i<a.length?a[i++]:null; }, hasNext: function() { return i<a.length; }}})(clonedKeys); iter.hasNext(); ) {
             iter.set((<Expression>iter.next()).deepCloneWithIdentifierReplaced(replacedIdentifier, replacement, replacementState));
-        };
+        }
         let clonedValues : Array<any> = <Array<any>>/* clone *//* clone */((o:any) => { if(o.clone!=undefined) { return (<any>o).clone(); } else { let clone = Object.create(o); for(let p in o) { if (o.hasOwnProperty(p)) clone[p] = o[p]; } return clone; } })(this.values);
         for(let iter : any = /* listIterator */((a) => { var i = 0; return { next: function() { return i<a.length?a[i++]:null; }, hasNext: function() { return i<a.length; }}})(clonedValues); iter.hasNext(); ) {
             iter.set((<Expression>iter.next()).deepCloneWithIdentifierReplaced(replacedIdentifier, replacement, replacementState));
-        };
+        }
         return new HashLiteral(clonedKeys, clonedValues);
     }
 
@@ -155,12 +151,12 @@ export namespace HashLiteral {
 
         valueCollection : TemplateCollectionModel;
 
-        constructor(__parent: any, env : Environment) {
+        constructor(__parent: any, env : /*Environment*/any) {
             this.__parent = __parent;
             if(this.map===undefined) this.map = null;
             if(this.keyCollection===undefined) this.keyCollection = null;
             if(this.valueCollection===undefined) this.valueCollection = null;
-            if(_TemplateAPI.getTemplateLanguageVersionAsInt$freemarker_core_TemplateObject(__parent) >= _TemplateAPI.VERSION_INT_2_3_21_$LI$()) {
+            if(_TemplateAPI.getTemplateLanguageVersionAsInt$freemarker_core_TemplateObject(__parent) >= /*_TemplateAPI.VERSION_INT_2_3_21_$LI$()*/2003021) {
                 this.map = <any>(new Map<any, any>());
                 for(let i : number = 0; i < __parent.size; i++) {
                     let keyExp : Expression = <Expression>/* get */__parent.keys[i];
@@ -171,7 +167,7 @@ export namespace HashLiteral {
                         valExp.assertNonNull(value, env);
                     }
                     /* put */this.map.set(key, value);
-                };
+                }
             } else {
                 this.map = <any>(new Map<any, any>());
                 let keyList : Array<any> = <any>([]);
@@ -187,7 +183,7 @@ export namespace HashLiteral {
                     /* put */this.map.set(key, value);
                     /* add */(keyList.push(key)>0);
                     /* add */(valueList.push(value)>0);
-                };
+                }
                 this.keyCollection = new CollectionAndSequence(new SimpleSequence(keyList));
                 this.valueCollection = new CollectionAndSequence(new SimpleSequence(valueList));
             }
@@ -301,4 +297,4 @@ export namespace HashLiteral {
 
 
 
-var __Function = Function;
+

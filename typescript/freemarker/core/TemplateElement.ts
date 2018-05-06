@@ -1,16 +1,8 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { SimpleSequence } from '../template/SimpleSequence';
-import { TemplateException } from '../template/TemplateException';
-import { TemplateNodeModel } from '../template/TemplateNodeModel';
-import { TemplateSequenceModel } from '../template/TemplateSequenceModel';
-import { TemplateObject } from './TemplateObject';
-import { Environment } from './Environment';
-import { StringBuilder } from '../../java/lang/StringBuilder';
-import { _ArrayEnumeration } from './_ArrayEnumeration';
-import { TemplateElements } from './TemplateElements';
-import { ParseException } from './ParseException';
-import { Macro } from './Macro';
-import { BlockAssignment } from './BlockAssignment';
+import {TemplateObject} from './TemplateObject';
+import {StringBuilder} from '../../java/lang/StringBuilder';
+import {_ArrayEnumeration} from './_ArrayEnumeration';
+import {ClassUtil} from "../template/utility/ClassUtil";
 
 /**
  * <b>Internal API - subject to change:</b> Represent directive call, interpolation, text block, or other such
@@ -56,7 +48,7 @@ export abstract class TemplateElement extends TemplateObject {
      * executing them inside this method is a trick used for decreasing stack usage when there's nothing to do
      * after the children was processed anyway.
      */
-    abstract accept(env : Environment) : TemplateElement[];
+    abstract accept(env : /*Environment*/any) : TemplateElement[];
 
     /**
      * One-line description of the element, that contains all the information that is used in
@@ -137,7 +129,7 @@ export abstract class TemplateElement extends TemplateObject {
 
     dump$boolean(canonical : boolean) : string { throw new Error('cannot invoke abstract overloaded method... check your argument(s) type(s)'); }
 
-    public getParentNode() : TemplateNodeModel {
+    public getParentNode() : /*TemplateNodeModel*/any {
         return null;
     }
 
@@ -149,12 +141,13 @@ export abstract class TemplateElement extends TemplateObject {
         return "element";
     }
 
-    public getChildNodes() : TemplateSequenceModel {
+    public getChildNodes() : /*TemplateSequenceModel*/any {
+        const SimpleSequence = require('../template/SimpleSequence').SimpleSequence;
         if(this.childBuffer != null) {
-            let seq : SimpleSequence = new SimpleSequence(this.childCount);
+            let seq : /*SimpleSequence*/any = new SimpleSequence(this.childCount);
             for(let i : number = 0; i < this.childCount; i++) {
                 seq.add$java_lang_Object(this.childBuffer[i]);
-            };
+            }
             return seq;
         } else {
             return new SimpleSequence(0);
@@ -184,7 +177,7 @@ export abstract class TemplateElement extends TemplateObject {
             if(/* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(this.childBuffer[i],node))) {
                 return i;
             }
-        };
+        }
         return -1;
     }
 
@@ -206,7 +199,7 @@ export abstract class TemplateElement extends TemplateObject {
      * @return {Enumeration}
      */
     public children() : any {
-        return this.childBuffer != null?new _ArrayEnumeration(this.childBuffer, this.childCount):Collections.enumeration<any>(Collections.EMPTY_LIST);
+        return this.childBuffer != null?new _ArrayEnumeration(this.childBuffer, this.childCount):[];
     }
 
     /**
@@ -222,7 +215,7 @@ export abstract class TemplateElement extends TemplateObject {
             return this.childBuffer[index];
         } catch(e) {
             throw Object.defineProperty(new Error("Index: " + index + ", Size: " + this.childCount), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.IndexOutOfBoundsException','java.lang.Object','java.lang.RuntimeException','java.lang.Exception'] });
-        };
+        }
     }
 
     public setChildAt(index : number, element : TemplateElement) {
@@ -258,7 +251,7 @@ export abstract class TemplateElement extends TemplateObject {
         let newChildBuffer : TemplateElement[] = (s => { let a=[]; while(s-->0) a.push(null); return a; })(capacity);
         for(let i : number = 0; i < ln; i++) {
             newChildBuffer[i] = this.childBuffer[i];
-        };
+        }
         this.childBuffer = newChildBuffer;
     }
 
@@ -280,7 +273,7 @@ export abstract class TemplateElement extends TemplateObject {
             let movedElement : TemplateElement = childBuffer[i - 1];
             movedElement.index = i;
             childBuffer[i] = movedElement;
-        };
+        }
         nestedElement.index = index;
         nestedElement.parent = this;
         childBuffer[index] = nestedElement;
@@ -316,14 +309,14 @@ export abstract class TemplateElement extends TemplateObject {
      * @param {TemplateElements} buffWithCnt Maybe {@code null}
      * @since 2.3.24
      */
-    setChildren(buffWithCnt : TemplateElements) {
+    setChildren(buffWithCnt : /*TemplateElements*/any) {
         let childBuffer : TemplateElement[] = buffWithCnt.getBuffer();
         let childCount : number = buffWithCnt.getCount();
         for(let i : number = 0; i < childCount; i++) {
             let child : TemplateElement = childBuffer[i];
             child.index = i;
             child.parent = this;
-        };
+        }
         this.childBuffer = childBuffer;
         this.childCount = childCount;
     }
@@ -359,7 +352,7 @@ export abstract class TemplateElement extends TemplateObject {
                 this.childBuffer[i] = te;
                 te.parent = this;
                 te.index = i;
-            };
+            }
             for(let i : number = 0; i < childCount; i++) {
                 let te : TemplateElement = this.childBuffer[i];
                 if(te.isIgnorable(stripWhitespace)) {
@@ -368,19 +361,19 @@ export abstract class TemplateElement extends TemplateObject {
                         let te2 : TemplateElement = this.childBuffer[j + 1];
                         this.childBuffer[j] = te2;
                         te2.index = j;
-                    };
+                    }
                     this.childBuffer[childCount] = null;
                     this.childCount = childCount;
                     i--;
                 }
-            };
+            }
             if(childCount === 0) {
                 this.childBuffer = null;
             } else if(childCount < this.childBuffer.length && childCount <= (this.childBuffer.length * 3 / 4|0)) {
                 let trimmedChildBuffer : TemplateElement[] = (s => { let a=[]; while(s-->0) a.push(null); return a; })(childCount);
                 for(let i : number = 0; i < childCount; i++) {
                     trimmedChildBuffer[i] = this.childBuffer[i];
-                };
+                }
                 this.childBuffer = trimmedChildBuffer;
             }
         }
@@ -436,17 +429,17 @@ export abstract class TemplateElement extends TemplateObject {
 
     /*private*/ getFirstLeaf() : TemplateElement {
         let te : TemplateElement = this;
-        while((!te.isLeaf() && !(te != null && te instanceof <any>Macro) && !(te != null && te instanceof <any>BlockAssignment))) {
+        while((!te.isLeaf() && !(te != null && te instanceof <any>(require('./Macro').Macro)) && !(ClassUtil.isInstanceOf(te, 'freemarker.core.BlockAssignment')))) {
             te = te.getFirstChild();
-        };
+        }
         return te;
     }
 
     /*private*/ getLastLeaf() : TemplateElement {
         let te : TemplateElement = this;
-        while((!te.isLeaf() && !(te != null && te instanceof <any>Macro) && !(te != null && te instanceof <any>BlockAssignment))) {
+        while((!te.isLeaf() && !(te != null && te instanceof <any>(require('./Macro').Macro)) && !(ClassUtil.isInstanceOf(te, 'freemarker.core.BlockAssignment')))) {
             te = te.getLastChild();
-        };
+        }
         return te;
     }
 
@@ -465,7 +458,7 @@ export abstract class TemplateElement extends TemplateObject {
             if(!this.childBuffer[i].isOutputCacheable()) {
                 return false;
             }
-        };
+        }
         return true;
     }
 
@@ -496,7 +489,3 @@ export abstract class TemplateElement extends TemplateObject {
     }
 }
 TemplateElement["__class"] = "freemarker.core.TemplateElement";
-
-
-
-var __Function = Function;

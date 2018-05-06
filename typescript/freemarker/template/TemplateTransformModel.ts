@@ -1,7 +1,8 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { Writer } from '../../java/io/Writer';
-import { TemplateModel } from './TemplateModel';
-import { TemplateModelException } from './TemplateModelException';
+import {Writer} from '../../java/io/Writer';
+import {TemplateModel} from './TemplateModel';
+import {TemplateModelException} from './TemplateModelException';
+import {Map} from '../../java/util/Map';
 
 /**
  * "transform" template language data type: user-defined directives
@@ -38,6 +39,3 @@ export interface TemplateTransformModel extends TemplateModel {
      */
     getWriter(out : Writer, args : Map<any, any>) : Writer;
 }
-
-
-var __Function = Function;

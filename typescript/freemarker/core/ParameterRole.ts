@@ -112,7 +112,7 @@ ParameterRole["__class"] = "freemarker.core.ParameterRole";
 
 
 
-var __Function = Function;
+
 
 ParameterRole.MESSAGE_$LI$();
 

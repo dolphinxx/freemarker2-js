@@ -1,6 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateModel } from './TemplateModel';
-import { TemplateModelException } from './TemplateModelException';
+import {TemplateModel} from './TemplateModel';
 
 /**
  * "sequence" template language data type; an object that contains other objects accessible through an integer 0-based
@@ -22,4 +21,4 @@ export interface TemplateSequenceModel extends TemplateModel {
 }
 
 
-var __Function = Function;
+

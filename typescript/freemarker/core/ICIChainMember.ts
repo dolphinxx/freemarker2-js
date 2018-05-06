@@ -19,4 +19,4 @@ export interface ICIChainMember {
 }
 
 
-var __Function = Function;
+

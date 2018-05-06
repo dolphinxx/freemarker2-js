@@ -1,27 +1,23 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { SimpleNumber } from '../template/SimpleNumber';
-import { SimpleScalar } from '../template/SimpleScalar';
-import { SimpleSequence } from '../template/SimpleSequence';
-import { TemplateCollectionModel } from '../template/TemplateCollectionModel';
-import { TemplateException } from '../template/TemplateException';
-import { TemplateHashModel } from '../template/TemplateHashModel';
-import { TemplateHashModelEx } from '../template/TemplateHashModelEx';
-import { TemplateModel } from '../template/TemplateModel';
-import { TemplateModelException } from '../template/TemplateModelException';
-import { TemplateModelIterator } from '../template/TemplateModelIterator';
-import { TemplateNumberModel } from '../template/TemplateNumberModel';
-import { TemplateScalarModel } from '../template/TemplateScalarModel';
-import { TemplateSequenceModel } from '../template/TemplateSequenceModel';
-import { Expression } from './Expression';
-import { Environment } from './Environment';
-import { TemplateObject } from './TemplateObject';
-import { EvalUtil } from './EvalUtil';
-import { TemplateMarkupOutputModel } from './TemplateMarkupOutputModel';
-import { MarkupOutputFormat } from './MarkupOutputFormat';
-import { NonStringOrTemplateOutputException } from './NonStringOrTemplateOutputException';
-import { ArithmeticEngine } from './ArithmeticEngine';
-import { ParameterRole } from './ParameterRole';
-import { CollectionAndSequence } from './CollectionAndSequence';
+import {SimpleNumber} from '../template/SimpleNumber';
+import {SimpleScalar} from '../template/SimpleScalar';
+import {SimpleSequence} from '../template/SimpleSequence';
+import {TemplateCollectionModel} from '../template/TemplateCollectionModel';
+import {TemplateHashModel} from '../template/TemplateHashModel';
+import {TemplateHashModelEx} from '../template/TemplateHashModelEx';
+import {TemplateModel} from '../template/TemplateModel';
+import {TemplateModelIterator} from '../template/TemplateModelIterator';
+import {TemplateNumberModel} from '../template/TemplateNumberModel';
+import {TemplateScalarModel} from '../template/TemplateScalarModel';
+import {TemplateSequenceModel} from '../template/TemplateSequenceModel';
+import {Expression} from './Expression';
+import {Environment} from './Environment';
+import {TemplateObject} from './TemplateObject';
+import {EvalUtil} from './EvalUtil';
+import {TemplateMarkupOutputModel} from './TemplateMarkupOutputModel';
+import {ArithmeticEngine} from './ArithmeticEngine';
+import {ParameterRole} from './ParameterRole';
+import {CollectionAndSequence} from './CollectionAndSequence';
 
 /**
  * An operator for the + operator. Note that this is treated
@@ -48,7 +44,7 @@ export class AddConcatExpression extends Expression {
      * @param {Environment} env
      * @return {*}
      */
-    _eval(env : Environment) : TemplateModel {
+    _eval(env : /*Environment*/any) : TemplateModel {
         return AddConcatExpression._eval(env, this, this.left, this.left.eval(env), this.right, this.right.eval(env));
     }
 
@@ -61,7 +57,7 @@ export class AddConcatExpression extends Expression {
      * @param {*} rightModel
      * @return {*}
      */
-    static _eval(env : Environment, parent : TemplateObject, leftExp : Expression, leftModel : TemplateModel, rightExp : Expression, rightModel : TemplateModel) : TemplateModel {
+    static _eval(env : /*Environment*/any, parent : TemplateObject, leftExp : Expression, leftModel : TemplateModel, rightExp : Expression, rightModel : TemplateModel) : TemplateModel {
         if((leftModel != null && (leftModel["__interfaces"] != null && leftModel["__interfaces"].indexOf("freemarker.template.TemplateNumberModel") >= 0 || leftModel.constructor != null && leftModel.constructor["__interfaces"] != null && leftModel.constructor["__interfaces"].indexOf("freemarker.template.TemplateNumberModel") >= 0)) && (rightModel != null && (rightModel["__interfaces"] != null && rightModel["__interfaces"].indexOf("freemarker.template.TemplateNumberModel") >= 0 || rightModel.constructor != null && rightModel.constructor["__interfaces"] != null && rightModel.constructor["__interfaces"].indexOf("freemarker.template.TemplateNumberModel") >= 0))) {
             let first : number = EvalUtil.modelToNumber(<TemplateNumberModel><any>leftModel, leftExp);
             let second : number = EvalUtil.modelToNumber(<TemplateNumberModel><any>rightModel, rightExp);
@@ -100,7 +96,7 @@ export class AddConcatExpression extends Expression {
                 } else {
                     throw e;
                 }
-            };
+            }
         }
     }
 
@@ -120,7 +116,7 @@ export class AddConcatExpression extends Expression {
         }
     }
 
-    static _evalOnNumbers(env : Environment, parent : TemplateObject, first : number, second : number) : TemplateModel {
+    static _evalOnNumbers(env : /*Environment*/any, parent : TemplateObject, first : number, second : number) : TemplateModel {
         let ae : ArithmeticEngine = EvalUtil.getArithmeticEngine(env, parent);
         return new SimpleNumber(ae.add(first, second));
     }
@@ -290,7 +286,7 @@ export namespace AddConcatExpression {
                 if(/* add */((s, e) => { if(s.indexOf(e)==-1) { s.push(e); return true; } else { return false; } })(set, tsm.getAsString())) {
                     keySeq.add$java_lang_Object(tsm);
                 }
-            };
+            }
         }
 
         initValues() {
@@ -299,7 +295,7 @@ export namespace AddConcatExpression {
                 let ln : number = this.__keys.size();
                 for(let i : number = 0; i < ln; i++) {
                     seq.add$java_lang_Object(this.get((<TemplateScalarModel><any>this.__keys.get(i)).getAsString()));
-                };
+                }
                 this.__values = new CollectionAndSequence(seq);
             }
         }

@@ -1,14 +1,14 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { Constants } from './utility/Constants';
-import { TemplateBooleanModel } from './TemplateBooleanModel';
-import { TemplateScalarModel } from './TemplateScalarModel';
-import { TemplateSequenceModel } from './TemplateSequenceModel';
-import { TemplateHashModelEx2 } from './TemplateHashModelEx2';
-import { TemplateMethodModelEx } from './TemplateMethodModelEx';
-import { TemplateModel } from './TemplateModel';
-import { TemplateModelException } from './TemplateModelException';
-import { TemplateCollectionModel } from './TemplateCollectionModel';
-import { KeyValuePairIterator } from './KeyValuePairIterator';
+import {Constants} from './utility/Constants';
+import {TemplateBooleanModel} from './TemplateBooleanModel';
+import {TemplateScalarModel} from './TemplateScalarModel';
+import {TemplateSequenceModel} from './TemplateSequenceModel';
+import {TemplateHashModelEx2} from './TemplateHashModelEx2';
+import {TemplateMethodModelEx} from './TemplateMethodModelEx';
+import {TemplateModel} from './TemplateModel';
+import {TemplateModelException} from './TemplateModelException';
+import {TemplateCollectionModel} from './TemplateCollectionModel';
+import {KeyValuePairIterator} from './KeyValuePairIterator';
 
 /**
  * Singleton object representing nothing, used by ?if_exists built-in.
@@ -80,6 +80,6 @@ GeneralPurposeNothing["__interfaces"] = ["freemarker.template.TemplateMethodMode
 
 
 
-var __Function = Function;
+
 
 GeneralPurposeNothing.instance_$LI$();

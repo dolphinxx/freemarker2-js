@@ -1,8 +1,7 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateModelException } from '../template/TemplateModelException';
-import { Writer } from '../../java/io/Writer';
-import { TemplateMarkupOutputModel } from './TemplateMarkupOutputModel';
-import { OutputFormat } from './OutputFormat';
+import {Writer} from '../../java/io/Writer';
+import {TemplateMarkupOutputModel} from './TemplateMarkupOutputModel';
+import {OutputFormat} from './OutputFormat';
 
 /**
  * Superclass of {link OutputFormat}-s that represent a "markup" format, which is any format where certain character
@@ -153,4 +152,4 @@ MarkupOutputFormat["__class"] = "freemarker.core.MarkupOutputFormat";
 
 
 
-var __Function = Function;
+

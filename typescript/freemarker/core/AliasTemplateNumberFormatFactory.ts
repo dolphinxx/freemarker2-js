@@ -1,12 +1,11 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { StringUtil } from '../template/utility/StringUtil';
-import { TemplateNumberFormatFactory } from './TemplateNumberFormatFactory';
-import { TemplateNumberFormat } from './TemplateNumberFormat';
-import { Environment } from './Environment';
-import { TemplateValueFormatException } from './TemplateValueFormatException';
-import { TemplateFormatUtil } from './TemplateFormatUtil';
-import { _CoreLocaleUtils } from './_CoreLocaleUtils';
-import { AliasTargetTemplateValueFormatException } from './AliasTargetTemplateValueFormatException';
+import {StringUtil} from '../template/utility/StringUtil';
+import {TemplateNumberFormatFactory} from './TemplateNumberFormatFactory';
+import {TemplateNumberFormat} from './TemplateNumberFormat';
+import {Environment} from './Environment';
+import {TemplateFormatUtil} from './TemplateFormatUtil';
+import {_CoreLocaleUtils} from './_CoreLocaleUtils';
+import {AliasTargetTemplateValueFormatException} from './AliasTargetTemplateValueFormatException';
 
 /**
  * @param {String} defaultTargetFormatString    The format string this format will be an alias to if there's no locale-specific format string for the
@@ -59,7 +58,7 @@ export class AliasTemplateNumberFormatFactory extends TemplateNumberFormatFactor
      * @param {Environment} env
      * @return {TemplateNumberFormat}
      */
-    public get(params : string, locale : string, env : Environment) : TemplateNumberFormat {
+    public get(params : string, locale : string, env : /*Environment*/any) : TemplateNumberFormat {
         TemplateFormatUtil.checkHasNoParameters(params);
         try {
             let targetFormatString : string;
@@ -68,7 +67,7 @@ export class AliasTemplateNumberFormatFactory extends TemplateNumberFormatFactor
                 targetFormatString = /* get */this.localizedTargetFormatStrings.get(lookupLocale);
                 while((targetFormatString == null && (lookupLocale = _CoreLocaleUtils.getLessSpecificLocale(lookupLocale)) != null)) {
                     targetFormatString = /* get */this.localizedTargetFormatStrings.get(lookupLocale);
-                };
+                }
             } else {
                 targetFormatString = null;
             }
@@ -78,7 +77,7 @@ export class AliasTemplateNumberFormatFactory extends TemplateNumberFormatFactor
             return env.getTemplateNumberFormat$java_lang_String$java_util_Locale(targetFormatString, locale);
         } catch(e) {
             throw new AliasTargetTemplateValueFormatException("Failed to create format based on target format string,  " + StringUtil.jQuote$java_lang_Object(params) + ". Reason given: " + e.message, e);
-        };
+        }
     }
 }
 AliasTemplateNumberFormatFactory["__class"] = "freemarker.core.AliasTemplateNumberFormatFactory";

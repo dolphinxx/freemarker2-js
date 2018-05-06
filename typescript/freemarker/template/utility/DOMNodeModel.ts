@@ -1,12 +1,13 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { SimpleHash } from '../SimpleHash';
-import { SimpleScalar } from '../SimpleScalar';
-import { TemplateBooleanModel } from '../TemplateBooleanModel';
-import { TemplateHashModel } from '../TemplateHashModel';
-import { TemplateMethodModel } from '../TemplateMethodModel';
-import { TemplateModel } from '../TemplateModel';
-import { TemplateModelException } from '../TemplateModelException';
-import { TemplateSequenceModel } from '../TemplateSequenceModel';
+import {SimpleHash} from '../SimpleHash';
+import {SimpleScalar} from '../SimpleScalar';
+import {TemplateBooleanModel} from '../TemplateBooleanModel';
+import {TemplateHashModel} from '../TemplateHashModel';
+import {TemplateMethodModel} from '../TemplateMethodModel';
+import {TemplateModel} from '../TemplateModel';
+import {TemplateModelException} from '../TemplateModelException';
+import {TemplateSequenceModel} from '../TemplateSequenceModel';
+import {Map} from "../../../java/util/Map";
 
 /**
  * A convenient wrapper class for wrapping a Node in the W3C DOM API.
@@ -49,7 +50,7 @@ export class DOMNodeModel implements TemplateHashModel {
                     for(let i : number = 0; i < attributes.getLength(); i++) {
                         let att : Attr = <Attr><any>attributes.item(i);
                         hash.put$java_lang_String$java_lang_Object(att.getName(), att.getValue());
-                    };
+                    }
                     result = hash;
                 }
             } else if((c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(key.charAt(0)) == '@'.charCodeAt(0)) {
@@ -116,7 +117,7 @@ export class DOMNodeModel implements TemplateHashModel {
             let children : NodeList = node.getChildNodes();
             for(let i : number = 0; i < children.getLength(); i++) {
                 result += DOMNodeModel.getText(children.item(i));
-            };
+            }
         }
         return result;
     }
@@ -128,7 +129,7 @@ export class DOMNodeModel implements TemplateHashModel {
             if(next != null && (next["__interfaces"] != null && next["__interfaces"].indexOf("org.w3c.dom.Element") >= 0 || next.constructor != null && next.constructor["__interfaces"] != null && next.constructor["__interfaces"].indexOf("org.w3c.dom.Element") >= 0)) {
                 return <Element><any>next;
             }
-        };
+        }
         return null;
     }
 
@@ -139,7 +140,7 @@ export class DOMNodeModel implements TemplateHashModel {
             if(previous != null && (previous["__interfaces"] != null && previous["__interfaces"].indexOf("org.w3c.dom.Element") >= 0 || previous.constructor != null && previous.constructor["__interfaces"] != null && previous.constructor["__interfaces"].indexOf("org.w3c.dom.Element") >= 0)) {
                 return <Element><any>previous;
             }
-        };
+        }
         return null;
     }
 
@@ -151,7 +152,7 @@ export class DOMNodeModel implements TemplateHashModel {
                 if(child != null && (child["__interfaces"] != null && child["__interfaces"].indexOf("org.w3c.dom.Element") >= 0 || child.constructor != null && child.constructor["__interfaces"] != null && child.constructor["__interfaces"].indexOf("org.w3c.dom.Element") >= 0)) {
                     return <Element><any>child;
                 }
-            };
+            }
         }
         let nextSiblingElement : Element = DOMNodeModel.nextSiblingElement(node);
         if(nextSiblingElement != null) {
@@ -164,7 +165,7 @@ export class DOMNodeModel implements TemplateHashModel {
                 return next;
             }
             parent = parent.getParentNode();
-        };
+        }
         return null;
     }
 
@@ -210,7 +211,7 @@ export namespace DOMNodeModel {
                     return ancestor;
                 }
                 ancestor = <DOMNodeModel><any>ancestor.get$java_lang_String("parent");
-            };
+            }
             return null;
         }
 
@@ -276,7 +277,7 @@ export namespace DOMNodeModel {
 
 
 
-var __Function = Function;
+
 
 DOMNodeModel.equivalenceTable_$LI$();
 

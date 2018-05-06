@@ -1,8 +1,8 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { Version } from '../template/Version';
-import { ParserConfiguration } from './ParserConfiguration';
-import { OutputFormat } from './OutputFormat';
-import { ArithmeticEngine } from './ArithmeticEngine';
+import {Version} from '../template/Version';
+import {ParserConfiguration} from './ParserConfiguration';
+import {OutputFormat} from './OutputFormat';
+import {ArithmeticEngine} from './ArithmeticEngine';
 
 /**
  * For internal use only; don't depend on this, there's no backward compatibility guarantee at all!
@@ -77,4 +77,4 @@ _ParserConfigurationWithInheritedFormat["__interfaces"] = ["freemarker.core.Pars
 
 
 
-var __Function = Function;
+

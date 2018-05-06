@@ -1,15 +1,14 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { ObjectWrapperAndUnwrapper } from '../../template/ObjectWrapperAndUnwrapper';
-import { TemplateModel } from '../../template/TemplateModel';
-import { TemplateModelException } from '../../template/TemplateModelException';
-import { OverloadedMethodsSubset } from './OverloadedMethodsSubset';
-import { CallableMemberDescriptor } from './CallableMemberDescriptor';
-import { MaybeEmptyMemberAndArguments } from './MaybeEmptyMemberAndArguments';
-import { BeansWrapper } from './BeansWrapper';
-import { EmptyMemberAndArguments } from './EmptyMemberAndArguments';
-import { MaybeEmptyCallableMemberDescriptor } from './MaybeEmptyCallableMemberDescriptor';
-import { MemberAndArguments } from './MemberAndArguments';
-import { EmptyCallableMemberDescriptor } from './EmptyCallableMemberDescriptor';
+import {ObjectWrapperAndUnwrapper} from '../../template/ObjectWrapperAndUnwrapper';
+import {TemplateModel} from '../../template/TemplateModel';
+import {OverloadedMethodsSubset} from './OverloadedMethodsSubset';
+import {CallableMemberDescriptor} from './CallableMemberDescriptor';
+import {MaybeEmptyMemberAndArguments} from './MaybeEmptyMemberAndArguments';
+import {BeansWrapper} from './BeansWrapper';
+import {EmptyMemberAndArguments} from './EmptyMemberAndArguments';
+import {MaybeEmptyCallableMemberDescriptor} from './MaybeEmptyCallableMemberDescriptor';
+import {MemberAndArguments} from './MemberAndArguments';
+import {EmptyCallableMemberDescriptor} from './EmptyCallableMemberDescriptor';
 
 /**
  * Stores the non-varargs methods for a {link OverloadedMethods} object.
@@ -26,7 +25,7 @@ export class OverloadedFixArgsMethods extends OverloadedMethodsSubset {
      * @param {CallableMemberDescriptor} memberDesc
      * @return {Array}
      */
-    preprocessParameterTypes(memberDesc : CallableMemberDescriptor) : Array {
+    preprocessParameterTypes(memberDesc : CallableMemberDescriptor) : Array<any> {
         return memberDesc.getParamTypes();
     }
 
@@ -69,7 +68,7 @@ export class OverloadedFixArgsMethods extends OverloadedMethodsSubset {
                 return EmptyMemberAndArguments.noCompatibleOverload$int(i + 1);
             }
             pojoArgs[i] = pojo;
-        };
+        }
         let maybeEmtpyMemberDesc : MaybeEmptyCallableMemberDescriptor = this.getMemberDescriptorForArgs(pojoArgs, false);
         if(maybeEmtpyMemberDesc != null && maybeEmtpyMemberDesc instanceof <any>CallableMemberDescriptor) {
             let memberDesc : CallableMemberDescriptor = <CallableMemberDescriptor>maybeEmtpyMemberDesc;
@@ -90,4 +89,4 @@ OverloadedFixArgsMethods["__class"] = "freemarker.ext.beans.OverloadedFixArgsMet
 
 
 
-var __Function = Function;
+

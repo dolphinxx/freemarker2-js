@@ -1,5 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { _Java6 } from './_Java6';
+import {_Java6} from './_Java6';
 
 /**
  * Used internally only, might changes without notice!
@@ -26,6 +26,6 @@ _Java6Impl["__interfaces"] = ["freemarker.core._Java6"];
 
 
 
-var __Function = Function;
+
 
 _Java6Impl.INSTANCE_$LI$();

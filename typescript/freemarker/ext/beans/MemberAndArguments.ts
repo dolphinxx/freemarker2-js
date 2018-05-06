@@ -1,9 +1,8 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateModel } from '../../template/TemplateModel';
-import { TemplateModelException } from '../../template/TemplateModelException';
-import { MaybeEmptyMemberAndArguments } from './MaybeEmptyMemberAndArguments';
-import { CallableMemberDescriptor } from './CallableMemberDescriptor';
-import { BeansWrapper } from './BeansWrapper';
+import {TemplateModel} from '../../template/TemplateModel';
+import {MaybeEmptyMemberAndArguments} from './MaybeEmptyMemberAndArguments';
+import {CallableMemberDescriptor} from './CallableMemberDescriptor';
+import {BeansWrapper} from './BeansWrapper';
 
 /**
  * 
@@ -27,7 +26,7 @@ export class MemberAndArguments extends MaybeEmptyMemberAndArguments {
      * The already unwrapped arguments.
      * @return {Array}
      */
-    getArgs() : Array {
+    getArgs() : Array<any> {
         return this.args;
     }
 
@@ -47,4 +46,4 @@ MemberAndArguments["__class"] = "freemarker.ext.beans.MemberAndArguments";
 
 
 
-var __Function = Function;
+

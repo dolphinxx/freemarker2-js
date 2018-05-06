@@ -1,10 +1,10 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { ModelFactory } from '../util/ModelFactory';
-import { ObjectWrapper } from '../../template/ObjectWrapper';
-import { TemplateDateModel } from '../../template/TemplateDateModel';
-import { TemplateModel } from '../../template/TemplateModel';
-import { BeanModel } from './BeanModel';
-import { BeansWrapper } from './BeansWrapper';
+import {ModelFactory} from '../util/ModelFactory';
+import {ObjectWrapper} from '../../template/ObjectWrapper';
+import {TemplateDateModel} from '../../template/TemplateDateModel';
+import {TemplateModel} from '../../template/TemplateModel';
+import {BeanModel} from './BeanModel';
+import {BeansWrapper} from './BeansWrapper';
 
 /**
  * Creates a new model that wraps the specified date object.
@@ -66,6 +66,6 @@ export namespace DateModel {
 
 
 
-var __Function = Function;
+
 
 DateModel.FACTORY_$LI$();

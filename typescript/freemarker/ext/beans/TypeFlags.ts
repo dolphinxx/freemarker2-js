@@ -1,6 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { Character } from '../../../java/lang/Character';
-import { Boolean } from '../../../java/lang/Boolean';
+import {Boolean} from '../../../java/lang/Boolean';
 
 /**
  * Flag values and masks for "type flags". "Type flags" is a set of bits that store information about the possible
@@ -105,7 +104,7 @@ TypeFlags["__class"] = "freemarker.ext.beans.TypeFlags";
 
 
 
-var __Function = Function;
+
 
 TypeFlags.MASK_ALL_NUMERICALS_$LI$();
 

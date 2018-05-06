@@ -1,7 +1,6 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { Version } from '../template/Version';
-import { ArithmeticEngine } from './ArithmeticEngine';
-import { OutputFormat } from './OutputFormat';
+import {Version} from '../template/Version';
+import {ArithmeticEngine} from './ArithmeticEngine';
 
 /**
  * <b>Don't implement this interface yourself</b>; use the existing implementation(s). This interface is implemented by
@@ -80,4 +79,4 @@ export interface ParserConfiguration {
 }
 
 
-var __Function = Function;
+

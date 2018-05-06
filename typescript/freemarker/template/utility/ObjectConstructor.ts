@@ -1,9 +1,8 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { BeansWrapper } from '../../ext/beans/BeansWrapper';
-import { TemplateMethodModelEx } from '../TemplateMethodModelEx';
-import { TemplateModelException } from '../TemplateModelException';
-import { ClassUtil } from './ClassUtil';
-import { TemplateModel } from '../TemplateModel';
+import {BeansWrapper} from '../../ext/beans/BeansWrapper';
+import {TemplateMethodModelEx} from '../TemplateMethodModelEx';
+import {TemplateModelException} from '../TemplateModelException';
+import {ClassUtil} from './ClassUtil';
 
 /**
  * An object that you can make available in a template
@@ -30,7 +29,7 @@ export class ObjectConstructor implements TemplateMethodModelEx {
             cl = ClassUtil.forName(classname);
         } catch(e) {
             throw new TemplateModelException(e.message);
-        };
+        }
         let bw : BeansWrapper = BeansWrapper.getDefaultInstance();
         let obj : any = bw.newInstance(cl, /* subList */args.slice(1, /* size */(<number>args.length)));
         return bw.wrap$java_lang_Object(obj);
@@ -45,4 +44,4 @@ ObjectConstructor["__interfaces"] = ["freemarker.template.TemplateMethodModel","
 
 
 
-var __Function = Function;
+

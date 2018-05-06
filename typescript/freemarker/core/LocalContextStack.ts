@@ -1,5 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { LocalContext } from './LocalContext';
+import {LocalContext} from './LocalContext';
 
 /**
  * Class that's a little bit more efficient than using an {@code ArrayList<LocalContext>}.
@@ -19,7 +19,7 @@ export class LocalContextStack {
             let newBuffer : LocalContext[] = (s => { let a=[]; while(s-->0) a.push(null); return a; })(newSize * 2);
             for(let i : number = 0; i < buffer.length; i++) {
                 newBuffer[i] = buffer[i];
-            };
+            }
             buffer = newBuffer;
             this.buffer = newBuffer;
         }
@@ -46,4 +46,4 @@ LocalContextStack["__class"] = "freemarker.core.LocalContextStack";
 
 
 
-var __Function = Function;
+

@@ -1,8 +1,8 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateModel } from '../../template/TemplateModel';
-import { ClassBasedModelFactory } from './ClassBasedModelFactory';
-import { BeansWrapper } from './BeansWrapper';
-import { SimpleMapModel } from './SimpleMapModel';
+import {TemplateModel} from '../../template/TemplateModel';
+import {ClassBasedModelFactory} from './ClassBasedModelFactory';
+import {BeansWrapper} from './BeansWrapper';
+import {SimpleMapModel} from './SimpleMapModel';
 
 /**
  * Don't use this class; it's only public to work around Google App Engine Java
@@ -30,7 +30,7 @@ export class _EnumModels extends ClassBasedModelFactory {
         for(let i : number = 0; i < obj.length; i++) {
             let value : Enum = <Enum>obj[i];
             /* put */map.set(value.name(), value);
-        };
+        }
         return new SimpleMapModel(map, this.getWrapper());
     }
 }
@@ -40,4 +40,4 @@ _EnumModels["__interfaces"] = ["freemarker.template.TemplateHashModel","freemark
 
 
 
-var __Function = Function;
+

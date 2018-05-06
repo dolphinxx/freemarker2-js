@@ -1,6 +1,6 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { CommonTemplateMarkupOutputModel } from './CommonTemplateMarkupOutputModel';
-import { HTMLOutputFormat } from './HTMLOutputFormat';
+import {CommonTemplateMarkupOutputModel} from './CommonTemplateMarkupOutputModel';
+import {HTMLOutputFormat} from './HTMLOutputFormat';
 
 /**
  * Stores HTML markup to be printed; used with {link HTMLOutputFormat}.
@@ -28,4 +28,4 @@ TemplateHTMLOutputModel["__interfaces"] = ["freemarker.core.TemplateMarkupOutput
 
 
 
-var __Function = Function;
+

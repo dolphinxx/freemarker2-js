@@ -1,10 +1,9 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateCollectionModel } from '../template/TemplateCollectionModel';
-import { TemplateCollectionModelEx } from '../template/TemplateCollectionModelEx';
-import { TemplateModel } from '../template/TemplateModel';
-import { TemplateModelException } from '../template/TemplateModelException';
-import { TemplateModelIterator } from '../template/TemplateModelIterator';
-import { TemplateSequenceModel } from '../template/TemplateSequenceModel';
+import {TemplateCollectionModel} from '../template/TemplateCollectionModel';
+import {TemplateCollectionModelEx} from '../template/TemplateCollectionModelEx';
+import {TemplateModel} from '../template/TemplateModel';
+import {TemplateModelIterator} from '../template/TemplateModelIterator';
+import {TemplateSequenceModel} from '../template/TemplateSequenceModel';
 
 /**
  * Add sequence capabilities to an existing collection, or
@@ -81,7 +80,7 @@ export class CollectionAndSequence implements TemplateCollectionModel, TemplateS
             let it : TemplateModelIterator = this.collection.iterator();
             while((it.hasNext())) {
                 /* add */(this.data.push(it.next())>0);
-            };
+            }
         }
     }
 }

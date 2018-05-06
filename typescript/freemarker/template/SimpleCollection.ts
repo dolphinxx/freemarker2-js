@@ -1,10 +1,10 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { WrappingTemplateModel } from './WrappingTemplateModel';
-import { TemplateCollectionModel } from './TemplateCollectionModel';
-import { ObjectWrapper } from './ObjectWrapper';
-import { TemplateModelIterator } from './TemplateModelIterator';
-import { TemplateModel } from './TemplateModel';
-import { TemplateModelException } from './TemplateModelException';
+import {WrappingTemplateModel} from './WrappingTemplateModel';
+import {TemplateCollectionModel} from './TemplateCollectionModel';
+import {TemplateModelIterator} from './TemplateModelIterator';
+import {TemplateModel} from './TemplateModel';
+import {TemplateModelException} from './TemplateModelException';
+import {Iterable} from '../../java/lang/Iterable';
 
 /**
  * Same as {link SimpleCollection#SimpleCollection(Iterable, ObjectWrapper)}; kept for binary compatibility.
@@ -18,14 +18,14 @@ export class SimpleCollection extends WrappingTemplateModel implements TemplateC
 
     /*private*/ __iterator : any;
 
-    /*private*/ iterable : Iterable;
+    /*private*/ iterable : Iterable<any>;
 
     public constructor(collection? : any, wrapper? : any) {
         if(((collection != null && (collection instanceof Array)) || collection === null) && ((wrapper != null && (wrapper["__interfaces"] != null && wrapper["__interfaces"].indexOf("freemarker.template.ObjectWrapper") >= 0 || wrapper.constructor != null && wrapper.constructor["__interfaces"] != null && wrapper.constructor["__interfaces"].indexOf("freemarker.template.ObjectWrapper") >= 0)) || wrapper === null)) {
             let __args = Array.prototype.slice.call(arguments);
             {
                 let __args = Array.prototype.slice.call(arguments);
-                let iterable : any = <Iterable><any>collection;
+                let iterable : any = <Iterable<any>><any>collection;
                 super(wrapper);
                 if(this.iteratorOwned===undefined) this.iteratorOwned = false;
                 if(this.__iterator===undefined) this.__iterator = null;
@@ -84,7 +84,7 @@ export class SimpleCollection extends WrappingTemplateModel implements TemplateC
             let __args = Array.prototype.slice.call(arguments);
             {
                 let __args = Array.prototype.slice.call(arguments);
-                let iterable : any = <Iterable><any>collection;
+                let iterable : any = <Iterable<any>><any>collection;
                 super();
                 if(this.iteratorOwned===undefined) this.iteratorOwned = false;
                 if(this.__iterator===undefined) this.__iterator = null;
@@ -162,7 +162,7 @@ export namespace SimpleCollection {
                     this.checkIteratorOwned();
                     this.__parent.iteratorOwned = true;
                     this.iteratorOwnedByMe = true;
-                };
+                }
             }
             if(!this.iterator.hasNext()) {
                 throw new TemplateModelException("The collection has no more items.");
@@ -175,7 +175,7 @@ export namespace SimpleCollection {
             if(!this.iteratorOwnedByMe) {
                 {
                     this.checkIteratorOwned();
-                };
+                }
             }
             return this.iterator.hasNext();
         }
@@ -194,4 +194,4 @@ export namespace SimpleCollection {
 
 
 
-var __Function = Function;
+

@@ -1,7 +1,6 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { Template } from '../template/Template';
-import { StringBuilder } from '../../java/lang/StringBuilder';
-import { ParseException } from './ParseException';
+import {StringBuilder} from '../../java/lang/StringBuilder';
+import {ParseException} from './ParseException';
 
 /**
  * Exception thrown on lower (lexical) level parsing errors. Shouldn't reach normal FreeMarker users, as FreeMarker
@@ -105,7 +104,7 @@ export class TokenMgrError extends Error {
                 }
                 continue;
             }
-        };
+        }
         return retval.toString();
     }
 
@@ -315,7 +314,7 @@ export class TokenMgrError extends Error {
         return this.detail;
     }
 
-    public toParseException(template : Template) : ParseException {
+    public toParseException(template : /*Template*/any) : ParseException {
         return new ParseException(this.getDetail(), template, this.getLineNumber() != null?this.getLineNumber():0, this.getColumnNumber() != null?this.getColumnNumber():0, this.getEndLineNumber() != null?this.getEndLineNumber():0, this.getEndColumnNumber() != null?this.getEndColumnNumber():0);
     }
 }
@@ -325,4 +324,4 @@ TokenMgrError["__interfaces"] = ["java.io.Serializable"];
 
 
 
-var __Function = Function;
+

@@ -1,10 +1,9 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateElement } from './TemplateElement';
-import { Expression } from './Expression';
-import { Assignment } from './Assignment';
-import { Environment } from './Environment';
-import { StringBuilder } from '../../java/lang/StringBuilder';
-import { ParameterRole } from './ParameterRole';
+import {TemplateElement} from './TemplateElement';
+import {Expression} from './Expression';
+import {Assignment} from './Assignment';
+import {StringBuilder} from '../../java/lang/StringBuilder';
+import {ParameterRole} from './ParameterRole';
 
 /**
  * An instruction that does multiple assignments, like [#local x=1 x=2].
@@ -35,7 +34,7 @@ export class AssignmentInstruction extends TemplateElement {
         let ln : number = this.getChildCount();
         for(let i : number = 0; i < ln; i++) {
             (<Assignment>this.getChild(i)).setNamespaceExp(namespaceExp);
-        };
+        }
     }
 
     /**
@@ -43,7 +42,7 @@ export class AssignmentInstruction extends TemplateElement {
      * @param {Environment} env
      * @return {Array}
      */
-    accept(env : Environment) : TemplateElement[] {
+    accept(env : /*Environment*/any) : TemplateElement[] {
         return this.getChildBuffer();
     }
 
@@ -65,7 +64,7 @@ export class AssignmentInstruction extends TemplateElement {
                 }
                 let assignment : Assignment = <Assignment>this.getChild(i);
                 buf.append(assignment.getCanonicalForm());
-            };
+            }
         } else {
             buf.append("-container");
         }

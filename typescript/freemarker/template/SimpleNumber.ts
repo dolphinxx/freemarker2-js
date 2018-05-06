@@ -1,5 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateNumberModel } from './TemplateNumberModel';
+import {TemplateNumberModel} from './TemplateNumberModel';
 
 /**
  * A simple implementation of the <tt>TemplateNumberModel</tt>
@@ -87,4 +87,4 @@ SimpleNumber["__interfaces"] = ["freemarker.template.TemplateNumberModel","freem
 
 
 
-var __Function = Function;
+

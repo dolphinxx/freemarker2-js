@@ -1,12 +1,9 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateException } from '../template/TemplateException';
-import { TemplateModel } from '../template/TemplateModel';
-import { Expression } from './Expression';
-import { Environment } from './Environment';
-import { _MiscTemplateException } from './_MiscTemplateException';
-import { _CoreStringUtils } from './_CoreStringUtils';
-import { ParameterRole } from './ParameterRole';
-import { TemplateObject } from './TemplateObject';
+import {TemplateModel} from '../template/TemplateModel';
+import {Expression} from './Expression';
+import {_MiscTemplateException} from './_MiscTemplateException';
+import {_CoreStringUtils} from './_CoreStringUtils';
+import {ParameterRole} from './ParameterRole';
 
 /**
  * A reference to a top-level variable
@@ -27,7 +24,7 @@ export class Identifier extends Expression {
      * @param {Environment} env
      * @return {*}
      */
-    _eval(env : Environment) : TemplateModel {
+    _eval(env : /*Environment*/any) : TemplateModel {
         try {
             return env.getVariable(this.name);
         } catch(e) {
@@ -36,7 +33,7 @@ export class Identifier extends Expression {
             } else {
                 throw e;
             }
-        };
+        }
     }
 
     /**
@@ -123,4 +120,4 @@ Identifier["__class"] = "freemarker.core.Identifier";
 
 
 
-var __Function = Function;
+

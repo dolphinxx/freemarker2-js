@@ -1,8 +1,7 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { Reader } from '../../java/io/Reader';
-import { System } from '../../java/lang/System';
-import { InputStream } from '../../java/io/InputStream';
-import { InputStreamReader } from '../../java/io/InputStreamReader';
+import {Reader} from '../../java/io/Reader';
+import {System} from '../../java/lang/System';
+import {InputStream} from '../../java/io/InputStream';
 
 /**
  * Constructor.
@@ -89,7 +88,7 @@ export class SimpleCharStream {
             }
         } catch(t) {
             throw Object.defineProperty(new Error(t.message), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Error','java.lang.Object'] });
-        };
+        }
         this.bufsize += 2048;
         this.available = this.bufsize;
         this.tokenBegin = 0;
@@ -116,7 +115,7 @@ export class SimpleCharStream {
             this.backup(0);
             if(this.tokenBegin === -1) this.tokenBegin = this.bufpos;
             throw e;
-        };
+        }
     }
 
     /**
@@ -730,13 +729,13 @@ export class SimpleCharStream {
             this.bufcolumn[j] = newCol + columnDiff;
             columnDiff = nextColDiff;
             i++;
-        };
+        }
         if(i < len) {
             this.bufline[j] = newLine++;
             this.bufcolumn[j] = newCol + columnDiff;
             while((i++ < len)) {
                 if(this.bufline[j = start % this.bufsize] !== this.bufline[++start % this.bufsize]) this.bufline[j] = newLine++; else this.bufline[j] = newLine;
-            };
+            }
         }
         this.line = this.bufline[j];
         this.column = this.bufcolumn[j];
@@ -754,4 +753,4 @@ SimpleCharStream["__class"] = "freemarker.core.SimpleCharStream";
 
 
 
-var __Function = Function;
+

@@ -1,11 +1,10 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { MruCacheStorage } from '../cache/MruCacheStorage';
-import { Logger } from '../log/Logger';
-import { TemplateModelException } from '../template/TemplateModelException';
-import { StringUtil } from '../template/utility/StringUtil';
-import { _TemplateModelException } from './_TemplateModelException';
-import { _DelayedGetMessage } from './_DelayedGetMessage';
-import { _ErrorDescriptionBuilder } from './_ErrorDescriptionBuilder';
+import {MruCacheStorage} from '../cache/MruCacheStorage';
+import {Logger} from '../log/Logger';
+import {StringUtil} from '../template/utility/StringUtil';
+import {_TemplateModelException} from './_TemplateModelException';
+import {_DelayedGetMessage} from './_DelayedGetMessage';
+import {_ErrorDescriptionBuilder} from './_ErrorDescriptionBuilder';
 
 /**
  * Helper for language features (like built-ins) that use regular expressions.
@@ -48,7 +47,7 @@ export class RegexpHelper {
         let result : Pattern;
         {
             result = <Pattern>RegexpHelper.patternCache_$LI$().get(patternKey);
-        };
+        }
         if(result != null) {
             return result;
         }
@@ -56,10 +55,10 @@ export class RegexpHelper {
             result = Pattern.compile(patternString, flags);
         } catch(e) {
             throw new _TemplateModelException(e, "Malformed regular expression: ", new _DelayedGetMessage(e));
-        };
+        }
         {
             RegexpHelper.patternCache_$LI$().put(patternKey, result);
-        };
+        }
         return result;
     }
 
@@ -91,7 +90,7 @@ export class RegexpHelper {
                     RegexpHelper.logFlagWarning("Unrecognized regular expression flag: " + StringUtil.jQuote$java_lang_Object(/* valueOf */new String(c).toString()) + ".");
                 }
             }
-        };
+        }
         return flags;
     }
 
@@ -111,7 +110,7 @@ export class RegexpHelper {
                 RegexpHelper.flagWarningsEnabled = false;
                 return;
             }
-        };
+        }
         message += " This will be an error in some later FreeMarker version!";
         if(cnt + 1 === RegexpHelper.MAX_FLAG_WARNINGS_LOGGED) {
             message += " [Will not log more regular expression flag problems until restart!]";
@@ -192,7 +191,7 @@ export namespace RegexpHelper {
 
 
 
-var __Function = Function;
+
 
 RegexpHelper.RE_FLAG_DOTALL_$LI$();
 

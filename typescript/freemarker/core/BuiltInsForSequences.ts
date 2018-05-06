@@ -1,42 +1,39 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { CollectionModel } from '../ext/beans/CollectionModel';
-import { SimpleNumber } from '../template/SimpleNumber';
-import { SimpleScalar } from '../template/SimpleScalar';
-import { SimpleSequence } from '../template/SimpleSequence';
-import { TemplateBooleanModel } from '../template/TemplateBooleanModel';
-import { TemplateCollectionModel } from '../template/TemplateCollectionModel';
-import { TemplateCollectionModelEx } from '../template/TemplateCollectionModelEx';
-import { TemplateDateModel } from '../template/TemplateDateModel';
-import { TemplateException } from '../template/TemplateException';
-import { TemplateHashModel } from '../template/TemplateHashModel';
-import { TemplateMethodModelEx } from '../template/TemplateMethodModelEx';
-import { TemplateModel } from '../template/TemplateModel';
-import { TemplateModelException } from '../template/TemplateModelException';
-import { TemplateModelIterator } from '../template/TemplateModelIterator';
-import { TemplateModelListSequence } from '../template/TemplateModelListSequence';
-import { TemplateNumberModel } from '../template/TemplateNumberModel';
-import { TemplateScalarModel } from '../template/TemplateScalarModel';
-import { TemplateSequenceModel } from '../template/TemplateSequenceModel';
-import { Constants } from '../template/utility/Constants';
-import { StringUtil } from '../template/utility/StringUtil';
-import { BuiltInForSequence } from './BuiltInForSequence';
-import { _TemplateModelException } from './_TemplateModelException';
-import { BuiltIn } from './BuiltIn';
-import { Environment } from './Environment';
-import { Expression } from './Expression';
-import { NonSequenceOrCollectionException } from './NonSequenceOrCollectionException';
-import { StringBuilder } from '../../java/lang/StringBuilder';
-import { EvalUtil } from './EvalUtil';
-import { _MessageUtil } from './_MessageUtil';
-import { _DelayedGetMessageWithoutStackTop } from './_DelayedGetMessageWithoutStackTop';
-import { RightUnboundedRangeModel } from './RightUnboundedRangeModel';
-import { CollectionAndSequence } from './CollectionAndSequence';
-import { Boolean } from '../../java/lang/Boolean';
-import { ArithmeticEngine } from './ArithmeticEngine';
-import { _DelayedFTLTypeDescription } from './_DelayedFTLTypeDescription';
-import { _DelayedJQuote } from './_DelayedJQuote';
-import { BugException } from './BugException';
-import { _DelayedGetMessage } from './_DelayedGetMessage';
+import {CollectionModel} from '../ext/beans/CollectionModel';
+import {SimpleNumber} from '../template/SimpleNumber';
+import {SimpleScalar} from '../template/SimpleScalar';
+import {SimpleSequence} from '../template/SimpleSequence';
+import {TemplateBooleanModel} from '../template/TemplateBooleanModel';
+import {TemplateCollectionModel} from '../template/TemplateCollectionModel';
+import {TemplateCollectionModelEx} from '../template/TemplateCollectionModelEx';
+import {TemplateDateModel} from '../template/TemplateDateModel';
+import {TemplateHashModel} from '../template/TemplateHashModel';
+import {TemplateMethodModelEx} from '../template/TemplateMethodModelEx';
+import {TemplateModel} from '../template/TemplateModel';
+import {TemplateModelException} from '../template/TemplateModelException';
+import {TemplateModelIterator} from '../template/TemplateModelIterator';
+import {TemplateModelListSequence} from '../template/TemplateModelListSequence';
+import {TemplateNumberModel} from '../template/TemplateNumberModel';
+import {TemplateScalarModel} from '../template/TemplateScalarModel';
+import {TemplateSequenceModel} from '../template/TemplateSequenceModel';
+import {Constants} from '../template/utility/Constants';
+import {StringUtil} from '../template/utility/StringUtil';
+import {BuiltInForSequence} from './BuiltInForSequence';
+import {_TemplateModelException} from './_TemplateModelException';
+import {BuiltIn} from './BuiltIn';
+import {Environment} from './Environment';
+import {NonSequenceOrCollectionException} from './NonSequenceOrCollectionException';
+import {StringBuilder} from '../../java/lang/StringBuilder';
+import {EvalUtil} from './EvalUtil';
+import {_MessageUtil} from './_MessageUtil';
+import {_DelayedGetMessageWithoutStackTop} from './_DelayedGetMessageWithoutStackTop';
+import {RightUnboundedRangeModel} from './RightUnboundedRangeModel';
+import {CollectionAndSequence} from './CollectionAndSequence';
+import {ArithmeticEngine} from './ArithmeticEngine';
+import {_DelayedFTLTypeDescription} from './_DelayedFTLTypeDescription';
+import {_DelayedJQuote} from './_DelayedJQuote';
+import {BugException} from './BugException';
+import {_DelayedGetMessage} from './_DelayedGetMessage';
 
 /**
  * A holder for builtins that operate exclusively on sequence or collection left-hand value.
@@ -47,12 +44,12 @@ export class BuiltInsForSequences {
         return (model != null && model instanceof <any>CollectionModel) && !(<CollectionModel><any>model).getSupportsIndexedAccess();
     }
 
-    static modelsEqual(seqItemIndex : number, seqItem : TemplateModel, searchedItem : TemplateModel, env : Environment) : boolean {
+    static modelsEqual(seqItemIndex : number, seqItem : TemplateModel, searchedItem : TemplateModel, env : /*Environment*/any) : boolean {
         try {
             return EvalUtil.compare$freemarker_template_TemplateModel$freemarker_core_Expression$int$java_lang_String$freemarker_template_TemplateModel$freemarker_core_Expression$freemarker_core_Expression$boolean$boolean$boolean$boolean$freemarker_core_Environment(seqItem, null, EvalUtil.CMP_OP_EQUALS, null, searchedItem, null, null, false, true, true, true, env);
         } catch(ex) {
             throw new _TemplateModelException(ex, "This error has occurred when comparing sequence item at 0-based index ", seqItemIndex, " to the searched item:\n", new _DelayedGetMessage(ex));
-        };
+        }
     }
 
     constructor() {
@@ -182,7 +179,7 @@ export namespace BuiltInsForSequences {
          * @param {Environment} env
          * @return {*}
          */
-        _eval(env : Environment) : TemplateModel {
+        _eval(env : /*Environment*/any) : TemplateModel {
             let model : TemplateModel = this.target.eval(env);
             if((model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0)) && !BuiltInsForSequences.isBuggySeqButGoodCollection(model)) {
                 return this.calculateResultForSequence(<TemplateSequenceModel><any>model);
@@ -223,7 +220,7 @@ export namespace BuiltInsForSequences {
          * @param {Environment} env
          * @return {*}
          */
-        _eval(env : Environment) : TemplateModel {
+        _eval(env : /*Environment*/any) : TemplateModel {
             let model : TemplateModel = this.target.eval(env);
             if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateCollectionModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateCollectionModel") >= 0)) {
                 if(model != null && model instanceof <any>RightUnboundedRangeModel) {
@@ -254,7 +251,7 @@ export namespace BuiltInsForSequences {
 
             coll : TemplateCollectionModel;
 
-            constructor(__parent: any, env : Environment, coll : TemplateCollectionModel) {
+            constructor(__parent: any, env : /*Environment*/any, coll : TemplateCollectionModel) {
                 this.__parent = __parent;
                 if(this.env===undefined) this.env = null;
                 if(this.coll===undefined) this.coll = null;
@@ -283,10 +280,10 @@ export namespace BuiltInsForSequences {
                             sb.append(EvalUtil.coerceModelToStringOrUnsupportedMarkup(item, null, null, this.env));
                         } catch(e) {
                             throw new _TemplateModelException(e, "\"?", this.__parent.key, "\" failed at index ", idx, " with this error:\n\n", _MessageUtil.EMBEDDED_MESSAGE_BEGIN, new _DelayedGetMessageWithoutStackTop(e), _MessageUtil.EMBEDDED_MESSAGE_END);
-                        };
+                        }
                     }
                     idx++;
-                };
+                }
                 if(hadItem) {
                     if(afterLast != null) sb.append(afterLast);
                 } else {
@@ -379,7 +376,7 @@ export namespace BuiltInsForSequences {
          * @param {Environment} env
          * @return {*}
          */
-        _eval(env : Environment) : TemplateModel {
+        _eval(env : /*Environment*/any) : TemplateModel {
             let model : TemplateModel = this.target.eval(env);
             if((model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0)) && !BuiltInsForSequences.isBuggySeqButGoodCollection(model)) {
                 return new seq_containsBI.BIMethodForSequence(this, <TemplateSequenceModel><any>model, env);
@@ -407,7 +404,7 @@ export namespace BuiltInsForSequences {
 
             m_env : Environment;
 
-            constructor(__parent: any, coll : TemplateCollectionModel, env : Environment) {
+            constructor(__parent: any, coll : TemplateCollectionModel, env : /*Environment*/any) {
                 this.__parent = __parent;
                 if(this.m_coll===undefined) this.m_coll = null;
                 if(this.m_env===undefined) this.m_env = null;
@@ -423,7 +420,7 @@ export namespace BuiltInsForSequences {
                 while((it.hasNext())) {
                     if(BuiltInsForSequences.modelsEqual(idx, it.next(), arg, this.m_env)) return TemplateBooleanModel.TRUE;
                     idx++;
-                };
+                }
                 return TemplateBooleanModel.FALSE;
             }
         }
@@ -438,7 +435,7 @@ export namespace BuiltInsForSequences {
 
             m_env : Environment;
 
-            constructor(__parent: any, seq : TemplateSequenceModel, env : Environment) {
+            constructor(__parent: any, seq : TemplateSequenceModel, env : /*Environment*/any) {
                 this.__parent = __parent;
                 if(this.m_seq===undefined) this.m_seq = null;
                 if(this.m_env===undefined) this.m_env = null;
@@ -452,7 +449,7 @@ export namespace BuiltInsForSequences {
                 let size : number = this.m_seq.size();
                 for(let i : number = 0; i < size; i++) {
                     if(BuiltInsForSequences.modelsEqual(i, this.m_seq['get$int'](i), arg, this.m_env)) return TemplateBooleanModel.TRUE;
-                };
+                }
                 return TemplateBooleanModel.FALSE;
             }
         }
@@ -477,7 +474,7 @@ export namespace BuiltInsForSequences {
          * @param {Environment} env
          * @return {*}
          */
-        _eval(env : Environment) : TemplateModel {
+        _eval(env : /*Environment*/any) : TemplateModel {
             return new seq_index_ofBI.BIMethod(this, env);
         }
     }
@@ -496,7 +493,7 @@ export namespace BuiltInsForSequences {
 
             m_env : Environment;
 
-            constructor(__parent: any, env : Environment) {
+            constructor(__parent: any, env : /*Environment*/any) {
                 this.__parent = __parent;
                 if(this.m_seq===undefined) this.m_seq = null;
                 if(this.m_col===undefined) this.m_col = null;
@@ -553,7 +550,7 @@ export namespace BuiltInsForSequences {
                         }
                     }
                     idx++;
-                };
+                }
                 return foundAtIdx;
             }
 
@@ -602,11 +599,11 @@ export namespace BuiltInsForSequences {
                 if(this.__parent.findFirst) {
                     for(let i : number = scanStartIndex; i < seqSize; i++) {
                         if(BuiltInsForSequences.modelsEqual(i, this.m_seq['get$int'](i), target, this.m_env)) return i;
-                    };
+                    }
                 } else {
                     for(let i : number = scanStartIndex; i >= 0; i--) {
                         if(BuiltInsForSequences.modelsEqual(i, this.m_seq['get$int'](i), target, this.m_env)) return i;
-                    };
+                    }
                 }
                 return -1;
             }
@@ -674,11 +671,11 @@ export namespace BuiltInsForSequences {
                         } else {
                             throw e;
                         }
-                    };
+                    }
                     if(key == null) {
                         throw new _TemplateModelException(sortBI.startErrorMessage$int$int(keyNamesLn, i), "The " + StringUtil.jQuote$java_lang_Object(keyNames[keyNameI]), " subvariable was null or missing.");
                     }
-                };
+                }
                 if(keyType === sortBI.KEY_TYPE_NOT_YET_DETECTED) {
                     if(key != null && (key["__interfaces"] != null && key["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0 || key.constructor != null && key.constructor["__interfaces"] != null && key.constructor["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0)) {
                         keyType = sortBI.KEY_TYPE_STRING;
@@ -706,7 +703,7 @@ export namespace BuiltInsForSequences {
                         } else {
                             throw e;
                         }
-                    };
+                    }
                     break;
                 case 2 /* KEY_TYPE_NUMBER */:
                     try {
@@ -715,7 +712,7 @@ export namespace BuiltInsForSequences {
                         if(!(key != null && (key["__interfaces"] != null && key["__interfaces"].indexOf("freemarker.template.TemplateNumberModel") >= 0 || key.constructor != null && key.constructor["__interfaces"] != null && key.constructor["__interfaces"].indexOf("freemarker.template.TemplateNumberModel") >= 0))) {
                             throw sortBI.newInconsistentSortKeyTypeException(keyNamesLn, "number", "numbers", i, key);
                         }
-                    };
+                    }
                     break;
                 case 3 /* KEY_TYPE_DATE */:
                     try {
@@ -724,7 +721,7 @@ export namespace BuiltInsForSequences {
                         if(!(key != null && (key["__interfaces"] != null && key["__interfaces"].indexOf("freemarker.template.TemplateDateModel") >= 0 || key.constructor != null && key.constructor["__interfaces"] != null && key.constructor["__interfaces"].indexOf("freemarker.template.TemplateDateModel") >= 0))) {
                             throw sortBI.newInconsistentSortKeyTypeException(keyNamesLn, "date/time", "date/times", i, key);
                         }
-                    };
+                    }
                     break;
                 case 4 /* KEY_TYPE_BOOLEAN */:
                     try {
@@ -733,28 +730,28 @@ export namespace BuiltInsForSequences {
                         if(!(key != null && (key["__interfaces"] != null && key["__interfaces"].indexOf("freemarker.template.TemplateBooleanModel") >= 0 || key.constructor != null && key.constructor["__interfaces"] != null && key.constructor["__interfaces"].indexOf("freemarker.template.TemplateBooleanModel") >= 0))) {
                             throw sortBI.newInconsistentSortKeyTypeException(keyNamesLn, "boolean", "booleans", i, key);
                         }
-                    };
+                    }
                     break;
                 default:
                     throw new BugException("Unexpected key type");
                 }
-            };
+            }
             try {
                 /* sort */((l,c) => { if((<any>c).compare) l.sort((e1,e2)=>(<any>c).compare(e1,e2)); else l.sort(<any>c); })(res,keyComparator);
             } catch(exc) {
                 throw new _TemplateModelException(exc, sortBI.startErrorMessage$int(keyNamesLn), "Unexpected error while sorting:" + exc);
-            };
+            }
             for(let i : number = 0; i < ln; i++) {
                 /* set */(res[i] = (<sortBI.KVP>/* get */res[i]).value);
-            };
+            }
             return new TemplateModelListSequence(res);
         }
 
-        static startErrorMessage$int(keyNamesLn : number) : Array {
+        static startErrorMessage$int(keyNamesLn : number) : Array<any> {
             return [(keyNamesLn === 0?"?sort":"?sort_by(...)"), " failed: "];
         }
 
-        public static startErrorMessage$int$int(keyNamesLn : number, index : number) : Array {
+        public static startErrorMessage$int$int(keyNamesLn : number, index : number) : Array<any> {
             return [(keyNamesLn === 0?"?sort":"?sort_by(...)"), " failed at sequence index ", index, (index === 0?": ":" (0-based): ")];
         }
 
@@ -877,7 +874,7 @@ export namespace BuiltInsForSequences {
                     return this.ae.compareNumbers(<number>(<sortBI.KVP>arg0).key, <number>(<sortBI.KVP>arg1).key);
                 } catch(e) {
                     throw Object.defineProperty(new Error("Failed to compare numbers: " + e), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.lang.RuntimeException','java.lang.ClassCastException','java.lang.Exception'] });
-                };
+                }
             }
         }
         NumericalKVPComparator["__class"] = "freemarker.core.BuiltInsForSequences.sortBI.NumericalKVPComparator";
@@ -893,7 +890,7 @@ export namespace BuiltInsForSequences {
          * @param {Environment} env
          * @return {*}
          */
-        _eval(env : Environment) : TemplateModel {
+        _eval(env : /*Environment*/any) : TemplateModel {
             let model : TemplateModel = this.target.eval(env);
             if((model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0)) && !BuiltInsForSequences.isBuggySeqButGoodCollection(model)) {
                 return model;
@@ -905,7 +902,7 @@ export namespace BuiltInsForSequences {
             let seq : SimpleSequence = (coll != null && (coll["__interfaces"] != null && coll["__interfaces"].indexOf("freemarker.template.TemplateCollectionModelEx") >= 0 || coll.constructor != null && coll.constructor["__interfaces"] != null && coll.constructor["__interfaces"].indexOf("freemarker.template.TemplateCollectionModelEx") >= 0))?new SimpleSequence((<TemplateCollectionModelEx><any>coll).size()):new SimpleSequence();
             for(let iter : TemplateModelIterator = coll.iterator(); iter.hasNext(); ) {
                 seq.add$java_lang_Object(iter.next());
-            };
+            }
             return seq;
         }
 
@@ -932,7 +929,7 @@ export namespace BuiltInsForSequences {
          * @param {Environment} env
          * @return {*}
          */
-        _eval(env : Environment) : TemplateModel {
+        _eval(env : /*Environment*/any) : TemplateModel {
             let model : TemplateModel = this.target.eval(env);
             if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateCollectionModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateCollectionModel") >= 0)) {
                 return this.calculateResultForColletion(<TemplateCollectionModel><any>model, env);
@@ -943,7 +940,7 @@ export namespace BuiltInsForSequences {
             }
         }
 
-        calculateResultForColletion(coll : TemplateCollectionModel, env : Environment) : TemplateModel {
+        calculateResultForColletion(coll : TemplateCollectionModel, env : /*Environment*/any) : TemplateModel {
             let best : TemplateModel = null;
             let iter : TemplateModelIterator = coll.iterator();
             while((iter.hasNext())) {
@@ -951,18 +948,18 @@ export namespace BuiltInsForSequences {
                 if(cur != null && (best == null || EvalUtil.compare$freemarker_template_TemplateModel$freemarker_core_Expression$int$java_lang_String$freemarker_template_TemplateModel$freemarker_core_Expression$freemarker_core_Expression$boolean$boolean$boolean$boolean$freemarker_core_Environment(cur, null, this.comparatorOperator, null, best, null, this, true, false, false, false, env))) {
                     best = cur;
                 }
-            };
+            }
             return best;
         }
 
-        calculateResultForSequence(seq : TemplateSequenceModel, env : Environment) : TemplateModel {
+        calculateResultForSequence(seq : TemplateSequenceModel, env : /*Environment*/any) : TemplateModel {
             let best : TemplateModel = null;
             for(let i : number = 0; i < seq.size(); i++) {
                 let cur : TemplateModel = seq['get$int'](i);
                 if(cur != null && (best == null || EvalUtil.compare$freemarker_template_TemplateModel$freemarker_core_Expression$int$java_lang_String$freemarker_template_TemplateModel$freemarker_core_Expression$freemarker_core_Expression$boolean$boolean$boolean$boolean$freemarker_core_Environment(cur, null, this.comparatorOperator, null, best, null, this, true, false, false, false, env))) {
                     best = cur;
                 }
-            };
+            }
             return best;
         }
     }
@@ -1020,8 +1017,8 @@ export namespace BuiltInsForSequences {
                             if(!(item != null && (item["__interfaces"] != null && item["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0 || item.constructor != null && item.constructor["__interfaces"] != null && item.constructor["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0))) {
                                 throw new _TemplateModelException("The argument to ?", this.__parent.key, "(key), when it\'s a sequence, must be a sequence of strings, but the item at index ", i, " is not a string.");
                             }
-                        };
-                    };
+                        }
+                    }
                 } else {
                     throw new _TemplateModelException("The argument to ?", this.__parent.key, "(key) must be a string (the name of the subvariable), or a sequence of strings (the \"path\" to the subvariable).");
                 }

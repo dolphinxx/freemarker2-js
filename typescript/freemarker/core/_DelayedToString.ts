@@ -1,5 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { _DelayedConversionToString } from './_DelayedConversionToString';
+import {_DelayedConversionToString} from './_DelayedConversionToString';
 
 export class _DelayedToString extends _DelayedConversionToString {
     public constructor(object? : any) {
@@ -25,4 +25,4 @@ _DelayedToString["__class"] = "freemarker.core._DelayedToString";
 
 
 
-var __Function = Function;
+

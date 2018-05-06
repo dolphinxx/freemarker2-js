@@ -1,5 +1,4 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateModelException } from './TemplateModelException';
 
 /**
  * An interface that can be implemented by writers returned from
@@ -84,4 +83,4 @@ export namespace TransformControl {
 
 
 
-var __Function = Function;
+

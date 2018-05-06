@@ -1,11 +1,11 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateBooleanModel } from '../template/TemplateBooleanModel';
-import { TemplateModel } from '../template/TemplateModel';
-import { Expression } from './Expression';
-import { Environment } from './Environment';
-import { MiscUtil } from './MiscUtil';
-import { ParameterRole } from './ParameterRole';
-import { Configuration } from '../template/Configuration';
+import {TemplateBooleanModel} from '../template/TemplateBooleanModel';
+import {TemplateModel} from '../template/TemplateModel';
+import {Expression} from './Expression';
+import {Environment} from './Environment';
+import {MiscUtil} from './MiscUtil';
+import {ParameterRole} from './ParameterRole';
+import {Configuration} from '../template/Configuration';
 
 export class BooleanLiteral extends Expression {
     /*private*/ val : boolean;
@@ -21,16 +21,16 @@ export class BooleanLiteral extends Expression {
     }
 
     public evalToBoolean(env? : any, cfg? : any) : any {
-        if(((env != null && env instanceof <any>Environment) || env === null) && ((cfg != null && cfg instanceof <any>Configuration) || cfg === null)) {
+        if(((ClassUtil.isInstanceOf(env, 'freemarker.core.Environment')) || env === null) && ((cfg != null && cfg instanceof <any>Configuration) || cfg === null)) {
             super.evalToBoolean(env, cfg);
-        } else if(((env != null && env instanceof <any>Environment) || env === null) && cfg === undefined) {
+        } else if(((ClassUtil.isInstanceOf(env, 'freemarker.core.Environment')) || env === null) && cfg === undefined) {
             return <any>this.evalToBoolean$freemarker_core_Environment(env);
         } else if(((env != null && env instanceof <any>Configuration) || env === null) && cfg === undefined) {
             return <any>this.evalToBoolean$freemarker_template_Configuration(env);
         } else throw new Error('invalid overload');
     }
 
-    evalToBoolean$freemarker_core_Environment(env : Environment) : boolean {
+    evalToBoolean$freemarker_core_Environment(env : /*Environment*/any) : boolean {
         return this.val;
     }
 
@@ -63,7 +63,7 @@ export class BooleanLiteral extends Expression {
      * @param {Environment} env
      * @return {*}
      */
-    _eval(env : Environment) : TemplateModel {
+    _eval(env : /*Environment*/any) : TemplateModel {
         return this.val?TemplateBooleanModel.TRUE:TemplateBooleanModel.FALSE;
     }
 

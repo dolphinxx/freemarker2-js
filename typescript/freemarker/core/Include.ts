@@ -1,25 +1,20 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { MalformedTemplateNameException } from '../template/MalformedTemplateNameException';
-import { Template } from '../template/Template';
-import { TemplateException } from '../template/TemplateException';
-import { TemplateModel } from '../template/TemplateModel';
-import { TemplateScalarModel } from '../template/TemplateScalarModel';
-import { StringUtil } from '../template/utility/StringUtil';
-import { TemplateElement } from './TemplateElement';
-import { Expression } from './Expression';
-import { Boolean } from '../../java/lang/Boolean';
-import { ParseException } from './ParseException';
-import { BugException } from './BugException';
-import { StringLiteral } from './StringLiteral';
-import { Configuration } from '../template/Configuration';
-import { NonBooleanException } from './NonBooleanException';
-import { Environment } from './Environment';
-import { _MiscTemplateException } from './_MiscTemplateException';
-import { _DelayedJQuote } from './_DelayedJQuote';
-import { EvalUtil } from './EvalUtil';
-import { _DelayedGetMessage } from './_DelayedGetMessage';
-import { StringBuilder } from '../../java/lang/StringBuilder';
-import { ParameterRole } from './ParameterRole';
+import {Template} from '../template/Template';
+import {TemplateModel} from '../template/TemplateModel';
+import {TemplateScalarModel} from '../template/TemplateScalarModel';
+import {StringUtil} from '../template/utility/StringUtil';
+import {TemplateElement} from './TemplateElement';
+import {Expression} from './Expression';
+import {ParseException} from './ParseException';
+import {BugException} from './BugException';
+import {StringLiteral} from './StringLiteral';
+import {Environment} from './Environment';
+import {_MiscTemplateException} from './_MiscTemplateException';
+import {_DelayedJQuote} from './_DelayedJQuote';
+import {EvalUtil} from './EvalUtil';
+import {_DelayedGetMessage} from './_DelayedGetMessage';
+import {StringBuilder} from '../../java/lang/StringBuilder';
+import {ParameterRole} from './ParameterRole';
 
 /**
  * An instruction that gets another template
@@ -65,7 +60,7 @@ export class Include extends TemplateElement {
                     this.encoding = (<TemplateScalarModel><any>tm).getAsString();
                 } catch(e) {
                     throw new BugException(e);
-                };
+                }
             } else {
                 this.encoding = null;
             }
@@ -83,11 +78,11 @@ export class Include extends TemplateElement {
                             this.parse = parseExp.evalToBoolean$freemarker_template_Configuration(template.getConfiguration());
                         } catch(e) {
                             throw new ParseException("Expected a boolean or string as the value of the parse attribute", parseExp, e);
-                        };
+                        }
                     }
                 } catch(e) {
                     throw new BugException(e);
-                };
+                }
             } else {
                 this.parse = null;
             }
@@ -99,10 +94,10 @@ export class Include extends TemplateElement {
                     this.ignoreMissingExpPrecalcedValue = ignoreMissingExp.evalToBoolean$freemarker_template_Configuration(template.getConfiguration());
                 } catch(e) {
                     throw new ParseException("Expected a boolean as the value of the \"ignore_missing\" attribute", ignoreMissingExp, e);
-                };
+                }
             } catch(e) {
                 throw new BugException(e);
-            };
+            }
         } else {
             this.ignoreMissingExpPrecalcedValue = null;
         }
@@ -113,14 +108,14 @@ export class Include extends TemplateElement {
      * @param {Environment} env
      * @return {Array}
      */
-    accept(env : Environment) : TemplateElement[] {
+    accept(env : /*Environment*/any) : TemplateElement[] {
         let includedTemplateName : string = this.includedTemplateNameExp.evalAndCoerceToPlainText$freemarker_core_Environment(env);
         let fullIncludedTemplateName : string;
         try {
             fullIncludedTemplateName = env.toFullTemplateName(this.getTemplate().getName(), includedTemplateName);
         } catch(e) {
             throw new _MiscTemplateException(e, env, "Malformed template name ", new _DelayedJQuote(e.getTemplateName()), ":\n", e.getMalformednessDescription());
-        };
+        }
         let encoding : string = this.encoding != null?this.encoding:(this.encodingExp != null?this.encodingExp.evalAndCoerceToPlainText$freemarker_core_Environment(env):null);
         let parse : boolean;
         if(this.parse != null) {
@@ -146,7 +141,7 @@ export class Include extends TemplateElement {
             includedTemplate = env.getTemplateForInclusion(fullIncludedTemplateName, encoding, parse, ignoreMissing);
         } catch(e) {
             throw new _MiscTemplateException(e, env, "Template inclusion failed (for parameter value ", new _DelayedJQuote(includedTemplateName), "):\n", new _DelayedGetMessage(e));
-        };
+        }
         if(includedTemplate != null) {
             env.include$freemarker_template_Template(includedTemplate);
         }
@@ -253,7 +248,7 @@ export class Include extends TemplateElement {
             return StringUtil.getYesNo(s);
         } catch(iae) {
             throw new _MiscTemplateException(exp, "Value must be boolean (or one of these strings: \"n\", \"no\", \"f\", \"false\", \"y\", \"yes\", \"t\", \"true\"), but it was ", new _DelayedJQuote(s), ".");
-        };
+        }
     }
 
     /**
@@ -268,4 +263,4 @@ Include["__class"] = "freemarker.core.Include";
 
 
 
-var __Function = Function;
+

@@ -1,13 +1,11 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateHashModel } from '../../template/TemplateHashModel';
-import { TemplateHashModelEx } from '../../template/TemplateHashModelEx';
-import { TemplateModel } from '../../template/TemplateModel';
-import { TemplateModelAdapter } from '../../template/TemplateModelAdapter';
-import { TemplateModelException } from '../../template/TemplateModelException';
-import { TemplateModelIterator } from '../../template/TemplateModelIterator';
-import { UndeclaredThrowableException } from '../../template/utility/UndeclaredThrowableException';
-import { BeansWrapper } from './BeansWrapper';
-import { TemplateCollectionModel } from '../../template/TemplateCollectionModel';
+import {TemplateHashModel} from '../../template/TemplateHashModel';
+import {TemplateHashModelEx} from '../../template/TemplateHashModelEx';
+import {TemplateModel} from '../../template/TemplateModel';
+import {TemplateModelAdapter} from '../../template/TemplateModelAdapter';
+import {TemplateModelIterator} from '../../template/TemplateModelIterator';
+import {UndeclaredThrowableException} from '../../template/utility/UndeclaredThrowableException';
+import {BeansWrapper} from './BeansWrapper';
 
 /**
  * 
@@ -42,7 +40,7 @@ export class HashAdapter implements TemplateModelAdapter {
             return this.model.isEmpty();
         } catch(e) {
             throw new UndeclaredThrowableException(e);
-        };
+        }
     }
 
     /**
@@ -54,7 +52,7 @@ export class HashAdapter implements TemplateModelAdapter {
             return this.getModelEx().size();
         } catch(e) {
             throw new UndeclaredThrowableException(e);
-        };
+        }
     }
 
     /**
@@ -67,7 +65,7 @@ export class HashAdapter implements TemplateModelAdapter {
             return this.wrapper.unwrap$freemarker_template_TemplateModel(this.model['get$java_lang_String'](/* valueOf */new String(key).toString()));
         } catch(e) {
             throw new UndeclaredThrowableException(e);
-        };
+        }
     }
 
     /**
@@ -119,7 +117,7 @@ export namespace HashAdapter {
                 i = this.__parent.getModelEx().keys().iterator();
             } catch(e) {
                 throw new UndeclaredThrowableException(e);
-            };
+            }
             return new HashAdapter$0.HashAdapter$0$0(this, i);
         }
 
@@ -132,7 +130,7 @@ export namespace HashAdapter {
                 return this.__parent.getModelEx().size();
             } catch(e) {
                 throw new UndeclaredThrowableException(e);
-            };
+            }
         }
 
         constructor(__parent: any) {
@@ -152,7 +150,7 @@ export namespace HashAdapter {
                     return this.i.hasNext();
                 } catch(e) {
                     throw new UndeclaredThrowableException(e);
-                };
+                }
             }
 
             public next() : any {
@@ -161,7 +159,7 @@ export namespace HashAdapter {
                     key = this.__parent.__parent.wrapper.unwrap$freemarker_template_TemplateModel(this.i.next());
                 } catch(e) {
                     throw new UndeclaredThrowableException(e);
-                };
+                }
                 return new HashAdapter$0$0.HashAdapter$0$0$0(this, key);
             }
 
@@ -235,4 +233,4 @@ export namespace HashAdapter {
 
 
 
-var __Function = Function;
+

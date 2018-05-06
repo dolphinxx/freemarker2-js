@@ -1,7 +1,7 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { Template } from '../template/Template';
-import { ObjectFactory } from '../template/utility/ObjectFactory';
-import { CallPlaceCustomDataInitializationException } from './CallPlaceCustomDataInitializationException';
+import {Template} from '../template/Template';
+import {ObjectFactory} from '../template/utility/ObjectFactory';
+import {CallPlaceCustomDataInitializationException} from './CallPlaceCustomDataInitializationException';
 
 /**
  * Gives information about the place where a directive is called from, also lets you attach a custom data object to that

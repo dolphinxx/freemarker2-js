@@ -1,19 +1,17 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { DefaultObjectWrapper } from '../template/DefaultObjectWrapper';
-import { ObjectWrapper } from '../template/ObjectWrapper';
-import { SimpleHash } from '../template/SimpleHash';
-import { SimpleSequence } from '../template/SimpleSequence';
-import { TemplateException } from '../template/TemplateException';
-import { TemplateModel } from '../template/TemplateModel';
-import { _TemplateAPI } from '../template/_TemplateAPI';
-import { Environment } from './Environment';
-import { Expression } from './Expression';
-import { _ErrorDescriptionBuilder } from './_ErrorDescriptionBuilder';
-import { _DelayedFTLTypeDescription } from './_DelayedFTLTypeDescription';
-import { _DelayedShortClassName } from './_DelayedShortClassName';
-import { _DelayedToString } from './_DelayedToString';
-import { Configurable } from './Configurable';
-import { Version } from '../template/Version';
+import {DefaultObjectWrapper} from '../template/DefaultObjectWrapper';
+import {ObjectWrapper} from '../template/ObjectWrapper';
+import {SimpleHash} from '../template/SimpleHash';
+import {SimpleSequence} from '../template/SimpleSequence';
+import {TemplateException} from '../template/TemplateException';
+import {TemplateModel} from '../template/TemplateModel';
+import {_TemplateAPI} from '../template/_TemplateAPI';
+import {Expression} from './Expression';
+import {_ErrorDescriptionBuilder} from './_ErrorDescriptionBuilder';
+import {_DelayedFTLTypeDescription} from './_DelayedFTLTypeDescription';
+import {_DelayedShortClassName} from './_DelayedShortClassName';
+import {_DelayedToString} from './_DelayedToString';
+import {Configurable} from './Configurable';
 
 /**
  * Thrown when {@code ?api} is not supported by a value.
@@ -21,12 +19,12 @@ import { Version } from '../template/Version';
  * @class
  */
 export class APINotSupportedTemplateException extends TemplateException {
-    constructor(env : Environment, blamedExpr : Expression, model : TemplateModel) {
+    constructor(env : /*Environment*/any, blamedExpr : Expression, model : TemplateModel) {
         super(null, env, blamedExpr, APINotSupportedTemplateException.buildDescription(env, blamedExpr, model));
         (<any>Object).setPrototypeOf(this, APINotSupportedTemplateException.prototype);
     }
 
-    static buildDescription(env : Environment, blamedExpr : Expression, tm : TemplateModel) : _ErrorDescriptionBuilder {
+    static buildDescription(env : /*Environment*/any, blamedExpr : Expression, tm : TemplateModel) : _ErrorDescriptionBuilder {
         let desc : _ErrorDescriptionBuilder = new _ErrorDescriptionBuilder("The value doesn\'t support ?api. See requirements in the FreeMarker Manual. (FTL type: ", new _DelayedFTLTypeDescription(tm), ", TemplateModel class: ", new _DelayedShortClassName((<any>tm.constructor)), ", ObjectWapper: ", new _DelayedToString(env.getObjectWrapper()), ")").blame(blamedExpr);
         if(blamedExpr.isLiteral()) {
             desc.tip$java_lang_String("Only adapted Java objects can possibly have API, not values created inside templates.");

@@ -13,36 +13,12 @@ import {NullPointerException} from "../lang/NullPointerException";
      */
     export class OutputStreamWriter extends Writer {
         /*private*/ out : OutputStream;
+        charset: string;
 
-        public constructor(out? : any, charsetName? : any) {
-            if(((out != null && out instanceof <any>OutputStream) || out === null) && ((typeof charsetName === 'string') || charsetName === null)) {
-                let __args = Array.prototype.slice.call(arguments);
-                super(out);
-                this.out = null;
-                this.out = null;
-                (() => {
-                    if(charsetName == null) throw new NullPointerException("charsetName");
-                    this.out = out;
-                })();
-            } else if(((out != null && out instanceof <any>OutputStream) || out === null) && ((charsetName != null && charsetName instanceof <any>Charset) || charsetName === null)) {
-                let __args = Array.prototype.slice.call(arguments);
-                let cs : any = __args[1];
-                super(out);
-                this.out = null;
-                this.out = null;
-                (() => {
-                    if(cs == null) throw new NullPointerException("charset");
-                    this.out = out;
-                })();
-            } else if(((out != null && out instanceof <any>OutputStream) || out === null) && charsetName === undefined) {
-                let __args = Array.prototype.slice.call(arguments);
-                super(out);
-                this.out = null;
-                this.out = null;
-                (() => {
-                    this.out = out;
-                })();
-            } else throw new Error('invalid overload');
+        public constructor(out : OutputStream, charsetName? : string) {
+            super();
+            this.out = out;
+            this.charset = charsetName;
         }
 
         flushBuffer() {

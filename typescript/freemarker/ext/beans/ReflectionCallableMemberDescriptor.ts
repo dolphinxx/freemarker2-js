@@ -1,9 +1,8 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateModel } from '../../template/TemplateModel';
-import { TemplateModelException } from '../../template/TemplateModelException';
-import { CallableMemberDescriptor } from './CallableMemberDescriptor';
-import { BeansWrapper } from './BeansWrapper';
-import { _MethodUtil } from './_MethodUtil';
+import {TemplateModel} from '../../template/TemplateModel';
+import {CallableMemberDescriptor} from './CallableMemberDescriptor';
+import {BeansWrapper} from './BeansWrapper';
+import {_MethodUtil} from './_MethodUtil';
 
 /**
  * The most commonly used {link CallableMemberDescriptor} implementation.
@@ -101,7 +100,7 @@ export class ReflectionCallableMemberDescriptor extends CallableMemberDescriptor
      * 
      * @return {Array}
      */
-    getParamTypes() : Array {
+    getParamTypes() : Array<any> {
         return this.paramTypes;
     }
 
@@ -117,4 +116,4 @@ ReflectionCallableMemberDescriptor["__class"] = "freemarker.ext.beans.Reflection
 
 
 
-var __Function = Function;
+

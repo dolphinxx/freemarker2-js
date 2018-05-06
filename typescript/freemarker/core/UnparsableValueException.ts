@@ -1,5 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateValueFormatException } from './TemplateValueFormatException';
+import {TemplateValueFormatException} from './TemplateValueFormatException';
 
 /**
  * Thrown when the content of the string that should be parsed by the {link TemplateValueFormat} doesn't match what the
@@ -23,4 +23,4 @@ UnparsableValueException["__interfaces"] = ["java.io.Serializable"];
 
 
 
-var __Function = Function;
+

@@ -1,17 +1,16 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { EmptyMap } from '../template/EmptyMap';
-import { TemplateException } from '../template/TemplateException';
-import { TemplateModel } from '../template/TemplateModel';
-import { TemplateTransformModel } from '../template/TemplateTransformModel';
-import { TemplateElement } from './TemplateElement';
-import { Expression } from './Expression';
-import { TemplateElements } from './TemplateElements';
-import { Environment } from './Environment';
-import { UnexpectedTypeException } from './UnexpectedTypeException';
-import { StringBuilder } from '../../java/lang/StringBuilder';
-import { _MessageUtil } from './_MessageUtil';
-import { ParameterRole } from './ParameterRole';
-import { MiscUtil } from './MiscUtil';
+import {EmptyMap} from '../template/EmptyMap';
+import {TemplateModel} from '../template/TemplateModel';
+import {TemplateTransformModel} from '../template/TemplateTransformModel';
+import {TemplateElement} from './TemplateElement';
+import {Expression} from './Expression';
+import {TemplateElements} from './TemplateElements';
+import {Environment} from './Environment';
+import {UnexpectedTypeException} from './UnexpectedTypeException';
+import {StringBuilder} from '../../java/lang/StringBuilder';
+import {_MessageUtil} from './_MessageUtil';
+import {ParameterRole} from './ParameterRole';
+import {MiscUtil} from './MiscUtil';
 
 /**
  * A template element that contains a nested block
@@ -42,7 +41,7 @@ export class TransformBlock extends TemplateElement {
      * @param {Environment} env
      * @return {Array}
      */
-    accept(env : Environment) : TemplateElement[] {
+    accept(env : /*Environment*/any) : TemplateElement[] {
         let ttm : TemplateTransformModel = env.getTransform(this.transformExpression);
         if(ttm != null) {
             let args : Map<any, any>;
@@ -54,7 +53,7 @@ export class TransformBlock extends TemplateElement {
                     let valueExp : Expression = <Expression>entry.getValue();
                     let value : TemplateModel = valueExp.eval(env);
                     /* put */args.set(key, value);
-                };
+                }
             } else {
                 args = EmptyMap.instance_$LI$();
             }
@@ -91,7 +90,7 @@ export class TransformBlock extends TemplateElement {
                 sb.append(entry.getKey());
                 sb.append('=');
                 _MessageUtil.appendExpressionAsUntearable(sb, <Expression>entry.getValue());
-            };
+            }
         }
         if(canonical) {
             sb.append(">");
@@ -185,4 +184,4 @@ TransformBlock["__class"] = "freemarker.core.TransformBlock";
 
 
 
-var __Function = Function;
+

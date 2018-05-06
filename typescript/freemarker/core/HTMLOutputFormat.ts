@@ -1,8 +1,8 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { StringUtil } from '../template/utility/StringUtil';
-import { Writer } from '../../java/io/Writer';
-import { CommonMarkupOutputFormat } from './CommonMarkupOutputFormat';
-import { TemplateHTMLOutputModel } from './TemplateHTMLOutputModel';
+import {StringUtil} from '../template/utility/StringUtil';
+import {Writer} from '../../java/io/Writer';
+import {CommonMarkupOutputFormat} from './CommonMarkupOutputFormat';
+import {TemplateHTMLOutputModel} from './TemplateHTMLOutputModel';
 
 /**
  * Represents the HTML output format (MIME type "text/html", name "HTML"). This format escapes by default (via
@@ -90,6 +90,6 @@ HTMLOutputFormat["__class"] = "freemarker.core.HTMLOutputFormat";
 
 
 
-var __Function = Function;
+
 
 HTMLOutputFormat.INSTANCE_$LI$();

@@ -1,15 +1,14 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { WrapperTemplateModel } from '../ext/util/WrapperTemplateModel';
-import { ObjectWrapperWithAPISupport } from './utility/ObjectWrapperWithAPISupport';
-import { WrappingTemplateModel } from './WrappingTemplateModel';
-import { TemplateCollectionModel } from './TemplateCollectionModel';
-import { AdapterTemplateModel } from './AdapterTemplateModel';
-import { TemplateModelWithAPISupport } from './TemplateModelWithAPISupport';
-import { ObjectWrapper } from './ObjectWrapper';
-import { TemplateModelIterator } from './TemplateModelIterator';
-import { TemplateModel } from './TemplateModel';
-import { TemplateModelException } from './TemplateModelException';
-import { TemplateHashModel } from './TemplateHashModel';
+import {WrapperTemplateModel} from '../ext/util/WrapperTemplateModel';
+import {ObjectWrapperWithAPISupport} from './utility/ObjectWrapperWithAPISupport';
+import {WrappingTemplateModel} from './WrappingTemplateModel';
+import {TemplateCollectionModel} from './TemplateCollectionModel';
+import {AdapterTemplateModel} from './AdapterTemplateModel';
+import {TemplateModelWithAPISupport} from './TemplateModelWithAPISupport';
+import {ObjectWrapper} from './ObjectWrapper';
+import {TemplateModelIterator} from './TemplateModelIterator';
+import {TemplateModel} from './TemplateModel';
+import {TemplateModelException} from './TemplateModelException';
 
 /**
  * Adapts an {link Enumeration} to the corresponding {link TemplateModel} interface(s), most importantly to
@@ -113,4 +112,4 @@ export namespace DefaultEnumerationAdapter {
 
 
 
-var __Function = Function;
+

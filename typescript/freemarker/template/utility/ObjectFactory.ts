@@ -10,4 +10,4 @@ export interface ObjectFactory<T> {
 }
 
 
-var __Function = Function;
+

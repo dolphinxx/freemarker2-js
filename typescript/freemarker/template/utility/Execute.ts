@@ -1,10 +1,10 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateModelException } from '../TemplateModelException';
-import { InputStream } from '../../../java/io/InputStream';
-import { InputStreamReader } from '../../../java/io/InputStreamReader';
-import { Reader } from '../../../java/io/Reader';
-import { TemplateMethodModel } from '../TemplateMethodModel';
-import { StringBuilder } from '../../../java/lang/StringBuilder';
+import {TemplateModelException} from '../TemplateModelException';
+import {InputStream} from '../../../java/io/InputStream';
+import {InputStreamReader} from '../../../java/io/InputStreamReader';
+import {Reader} from '../../../java/io/Reader';
+import {StringBuilder} from '../../../java/lang/StringBuilder';
+import {TemplateMethodModel} from "../TemplateMethodModel";
 
 /**
  * <p>Gives FreeMarker the the ability to execute external commands. Will fork
@@ -38,7 +38,7 @@ import { StringBuilder } from '../../../java/lang/StringBuilder';
  * </pre>
  * @class
  */
-export class Execute implements freemarker.template.TemplateMethodModel {
+export class Execute implements TemplateMethodModel {
     static OUTPUT_BUFFER_SIZE : number = 1024;
 
     /**
@@ -65,13 +65,13 @@ export class Execute implements freemarker.template.TemplateMethodModel {
                 while((bytes_read > 0)) {
                     aOutputBuffer.append(buffer, 0, bytes_read);
                     bytes_read = execReader.read(buffer);
-                };
+                }
             } finally {
                 execOut.close();
-            };
+            }
         } catch(ioe) {
             throw new TemplateModelException(ioe.message);
-        };
+        }
         return aOutputBuffer.toString();
     }
 
@@ -84,4 +84,4 @@ Execute["__interfaces"] = ["freemarker.template.TemplateMethodModel","freemarker
 
 
 
-var __Function = Function;
+

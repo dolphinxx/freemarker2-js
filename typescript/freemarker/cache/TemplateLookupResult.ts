@@ -1,5 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { NullArgumentException } from '../template/utility/NullArgumentException';
+import {NullArgumentException} from '../template/utility/NullArgumentException';
 
 /**
  * The return value of {link TemplateLookupStrategy#lookup(TemplateLookupContext)} and similar lookup methods. You

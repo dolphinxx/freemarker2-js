@@ -11,4 +11,4 @@ export interface _Java6 {
 }
 
 
-var __Function = Function;
+

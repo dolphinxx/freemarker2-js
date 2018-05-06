@@ -1,12 +1,10 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { ModelFactory } from '../util/ModelFactory';
-import { ObjectWrapper } from '../../template/ObjectWrapper';
-import { TemplateMethodModelEx } from '../../template/TemplateMethodModelEx';
-import { TemplateModel } from '../../template/TemplateModel';
-import { TemplateModelException } from '../../template/TemplateModelException';
-import { StringModel } from './StringModel';
-import { BeansWrapper } from './BeansWrapper';
-import { Character } from '../../../java/lang/Character';
+import {ModelFactory} from '../util/ModelFactory';
+import {ObjectWrapper} from '../../template/ObjectWrapper';
+import {TemplateMethodModelEx} from '../../template/TemplateMethodModelEx';
+import {TemplateModel} from '../../template/TemplateModel';
+import {StringModel} from './StringModel';
+import {BeansWrapper} from './BeansWrapper';
 
 /**
  * Creates a new model that wraps the specified map object.
@@ -109,6 +107,6 @@ export namespace MapModel {
 
 
 
-var __Function = Function;
+
 
 MapModel.FACTORY_$LI$();

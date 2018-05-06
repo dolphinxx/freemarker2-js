@@ -1,9 +1,8 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateModelException } from '../template/TemplateModelException';
-import { Writer } from '../../java/io/Writer';
-import { CommonMarkupOutputFormat } from './CommonMarkupOutputFormat';
-import { TemplateCombinedMarkupOutputModel } from './TemplateCombinedMarkupOutputModel';
-import { MarkupOutputFormat } from './MarkupOutputFormat';
+import {Writer} from '../../java/io/Writer';
+import {CommonMarkupOutputFormat} from './CommonMarkupOutputFormat';
+import {TemplateCombinedMarkupOutputModel} from './TemplateCombinedMarkupOutputModel';
+import {MarkupOutputFormat} from './MarkupOutputFormat';
 
 /**
  * @param {String} name Maybe {@code null}, in which case it defaults to

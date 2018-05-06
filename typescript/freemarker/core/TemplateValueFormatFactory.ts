@@ -10,4 +10,4 @@ TemplateValueFormatFactory["__class"] = "freemarker.core.TemplateValueFormatFact
 
 
 
-var __Function = Function;
+

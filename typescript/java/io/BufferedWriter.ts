@@ -1,6 +1,5 @@
 import {Writer} from "./Writer";
 import {IllegalArgumentException} from "../lang/IllegalArgumentException";
-import {_SecurityUtils} from "../../org/apache/freemarker/core/util/_SecurityUtils";
 import {IOException} from "./IOException";
 import {IndexOutOfBoundsException} from "../lang/IndexOutOfBoundsException";
 import {System} from "../lang/System";
@@ -42,7 +41,7 @@ export class BufferedWriter extends Writer {
         this.nChars = sz;
         this.nextChar = 0;
 
-        this.lineSeparator = _SecurityUtils.getSystemProperty$java_lang_String$java_lang_String("line.separator", "\n");
+        this.lineSeparator = System.getProperty("line.separator", "\n");
     }
 
     /** Checks to make sure that the stream has not been closed */

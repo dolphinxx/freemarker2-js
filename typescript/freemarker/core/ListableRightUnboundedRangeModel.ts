@@ -1,9 +1,9 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { SimpleNumber } from '../template/SimpleNumber';
-import { TemplateCollectionModel } from '../template/TemplateCollectionModel';
-import { TemplateModel } from '../template/TemplateModel';
-import { TemplateModelIterator } from '../template/TemplateModelIterator';
-import { RightUnboundedRangeModel } from './RightUnboundedRangeModel';
+import {SimpleNumber} from '../template/SimpleNumber';
+import {TemplateCollectionModel} from '../template/TemplateCollectionModel';
+import {TemplateModel} from '../template/TemplateModel';
+import {TemplateModelIterator} from '../template/TemplateModelIterator';
+import {RightUnboundedRangeModel} from './RightUnboundedRangeModel';
 
 /**
  * This is the model used for right-unbounded ranges since Incompatible Improvements 2.3.21.
@@ -42,7 +42,7 @@ export namespace ListableRightUnboundedRangeModel {
 
         nextLong : number;
 
-        nextBigInteger : BigInteger;
+        nextBigInteger : /*BigInteger*/number;
 
         public next() : TemplateModel {
             if(this.needInc) {
@@ -60,12 +60,12 @@ export namespace ListableRightUnboundedRangeModel {
                         this.nextLong++;
                     } else {
                         this.nextType = 3;
-                        this.nextBigInteger = BigInteger.valueOf(this.nextLong);
-                        this.nextBigInteger = this.nextBigInteger.add(BigInteger.ONE);
+                        this.nextBigInteger = /*BigInteger.valueOf(*/this.nextLong/*)*/;
+                        this.nextBigInteger = this.nextBigInteger + 1/*.add(BigInteger.ONE)*/;
                     }
                     break;
                 default:
-                    this.nextBigInteger = this.nextBigInteger.add(BigInteger.ONE);
+                    this.nextBigInteger = this.nextBigInteger + 1/*.add(BigInteger.ONE)*/;
                 }
             }
             this.needInc = true;
@@ -89,7 +89,3 @@ export namespace ListableRightUnboundedRangeModel {
 
 
 }
-
-
-
-var __Function = Function;

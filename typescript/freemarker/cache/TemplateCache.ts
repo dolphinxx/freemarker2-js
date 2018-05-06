@@ -1,30 +1,27 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { BugException } from '../core/BugException';
-import { Environment } from '../core/Environment';
-import { TemplateConfiguration } from '../core/TemplateConfiguration';
-import { Logger } from '../log/Logger';
-import { Configuration } from '../template/Configuration';
-import { MalformedTemplateNameException } from '../template/MalformedTemplateNameException';
-import { Template } from '../template/Template';
-import { _TemplateAPI } from '../template/_TemplateAPI';
-import { NullArgumentException } from '../template/utility/NullArgumentException';
-import { StringUtil } from '../template/utility/StringUtil';
-import { UndeclaredThrowableException } from '../template/utility/UndeclaredThrowableException';
-import { Reader } from '../../java/io/Reader';
-import { StringWriter } from '../../java/io/StringWriter';
-import { TemplateLoader } from './TemplateLoader';
-import { CacheStorage } from './CacheStorage';
-import { TemplateLookupStrategy } from './TemplateLookupStrategy';
-import { TemplateNameFormat } from './TemplateNameFormat';
-import { TemplateConfigurationFactory } from './TemplateConfigurationFactory';
-import { Version } from '../template/Version';
-import { ConcurrentCacheStorage } from './ConcurrentCacheStorage';
-import { System } from '../../java/lang/System';
-import { TemplateLookupResult } from './TemplateLookupResult';
-import { TemplateConfigurationFactoryException } from './TemplateConfigurationFactoryException';
-import { StringBuilder } from '../../java/lang/StringBuilder';
-import { Boolean } from '../../java/lang/Boolean';
-import { TemplateLookupContext } from './TemplateLookupContext';
+import {BugException} from '../core/BugException';
+import {Environment} from '../core/Environment';
+import {TemplateConfiguration} from '../core/TemplateConfiguration';
+import {Logger} from '../log/Logger';
+import {Configuration} from '../template/Configuration';
+import {MalformedTemplateNameException} from '../template/MalformedTemplateNameException';
+import {Template} from '../template/Template';
+import {_TemplateAPI} from '../template/_TemplateAPI';
+import {NullArgumentException} from '../template/utility/NullArgumentException';
+import {StringUtil} from '../template/utility/StringUtil';
+import {UndeclaredThrowableException} from '../template/utility/UndeclaredThrowableException';
+import {Reader} from '../../java/io/Reader';
+import {StringWriter} from '../../java/io/StringWriter';
+import {TemplateLoader} from './TemplateLoader';
+import {CacheStorage} from './CacheStorage';
+import {TemplateLookupStrategy} from './TemplateLookupStrategy';
+import {TemplateNameFormat} from './TemplateNameFormat';
+import {TemplateConfigurationFactory} from './TemplateConfigurationFactory';
+import {ConcurrentCacheStorage} from './ConcurrentCacheStorage';
+import {TemplateLookupResult} from './TemplateLookupResult';
+import {StringBuilder} from '../../java/lang/StringBuilder';
+import {Boolean} from '../../java/lang/Boolean';
+import {TemplateLookupContext} from './TemplateLookupContext';
 
 /**
  * @param {*} templateLoader         The {link TemplateLoader} to use. Can be {@code null}, though then every request will result in
@@ -437,7 +434,7 @@ export class TemplateCache {
                 throw e;
             }
             return new TemplateCache.MaybeMissingTemplate(null, e);
-        };
+        }
         if(this.templateLoader == null) {
             return new TemplateCache.MaybeMissingTemplate(name, "The TemplateLoader was null.");
         }
@@ -507,7 +504,7 @@ export class TemplateCache {
         } else {
             {
                 cachedTemplate = <TemplateCache.CachedTemplate>this.storage.get(tk);
-            };
+            }
         }
         let now : number = /* currentTimeMillis */Date.now();
         let lastModified : number = -1;
@@ -602,7 +599,7 @@ export class TemplateCache {
             if(newLookupResult != null && newLookupResult.isPositive()) {
                 this.templateLoader.closeTemplateSource(newLookupResult.getTemplateSource());
             }
-        };
+        }
     }
 
     static INIT_CAUSE : Function; public static INIT_CAUSE_$LI$() : Function { if(TemplateCache.INIT_CAUSE == null) TemplateCache.INIT_CAUSE = TemplateCache.getInitCauseMethod(); return TemplateCache.INIT_CAUSE; };
@@ -612,7 +609,7 @@ export class TemplateCache {
             return /* getMethod */((c,p) => { if(c.prototype.hasOwnProperty(p) && typeof c.prototype[p] == 'function') return {owner:c,name:p,fn:c.prototype[p]}; else return null; })("java.lang.Throwable","initCause");
         } catch(e) {
             return null;
-        };
+        }
     }
 
     /**
@@ -642,7 +639,7 @@ export class TemplateCache {
                     throw new UndeclaredThrowableException(ex);
 
                 }
-            };
+            }
         } else {
             ioe = Object.defineProperty(new Error(message + "\nCaused by: " + /* getName */(c => c["__class"]?c["__class"]:c["name"])((<any>cause.constructor)) + ": " + cause.message), '__classes', { configurable: true, value: ['java.lang.Throwable','java.io.IOException','java.lang.Object','java.lang.Exception'] });
         }
@@ -666,7 +663,7 @@ export class TemplateCache {
         } else {
             {
                 this.storage.put(tk, cachedTemplate);
-            };
+            }
         }
     }
 
@@ -676,7 +673,7 @@ export class TemplateCache {
             tc = this.templateConfigurations != null?this.templateConfigurations.get(sourceName, source):null;
         } catch(e) {
             throw this.newIOException("Error while getting TemplateConfiguration; see cause exception.", e);
-        };
+        }
         if(tc != null) {
             if(tc.isEncodingSet()) {
                 initialEncoding = tc.getEncoding();
@@ -694,7 +691,7 @@ export class TemplateCache {
                         template = new Template(name, sourceName, reader, this.config, tc, initialEncoding);
                     } finally {
                         reader.close();
-                    };
+                    }
                 } catch(wee) {
                     let actualEncoding : string = wee.getTemplateSpecifiedEncoding();
                     if(TemplateCache.LOG_$LI$().isDebugEnabled()) {
@@ -705,8 +702,8 @@ export class TemplateCache {
                         template = new Template(name, sourceName, reader, this.config, tc, actualEncoding);
                     } finally {
                         reader.close();
-                    };
-                };
+                    }
+                }
             } else {
                 let sw : StringWriter = new StringWriter();
                 let buf : string[] = (s => { let a=[]; while(s-->0) a.push(null); return a; })(4096);
@@ -719,14 +716,14 @@ export class TemplateCache {
                         } else if(charsRead < 0) {
                             break fetchChars;
                         }
-                    };
+                    }
                 } finally {
                     reader.close();
-                };
+                }
                 template = Template.getPlainTextTemplate$java_lang_String$java_lang_String$java_lang_String$freemarker_template_Configuration(name, sourceName, sw.toString(), this.config);
                 template.setEncoding(initialEncoding);
             }
-        };
+        }
         if(tc != null) {
             tc.apply(template);
         }
@@ -744,7 +741,7 @@ export class TemplateCache {
     public getDelay() : number {
         {
             return this.updateDelay;
-        };
+        }
     }
 
     /**
@@ -756,7 +753,7 @@ export class TemplateCache {
     public setDelay(delay : number) {
         {
             this.updateDelay = delay;
-        };
+        }
     }
 
     /**
@@ -766,7 +763,7 @@ export class TemplateCache {
     public getLocalizedLookup() : boolean {
         {
             return this.localizedLookup;
-        };
+        }
     }
 
     /**
@@ -779,7 +776,7 @@ export class TemplateCache {
                 this.localizedLookup = localizedLookup;
                 this.clear();
             }
-        };
+        }
     }
 
     /**
@@ -816,7 +813,7 @@ export class TemplateCache {
             } else {
                 {
                     this.storage.remove(tk);
-                };
+                }
             }
             if(debug) {
                 TemplateCache.LOG_$LI$().debug$java_lang_String(debugName + " was removed from the cache, if it was there");
@@ -859,12 +856,12 @@ export class TemplateCache {
      * @param {String} targetName
      * @return {String}
      */
-    public static getFullTemplatePath(env : Environment, baseName : string, targetName : string) : string {
+    public static getFullTemplatePath(env : /*Environment*/any, baseName : string, targetName : string) : string {
         try {
             return env.toFullTemplateName(baseName, targetName);
         } catch(e) {
             throw Object.defineProperty(new Error(e.message), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.lang.RuntimeException','java.lang.IllegalArgumentException','java.lang.Exception'] });
-        };
+        }
     }
 
     lookupTemplate(name : string, locale : string, customLookupCondition : any) : TemplateLookupResult {
@@ -892,7 +889,7 @@ export class TemplateCache {
                 lastAsterisk = /* size */(<number>tokpath.length);
             }
             /* add */(tokpath.push(pathToken)>0);
-        };
+        }
         if(lastAsterisk === -1) {
             return TemplateLookupResult.from(path, this.findTemplateSource(path));
         }
@@ -914,7 +911,7 @@ export class TemplateCache {
             }
             l = basePath.lastIndexOf(TemplateCache.SLASH, l - 2) + 1;
             buf.setLength(l);
-        };
+        }
     }
 
     findTemplateSource(path : string) : any {
@@ -944,7 +941,7 @@ export class TemplateCache {
         let buf : StringBuilder = new StringBuilder("");
         for(let i : number = from; i < to; ++i) {
             buf.append(/* get */path[i]).append('/');
-        };
+        }
         return buf.toString();
     }
 }
@@ -1035,7 +1032,7 @@ export namespace TemplateCache {
                 return <TemplateCache.CachedTemplate>/* clone *//* clone */((o:any) => { let clone = Object.create(o); for(let p in o) { if (o.hasOwnProperty(p)) clone[p] = o[p]; } return clone; })(this);
             } catch(e) {
                 throw new UndeclaredThrowableException(e);
-            };
+            }
         }
 
         constructor() {
@@ -1097,7 +1094,7 @@ export namespace TemplateCache {
                     break tryLocaleNameVariations;
                 }
                 localeName = localeName.substring(0, lastUnderscore);
-            };
+            }
             return this.createNegativeLookupResult();
         }
     }

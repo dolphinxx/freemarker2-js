@@ -1,21 +1,19 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { SimpleSequence } from '../template/SimpleSequence';
-import { TemplateException } from '../template/TemplateException';
-import { TemplateHashModel } from '../template/TemplateHashModel';
-import { TemplateModel } from '../template/TemplateModel';
-import { TemplateNodeModel } from '../template/TemplateNodeModel';
-import { TemplateScalarModel } from '../template/TemplateScalarModel';
-import { TemplateSequenceModel } from '../template/TemplateSequenceModel';
-import { TemplateElement } from './TemplateElement';
-import { Expression } from './Expression';
-import { Environment } from './Environment';
-import { NonNodeException } from './NonNodeException';
-import { StringLiteral } from './StringLiteral';
-import { ListLiteral } from './ListLiteral';
-import { NonSequenceException } from './NonSequenceException';
-import { _MiscTemplateException } from './_MiscTemplateException';
-import { StringBuilder } from '../../java/lang/StringBuilder';
-import { ParameterRole } from './ParameterRole';
+import {SimpleSequence} from '../template/SimpleSequence';
+import {TemplateModel} from '../template/TemplateModel';
+import {TemplateNodeModel} from '../template/TemplateNodeModel';
+import {TemplateScalarModel} from '../template/TemplateScalarModel';
+import {TemplateSequenceModel} from '../template/TemplateSequenceModel';
+import {TemplateElement} from './TemplateElement';
+import {Expression} from './Expression';
+import {Environment} from './Environment';
+import {NonNodeException} from './NonNodeException';
+import {StringLiteral} from './StringLiteral';
+import {ListLiteral} from './ListLiteral';
+import {NonSequenceException} from './NonSequenceException';
+import {_MiscTemplateException} from './_MiscTemplateException';
+import {StringBuilder} from '../../java/lang/StringBuilder';
+import {ParameterRole} from './ParameterRole';
 
 /**
  * An instruction to visit the children of a node.
@@ -40,7 +38,7 @@ export class RecurseNode extends TemplateElement {
      * @param {Environment} env
      * @return {Array}
      */
-    accept(env : Environment) : TemplateElement[] {
+    accept(env : /*Environment*/any) : TemplateElement[] {
         let node : TemplateModel = this.targetNode == null?null:this.targetNode.eval(env);
         if(node != null && !(node != null && (node["__interfaces"] != null && node["__interfaces"].indexOf("freemarker.template.TemplateNodeModel") >= 0 || node.constructor != null && node.constructor["__interfaces"] != null && node.constructor["__interfaces"].indexOf("freemarker.template.TemplateNodeModel") >= 0))) {
             throw new NonNodeException(this.targetNode, node, "node", env);
@@ -164,4 +162,4 @@ RecurseNode["__class"] = "freemarker.core.RecurseNode";
 
 
 
-var __Function = Function;
+

@@ -1,8 +1,7 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateValueFormatFactory } from './TemplateValueFormatFactory';
-import { TemplateDateFormat } from './TemplateDateFormat';
-import { Environment } from './Environment';
-import { TemplateValueFormatException } from './TemplateValueFormatException';
+import {TemplateValueFormatFactory} from './TemplateValueFormatFactory';
+import {TemplateDateFormat} from './TemplateDateFormat';
+import {TemplateValueFormatException} from './TemplateValueFormatException';
 
 /**
  * Factory for a certain kind of date/time/dateTime formatting ({link TemplateDateFormat}). Usually a singleton
@@ -55,10 +54,10 @@ export abstract class TemplateDateFormatFactory extends TemplateValueFormatFacto
      * {link TemplateDateModel#UNKNOWN} and that's unsupported by this factory.
      * @return {TemplateDateFormat}
      */
-    public abstract get(params : string, dateType : number, locale : string, timeZone : string, zonelessInput : boolean, env : Environment) : TemplateDateFormat;
+    public abstract get(params : string, dateType : number, locale : string, timeZone : string, zonelessInput : boolean, env : /*Environment*/any) : TemplateDateFormat;
 }
 TemplateDateFormatFactory["__class"] = "freemarker.core.TemplateDateFormatFactory";
 
 
 
-var __Function = Function;
+

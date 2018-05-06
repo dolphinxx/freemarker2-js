@@ -1,14 +1,12 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { SimpleNumber } from '../template/SimpleNumber';
-import { TemplateException } from '../template/TemplateException';
-import { TemplateModel } from '../template/TemplateModel';
-import { Expression } from './Expression';
-import { Environment } from './Environment';
-import { TemplateObject } from './TemplateObject';
-import { ArithmeticEngine } from './ArithmeticEngine';
-import { EvalUtil } from './EvalUtil';
-import { _MiscTemplateException } from './_MiscTemplateException';
-import { ParameterRole } from './ParameterRole';
+import {SimpleNumber} from '../template/SimpleNumber';
+import {TemplateModel} from '../template/TemplateModel';
+import {Expression} from './Expression';
+import {TemplateObject} from './TemplateObject';
+import {ArithmeticEngine} from './ArithmeticEngine';
+import {EvalUtil} from './EvalUtil';
+import {_MiscTemplateException} from './_MiscTemplateException';
+import {ParameterRole} from './ParameterRole';
 
 /**
  * An operator for arithmetic operations. Note that the + operator is in {link AddConcatExpression}, because its
@@ -48,11 +46,11 @@ export class ArithmeticExpression extends Expression {
      * @param {Environment} env
      * @return {*}
      */
-    _eval(env : Environment) : TemplateModel {
+    _eval(env : /*Environment*/any) : TemplateModel {
         return ArithmeticExpression._eval(env, this, this.lho.evalToNumber(env), this.operator, this.rho.evalToNumber(env));
     }
 
-    static _eval(env : Environment, parent : TemplateObject, lhoNumber : number, operator : number, rhoNumber : number) : TemplateModel {
+    static _eval(env : /*Environment*/any, parent : TemplateObject, lhoNumber : number, operator : number, rhoNumber : number) : TemplateModel {
         let ae : ArithmeticEngine = EvalUtil.getArithmeticEngine(env, parent);
         try {
             switch((operator)) {
@@ -73,7 +71,7 @@ export class ArithmeticExpression extends Expression {
             }
         } catch(e) {
             throw new _MiscTemplateException(e, env, "Arithmetic operation failed", (e.message != null?[": ", e.message]:" (see cause exception)"));
-        };
+        }
     }
 
     /**

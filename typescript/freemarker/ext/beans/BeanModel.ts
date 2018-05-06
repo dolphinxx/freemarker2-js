@@ -1,32 +1,27 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { CollectionAndSequence } from '../../core/CollectionAndSequence';
-import { _DelayedFTLTypeDescription } from '../../core/_DelayedFTLTypeDescription';
-import { _DelayedJQuote } from '../../core/_DelayedJQuote';
-import { _TemplateModelException } from '../../core/_TemplateModelException';
-import { ModelFactory } from '../util/ModelFactory';
-import { WrapperTemplateModel } from '../util/WrapperTemplateModel';
-import { Logger } from '../../log/Logger';
-import { AdapterTemplateModel } from '../../template/AdapterTemplateModel';
-import { ObjectWrapper } from '../../template/ObjectWrapper';
-import { SimpleScalar } from '../../template/SimpleScalar';
-import { SimpleSequence } from '../../template/SimpleSequence';
-import { TemplateCollectionModel } from '../../template/TemplateCollectionModel';
-import { TemplateHashModelEx } from '../../template/TemplateHashModelEx';
-import { TemplateModel } from '../../template/TemplateModel';
-import { TemplateModelException } from '../../template/TemplateModelException';
-import { TemplateModelIterator } from '../../template/TemplateModelIterator';
-import { TemplateModelWithAPISupport } from '../../template/TemplateModelWithAPISupport';
-import { TemplateScalarModel } from '../../template/TemplateScalarModel';
-import { StringUtil } from '../../template/utility/StringUtil';
-import { BeansWrapper } from './BeansWrapper';
-import { ClassIntrospector } from './ClassIntrospector';
-import { InvalidPropertyException } from './InvalidPropertyException';
-import { FastPropertyDescriptor } from './FastPropertyDescriptor';
-import { SimpleMethodModel } from './SimpleMethodModel';
-import { OverloadedMethods } from './OverloadedMethods';
-import { OverloadedMethodsModel } from './OverloadedMethodsModel';
-import { Boolean } from '../../../java/lang/Boolean';
-import { TemplateHashModel } from '../../template/TemplateHashModel';
+import {CollectionAndSequence} from '../../core/CollectionAndSequence';
+import {_DelayedFTLTypeDescription} from '../../core/_DelayedFTLTypeDescription';
+import {_DelayedJQuote} from '../../core/_DelayedJQuote';
+import {_TemplateModelException} from '../../core/_TemplateModelException';
+import {ModelFactory} from '../util/ModelFactory';
+import {WrapperTemplateModel} from '../util/WrapperTemplateModel';
+import {Logger} from '../../log/Logger';
+import {AdapterTemplateModel} from '../../template/AdapterTemplateModel';
+import {ObjectWrapper} from '../../template/ObjectWrapper';
+import {SimpleScalar} from '../../template/SimpleScalar';
+import {SimpleSequence} from '../../template/SimpleSequence';
+import {TemplateCollectionModel} from '../../template/TemplateCollectionModel';
+import {TemplateHashModelEx} from '../../template/TemplateHashModelEx';
+import {TemplateModel} from '../../template/TemplateModel';
+import {TemplateModelException} from '../../template/TemplateModelException';
+import {TemplateModelIterator} from '../../template/TemplateModelIterator';
+import {TemplateModelWithAPISupport} from '../../template/TemplateModelWithAPISupport';
+import {TemplateScalarModel} from '../../template/TemplateScalarModel';
+import {StringUtil} from '../../template/utility/StringUtil';
+import {BeansWrapper} from './BeansWrapper';
+import {ClassIntrospector} from './ClassIntrospector';
+import {InvalidPropertyException} from './InvalidPropertyException';
+import {Set} from '../../../java/util/Set';
 
 /**
  * Creates a new model that wraps the specified object. Note that there are
@@ -54,7 +49,7 @@ export class BeanModel implements TemplateHashModelEx, AdapterTemplateModel, Wra
 
     static FACTORY : ModelFactory; public static FACTORY_$LI$() : ModelFactory { if(BeanModel.FACTORY == null) BeanModel.FACTORY = new BeanModel.BeanModel$0(); return BeanModel.FACTORY; };
 
-    /*private*/ memberCache : HashMap;
+    /*private*/ memberCache : Map<any, any>;
 
     public constructor(object? : any, wrapper? : any, inrospectNow? : any) {
         if(((object != null) || object === null) && ((wrapper != null && wrapper instanceof <any>BeansWrapper) || wrapper === null) && ((typeof inrospectNow === 'boolean') || inrospectNow === null)) {
@@ -140,7 +135,7 @@ export class BeanModel implements TemplateHashModelEx, AdapterTemplateModel, Wra
                 throw new _TemplateModelException(e, "An error has occurred when reading existing sub-variable ", new _DelayedJQuote(key), "; see cause exception! The type of the containing value was: ", new _DelayedFTLTypeDescription(this));
 
             }
-        };
+        }
     }
 
     /**
@@ -178,7 +173,7 @@ export class BeanModel implements TemplateHashModelEx, AdapterTemplateModel, Wra
         } else throw new Error('invalid overload');
     }
 
-    /*private*/ logNoSuchKey(key : string, keyMap : Map) {
+    /*private*/ logNoSuchKey(key : string, keyMap : Map<any, any>) {
         BeanModel.LOG_$LI$().debug$java_lang_String("Key " + StringUtil.jQuoteNoXSS$java_lang_Object(key) + " was not found on instance of " + /* getName */(c => c["__class"]?c["__class"]:c["name"])((<any>this.object.constructor)) + ". Introspection information for the class is: " + keyMap);
     }
 
@@ -190,50 +185,51 @@ export class BeanModel implements TemplateHashModelEx, AdapterTemplateModel, Wra
         return /* get */this.wrapper.getClassIntrospector().get((<any>this.object.constructor)).get(ClassIntrospector.GENERIC_GET_KEY_$LI$()) != null;
     }
 
-    /*private*/ invokeThroughDescriptor(desc : any, classInfo : Map) : TemplateModel {
-        let cachedModel : TemplateModel;
-        {
-            cachedModel = this.memberCache != null?/* get */this.memberCache.get(desc):null;
-        };
-        if(cachedModel != null) {
-            return cachedModel;
-        }
-        let resultModel : TemplateModel = BeanModel.UNKNOWN_$LI$();
-        if(desc != null && desc instanceof <any>FastPropertyDescriptor) {
-            let pd : FastPropertyDescriptor = <FastPropertyDescriptor>desc;
-            let indexedReadMethod : Function = pd.getIndexedReadMethod();
-            if(indexedReadMethod != null) {
-                if(!this.wrapper.getPreferIndexedReadMethod() && (pd.getReadMethod()) != null) {
-                    resultModel = this.wrapper.invokeMethod(this.object, pd.getReadMethod(), null);
-                } else {
-                    resultModel = cachedModel = new SimpleMethodModel(this.object, indexedReadMethod, ClassIntrospector.getArgTypes(classInfo, indexedReadMethod), this.wrapper);
-                }
-            } else {
-                resultModel = this.wrapper.invokeMethod(this.object, pd.getReadMethod(), null);
-            }
-        } else if(desc != null && desc instanceof <any>Field) {
-            resultModel = this.wrapper.wrap$java_lang_Object(/* get */this.object[(<Field>desc).name]);
-        } else if(desc != null && (desc instanceof Function)) {
-            let method : Function = <Function>desc;
-            resultModel = cachedModel = new SimpleMethodModel(this.object, method, ClassIntrospector.getArgTypes(classInfo, method), this.wrapper);
-        } else if(desc != null && desc instanceof <any>OverloadedMethods) {
-            resultModel = cachedModel = new OverloadedMethodsModel(this.object, <OverloadedMethods>desc, this.wrapper);
-        }
-        if(cachedModel != null) {
-            {
-                if(this.memberCache == null) {
-                    this.memberCache = <any>(new Map<any, any>());
-                }
-                /* put */this.memberCache.set(desc, cachedModel);
-            };
-        }
-        return resultModel;
+    /*private*/ invokeThroughDescriptor(desc : any, classInfo : any) : TemplateModel {
+        // let cachedModel : TemplateModel;
+        // {
+        //     cachedModel = this.memberCache != null?/* get */this.memberCache.get(desc):null;
+        // }
+        // if(cachedModel != null) {
+        //     return cachedModel;
+        // }
+        // let resultModel : TemplateModel = BeanModel.UNKNOWN_$LI$();
+        // if(desc != null && desc instanceof <any>FastPropertyDescriptor) {
+        //     let pd : FastPropertyDescriptor = <FastPropertyDescriptor>desc;
+        //     let indexedReadMethod : Function = pd.getIndexedReadMethod();
+        //     if(indexedReadMethod != null) {
+        //         if(!this.wrapper.getPreferIndexedReadMethod() && (pd.getReadMethod()) != null) {
+        //             resultModel = this.wrapper.invokeMethod(this.object, pd.getReadMethod(), null);
+        //         } else {
+        //             resultModel = cachedModel = new SimpleMethodModel(this.object, indexedReadMethod, ClassIntrospector.getArgTypes(classInfo, indexedReadMethod), this.wrapper);
+        //         }
+        //     } else {
+        //         resultModel = this.wrapper.invokeMethod(this.object, pd.getReadMethod(), null);
+        //     }
+        // } else if(desc != null && desc instanceof <any>Field) {
+        //     resultModel = this.wrapper.wrap$java_lang_Object(/* get */this.object[(<Field>desc).name]);
+        // } else if(desc != null && (desc instanceof Function)) {
+        //     let method : Function = <Function>desc;
+        //     resultModel = cachedModel = new SimpleMethodModel(this.object, method, ClassIntrospector.getArgTypes(classInfo, method), this.wrapper);
+        // } else if(desc != null && desc instanceof <any>OverloadedMethods) {
+        //     resultModel = cachedModel = new OverloadedMethodsModel(this.object, <OverloadedMethods>desc, this.wrapper);
+        // }
+        // if(cachedModel != null) {
+        //     {
+        //         if(this.memberCache == null) {
+        //             this.memberCache = <any>(new Map<any, any>());
+        //         }
+        //         /* put */this.memberCache.set(desc, cachedModel);
+        //     }
+        // }
+        // return resultModel;
+        throw new Error();
     }
 
     clearMemberCache() {
         {
             this.memberCache = null;
-        };
+        }
     }
 
     invokeGenericGet(classInfo : Map<any, any>, clazz : any, key : string) : TemplateModel {
@@ -262,15 +258,15 @@ export class BeanModel implements TemplateHashModelEx, AdapterTemplateModel, Wra
             return (<string>this.object).length === 0;
         }
         if(this.object != null && (this.object instanceof Array)) {
-            return /* isEmpty */((<Collection><any>this.object).length == 0);
+            return /* isEmpty */((<any>this.object).length == 0);
         }
-        if((this.object != null && (this.object instanceof Object)) && this.wrapper.is2324Bugfixed()) {
-            return !(<Iterator><any>this.object).hasNext();
-        }
+        // if((this.object != null && (this.object instanceof Object)) && this.wrapper.is2324Bugfixed()) {
+        //     return !(<Iterator><any>this.object).hasNext();
+        // }
         if(this.object != null && (this.object instanceof Map)) {
-            return /* isEmpty */((m) => { if(m.entries==null) m.entries=[]; return m.entries.length == 0; })(<any>(<Map><any>this.object));
+            return /* isEmpty */((m) => { if(m.entries==null) m.entries=[]; return m.entries.length == 0; })(<any>(<Map<any, any>><any>this.object));
         }
-        return this.object == null || Boolean.equals(this.object);
+        return this.object == null || this.object === false;
     }
 
     /**
@@ -296,12 +292,12 @@ export class BeanModel implements TemplateHashModelEx, AdapterTemplateModel, Wra
     }
 
     public values() : TemplateCollectionModel {
-        let values : List = <any>([]);
+        let values : Array<any> = <any>([]);
         let it : TemplateModelIterator = this.keys().iterator();
         while((it.hasNext())) {
             let key : string = (<TemplateScalarModel><any>it.next()).getAsString();
-            /* add */(values.push(this.get$java_lang_String(key))>0);
-        };
+            /* add */values.push(this.get$java_lang_String(key));
+        }
         return new CollectionAndSequence(new SimpleSequence(values, this.wrapper));
     }
 
@@ -336,7 +332,7 @@ export class BeanModel implements TemplateHashModelEx, AdapterTemplateModel, Wra
      * provide additional hash keys should also override this method.
      * @return {Set}
      */
-    keySet() : Array<any> {
+    keySet() : Set<any> {
         return this.wrapper.getClassIntrospector().keySet((<any>this.object.constructor));
     }
 
@@ -366,7 +362,7 @@ export namespace BeanModel {
 
 
 
-var __Function = Function;
+
 
 BeanModel.FACTORY_$LI$();
 

@@ -1,18 +1,17 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { Configuration } from '../template/Configuration';
-import { SimpleScalar } from '../template/SimpleScalar';
-import { TemplateMethodModel } from '../template/TemplateMethodModel';
-import { TemplateModel } from '../template/TemplateModel';
-import { TemplateModelException } from '../template/TemplateModelException';
-import { TemplateScalarModel } from '../template/TemplateScalarModel';
-import { _TemplateAPI } from '../template/_TemplateAPI';
-import { StringUtil } from '../template/utility/StringUtil';
-import { BuiltInForLegacyEscaping } from './BuiltInForLegacyEscaping';
-import { ICIChainMember } from './ICIChainMember';
-import { Environment } from './Environment';
-import { BuiltInForString } from './BuiltInForString';
-import { BuiltIn } from './BuiltIn';
-import { _TemplateModelException } from './_TemplateModelException';
+import {Configuration} from '../template/Configuration';
+import {SimpleScalar} from '../template/SimpleScalar';
+import {TemplateMethodModel} from '../template/TemplateMethodModel';
+import {TemplateModel} from '../template/TemplateModel';
+import {TemplateScalarModel} from '../template/TemplateScalarModel';
+import {_TemplateAPI} from '../template/_TemplateAPI';
+import {StringUtil} from '../template/utility/StringUtil';
+import {BuiltInForLegacyEscaping} from './BuiltInForLegacyEscaping';
+import {ICIChainMember} from './ICIChainMember';
+import {Environment} from './Environment';
+import {BuiltInForString} from './BuiltInForString';
+import {BuiltIn} from './BuiltIn';
+import {_TemplateModelException} from './_TemplateModelException';
 
 export class BuiltInsForStringsEncoding {
     constructor() {
@@ -32,7 +31,7 @@ export namespace BuiltInsForStringsEncoding {
          * @param {Environment} env
          * @return {*}
          */
-        calculateResult(s : string, env : Environment) : TemplateModel {
+        calculateResult(s : string, env : /*Environment*/any) : TemplateModel {
             return new SimpleScalar(StringUtil.XHTMLEnc$java_lang_String(s));
         }
 
@@ -62,7 +61,7 @@ export namespace BuiltInsForStringsEncoding {
              * @param {Environment} env
              * @return {*}
              */
-            calculateResult(s : string, env : Environment) : TemplateModel {
+            calculateResult(s : string, env : /*Environment*/any) : TemplateModel {
                 return new SimpleScalar(StringUtil.HTMLEnc(s));
             }
 
@@ -84,7 +83,7 @@ export namespace BuiltInsForStringsEncoding {
          * @param {Environment} env
          * @return {*}
          */
-        calculateResult(s : string, env : Environment) : TemplateModel {
+        calculateResult(s : string, env : /*Environment*/any) : TemplateModel {
             return new SimpleScalar(StringUtil.javaStringEnc(s));
         }
 
@@ -104,7 +103,7 @@ export namespace BuiltInsForStringsEncoding {
          * @param {Environment} env
          * @return {*}
          */
-        calculateResult(s : string, env : Environment) : TemplateModel {
+        calculateResult(s : string, env : /*Environment*/any) : TemplateModel {
             return new SimpleScalar(StringUtil.javaScriptStringEnc(s));
         }
 
@@ -124,7 +123,7 @@ export namespace BuiltInsForStringsEncoding {
          * @param {Environment} env
          * @return {*}
          */
-        calculateResult(s : string, env : Environment) : TemplateModel {
+        calculateResult(s : string, env : /*Environment*/any) : TemplateModel {
             return new SimpleScalar(StringUtil.jsonStringEnc(s));
         }
 
@@ -144,7 +143,7 @@ export namespace BuiltInsForStringsEncoding {
          * @param {Environment} env
          * @return {*}
          */
-        calculateResult(s : string, env : Environment) : TemplateModel {
+        calculateResult(s : string, env : /*Environment*/any) : TemplateModel {
             return new SimpleScalar(StringUtil.RTFEnc$java_lang_String(s));
         }
 
@@ -164,7 +163,7 @@ export namespace BuiltInsForStringsEncoding {
          * @param {Environment} env
          * @return {*}
          */
-        calculateResult(s : string, env : Environment) : TemplateModel {
+        calculateResult(s : string, env : /*Environment*/any) : TemplateModel {
             return new SimpleScalar(StringUtil.XHTMLEnc$java_lang_String(s));
         }
 
@@ -184,7 +183,7 @@ export namespace BuiltInsForStringsEncoding {
          * @param {Environment} env
          * @return {*}
          */
-        calculateResult(s : string, env : Environment) : TemplateModel {
+        calculateResult(s : string, env : /*Environment*/any) : TemplateModel {
             return new SimpleScalar(StringUtil.XMLEnc$java_lang_String(s));
         }
 
@@ -206,7 +205,7 @@ export namespace BuiltInsForStringsEncoding {
 
         cachedResult : string;
 
-        constructor(parent : BuiltIn, target : string, env : Environment) {
+        constructor(parent : BuiltIn, target : string, env : /*Environment*/any) {
             if(this.parent===undefined) this.parent = null;
             if(this.targetAsString===undefined) this.targetAsString = null;
             if(this.env===undefined) this.env = null;
@@ -224,7 +223,7 @@ export namespace BuiltInsForStringsEncoding {
                 return new SimpleScalar(this.encodeWithCharset(<string>/* get */args[0]));
             } catch(e) {
                 throw new _TemplateModelException(e, "Failed to execute URL encoding.");
-            };
+            }
         }
 
         public getAsString() : string {
@@ -237,7 +236,7 @@ export namespace BuiltInsForStringsEncoding {
                     this.cachedResult = this.encodeWithCharset(cs);
                 } catch(e) {
                     throw new _TemplateModelException(e, "Failed to execute URL encoding.");
-                };
+                }
             }
             return this.cachedResult;
         }
@@ -254,7 +253,7 @@ export namespace BuiltInsForStringsEncoding {
          * @param {Environment} env
          * @return {*}
          */
-        calculateResult(s : string, env : Environment) : TemplateModel {
+        calculateResult(s : string, env : /*Environment*/any) : TemplateModel {
             return new urlBI.UrlBIResult(this, s, env);
         }
 
@@ -270,7 +269,7 @@ export namespace BuiltInsForStringsEncoding {
     export namespace urlBI {
 
         export class UrlBIResult extends BuiltInsForStringsEncoding.AbstractUrlBIResult {
-            constructor(parent : BuiltIn, target : string, env : Environment) {
+            constructor(parent : BuiltIn, target : string, env : /*Environment*/any) {
                 super(parent, target, env);
             }
 
@@ -297,7 +296,7 @@ export namespace BuiltInsForStringsEncoding {
          * @param {Environment} env
          * @return {*}
          */
-        calculateResult(s : string, env : Environment) : TemplateModel {
+        calculateResult(s : string, env : /*Environment*/any) : TemplateModel {
             return new urlPathBI.UrlPathBIResult(this, s, env);
         }
 
@@ -313,7 +312,7 @@ export namespace BuiltInsForStringsEncoding {
     export namespace urlPathBI {
 
         export class UrlPathBIResult extends BuiltInsForStringsEncoding.AbstractUrlBIResult {
-            constructor(parent : BuiltIn, target : string, env : Environment) {
+            constructor(parent : BuiltIn, target : string, env : /*Environment*/any) {
                 super(parent, target, env);
             }
 

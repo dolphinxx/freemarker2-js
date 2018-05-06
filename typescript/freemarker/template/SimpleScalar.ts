@@ -1,5 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateScalarModel } from './TemplateScalarModel';
+import {TemplateScalarModel} from './TemplateScalarModel';
 
 /**
  * Constructs a <tt>SimpleScalar</tt> containing a string value.
@@ -48,4 +48,4 @@ SimpleScalar["__interfaces"] = ["freemarker.template.TemplateScalarModel","freem
 
 
 
-var __Function = Function;
+

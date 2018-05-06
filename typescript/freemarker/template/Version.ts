@@ -1,6 +1,6 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { StringUtil } from './utility/StringUtil';
-import { Boolean } from '../../java/lang/Boolean';
+import {StringUtil} from './utility/StringUtil';
+import {Boolean} from '../../java/lang/Boolean';
 
 /**
  * Represents a version number plus the further qualifiers and build info. This is
@@ -44,7 +44,7 @@ export class Version {
     }
 
     public constructor(major? : any, minor? : any, micro? : any, extraInfo? : any, gaeCompatible? : any, buildDate? : any) {
-        if(((typeof major === 'number') || major === null) && ((typeof minor === 'number') || minor === null) && ((typeof micro === 'number') || micro === null) && ((typeof extraInfo === 'string') || extraInfo === null) && ((typeof gaeCompatible === 'boolean') || gaeCompatible === null) && ((buildDate != null && buildDate instanceof <any>Date) || buildDate === null)) {
+        if(arguments.length === 6) {
             let __args = Array.prototype.slice.call(arguments);
             if(this.major===undefined) this.major = 0;
             if(this.minor===undefined) this.minor = 0;
@@ -76,7 +76,7 @@ export class Version {
                 this.__intValue = this.calculateIntValue();
                 this.originalStringValue = null;
             })();
-        } else if(((typeof major === 'string') || major === null) && ((typeof minor === 'boolean') || minor === null) && ((micro != null && micro instanceof <any>Date) || micro === null) && extraInfo === undefined && gaeCompatible === undefined && buildDate === undefined) {
+        } else if(arguments.length === 3 && typeof arguments[0] === 'string') {
             let __args = Array.prototype.slice.call(arguments);
             let stringValue : any = __args[0];
             let gaeCompliant : any = __args[1];
@@ -132,7 +132,7 @@ export class Version {
                                 break;
                             }
                         }
-                    };
+                    }
                     if(extraInfoTmp != null) {
                         let firstChar : string = extraInfoTmp.charAt(0);
                         if((c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(firstChar) == '.'.charCodeAt(0) || (c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(firstChar) == '-'.charCodeAt(0) || (c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(firstChar) == '_'.charCodeAt(0)) {
@@ -142,7 +142,7 @@ export class Version {
                             }
                         }
                     }
-                };
+                }
                 this.extraInfo = extraInfoTmp;
                 this.major = parts[0];
                 this.minor = parts[1];
@@ -151,7 +151,7 @@ export class Version {
                 this.gaeCompliant = gaeCompliant;
                 this.buildDate = buildDate;
             })();
-        } else if(((typeof major === 'number') || major === null) && ((typeof minor === 'number') || minor === null) && ((typeof micro === 'number') || micro === null) && extraInfo === undefined && gaeCompatible === undefined && buildDate === undefined) {
+        } else if(arguments.length === 3 && typeof arguments[0] === 'number') {
             let __args = Array.prototype.slice.call(arguments);
             {
                 let __args = Array.prototype.slice.call(arguments);
@@ -189,7 +189,7 @@ export class Version {
                     this.originalStringValue = null;
                 })();
             }
-        } else if(((typeof major === 'string') || major === null) && minor === undefined && micro === undefined && extraInfo === undefined && gaeCompatible === undefined && buildDate === undefined) {
+        } else if(arguments.length === 1 && typeof arguments[0] === 'string') {
             let __args = Array.prototype.slice.call(arguments);
             let stringValue : any = __args[0];
             {
@@ -247,7 +247,7 @@ export class Version {
                                     break;
                                 }
                             }
-                        };
+                        }
                         if(extraInfoTmp != null) {
                             let firstChar : string = extraInfoTmp.charAt(0);
                             if((c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(firstChar) == '.'.charCodeAt(0) || (c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(firstChar) == '-'.charCodeAt(0) || (c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(firstChar) == '_'.charCodeAt(0)) {
@@ -257,7 +257,7 @@ export class Version {
                                 }
                             }
                         }
-                    };
+                    }
                     this.extraInfo = extraInfoTmp;
                     this.major = parts[0];
                     this.minor = parts[1];
@@ -267,7 +267,7 @@ export class Version {
                     this.buildDate = buildDate;
                 })();
             }
-        } else if(((typeof major === 'number') || major === null) && minor === undefined && micro === undefined && extraInfo === undefined && gaeCompatible === undefined && buildDate === undefined) {
+        } else if(arguments.length === 1 && typeof arguments[0] === 'number') {
             let __args = Array.prototype.slice.call(arguments);
             let intValue : any = __args[0];
             if(this.major===undefined) this.major = 0;
@@ -322,7 +322,7 @@ export class Version {
                     if(this.extraInfo != null) calculatedStringValue += "-" + this.extraInfo;
                     this.calculatedStringValue = calculatedStringValue;
                 }
-            };
+            }
         }
         return calculatedStringValue;
     }
@@ -396,21 +396,22 @@ export class Version {
      * @return {number}
      */
     public hashCode() : number {
-        let r : number = this.__hashCode;
-        if(r !== 0) return r;
-        {
-            if(this.__hashCode === 0) {
-                let prime : number = 31;
-                let result : number = 1;
-                result = prime * result + (this.buildDate == null?0:/* hashCode */(<any>((o: any) => { if(o.hashCode) { return o.hashCode(); } else { return o.toString(); } })(this.buildDate)));
-                result = prime * result + (this.extraInfo == null?0:/* hashCode */(<any>((o: any) => { if(o.hashCode) { return o.hashCode(); } else { return o.toString(); } })(this.extraInfo)));
-                result = prime * result + (this.gaeCompliant == null?0:Boolean.hashCode());
-                result = prime * result + this.__intValue;
-                if(result === 0) result = -1;
-                this.__hashCode = result;
-            }
-            return this.__hashCode;
-        };
+        // let r : number = this.__hashCode;
+        // if(r !== 0) return r;
+        // {
+        //     if(this.__hashCode === 0) {
+        //         let prime : number = 31;
+        //         let result : number = 1;
+        //         result = prime * result + (this.buildDate == null?0:/* hashCode */(<any>((o: any) => { if(o.hashCode) { return o.hashCode(); } else { return o.toString(); } })(this.buildDate)));
+        //         result = prime * result + (this.extraInfo == null?0:/* hashCode */(<any>((o: any) => { if(o.hashCode) { return o.hashCode(); } else { return o.toString(); } })(this.extraInfo)));
+        //         result = prime * result + (this.gaeCompliant == null?0:Boolean.hashCode());
+        //         result = prime * result + this.__intValue;
+        //         if(result === 0) result = -1;
+        //         this.__hashCode = result;
+        //     }
+        //     return this.__hashCode;
+        // };
+        throw new Error();
     }
 
     /**
@@ -427,7 +428,7 @@ export class Version {
         if(/* hashCode */(<any>((o: any) => { if(o.hashCode) { return o.hashCode(); } else { return o.toString(); } })(other)) !== /* hashCode */(<any>((o: any) => { if(o.hashCode) { return o.hashCode(); } else { return o.toString(); } })(this))) return false;
         if(this.buildDate == null) {
             if(other.buildDate != null) return false;
-        } else if(!this.buildDate.equals(other.buildDate)) {
+        } else if(this.buildDate !== other.buildDate) {
             return false;
         }
         if(this.extraInfo == null) {
@@ -437,7 +438,7 @@ export class Version {
         }
         if(this.gaeCompliant == null) {
             return other.gaeCompliant == null;
-        } else return Boolean.equals(other.gaeCompliant);
+        } else return this.gaeCompliant === other.gaeCompliant;
     }
 }
 Version["__class"] = "freemarker.template.Version";
@@ -446,4 +447,4 @@ Version["__interfaces"] = ["java.io.Serializable"];
 
 
 
-var __Function = Function;
+

@@ -1,5 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { InvalidFormatStringException } from './InvalidFormatStringException';
+import {InvalidFormatStringException} from './InvalidFormatStringException';
 
 /**
  * Used when creating {link TemplateDateFormat}-s and {link TemplateNumberFormat}-s to indicate that the parameters
@@ -23,4 +23,4 @@ InvalidFormatParametersException["__interfaces"] = ["java.io.Serializable"];
 
 
 
-var __Function = Function;
+

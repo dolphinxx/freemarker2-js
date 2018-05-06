@@ -1,6 +1,6 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { CommonTemplateMarkupOutputModel } from './CommonTemplateMarkupOutputModel';
-import { CombinedMarkupOutputFormat } from './CombinedMarkupOutputFormat';
+import {CommonTemplateMarkupOutputModel} from './CommonTemplateMarkupOutputModel';
+import {CombinedMarkupOutputFormat} from './CombinedMarkupOutputFormat';
 
 /**
  * Stores combined markup to be printed; used with {link CombinedMarkupOutputFormat}.
@@ -32,4 +32,4 @@ TemplateCombinedMarkupOutputModel["__interfaces"] = ["freemarker.core.TemplateMa
 
 
 
-var __Function = Function;
+

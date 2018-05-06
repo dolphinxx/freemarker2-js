@@ -1,5 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { OutputFormat } from './OutputFormat';
+import {OutputFormat} from './OutputFormat';
 
 /**
  * Represents the JavaScript output format (MIME type "application/javascript", name "JavaScript"). This format doesn't
@@ -47,6 +47,6 @@ JavaScriptOutputFormat["__class"] = "freemarker.core.JavaScriptOutputFormat";
 
 
 
-var __Function = Function;
+
 
 JavaScriptOutputFormat.INSTANCE_$LI$();

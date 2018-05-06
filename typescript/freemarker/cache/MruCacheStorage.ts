@@ -1,5 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { CacheStorageWithGetSize } from './CacheStorageWithGetSize';
+import {CacheStorageWithGetSize} from './CacheStorageWithGetSize';
 
 /**
  * Creates a new MRU cache storage with specified maximum cache sizes. Each
@@ -147,7 +147,7 @@ export class MruCacheStorage implements CacheStorageWithGetSize {
                 break;
             }
             this.removeInternal(ref.getKey());
-        };
+        }
     }
 
     /**

@@ -1,11 +1,7 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { DateUtil } from '../template/utility/DateUtil';
-import { ISOLikeTemplateDateFormat } from './ISOLikeTemplateDateFormat';
-import { ISOLikeTemplateDateFormatFactory } from './ISOLikeTemplateDateFormatFactory';
-import { Environment } from './Environment';
-import { UnknownDateTypeFormattingUnsupportedException } from './UnknownDateTypeFormattingUnsupportedException';
-import { InvalidFormatParametersException } from './InvalidFormatParametersException';
-import { TemplateDateModel } from '../template/TemplateDateModel';
+import {DateUtil} from '../template/utility/DateUtil';
+import {ISOLikeTemplateDateFormat} from './ISOLikeTemplateDateFormat';
+import {ISOLikeTemplateDateFormatFactory} from './ISOLikeTemplateDateFormatFactory';
 
 /**
  * XML Schema format.
@@ -13,7 +9,7 @@ import { TemplateDateModel } from '../template/TemplateDateModel';
  * @class
  */
 export class XSTemplateDateFormat extends ISOLikeTemplateDateFormat {
-    constructor(settingValue : string, parsingStart : number, dateType : number, zonelessInput : boolean, timeZone : string, factory : ISOLikeTemplateDateFormatFactory, env : Environment) {
+    constructor(settingValue : string, parsingStart : number, dateType : number, zonelessInput : boolean, timeZone : string, factory : ISOLikeTemplateDateFormatFactory, env : /*Environment*/any) {
         super(settingValue, parsingStart, dateType, zonelessInput, timeZone, factory, env);
     }
 
@@ -109,4 +105,4 @@ XSTemplateDateFormat["__class"] = "freemarker.core.XSTemplateDateFormat";
 
 
 
-var __Function = Function;
+

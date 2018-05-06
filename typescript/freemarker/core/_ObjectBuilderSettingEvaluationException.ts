@@ -1,5 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { StringUtil } from '../template/utility/StringUtil';
+import {StringUtil} from '../template/utility/StringUtil';
 
 /**
  * Don't use this; used internally by FreeMarker, might changes without notice.
@@ -36,4 +36,4 @@ _ObjectBuilderSettingEvaluationException["__interfaces"] = ["java.io.Serializabl
 
 
 
-var __Function = Function;
+

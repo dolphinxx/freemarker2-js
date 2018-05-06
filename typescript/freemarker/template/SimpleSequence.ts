@@ -1,13 +1,10 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { BeansWrapper } from '../ext/beans/BeansWrapper';
-import { WrappingTemplateModel } from './WrappingTemplateModel';
-import { TemplateSequenceModel } from './TemplateSequenceModel';
-import { ObjectWrapper } from './ObjectWrapper';
-import { TemplateCollectionModel } from './TemplateCollectionModel';
-import { TemplateModelException } from './TemplateModelException';
-import { TemplateModelIterator } from './TemplateModelIterator';
-import { TemplateModel } from './TemplateModel';
-import { TemplateBooleanModel } from './TemplateBooleanModel';
+import {WrappingTemplateModel} from './WrappingTemplateModel';
+import {TemplateSequenceModel} from './TemplateSequenceModel';
+import {TemplateModelException} from './TemplateModelException';
+import {TemplateModelIterator} from './TemplateModelIterator';
+import {TemplateModel} from './TemplateModel';
+import {TemplateBooleanModel} from './TemplateBooleanModel';
 
 /**
  * Constructs an empty simple sequence with preallocated capacity.
@@ -75,8 +72,7 @@ export class SimpleSequence extends WrappingTemplateModel implements TemplateSeq
                 let alist : Array<any> = <any>([]);
                 for(let it : TemplateModelIterator = tcm.iterator(); it.hasNext(); ) {
                     /* add */(alist.push(it.next())>0);
-                };
-                alist.trimToSize();
+                }
                 this.list = alist;
             })();
         } else if(((collection != null && (collection["__interfaces"] != null && collection["__interfaces"].indexOf("freemarker.template.ObjectWrapper") >= 0 || collection.constructor != null && collection.constructor["__interfaces"] != null && collection.constructor["__interfaces"].indexOf("freemarker.template.ObjectWrapper") >= 0)) || collection === null) && wrapper === undefined) {
@@ -105,7 +101,7 @@ export class SimpleSequence extends WrappingTemplateModel implements TemplateSeq
             let __args = Array.prototype.slice.call(arguments);
             {
                 let __args = Array.prototype.slice.call(arguments);
-                let wrapper : any = <ObjectWrapper><any>null;
+                let wrapper : any = <any>null;
                 super(wrapper);
                 if(this.list===undefined) this.list = null;
                 if(this.unwrappedList===undefined) this.unwrappedList = null;
@@ -158,15 +154,15 @@ export class SimpleSequence extends WrappingTemplateModel implements TemplateSeq
                 result = <Array<any>><any>/* newInstance */new (listClass)();
             } catch(e) {
                 throw new TemplateModelException("Error instantiating an object of type " + /* getName */(c => c["__class"]?c["__class"]:c["name"])(listClass), e);
-            };
-            let bw : BeansWrapper = BeansWrapper.getDefaultInstance();
+            }
+            let bw : any = (require('../ext/beans/BeansWrapper').BeansWrapper).getDefaultInstance();
             for(let i : number = 0; i < /* size */(<number>this.list.length); i++) {
                 let elem : any = /* get */this.list[i];
                 if(elem != null && (elem["__interfaces"] != null && elem["__interfaces"].indexOf("freemarker.template.TemplateModel") >= 0 || elem.constructor != null && elem.constructor["__interfaces"] != null && elem.constructor["__interfaces"].indexOf("freemarker.template.TemplateModel") >= 0)) {
                     elem = bw.unwrap$freemarker_template_TemplateModel(<TemplateModel><any>elem);
                 }
                 /* add */(result.push(elem)>0);
-            };
+            }
             this.unwrappedList = result;
         }
         return this.unwrappedList;
@@ -189,7 +185,7 @@ export class SimpleSequence extends WrappingTemplateModel implements TemplateSeq
             return tm;
         } catch(e) {
             return null;
-        };
+        }
     }
 
     public size() : number {
@@ -238,7 +234,7 @@ export namespace SimpleSequence {
         public add$java_lang_Object(obj : any) {
             {
                 this.add$java_lang_Object(obj);
-            };
+            }
         }
 
         public get(s? : any) : any {
@@ -250,7 +246,7 @@ export namespace SimpleSequence {
         public get$int(i : number) : TemplateModel {
             {
                 return this.get$int(i);
-            };
+            }
         }
 
         /**
@@ -260,7 +256,7 @@ export namespace SimpleSequence {
         public size() : number {
             {
                 return this.size();
-            };
+            }
         }
 
         /**
@@ -270,7 +266,7 @@ export namespace SimpleSequence {
         public toList() : Array<any> {
             {
                 return this.toList();
-            };
+            }
         }
 
         constructor(__parent: any) {
@@ -286,4 +282,4 @@ export namespace SimpleSequence {
 
 
 
-var __Function = Function;
+

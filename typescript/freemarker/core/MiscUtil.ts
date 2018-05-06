@@ -1,5 +1,7 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { Expression } from './Expression';
+import {Expression} from './Expression';
+import {Entry} from "../../java/util/Entry";
+import {Map} from "../../java/util/Map";
 
 /**
  * Utilities that didn't fit elsewhere.
@@ -31,9 +33,9 @@ export namespace MiscUtil {
 
     export class MiscUtil$0 {
         public compare(o1 : any, o2 : any) : number {
-            let ent1 : Entry = <Entry><any>o1;
+            let ent1 : Entry<any, any> = <Entry<any, any>><any>o1;
             let exp1 : Expression = <Expression>ent1.getValue();
-            let ent2 : Entry = <Entry><any>o2;
+            let ent2 : Entry<any, any> = <Entry<any, any>><any>o2;
             let exp2 : Expression = <Expression>ent2.getValue();
             let res : number = exp1.beginLine - exp2.beginLine;
             if(res !== 0) return res;
@@ -50,7 +52,3 @@ export namespace MiscUtil {
 
 
 }
-
-
-
-var __Function = Function;

@@ -1,33 +1,12 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { BeansWrapper } from '../ext/beans/BeansWrapper';
-import { AttemptExceptionReporter } from '../template/AttemptExceptionReporter';
-import { Configuration } from '../template/Configuration';
-import { ObjectWrapper } from '../template/ObjectWrapper';
-import { TemplateException } from '../template/TemplateException';
-import { TemplateExceptionHandler } from '../template/TemplateExceptionHandler';
-import { Version } from '../template/Version';
-import { _TemplateAPI } from '../template/_TemplateAPI';
-import { NullArgumentException } from '../template/utility/NullArgumentException';
-import { StringUtil } from '../template/utility/StringUtil';
-import { InputStream } from '../../java/io/InputStream';
-import { ArithmeticEngine } from './ArithmeticEngine';
-import { Boolean } from '../../java/lang/Boolean';
-import { TemplateClassResolver } from './TemplateClassResolver';
-import { TemplateDateFormatFactory } from './TemplateDateFormatFactory';
-import { TemplateNumberFormatFactory } from './TemplateNumberFormatFactory';
-import { MiscUtil } from './MiscUtil';
-import { Character } from '../../java/lang/Character';
-import { _MiscTemplateException } from './_MiscTemplateException';
-import { _ErrorDescriptionBuilder } from './_ErrorDescriptionBuilder';
-import { _DelayedJQuote } from './_DelayedJQuote';
-import { _ObjectBuilderSettingEvaluator } from './_ObjectBuilderSettingEvaluator';
-import { _SettingEvaluationEnvironment } from './_SettingEvaluationEnvironment';
-import { _CoreAPI } from './_CoreAPI';
-import { ParseException } from './ParseException';
-import { OptInTemplateClassResolver } from './OptInTemplateClassResolver';
-import { _SortedArraySet } from './_SortedArraySet';
-import { Environment } from './Environment';
-import { CustomAttribute } from './CustomAttribute';
+import {InputStream} from '../../java/io/InputStream';
+import {Boolean} from '../../java/lang/Boolean';
+import {Character} from '../../java/lang/Character';
+import {Set} from '../../java/util/Set';
+import {Map} from '../../java/util/Map';
+import {List} from "../../java/util/List";
+import {ClassUtil} from "../template/utility/ClassUtil";
+import {_MiscTemplateException} from "./_MiscTemplateException";
 
 /**
  * Creates a new instance. Normally you do not need to use this constructor,
@@ -471,15 +450,15 @@ export class Configurable {
      */
     public static STRICT_BEAN_MODELS : string; public static STRICT_BEAN_MODELS_$LI$() : string { if(Configurable.STRICT_BEAN_MODELS == null) Configurable.STRICT_BEAN_MODELS = Configurable.STRICT_BEAN_MODELS_KEY_$LI$(); return Configurable.STRICT_BEAN_MODELS; };
 
-    static SETTING_NAMES_SNAKE_CASE : Array<any>; public static SETTING_NAMES_SNAKE_CASE_$LI$() : Array { if(Configurable.SETTING_NAMES_SNAKE_CASE == null) Configurable.SETTING_NAMES_SNAKE_CASE = [Configurable.API_BUILTIN_ENABLED_KEY_SNAKE_CASE, Configurable.ARITHMETIC_ENGINE_KEY_SNAKE_CASE, Configurable.ATTEMPT_EXCEPTION_REPORTER_KEY_SNAKE_CASE, Configurable.AUTO_FLUSH_KEY_SNAKE_CASE, Configurable.AUTO_IMPORT_KEY_SNAKE_CASE, Configurable.AUTO_INCLUDE_KEY_SNAKE_CASE, Configurable.BOOLEAN_FORMAT_KEY_SNAKE_CASE, Configurable.CLASSIC_COMPATIBLE_KEY_SNAKE_CASE, Configurable.CUSTOM_DATE_FORMATS_KEY_SNAKE_CASE, Configurable.CUSTOM_NUMBER_FORMATS_KEY_SNAKE_CASE, Configurable.DATE_FORMAT_KEY_SNAKE_CASE, Configurable.DATETIME_FORMAT_KEY_SNAKE_CASE, Configurable.LAZY_AUTO_IMPORTS_KEY_SNAKE_CASE, Configurable.LAZY_IMPORTS_KEY_SNAKE_CASE, Configurable.LOCALE_KEY_SNAKE_CASE, Configurable.LOG_TEMPLATE_EXCEPTIONS_KEY_SNAKE_CASE, Configurable.NEW_BUILTIN_CLASS_RESOLVER_KEY_SNAKE_CASE, Configurable.NUMBER_FORMAT_KEY_SNAKE_CASE, Configurable.OBJECT_WRAPPER_KEY_SNAKE_CASE, Configurable.OUTPUT_ENCODING_KEY_SNAKE_CASE, Configurable.SHOW_ERROR_TIPS_KEY_SNAKE_CASE, Configurable.SQL_DATE_AND_TIME_TIME_ZONE_KEY_SNAKE_CASE, Configurable.STRICT_BEAN_MODELS_KEY_$LI$(), Configurable.TEMPLATE_EXCEPTION_HANDLER_KEY_SNAKE_CASE, Configurable.TIME_FORMAT_KEY_SNAKE_CASE, Configurable.TIME_ZONE_KEY_SNAKE_CASE, Configurable.URL_ESCAPING_CHARSET_KEY_SNAKE_CASE, Configurable.WRAP_UNCHECKED_EXCEPTIONS_KEY_SNAKE_CASE]; return Configurable.SETTING_NAMES_SNAKE_CASE; };
+    static SETTING_NAMES_SNAKE_CASE : Array<any>; public static SETTING_NAMES_SNAKE_CASE_$LI$() : Array<any> { if(Configurable.SETTING_NAMES_SNAKE_CASE == null) Configurable.SETTING_NAMES_SNAKE_CASE = [Configurable.API_BUILTIN_ENABLED_KEY_SNAKE_CASE, Configurable.ARITHMETIC_ENGINE_KEY_SNAKE_CASE, Configurable.ATTEMPT_EXCEPTION_REPORTER_KEY_SNAKE_CASE, Configurable.AUTO_FLUSH_KEY_SNAKE_CASE, Configurable.AUTO_IMPORT_KEY_SNAKE_CASE, Configurable.AUTO_INCLUDE_KEY_SNAKE_CASE, Configurable.BOOLEAN_FORMAT_KEY_SNAKE_CASE, Configurable.CLASSIC_COMPATIBLE_KEY_SNAKE_CASE, Configurable.CUSTOM_DATE_FORMATS_KEY_SNAKE_CASE, Configurable.CUSTOM_NUMBER_FORMATS_KEY_SNAKE_CASE, Configurable.DATE_FORMAT_KEY_SNAKE_CASE, Configurable.DATETIME_FORMAT_KEY_SNAKE_CASE, Configurable.LAZY_AUTO_IMPORTS_KEY_SNAKE_CASE, Configurable.LAZY_IMPORTS_KEY_SNAKE_CASE, Configurable.LOCALE_KEY_SNAKE_CASE, Configurable.LOG_TEMPLATE_EXCEPTIONS_KEY_SNAKE_CASE, Configurable.NEW_BUILTIN_CLASS_RESOLVER_KEY_SNAKE_CASE, Configurable.NUMBER_FORMAT_KEY_SNAKE_CASE, Configurable.OBJECT_WRAPPER_KEY_SNAKE_CASE, Configurable.OUTPUT_ENCODING_KEY_SNAKE_CASE, Configurable.SHOW_ERROR_TIPS_KEY_SNAKE_CASE, Configurable.SQL_DATE_AND_TIME_TIME_ZONE_KEY_SNAKE_CASE, Configurable.STRICT_BEAN_MODELS_KEY_$LI$(), Configurable.TEMPLATE_EXCEPTION_HANDLER_KEY_SNAKE_CASE, Configurable.TIME_FORMAT_KEY_SNAKE_CASE, Configurable.TIME_ZONE_KEY_SNAKE_CASE, Configurable.URL_ESCAPING_CHARSET_KEY_SNAKE_CASE, Configurable.WRAP_UNCHECKED_EXCEPTIONS_KEY_SNAKE_CASE]; return Configurable.SETTING_NAMES_SNAKE_CASE; };
 
-    static SETTING_NAMES_CAMEL_CASE : Array<any>; public static SETTING_NAMES_CAMEL_CASE_$LI$() : Array { if(Configurable.SETTING_NAMES_CAMEL_CASE == null) Configurable.SETTING_NAMES_CAMEL_CASE = [Configurable.API_BUILTIN_ENABLED_KEY_CAMEL_CASE, Configurable.ARITHMETIC_ENGINE_KEY_CAMEL_CASE, Configurable.ATTEMPT_EXCEPTION_REPORTER_KEY_CAMEL_CASE, Configurable.AUTO_FLUSH_KEY_CAMEL_CASE, Configurable.AUTO_IMPORT_KEY_CAMEL_CASE, Configurable.AUTO_INCLUDE_KEY_CAMEL_CASE, Configurable.BOOLEAN_FORMAT_KEY_CAMEL_CASE, Configurable.CLASSIC_COMPATIBLE_KEY_CAMEL_CASE, Configurable.CUSTOM_DATE_FORMATS_KEY_CAMEL_CASE, Configurable.CUSTOM_NUMBER_FORMATS_KEY_CAMEL_CASE, Configurable.DATE_FORMAT_KEY_CAMEL_CASE, Configurable.DATETIME_FORMAT_KEY_CAMEL_CASE, Configurable.LAZY_AUTO_IMPORTS_KEY_CAMEL_CASE, Configurable.LAZY_IMPORTS_KEY_CAMEL_CASE, Configurable.LOCALE_KEY_CAMEL_CASE, Configurable.LOG_TEMPLATE_EXCEPTIONS_KEY_CAMEL_CASE, Configurable.NEW_BUILTIN_CLASS_RESOLVER_KEY_CAMEL_CASE, Configurable.NUMBER_FORMAT_KEY_CAMEL_CASE, Configurable.OBJECT_WRAPPER_KEY_CAMEL_CASE, Configurable.OUTPUT_ENCODING_KEY_CAMEL_CASE, Configurable.SHOW_ERROR_TIPS_KEY_CAMEL_CASE, Configurable.SQL_DATE_AND_TIME_TIME_ZONE_KEY_CAMEL_CASE, Configurable.STRICT_BEAN_MODELS_KEY_CAMEL_CASE, Configurable.TEMPLATE_EXCEPTION_HANDLER_KEY_CAMEL_CASE, Configurable.TIME_FORMAT_KEY_CAMEL_CASE, Configurable.TIME_ZONE_KEY_CAMEL_CASE, Configurable.URL_ESCAPING_CHARSET_KEY_CAMEL_CASE, Configurable.WRAP_UNCHECKED_EXCEPTIONS_KEY_CAMEL_CASE]; return Configurable.SETTING_NAMES_CAMEL_CASE; };
+    static SETTING_NAMES_CAMEL_CASE : Array<any>; public static SETTING_NAMES_CAMEL_CASE_$LI$() : Array<any> { if(Configurable.SETTING_NAMES_CAMEL_CASE == null) Configurable.SETTING_NAMES_CAMEL_CASE = [Configurable.API_BUILTIN_ENABLED_KEY_CAMEL_CASE, Configurable.ARITHMETIC_ENGINE_KEY_CAMEL_CASE, Configurable.ATTEMPT_EXCEPTION_REPORTER_KEY_CAMEL_CASE, Configurable.AUTO_FLUSH_KEY_CAMEL_CASE, Configurable.AUTO_IMPORT_KEY_CAMEL_CASE, Configurable.AUTO_INCLUDE_KEY_CAMEL_CASE, Configurable.BOOLEAN_FORMAT_KEY_CAMEL_CASE, Configurable.CLASSIC_COMPATIBLE_KEY_CAMEL_CASE, Configurable.CUSTOM_DATE_FORMATS_KEY_CAMEL_CASE, Configurable.CUSTOM_NUMBER_FORMATS_KEY_CAMEL_CASE, Configurable.DATE_FORMAT_KEY_CAMEL_CASE, Configurable.DATETIME_FORMAT_KEY_CAMEL_CASE, Configurable.LAZY_AUTO_IMPORTS_KEY_CAMEL_CASE, Configurable.LAZY_IMPORTS_KEY_CAMEL_CASE, Configurable.LOCALE_KEY_CAMEL_CASE, Configurable.LOG_TEMPLATE_EXCEPTIONS_KEY_CAMEL_CASE, Configurable.NEW_BUILTIN_CLASS_RESOLVER_KEY_CAMEL_CASE, Configurable.NUMBER_FORMAT_KEY_CAMEL_CASE, Configurable.OBJECT_WRAPPER_KEY_CAMEL_CASE, Configurable.OUTPUT_ENCODING_KEY_CAMEL_CASE, Configurable.SHOW_ERROR_TIPS_KEY_CAMEL_CASE, Configurable.SQL_DATE_AND_TIME_TIME_ZONE_KEY_CAMEL_CASE, Configurable.STRICT_BEAN_MODELS_KEY_CAMEL_CASE, Configurable.TEMPLATE_EXCEPTION_HANDLER_KEY_CAMEL_CASE, Configurable.TIME_FORMAT_KEY_CAMEL_CASE, Configurable.TIME_ZONE_KEY_CAMEL_CASE, Configurable.URL_ESCAPING_CHARSET_KEY_CAMEL_CASE, Configurable.WRAP_UNCHECKED_EXCEPTIONS_KEY_CAMEL_CASE]; return Configurable.SETTING_NAMES_CAMEL_CASE; };
 
     /*private*/ parent : Configurable;
 
     /*private*/ properties : Map<any, any>;
 
-    /*private*/ customAttributes : HashMap;
+    /*private*/ customAttributes : Map<any, any>;
 
     /*private*/ locale : string;
 
@@ -505,13 +484,13 @@ export class Configurable {
 
     /*private*/ classicCompatible : number;
 
-    /*private*/ templateExceptionHandler : TemplateExceptionHandler;
+    /*private*/ templateExceptionHandler : /*TemplateExceptionHandler*/any;
 
-    /*private*/ attemptExceptionReporter : AttemptExceptionReporter;
+    /*private*/ attemptExceptionReporter : /*AttemptExceptionReporter*/any;
 
-    /*private*/ arithmeticEngine : ArithmeticEngine;
+    /*private*/ arithmeticEngine : /*ArithmeticEngine*/any;
 
-    /*private*/ objectWrapper : ObjectWrapper;
+    /*private*/ objectWrapper : /*ObjectWrapper*/any;
 
     /*private*/ outputEncoding : string;
 
@@ -523,7 +502,7 @@ export class Configurable {
 
     /*private*/ autoFlush : boolean;
 
-    /*private*/ newBuiltinClassResolver : TemplateClassResolver;
+    /*private*/ newBuiltinClassResolver : /*TemplateClassResolver*/any;
 
     /*private*/ showErrorTips : boolean;
 
@@ -537,9 +516,9 @@ export class Configurable {
 
     /*private*/ customNumberFormats : Map<any, any>;
 
-    /*private*/ autoImports : LinkedHashMap;
+    /*private*/ autoImports : Map<any, any>;
 
-    /*private*/ autoIncludes : ArrayList;
+    /*private*/ autoIncludes : List<any>;
 
     /*private*/ lazyImports : boolean;
 
@@ -548,7 +527,10 @@ export class Configurable {
     /*private*/ lazyAutoImportsSet : boolean;
 
     public constructor(incompatibleImprovements? : any) {
-        if(((incompatibleImprovements != null && incompatibleImprovements instanceof <any>Version) || incompatibleImprovements === null)) {
+        const _TemplateAPI = require('../template/_TemplateAPI')._TemplateAPI;
+        const ArithmeticEngine = require('../core/ArithmeticEngine').ArithmeticEngine;
+        const TemplateClassResolver = require('../core/TemplateClassResolver').TemplateClassResolver;
+        if(((ClassUtil.isInstanceOf(incompatibleImprovements, 'freemarker.template.Version')) || incompatibleImprovements === null)) {
             let __args = Array.prototype.slice.call(arguments);
             if(this.parent===undefined) this.parent = null;
             if(this.properties===undefined) this.properties = null;
@@ -625,13 +607,13 @@ export class Configurable {
             (() => {
                 _TemplateAPI.checkVersionNotNullAndSupported(incompatibleImprovements);
                 this.parent = null;
-                this.properties = <Map>new Map();
+                this.properties = new Map<any, any>();
                 this.locale = _TemplateAPI.getDefaultLocale();
-                /* setProperty */this.properties.set(Configurable.LOCALE_KEY_$LI$(), this.locale.toString());
+                /* setProperty */this.properties.set(Configurable.LOCALE_KEY_$LI$(), this.locale);
                 this.timeZone = _TemplateAPI.getDefaultTimeZone();
                 /* setProperty */this.properties.set(Configurable.TIME_ZONE_KEY_$LI$(), /* getID */this.timeZone);
                 this.sqlDataAndTimeTimeZone = null;
-                /* setProperty */this.properties.set(Configurable.SQL_DATE_AND_TIME_TIME_ZONE_KEY_$LI$(), /* valueOf */new String(this.sqlDataAndTimeTimeZone).toString());
+                /* setProperty */this.properties.set(Configurable.SQL_DATE_AND_TIME_TIME_ZONE_KEY_$LI$(), /* valueOf */String(this.sqlDataAndTimeTimeZone));
                 this.numberFormat = "number";
                 /* setProperty */this.properties.set(Configurable.NUMBER_FORMAT_KEY_$LI$(), this.numberFormat);
                 this.timeFormat = "";
@@ -648,7 +630,7 @@ export class Configurable {
                 this.attemptExceptionReporter = _TemplateAPI.getDefaultAttemptExceptionReporter(incompatibleImprovements);
                 this.arithmeticEngine = ArithmeticEngine.BIGDECIMAL_ENGINE_$LI$();
                 /* setProperty */this.properties.set(Configurable.ARITHMETIC_ENGINE_KEY_$LI$(), /* getName */(c => c["__class"]?c["__class"]:c["name"])((<any>this.arithmeticEngine.constructor)));
-                this.objectWrapper = Configuration.getDefaultObjectWrapper(incompatibleImprovements);
+                this.objectWrapper = (require('../template/Configuration').Configuration).getDefaultObjectWrapper(incompatibleImprovements);
                 this.autoFlush = true;
                 /* setProperty */this.properties.set(Configurable.AUTO_FLUSH_KEY_$LI$(), Boolean.toString());
                 this.newBuiltinClassResolver = TemplateClassResolver.UNRESTRICTED_RESOLVER;
@@ -745,14 +727,14 @@ export class Configurable {
             if(this.lazyAutoImportsSet===undefined) this.lazyAutoImportsSet = false;
             (() => {
                 this.parent = parent;
-                this.properties = <Map>new Map(parent.properties);
+                this.properties = new Map<any, any>(parent.properties);
                 this.customAttributes = <any>(new Map<any, any>());
             })();
         } else if(incompatibleImprovements === undefined) {
             let __args = Array.prototype.slice.call(arguments);
             {
                 let __args = Array.prototype.slice.call(arguments);
-                let incompatibleImprovements : any = Configuration.DEFAULT_INCOMPATIBLE_IMPROVEMENTS_$LI$();
+                let incompatibleImprovements : any = (require('../template/Configuration').Configuration).DEFAULT_INCOMPATIBLE_IMPROVEMENTS_$LI$();
                 if(this.parent===undefined) this.parent = null;
                 if(this.properties===undefined) this.properties = null;
                 if(this.customAttributes===undefined) this.customAttributes = null;
@@ -828,13 +810,13 @@ export class Configurable {
                 (() => {
                     _TemplateAPI.checkVersionNotNullAndSupported(incompatibleImprovements);
                     this.parent = null;
-                    this.properties = <Map>new Map();
+                    this.properties = new Map<any, any>();
                     this.locale = _TemplateAPI.getDefaultLocale();
-                    /* setProperty */this.properties.set(Configurable.LOCALE_KEY_$LI$(), this.locale.toString());
+                    /* setProperty */this.properties.set(Configurable.LOCALE_KEY_$LI$(), this.locale);
                     this.timeZone = _TemplateAPI.getDefaultTimeZone();
                     /* setProperty */this.properties.set(Configurable.TIME_ZONE_KEY_$LI$(), /* getID */this.timeZone);
                     this.sqlDataAndTimeTimeZone = null;
-                    /* setProperty */this.properties.set(Configurable.SQL_DATE_AND_TIME_TIME_ZONE_KEY_$LI$(), /* valueOf */new String(this.sqlDataAndTimeTimeZone).toString());
+                    /* setProperty */this.properties.set(Configurable.SQL_DATE_AND_TIME_TIME_ZONE_KEY_$LI$(), /* valueOf */String(this.sqlDataAndTimeTimeZone).toString());
                     this.numberFormat = "number";
                     /* setProperty */this.properties.set(Configurable.NUMBER_FORMAT_KEY_$LI$(), this.numberFormat);
                     this.timeFormat = "";
@@ -851,7 +833,7 @@ export class Configurable {
                     this.attemptExceptionReporter = _TemplateAPI.getDefaultAttemptExceptionReporter(incompatibleImprovements);
                     this.arithmeticEngine = ArithmeticEngine.BIGDECIMAL_ENGINE_$LI$();
                     /* setProperty */this.properties.set(Configurable.ARITHMETIC_ENGINE_KEY_$LI$(), /* getName */(c => c["__class"]?c["__class"]:c["name"])((<any>this.arithmeticEngine.constructor)));
-                    this.objectWrapper = Configuration.getDefaultObjectWrapper(incompatibleImprovements);
+                    this.objectWrapper = (require('../template/Configuration').Configuration).getDefaultObjectWrapper(incompatibleImprovements);
                     this.autoFlush = true;
                     /* setProperty */this.properties.set(Configurable.AUTO_FLUSH_KEY_$LI$(), Boolean.toString());
                     this.newBuiltinClassResolver = TemplateClassResolver.UNRESTRICTED_RESOLVER;
@@ -882,16 +864,16 @@ export class Configurable {
     clone() : any {
         let copy : Configurable = <Configurable>/* clone *//* clone */((o:any) => { let clone = Object.create(o); for(let p in o) { if (o.hasOwnProperty(p)) clone[p] = o[p]; } return clone; })(this);
         if(this.properties != null) {
-            copy.properties = <Map>new Map(this.properties);
+            copy.properties = new Map<any, any>(this.properties);
         }
         if(this.customAttributes != null) {
-            copy.customAttributes = <Map<any, any>>/* clone */(m => { if(m.entries==null) m.entries=[]; let c = {entries: []}; for(let i=0;i<m.entries.length;i++) { let k = m.entries[i].key, v = m.entries[i].value; c.entries[i] = {key:k,value:v,getKey: function() { return this.key }, getValue: function() { return this.value }}; } return c; })(this.customAttributes);
+            copy.customAttributes = new Map(this.customAttributes);
         }
         if(this.autoImports != null) {
-            copy.autoImports = <LinkedHashMap>/* clone */(o => { let c = {}; for (let k in Object.keys(o)){ c[k] = o[k] } return c; })(this.autoImports);
+            copy.autoImports = new Map(this.autoImports);
         }
         if(this.autoIncludes != null) {
-            copy.autoIncludes = <ArrayList>/* clone *//* clone */((o:any) => { if(o.clone!=undefined) { return (<any>o).clone(); } else { let clone = Object.create(o); for(let p in o) { if (o.hasOwnProperty(p)) clone[p] = o[p]; } return clone; } })(this.autoIncludes);
+            copy.autoIncludes = this.autoIncludes.clone();
         }
         return copy;
     }
@@ -956,6 +938,7 @@ export class Configurable {
     }
 
     classicCompatibilityIntToString(i : number) : string {
+        const MiscUtil = require('./MiscUtil').MiscUtil;
         if(i == null) return null; else if(i === 0) return MiscUtil.C_FALSE; else if(i === 1) return MiscUtil.C_TRUE; else return i.toString();
     }
 
@@ -1038,7 +1021,7 @@ export class Configurable {
      * @param {Locale} locale
      */
     public setLocale(locale : string) {
-        NullArgumentException.check$java_lang_String$java_lang_Object("locale", locale);
+        (require('../template/utility/NullArgumentException').NullArgumentException).check$java_lang_String$java_lang_Object("locale", locale);
         this.locale = locale;
         /* setProperty */this.properties.set(Configurable.LOCALE_KEY_$LI$(), locale.toString());
     }
@@ -1074,7 +1057,6 @@ export class Configurable {
      * @param {TimeZone} timeZone
      */
     public setTimeZone(timeZone : string) {
-        NullArgumentException.check$java_lang_String$java_lang_Object("timeZone", timeZone);
         this.timeZone = timeZone;
         /* setProperty */this.properties.set(Configurable.TIME_ZONE_KEY_$LI$(), /* getID */timeZone);
     }
@@ -1213,7 +1195,6 @@ export class Configurable {
      * @param {String} numberFormat
      */
     public setNumberFormat(numberFormat : string) {
-        NullArgumentException.check$java_lang_String$java_lang_Object("numberFormat", numberFormat);
         this.numberFormat = numberFormat;
         /* setProperty */this.properties.set(Configurable.NUMBER_FORMAT_KEY_$LI$(), numberFormat);
     }
@@ -1254,7 +1235,7 @@ export class Configurable {
      * @since 2.3.24
      * @return {Map}
      */
-    public getCustomNumberFormats() : Map {
+    public getCustomNumberFormats() : Map<any, any> {
         return this.customNumberFormats == null?this.parent.getCustomNumberFormats():this.customNumberFormats;
     }
 
@@ -1264,7 +1245,7 @@ export class Configurable {
      * @since 2.3.25
      * @return {Map}
      */
-    public getCustomNumberFormatsWithoutFallback() : Map {
+    public getCustomNumberFormatsWithoutFallback() : Map<any, any> {
         return this.customNumberFormats;
     }
 
@@ -1280,14 +1261,13 @@ export class Configurable {
      * letters and digits (not {@code _}).
      * @since 2.3.24
      */
-    public setCustomNumberFormats(customNumberFormats : Map) {
-        NullArgumentException.check$java_lang_String$java_lang_Object("customNumberFormats", customNumberFormats);
-        this.validateFormatNames(/* keySet */((m) => { let r=[]; m.forEach((v, k, m) => r.push(k)); return r; })(<any>customNumberFormats));
+    public setCustomNumberFormats(customNumberFormats : Map<any, any>) {
+        this.validateFormatNames(customNumberFormats.keySet());
         this.customNumberFormats = customNumberFormats;
     }
 
-    validateFormatNames(keySet : Set) {
-        for(let index129=0; index129 < keySet.length; index129++) {
+    validateFormatNames(keySet : Set<any>) {
+        for(let index129=0; index129 < keySet.size(); index129++) {
             let name = keySet[index129];
             {
                 if(name.length === 0) {
@@ -1304,7 +1284,7 @@ export class Configurable {
                     if(!Character.isLetterOrDigit(name.charAt(i))) {
                         throw Object.defineProperty(new Error("Format name can only contain letters and digits: " + name), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.lang.RuntimeException','java.lang.IllegalArgumentException','java.lang.Exception'] });
                     }
-                };
+                }
             }
         }
     }
@@ -1326,8 +1306,8 @@ export class Configurable {
      * @param {String} name
      * @return {TemplateNumberFormatFactory}
      */
-    public getCustomNumberFormat(name : string) : TemplateNumberFormatFactory {
-        let r : TemplateNumberFormatFactory;
+    public getCustomNumberFormat(name : string) : /*TemplateNumberFormatFactory*/any {
+        let r : /*TemplateNumberFormatFactory*/any;
         if(this.customNumberFormats != null) {
             r = /* get */this.customNumberFormats.get(name);
             if(r != null) {
@@ -1361,7 +1341,6 @@ export class Configurable {
      * @param {String} booleanFormat
      */
     public setBooleanFormat(booleanFormat : string) {
-        NullArgumentException.check$java_lang_String$java_lang_Object("booleanFormat", booleanFormat);
         let commaIdx : number = booleanFormat.indexOf(',');
         if(commaIdx === -1) {
             throw Object.defineProperty(new Error("Setting value must be a string that contains two comma-separated values for true and false, respectively."), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.lang.RuntimeException','java.lang.IllegalArgumentException','java.lang.Exception'] });
@@ -1396,6 +1375,8 @@ export class Configurable {
     }
 
     formatBoolean(value : boolean, fallbackToTrueFalse : boolean) : string {
+        const MiscUtil = require('./MiscUtil').MiscUtil;
+        const _MiscTemplateException = require('./_MiscTemplateException')._MiscTemplateException;
         if(value) {
             let s : string = this.getTrueStringValue();
             if(s == null) {
@@ -1421,8 +1402,8 @@ export class Configurable {
         }
     }
 
-    getNullBooleanFormatErrorDescription() : _ErrorDescriptionBuilder {
-        return (o => o.tips.apply(o, ["If you just want \"true\"/\"false\" result as you are generting computer-language output, use \"?c\", like ${myBool?c}.", "You can write myBool?string(\'yes\', \'no\') and like to specify boolean formatting in place."].concat(<any[]>["If you need the same two values on most places, the programmers should set the \"", Configurable.BOOLEAN_FORMAT_KEY_$LI$(), "\" setting to something like \"yes,no\"."])))(new _ErrorDescriptionBuilder("Can\'t convert boolean to string automatically, because the \"", Configurable.BOOLEAN_FORMAT_KEY_$LI$(), "\" setting was ", new _DelayedJQuote(this.getBooleanFormat()), (/* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(this.getBooleanFormat(),Configurable.C_TRUE_FALSE))?", which is the legacy default computer-language format, and hence isn\'t accepted.":".")));
+    getNullBooleanFormatErrorDescription() : /*_ErrorDescriptionBuilder*/any {
+        return (o => o.tips.apply(o, ["If you just want \"true\"/\"false\" result as you are generting computer-language output, use \"?c\", like ${myBool?c}.", "You can write myBool?string(\'yes\', \'no\') and like to specify boolean formatting in place."].concat(<any[]>["If you need the same two values on most places, the programmers should set the \"", Configurable.BOOLEAN_FORMAT_KEY_$LI$(), "\" setting to something like \"yes,no\"."])))(new (require('./_ErrorDescriptionBuilder')._ErrorDescriptionBuilder)(["Can\'t convert boolean to string automatically, because the \"", Configurable.BOOLEAN_FORMAT_KEY_$LI$(), "\" setting was ", new (require('./_DelayedJQuote')._DelayedJQuote)(this.getBooleanFormat()), (/* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(this.getBooleanFormat(),Configurable.C_TRUE_FALSE))?", which is the legacy default computer-language format, and hence isn\'t accepted.":".")]));
     }
 
     /**
@@ -1462,7 +1443,6 @@ export class Configurable {
      * @param {String} timeFormat
      */
     public setTimeFormat(timeFormat : string) {
-        NullArgumentException.check$java_lang_String$java_lang_Object("timeFormat", timeFormat);
         this.timeFormat = timeFormat;
         /* setProperty */this.properties.set(Configurable.TIME_FORMAT_KEY_$LI$(), timeFormat);
     }
@@ -1495,7 +1475,6 @@ export class Configurable {
      * @param {String} dateFormat
      */
     public setDateFormat(dateFormat : string) {
-        NullArgumentException.check$java_lang_String$java_lang_Object("dateFormat", dateFormat);
         this.dateFormat = dateFormat;
         /* setProperty */this.properties.set(Configurable.DATE_FORMAT_KEY_$LI$(), dateFormat);
     }
@@ -1606,7 +1585,6 @@ export class Configurable {
      * @param {String} dateTimeFormat
      */
     public setDateTimeFormat(dateTimeFormat : string) {
-        NullArgumentException.check$java_lang_String$java_lang_Object("dateTimeFormat", dateTimeFormat);
         this.dateTimeFormat = dateTimeFormat;
         /* setProperty */this.properties.set(Configurable.DATETIME_FORMAT_KEY_$LI$(), dateTimeFormat);
     }
@@ -1647,7 +1625,7 @@ export class Configurable {
      * @since 2.3.24
      * @return {Map}
      */
-    public getCustomDateFormats() : Map {
+    public getCustomDateFormats() : Map<any, any> {
         return this.customDateFormats == null?this.parent.getCustomDateFormats():this.customDateFormats;
     }
 
@@ -1658,7 +1636,7 @@ export class Configurable {
      * @since 2.3.25
      * @return {Map}
      */
-    public getCustomDateFormatsWithoutFallback() : Map {
+    public getCustomDateFormatsWithoutFallback() : Map<any, any> {
         return this.customDateFormats;
     }
 
@@ -1675,9 +1653,8 @@ export class Configurable {
      * letters and digits.
      * @since 2.3.24
      */
-    public setCustomDateFormats(customDateFormats : Map) {
-        NullArgumentException.check$java_lang_String$java_lang_Object("customDateFormats", customDateFormats);
-        this.validateFormatNames(/* keySet */((m) => { let r=[]; m.forEach((v, k, m) => r.push(k)); return r; })(<any>customDateFormats));
+    public setCustomDateFormats(customDateFormats : Map<any, any>) {
+        this.validateFormatNames(customDateFormats.keySet());
         this.customDateFormats = customDateFormats;
     }
 
@@ -1698,8 +1675,8 @@ export class Configurable {
      * @param {String} name
      * @return {TemplateDateFormatFactory}
      */
-    public getCustomDateFormat(name : string) : TemplateDateFormatFactory {
-        let r : TemplateDateFormatFactory;
+    public getCustomDateFormat(name : string) : /*TemplateDateFormatFactory*/any {
+        let r : /*TemplateDateFormatFactory*/any;
         if(this.customDateFormats != null) {
             r = /* get */this.customDateFormats.get(name);
             if(r != null) {
@@ -1735,8 +1712,7 @@ export class Configurable {
      * see #setAttemptExceptionReporter(AttemptExceptionReporter)
      * @param {*} templateExceptionHandler
      */
-    public setTemplateExceptionHandler(templateExceptionHandler : TemplateExceptionHandler) {
-        NullArgumentException.check$java_lang_String$java_lang_Object("templateExceptionHandler", templateExceptionHandler);
+    public setTemplateExceptionHandler(templateExceptionHandler : /*TemplateExceptionHandler*/any) {
         this.templateExceptionHandler = templateExceptionHandler;
         /* setProperty */this.properties.set(Configurable.TEMPLATE_EXCEPTION_HANDLER_KEY_$LI$(), /* getName */(c => c["__class"]?c["__class"]:c["name"])((<any>templateExceptionHandler.constructor)));
     }
@@ -1745,7 +1721,7 @@ export class Configurable {
      * The getter pair of {link #setTemplateExceptionHandler(TemplateExceptionHandler)}.
      * @return {*}
      */
-    public getTemplateExceptionHandler() : TemplateExceptionHandler {
+    public getTemplateExceptionHandler() : /*TemplateExceptionHandler*/any {
         return this.templateExceptionHandler != null?this.templateExceptionHandler:this.parent.getTemplateExceptionHandler();
     }
 
@@ -1776,8 +1752,7 @@ export class Configurable {
      * @since 2.3.27
      * @param {*} attemptExceptionReporter
      */
-    public setAttemptExceptionReporter(attemptExceptionReporter : AttemptExceptionReporter) {
-        NullArgumentException.check$java_lang_String$java_lang_Object("attemptExceptionReporter", attemptExceptionReporter);
+    public setAttemptExceptionReporter(attemptExceptionReporter : /*AttemptExceptionReporter*/any) {
         this.attemptExceptionReporter = attemptExceptionReporter;
     }
 
@@ -1787,7 +1762,7 @@ export class Configurable {
      * @since 2.3.27
      * @return {*}
      */
-    public getAttemptExceptionReporter() : AttemptExceptionReporter {
+    public getAttemptExceptionReporter() : /*AttemptExceptionReporter*/any {
         return this.attemptExceptionReporter != null?this.attemptExceptionReporter:this.parent.getAttemptExceptionReporter();
     }
 
@@ -1806,8 +1781,7 @@ export class Configurable {
      * The default is {link ArithmeticEngine#BIGDECIMAL_ENGINE}.
      * @param {ArithmeticEngine} arithmeticEngine
      */
-    public setArithmeticEngine(arithmeticEngine : ArithmeticEngine) {
-        NullArgumentException.check$java_lang_String$java_lang_Object("arithmeticEngine", arithmeticEngine);
+    public setArithmeticEngine(arithmeticEngine : /*ArithmeticEngine*/any) {
         this.arithmeticEngine = arithmeticEngine;
         /* setProperty */this.properties.set(Configurable.ARITHMETIC_ENGINE_KEY_$LI$(), /* getName */(c => c["__class"]?c["__class"]:c["name"])((<any>arithmeticEngine.constructor)));
     }
@@ -1816,7 +1790,7 @@ export class Configurable {
      * The getter pair of {link #setArithmeticEngine(ArithmeticEngine)}.
      * @return {ArithmeticEngine}
      */
-    public getArithmeticEngine() : ArithmeticEngine {
+    public getArithmeticEngine() : /*ArithmeticEngine*/any {
         return this.arithmeticEngine != null?this.arithmeticEngine:this.parent.getArithmeticEngine();
     }
 
@@ -1835,8 +1809,7 @@ export class Configurable {
      * The default is {link ObjectWrapper#DEFAULT_WRAPPER}.
      * @param {*} objectWrapper
      */
-    public setObjectWrapper(objectWrapper : ObjectWrapper) {
-        NullArgumentException.check$java_lang_String$java_lang_Object("objectWrapper", objectWrapper);
+    public setObjectWrapper(objectWrapper : /*ObjectWrapper*/any) {
         this.objectWrapper = objectWrapper;
         /* setProperty */this.properties.set(Configurable.OBJECT_WRAPPER_KEY_$LI$(), /* getName */(c => c["__class"]?c["__class"]:c["name"])((<any>objectWrapper.constructor)));
     }
@@ -1845,7 +1818,7 @@ export class Configurable {
      * The getter pair of {link #setObjectWrapper(ObjectWrapper)}.
      * @return {*}
      */
-    public getObjectWrapper() : ObjectWrapper {
+    public getObjectWrapper() : /*ObjectWrapper*/any {
         return this.objectWrapper != null?this.objectWrapper:this.parent.getObjectWrapper();
     }
 
@@ -1937,8 +1910,7 @@ export class Configurable {
      * @since 2.3.17
      * @param {*} newBuiltinClassResolver
      */
-    public setNewBuiltinClassResolver(newBuiltinClassResolver : TemplateClassResolver) {
-        NullArgumentException.check$java_lang_String$java_lang_Object("newBuiltinClassResolver", newBuiltinClassResolver);
+    public setNewBuiltinClassResolver(newBuiltinClassResolver : /*TemplateClassResolver*/any) {
         this.newBuiltinClassResolver = newBuiltinClassResolver;
         /* setProperty */this.properties.set(Configurable.NEW_BUILTIN_CLASS_RESOLVER_KEY_$LI$(), /* getName */(c => c["__class"]?c["__class"]:c["name"])((<any>newBuiltinClassResolver.constructor)));
     }
@@ -1950,7 +1922,7 @@ export class Configurable {
      * @since 2.3.17
      * @return {*}
      */
-    public getNewBuiltinClassResolver() : TemplateClassResolver {
+    public getNewBuiltinClassResolver() : /*TemplateClassResolver*/any {
         return this.newBuiltinClassResolver != null?this.newBuiltinClassResolver:this.parent.getNewBuiltinClassResolver();
     }
 
@@ -1983,7 +1955,7 @@ export class Configurable {
      */
     public setAutoFlush(autoFlush : boolean) {
         this.autoFlush = autoFlush;
-        /* setProperty */this.properties.set(Configurable.AUTO_FLUSH_KEY_$LI$(), /* valueOf */new String(autoFlush).toString());
+        /* setProperty */this.properties.set(Configurable.AUTO_FLUSH_KEY_$LI$(), /* valueOf */String(autoFlush).toString());
     }
 
     /**
@@ -2015,7 +1987,7 @@ export class Configurable {
      */
     public setShowErrorTips(showTips : boolean) {
         this.showErrorTips = showTips;
-        /* setProperty */this.properties.set(Configurable.SHOW_ERROR_TIPS_KEY_$LI$(), /* valueOf */new String(showTips).toString());
+        /* setProperty */this.properties.set(Configurable.SHOW_ERROR_TIPS_KEY_$LI$(), /* valueOf */String(showTips).toString());
     }
 
     /**
@@ -2047,7 +2019,7 @@ export class Configurable {
      */
     public setAPIBuiltinEnabled(value : boolean) {
         this.apiBuiltinEnabled = value;
-        /* setProperty */this.properties.set(Configurable.API_BUILTIN_ENABLED_KEY_$LI$(), /* valueOf */new String(value).toString());
+        /* setProperty */this.properties.set(Configurable.API_BUILTIN_ENABLED_KEY_$LI$(), /* valueOf */String(value).toString());
     }
 
     /**
@@ -2085,7 +2057,7 @@ export class Configurable {
      */
     public setLogTemplateExceptions(value : boolean) {
         this.logTemplateExceptions = value;
-        /* setProperty */this.properties.set(Configurable.LOG_TEMPLATE_EXCEPTIONS_KEY_$LI$(), /* valueOf */new String(value).toString());
+        /* setProperty */this.properties.set(Configurable.LOG_TEMPLATE_EXCEPTIONS_KEY_$LI$(), /* valueOf */String(value).toString());
     }
 
     /**
@@ -2272,7 +2244,7 @@ export class Configurable {
                 /* remove */this.autoImports.delete(namespaceVarName);
             }
             /* put */this.autoImports.set(namespaceVarName, templateName);
-        };
+        }
     }
 
     initAutoImportsMap() {
@@ -2289,7 +2261,7 @@ export class Configurable {
             if(this.autoImports != null) {
                 /* remove */this.autoImports.delete(namespaceVarName);
             }
-        };
+        }
     }
 
     /**
@@ -2300,13 +2272,12 @@ export class Configurable {
      * @param {Map} map Maps the namespace variable names to the template names; not {@code null}
      */
     public setAutoImports(map : Map<any, any>) {
-        NullArgumentException.check$java_lang_String$java_lang_Object("map", map);
         {
             if(this.autoImports != null) {
                 /* clear */(<any>this.autoImports).clear();
             }
             {
-                let array131 = /* entrySet */((m) => { if(m.entries==null) m.entries=[]; return m.entries; })(<any>(<Map><any>map));
+                let array131 = /* entrySet */((m) => { if(m.entries==null) m.entries=[]; return m.entries; })(<any>(<Map<any, any>><any>map));
                 for(let index130=0; index130 < array131.length; index130++) {
                     let entry = array131[index130];
                     {
@@ -2322,7 +2293,7 @@ export class Configurable {
                     }
                 }
             }
-        };
+        }
     }
 
     /**
@@ -2344,7 +2315,7 @@ export class Configurable {
      * @since 2.3.25
      * @return {Map}
      */
-    public getAutoImports() : Map {
+    public getAutoImports() : Map<any, any> {
         return this.autoImports != null?this.autoImports:this.parent.getAutoImports();
     }
 
@@ -2365,7 +2336,7 @@ export class Configurable {
      * @since 2.3.25
      * @return {Map}
      */
-    public getAutoImportsWithoutFallback() : Map {
+    public getAutoImportsWithoutFallback() : Map<any, any> {
         return this.autoImports;
     }
 
@@ -2379,7 +2350,7 @@ export class Configurable {
                 }
             }
             /* add */(this.autoIncludes.push(templateName)>0);
-        };
+        }
     }
 
     initAutoIncludesList() {
@@ -2394,7 +2365,6 @@ export class Configurable {
      * @param {List} templateNames
      */
     public setAutoIncludes(templateNames : Array<any>) {
-        NullArgumentException.check$java_lang_String$java_lang_Object("templateNames", templateNames);
         {
             if(this.autoIncludes != null) {
                 /* clear */(this.autoIncludes.length = 0);
@@ -2405,10 +2375,10 @@ export class Configurable {
                     if(!(typeof templateName === 'string')) {
                         throw Object.defineProperty(new Error("List items must be String-s."), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.lang.RuntimeException','java.lang.IllegalArgumentException','java.lang.Exception'] });
                     }
-                    this.addAutoInclude(<string>templateName, (this != null && this instanceof <any>Configuration) && (<Configuration>this).getIncompatibleImprovements().intValue() < _TemplateAPI.VERSION_INT_2_3_25_$LI$());
+                    this.addAutoInclude(<string>templateName, (ClassUtil.isInstanceOf(this, 'freemarker.template.Configuration')) && (</*Configuration*/any>this).getIncompatibleImprovements().intValue() < /*_TemplateAPI.VERSION_INT_2_3_25_$LI$()*/2003025);
                 }
             }
-        };
+        }
     }
 
     /**
@@ -2430,7 +2400,7 @@ export class Configurable {
      * @since 2.3.25
      * @return {List}
      */
-    public getAutoIncludes() : List {
+    public getAutoIncludes() : List<any> {
         return this.autoIncludes != null?this.autoIncludes:this.parent.getAutoIncludes();
     }
 
@@ -2451,7 +2421,7 @@ export class Configurable {
      * @since 2.3.25
      * @return {List}
      */
-    public getAutoIncludesWithoutFallback() : List {
+    public getAutoIncludesWithoutFallback() : List<any> {
         return this.autoIncludes;
     }
 
@@ -2465,7 +2435,7 @@ export class Configurable {
             if(this.autoIncludes != null) {
                 /* remove */(a => { let index = a.indexOf(templateName); if(index>=0) { a.splice(index, 1); return true; } else { return false; }})(this.autoIncludes);
             }
-        };
+        }
     }
 
     static ALLOWED_CLASSES_SNAKE_CASE : string = "allowed_classes";
@@ -2902,11 +2872,23 @@ export class Configurable {
      * @throws TemplateException       if the new value of the setting can't be set for any other reasons.
      */
     public setSetting(name : string, value : string) {
+        const Configuration = require('../template/Configuration').Configuration;
+        const StringUtil = require('../template/utility/StringUtil').StringUtil;
+        const TemplateExceptionHandler = require('../template/TemplateExceptionHandler').TemplateExceptionHandler;
+        const _ObjectBuilderSettingEvaluator = require('../core/_ObjectBuilderSettingEvaluator')._ObjectBuilderSettingEvaluator;
+        const _CoreAPI = require('../core/_CoreAPI')._CoreAPI;
+        const TemplateNumberFormatFactory = require('../core/TemplateNumberFormatFactory').TemplateNumberFormatFactory;
+        const TemplateDateFormatFactory = require('../core/TemplateDateFormatFactory').TemplateDateFormatFactory;
+        const _SettingEvaluationEnvironment = require('../core/_SettingEvaluationEnvironment')._SettingEvaluationEnvironment;
+        const AttemptExceptionReporter = require('../template/AttemptExceptionReporter').AttemptExceptionReporter;
+        const ArithmeticEngine = require('../core/ArithmeticEngine').ArithmeticEngine;
+        const SimpleObjectWrapper = require('../template/SimpleObjectWrapper').SimpleObjectWrapper;
+        const BeansWrapper = require('../ext/beans/BeansWrapper').BeansWrapper;
         let unknown : boolean = false;
         try {
             if(/* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(Configurable.LOCALE_KEY_$LI$(),name))) {
                 if(/* equalsIgnoreCase */((o1, o2) => o1.toUpperCase() === (o2===null?o2:o2.toUpperCase()))(Configurable.JVM_DEFAULT, value)) {
-                    this.setLocale(/* getDefault */(globals.DEFAULT_LOCALE));
+                    this.setLocale(/* getDefault */(global.DEFAULT_LOCALE));
                 } else {
                     this.setLocale(StringUtil.deduceLocale(value));
                 }
@@ -2955,12 +2937,12 @@ export class Configurable {
                     } else if(/* equalsIgnoreCase */((o1, o2) => o1.toUpperCase() === (o2===null?o2:o2.toUpperCase()))("rethrow", value)) {
                         this.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
                     } else if(/* equalsIgnoreCase */((o1, o2) => o1.toUpperCase() === (o2===null?o2:o2.toUpperCase()))(Configurable.DEFAULT, value) && (this != null && this instanceof <any>Configuration)) {
-                        (<Configuration>this).unsetTemplateExceptionHandler();
+                        (</*Configuration*/any>this).unsetTemplateExceptionHandler();
                     } else {
                         throw this.invalidSettingValueException(name, value);
                     }
                 } else {
-                    this.setTemplateExceptionHandler(<TemplateExceptionHandler><any>_ObjectBuilderSettingEvaluator.eval(value, "freemarker.template.TemplateExceptionHandler", false, _SettingEvaluationEnvironment.getCurrent()));
+                    this.setTemplateExceptionHandler(/*<TemplateExceptionHandler>*/<any>_ObjectBuilderSettingEvaluator.eval(value, "freemarker.template.TemplateExceptionHandler", false, _SettingEvaluationEnvironment.getCurrent()));
                 }
             } else if(/* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(Configurable.ATTEMPT_EXCEPTION_REPORTER_KEY_SNAKE_CASE,name)) || /* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(Configurable.ATTEMPT_EXCEPTION_REPORTER_KEY_CAMEL_CASE,name))) {
                 if(value.indexOf('.') === -1) {
@@ -2968,13 +2950,13 @@ export class Configurable {
                         this.setAttemptExceptionReporter(AttemptExceptionReporter.LOG_ERROR_REPORTER);
                     } else if(/* equalsIgnoreCase */((o1, o2) => o1.toUpperCase() === (o2===null?o2:o2.toUpperCase()))("log_warn", value) || /* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })("logWarn",value))) {
                         this.setAttemptExceptionReporter(AttemptExceptionReporter.LOG_WARN_REPORTER);
-                    } else if(/* equalsIgnoreCase */((o1, o2) => o1.toUpperCase() === (o2===null?o2:o2.toUpperCase()))(Configurable.DEFAULT, value) && (this != null && this instanceof <any>Configuration)) {
-                        (<Configuration>this).unsetAttemptExceptionReporter();
+                    } else if(/* equalsIgnoreCase */((o1, o2) => o1.toUpperCase() === (o2===null?o2:o2.toUpperCase()))(Configurable.DEFAULT, value) && (ClassUtil.isInstanceOf(this, 'freemarker.template.Config'))) {
+                        (</*Configuration*/any>this).unsetAttemptExceptionReporter();
                     } else {
                         throw this.invalidSettingValueException(name, value);
                     }
                 } else {
-                    this.setAttemptExceptionReporter(<AttemptExceptionReporter><any>_ObjectBuilderSettingEvaluator.eval(value, "freemarker.template.AttemptExceptionReporter", false, _SettingEvaluationEnvironment.getCurrent()));
+                    this.setAttemptExceptionReporter(/*<AttemptExceptionReporter>*/<any>_ObjectBuilderSettingEvaluator.eval(value, "freemarker.template.AttemptExceptionReporter", false, _SettingEvaluationEnvironment.getCurrent()));
                 }
             } else if(/* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(Configurable.ARITHMETIC_ENGINE_KEY_SNAKE_CASE,name)) || /* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(Configurable.ARITHMETIC_ENGINE_KEY_CAMEL_CASE,name))) {
                 if(value.indexOf('.') === -1) {
@@ -2986,26 +2968,23 @@ export class Configurable {
                         throw this.invalidSettingValueException(name, value);
                     }
                 } else {
-                    this.setArithmeticEngine(<ArithmeticEngine>_ObjectBuilderSettingEvaluator.eval(value, ArithmeticEngine, false, _SettingEvaluationEnvironment.getCurrent()));
+                    this.setArithmeticEngine(</*ArithmeticEngine*/any>_ObjectBuilderSettingEvaluator.eval(value, ArithmeticEngine, false, _SettingEvaluationEnvironment.getCurrent()));
                 }
             } else if(/* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(Configurable.OBJECT_WRAPPER_KEY_SNAKE_CASE,name)) || /* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(Configurable.OBJECT_WRAPPER_KEY_CAMEL_CASE,name))) {
-                if(/* equalsIgnoreCase */((o1, o2) => o1.toUpperCase() === (o2===null?o2:o2.toUpperCase()))(Configurable.DEFAULT, value)) {
+                if((Configurable.DEFAULT.toUpperCase() === value.toUpperCase())) {
                     if(this != null && this instanceof <any>Configuration) {
-                        (<Configuration>this).unsetObjectWrapper();
+                        (</*Configuration*/any>this).unsetObjectWrapper();
                     } else {
                         this.setObjectWrapper(Configuration.getDefaultObjectWrapper(Configuration.VERSION_2_3_0_$LI$()));
                     }
-                } else if(/* equalsIgnoreCase */((o1, o2) => o1.toUpperCase() === (o2===null?o2:o2.toUpperCase()))(Configurable.DEFAULT_2_3_0, value)) {
+                } else if(Configurable.DEFAULT_2_3_0.toUpperCase() === value.toUpperCase()) {
                     this.setObjectWrapper(Configuration.getDefaultObjectWrapper(Configuration.VERSION_2_3_0_$LI$()));
-                } else if(/* equalsIgnoreCase */((o1, o2) => o1.toUpperCase() === (o2===null?o2:o2.toUpperCase()))("simple", value)) {
-                    this.setObjectWrapper(ObjectWrapper.SIMPLE_WRAPPER);
-                } else if(/* equalsIgnoreCase */((o1, o2) => o1.toUpperCase() === (o2===null?o2:o2.toUpperCase()))("beans", value)) {
-                    this.setObjectWrapper(ObjectWrapper.BEANS_WRAPPER);
-                } else if(/* equalsIgnoreCase */((o1, o2) => o1.toUpperCase() === (o2===null?o2:o2.toUpperCase()))("jython", value)) {
-                    let clazz : any = /* forName */eval("freemarker.ext.jython.JythonWrapper".split('.').slice(-1)[0]);
-                    this.setObjectWrapper(<ObjectWrapper><any>/* get */null[/* getField */((c,p) => { return {owner:c,name:p}; })(clazz,"INSTANCE").name]);
+                } else if("simple".toUpperCase() === value.toUpperCase()) {
+                    this.setObjectWrapper(new SimpleObjectWrapper());
+                } else if("beans".toUpperCase() === value.toUpperCase()) {
+                    this.setObjectWrapper(new BeansWrapper());
                 } else {
-                    this.setObjectWrapper(<ObjectWrapper><any>_ObjectBuilderSettingEvaluator.eval(value, "freemarker.template.ObjectWrapper", false, _SettingEvaluationEnvironment.getCurrent()));
+                    this.setObjectWrapper(/*<ObjectWrapper>*/<any>_ObjectBuilderSettingEvaluator.eval(value, "freemarker.template.ObjectWrapper", false, _SettingEvaluationEnvironment.getCurrent()));
                 }
             } else if(/* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(Configurable.BOOLEAN_FORMAT_KEY_SNAKE_CASE,name)) || /* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(Configurable.BOOLEAN_FORMAT_KEY_CAMEL_CASE,name))) {
                 this.setBooleanFormat(value);
@@ -3022,6 +3001,7 @@ export class Configurable {
             } else if(/* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(Configurable.API_BUILTIN_ENABLED_KEY_SNAKE_CASE,name)) || /* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(Configurable.API_BUILTIN_ENABLED_KEY_CAMEL_CASE,name))) {
                 this.setAPIBuiltinEnabled(StringUtil.getYesNo(value));
             } else if(/* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(Configurable.NEW_BUILTIN_CLASS_RESOLVER_KEY_SNAKE_CASE,name)) || /* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(Configurable.NEW_BUILTIN_CLASS_RESOLVER_KEY_CAMEL_CASE,name))) {
+                const TemplateClassResolver = require('./TemplateClassResolver').TemplateClassResolver;
                 if(/* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })("unrestricted",value))) {
                     this.setNewBuiltinClassResolver(TemplateClassResolver.UNRESTRICTED_RESOLVER);
                 } else if(/* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })("safer",value))) {
@@ -3041,16 +3021,16 @@ export class Configurable {
                         } else if(/* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(segmentKey,Configurable.TRUSTED_TEMPLATES_SNAKE_CASE)) || /* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(segmentKey,Configurable.TRUSTED_TEMPLATES_CAMEL_CASE))) {
                             trustedTemplates = segmentValue;
                         } else {
-                            throw new ParseException("Unrecognized list segment key: " + StringUtil.jQuote$java_lang_Object(segmentKey) + ". Supported keys are: \"" + Configurable.ALLOWED_CLASSES_SNAKE_CASE + "\", \"" + Configurable.ALLOWED_CLASSES_CAMEL_CASE + "\", \"" + Configurable.TRUSTED_TEMPLATES_SNAKE_CASE + "\", \"" + Configurable.TRUSTED_TEMPLATES_CAMEL_CASE + "\". ", 0, 0);
+                            throw new (require('./ParseException').ParseException)("Unrecognized list segment key: " + StringUtil.jQuote$java_lang_Object(segmentKey) + ". Supported keys are: \"" + Configurable.ALLOWED_CLASSES_SNAKE_CASE + "\", \"" + Configurable.ALLOWED_CLASSES_CAMEL_CASE + "\", \"" + Configurable.TRUSTED_TEMPLATES_SNAKE_CASE + "\", \"" + Configurable.TRUSTED_TEMPLATES_CAMEL_CASE + "\". ", 0, 0);
                         }
-                    };
-                    this.setNewBuiltinClassResolver(new OptInTemplateClassResolver(allowedClasses, trustedTemplates));
+                    }
+                    this.setNewBuiltinClassResolver(new (require('./OptInTemplateClassResolver').OptInTemplateClassResolver)(allowedClasses, trustedTemplates));
                 } else if(/* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })("allow_nothing",value))) {
                     throw Object.defineProperty(new Error("The correct value would be: allows_nothing"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.lang.RuntimeException','java.lang.IllegalArgumentException','java.lang.Exception'] });
                 } else if(/* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })("allowNothing",value))) {
                     throw Object.defineProperty(new Error("The correct value would be: allowsNothing"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.lang.RuntimeException','java.lang.IllegalArgumentException','java.lang.Exception'] });
                 } else if(value.indexOf('.') !== -1) {
-                    this.setNewBuiltinClassResolver(<TemplateClassResolver><any>_ObjectBuilderSettingEvaluator.eval(value, "freemarker.core.TemplateClassResolver", false, _SettingEvaluationEnvironment.getCurrent()));
+                    this.setNewBuiltinClassResolver(/*<TemplateClassResolver>*/<any>_ObjectBuilderSettingEvaluator.eval(value, "freemarker.core.TemplateClassResolver", false, _SettingEvaluationEnvironment.getCurrent()));
                 } else {
                     throw this.invalidSettingValueException(name, value);
                 }
@@ -3071,7 +3051,7 @@ export class Configurable {
             }
         } catch(e) {
             throw this.settingValueAssignmentException(name, value, e);
-        };
+        }
         if(unknown) {
             throw this.unknownSettingException(name);
         }
@@ -3087,8 +3067,9 @@ export class Configurable {
      * @since 2.3.24
      * @return {Set}
      */
-    public getSettingNames(camelCase : boolean) : Set {
-        return <any>(new _SortedArraySet<string>(camelCase?Configurable.SETTING_NAMES_CAMEL_CASE_$LI$():Configurable.SETTING_NAMES_SNAKE_CASE_$LI$()));
+    public getSettingNames(camelCase : boolean) : Set<any> {
+        const _SortedArraySet = require('./_SortedArraySet')._SortedArraySet;
+        return new _SortedArraySet(camelCase?Configurable.SETTING_NAMES_CAMEL_CASE_$LI$():Configurable.SETTING_NAMES_SNAKE_CASE_$LI$());
     }
 
     parseTimeZoneSettingValue(value : string) : string {
@@ -3106,10 +3087,11 @@ export class Configurable {
      * @param {boolean} strict
      */
     public setStrictBeanModels(strict : boolean) {
+        const BeansWrapper = require('../ext/beans/BeansWrapper').BeansWrapper;
         if(!(this.objectWrapper != null && this.objectWrapper instanceof <any>BeansWrapper)) {
             throw Object.defineProperty(new Error("The value of the " + Configurable.OBJECT_WRAPPER_KEY_$LI$() + " setting isn\'t a " + /* getName */(c => c["__class"]?c["__class"]:c["name"])(BeansWrapper) + "."), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.IllegalStateException','java.lang.Object','java.lang.RuntimeException','java.lang.Exception'] });
         }
-        (<BeansWrapper><any>this.objectWrapper).setStrict(strict);
+        (/*<BeansWrapper>*/<any>this.objectWrapper).setStrict(strict);
     }
 
     /**
@@ -3139,11 +3121,12 @@ export class Configurable {
      * @return {Map}
      */
     public getSettings() : Map<any, any> {
-        return Collections.unmodifiableMap<any, any>(this.properties);
+        return this.properties;
     }
 
-    getEnvironment() : Environment {
-        return (this != null && this instanceof <any>Environment)?<Environment>this:Environment.getCurrentEnvironment();
+    getEnvironment() : /*Environment*/any {
+        const Environment = require('./Environment').Environment;
+        return (ClassUtil.isInstanceOf(this, 'freemarker.core.Environment'))?</*Environment*/any>this:Environment.getCurrentEnvironment();
     }
 
     /**
@@ -3151,7 +3134,7 @@ export class Configurable {
      * @param {String} name
      * @return {TemplateException}
      */
-    unknownSettingException(name : string) : TemplateException {
+    unknownSettingException(name : string) : /*TemplateException*/any {
         return new Configurable.UnknownSettingException(this.getEnvironment(), name, this.getCorrectedNameForUnknownSetting(name));
     }
 
@@ -3171,24 +3154,25 @@ export class Configurable {
      * @param {Error} cause
      * @return {TemplateException}
      */
-    settingValueAssignmentException(name : string, value : string, cause : Error) : TemplateException {
+    settingValueAssignmentException(name : string, value : string, cause : Error) : /*TemplateException*/any {
         return new Configurable.SettingValueAssignmentException(this.getEnvironment(), name, value, cause);
     }
 
-    invalidSettingValueException(name : string, value : string) : TemplateException {
-        return new _MiscTemplateException(this.getEnvironment(), "Invalid value for setting ", new _DelayedJQuote(name), ": ", new _DelayedJQuote(value));
+    invalidSettingValueException(name : string, value : string) : /*TemplateException*/any {
+        return new (require('./_MiscTemplateException')._MiscTemplateException)(this.getEnvironment(), "Invalid value for setting ", new (require('./_DelayedJQuote')._DelayedJQuote)(name), ": ", new (require('./_DelayedJQuote')._DelayedJQuote)(value));
     }
 
-    public setSettings$java_util_Properties(props : Map) {
-        let prevEnv : _SettingEvaluationEnvironment = _SettingEvaluationEnvironment.startScope();
+    public setSettings$java_util_Properties(props : Map<any, any>) {
+        const _SettingEvaluationEnvironment = (require('./_SettingEvaluationEnvironment')._SettingEvaluationEnvironment);
+        let prevEnv : /*_SettingEvaluationEnvironment*/any = _SettingEvaluationEnvironment.startScope();
         try {
             for(let it : any = /* iterator */((a) => { var i = 0; return { next: function() { return i<a.length?a[i++]:null; }, hasNext: function() { return i<a.length; }}})(/* keySet */((m) => { let r=[]; m.forEach((v, k, m) => r.push(k)); return r; })(<any>props)); it.hasNext(); ) {
                 let key : string = <string>it.next();
                 this.setSetting(key, /* getProperty */props.get(key).trim());
-            };
+            }
         } finally {
             _SettingEvaluationEnvironment.endScope(prevEnv);
-        };
+        }
     }
 
     /**
@@ -3208,18 +3192,19 @@ export class Configurable {
     }
 
     public setSettings$java_io_InputStream(propsIn : InputStream) {
-        let p : Map<any, any> = <Map>new Map();
-        p.load(propsIn);
-        this.setSettings$java_util_Properties(p);
+        // let p : Map<any, any> = new Map<any, any>();
+        // p.load(propsIn);
+        // this.setSettings$java_util_Properties(p);
+        throw new Error();
     }
 
     setCustomAttribute$java_lang_Object$java_lang_Object(key : any, value : any) {
         {
             /* put */this.customAttributes.set(key, value);
-        };
+        }
     }
 
-    public getCustomAttribute$java_lang_Object$freemarker_core_CustomAttribute(key : any, attr : CustomAttribute) : any {
+    public getCustomAttribute$java_lang_Object$freemarker_core_CustomAttribute(key : any, attr : /*CustomAttribute*/any) : any {
         {
             let o : any = /* get */this.customAttributes.get(key);
             if(o == null && !/* containsKey */this.customAttributes.has(key)) {
@@ -3227,7 +3212,7 @@ export class Configurable {
                 /* put */this.customAttributes.set(key, o);
             }
             return o;
-        };
+        }
     }
 
     /**
@@ -3239,7 +3224,7 @@ export class Configurable {
      * @return {Object}
      */
     public getCustomAttribute(key? : any, attr? : any) : any {
-        if(((key != null) || key === null) && ((attr != null && attr instanceof <any>CustomAttribute) || attr === null)) {
+        if(((key != null) || key === null) && ((ClassUtil.isInstanceOf(attr, 'freemarker.core.CustomAttribute')) || attr === null)) {
             return <any>this.getCustomAttribute$java_lang_Object$freemarker_core_CustomAttribute(key, attr);
         } else if(((typeof key === 'string') || key === null) && attr === undefined) {
             return <any>this.getCustomAttribute$java_lang_String(key);
@@ -3278,13 +3263,13 @@ export class Configurable {
                     }
                 }
             }
-        };
+        }
     }
 
     public setCustomAttribute$java_lang_String$java_lang_Object(name : string, value : any) {
         {
             /* put */this.customAttributes.set(name, value);
-        };
+        }
     }
 
     /**
@@ -3313,16 +3298,16 @@ export class Configurable {
      * between invocations.
      * @return {Array}
      */
-    public getCustomAttributeNames() : Array {
+    public getCustomAttributeNames() : Array<any> {
         {
             let names : Array<any> = <any>(/* keySet */((m) => { let r=[]; m.forEach((v, k, m) => r.push(k)); return r; })(<any>this.customAttributes).slice(0));
             for(let iter : any = /* iterator */((a) => { var i = 0; return { next: function() { return i<a.length?a[i++]:null; }, hasNext: function() { return i<a.length; }}})(names); iter.hasNext(); ) {
                 if(!(typeof iter.next() === 'string')) {
                     iter.remove();
                 }
-            };
-            return <Array>/* toArray */names.slice(0);
-        };
+            }
+            return <Array<any>>/* toArray */names.slice(0);
+        }
     }
 
     /**
@@ -3338,7 +3323,7 @@ export class Configurable {
     public removeCustomAttribute(name : string) {
         {
             /* remove */this.customAttributes.delete(name);
-        };
+        }
     }
 
     public getCustomAttribute$java_lang_String(name : string) : any {
@@ -3348,7 +3333,7 @@ export class Configurable {
             if(retval == null && /* containsKey */this.customAttributes.has(name)) {
                 return null;
             }
-        };
+        }
         if(retval == null && this.parent != null) {
             return this.parent.getCustomAttribute$java_lang_String(name);
         }
@@ -3360,7 +3345,7 @@ export class Configurable {
      * This is not meant to be called or overridden by code outside of FreeMarker.
      * @param {Environment} env
      */
-    doAutoImportsAndIncludes(env : Environment) {
+    doAutoImportsAndIncludes(env : /*Environment*/any) {
         if(this.parent != null) this.parent.doAutoImportsAndIncludes(env);
     }
 
@@ -3387,8 +3372,8 @@ export namespace Configurable {
      * @class
      */
     export class UnknownSettingException extends _MiscTemplateException {
-        constructor(env : Environment, name : string, correctedName : string) {
-            super(env, "Unknown FreeMarker configuration setting: ", new _DelayedJQuote(name), correctedName == null?"":[". You may meant: ", new _DelayedJQuote(correctedName)]);
+        constructor(env : /*Environment*/any, name : string, correctedName : string) {
+            super(env, "Unknown FreeMarker configuration setting: ", new (require('./_DelayedJQuote')._DelayedJQuote)(name), correctedName == null?"":[". You may meant: ", new (require('./_DelayedJQuote')._DelayedJQuote)(correctedName)]);
             (<any>Object).setPrototypeOf(this, UnknownSettingException.prototype);
         }
     }
@@ -3406,8 +3391,8 @@ export namespace Configurable {
      * @class
      */
     export class SettingValueAssignmentException extends _MiscTemplateException {
-        constructor(env : Environment, name : string, value : string, cause : Error) {
-            super(cause, env, "Failed to set FreeMarker configuration setting ", new _DelayedJQuote(name), " to value ", new _DelayedJQuote(value), "; see cause exception.");
+        constructor(env : /*Environment*/any, name : string, value : string, cause : Error) {
+            super(cause, env, "Failed to set FreeMarker configuration setting ", new (require('./_DelayedJQuote')._DelayedJQuote)(name), " to value ", new (require('./_DelayedJQuote')._DelayedJQuote)(value), "; see cause exception.");
             (<any>Object).setPrototypeOf(this, SettingValueAssignmentException.prototype);
         }
     }
@@ -3473,14 +3458,14 @@ export namespace Configurable {
                     /* add */(segments.push(new Configurable.KeyValuePair(item, currentSegment))>0);
                 } else {
                     if(currentSegment == null) {
-                        throw new ParseException("The very first list item must be followed by \":\" so it will be the key for the following sub-list.", 0, 0);
+                        throw new (require('./ParseException').ParseException)("The very first list item must be followed by \":\" so it will be the key for the following sub-list.", 0, 0);
                     }
                     /* add */(currentSegment.push(item)>0);
                 }
                 if((c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(c) == ' '.charCodeAt(0)) break;
-                if((c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(c) != ','.charCodeAt(0) && (c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(c) != ':'.charCodeAt(0)) throw new ParseException("Expected \",\" or \":\" or the end of text but found \"" + c + "\"", 0, 0);
+                if((c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(c) != ','.charCodeAt(0) && (c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(c) != ':'.charCodeAt(0)) throw new (require('./ParseException').ParseException)("Expected \",\" or \":\" or the end of text but found \"" + c + "\"", 0, 0);
                 this.p++;
-            };
+            }
             return segments;
         }
 
@@ -3493,13 +3478,14 @@ export namespace Configurable {
                 /* add */(seq.push(this.fetchStringValue())>0);
                 c = this.skipWS();
                 if((c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(c) == ' '.charCodeAt(0)) break;
-                if((c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(c) != ','.charCodeAt(0)) throw new ParseException("Expected \",\" or the end of text but found \"" + c + "\"", 0, 0);
+                if((c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(c) != ','.charCodeAt(0)) throw new (require('./ParseException').ParseException)("Expected \",\" or the end of text but found \"" + c + "\"", 0, 0);
                 this.p++;
-            };
+            }
             return seq;
         }
 
         parseAsImportList() : Map<any, any> {
+            const ParseException = (require('./ParseException').ParseException)
             let c : string;
             let map : Map<any, any> = <any>(new Map<any, any>());
             while((true)) {
@@ -3509,7 +3495,7 @@ export namespace Configurable {
                 c = this.skipWS();
                 if((c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(c) == ' '.charCodeAt(0)) throw new ParseException("Unexpected end of text: expected \"as\"", 0, 0);
                 let s : string = this.fetchKeyword();
-                if(!/* equalsIgnoreCase */((o1, o2) => o1.toUpperCase() === (o2===null?o2:o2.toUpperCase()))(s, "as")) throw new ParseException("Expected \"as\", but found " + StringUtil.jQuote$java_lang_Object(s), 0, 0);
+                if(!/* equalsIgnoreCase */((o1, o2) => o1.toUpperCase() === (o2===null?o2:o2.toUpperCase()))(s, "as")) throw new ParseException("Expected \"as\", but found " + (require('../template/utility/StringUtil').StringUtil).jQuote$java_lang_Object(s), 0, 0);
                 c = this.skipWS();
                 if((c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(c) == ' '.charCodeAt(0)) throw new ParseException("Unexpected end of text: expected gate hash name", 0, 0);
                 let ns : string = this.fetchStringValue();
@@ -3518,7 +3504,7 @@ export namespace Configurable {
                 if((c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(c) == ' '.charCodeAt(0)) break;
                 if((c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(c) != ','.charCodeAt(0)) throw new ParseException("Expected \",\" or the end of text but found \"" + c + "\"", 0, 0);
                 this.p++;
-            };
+            }
             return map;
         }
 
@@ -3527,13 +3513,13 @@ export namespace Configurable {
             if(/* startsWith */((str, searchString, position = 0) => str.substr(position, searchString.length) === searchString)(w, "\'") || /* startsWith */((str, searchString, position = 0) => str.substr(position, searchString.length) === searchString)(w, "\"")) {
                 w = w.substring(1, w.length - 1);
             }
-            return StringUtil.FTLStringLiteralDec(w);
+            return (require('../template/utility/StringUtil').StringUtil).FTLStringLiteralDec(w);
         }
 
         fetchKeyword() : string {
             let w : string = this.fetchWord();
             if(/* startsWith */((str, searchString, position = 0) => str.substr(position, searchString.length) === searchString)(w, "\'") || /* startsWith */((str, searchString, position = 0) => str.substr(position, searchString.length) === searchString)(w, "\"")) {
-                throw new ParseException("Keyword expected, but a string value found: " + w, 0, 0);
+                throw new (require('./ParseException').ParseException)("Keyword expected, but a string value found: " + w, 0, 0);
             }
             return w;
         }
@@ -3544,11 +3530,12 @@ export namespace Configurable {
                 c = this.text.charAt(this.p);
                 if(!Character.isWhitespace(c)) return c;
                 this.p++;
-            };
+            }
             return ' ';
         }
 
         fetchWord() : string {
+            const ParseException = (require('./ParseException').ParseException);
             if(this.p === this.ln) throw new ParseException("Unexpeced end of text", 0, 0);
             let c : string = this.text.charAt(this.p);
             let b : number = this.p;
@@ -3568,7 +3555,7 @@ export namespace Configurable {
                         escaped = false;
                     }
                     this.p++;
-                };
+                }
                 if(this.p === this.ln) {
                     throw new ParseException("Missing " + q, 0, 0);
                 }

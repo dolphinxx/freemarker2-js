@@ -1,17 +1,17 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { KeyValuePair } from '../KeyValuePair';
-import { KeyValuePairIterator } from '../KeyValuePairIterator';
-import { SimpleNumber } from '../SimpleNumber';
-import { TemplateBooleanModel } from '../TemplateBooleanModel';
-import { TemplateCollectionModel } from '../TemplateCollectionModel';
-import { TemplateHashModelEx } from '../TemplateHashModelEx';
-import { TemplateHashModelEx2 } from '../TemplateHashModelEx2';
-import { TemplateModel } from '../TemplateModel';
-import { TemplateModelException } from '../TemplateModelException';
-import { TemplateModelIterator } from '../TemplateModelIterator';
-import { TemplateNumberModel } from '../TemplateNumberModel';
-import { TemplateScalarModel } from '../TemplateScalarModel';
-import { TemplateSequenceModel } from '../TemplateSequenceModel';
+import {KeyValuePair} from '../KeyValuePair';
+import {KeyValuePairIterator} from '../KeyValuePairIterator';
+import {SimpleNumber} from '../SimpleNumber';
+import {TemplateBooleanModel} from '../TemplateBooleanModel';
+import {TemplateCollectionModel} from '../TemplateCollectionModel';
+import {TemplateHashModelEx} from '../TemplateHashModelEx';
+import {TemplateHashModelEx2} from '../TemplateHashModelEx2';
+import {TemplateModel} from '../TemplateModel';
+import {TemplateModelException} from '../TemplateModelException';
+import {TemplateModelIterator} from '../TemplateModelIterator';
+import {TemplateNumberModel} from '../TemplateNumberModel';
+import {TemplateScalarModel} from '../TemplateScalarModel';
+import {TemplateSequenceModel} from '../TemplateSequenceModel';
 
 /**
  * Frequently used constant {link TemplateModel} values.
@@ -171,7 +171,7 @@ export namespace Constants {
 
 
 
-var __Function = Function;
+
 
 Constants.EMPTY_KEY_VALUE_PAIR_ITERATOR_$LI$();
 

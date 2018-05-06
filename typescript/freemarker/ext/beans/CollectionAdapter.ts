@@ -1,11 +1,10 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateCollectionModel } from '../../template/TemplateCollectionModel';
-import { TemplateModel } from '../../template/TemplateModel';
-import { TemplateModelAdapter } from '../../template/TemplateModelAdapter';
-import { TemplateModelException } from '../../template/TemplateModelException';
-import { TemplateModelIterator } from '../../template/TemplateModelIterator';
-import { UndeclaredThrowableException } from '../../template/utility/UndeclaredThrowableException';
-import { BeansWrapper } from './BeansWrapper';
+import {TemplateCollectionModel} from '../../template/TemplateCollectionModel';
+import {TemplateModel} from '../../template/TemplateModel';
+import {TemplateModelAdapter} from '../../template/TemplateModelAdapter';
+import {TemplateModelIterator} from '../../template/TemplateModelIterator';
+import {UndeclaredThrowableException} from '../../template/utility/UndeclaredThrowableException';
+import {BeansWrapper} from './BeansWrapper';
 
 /**
  * Adapts a {link TemplateCollectionModel} to  {link Collection}.
@@ -45,7 +44,7 @@ export class CollectionAdapter implements TemplateModelAdapter {
             return new CollectionAdapter.CollectionAdapter$0(this);
         } catch(e) {
             throw new UndeclaredThrowableException(e);
-        };
+        }
     }
 }
 CollectionAdapter["__class"] = "freemarker.ext.beans.CollectionAdapter";
@@ -64,7 +63,7 @@ export namespace CollectionAdapter {
                 return this.i.hasNext();
             } catch(e) {
                 throw new UndeclaredThrowableException(e);
-            };
+            }
         }
 
         public next() : any {
@@ -72,7 +71,7 @@ export namespace CollectionAdapter {
                 return this.__parent.wrapper.unwrap$freemarker_template_TemplateModel(this.i.next());
             } catch(e) {
                 throw new UndeclaredThrowableException(e);
-            };
+            }
         }
 
         public remove() {
@@ -91,4 +90,4 @@ export namespace CollectionAdapter {
 
 
 
-var __Function = Function;
+

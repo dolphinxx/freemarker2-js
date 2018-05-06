@@ -1,6 +1,6 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { LocalizedString } from './LocalizedString';
-import { TemplateModelException } from './TemplateModelException';
+import {LocalizedString} from './LocalizedString';
+import {TemplateModelException} from './TemplateModelException';
 
 /**
  * @param {String} resourceBundleLookupKey The lookup key for the resource bundle
@@ -32,7 +32,7 @@ export class ResourceBundleLocalizedString extends LocalizedString {
             return rb.getString(this.resourceKey);
         } catch(mre) {
             throw new TemplateModelException("missing resource", mre);
-        };
+        }
     }
 }
 ResourceBundleLocalizedString["__class"] = "freemarker.template.ResourceBundleLocalizedString";
@@ -41,4 +41,4 @@ ResourceBundleLocalizedString["__interfaces"] = ["freemarker.template.TemplateSc
 
 
 
-var __Function = Function;
+

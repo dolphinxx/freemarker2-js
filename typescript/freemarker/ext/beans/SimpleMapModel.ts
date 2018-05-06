@@ -1,23 +1,20 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { CollectionAndSequence } from '../../core/CollectionAndSequence';
-import { ModelFactory } from '../util/ModelFactory';
-import { WrapperTemplateModel } from '../util/WrapperTemplateModel';
-import { AdapterTemplateModel } from '../../template/AdapterTemplateModel';
-import { KeyValuePairIterator } from '../../template/KeyValuePairIterator';
-import { MapKeyValuePairIterator } from '../../template/MapKeyValuePairIterator';
-import { ObjectWrapper } from '../../template/ObjectWrapper';
-import { SimpleSequence } from '../../template/SimpleSequence';
-import { TemplateCollectionModel } from '../../template/TemplateCollectionModel';
-import { TemplateHashModelEx2 } from '../../template/TemplateHashModelEx2';
-import { TemplateMethodModelEx } from '../../template/TemplateMethodModelEx';
-import { TemplateModel } from '../../template/TemplateModel';
-import { TemplateModelException } from '../../template/TemplateModelException';
-import { TemplateModelWithAPISupport } from '../../template/TemplateModelWithAPISupport';
-import { WrappingTemplateModel } from '../../template/WrappingTemplateModel';
-import { RichObjectWrapper } from '../../template/utility/RichObjectWrapper';
-import { BeansWrapper } from './BeansWrapper';
-import { Character } from '../../../java/lang/Character';
-import { TemplateHashModel } from '../../template/TemplateHashModel';
+import {CollectionAndSequence} from '../../core/CollectionAndSequence';
+import {ModelFactory} from '../util/ModelFactory';
+import {WrapperTemplateModel} from '../util/WrapperTemplateModel';
+import {AdapterTemplateModel} from '../../template/AdapterTemplateModel';
+import {KeyValuePairIterator} from '../../template/KeyValuePairIterator';
+import {MapKeyValuePairIterator} from '../../template/MapKeyValuePairIterator';
+import {ObjectWrapper} from '../../template/ObjectWrapper';
+import {SimpleSequence} from '../../template/SimpleSequence';
+import {TemplateCollectionModel} from '../../template/TemplateCollectionModel';
+import {TemplateHashModelEx2} from '../../template/TemplateHashModelEx2';
+import {TemplateMethodModelEx} from '../../template/TemplateMethodModelEx';
+import {TemplateModel} from '../../template/TemplateModel';
+import {TemplateModelWithAPISupport} from '../../template/TemplateModelWithAPISupport';
+import {WrappingTemplateModel} from '../../template/WrappingTemplateModel';
+import {RichObjectWrapper} from '../../template/utility/RichObjectWrapper';
+import {BeansWrapper} from './BeansWrapper';
 
 /**
  * Model used by {link BeansWrapper} when <tt>simpleMapWrapper</tt>
@@ -125,6 +122,6 @@ export namespace SimpleMapModel {
 
 
 
-var __Function = Function;
+
 
 SimpleMapModel.FACTORY_$LI$();

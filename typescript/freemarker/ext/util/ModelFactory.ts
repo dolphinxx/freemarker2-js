@@ -1,6 +1,6 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { ObjectWrapper } from '../../template/ObjectWrapper';
-import { TemplateModel } from '../../template/TemplateModel';
+import {ObjectWrapper} from '../../template/ObjectWrapper';
+import {TemplateModel} from '../../template/TemplateModel';
 
 /**
  * Interface used to create various wrapper models in the {link ModelCache}.
@@ -18,4 +18,4 @@ export interface ModelFactory {
 }
 
 
-var __Function = Function;
+

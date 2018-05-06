@@ -8,4 +8,4 @@ MaybeEmptyCallableMemberDescriptor["__class"] = "freemarker.ext.beans.MaybeEmpty
 
 
 
-var __Function = Function;
+

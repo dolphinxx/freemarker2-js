@@ -1,5 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { _Java8 } from './_Java8';
+import {_Java8} from './_Java8';
 
 /**
  * Used internally only, might changes without notice!
@@ -22,6 +22,6 @@ _Java8Impl["__interfaces"] = ["freemarker.core._Java8"];
 
 
 
-var __Function = Function;
+
 
 _Java8Impl.INSTANCE_$LI$();

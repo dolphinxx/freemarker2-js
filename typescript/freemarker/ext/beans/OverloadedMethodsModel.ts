@@ -1,14 +1,13 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { SimpleNumber } from '../../template/SimpleNumber';
-import { TemplateMethodModelEx } from '../../template/TemplateMethodModelEx';
-import { TemplateModel } from '../../template/TemplateModel';
-import { TemplateModelException } from '../../template/TemplateModelException';
-import { TemplateSequenceModel } from '../../template/TemplateSequenceModel';
-import { OverloadedMethods } from './OverloadedMethods';
-import { BeansWrapper } from './BeansWrapper';
-import { MemberAndArguments } from './MemberAndArguments';
-import { _MethodUtil } from './_MethodUtil';
-import { CallableMemberDescriptor } from './CallableMemberDescriptor';
+import {SimpleNumber} from '../../template/SimpleNumber';
+import {TemplateMethodModelEx} from '../../template/TemplateMethodModelEx';
+import {TemplateModel} from '../../template/TemplateModel';
+import {TemplateModelException} from '../../template/TemplateModelException';
+import {TemplateSequenceModel} from '../../template/TemplateSequenceModel';
+import {OverloadedMethods} from './OverloadedMethods';
+import {BeansWrapper} from './BeansWrapper';
+import {MemberAndArguments} from './MemberAndArguments';
+import {_MethodUtil} from './_MethodUtil';
 
 /**
  * Wraps a set of same-name overloaded methods behind {link freemarker.template.TemplateMethodModel} interface,
@@ -48,7 +47,7 @@ export class OverloadedMethodsModel implements TemplateMethodModelEx, TemplateSe
         } catch(e) {
             if(e != null && e instanceof <any>TemplateModelException) throw <TemplateModelException>e;
             throw _MethodUtil.newInvocationTemplateModelException$java_lang_Object$freemarker_ext_beans_CallableMemberDescriptor$java_lang_Throwable(this.object, maa.getCallableMemberDescriptor(), e);
-        };
+        }
     }
 
     public get(s? : any) : any {
@@ -71,4 +70,4 @@ OverloadedMethodsModel["__interfaces"] = ["freemarker.template.TemplateMethodMod
 
 
 
-var __Function = Function;
+

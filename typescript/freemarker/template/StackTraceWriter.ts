@@ -12,4 +12,4 @@ export interface StackTraceWriter {
 }
 
 
-var __Function = Function;
+

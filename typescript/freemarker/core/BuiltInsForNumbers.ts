@@ -1,21 +1,17 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { SimpleDate } from '../template/SimpleDate';
-import { SimpleNumber } from '../template/SimpleNumber';
-import { SimpleScalar } from '../template/SimpleScalar';
-import { TemplateBooleanModel } from '../template/TemplateBooleanModel';
-import { TemplateDateModel } from '../template/TemplateDateModel';
-import { TemplateException } from '../template/TemplateException';
-import { TemplateModel } from '../template/TemplateModel';
-import { TemplateModelException } from '../template/TemplateModelException';
-import { TemplateNumberModel } from '../template/TemplateNumberModel';
-import { NumberUtil } from '../template/utility/NumberUtil';
-import { StringUtil } from '../template/utility/StringUtil';
-import { BuiltInForNumber } from './BuiltInForNumber';
-import { _TemplateModelException } from './_TemplateModelException';
-import { Expression } from './Expression';
-import { BuiltIn } from './BuiltIn';
-import { Environment } from './Environment';
-import { EvalUtil } from './EvalUtil';
+import {SimpleDate} from '../template/SimpleDate';
+import {SimpleNumber} from '../template/SimpleNumber';
+import {SimpleScalar} from '../template/SimpleScalar';
+import {TemplateBooleanModel} from '../template/TemplateBooleanModel';
+import {TemplateDateModel} from '../template/TemplateDateModel';
+import {TemplateModel} from '../template/TemplateModel';
+import {NumberUtil} from '../template/utility/NumberUtil';
+import {StringUtil} from '../template/utility/StringUtil';
+import {BuiltInForNumber} from './BuiltInForNumber';
+import {_TemplateModelException} from './_TemplateModelException';
+import {BuiltIn} from './BuiltIn';
+import {Environment} from './Environment';
+import {EvalUtil} from './EvalUtil';
 
 /**
  * A holder for builtins that operate exclusively on number left-hand value.
@@ -89,7 +85,7 @@ export namespace BuiltInsForNumbers {
                 n = NumberUtil.toIntExact(num);
             } catch(e) {
                 throw new _TemplateModelException(this.target, "The left side operand value isn\'t compatible with ?", this.key, ": ", e.message);
-            };
+            }
             if(n <= 0) {
                 throw new _TemplateModelException(this.target, "The left side operand of to ?", this.key, " must be at least 1, but was ", n, ".");
             }
@@ -363,7 +359,7 @@ export namespace BuiltInsForNumbers {
          * @param {Environment} env
          * @return {*}
          */
-        _eval(env : Environment) : TemplateModel {
+        _eval(env : /*Environment*/any) : TemplateModel {
             let model : TemplateModel = this.target.eval(env);
             if(!(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateNumberModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateNumberModel") >= 0)) && (model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateDateModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateDateModel") >= 0))) {
                 let date : Date = EvalUtil.modelToDate(<TemplateDateModel><any>model, this.target);

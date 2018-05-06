@@ -1,25 +1,22 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateException } from '../template/TemplateException';
-import { TemplateModel } from '../template/TemplateModel';
-import { TemplateModelException } from '../template/TemplateModelException';
-import { TemplateModelIterator } from '../template/TemplateModelIterator';
-import { TemplateScalarModel } from '../template/TemplateScalarModel';
-import { TemplateElement } from './TemplateElement';
-import { TemplateElements } from './TemplateElements';
-import { Environment } from './Environment';
-import { StringBuilder } from '../../java/lang/StringBuilder';
-import { _CoreStringUtils } from './_CoreStringUtils';
-import { Expression } from './Expression';
-import { _MessageUtil } from './_MessageUtil';
-import { LocalContext } from './LocalContext';
-import { TemplateObject } from './TemplateObject';
-import { LocalContextStack } from './LocalContextStack';
-import { InvalidReferenceException } from './InvalidReferenceException';
-import { _MiscTemplateException } from './_MiscTemplateException';
-import { _ErrorDescriptionBuilder } from './_ErrorDescriptionBuilder';
-import { _DelayedJQuote } from './_DelayedJQuote';
-import { TemplateCollectionModel } from '../template/TemplateCollectionModel';
-import { ParameterRole } from './ParameterRole';
+import {TemplateModel} from '../template/TemplateModel';
+import {TemplateModelIterator} from '../template/TemplateModelIterator';
+import {TemplateScalarModel} from '../template/TemplateScalarModel';
+import {TemplateElement} from './TemplateElement';
+import {TemplateElements} from './TemplateElements';
+import {StringBuilder} from '../../java/lang/StringBuilder';
+import {_CoreStringUtils} from './_CoreStringUtils';
+import {Expression} from './Expression';
+import {_MessageUtil} from './_MessageUtil';
+import {LocalContext} from './LocalContext';
+import {TemplateObject} from './TemplateObject';
+import {LocalContextStack} from './LocalContextStack';
+import {InvalidReferenceException} from './InvalidReferenceException';
+import {_MiscTemplateException} from './_MiscTemplateException';
+import {_ErrorDescriptionBuilder} from './_ErrorDescriptionBuilder';
+import {_DelayedJQuote} from './_DelayedJQuote';
+import {ParameterRole} from './ParameterRole';
+import {Map} from '../../java/util/Map';
 
 /**
  * An element representing a macro declaration.
@@ -29,7 +26,7 @@ import { ParameterRole } from './ParameterRole';
  * @class
  */
 export class Macro extends TemplateElement implements TemplateModel {
-    static DO_NOTHING_MACRO : Macro; public static DO_NOTHING_MACRO_$LI$() : Macro { if(Macro.DO_NOTHING_MACRO == null) Macro.DO_NOTHING_MACRO = new Macro(".pass", Collections.EMPTY_LIST, Collections.EMPTY_MAP, null, false, TemplateElements.EMPTY_$LI$()); return Macro.DO_NOTHING_MACRO; };
+    static DO_NOTHING_MACRO : Macro; public static DO_NOTHING_MACRO_$LI$() : Macro { if(Macro.DO_NOTHING_MACRO == null) Macro.DO_NOTHING_MACRO = new Macro(".pass", [], new Map<any, any>(), null, false, TemplateElements.EMPTY_$LI$()); return Macro.DO_NOTHING_MACRO; };
 
     static TYPE_MACRO : number = 0;
 
@@ -53,7 +50,7 @@ export class Macro extends TemplateElement implements TemplateModel {
         if(this.catchAllParamName===undefined) this.catchAllParamName = null;
         if(this.function===undefined) this.function = false;
         this.name = name;
-        this.paramNames = <Array>/* toArray */argumentNames.slice(0);
+        this.paramNames = <Array<any>>/* toArray */argumentNames.slice(0);
         this.paramDefaults = args;
         this.function = __function;
         this.catchAllParamName = catchAllParamName;
@@ -64,11 +61,11 @@ export class Macro extends TemplateElement implements TemplateModel {
         return this.catchAllParamName;
     }
 
-    public getArgumentNames() : Array {
+    public getArgumentNames() : Array<any> {
         return /* clone */this.paramNames.slice(0);
     }
 
-    getArgumentNamesInternal() : Array {
+    getArgumentNamesInternal() : Array<any> {
         return this.paramNames;
     }
 
@@ -85,7 +82,7 @@ export class Macro extends TemplateElement implements TemplateModel {
      * @param {Environment} env
      * @return {Array}
      */
-    accept(env : Environment) : TemplateElement[] {
+    accept(env : /*Environment*/any) : TemplateElement[] {
         env.visitMacroDef(this);
         return null;
     }
@@ -129,7 +126,7 @@ export class Macro extends TemplateElement implements TemplateModel {
                     _MessageUtil.appendExpressionAsUntearable(sb, defaultExpr);
                 }
             }
-        };
+        }
         if(this.catchAllParamName != null) {
             if(this.function) {
                 if(argCnt !== 0) {
@@ -240,11 +237,11 @@ export namespace Macro {
 
     export class Context implements LocalContext {
         public __parent: any;
-        localVars : Environment.Namespace;
+        localVars : /*Environment.Namespace*/any;
 
         callPlace : TemplateObject;
 
-        nestedContentNamespace : Environment.Namespace;
+        nestedContentNamespace : /*Environment.Namespace*/any;
 
         nestedContentParameterNames : Array<any>;
 
@@ -252,7 +249,7 @@ export namespace Macro {
 
         prevMacroContext : Macro.Context;
 
-        constructor(__parent: any, env : Environment, callPlace : TemplateObject, nestedContentParameterNames : Array<any>) {
+        constructor(__parent: any, env : /*Environment*/any, callPlace : TemplateObject, nestedContentParameterNames : Array<any>) {
             this.__parent = __parent;
             if(this.localVars===undefined) this.localVars = null;
             if(this.callPlace===undefined) this.callPlace = null;
@@ -260,7 +257,7 @@ export namespace Macro {
             if(this.nestedContentParameterNames===undefined) this.nestedContentParameterNames = null;
             if(this.prevLocalContextStack===undefined) this.prevLocalContextStack = null;
             if(this.prevMacroContext===undefined) this.prevMacroContext = null;
-            this.localVars = new Environment.Namespace(this.__parent);
+            this.localVars = new (require('./Environment').Environment).Namespace(this.__parent);
             this.callPlace = callPlace;
             this.nestedContentNamespace = env.getCurrentNamespace();
             this.nestedContentParameterNames = nestedContentParameterNames;
@@ -272,7 +269,7 @@ export namespace Macro {
             return this.__parent;
         }
 
-        sanityCheck(env : Environment) {
+        sanityCheck(env : /*Environment*/any) {
             let resolvedAnArg : boolean;
             let hasUnresolvedArg : boolean;
             let firstUnresolvedExpression : Expression;
@@ -302,13 +299,13 @@ export namespace Macro {
                                     hasUnresolvedArg = true;
                                     firstReferenceException = e;
                                 }
-                            };
+                            }
                         } else if(!env.isClassicCompatible()) {
                             let argWasSpecified : boolean = this.localVars.containsKey(argName);
-                            throw new _MiscTemplateException(env, (o => o.tip.apply(o, argWasSpecified?["If the parameter value expression on the caller side is known to be legally null/missing, you may want to specify a default value for it with the \"!\" operator, like paramValue!defaultValue."]:["If the omission was deliberate, you may consider making the parameter optional in the macro by specifying a default value for it, like ", "<#macro macroName paramName=defaultExpr>", ")"]))(new _ErrorDescriptionBuilder("When calling ", (this.__parent.isFunction()?"function":"macro"), " ", new _DelayedJQuote(this.__parent.name), ", required parameter ", new _DelayedJQuote(argName), " (parameter #", i + 1, ") was ", (argWasSpecified?"specified, but had null/missing value.":"not specified."))));
+                            throw new _MiscTemplateException(env, (o => o.tip.apply(o, argWasSpecified?["If the parameter value expression on the caller side is known to be legally null/missing, you may want to specify a default value for it with the \"!\" operator, like paramValue!defaultValue."]:["If the omission was deliberate, you may consider making the parameter optional in the macro by specifying a default value for it, like ", "<#macro macroName paramName=defaultExpr>", ")"]))(new _ErrorDescriptionBuilder(["When calling ", (this.__parent.isFunction()?"function":"macro"), " ", new _DelayedJQuote(this.__parent.name), ", required parameter ", new _DelayedJQuote(argName), " (parameter #", i + 1, ") was ", (argWasSpecified?"specified, but had null/missing value.":"not specified.")])));
                         }
                     }
-                };
+                }
             } while((resolvedAnArg && hasUnresolvedArg));
             if(hasUnresolvedArg) {
                 if(firstReferenceException != null) {
@@ -328,7 +325,7 @@ export namespace Macro {
             return this.localVars.get$java_lang_String(name);
         }
 
-        getLocals() : Environment.Namespace {
+        getLocals() : /*Environment.Namespace*/any {
             return this.localVars;
         }
 
@@ -345,7 +342,7 @@ export namespace Macro {
             let result : Array<any> = <any>([]);
             for(let it : TemplateModelIterator = this.localVars.keys().iterator(); it.hasNext(); ) {
                 /* add */((s, e) => { if(s.indexOf(e)==-1) { s.push(e); return true; } else { return false; } })(result, (<TemplateScalarModel><any>it.next()).getAsString());
-            };
+            }
             return result;
         }
     }
@@ -357,6 +354,6 @@ export namespace Macro {
 
 
 
-var __Function = Function;
+
 
 Macro.DO_NOTHING_MACRO_$LI$();

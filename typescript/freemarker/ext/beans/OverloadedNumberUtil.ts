@@ -1,7 +1,7 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { ClassUtil } from '../../template/utility/ClassUtil';
-import { NumberUtil } from '../../template/utility/NumberUtil';
-import { TypeFlags } from './TypeFlags';
+import {ClassUtil} from '../../template/utility/ClassUtil';
+import {NumberUtil} from '../../template/utility/NumberUtil';
+import {TypeFlags} from './TypeFlags';
 
 /**
  * Everything related to coercion to ambiguous numerical types.
@@ -1263,6 +1263,6 @@ export namespace OverloadedNumberUtil {
 
 
 
-var __Function = Function;
+
 
 OverloadedNumberUtil.BIG_MANTISSA_LOSS_PRICE_$LI$();

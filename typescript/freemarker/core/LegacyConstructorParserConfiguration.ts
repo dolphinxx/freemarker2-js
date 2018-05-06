@@ -1,9 +1,8 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { Version } from '../template/Version';
-import { ParserConfiguration } from './ParserConfiguration';
-import { ArithmeticEngine } from './ArithmeticEngine';
-import { OutputFormat } from './OutputFormat';
-import { Boolean } from '../../java/lang/Boolean';
+import {Version} from '../template/Version';
+import {ParserConfiguration} from './ParserConfiguration';
+import {ArithmeticEngine} from './ArithmeticEngine';
+import {OutputFormat} from './OutputFormat';
 
 /**
  * Used to work around that {link FMParser} has constructors that have separate parameters for individual settings.
@@ -154,4 +153,4 @@ LegacyConstructorParserConfiguration["__interfaces"] = ["freemarker.core.ParserC
 
 
 
-var __Function = Function;
+

@@ -1,9 +1,9 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { ModelCache } from '../util/ModelCache';
-import { ModelFactory } from '../util/ModelFactory';
-import { TemplateModel } from '../../template/TemplateModel';
-import { BeansWrapper } from './BeansWrapper';
-import { Boolean } from '../../../java/lang/Boolean';
+import {ModelCache} from '../util/ModelCache';
+import {ModelFactory} from '../util/ModelFactory';
+import {TemplateModel} from '../../template/TemplateModel';
+import {BeansWrapper} from './BeansWrapper';
+import {Boolean} from '../../../java/lang/Boolean';
 
 export class BeansModelCache extends ModelCache {
     /*private*/ classToFactory : Map<any, any> = <any>(<Map>new Map());
@@ -48,7 +48,7 @@ export class BeansModelCache extends ModelCache {
                     factory = this.wrapper.getModelFactory(clazz);
                     /* put */this.classToFactory.set(clazz, factory);
                 }
-            };
+            }
         }
         return factory.create(object, this.wrapper);
     }
@@ -57,4 +57,4 @@ BeansModelCache["__class"] = "freemarker.ext.beans.BeansModelCache";
 
 
 
-var __Function = Function;
+

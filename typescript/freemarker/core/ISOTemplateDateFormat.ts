@@ -1,14 +1,10 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { DateUtil } from '../template/utility/DateUtil';
-import { ISOLikeTemplateDateFormat } from './ISOLikeTemplateDateFormat';
-import { ISOLikeTemplateDateFormatFactory } from './ISOLikeTemplateDateFormatFactory';
-import { Environment } from './Environment';
-import { InvalidFormatParametersException } from './InvalidFormatParametersException';
-import { UnknownDateTypeFormattingUnsupportedException } from './UnknownDateTypeFormattingUnsupportedException';
-import { TemplateDateModel } from '../template/TemplateDateModel';
+import {DateUtil} from '../template/utility/DateUtil';
+import {ISOLikeTemplateDateFormat} from './ISOLikeTemplateDateFormat';
+import {ISOLikeTemplateDateFormatFactory} from './ISOLikeTemplateDateFormatFactory';
 
 export class ISOTemplateDateFormat extends ISOLikeTemplateDateFormat {
-    constructor(settingValue : string, parsingStart : number, dateType : number, zonelessInput : boolean, timeZone : string, factory : ISOLikeTemplateDateFormatFactory, env : Environment) {
+    constructor(settingValue : string, parsingStart : number, dateType : number, zonelessInput : boolean, timeZone : string, factory : ISOLikeTemplateDateFormatFactory, env : /*Environment*/any) {
         super(settingValue, parsingStart, dateType, zonelessInput, timeZone, factory, env);
     }
 
@@ -104,4 +100,4 @@ ISOTemplateDateFormat["__class"] = "freemarker.core.ISOTemplateDateFormat";
 
 
 
-var __Function = Function;
+

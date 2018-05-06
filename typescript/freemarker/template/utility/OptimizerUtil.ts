@@ -20,18 +20,18 @@ export class OptimizerUtil {
         case 0:
             {
                 return Collections.EMPTY_LIST;
-            };
-        case 1:
+            }
+            case 1:
             {
                 return /* singletonList */[/* get */list[0]];
-            };
-        default:
+            }
+            default:
             {
                 if(list != null && (list instanceof Array)) {
                     (<Array<any>><any>list).trimToSize();
                 }
                 return list;
-            };
+            }
         }
     }
 
@@ -75,7 +75,7 @@ OptimizerUtil["__class"] = "freemarker.template.utility.OptimizerUtil";
 
 
 
-var __Function = Function;
+
 
 OptimizerUtil.LONG_MAX_$LI$();
 

@@ -1,13 +1,12 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateException } from '../template/TemplateException';
-import { TemplateElement } from './TemplateElement';
-import { Expression } from './Expression';
-import { TemplateElements } from './TemplateElements';
-import { Environment } from './Environment';
-import { StringBuilder } from '../../java/lang/StringBuilder';
-import { IfBlock } from './IfBlock';
-import { BugException } from './BugException';
-import { ParameterRole } from './ParameterRole';
+import {TemplateElement} from './TemplateElement';
+import {Expression} from './Expression';
+import {TemplateElements} from './TemplateElements';
+import {Environment} from './Environment';
+import {StringBuilder} from '../../java/lang/StringBuilder';
+import {IfBlock} from './IfBlock';
+import {BugException} from './BugException';
+import {ParameterRole} from './ParameterRole';
 
 /**
  * An element that represents a conditionally executed block: #if, #elseif or #elseif. Note that when an #if has
@@ -40,7 +39,7 @@ export class ConditionalBlock extends TemplateElement {
      * @param {Environment} env
      * @return {Array}
      */
-    accept(env : Environment) : TemplateElement[] {
+    accept(env : /*Environment*/any) : TemplateElement[] {
         if(this.condition == null || this.condition.evalToBoolean$freemarker_core_Environment(env)) {
             return this.getChildBuffer();
         }

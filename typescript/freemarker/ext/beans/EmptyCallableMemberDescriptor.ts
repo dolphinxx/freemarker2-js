@@ -1,5 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { MaybeEmptyCallableMemberDescriptor } from './MaybeEmptyCallableMemberDescriptor';
+import {MaybeEmptyCallableMemberDescriptor} from './MaybeEmptyCallableMemberDescriptor';
 
 /**
  * Represents that no member was chosen. Why it wasn't is represented by the two singleton instances,
@@ -22,7 +22,7 @@ EmptyCallableMemberDescriptor["__class"] = "freemarker.ext.beans.EmptyCallableMe
 
 
 
-var __Function = Function;
+
 
 EmptyCallableMemberDescriptor.AMBIGUOUS_METHOD_$LI$();
 

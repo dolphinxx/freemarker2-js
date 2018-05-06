@@ -1,6 +1,6 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateMarkupOutputModel } from './TemplateMarkupOutputModel';
-import { CommonMarkupOutputFormat } from './CommonMarkupOutputFormat';
+import {TemplateMarkupOutputModel} from './TemplateMarkupOutputModel';
+import {CommonMarkupOutputFormat} from './CommonMarkupOutputFormat';
 
 /**
  * Common superclass for implementing {link TemplateMarkupOutputModel}-s that belong to a

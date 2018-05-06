@@ -1,7 +1,7 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateModel } from '../template/TemplateModel';
-import { ClassUtil } from '../template/utility/ClassUtil';
-import { _DelayedConversionToString } from './_DelayedConversionToString';
+import {TemplateModel} from '../template/TemplateModel';
+import {ClassUtil} from '../template/utility/ClassUtil';
+import {_DelayedConversionToString} from './_DelayedConversionToString';
 
 /**
  * Don't use this; used internally by FreeMarker, might changes without notice.
@@ -27,4 +27,4 @@ _DelayedFTLTypeDescription["__class"] = "freemarker.core._DelayedFTLTypeDescript
 
 
 
-var __Function = Function;
+

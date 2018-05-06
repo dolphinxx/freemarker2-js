@@ -1,15 +1,13 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { SimpleScalar } from '../template/SimpleScalar';
-import { SimpleSequence } from '../template/SimpleSequence';
-import { TemplateMethodModel } from '../template/TemplateMethodModel';
-import { TemplateModel } from '../template/TemplateModel';
-import { TemplateModelException } from '../template/TemplateModelException';
-import { TemplateNodeModel } from '../template/TemplateNodeModel';
-import { TemplateNodeModelEx } from '../template/TemplateNodeModelEx';
-import { BuiltInForNode } from './BuiltInForNode';
-import { Environment } from './Environment';
-import { TemplateSequenceModel } from '../template/TemplateSequenceModel';
-import { BuiltInForNodeEx } from './BuiltInForNodeEx';
+import {SimpleScalar} from '../template/SimpleScalar';
+import {SimpleSequence} from '../template/SimpleSequence';
+import {TemplateMethodModel} from '../template/TemplateMethodModel';
+import {TemplateModel} from '../template/TemplateModel';
+import {TemplateNodeModel} from '../template/TemplateNodeModel';
+import {TemplateNodeModelEx} from '../template/TemplateNodeModelEx';
+import {BuiltInForNode} from './BuiltInForNode';
+import {Environment} from './Environment';
+import {BuiltInForNodeEx} from './BuiltInForNodeEx';
 
 /**
  * A holder for builtins that operate exclusively on (XML-)node left-hand value.
@@ -31,13 +29,13 @@ export namespace BuiltInsForNodes {
          * @param {Environment} env
          * @return {*}
          */
-        calculateResult(nodeModel : TemplateNodeModel, env : Environment) : TemplateModel {
+        calculateResult(nodeModel : TemplateNodeModel, env : /*Environment*/any) : TemplateModel {
             let result : BuiltInsForNodes.AncestorSequence = new BuiltInsForNodes.AncestorSequence(env);
             let parent : TemplateNodeModel = nodeModel.getParentNode();
             while((parent != null)) {
                 result.add$java_lang_Object(parent);
                 parent = parent.getParentNode();
-            };
+            }
             return result;
         }
 
@@ -57,7 +55,7 @@ export namespace BuiltInsForNodes {
          * @param {Environment} env
          * @return {*}
          */
-        calculateResult(nodeModel : TemplateNodeModel, env : Environment) : TemplateModel {
+        calculateResult(nodeModel : TemplateNodeModel, env : /*Environment*/any) : TemplateModel {
             return nodeModel.getChildNodes();
         }
 
@@ -77,7 +75,7 @@ export namespace BuiltInsForNodes {
          * @param {Environment} env
          * @return {*}
          */
-        calculateResult(nodeModel : TemplateNodeModel, env : Environment) : TemplateModel {
+        calculateResult(nodeModel : TemplateNodeModel, env : /*Environment*/any) : TemplateModel {
             return new SimpleScalar(nodeModel.getNodeName());
         }
 
@@ -97,7 +95,7 @@ export namespace BuiltInsForNodes {
          * @param {Environment} env
          * @return {*}
          */
-        calculateResult(nodeModel : TemplateNodeModel, env : Environment) : TemplateModel {
+        calculateResult(nodeModel : TemplateNodeModel, env : /*Environment*/any) : TemplateModel {
             let nsURI : string = nodeModel.getNodeNamespace();
             return nsURI == null?null:new SimpleScalar(nsURI);
         }
@@ -118,7 +116,7 @@ export namespace BuiltInsForNodes {
          * @param {Environment} env
          * @return {*}
          */
-        calculateResult(nodeModel : TemplateNodeModel, env : Environment) : TemplateModel {
+        calculateResult(nodeModel : TemplateNodeModel, env : /*Environment*/any) : TemplateModel {
             return new SimpleScalar(nodeModel.getNodeType());
         }
 
@@ -138,7 +136,7 @@ export namespace BuiltInsForNodes {
          * @param {Environment} env
          * @return {*}
          */
-        calculateResult(nodeModel : TemplateNodeModel, env : Environment) : TemplateModel {
+        calculateResult(nodeModel : TemplateNodeModel, env : /*Environment*/any) : TemplateModel {
             return nodeModel.getParentNode();
         }
 
@@ -158,13 +156,13 @@ export namespace BuiltInsForNodes {
          * @param {Environment} env
          * @return {*}
          */
-        calculateResult(nodeModel : TemplateNodeModel, env : Environment) : TemplateModel {
+        calculateResult(nodeModel : TemplateNodeModel, env : /*Environment*/any) : TemplateModel {
             let result : TemplateNodeModel = nodeModel;
             let parent : TemplateNodeModel = nodeModel.getParentNode();
             while((parent != null)) {
                 result = parent;
                 parent = result.getParentNode();
-            };
+            }
             return result;
         }
 
@@ -184,7 +182,7 @@ export namespace BuiltInsForNodes {
          * @param {Environment} env
          * @return {*}
          */
-        calculateResult(nodeModel : TemplateNodeModelEx, env : Environment) : TemplateModel {
+        calculateResult(nodeModel : TemplateNodeModelEx, env : /*Environment*/any) : TemplateModel {
             return nodeModel.getPreviousSibling();
         }
 
@@ -204,7 +202,7 @@ export namespace BuiltInsForNodes {
          * @param {Environment} env
          * @return {*}
          */
-        calculateResult(nodeModel : TemplateNodeModelEx, env : Environment) : TemplateModel {
+        calculateResult(nodeModel : TemplateNodeModelEx, env : /*Environment*/any) : TemplateModel {
             return nodeModel.getNextSibling();
         }
 
@@ -220,7 +218,7 @@ export namespace BuiltInsForNodes {
     export class AncestorSequence extends SimpleSequence implements TemplateMethodModel {
         env : Environment;
 
-        constructor(env : Environment) {
+        constructor(env : /*Environment*/any) {
             super();
             if(this.env===undefined) this.env = null;
             this.env = env;

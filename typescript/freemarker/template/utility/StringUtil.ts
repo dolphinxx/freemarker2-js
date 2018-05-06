@@ -1,13 +1,14 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { ParseException } from '../../core/ParseException';
-import { Version } from '../Version';
-import { Writer } from '../../../java/io/Writer';
-import { StringBuilder } from '../../../java/lang/StringBuilder';
-import { NullArgumentException } from './NullArgumentException';
-import { Character } from '../../../java/lang/Character';
-import { ClassUtil } from './ClassUtil';
-import { CollectionUtils } from './CollectionUtils';
-import { System } from '../../../java/lang/System';
+import {Writer} from '../../../java/io/Writer';
+import {StringBuilder} from '../../../java/lang/StringBuilder';
+import {NullArgumentException} from './NullArgumentException';
+import {Character} from '../../../java/lang/Character';
+import {ClassUtil} from './ClassUtil';
+import {CollectionUtils} from './CollectionUtils';
+import {System} from '../../../java/lang/System';
+import {StringTokenizer} from "../../../java/util/StringTokenizer";
+import {Pattern} from "../../../java/util/regex/Pattern";
+import {Map} from "../../../java/util/Map";
 
 /**
  * Some text related utilities.
@@ -133,7 +134,7 @@ export class StringUtil {
                 }
                 lastEscIdx = i;
             } while((false));
-        };
+        }
         if(firstEscIdx === -1) {
             return s;
         } else {
@@ -171,11 +172,11 @@ export class StringUtil {
                     continue scan;
                 }
                 esced[dst++] = c;
-            };
+            }
             if(lastEscIdx !== ln - 1) {
                 /* getChars */((a, s, e, d, l) => { d.splice.apply(d, [l, e-s].concat(<any>a.substring(s, e).split(''))); })(s, lastEscIdx + 1, ln, esced, dst);
             }
-            return /* valueOf */new String(esced).toString();
+            return /* valueOf */String(esced).toString();
         }
     }
 
@@ -222,7 +223,7 @@ export class StringUtil {
                     break;
                 }
             }
-        };
+        }
         if(writtenEnd < ln) {
             out.write(s, writtenEnd, ln - writtenEnd);
         }
@@ -240,7 +241,7 @@ export class StringUtil {
         let ln : number = src.length;
         for(let i : number = 0; i < ln; i++) {
             dst[dstOffset++] = src[i];
-        };
+        }
         return dstOffset;
     }
 
@@ -293,7 +294,7 @@ export class StringUtil {
                 lastEscIdx = i;
                 plusOutLn++;
             }
-        };
+        }
         if(firstEscIdx === -1) {
             return s;
         } else {
@@ -308,11 +309,11 @@ export class StringUtil {
                     esced[dst++] = '\\';
                 }
                 esced[dst++] = c;
-            };
+            }
             if(lastEscIdx !== ln - 1) {
                 /* getChars */((a, s, e, d, l) => { d.splice.apply(d, [l, e-s].concat(<any>a.substring(s, e).split(''))); })(s, lastEscIdx + 1, ln, esced, dst);
             }
-            return /* valueOf */new String(esced).toString();
+            return /* valueOf */String(esced).toString();
         }
     }
 
@@ -329,7 +330,7 @@ export class StringUtil {
                 out.write('\\');
                 writtenEnd = i;
             }
-        };
+        }
         if(writtenEnd < ln) {
             out.write(s, writtenEnd, ln - writtenEnd);
         }
@@ -377,7 +378,7 @@ export class StringUtil {
             if(!StringUtil.safeInURL(c, keepSlash)) {
                 break;
             }
-        };
+        }
         if(i === ln) {
             return s;
         }
@@ -396,7 +397,7 @@ export class StringUtil {
                         let c2 : number = (bc >> 4) & 15;
                         b.append(String.fromCharCode((c2 < 10?c2 + '0'.charCodeAt(0):c2 - 10 + 'A'.charCodeAt(0))));
                         b.append(String.fromCharCode((c1 < 10?c1 + '0'.charCodeAt(0):c1 - 10 + 'A'.charCodeAt(0))));
-                    };
+                    }
                     encStart = -1;
                 }
                 b.append(c);
@@ -405,7 +406,7 @@ export class StringUtil {
                     encStart = i;
                 }
             }
-        };
+        }
         if(encStart !== -1) {
             let o : number[] = /* getBytes */(s.substring(encStart, i)).split('').map(s => s.charCodeAt(0));
             for(let j : number = 0; j < o.length; j++) {
@@ -415,7 +416,7 @@ export class StringUtil {
                 let c2 : number = (bc >> 4) & 15;
                 b.append(String.fromCharCode((c2 < 10?c2 + '0'.charCodeAt(0):c2 - 10 + 'A'.charCodeAt(0))));
                 b.append(String.fromCharCode((c1 < 10?c1 + '0'.charCodeAt(0):c1 - 10 + 'A'.charCodeAt(0))));
-            };
+            }
         }
         return b.toString();
     }
@@ -436,7 +437,7 @@ export class StringUtil {
         let escapes : string[] = (s => { let a=[]; while(s-->0) a.push(null); return a; })('\\'.charCodeAt(0) + 1);
         for(let i : number = 0; i < 32; ++i) {
             escapes[i] = String.fromCharCode(1);
-        };
+        }
         escapes[('\\').charCodeAt(0)] = '\\';
         escapes[('\'').charCodeAt(0)] = '\'';
         escapes[('\"').charCodeAt(0)] = '\"';
@@ -497,9 +498,9 @@ export class StringUtil {
                     }
                     buf.append(s, 0, i);
                 }
-                if((c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(escape) == 1) {
+                if(escape.charCodeAt(0) == 1) {
                     buf.append("\\x00");
-                    let c2 : number = (c >> 4) & 15;
+                    let c2 : number = (c.charCodeAt(0) >> 4) & 15;
                     c = String.fromCharCode(((c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(c) & 15));
                     buf.append(String.fromCharCode((c2 < 10?c2 + '0'.charCodeAt(0):c2 - 10 + 'A'.charCodeAt(0))));
                     buf.append(String.fromCharCode(((c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(c) < 10?(c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(c) + '0'.charCodeAt(0):(c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(c) - 10 + 'A'.charCodeAt(0))));
@@ -508,7 +509,7 @@ export class StringUtil {
                     buf.append(escape);
                 }
             }
-        };
+        }
         if(buf == null) {
             return addQuotation?quotation + s + quotation:s;
         } else {
@@ -562,7 +563,7 @@ export class StringUtil {
         do {
             buf.append(s, bidx, idx);
             if(idx >= lidx) {
-                throw new ParseException("The last character of string literal is backslash", 0, 0);
+                throw new (require('../../core/ParseException').ParseException)("The last character of string literal is backslash", 0, 0);
             }
             let c : string = s.charAt(idx + 1);
             switch((c).charCodeAt(0)) {
@@ -636,17 +637,17 @@ export class StringUtil {
                             break;
                         }
                         idx++;
-                    };
+                    }
                     if(x < idx) {
                         buf.append(String.fromCharCode(y));
                     } else {
-                        throw new ParseException("Invalid \\x escape in a string literal", 0, 0);
+                        throw new (require('../../core/ParseException').ParseException)("Invalid \\x escape in a string literal", 0, 0);
                     }
                     bidx = idx;
                     break;
-                };
-            default:
-                throw new ParseException("Invalid escape sequence (\\" + c + ") in a string literal", 0, 0);
+                }
+                default:
+                throw new (require('../../core/ParseException').ParseException)("Invalid escape sequence (\\" + c + ") in a string literal", 0, 0);
             }
             idx = s.indexOf('\\', bidx);
         } while((idx !== -1));
@@ -655,24 +656,25 @@ export class StringUtil {
     }
 
     public static deduceLocale(input : string) : string {
-        if(input == null) return null;
-        let locale : string = /* getDefault */(globals.DEFAULT_LOCALE);
-        if(input.length > 0 && (c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(input.charAt(0)) == '\"'.charCodeAt(0)) input = input.substring(1, input.length - 1);
-        let st : StringTokenizer = new StringTokenizer(input, ",_ ");
-        let lang : string = "";
-        let country : string = "";
-        if(st.hasMoreTokens()) {
-            lang = st.nextToken();
-        }
-        if(st.hasMoreTokens()) {
-            country = st.nextToken();
-        }
-        if(!st.hasMoreTokens()) {
-            locale = <string>new String(lang, country);
-        } else {
-            locale = <string>new String(lang, country, st.nextToken());
-        }
-        return locale;
+        // if(input == null) return null;
+        // let locale : string = /* getDefault */(global.DEFAULT_LOCALE);
+        // if(input.length > 0 && (c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(input.charAt(0)) == '\"'.charCodeAt(0)) input = input.substring(1, input.length - 1);
+        // let st : StringTokenizer = new StringTokenizer(input, ",_ ");
+        // let lang : string = "";
+        // let country : string = "";
+        // if(st.hasMoreTokens()) {
+        //     lang = st.nextToken();
+        // }
+        // if(st.hasMoreTokens()) {
+        //     country = st.nextToken();
+        // }
+        // if(!st.hasMoreTokens()) {
+        //     locale = <string>new String(lang, country);
+        // } else {
+        //     locale = <string>new String(lang, country, st.nextToken());
+        // }
+        // return locale;
+        return input;
     }
 
     public static capitalize(s : string) : string {
@@ -682,7 +684,7 @@ export class StringUtil {
             let tok : string = st.nextToken();
             buf.append(tok.substring(0, 1).toUpperCase());
             buf.append(tok.substring(1).toLowerCase());
-        };
+        }
         return buf.toString();
     }
 
@@ -698,7 +700,7 @@ export class StringUtil {
         throw Object.defineProperty(new Error("Illegal boolean value: " + s), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.lang.RuntimeException','java.lang.IllegalArgumentException','java.lang.Exception'] });
     }
 
-    public static split$java_lang_String$char(s : string, c : string) : Array {
+    public static split$java_lang_String$char(s : string, c : string) : Array<any> {
         let i : number;
         let b : number;
         let e : number;
@@ -710,7 +712,7 @@ export class StringUtil {
         while(((i = s.indexOf(c, i)) !== -1)) {
             cnt++;
             i++;
-        };
+        }
         res = (s => { let a=[]; while(s-->0) a.push(null); return a; })(cnt);
         i = 0;
         b = 0;
@@ -719,19 +721,19 @@ export class StringUtil {
             if(e === -1) e = ln;
             res[i++] = s.substring(b, e);
             b = e + 1;
-        };
+        }
         return res;
     }
 
-    public static split$java_lang_String$java_lang_String$boolean(s : string, sep : string, caseInsensitive : boolean) : Array {
+    public static split$java_lang_String$java_lang_String$boolean(s : string, sep : string, caseInsensitive : boolean) : Array<any> {
         let sepLn : number = sep.length;
         let convertedS : string = caseInsensitive?s.toLowerCase():s;
         let sLn : number = s.length;
         if(sepLn === 0) {
             let res : Array<any> = (s => { let a=[]; while(s-->0) a.push(null); return a; })(sLn);
             for(let i : number = 0; i < sLn; i++) {
-                res[i] = /* valueOf */new String(s.charAt(i)).toString();
-            };
+                res[i] = /* valueOf */String(s.charAt(i)).toString();
+            }
             return res;
         }
         let splitString : string = caseInsensitive?sep.toLowerCase():sep;
@@ -742,9 +744,9 @@ export class StringUtil {
             while(((next = convertedS.indexOf(splitString, next)) !== -1)) {
                 count++;
                 next += sepLn;
-            };
+            }
             res = (s => { let a=[]; while(s-->0) a.push(null); return a; })(count);
-        };
+        }
         let dst : number = 0;
         let next : number = 0;
         while((next <= sLn)) {
@@ -752,7 +754,7 @@ export class StringUtil {
             if(end === -1) end = sLn;
             res[dst++] = s.substring(next, end);
             next = end + sepLn;
-        };
+        }
         return res;
     }
 
@@ -795,7 +797,7 @@ export class StringUtil {
                     for(let i : number = 0; i < tln; i++) {
                         buf.append(text.charAt(i));
                         buf.append(newsub);
-                    };
+                    }
                     return buf.toString();
                 }
             }
@@ -899,7 +901,7 @@ export class StringUtil {
             } else {
                 b.append(c);
             }
-        };
+        }
         b.append('\"');
         return b.toString();
     }
@@ -920,7 +922,7 @@ export class StringUtil {
     }
 
     public static jQuoteNoXSS$java_lang_Object(obj : any) : string {
-        return StringUtil.jQuoteNoXSS$java_lang_Object(obj != null?obj.toString():null);
+        return StringUtil.jQuoteNoXSS$java_lang_String(obj != null?obj.toString():null);
     }
 
     public static jQuoteNoXSS$java_lang_String(s : string) : string {
@@ -959,7 +961,7 @@ export class StringUtil {
             } else {
                 b.append(c);
             }
-        };
+        }
         b.append('\"');
         return b.toString();
     }
@@ -1333,9 +1335,9 @@ export class StringUtil {
                         return b.toString();
                     }
                     c = s.charAt(i);
-                };
+                }
             }
-        };
+        }
         return s;
     }
 
@@ -1491,9 +1493,9 @@ export class StringUtil {
                     if(escapeType > 32) {
                         sb.append(String.fromCharCode(escapeType));
                     } else if(escapeType === StringUtil.ESC_HEXA) {
-                        if(!json && (c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(c) < 256) {
+                        if(!json && c.charCodeAt(0) < 256) {
                             sb.append('x');
-                            sb.append(StringUtil.toHexDigit(c >> 4));
+                            sb.append(StringUtil.toHexDigit(c.charCodeAt(0) >> 4));
                             sb.append(StringUtil.toHexDigit((c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(c) & 15));
                         } else {
                             sb.append('u');
@@ -1510,7 +1512,7 @@ export class StringUtil {
                 }
             }
             if(sb != null) sb.append(c);
-        };
+        }
         return sb == null?s:sb.toString();
     }
 
@@ -1551,7 +1553,7 @@ export class StringUtil {
                     break;
                 }
                 p++;
-            };
+            }
             if(p === ln) {
                 break fetchLoop;
             }
@@ -1562,9 +1564,9 @@ export class StringUtil {
                     break;
                 }
                 p++;
-            };
+            }
             if(keyStart === p) {
-                throw Object.defineProperty(new Error("Expecting letter, digit or \"_\" here, (the first character of the key) but found " + StringUtil.jQuote$java_lang_Object(/* valueOf */new String(c).toString()) + " at position " + p + "."), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.text.ParseException','java.lang.Exception'] });
+                throw Object.defineProperty(new Error("Expecting letter, digit or \"_\" here, (the first character of the key) but found " + StringUtil.jQuote$java_lang_Object(/* valueOf */String(c).toString()) + " at position " + p + "."), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.text.ParseException','java.lang.Exception'] });
             }
             key = s.substring(keyStart, p);
             while((p < ln)) {
@@ -1573,7 +1575,7 @@ export class StringUtil {
                     break;
                 }
                 p++;
-            };
+            }
             if(p === ln) {
                 if(defaultValue == null) {
                     throw Object.defineProperty(new Error("Expecting \":\", but reached the end of the string  at position " + p + "."), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.text.ParseException','java.lang.Exception'] });
@@ -1581,7 +1583,7 @@ export class StringUtil {
                 value = defaultValue;
             } else if((c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(c) != ':'.charCodeAt(0)) {
                 if(defaultValue == null || (c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(c) != ','.charCodeAt(0)) {
-                    throw Object.defineProperty(new Error("Expecting \":\" here, but found " + StringUtil.jQuote$java_lang_Object(/* valueOf */new String(c).toString()) + " at position " + p + "."), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.text.ParseException','java.lang.Exception'] });
+                    throw Object.defineProperty(new Error("Expecting \":\" here, but found " + StringUtil.jQuote$java_lang_Object(/* valueOf */String(c).toString()) + " at position " + p + "."), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.text.ParseException','java.lang.Exception'] });
                 }
                 p++;
                 value = defaultValue;
@@ -1593,7 +1595,7 @@ export class StringUtil {
                         break;
                     }
                     p++;
-                };
+                }
                 if(p === ln) {
                     throw Object.defineProperty(new Error("Expecting the value of the key here, but reached the end of the string  at position " + p + "."), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.text.ParseException','java.lang.Exception'] });
                 }
@@ -1604,9 +1606,9 @@ export class StringUtil {
                         break;
                     }
                     p++;
-                };
+                }
                 if(valueStart === p) {
-                    throw Object.defineProperty(new Error("Expecting letter, digit or \"_\" here, (the first character of the value) but found " + StringUtil.jQuote$java_lang_Object(/* valueOf */new String(c).toString()) + " at position " + p + "."), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.text.ParseException','java.lang.Exception'] });
+                    throw Object.defineProperty(new Error("Expecting letter, digit or \"_\" here, (the first character of the value) but found " + StringUtil.jQuote$java_lang_Object(/* valueOf */String(c).toString()) + " at position " + p + "."), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.text.ParseException','java.lang.Exception'] });
                 }
                 value = s.substring(valueStart, p);
                 while((p < ln)) {
@@ -1615,10 +1617,10 @@ export class StringUtil {
                         break;
                     }
                     p++;
-                };
+                }
                 if(p < ln) {
                     if((c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(c) != ','.charCodeAt(0)) {
-                        throw Object.defineProperty(new Error("Excpecting \",\" or the end of the string here, but found " + StringUtil.jQuote$java_lang_Object(/* valueOf */new String(c).toString()) + " at position " + p + "."), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.text.ParseException','java.lang.Exception'] });
+                        throw Object.defineProperty(new Error("Excpecting \",\" or the end of the string here, but found " + StringUtil.jQuote$java_lang_Object(/* valueOf */String(c).toString()) + " at position " + p + "."), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.text.ParseException','java.lang.Exception'] });
                     } else {
                         p++;
                     }
@@ -1627,7 +1629,7 @@ export class StringUtil {
             if(/* put */map.set(key, value) != null) {
                 throw Object.defineProperty(new Error("Dublicated key: " + StringUtil.jQuote$java_lang_Object(key)), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.text.ParseException','java.lang.Exception'] });
             }
-        };
+        }
         return map;
     }
 
@@ -1644,7 +1646,7 @@ export class StringUtil {
         let dif : number = minLength - ln;
         for(let i : number = 0; i < dif; i++) {
             res.append(filling);
-        };
+        }
         res.append(s);
         return res.toString();
     }
@@ -1663,11 +1665,11 @@ export class StringUtil {
         let cnt : number = (dif / fln|0);
         for(let i : number = 0; i < cnt; i++) {
             res.append(filling);
-        };
+        }
         cnt = dif % fln;
         for(let i : number = 0; i < cnt; i++) {
             res.append(filling.charAt(i));
-        };
+        }
         res.append(s);
         return res.toString();
     }
@@ -1708,7 +1710,7 @@ export class StringUtil {
         let dif : number = minLength - ln;
         for(let i : number = 0; i < dif; i++) {
             res.append(filling);
-        };
+        }
         return res.toString();
     }
 
@@ -1728,16 +1730,16 @@ export class StringUtil {
         let end : number = fln - start <= dif?fln:start + dif;
         for(let i : number = start; i < end; i++) {
             res.append(filling.charAt(i));
-        };
+        }
         dif -= end - start;
         let cnt : number = (dif / fln|0);
         for(let i : number = 0; i < cnt; i++) {
             res.append(filling);
-        };
+        }
         cnt = dif % fln;
         for(let i : number = 0; i < cnt; i++) {
             res.append(filling.charAt(i));
-        };
+        }
         return res.toString();
     }
 
@@ -1778,7 +1780,7 @@ export class StringUtil {
      * @param {String} version
      */
     public static versionStringToInt(version : string) : number {
-        return new Version(version).intValue();
+        return new (require('../Version').Version)(version).intValue();
     }
 
     /**
@@ -1796,7 +1798,7 @@ export class StringUtil {
             return object.toString();
         } catch(e) {
             return StringUtil.failedToStringSubstitute(object, e);
-        };
+        }
     }
 
     /*private*/ static failedToStringSubstitute(object : any, e : Error) : string {
@@ -1805,7 +1807,7 @@ export class StringUtil {
             eStr = e.toString();
         } catch(e2) {
             eStr = ClassUtil.getShortClassNameOfObject(e);
-        };
+        }
         return "[" + ClassUtil.getShortClassNameOfObject(object) + ".toString() failed: " + eStr + "]";
     }
 
@@ -1855,14 +1857,14 @@ export class StringUtil {
             } else {
                 break;
             }
-        };
+        }
         let sb : StringBuilder = new StringBuilder("");
         while((weight !== 0)) {
             let digitIncrease : number = ((n - reached) / weight|0);
             sb.append(String.fromCharCode(((c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(oneDigit) + digitIncrease)));
             reached += digitIncrease * weight;
             weight /= 26;
-        };
+        }
         return sb.toString();
     }
 
@@ -1883,10 +1885,10 @@ export class StringUtil {
         let end : number = cs.length;
         while((start < end && (c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(cs[start]) <= ' '.charCodeAt(0))) {
             start++;
-        };
+        }
         while((start < end && (c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(cs[end - 1]) <= ' '.charCodeAt(0))) {
             end--;
-        };
+        }
         if(start === 0 && end === cs.length) {
             return cs;
         }
@@ -1911,7 +1913,7 @@ export class StringUtil {
             if((c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(text[i]) > ' '.charCodeAt(0)) {
                 return false;
             }
-        };
+        }
         return true;
     }
 
@@ -1979,7 +1981,7 @@ export class StringUtil {
             } else {
                 escaped = false;
             }
-        };
+        }
         StringUtil.appendLiteralGlobSection(regex, glob, nextStart, glob.length);
         return Pattern.compile(regex.toString(), caseInsensitive?Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE:0);
     }
@@ -2045,7 +2047,7 @@ StringUtil["__class"] = "freemarker.template.utility.StringUtil";
 
 
 
-var __Function = Function;
+
 
 StringUtil.XML_APOS_$LI$();
 

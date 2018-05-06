@@ -31,4 +31,4 @@ FastPropertyDescriptor["__class"] = "freemarker.ext.beans.FastPropertyDescriptor
 
 
 
-var __Function = Function;
+

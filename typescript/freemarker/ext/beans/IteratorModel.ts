@@ -1,10 +1,10 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateCollectionModel } from '../../template/TemplateCollectionModel';
-import { TemplateModel } from '../../template/TemplateModel';
-import { TemplateModelException } from '../../template/TemplateModelException';
-import { TemplateModelIterator } from '../../template/TemplateModelIterator';
-import { BeanModel } from './BeanModel';
-import { BeansWrapper } from './BeansWrapper';
+import {TemplateCollectionModel} from '../../template/TemplateCollectionModel';
+import {TemplateModel} from '../../template/TemplateModel';
+import {TemplateModelException} from '../../template/TemplateModelException';
+import {TemplateModelIterator} from '../../template/TemplateModelIterator';
+import {BeanModel} from './BeanModel';
+import {BeansWrapper} from './BeansWrapper';
 
 /**
  * Creates a new model that wraps the specified iterator object.
@@ -35,7 +35,7 @@ export class IteratorModel extends BeanModel implements TemplateModelIterator, T
                 throw new TemplateModelException("This collection is stateful and can not be iterated over the second time.");
             }
             this.accessed = true;
-        };
+        }
         return this;
     }
 
@@ -56,7 +56,7 @@ export class IteratorModel extends BeanModel implements TemplateModelIterator, T
             return this.wrap((<any><any>this.object).next());
         } catch(e) {
             throw new TemplateModelException("No more elements in the iterator.", e);
-        };
+        }
     }
 
     /**
@@ -75,4 +75,4 @@ IteratorModel["__interfaces"] = ["freemarker.ext.util.WrapperTemplateModel","fre
 
 
 
-var __Function = Function;
+

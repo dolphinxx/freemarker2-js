@@ -1,5 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { RangeModel } from './RangeModel';
+import {RangeModel} from './RangeModel';
 
 /**
  * A range between two integers (maybe 0 long).

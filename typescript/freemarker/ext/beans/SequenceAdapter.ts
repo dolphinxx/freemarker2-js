@@ -1,10 +1,9 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateModel } from '../../template/TemplateModel';
-import { TemplateModelAdapter } from '../../template/TemplateModelAdapter';
-import { TemplateModelException } from '../../template/TemplateModelException';
-import { TemplateSequenceModel } from '../../template/TemplateSequenceModel';
-import { UndeclaredThrowableException } from '../../template/utility/UndeclaredThrowableException';
-import { BeansWrapper } from './BeansWrapper';
+import {TemplateModel} from '../../template/TemplateModel';
+import {TemplateModelAdapter} from '../../template/TemplateModelAdapter';
+import {TemplateSequenceModel} from '../../template/TemplateSequenceModel';
+import {UndeclaredThrowableException} from '../../template/utility/UndeclaredThrowableException';
+import {BeansWrapper} from './BeansWrapper';
 
 /**
  * 
@@ -36,7 +35,7 @@ export class SequenceAdapter implements TemplateModelAdapter {
             return this.model.size();
         } catch(e) {
             throw new UndeclaredThrowableException(e);
-        };
+        }
     }
 
     /**
@@ -49,7 +48,7 @@ export class SequenceAdapter implements TemplateModelAdapter {
             return this.wrapper.unwrap$freemarker_template_TemplateModel(this.model['get$int'](index));
         } catch(e) {
             throw new UndeclaredThrowableException(e);
-        };
+        }
     }
 
     public getTemplateSequenceModel() : TemplateSequenceModel {
@@ -62,4 +61,4 @@ SequenceAdapter["__interfaces"] = ["java.util.List","freemarker.template.Templat
 
 
 
-var __Function = Function;
+

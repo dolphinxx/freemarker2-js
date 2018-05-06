@@ -1,8 +1,6 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateModel } from '../../template/TemplateModel';
-import { TemplateModelException } from '../../template/TemplateModelException';
-import { MaybeEmptyCallableMemberDescriptor } from './MaybeEmptyCallableMemberDescriptor';
-import { BeansWrapper } from './BeansWrapper';
+import {TemplateModel} from '../../template/TemplateModel';
+import {MaybeEmptyCallableMemberDescriptor} from './MaybeEmptyCallableMemberDescriptor';
 
 /**
  * Packs a {link Method} or {link Constructor} together with its parameter types. The actual
@@ -13,24 +11,24 @@ import { BeansWrapper } from './BeansWrapper';
  * @class
  */
 export abstract class CallableMemberDescriptor extends MaybeEmptyCallableMemberDescriptor {
-    abstract invokeMethod(bw : BeansWrapper, obj : any, args : Array) : TemplateModel;
+    abstract invokeMethod(bw: /*BeansWrapper*/any, obj: any, args: Array<any>): TemplateModel;
 
-    abstract invokeConstructor(bw : BeansWrapper, args : Array) : any;
+    abstract invokeConstructor(bw: /*BeansWrapper*/any, args: Array<any>): any;
 
-    abstract getDeclaration() : string;
+    abstract getDeclaration(): string;
 
-    abstract isConstructor() : boolean;
+    abstract isConstructor(): boolean;
 
-    abstract isStatic() : boolean;
+    abstract isStatic(): boolean;
 
-    abstract isVarargs() : boolean;
+    abstract isVarargs(): boolean;
 
-    abstract getParamTypes() : Array<any>;
+    abstract getParamTypes(): Array<any>;
 
-    abstract getName() : string;
+    abstract getName(): string;
 }
+
 CallableMemberDescriptor["__class"] = "freemarker.ext.beans.CallableMemberDescriptor";
 
 
 
-var __Function = Function;

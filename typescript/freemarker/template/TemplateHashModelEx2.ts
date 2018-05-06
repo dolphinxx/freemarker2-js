@@ -1,7 +1,6 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateHashModelEx } from './TemplateHashModelEx';
-import { KeyValuePairIterator } from './KeyValuePairIterator';
-import { TemplateModelException } from './TemplateModelException';
+import {TemplateHashModelEx} from './TemplateHashModelEx';
+import {KeyValuePairIterator} from './KeyValuePairIterator';
 
 /**
  * Adds key-value pair listing capability to {link TemplateHashModelEx}. While in many cases that can also be achieved
@@ -20,4 +19,4 @@ export interface TemplateHashModelEx2 extends TemplateHashModelEx {
 }
 
 
-var __Function = Function;
+

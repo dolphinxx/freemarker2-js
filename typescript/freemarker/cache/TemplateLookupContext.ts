@@ -1,5 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateLookupResult } from './TemplateLookupResult';
+import {TemplateLookupResult} from './TemplateLookupResult';
 
 /**
  * Used as the parameter of {link TemplateLookupStrategy#lookup(TemplateLookupContext)}.

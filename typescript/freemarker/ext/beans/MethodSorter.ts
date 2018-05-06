@@ -9,8 +9,5 @@ export interface MethodSorter {
      * Sorts the methods in place (that is, by modifying the parameter list).
      * @param {List} methodDescriptors
      */
-    sortMethodDescriptors(methodDescriptors : List);
+    sortMethodDescriptors(methodDescriptors : Array<any>);
 }
-
-
-var __Function = Function;

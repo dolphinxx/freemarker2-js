@@ -1,5 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateValueFormatException } from './TemplateValueFormatException';
+import {TemplateValueFormatException} from './TemplateValueFormatException';
 
 /**
  * Can't create a template format that the template format refers to (typically thrown by alias template formats).

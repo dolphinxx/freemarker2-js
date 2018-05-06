@@ -1,8 +1,7 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateValueFormatFactory } from './TemplateValueFormatFactory';
-import { TemplateNumberFormat } from './TemplateNumberFormat';
-import { Environment } from './Environment';
-import { TemplateValueFormatException } from './TemplateValueFormatException';
+import {TemplateValueFormatFactory} from './TemplateValueFormatFactory';
+import {TemplateNumberFormat} from './TemplateNumberFormat';
+import {TemplateValueFormatException} from './TemplateValueFormatException';
 
 /**
  * Factory for a certain kind of number formatting ({link TemplateNumberFormat}). Usually a singleton (one-per-VM or
@@ -37,10 +36,10 @@ export abstract class TemplateNumberFormatFactory extends TemplateValueFormatFac
      * {link InvalidFormatParametersException} if the {@code params} is malformed.
      * @return {TemplateNumberFormat}
      */
-    public abstract get(params : string, locale : string, env : Environment) : TemplateNumberFormat;
+    public abstract get(params : string, locale : string, env : /*Environment*/any) : TemplateNumberFormat;
 }
 TemplateNumberFormatFactory["__class"] = "freemarker.core.TemplateNumberFormatFactory";
 
 
 
-var __Function = Function;
+

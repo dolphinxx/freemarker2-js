@@ -1,6 +1,6 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { MalformedTemplateNameException } from '../template/MalformedTemplateNameException';
-import { StringUtil } from '../template/utility/StringUtil';
+import {MalformedTemplateNameException} from '../template/MalformedTemplateNameException';
+import {StringUtil} from '../template/utility/StringUtil';
 
 /**
  * Symbolizes a template name format, which defines the basic syntax of names through algorithms such as normalization.
@@ -178,7 +178,7 @@ export namespace TemplateNameFormat {
                 }
                 let previousSlashLoc : number = path.lastIndexOf('/', parentDirPathLoc - 1);
                 path = path.substring(0, previousSlashLoc + 1) + path.substring(parentDirPathLoc + "/../".length);
-            };
+            }
             for(; ; ) {
                 let currentDirPathLoc : number = path.indexOf("/./");
                 if(currentDirPathLoc === -1) {
@@ -188,7 +188,7 @@ export namespace TemplateNameFormat {
                     break;
                 }
                 path = path.substring(0, currentDirPathLoc) + path.substring(currentDirPathLoc + "/./".length - 1);
-            };
+            }
             if(path.length > 1 && (c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(path.charAt(0)) == '/'.charCodeAt(0)) {
                 path = path.substring(1);
             }
@@ -276,7 +276,7 @@ export namespace TemplateNameFormat {
                     scheme = name.substring(0, schemeSectionEnd);
                     path = name.substring(schemeSectionEnd);
                 }
-            };
+            }
             if(path.indexOf(':') !== -1) {
                 throw new MalformedTemplateNameException(name, "The \':\' character can only be used after the scheme name (if there\'s any), not in the path part");
             }
@@ -333,7 +333,7 @@ export namespace TemplateNameFormat {
                 } else {
                     path = path.substring(0, path.length - 1);
                 }
-            };
+            }
         }
 
         /**
@@ -385,11 +385,11 @@ export namespace TemplateNameFormat {
                         } else {
                             break scanBackwardsForSlash;
                         }
-                    };
-                };
+                    }
+                }
                 path = path.substring(0, previousSlashIdx + 1) + (skippedStarStep?"*/":"") + path.substring(dotDotIdx + (slashRight?3:2));
                 nextFromIdx = previousSlashIdx + 1;
-            };
+            }
         }
 
         removeRedundantStarSteps(path : string) : string {

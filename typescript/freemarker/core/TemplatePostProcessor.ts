@@ -1,6 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { Template } from '../template/Template';
-import { TemplatePostProcessorException } from './TemplatePostProcessorException';
+import {Template} from '../template/Template';
 
 /**
  * Note yet public; will change in 2.4 (as it has to process {@code UnboundTemplate}-s).
@@ -13,4 +12,4 @@ TemplatePostProcessor["__class"] = "freemarker.core.TemplatePostProcessor";
 
 
 
-var __Function = Function;
+

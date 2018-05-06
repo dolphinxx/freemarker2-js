@@ -1,5 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateElement } from './TemplateElement';
+import {TemplateElement} from './TemplateElement';
 
 /**
  * Used as the return value of {link TemplateElement#accept(Environment)} when the invoked element has nested elements
@@ -44,4 +44,4 @@ TemplateElementsToVisit["__class"] = "freemarker.core.TemplateElementsToVisit";
 
 
 
-var __Function = Function;
+

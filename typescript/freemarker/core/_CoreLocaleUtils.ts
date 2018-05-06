@@ -27,4 +27,4 @@ _CoreLocaleUtils["__class"] = "freemarker.core._CoreLocaleUtils";
 
 
 
-var __Function = Function;
+

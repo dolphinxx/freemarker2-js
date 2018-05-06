@@ -1,19 +1,17 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateException } from '../template/TemplateException';
-import { TemplateMethodModel } from '../template/TemplateMethodModel';
-import { TemplateMethodModelEx } from '../template/TemplateMethodModelEx';
-import { TemplateModel } from '../template/TemplateModel';
-import { NullWriter } from '../template/utility/NullWriter';
-import { Writer } from '../../java/io/Writer';
-import { Expression } from './Expression';
-import { ListLiteral } from './ListLiteral';
-import { Environment } from './Environment';
-import { ObjectWrapper } from '../template/ObjectWrapper';
-import { Macro } from './Macro';
-import { _MiscTemplateException } from './_MiscTemplateException';
-import { NonMethodException } from './NonMethodException';
-import { StringBuilder } from '../../java/lang/StringBuilder';
-import { ParameterRole } from './ParameterRole';
+import {TemplateException} from '../template/TemplateException';
+import {TemplateMethodModel} from '../template/TemplateMethodModel';
+import {TemplateModel} from '../template/TemplateModel';
+import {NullWriter} from '../template/utility/NullWriter';
+import {Writer} from '../../java/io/Writer';
+import {Expression} from './Expression';
+import {ListLiteral} from './ListLiteral';
+import {Environment} from './Environment';
+import {Macro} from './Macro';
+import {_MiscTemplateException} from './_MiscTemplateException';
+import {NonMethodException} from './NonMethodException';
+import {StringBuilder} from '../../java/lang/StringBuilder';
+import {ParameterRole} from './ParameterRole';
 
 /**
  * A unary operator that calls a TemplateMethodModel.  It associates with the
@@ -61,7 +59,7 @@ export class MethodCall extends Expression {
      * @param {Environment} env
      * @return {*}
      */
-    _eval(env : Environment) : TemplateModel {
+    _eval(env : /*Environment*/any) : TemplateModel {
         let targetModel : TemplateModel = this.target.eval(env);
         if(targetModel != null && (targetModel["__interfaces"] != null && targetModel["__interfaces"].indexOf("freemarker.template.TemplateMethodModel") >= 0 || targetModel.constructor != null && targetModel.constructor["__interfaces"] != null && targetModel.constructor["__interfaces"].indexOf("freemarker.template.TemplateMethodModel") >= 0)) {
             let targetMethod : TemplateMethodModel = <TemplateMethodModel><any>targetModel;
@@ -82,7 +80,7 @@ export class MethodCall extends Expression {
                 throw new TemplateException("Unexpected exception during function execution", e, env);
             } finally {
                 env.setOut(prevOut);
-            };
+            }
             return env.getLastReturnValue();
         } else {
             throw new NonMethodException(this.target, targetModel, env);
@@ -176,4 +174,4 @@ MethodCall["__class"] = "freemarker.core.MethodCall";
 
 
 
-var __Function = Function;
+

@@ -1,13 +1,10 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateException } from '../template/TemplateException';
-import { TemplateElement } from './TemplateElement';
-import { ConditionalBlock } from './ConditionalBlock';
-import { Environment } from './Environment';
-import { Expression } from './Expression';
-import { ParseException } from './ParseException';
-import { Template } from '../template/Template';
-import { StringBuilder } from '../../java/lang/StringBuilder';
-import { ParameterRole } from './ParameterRole';
+import {TemplateElement} from './TemplateElement';
+import {ConditionalBlock} from './ConditionalBlock';
+import {Environment} from './Environment';
+import {Expression} from './Expression';
+import {StringBuilder} from '../../java/lang/StringBuilder';
+import {ParameterRole} from './ParameterRole';
 
 /**
  * Container for a group of related #if, #elseif and #else elements.
@@ -32,7 +29,7 @@ export class IfBlock extends TemplateElement {
      * @param {Environment} env
      * @return {Array}
      */
-    accept(env : Environment) : TemplateElement[] {
+    accept(env : /*Environment*/any) : TemplateElement[] {
         let ln : number = this.getChildCount();
         for(let i : number = 0; i < ln; i++) {
             let cblock : ConditionalBlock = <ConditionalBlock>this.getChild(i);
@@ -41,7 +38,7 @@ export class IfBlock extends TemplateElement {
             if(condition == null || condition.evalToBoolean$freemarker_core_Environment(env)) {
                 return cblock.getChildBuffer();
             }
-        };
+        }
         return null;
     }
 
@@ -79,7 +76,7 @@ export class IfBlock extends TemplateElement {
             for(let i : number = 0; i < ln; i++) {
                 let cblock : ConditionalBlock = <ConditionalBlock>this.getChild(i);
                 buf.append(cblock.dump(canonical));
-            };
+            }
             buf.append("</#if>");
             return buf.toString();
         } else {
@@ -133,4 +130,4 @@ IfBlock["__class"] = "freemarker.core.IfBlock";
 
 
 
-var __Function = Function;
+

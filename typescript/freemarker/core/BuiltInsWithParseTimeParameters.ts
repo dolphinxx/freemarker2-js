@@ -1,13 +1,11 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateException } from '../template/TemplateException';
-import { TemplateModel } from '../template/TemplateModel';
-import { BuiltInWithParseTimeParameters } from './BuiltInWithParseTimeParameters';
-import { Expression } from './Expression';
-import { Environment } from './Environment';
-import { Token } from './Token';
-import { ParseException } from './ParseException';
-import { EvalUtil } from './EvalUtil';
-import { _MiscTemplateException } from './_MiscTemplateException';
+import {TemplateModel} from '../template/TemplateModel';
+import {BuiltInWithParseTimeParameters} from './BuiltInWithParseTimeParameters';
+import {Expression} from './Expression';
+import {Environment} from './Environment';
+import {Token} from './Token';
+import {EvalUtil} from './EvalUtil';
+import {_MiscTemplateException} from './_MiscTemplateException';
 
 export class BuiltInsWithParseTimeParameters {
     constructor() {
@@ -33,7 +31,7 @@ export namespace BuiltInsWithParseTimeParameters {
          * @param {Environment} env
          * @return {*}
          */
-        _eval(env : Environment) : TemplateModel {
+        _eval(env : /*Environment*/any) : TemplateModel {
             let lho : boolean = this.target.evalToBoolean$freemarker_core_Environment(env);
             return (lho?this.whenTrueExp:this.whenFalseExp).evalToNonMissing(env);
         }
@@ -163,7 +161,7 @@ export namespace BuiltInsWithParseTimeParameters {
             let parametersClone : Array<any> = <any>([]);
             for(let i : number = 0; i < /* size */(<number>this.parameters.length); i++) {
                 /* add */(parametersClone.push((<Expression>/* get */this.parameters[i]).deepCloneWithIdentifierReplaced(replacedIdentifier, replacement, replacementState))>0);
-            };
+            }
             (<BuiltInsWithParseTimeParameters.switch_BI>clone).parameters = parametersClone;
         }
 
@@ -172,7 +170,7 @@ export namespace BuiltInsWithParseTimeParameters {
          * @param {Environment} env
          * @return {*}
          */
-        _eval(env : Environment) : TemplateModel {
+        _eval(env : /*Environment*/any) : TemplateModel {
             let targetValue : TemplateModel = this.target.evalToNonMissing(env);
             let parameters : Array<any> = this.parameters;
             let paramCnt : number = /* size */(<number>parameters.length);
@@ -182,7 +180,7 @@ export namespace BuiltInsWithParseTimeParameters {
                 if(EvalUtil.compare$freemarker_template_TemplateModel$freemarker_core_Expression$int$java_lang_String$freemarker_template_TemplateModel$freemarker_core_Expression$freemarker_core_Expression$boolean$boolean$boolean$boolean$freemarker_core_Environment(targetValue, this.target, EvalUtil.CMP_OP_EQUALS, "==", caseValue, caseExp, this, true, false, false, false, env)) {
                     return (<Expression>/* get */parameters[i + 1]).evalToNonMissing(env);
                 }
-            };
+            }
             if(paramCnt % 2 === 0) {
                 throw new _MiscTemplateException(this.target, "The value before ?", this.key, "(case1, value1, case2, value2, ...) didn\'t match any of the case parameters, and there was no default value parameter (an additional last parameter) eithter. ");
             }

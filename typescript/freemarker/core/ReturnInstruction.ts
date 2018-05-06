@@ -1,13 +1,11 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateException } from '../template/TemplateException';
-import { TemplateElement } from './TemplateElement';
-import { Expression } from './Expression';
-import { Environment } from './Environment';
-import { TemplateModel } from '../template/TemplateModel';
-import { Macro } from './Macro';
-import { StringBuilder } from '../../java/lang/StringBuilder';
-import { FlowControlException } from './FlowControlException';
-import { ParameterRole } from './ParameterRole';
+import {TemplateElement} from './TemplateElement';
+import {Expression} from './Expression';
+import {Environment} from './Environment';
+import {Macro} from './Macro';
+import {StringBuilder} from '../../java/lang/StringBuilder';
+import {FlowControlException} from './FlowControlException';
+import {ParameterRole} from './ParameterRole';
 
 /**
  * Represents a &lt;return&gt; instruction to jump out of a macro.
@@ -28,7 +26,7 @@ export class ReturnInstruction extends TemplateElement {
      * @param {Environment} env
      * @return {Array}
      */
-    accept(env : Environment) : TemplateElement[] {
+    accept(env : /*Environment*/any) : TemplateElement[] {
         if(this.exp != null) {
             env.setLastReturnValue(this.exp.eval(env));
         }
@@ -127,6 +125,6 @@ export namespace ReturnInstruction {
 
 
 
-var __Function = Function;
+
 
 ReturnInstruction.Return.INSTANCE_$LI$();

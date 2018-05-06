@@ -1,8 +1,8 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { _BeansAPI } from '../ext/beans/_BeansAPI';
-import { DefaultObjectWrapperConfiguration } from './DefaultObjectWrapperConfiguration';
-import { DefaultObjectWrapper } from './DefaultObjectWrapper';
-import { Version } from './Version';
+import {_BeansAPI} from '../ext/beans/_BeansAPI';
+import {DefaultObjectWrapperConfiguration} from './DefaultObjectWrapperConfiguration';
+import {DefaultObjectWrapper} from './DefaultObjectWrapper';
+import {Version} from './Version';
 
 /**
  * Creates a builder that creates a {link DefaultObjectWrapper} with the given {@code incompatibleImprovements};
@@ -13,9 +13,9 @@ import { Version } from './Version';
  * @extends DefaultObjectWrapperConfiguration
  */
 export class DefaultObjectWrapperBuilder extends DefaultObjectWrapperConfiguration {
-    static INSTANCE_CACHE : Map<any, any>; public static INSTANCE_CACHE_$LI$() : Map { if(DefaultObjectWrapperBuilder.INSTANCE_CACHE == null) DefaultObjectWrapperBuilder.INSTANCE_CACHE = <any>(new Map<any, any>()); return DefaultObjectWrapperBuilder.INSTANCE_CACHE; };
+    static INSTANCE_CACHE : Map<any, any>; public static INSTANCE_CACHE_$LI$() : Map<any, any> { if(DefaultObjectWrapperBuilder.INSTANCE_CACHE == null) DefaultObjectWrapperBuilder.INSTANCE_CACHE = <any>(new Map<any, any>()); return DefaultObjectWrapperBuilder.INSTANCE_CACHE; };
 
-    static INSTANCE_CACHE_REF_QUEUE : ReferenceQueue; public static INSTANCE_CACHE_REF_QUEUE_$LI$() : ReferenceQueue { if(DefaultObjectWrapperBuilder.INSTANCE_CACHE_REF_QUEUE == null) DefaultObjectWrapperBuilder.INSTANCE_CACHE_REF_QUEUE = <any>(new ReferenceQueue<DefaultObjectWrapper>()); return DefaultObjectWrapperBuilder.INSTANCE_CACHE_REF_QUEUE; };
+    static INSTANCE_CACHE_REF_QUEUE : any[] = [];
 
     public constructor(incompatibleImprovements : Version) {
         super(incompatibleImprovements);
@@ -27,7 +27,7 @@ export class DefaultObjectWrapperBuilder extends DefaultObjectWrapperConfigurati
     static clearInstanceCache() {
         {
             /* clear */(<any>DefaultObjectWrapperBuilder.INSTANCE_CACHE_$LI$()).clear();
-        };
+        }
     }
 
     /**
@@ -36,7 +36,7 @@ export class DefaultObjectWrapperBuilder extends DefaultObjectWrapperConfigurati
      * @return {DefaultObjectWrapper}
      */
     public build() : DefaultObjectWrapper {
-        return <any>(_BeansAPI.getBeansWrapperSubclassSingleton<any, any>(this, DefaultObjectWrapperBuilder.INSTANCE_CACHE_$LI$(), DefaultObjectWrapperBuilder.INSTANCE_CACHE_REF_QUEUE_$LI$(), DefaultObjectWrapperBuilder.DefaultObjectWrapperFactory.INSTANCE_$LI$()));
+        return <any>(_BeansAPI.getBeansWrapperSubclassSingleton<any, any>(this, DefaultObjectWrapperBuilder.INSTANCE_CACHE_$LI$(), DefaultObjectWrapperBuilder.INSTANCE_CACHE_REF_QUEUE, DefaultObjectWrapperBuilder.DefaultObjectWrapperFactory.INSTANCE_$LI$()));
     }
 }
 DefaultObjectWrapperBuilder["__class"] = "freemarker.template.DefaultObjectWrapperBuilder";
@@ -70,10 +70,8 @@ export namespace DefaultObjectWrapperBuilder {
 
 
 
-var __Function = Function;
+
 
 DefaultObjectWrapperBuilder.DefaultObjectWrapperFactory.INSTANCE_$LI$();
-
-DefaultObjectWrapperBuilder.INSTANCE_CACHE_REF_QUEUE_$LI$();
 
 DefaultObjectWrapperBuilder.INSTANCE_CACHE_$LI$();

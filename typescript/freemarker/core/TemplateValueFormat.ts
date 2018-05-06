@@ -16,4 +16,4 @@ TemplateValueFormat["__class"] = "freemarker.core.TemplateValueFormat";
 
 
 
-var __Function = Function;
+

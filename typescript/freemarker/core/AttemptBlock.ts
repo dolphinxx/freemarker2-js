@@ -1,11 +1,10 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateException } from '../template/TemplateException';
-import { TemplateElement } from './TemplateElement';
-import { RecoveryBlock } from './RecoveryBlock';
-import { TemplateElements } from './TemplateElements';
-import { Environment } from './Environment';
-import { StringBuilder } from '../../java/lang/StringBuilder';
-import { ParameterRole } from './ParameterRole';
+import {TemplateElement} from './TemplateElement';
+import {RecoveryBlock} from './RecoveryBlock';
+import {TemplateElements} from './TemplateElements';
+import {Environment} from './Environment';
+import {StringBuilder} from '../../java/lang/StringBuilder';
+import {ParameterRole} from './ParameterRole';
 
 /**
  * Holder for the attempted section of the #attempt element and of the nested #recover element ({link RecoveryBlock}).
@@ -34,7 +33,7 @@ export class AttemptBlock extends TemplateElement {
      * @param {Environment} env
      * @return {Array}
      */
-    accept(env : Environment) : TemplateElement[] {
+    accept(env : /*Environment*/any) : TemplateElement[] {
         env.visitAttemptRecover(this, this.attemptedSection, this.recoverySection);
         return null;
     }

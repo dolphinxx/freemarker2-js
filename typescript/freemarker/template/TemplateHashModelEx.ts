@@ -1,7 +1,6 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateHashModel } from './TemplateHashModel';
-import { TemplateModelException } from './TemplateModelException';
-import { TemplateCollectionModel } from './TemplateCollectionModel';
+import {TemplateHashModel} from './TemplateHashModel';
+import {TemplateCollectionModel} from './TemplateCollectionModel';
 
 /**
  * "extended hash" template language data type; extends {link TemplateHashModel} by allowing
@@ -36,4 +35,4 @@ export interface TemplateHashModelEx extends TemplateHashModel {
 }
 
 
-var __Function = Function;
+

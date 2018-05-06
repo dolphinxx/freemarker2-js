@@ -1,82 +1,76 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateNameFormat } from '../cache/TemplateNameFormat';
-import { _CacheAPI } from '../cache/_CacheAPI';
-import { BeansWrapper } from '../ext/beans/BeansWrapper';
-import { Logger } from '../log/Logger';
-import { Configuration } from '../template/Configuration';
-import { KeyValuePairIterator } from '../template/KeyValuePairIterator';
-import { MalformedTemplateNameException } from '../template/MalformedTemplateNameException';
-import { ObjectWrapper } from '../template/ObjectWrapper';
-import { SimpleHash } from '../template/SimpleHash';
-import { SimpleSequence } from '../template/SimpleSequence';
-import { Template } from '../template/Template';
-import { TemplateCollectionModel } from '../template/TemplateCollectionModel';
-import { TemplateDateModel } from '../template/TemplateDateModel';
-import { TemplateDirectiveBody } from '../template/TemplateDirectiveBody';
-import { TemplateDirectiveModel } from '../template/TemplateDirectiveModel';
-import { TemplateException } from '../template/TemplateException';
-import { TemplateExceptionHandler } from '../template/TemplateExceptionHandler';
-import { TemplateHashModel } from '../template/TemplateHashModel';
-import { TemplateHashModelEx } from '../template/TemplateHashModelEx';
-import { TemplateModel } from '../template/TemplateModel';
-import { TemplateModelException } from '../template/TemplateModelException';
-import { TemplateModelIterator } from '../template/TemplateModelIterator';
-import { TemplateNodeModel } from '../template/TemplateNodeModel';
-import { TemplateNumberModel } from '../template/TemplateNumberModel';
-import { TemplateScalarModel } from '../template/TemplateScalarModel';
-import { TemplateSequenceModel } from '../template/TemplateSequenceModel';
-import { TemplateTransformModel } from '../template/TemplateTransformModel';
-import { TransformControl } from '../template/TransformControl';
-import { _TemplateAPI } from '../template/_TemplateAPI';
-import { DateUtil } from '../template/utility/DateUtil';
-import { NullWriter } from '../template/utility/NullWriter';
-import { StringUtil } from '../template/utility/StringUtil';
-import { UndeclaredThrowableException } from '../template/utility/UndeclaredThrowableException';
-import { PrintWriter } from '../../java/io/PrintWriter';
-import { StringWriter } from '../../java/io/StringWriter';
-import { Writer } from '../../java/io/Writer';
-import { Configurable } from './Configurable';
-import { TemplateElement } from './TemplateElement';
-import { TemplateNumberFormat } from './TemplateNumberFormat';
-import { TemplateDateFormat } from './TemplateDateFormat';
-import { Boolean } from '../../java/lang/Boolean';
-import { Macro } from './Macro';
-import { LocalContextStack } from './LocalContextStack';
-import { Version } from '../template/Version';
-import { DirectiveCallPlace } from './DirectiveCallPlace';
-import { UnifiedCall } from './UnifiedCall';
-import { LocalContext } from './LocalContext';
-import { FlowControlException } from './FlowControlException';
-import { EvalUtil } from './EvalUtil';
-import { _MiscTemplateException } from './_MiscTemplateException';
-import { AttemptBlock } from './AttemptBlock';
-import { RecoveryBlock } from './RecoveryBlock';
-import { BodyInstruction } from './BodyInstruction';
-import { TemplateObject } from './TemplateObject';
-import { IteratorBlock } from './IteratorBlock';
-import { _DelayedJQuote } from './_DelayedJQuote';
-import { ReturnInstruction } from './ReturnInstruction';
-import { Expression } from './Expression';
-import { _DelayedToString } from './_DelayedToString';
-import { _TemplateModelException } from './_TemplateModelException';
-import { StopException } from './StopException';
-import { AttemptExceptionReporter } from '../template/AttemptExceptionReporter';
-import { TemplateValueFormatException } from './TemplateValueFormatException';
-import { _MessageUtil } from './_MessageUtil';
-import { BackwardCompatibleTemplateNumberFormat } from './BackwardCompatibleTemplateNumberFormat';
-import { UnformattableValueException } from './UnformattableValueException';
-import { _ErrorDescriptionBuilder } from './_ErrorDescriptionBuilder';
-import { Character } from '../../java/lang/Character';
-import { TemplateNumberFormatFactory } from './TemplateNumberFormatFactory';
-import { UndefinedCustomFormatException } from './UndefinedCustomFormatException';
-import { JavaTemplateNumberFormatFactory } from './JavaTemplateNumberFormatFactory';
-import { UnknownDateTypeFormattingUnsupportedException } from './UnknownDateTypeFormattingUnsupportedException';
-import { TemplateDateFormatFactory } from './TemplateDateFormatFactory';
-import { XSTemplateDateFormatFactory } from './XSTemplateDateFormatFactory';
-import { ISOTemplateDateFormatFactory } from './ISOTemplateDateFormatFactory';
-import { JavaTemplateDateFormatFactory } from './JavaTemplateDateFormatFactory';
-import { Identifier } from './Identifier';
-import { StringBuilder } from '../../java/lang/StringBuilder';
+import {TemplateNameFormat} from '../cache/TemplateNameFormat';
+import {_CacheAPI} from '../cache/_CacheAPI';
+import {BeansWrapper} from '../ext/beans/BeansWrapper';
+import {Logger} from '../log/Logger';
+import {Configuration} from '../template/Configuration';
+import {KeyValuePairIterator} from '../template/KeyValuePairIterator';
+import {ObjectWrapper} from '../template/ObjectWrapper';
+import {SimpleHash} from '../template/SimpleHash';
+import {SimpleSequence} from '../template/SimpleSequence';
+import {Template} from '../template/Template';
+import {TemplateCollectionModel} from '../template/TemplateCollectionModel';
+import {TemplateDateModel} from '../template/TemplateDateModel';
+import {TemplateDirectiveBody} from '../template/TemplateDirectiveBody';
+import {TemplateDirectiveModel} from '../template/TemplateDirectiveModel';
+import {TemplateException} from '../template/TemplateException';
+import {TemplateExceptionHandler} from '../template/TemplateExceptionHandler';
+import {TemplateHashModel} from '../template/TemplateHashModel';
+import {TemplateHashModelEx} from '../template/TemplateHashModelEx';
+import {TemplateModel} from '../template/TemplateModel';
+import {TemplateModelException} from '../template/TemplateModelException';
+import {TemplateModelIterator} from '../template/TemplateModelIterator';
+import {TemplateNodeModel} from '../template/TemplateNodeModel';
+import {TemplateNumberModel} from '../template/TemplateNumberModel';
+import {TemplateScalarModel} from '../template/TemplateScalarModel';
+import {TemplateSequenceModel} from '../template/TemplateSequenceModel';
+import {TemplateTransformModel} from '../template/TemplateTransformModel';
+import {TransformControl} from '../template/TransformControl';
+import {DateUtil} from '../template/utility/DateUtil';
+import {NullWriter} from '../template/utility/NullWriter';
+import {StringUtil} from '../template/utility/StringUtil';
+import {UndeclaredThrowableException} from '../template/utility/UndeclaredThrowableException';
+import {PrintWriter} from '../../java/io/PrintWriter';
+import {StringWriter} from '../../java/io/StringWriter';
+import {Writer} from '../../java/io/Writer';
+import {Configurable} from './Configurable';
+import {TemplateElement} from './TemplateElement';
+import {TemplateNumberFormat} from './TemplateNumberFormat';
+import {TemplateDateFormat} from './TemplateDateFormat';
+import {Macro} from './Macro';
+import {LocalContextStack} from './LocalContextStack';
+import {DirectiveCallPlace} from './DirectiveCallPlace';
+import {UnifiedCall} from './UnifiedCall';
+import {LocalContext} from './LocalContext';
+import {FlowControlException} from './FlowControlException';
+import {EvalUtil} from './EvalUtil';
+import {_MiscTemplateException} from './_MiscTemplateException';
+import {AttemptBlock} from './AttemptBlock';
+import {RecoveryBlock} from './RecoveryBlock';
+import {BodyInstruction} from './BodyInstruction';
+import {TemplateObject} from './TemplateObject';
+import {IteratorBlock} from './IteratorBlock';
+import {_DelayedJQuote} from './_DelayedJQuote';
+import {ReturnInstruction} from './ReturnInstruction';
+import {Expression} from './Expression';
+import {_DelayedToString} from './_DelayedToString';
+import {_TemplateModelException} from './_TemplateModelException';
+import {StopException} from './StopException';
+import {TemplateValueFormatException} from './TemplateValueFormatException';
+import {_MessageUtil} from './_MessageUtil';
+import {BackwardCompatibleTemplateNumberFormat} from './BackwardCompatibleTemplateNumberFormat';
+import {_ErrorDescriptionBuilder} from './_ErrorDescriptionBuilder';
+import {Character} from '../../java/lang/Character';
+import {TemplateNumberFormatFactory} from './TemplateNumberFormatFactory';
+import {UndefinedCustomFormatException} from './UndefinedCustomFormatException';
+import {JavaTemplateNumberFormatFactory} from './JavaTemplateNumberFormatFactory';
+import {UnknownDateTypeFormattingUnsupportedException} from './UnknownDateTypeFormattingUnsupportedException';
+import {Identifier} from './Identifier';
+import {StringBuilder} from '../../java/lang/StringBuilder';
+import {Entry} from "../../java/util/Entry";
+import {Map} from "../../java/util/Map";
+import {List} from "../../java/util/List";
+import {IdentityHashMap} from "../ext/util/IdentityHashMap";
 
 /**
  * Object that represents the runtime environment during template processing. For every invocation of a
@@ -100,20 +94,20 @@ import { StringBuilder } from '../../java/lang/StringBuilder';
  */
 export class Environment extends Configurable {
     static __static_initialized : boolean = false;
-    static __static_initialize() { if(!Environment.__static_initialized) { Environment.__static_initialized = true; Environment.__static_initializer_0(); } }
+    static __static_initialize() { if(!Environment.__static_initialized) { Environment.__static_initialized = true; /*Environment.__static_initializer_0();*/ } }
 
-    static threadEnv : ThreadLocal; public static threadEnv_$LI$() : ThreadLocal { Environment.__static_initialize(); if(Environment.threadEnv == null) Environment.threadEnv = <any>(new java.lang.ThreadLocal()); return Environment.threadEnv; };
+    static threadEnv :any = null;
 
     static LOG : Logger; public static LOG_$LI$() : Logger { Environment.__static_initialize(); if(Environment.LOG == null) Environment.LOG = Logger.getLogger("freemarker.runtime"); return Environment.LOG; };
 
     static ATTEMPT_LOGGER : Logger; public static ATTEMPT_LOGGER_$LI$() : Logger { Environment.__static_initialize(); if(Environment.ATTEMPT_LOGGER == null) Environment.ATTEMPT_LOGGER = Logger.getLogger("freemarker.runtime.attempt"); return Environment.ATTEMPT_LOGGER; };
 
-    static C_NUMBER_FORMAT : DecimalFormat; public static C_NUMBER_FORMAT_$LI$() : DecimalFormat { Environment.__static_initialize(); if(Environment.C_NUMBER_FORMAT == null) Environment.C_NUMBER_FORMAT = new DecimalFormat("0.################", new DecimalFormatSymbols(string.US)); return Environment.C_NUMBER_FORMAT; };
+    // static C_NUMBER_FORMAT : DecimalFormat; public static C_NUMBER_FORMAT_$LI$() : DecimalFormat { Environment.__static_initialize(); if(Environment.C_NUMBER_FORMAT == null) Environment.C_NUMBER_FORMAT = new DecimalFormat("0.################", new DecimalFormatSymbols(string.US)); return Environment.C_NUMBER_FORMAT; };
 
-    static __static_initializer_0() {
-        Environment.C_NUMBER_FORMAT_$LI$().setGroupingUsed(false);
-        Environment.C_NUMBER_FORMAT_$LI$().setDecimalSeparatorAlwaysShown(false);
-    }
+    // static __static_initializer_0() {
+    //     Environment.C_NUMBER_FORMAT_$LI$().setGroupingUsed(false);
+    //     Environment.C_NUMBER_FORMAT_$LI$().setDecimalSeparatorAlwaysShown(false);
+    // }
 
     /*private*/ configuration : Configuration;
 
@@ -167,7 +161,7 @@ export class Environment extends Configurable {
      */
     /*private*/ cachedSQLDateAndTimeTimeZoneSameAsNormal : boolean;
 
-    /*private*/ cNumberFormat : NumberFormat;
+    /*private*/ cNumberFormat : /*NumberFormat*/any;
 
     /**
      * Used by the "iso_" built-ins to accelerate formatting.
@@ -190,7 +184,7 @@ export class Environment extends Configurable {
 
     /*private*/ globalNamespace : Environment.Namespace;
 
-    /*private*/ loadedLibs : HashMap;
+    /*private*/ loadedLibs : Map<any, any>;
 
     /*private*/ legacyParent : Configurable;
 
@@ -226,11 +220,11 @@ export class Environment extends Configurable {
      * @return {Environment}
      */
     public static getCurrentEnvironment() : Environment {
-        return <Environment>Environment.threadEnv_$LI$().get();
+        return <Environment>Environment.threadEnv;
     }
 
-    static setCurrentEnvironment(env : Environment) {
-        Environment.threadEnv_$LI$().set(env);
+    static setCurrentEnvironment(env : /*Environment*/any) {
+        Environment.threadEnv = env;
     }
 
     public constructor(template : Template, rootDataModel : TemplateHashModel, out : Writer) {
@@ -267,7 +261,7 @@ export class Environment extends Configurable {
         if(this.fastInvalidReferenceExceptions===undefined) this.fastInvalidReferenceExceptions = false;
         if(this.customStateVariables===undefined) this.customStateVariables = null;
         this.configuration = template.getConfiguration();
-        this.incompatibleImprovementsGE2328 = this.configuration.getIncompatibleImprovements().intValue() >= _TemplateAPI.VERSION_INT_2_3_28_$LI$();
+        this.incompatibleImprovementsGE2328 = this.configuration.getIncompatibleImprovements().intValue() >= /*_TemplateAPI.VERSION_INT_2_3_28_$LI$()*/2003028;
         this.globalNamespace = new Environment.Namespace(this, null);
         this.currentNamespace = this.mainNamespace = new Environment.Namespace(this, template);
         this.out = out;
@@ -369,8 +363,8 @@ export class Environment extends Configurable {
      * Processes the template to which this environment belongs to.
      */
     public process() {
-        let savedEnv : any = Environment.threadEnv_$LI$().get();
-        Environment.threadEnv_$LI$().set(this);
+        let savedEnv : any = Environment.threadEnv;
+        Environment.threadEnv = this;
         try {
             this.clearCachedValues();
             try {
@@ -381,10 +375,10 @@ export class Environment extends Configurable {
                 }
             } finally {
                 this.clearCachedValues();
-            };
+            }
         } finally {
-            Environment.threadEnv_$LI$().set(savedEnv);
-        };
+            Environment.threadEnv = savedEnv;
+        }
     }
 
     visit$freemarker_core_TemplateElement(element : TemplateElement) {
@@ -406,7 +400,7 @@ export class Environment extends Configurable {
             this.handleTemplateException(te);
         } finally {
             this.popElement();
-        };
+        }
     }
 
     visit$freemarker_core_TemplateElement_A(elementBuffer : TemplateElement[]) {
@@ -437,7 +431,7 @@ export class Environment extends Configurable {
                     this.handleTemplateException(te);
                 } finally {
                     this.popElement();
-                };
+                }
             }
         }
     }
@@ -449,7 +443,7 @@ export class Environment extends Configurable {
             this.visit$freemarker_core_TemplateElement_A(elementBuffer);
         } finally {
             this.out = prevOut;
-        };
+        }
     }
 
     replaceTopElement(element : TemplateElement) : TemplateElement {
@@ -532,7 +526,7 @@ export class Environment extends Configurable {
             if(outArgs.length > 0) {
                 this.localContextStack.pop();
             }
-        };
+        }
     }
 
     /**
@@ -557,7 +551,7 @@ export class Environment extends Configurable {
                 }
             } catch(t) {
                 try {
-                    if(tc != null && !((t != null && t instanceof <any>FlowControlException) && this.getConfiguration().getIncompatibleImprovements().intValue() >= _TemplateAPI.VERSION_INT_2_3_27_$LI$())) {
+                    if(tc != null && !((t != null && t instanceof <any>FlowControlException) && this.getConfiguration().getIncompatibleImprovements().intValue() >= /*_TemplateAPI.VERSION_INT_2_3_27_$LI$()*/2003027)) {
                         tc.onError(t);
                     } else {
                         throw t;
@@ -589,16 +583,16 @@ export class Environment extends Configurable {
                         }
 
                     }
-                };
+                }
             } finally {
                 this.out = prevOut;
                 if(prevOut !== tw) {
                     tw.close();
                 }
-            };
+            }
         } catch(te) {
             this.handleTemplateException(te);
-        };
+        }
     }
 
     /**
@@ -623,7 +617,7 @@ export class Environment extends Configurable {
             this.inAttemptBlock = lastInAttemptBlock;
             this.setFastInvalidReferenceExceptions(lastFIRE);
             this.out = prevOut;
-        };
+        }
         if(thrownException != null) {
             if(Environment.ATTEMPT_LOGGER_$LI$().isDebugEnabled()) {
                 Environment.ATTEMPT_LOGGER_$LI$().debug$java_lang_String$java_lang_Throwable("Error in attempt block " + attemptBlock.getStartLocationQuoted(), thrownException);
@@ -633,7 +627,7 @@ export class Environment extends Configurable {
                 this.visit$freemarker_core_TemplateElement(recoverySection);
             } finally {
                 /* remove */this.recoveredErrorStack.splice(/* size */(<number>this.recoveredErrorStack.length) - 1, 1);
-            };
+            }
         } else {
             this.out.write(sw.toString());
         }
@@ -696,7 +690,7 @@ export class Environment extends Configurable {
                     this.legacyParent = prevParent;
                 }
                 this.localContextStack = prevLocalContextStack;
-            };
+            }
         }
     }
 
@@ -714,7 +708,7 @@ export class Environment extends Configurable {
             return true;
         } finally {
             this.localContextStack.pop();
-        };
+        }
     }
 
     /**
@@ -763,10 +757,10 @@ export class Environment extends Configurable {
             this.currentNodeName = prevNodeName;
             this.currentNodeNS = prevNodeNS;
             this.nodeNamespaces = prevNodeNamespaces;
-        };
+        }
     }
 
-    noNodeHandlerDefinedDescription(node : TemplateNodeModel, ns : string, nodeType : string) : Array {
+    noNodeHandlerDefinedDescription(node : TemplateNodeModel, ns : string, nodeType : string) : Array<any> {
         let nsPrefix : string;
         if(ns != null) {
             if(ns.length > 0) {
@@ -810,7 +804,7 @@ export class Environment extends Configurable {
             elementPushed = false;
         }
         try {
-            let macroCtx : Macro.Context = new Macro.Context(this.__parent, this, callPlace, bodyParameterNames);
+            let macroCtx : Macro.Context = new Macro.Context(macro, this, callPlace, bodyParameterNames);
             this.setMacroContextLocalsFromArguments(macroCtx, macro, namedArgs, positionalArgs);
             if(!elementPushed) {
                 this.pushElement(macro);
@@ -839,12 +833,12 @@ export class Environment extends Configurable {
                 this.currentMacroContext = prevMacroCtx;
                 this.localContextStack = prevLocalContextStack;
                 this.currentNamespace = prevNamespace;
-            };
+            }
         } finally {
             if(elementPushed) {
                 this.popElement();
             }
-        };
+        }
     }
 
     /**
@@ -866,7 +860,7 @@ export class Environment extends Configurable {
                 catchAllParamValue = null;
             }
             for(let it : any = /* iterator */((a) => { var i = 0; return { next: function() { return i<a.length?a[i++]:null; }, hasNext: function() { return i<a.length; }}})(/* entrySet */((m) => { if(m.entries==null) m.entries=[]; return m.entries; })(<any>namedArgs)); it.hasNext(); ) {
-                let argNameAndValExp : Entry = <Entry><any>it.next();
+                let argNameAndValExp : Entry<any, any> = <Entry<any, any>><any>it.next();
                 let argName : string = <string>argNameAndValExp.getKey();
                 let isArgNameDeclared : boolean = macro.hasArgNamed(argName);
                 if(isArgNameDeclared || catchAllParamName != null) {
@@ -880,7 +874,7 @@ export class Environment extends Configurable {
                 } else {
                     throw new _MiscTemplateException(this, (macro.isFunction()?"Function ":"Macro "), new _DelayedJQuote(macro.getName()), " has no parameter with name ", new _DelayedJQuote(argName), ".");
                 }
-            };
+            }
         } else if(positionalArgs != null) {
             let catchAllParamValue : SimpleSequence;
             if(catchAllParamName != null) {
@@ -906,8 +900,8 @@ export class Environment extends Configurable {
                     }
                 } catch(re) {
                     throw new _MiscTemplateException(re, this);
-                };
-            };
+                }
+            }
         }
     }
 
@@ -941,7 +935,7 @@ export class Environment extends Configurable {
             if(child != null) {
                 this.invokeNodeHandlerFor(child, namespaces);
             }
-        };
+        }
     }
 
     getCurrentMacroContext() : Macro.Context {
@@ -969,7 +963,7 @@ export class Environment extends Configurable {
                 this.getAttemptExceptionReporter().report(templateException, this);
             }
             throw e;
-        };
+        }
     }
 
     /**
@@ -988,7 +982,7 @@ export class Environment extends Configurable {
     public setLocale(locale : string) {
         let prevLocale : string = this.getLocale();
         super.setLocale(locale);
-        if(!locale.equals(prevLocale)) {
+        if(locale !== prevLocale) {
             this.cachedTemplateNumberFormats = null;
             if(this.cachedTemplateNumberFormat != null && this.cachedTemplateNumberFormat.isLocaleBound()) {
                 this.cachedTemplateNumberFormat = null;
@@ -999,7 +993,7 @@ export class Environment extends Configurable {
                     if(f != null && f.isLocaleBound()) {
                         this.cachedTempDateFormatArray[i] = null;
                     }
-                };
+                }
             }
             this.cachedTempDateFormatsByFmtStrArray = null;
             this.cachedCollator = null;
@@ -1020,12 +1014,12 @@ export class Environment extends Configurable {
                     if(f != null && f.isTimeZoneBound()) {
                         this.cachedTempDateFormatArray[i] = null;
                     }
-                };
+                }
             }
             if(this.cachedTempDateFormatsByFmtStrArray != null) {
                 for(let i : number = 0; i < Environment.CACHED_TDFS_SQL_D_T_TZ_OFFS_$LI$(); i++) {
                     this.cachedTempDateFormatsByFmtStrArray[i] = null;
-                };
+                }
             }
             this.cachedSQLDateAndTimeTimeZoneSameAsNormal = null;
         }
@@ -1045,12 +1039,12 @@ export class Environment extends Configurable {
                     if(format != null && format.isTimeZoneBound()) {
                         this.cachedTempDateFormatArray[i] = null;
                     }
-                };
+                }
             }
             if(this.cachedTempDateFormatsByFmtStrArray != null) {
                 for(let i : number = Environment.CACHED_TDFS_SQL_D_T_TZ_OFFS_$LI$(); i < Environment.CACHED_TDFS_LENGTH_$LI$(); i++) {
                     this.cachedTempDateFormatsByFmtStrArray[i] = null;
-                };
+                }
             }
             this.cachedSQLDateAndTimeTimeZoneSameAsNormal = null;
         }
@@ -1215,7 +1209,7 @@ export class Environment extends Configurable {
             return EvalUtil.assertFormatResultNotNull$java_lang_String(format.formatToPlainText(number));
         } catch(e) {
             throw _MessageUtil.newCantFormatNumberException(format, exp, e, useTempModelExc);
-        };
+        }
     }
 
     /**
@@ -1242,7 +1236,7 @@ export class Environment extends Configurable {
             return format.format$java_lang_Number(number);
         } catch(e) {
             throw new _MiscTemplateException(exp, e, this, "Failed to format number with ", new _DelayedJQuote(format.getDescription()), ": ", e.message);
-        };
+        }
     }
 
     public getTemplateNumberFormat$() : TemplateNumberFormat {
@@ -1259,7 +1253,7 @@ export class Environment extends Configurable {
     }
 
     public getTemplateNumberFormat$java_lang_String$java_util_Locale(formatString : string, locale : string) : TemplateNumberFormat {
-        if(locale.equals(this.getLocale())) {
+        if(locale === this.getLocale()) {
             this.getTemplateNumberFormat$java_lang_String(formatString);
         }
         return this.getTemplateNumberFormatWithoutCache(formatString, locale);
@@ -1270,9 +1264,9 @@ export class Environment extends Configurable {
         try {
             format = this.getTemplateNumberFormat();
         } catch(e) {
-            let desc : _ErrorDescriptionBuilder = new _ErrorDescriptionBuilder("Failed to get number format object for the current number format string, ", new _DelayedJQuote(this.getNumberFormat()), ": ", e.message).blame(exp);
+            let desc : _ErrorDescriptionBuilder = new _ErrorDescriptionBuilder(["Failed to get number format object for the current number format string, ", new _DelayedJQuote(this.getNumberFormat()), ": ", e.message]).blame(exp);
             throw useTempModelExc?new _TemplateModelException(e, this, desc):new _MiscTemplateException(e, this, desc);
-        };
+        }
         return format;
     }
 
@@ -1281,9 +1275,9 @@ export class Environment extends Configurable {
         try {
             format = this.getTemplateNumberFormat$java_lang_String(formatString);
         } catch(e) {
-            let desc : _ErrorDescriptionBuilder = new _ErrorDescriptionBuilder("Failed to get number format object for the ", new _DelayedJQuote(formatString), " number format string: ", e.message).blame(exp);
+            let desc : _ErrorDescriptionBuilder = new _ErrorDescriptionBuilder(["Failed to get number format object for the ", new _DelayedJQuote(formatString), " number format string: ", e.message]).blame(exp);
             throw useTempModelExc?new _TemplateModelException(e, this, desc):new _MiscTemplateException(e, this, desc);
-        };
+        }
         return format;
     }
 
@@ -1350,10 +1344,10 @@ export class Environment extends Configurable {
                     if((c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(c) == ' '.charCodeAt(0) || (c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(c) == '_'.charCodeAt(0)) {
                         break findParamsStart;
                     }
-                };
+                }
                 name = formatString.substring(1, endIdx);
                 params = endIdx < formatStringLen?formatString.substring(endIdx + 1):"";
-            };
+            }
             let formatFactory : TemplateNumberFormatFactory = this.getCustomNumberFormat(name);
             if(formatFactory == null) {
                 throw new UndefinedCustomFormatException("No custom number format was defined with name " + StringUtil.jQuote$java_lang_Object(name));
@@ -1369,11 +1363,12 @@ export class Environment extends Configurable {
      * <code>"0.################"</code>, without grouping and without superfluous decimal separator.
      * @return {NumberFormat}
      */
-    public getCNumberFormat() : NumberFormat {
-        if(this.cNumberFormat == null) {
-            this.cNumberFormat = <DecimalFormat>/* clone *//* clone */((o:any) => { if(o.clone!=undefined) { return (<any>o).clone(); } else { let clone = Object.create(o); for(let p in o) { if (o.hasOwnProperty(p)) clone[p] = o[p]; } return clone; } })(Environment.C_NUMBER_FORMAT_$LI$());
-        }
-        return this.cNumberFormat;
+    public getCNumberFormat() : /*NumberFormat*/any {
+        // if(this.cNumberFormat == null) {
+        //     this.cNumberFormat = </*DecimalFormat*/any>/* clone *//* clone */((o:any) => { if(o.clone!=undefined) { return (<any>o).clone(); } else { let clone = Object.create(o); for(let p in o) { if (o.hasOwnProperty(p)) clone[p] = o[p]; } return clone; } })(Environment.C_NUMBER_FORMAT_$LI$());
+        // }
+        // return this.cNumberFormat;
+        throw new Error();
     }
 
     /**
@@ -1387,7 +1382,7 @@ export class Environment extends Configurable {
             if(this.cachedTempDateFormatArray != null) {
                 for(let i : number = 0; i < Environment.CACHED_TDFS_LENGTH_$LI$(); i += Environment.CACHED_TDFS_ZONELESS_INPUT_OFFS) {
                     this.cachedTempDateFormatArray[i + TemplateDateModel.TIME] = null;
-                };
+                }
             }
         }
     }
@@ -1403,7 +1398,7 @@ export class Environment extends Configurable {
             if(this.cachedTempDateFormatArray != null) {
                 for(let i : number = 0; i < Environment.CACHED_TDFS_LENGTH_$LI$(); i += Environment.CACHED_TDFS_ZONELESS_INPUT_OFFS) {
                     this.cachedTempDateFormatArray[i + TemplateDateModel.DATE] = null;
-                };
+                }
             }
         }
     }
@@ -1419,7 +1414,7 @@ export class Environment extends Configurable {
             if(this.cachedTempDateFormatArray != null) {
                 for(let i : number = 0; i < Environment.CACHED_TDFS_LENGTH_$LI$(); i += Environment.CACHED_TDFS_ZONELESS_INPUT_OFFS) {
                     this.cachedTempDateFormatArray[i + TemplateDateModel.DATETIME] = null;
-                };
+                }
             }
         }
     }
@@ -1446,7 +1441,7 @@ export class Environment extends Configurable {
             return EvalUtil.assertFormatResultNotNull$java_lang_String(format.formatToPlainText(tdm));
         } catch(e) {
             throw _MessageUtil.newCantFormatDateException(format, tdmSourceExpr, e, useTempModelExc);
-        };
+        }
     }
 
     public formatDateToPlainText$freemarker_template_TemplateDateModel$java_lang_String$freemarker_core_Expression$freemarker_core_Expression$boolean(tdm : TemplateDateModel, formatString : string, blamedDateSourceExp : Expression, blamedFormatterExp : Expression, useTempModelExc : boolean) : string {
@@ -1456,7 +1451,7 @@ export class Environment extends Configurable {
             return EvalUtil.assertFormatResultNotNull$java_lang_String(format.formatToPlainText(tdm));
         } catch(e) {
             throw _MessageUtil.newCantFormatDateException(format, blamedDateSourceExp, e, useTempModelExc);
-        };
+        }
     }
 
     /**
@@ -1545,7 +1540,7 @@ export class Environment extends Configurable {
 
     public getTemplateDateFormat$java_lang_String$int$java_util_Locale$java_util_TimeZone$boolean(formatString : string, dateType : number, locale : string, timeZone : string, zonelessInput : boolean) : TemplateDateFormat {
         let currentLocale : string = this.getLocale();
-        if(locale.equals(currentLocale)) {
+        if(locale === currentLocale) {
             let equalCurrentTZ : number;
             let currentTimeZone : string = this.getTimeZone();
             if(/* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(timeZone,currentTimeZone))) {
@@ -1601,11 +1596,11 @@ export class Environment extends Configurable {
                     settingName = "???";
                     settingValue = "???";
                 }
-                let desc : _ErrorDescriptionBuilder = new _ErrorDescriptionBuilder("The value of the \"", settingName, "\" FreeMarker configuration setting is a malformed date/time/datetime format string: ", new _DelayedJQuote(settingValue), ". Reason given: ", e.message);
+                let desc : _ErrorDescriptionBuilder = new _ErrorDescriptionBuilder(["The value of the \"", settingName, "\" FreeMarker configuration setting is a malformed date/time/datetime format string: ", new _DelayedJQuote(settingValue), ". Reason given: ", e.message]);
                 throw useTempModelExc?new _TemplateModelException(e, desc):new _MiscTemplateException(e, desc);
 
             }
-        };
+        }
     }
 
     getTemplateDateFormat$java_lang_String$int$java_lang_Class$freemarker_core_Expression$freemarker_core_Expression$boolean(formatString : string, dateType : number, dateClass : any, blamedDateSourceExp : Expression, blamedFormatterExp : Expression, useTempModelExc : boolean) : TemplateDateFormat {
@@ -1619,19 +1614,19 @@ export class Environment extends Configurable {
             }
             if(__e != null && __e instanceof <any>TemplateValueFormatException) {
                 let e : TemplateValueFormatException = <TemplateValueFormatException>__e;
-                let desc : _ErrorDescriptionBuilder = new _ErrorDescriptionBuilder("Can\'t create date/time/datetime format based on format string ", new _DelayedJQuote(formatString), ". Reason given: ", e.message).blame(blamedFormatterExp);
+                let desc : _ErrorDescriptionBuilder = new _ErrorDescriptionBuilder(["Can\'t create date/time/datetime format based on format string ", new _DelayedJQuote(formatString), ". Reason given: ", e.message]).blame(blamedFormatterExp);
                 throw useTempModelExc?new _TemplateModelException(e, desc):new _MiscTemplateException(e, desc);
 
             }
-        };
+        }
     }
 
-    getTemplateDateFormat$int$boolean$boolean(dateType : number, useSQLDTTZ : boolean, zonelessInput : boolean) : TemplateDateFormat {
+    getTemplateDateFormat$int$boolean$boolean(dateType : number, useSQLDTTZ : boolean, zonelessInput : boolean) : /*TemplateDateFormat*/any {
         if(dateType === TemplateDateModel.UNKNOWN) {
             throw new UnknownDateTypeFormattingUnsupportedException();
         }
         let cacheIdx : number = this.getTemplateDateFormatCacheArrayIndex(dateType, zonelessInput, useSQLDTTZ);
-        let cachedTemplateDateFormats : TemplateDateFormat[] = this.cachedTempDateFormatArray<any>;
+        let cachedTemplateDateFormats : /*TemplateDateFormat*/any[] = this.cachedTempDateFormatArray;
         if(cachedTemplateDateFormats == null) {
             cachedTemplateDateFormats = (s => { let a=[]; while(s-->0) a.push(null); return a; })(Environment.CACHED_TDFS_LENGTH_$LI$());
             this.cachedTempDateFormatArray = cachedTemplateDateFormats;
@@ -1659,13 +1654,13 @@ export class Environment extends Configurable {
     }
 
     getTemplateDateFormat$java_lang_String$int$boolean$boolean$boolean(formatString : string, dateType : number, useSQLDTTimeZone : boolean, zonelessInput : boolean, cacheResult : boolean) : TemplateDateFormat {
-        let cachedFormatsByFormatString : HashMap;
+        let cachedFormatsByFormatString : Map<any, any>;
         readFromCache: do {
-            let cachedTempDateFormatsByFmtStrArray : Array<any> = this.cachedTempDateFormatsByFmtStrArray<any>;
+            let cachedTempDateFormatsByFmtStrArray : Array<any> = this.cachedTempDateFormatsByFmtStrArray;
             if(cachedTempDateFormatsByFmtStrArray == null) {
                 if(cacheResult) {
                     cachedTempDateFormatsByFmtStrArray = (s => { let a=[]; while(s-->0) a.push(null); return a; })(Environment.CACHED_TDFS_LENGTH_$LI$());
-                    this.cachedTempDateFormatsByFmtStrArray = cachedTempDateFormatsByFmtStrArray<any>;
+                    this.cachedTempDateFormatsByFmtStrArray = cachedTempDateFormatsByFmtStrArray;
                 } else {
                     cachedFormatsByFormatString = null;
                     break readFromCache;
@@ -1686,7 +1681,7 @@ export class Environment extends Configurable {
                 } else {
                     format = /* get */cachedFormatsByFormatString.get(formatString);
                 }
-            };
+            }
             if(format != null) {
                 return format;
             }
@@ -1714,13 +1709,13 @@ export class Environment extends Configurable {
     getTemplateDateFormatWithoutCache(formatString : string, dateType : number, locale : string, timeZone : string, zonelessInput : boolean) : TemplateDateFormat {
         let formatStringLen : number = formatString.length;
         let formatParams : string;
-        let formatFactory : TemplateDateFormatFactory;
+        let formatFactory : /*TemplateDateFormatFactory*/any;
         let firstChar : string = formatStringLen !== 0?formatString.charAt(0):String.fromCharCode(0);
         if((c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(firstChar) == 'x'.charCodeAt(0) && formatStringLen > 1 && (c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(formatString.charAt(1)) == 's'.charCodeAt(0)) {
-            formatFactory = XSTemplateDateFormatFactory.INSTANCE_$LI$();
+            formatFactory = (require('./XSTemplateDateFormatFactory').XSTemplateDateFormatFactory).INSTANCE_$LI$();
             formatParams = formatString;
         } else if((c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(firstChar) == 'i'.charCodeAt(0) && formatStringLen > 2 && (c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(formatString.charAt(1)) == 's'.charCodeAt(0) && (c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(formatString.charAt(2)) == 'o'.charCodeAt(0)) {
-            formatFactory = ISOTemplateDateFormatFactory.INSTANCE_$LI$();
+            formatFactory = (require('./ISOTemplateDateFormatFactory').ISOTemplateDateFormatFactory).INSTANCE_$LI$();
             formatParams = formatString;
         } else if((c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(firstChar) == '@'.charCodeAt(0) && formatStringLen > 1 && (this.isIcI2324OrLater() || this.hasCustomFormats()) && Character.isLetter(formatString.charAt(1))) {
             let name : string;
@@ -1731,17 +1726,17 @@ export class Environment extends Configurable {
                     if((c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(c) == ' '.charCodeAt(0) || (c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(c) == '_'.charCodeAt(0)) {
                         break findParamsStart;
                     }
-                };
+                }
                 name = formatString.substring(1, endIdx);
                 formatParams = endIdx < formatStringLen?formatString.substring(endIdx + 1):"";
-            };
+            }
             formatFactory = this.getCustomDateFormat(name);
             if(formatFactory == null) {
                 throw new UndefinedCustomFormatException("No custom date format was defined with name " + StringUtil.jQuote$java_lang_Object(name));
             }
         } else {
             formatParams = formatString;
-            formatFactory = JavaTemplateDateFormatFactory.INSTANCE_$LI$();
+            formatFactory = (require('./JavaTemplateDateFormatFactory').JavaTemplateDateFormatFactory).INSTANCE_$LI$();
         }
         return formatFactory.get(formatParams, dateType, locale, timeZone, zonelessInput, this);
     }
@@ -1761,7 +1756,8 @@ export class Environment extends Configurable {
      * @private
      */
     static isSQLDateOrTimeClass(dateClass : any) : boolean {
-        return dateClass !== java.util.Date && (dateClass === java.sql.Date || dateClass === Time || (dateClass !== Timestamp && (java.sql.Date.isAssignableFrom(dateClass) || Time.isAssignableFrom(dateClass))));
+        // return dateClass !== java.util.Date && (dateClass === java.sql.Date || dateClass === Time || (dateClass !== Timestamp && (java.sql.Date.isAssignableFrom(dateClass) || Time.isAssignableFrom(dateClass))));
+        return false;
     }
 
     getTemplateDateFormatCacheArrayIndex(dateType : number, zonelessInput : boolean, sqlDTTZ : boolean) : number {
@@ -1812,7 +1808,7 @@ export class Environment extends Configurable {
                 if(tm != null) {
                     return tm;
                 }
-            };
+            }
         }
         return this.currentMacroContext == null?null:this.currentMacroContext.getLocalVariable(name);
     }
@@ -1918,14 +1914,14 @@ export class Environment extends Configurable {
             let rootNames : TemplateModelIterator = (<TemplateHashModelEx><any>this.rootDataModel).keys().iterator();
             while((rootNames.hasNext())) {
                 /* add */((s, e) => { if(s.indexOf(e)==-1) { s.push(e); return true; } else { return false; } })(set, (<TemplateScalarModel><any>rootNames.next()).getAsString());
-            };
+            }
         }
         for(let tmi : TemplateModelIterator = this.globalNamespace.keys().iterator(); tmi.hasNext(); ) {
             /* add */((s, e) => { if(s.indexOf(e)==-1) { s.push(e); return true; } else { return false; } })(set, (<TemplateScalarModel><any>tmi.next()).getAsString());
-        };
+        }
         for(let tmi : TemplateModelIterator = this.currentNamespace.keys().iterator(); tmi.hasNext(); ) {
             /* add */((s, e) => { if(s.indexOf(e)==-1) { s.push(e); return true; } else { return false; } })(set, (<TemplateScalarModel><any>tmi.next()).getAsString());
-        };
+        }
         if(this.currentMacroContext != null) {
             /* addAll */((l1, l2) => l1.push.apply(l1, l2))(set, this.currentMacroContext.getLocalVariableNames());
         }
@@ -1933,7 +1929,7 @@ export class Environment extends Configurable {
             for(let i : number = this.localContextStack.size() - 1; i >= 0; i--) {
                 let lc : LocalContext = this.localContextStack.get(i);
                 /* addAll */((l1, l2) => l1.push.apply(l1, l2))(set, lc.getLocalVariableNames());
-            };
+            }
         }
         return set;
     }
@@ -1984,7 +1980,7 @@ export class Environment extends Configurable {
                     } else {
                         trailingFramesHidden++;
                     }
-                };
+                }
                 let hadClosingNotes : boolean = false;
                 if(trailingFramesHidden > 0) {
                     w.write("\t... (Had ");
@@ -2011,7 +2007,7 @@ export class Environment extends Configurable {
             }
         } catch(e) {
             Environment.LOG_$LI$().error$java_lang_String$java_lang_Throwable("Failed to print FTL stack trace", e);
-        };
+        }
     }
 
     /**
@@ -2028,7 +2024,7 @@ export class Environment extends Configurable {
             if(i === ln - 1 || stackEl.isShownInStackTrace()) {
                 requiredLength++;
             }
-        };
+        }
         if(requiredLength === 0) return null;
         let result : TemplateElement[] = (s => { let a=[]; while(s-->0) a.push(null); return a; })(requiredLength);
         let dstIdx : number = requiredLength - 1;
@@ -2037,7 +2033,7 @@ export class Environment extends Configurable {
             if(i === ln - 1 || stackEl.isShownInStackTrace()) {
                 result[dstIdx--] = stackEl;
             }
-        };
+        }
         return result;
     }
 
@@ -2063,7 +2059,7 @@ export class Environment extends Configurable {
         while((stackEl != null)) {
             if(stackEl != null && stackEl instanceof <any>Macro) return <Macro>stackEl;
             stackEl = stackEl.getParentElement();
-        };
+        }
         return null;
     }
 
@@ -2150,7 +2146,7 @@ export class Environment extends Configurable {
             let newInstructionStack : TemplateElement[] = (s => { let a=[]; while(s-->0) a.push(null); return a; })(newSize * 2);
             for(let i : number = 0; i < instructionStack.length; i++) {
                 newInstructionStack[i] = instructionStack[i];
-            };
+            }
             instructionStack = newInstructionStack;
             this.instructionStack = instructionStack;
         }
@@ -2203,10 +2199,10 @@ export class Environment extends Configurable {
                 ns = <Environment.Namespace><any>this.nodeNamespaces['get$int'](i);
             } catch(cce) {
                 throw new _MiscTemplateException(this, "A \"using\" clause should contain a sequence of namespaces or strings that indicate the location of importable macro libraries.");
-            };
+            }
             result = this.getNodeProcessor$freemarker_core_Environment_Namespace$java_lang_String$java_lang_String(ns, nodeName, nsURI);
             if(result != null) break;
-        };
+        }
         if(result != null) {
             this.nodeNamespaceIndex = i + 1;
             this.currentNodeName = nodeName;
@@ -2258,7 +2254,7 @@ export class Environment extends Configurable {
     }
 
     public getNodeProcessor(ns? : any, localName? : any, nsURI? : any) : any {
-        if(((ns != null && ns instanceof <any>Environment.Namespace) || ns === null) && ((typeof localName === 'string') || localName === null) && ((typeof nsURI === 'string') || nsURI === null)) {
+        if(((ClassUtil.isInstanceOf(ns, 'freemarker.core.Environment').Namespace) || ns === null) && ((typeof localName === 'string') || localName === null) && ((typeof nsURI === 'string') || nsURI === null)) {
             return <any>this.getNodeProcessor$freemarker_core_Environment_Namespace$java_lang_String$java_lang_String(ns, localName, nsURI);
         } else if(((typeof ns === 'string') || ns === null) && ((typeof localName === 'string') || localName === null) && ((typeof nsURI === 'number') || nsURI === null)) {
             return <any>this.getNodeProcessor$java_lang_String$java_lang_String$int(ns, localName, nsURI);
@@ -2328,7 +2324,7 @@ export class Environment extends Configurable {
             } else {
                 this.legacyParent = prevTemplate;
             }
-        };
+        }
     }
 
     public importLib$java_lang_String$java_lang_String(templateName : string, targetNsVarName : string) : Environment.Namespace {
@@ -2379,11 +2375,11 @@ export class Environment extends Configurable {
                     this.globalNamespace.put$java_lang_String$java_lang_Object(targetNsVarName, existingNamespace);
                 }
             }
-            if(!lazyImport && (existingNamespace != null && existingNamespace instanceof <any>Environment.LazilyInitializedNamespace)) {
-                (<Environment.LazilyInitializedNamespace>existingNamespace).ensureInitializedTME();
+            if(!lazyImport && (ClassUtil.isInstanceOf(existingNamespace, 'freemarker.core.Environment').LazilyInitializedNamespace)) {
+                (</*Environment.LazilyInitializedNamespace*/any>existingNamespace).ensureInitializedTME();
             }
         } else {
-            let newNamespace : Environment.Namespace = lazyImport?new Environment.LazilyInitializedNamespace(this, templateName):new Environment.Namespace(this, loadedTemplate);
+            let newNamespace : /*Environment.Namespace*/any = lazyImport?new Environment.LazilyInitializedNamespace(this, templateName):new Environment.Namespace(this, loadedTemplate);
             /* put */this.loadedLibs.set(templateName, newNamespace);
             if(targetNsVarName != null) {
                 this.setVariable(targetNsVarName, newNamespace);
@@ -2428,7 +2424,7 @@ export class Environment extends Configurable {
         } finally {
             this.out = prevOut;
             this.currentNamespace = prevNamespace;
-        };
+        }
     }
 
     /**
@@ -2495,13 +2491,13 @@ export class Environment extends Configurable {
             return sw.toString();
         } finally {
             this.out = prevOut;
-        };
+        }
     }
 
     importMacros(template : Template) {
         for(let it : any = /* iterator */((a) => { var i = 0; return { next: function() { return i<a.length?a[i++]:null; }, hasNext: function() { return i<a.length; }}})(/* values */((m) => { let r=[]; m.forEach((v, k, m) => r.push(v)); return r; })(<any>template.getMacros())); it.hasNext(); ) {
             this.visitMacroDef(<Macro>it.next());
-        };
+        }
     }
 
     /**
@@ -2574,20 +2570,20 @@ export class Environment extends Configurable {
     public setCustomState(identityKey : any, value : any) : any {
         let customStateVariables : IdentityHashMap = this.customStateVariables;
         if(customStateVariables == null) {
-            customStateVariables = <any>(new IdentityHashMap<any, any>());
+            customStateVariables = <any>(new IdentityHashMap());
             this.customStateVariables = customStateVariables;
         }
         return customStateVariables.put(identityKey, value);
     }
 
-    static EMPTY_BODY_WRITER : Writer; public static EMPTY_BODY_WRITER_$LI$() : Writer { Environment.__static_initialize(); if(Environment.EMPTY_BODY_WRITER == null) Environment.EMPTY_BODY_WRITER = new Environment.Environment$4(); return Environment.EMPTY_BODY_WRITER; };
+    static EMPTY_BODY_WRITER : Writer; public static EMPTY_BODY_WRITER_$LI$() : Writer { Environment.__static_initialize(); if(Environment.EMPTY_BODY_WRITER == null) Environment.EMPTY_BODY_WRITER = new Environment.EmptyBodyWriter(); return Environment.EMPTY_BODY_WRITER; };
 
     isBeforeIcI2322() : boolean {
-        return this.configuration.getIncompatibleImprovements().intValue() < _TemplateAPI.VERSION_INT_2_3_22_$LI$();
+        return this.configuration.getIncompatibleImprovements().intValue() < /*_TemplateAPI.VERSION_INT_2_3_22_$LI$()*/2003022;
     }
 
     isIcI2324OrLater() : boolean {
-        return this.configuration.getIncompatibleImprovements().intValue() >= _TemplateAPI.VERSION_INT_2_3_24_$LI$();
+        return this.configuration.getIncompatibleImprovements().intValue() >= /*_TemplateAPI.VERSION_INT_2_3_24_$LI$()*/2003024;
     }
 
     /**
@@ -2633,7 +2629,7 @@ export namespace Environment {
                 this.__parent.visit(this.childBuffer);
             } finally {
                 this.__parent.out = prevOut;
-            };
+            }
         }
 
         getChildrenBuffer() : TemplateElement[] {
@@ -2732,7 +2728,7 @@ export namespace Environment {
                     if(this.status !== Environment.InitializationStatus.INITIALIZED) {
                         this.status = Environment.InitializationStatus.FAILED;
                     }
-                };
+                }
             }
         }
 
@@ -2741,7 +2737,7 @@ export namespace Environment {
                 this.ensureInitializedTME();
             } catch(e) {
                 throw Object.defineProperty(new Error(e.message), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.lang.RuntimeException','java.lang.Exception'] });
-            };
+            }
         }
 
         initialize() {
@@ -2752,7 +2748,7 @@ export namespace Environment {
                 this.__parent.initializeImportLibNamespace(this, this.getTemplate());
             } finally {
                 this.__parent.setLocale(lastLocale);
-            };
+            }
         }
 
         /**
@@ -3021,7 +3017,7 @@ export namespace Environment {
 
 
 
-    export class Environment$4 {
+    export class EmptyBodyWriter extends Writer{
         /**
          * 
          * @param {Array} cbuf
@@ -3047,16 +3043,17 @@ export namespace Environment {
         }
 
         constructor() {
+            super();
         }
     }
-    Environment$4["__interfaces"] = ["java.lang.Appendable","java.io.Closeable","java.lang.AutoCloseable","java.io.Flushable"];
+    EmptyBodyWriter["__interfaces"] = ["java.lang.Appendable","java.io.Closeable","java.lang.AutoCloseable","java.io.Flushable"];
 
 
 }
 
 
 
-var __Function = Function;
+
 
 Environment.EMPTY_BODY_WRITER_$LI$();
 
@@ -3066,12 +3063,12 @@ Environment.CACHED_TDFS_LENGTH_$LI$();
 
 Environment.CACHED_TDFS_SQL_D_T_TZ_OFFS_$LI$();
 
-Environment.C_NUMBER_FORMAT_$LI$();
+// Environment.C_NUMBER_FORMAT_$LI$();
 
 Environment.ATTEMPT_LOGGER_$LI$();
 
 Environment.LOG_$LI$();
 
-Environment.threadEnv_$LI$();
+// Environment.threadEnv_$LI$();
 
 Environment.__static_initialize();

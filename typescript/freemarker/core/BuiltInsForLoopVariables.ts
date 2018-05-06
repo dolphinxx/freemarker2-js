@@ -1,14 +1,12 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { SimpleNumber } from '../template/SimpleNumber';
-import { SimpleScalar } from '../template/SimpleScalar';
-import { TemplateBooleanModel } from '../template/TemplateBooleanModel';
-import { TemplateException } from '../template/TemplateException';
-import { TemplateMethodModelEx } from '../template/TemplateMethodModelEx';
-import { TemplateModel } from '../template/TemplateModel';
-import { TemplateModelException } from '../template/TemplateModelException';
-import { BuiltInForLoopVariable } from './BuiltInForLoopVariable';
-import { IteratorBlock } from './IteratorBlock';
-import { Environment } from './Environment';
+import {SimpleNumber} from '../template/SimpleNumber';
+import {SimpleScalar} from '../template/SimpleScalar';
+import {TemplateBooleanModel} from '../template/TemplateBooleanModel';
+import {TemplateMethodModelEx} from '../template/TemplateMethodModelEx';
+import {TemplateModel} from '../template/TemplateModel';
+import {BuiltInForLoopVariable} from './BuiltInForLoopVariable';
+import {IteratorBlock} from './IteratorBlock';
+import {Environment} from './Environment';
 
 export class BuiltInsForLoopVariables {}
 BuiltInsForLoopVariables["__class"] = "freemarker.core.BuiltInsForLoopVariables";
@@ -23,7 +21,7 @@ export namespace BuiltInsForLoopVariables {
          * @param {Environment} env
          * @return {*}
          */
-        calculateResult(iterCtx : IteratorBlock.IterationContext, env : Environment) : TemplateModel {
+        calculateResult(iterCtx : IteratorBlock.IterationContext, env : /*Environment*/any) : TemplateModel {
             return new SimpleNumber(iterCtx.getIndex());
         }
 
@@ -43,7 +41,7 @@ export namespace BuiltInsForLoopVariables {
          * @param {Environment} env
          * @return {*}
          */
-        calculateResult(iterCtx : IteratorBlock.IterationContext, env : Environment) : TemplateModel {
+        calculateResult(iterCtx : IteratorBlock.IterationContext, env : /*Environment*/any) : TemplateModel {
             return new SimpleNumber(iterCtx.getIndex() + 1);
         }
 
@@ -63,11 +61,11 @@ export namespace BuiltInsForLoopVariables {
          * @param {Environment} env
          * @return {*}
          */
-        calculateResult(iterCtx : IteratorBlock.IterationContext, env : Environment) : TemplateModel {
+        calculateResult(iterCtx : IteratorBlock.IterationContext, env : /*Environment*/any) : TemplateModel {
             return this.calculateBooleanResult(iterCtx, env)?TemplateBooleanModel.TRUE:TemplateBooleanModel.FALSE;
         }
 
-        abstract calculateBooleanResult(iterCtx : IteratorBlock.IterationContext, env : Environment) : boolean;
+        abstract calculateBooleanResult(iterCtx : IteratorBlock.IterationContext, env : /*Environment*/any) : boolean;
 
         constructor() {
             super();
@@ -89,7 +87,7 @@ export namespace BuiltInsForLoopVariables {
          * @param {Environment} env
          * @return {*}
          */
-        calculateResult(iterCtx : IteratorBlock.IterationContext, env : Environment) : TemplateModel {
+        calculateResult(iterCtx : IteratorBlock.IterationContext, env : /*Environment*/any) : TemplateModel {
             return iterCtx.getIndex() % 2 === 0?item_parityBI.ODD_$LI$():item_parityBI.EVEN_$LI$();
         }
 
@@ -113,7 +111,7 @@ export namespace BuiltInsForLoopVariables {
          * @param {Environment} env
          * @return {*}
          */
-        calculateResult(iterCtx : IteratorBlock.IterationContext, env : Environment) : TemplateModel {
+        calculateResult(iterCtx : IteratorBlock.IterationContext, env : /*Environment*/any) : TemplateModel {
             return iterCtx.getIndex() % 2 === 0?item_parity_capBI.ODD_$LI$():item_parity_capBI.EVEN_$LI$();
         }
 
@@ -133,7 +131,7 @@ export namespace BuiltInsForLoopVariables {
          * @param {Environment} env
          * @return {*}
          */
-        calculateResult(iterCtx : IteratorBlock.IterationContext, env : Environment) : TemplateModel {
+        calculateResult(iterCtx : IteratorBlock.IterationContext, env : /*Environment*/any) : TemplateModel {
             return new item_cycleBI.BIMethod(this, iterCtx);
         }
 
@@ -177,7 +175,7 @@ export namespace BuiltInsForLoopVariables {
          * @param {Environment} env
          * @return {boolean}
          */
-        calculateBooleanResult(iterCtx : IteratorBlock.IterationContext, env : Environment) : boolean {
+        calculateBooleanResult(iterCtx : IteratorBlock.IterationContext, env : /*Environment*/any) : boolean {
             return iterCtx.hasNext();
         }
 
@@ -197,7 +195,7 @@ export namespace BuiltInsForLoopVariables {
          * @param {Environment} env
          * @return {boolean}
          */
-        calculateBooleanResult(iterCtx : IteratorBlock.IterationContext, env : Environment) : boolean {
+        calculateBooleanResult(iterCtx : IteratorBlock.IterationContext, env : /*Environment*/any) : boolean {
             return !iterCtx.hasNext();
         }
 
@@ -217,7 +215,7 @@ export namespace BuiltInsForLoopVariables {
          * @param {Environment} env
          * @return {boolean}
          */
-        calculateBooleanResult(iterCtx : IteratorBlock.IterationContext, env : Environment) : boolean {
+        calculateBooleanResult(iterCtx : IteratorBlock.IterationContext, env : /*Environment*/any) : boolean {
             return iterCtx.getIndex() === 0;
         }
 
@@ -237,7 +235,7 @@ export namespace BuiltInsForLoopVariables {
          * @param {Environment} env
          * @return {boolean}
          */
-        calculateBooleanResult(iterCtx : IteratorBlock.IterationContext, env : Environment) : boolean {
+        calculateBooleanResult(iterCtx : IteratorBlock.IterationContext, env : /*Environment*/any) : boolean {
             return iterCtx.getIndex() % 2 === 0;
         }
 
@@ -257,7 +255,7 @@ export namespace BuiltInsForLoopVariables {
          * @param {Environment} env
          * @return {boolean}
          */
-        calculateBooleanResult(iterCtx : IteratorBlock.IterationContext, env : Environment) : boolean {
+        calculateBooleanResult(iterCtx : IteratorBlock.IterationContext, env : /*Environment*/any) : boolean {
             return iterCtx.getIndex() % 2 !== 0;
         }
 

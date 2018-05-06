@@ -1,31 +1,15 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { Configuration } from '../template/Configuration';
-import { SimpleDate } from '../template/SimpleDate';
-import { SimpleScalar } from '../template/SimpleScalar';
-import { TemplateDateModel } from '../template/TemplateDateModel';
-import { TemplateException } from '../template/TemplateException';
-import { TemplateHashModel } from '../template/TemplateHashModel';
-import { TemplateModel } from '../template/TemplateModel';
-import { TemplateModelException } from '../template/TemplateModelException';
-import { TemplateScalarModel } from '../template/TemplateScalarModel';
-import { _TemplateAPI } from '../template/_TemplateAPI';
-import { StringUtil } from '../template/utility/StringUtil';
-import { Expression } from './Expression';
-import { Token } from './Token';
-import { FMParserTokenManager } from './FMParserTokenManager';
-import { ParseException } from './ParseException';
-import { StringBuilder } from '../../java/lang/StringBuilder';
-import { _CoreStringUtils } from './_CoreStringUtils';
-import { Environment } from './Environment';
-import { Macro } from './Macro';
-import { ObjectWrapper } from '../template/ObjectWrapper';
-import { TemplateNodeModel } from '../template/TemplateNodeModel';
-import { Version } from '../template/Version';
-import { Template } from '../template/Template';
-import { GetOptionalTemplateMethod } from './GetOptionalTemplateMethod';
-import { TemplateObject } from './TemplateObject';
-import { _MiscTemplateException } from './_MiscTemplateException';
-import { ParameterRole } from './ParameterRole';
+import {TemplateException} from '../template/TemplateException';
+import {TemplateModel} from '../template/TemplateModel';
+import {StringUtil} from '../template/utility/StringUtil';
+import {Expression} from './Expression';
+import {Token} from './Token';
+import {ParseException} from './ParseException';
+import {StringBuilder} from '../../java/lang/StringBuilder';
+import {_CoreStringUtils} from './_CoreStringUtils';
+import {_MiscTemplateException} from './_MiscTemplateException';
+import {ParameterRole} from './ParameterRole';
+import {TemplateHashModel} from "../template/TemplateHashModel";
 
 /**
  * A reference to a built-in identifier, such as .root
@@ -109,19 +93,20 @@ export class BuiltinVariable extends Expression {
 
     static CALLER_TEMPLATE_NAME_CC : string = "callerTemplateName";
 
-    static SPEC_VAR_NAMES : Array<any>; public static SPEC_VAR_NAMES_$LI$() : Array { if(BuiltinVariable.SPEC_VAR_NAMES == null) BuiltinVariable.SPEC_VAR_NAMES = [BuiltinVariable.AUTO_ESC_CC, BuiltinVariable.AUTO_ESC, BuiltinVariable.CALLER_TEMPLATE_NAME_CC, BuiltinVariable.CALLER_TEMPLATE_NAME, BuiltinVariable.CURRENT_NODE_CC, BuiltinVariable.CURRENT_TEMPLATE_NAME_CC, BuiltinVariable.CURRENT_NODE, BuiltinVariable.CURRENT_TEMPLATE_NAME, BuiltinVariable.DATA_MODEL_CC, BuiltinVariable.DATA_MODEL, BuiltinVariable.ERROR, BuiltinVariable.GET_OPTIONAL_TEMPLATE_CC, BuiltinVariable.GET_OPTIONAL_TEMPLATE, BuiltinVariable.GLOBALS, BuiltinVariable.INCOMPATIBLE_IMPROVEMENTS_CC, BuiltinVariable.INCOMPATIBLE_IMPROVEMENTS, BuiltinVariable.LANG, BuiltinVariable.LOCALE, BuiltinVariable.LOCALE_OBJECT_CC, BuiltinVariable.LOCALE_OBJECT, BuiltinVariable.LOCALS, BuiltinVariable.MAIN, BuiltinVariable.MAIN_TEMPLATE_NAME_CC, BuiltinVariable.MAIN_TEMPLATE_NAME, BuiltinVariable.NAMESPACE, BuiltinVariable.NODE, BuiltinVariable.NOW, BuiltinVariable.OUTPUT_ENCODING_CC, BuiltinVariable.OUTPUT_FORMAT_CC, BuiltinVariable.OUTPUT_ENCODING, BuiltinVariable.OUTPUT_FORMAT, BuiltinVariable.PASS, BuiltinVariable.TEMPLATE_NAME_CC, BuiltinVariable.TEMPLATE_NAME, BuiltinVariable.URL_ESCAPING_CHARSET_CC, BuiltinVariable.URL_ESCAPING_CHARSET, BuiltinVariable.VARS, BuiltinVariable.VERSION]; return BuiltinVariable.SPEC_VAR_NAMES; };
+    static SPEC_VAR_NAMES : Array<any>; public static SPEC_VAR_NAMES_$LI$() : Array<any> { if(BuiltinVariable.SPEC_VAR_NAMES == null) BuiltinVariable.SPEC_VAR_NAMES = [BuiltinVariable.AUTO_ESC_CC, BuiltinVariable.AUTO_ESC, BuiltinVariable.CALLER_TEMPLATE_NAME_CC, BuiltinVariable.CALLER_TEMPLATE_NAME, BuiltinVariable.CURRENT_NODE_CC, BuiltinVariable.CURRENT_TEMPLATE_NAME_CC, BuiltinVariable.CURRENT_NODE, BuiltinVariable.CURRENT_TEMPLATE_NAME, BuiltinVariable.DATA_MODEL_CC, BuiltinVariable.DATA_MODEL, BuiltinVariable.ERROR, BuiltinVariable.GET_OPTIONAL_TEMPLATE_CC, BuiltinVariable.GET_OPTIONAL_TEMPLATE, BuiltinVariable.GLOBALS, BuiltinVariable.INCOMPATIBLE_IMPROVEMENTS_CC, BuiltinVariable.INCOMPATIBLE_IMPROVEMENTS, BuiltinVariable.LANG, BuiltinVariable.LOCALE, BuiltinVariable.LOCALE_OBJECT_CC, BuiltinVariable.LOCALE_OBJECT, BuiltinVariable.LOCALS, BuiltinVariable.MAIN, BuiltinVariable.MAIN_TEMPLATE_NAME_CC, BuiltinVariable.MAIN_TEMPLATE_NAME, BuiltinVariable.NAMESPACE, BuiltinVariable.NODE, BuiltinVariable.NOW, BuiltinVariable.OUTPUT_ENCODING_CC, BuiltinVariable.OUTPUT_FORMAT_CC, BuiltinVariable.OUTPUT_ENCODING, BuiltinVariable.OUTPUT_FORMAT, BuiltinVariable.PASS, BuiltinVariable.TEMPLATE_NAME_CC, BuiltinVariable.TEMPLATE_NAME, BuiltinVariable.URL_ESCAPING_CHARSET_CC, BuiltinVariable.URL_ESCAPING_CHARSET, BuiltinVariable.VARS, BuiltinVariable.VERSION]; return BuiltinVariable.SPEC_VAR_NAMES; };
 
     /*private*/ name : string;
 
     /*private*/ parseTimeValue : TemplateModel;
 
-    constructor(nameTk : Token, tokenManager : FMParserTokenManager, parseTimeValue : TemplateModel) {
+    constructor(nameTk : Token, tokenManager : /*FMParserTokenManager*/any, parseTimeValue : TemplateModel) {
         super();
+        const Configuration = require('../template/Configuration').Configuration;
         if(this.name===undefined) this.name = null;
         if(this.parseTimeValue===undefined) this.parseTimeValue = null;
         let name : string = nameTk.image;
         this.parseTimeValue = parseTimeValue;
-        if(Arrays.binarySearch(BuiltinVariable.SPEC_VAR_NAMES_$LI$(), name) < 0) {
+        if(BuiltinVariable.SPEC_VAR_NAMES_$LI$().indexOf(name) !== -1) {
             let sb : StringBuilder = new StringBuilder("");
             sb.append("Unknown special variable name: ");
             sb.append(StringUtil.jQuote$java_lang_Object(name)).append(".");
@@ -129,7 +114,7 @@ export class BuiltinVariable extends Expression {
             {
                 let namingConvention : number = tokenManager.namingConvention;
                 shownNamingConvention = namingConvention !== Configuration.AUTO_DETECT_NAMING_CONVENTION?namingConvention:Configuration.LEGACY_NAMING_CONVENTION;
-            };
+            }
             {
                 let correctName : string;
                 if(/* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(name,"auto_escape")) || /* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(name,"auto_escaping")) || /* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(name,"autoesc"))) {
@@ -143,7 +128,7 @@ export class BuiltinVariable extends Expression {
                     sb.append(" You may meant: ");
                     sb.append(StringUtil.jQuote$java_lang_Object(correctName)).append(".");
                 }
-            };
+            }
             sb.append("\nThe allowed special variable names are: ");
             let first : boolean = true;
             for(let i : number = 0; i < BuiltinVariable.SPEC_VAR_NAMES_$LI$().length; i++) {
@@ -157,7 +142,7 @@ export class BuiltinVariable extends Expression {
                     }
                     sb.append(correctName);
                 }
-            };
+            }
             throw new ParseException(sb.toString(), null, nameTk);
         }
         this.name = name;
@@ -168,7 +153,7 @@ export class BuiltinVariable extends Expression {
      * @param {Environment} env
      * @return {*}
      */
-    _eval(env : Environment) : TemplateModel {
+    _eval(env : /*Environment*/any) : TemplateModel {
         if(this.parseTimeValue != null) {
             return this.parseTimeValue;
         }
@@ -182,7 +167,7 @@ export class BuiltinVariable extends Expression {
             return env.getGlobalVariables();
         }
         if(this.name === BuiltinVariable.LOCALS) {
-            let ctx : Macro.Context = env.getCurrentMacroContext();
+            let ctx : /*Macro.Context*/any = env.getCurrentMacroContext();
             return ctx == null?null:ctx.getLocals();
         }
         if(this.name === BuiltinVariable.DATA_MODEL || this.name === BuiltinVariable.DATA_MODEL_CC) {
@@ -191,6 +176,7 @@ export class BuiltinVariable extends Expression {
         if(this.name === BuiltinVariable.VARS) {
             return new BuiltinVariable.VarsHash(env);
         }
+        const SimpleScalar = require('../template/SimpleScalar').SimpleScalar;
         if(this.name === BuiltinVariable.LOCALE) {
             return new SimpleScalar(env.getLocale().toString());
         }
@@ -204,7 +190,7 @@ export class BuiltinVariable extends Expression {
             return env.getCurrentVisitorNode();
         }
         if(this.name === BuiltinVariable.TEMPLATE_NAME || this.name === BuiltinVariable.TEMPLATE_NAME_CC) {
-            return (env.getConfiguration().getIncompatibleImprovements().intValue() >= _TemplateAPI.VERSION_INT_2_3_23_$LI$())?new SimpleScalar(env.getTemplate230().getName()):new SimpleScalar(env.getTemplate().getName());
+            return (env.getConfiguration().getIncompatibleImprovements().intValue() >= /*_TemplateAPI.VERSION_INT_2_3_23_$LI$()*/2003023)?new SimpleScalar(env.getTemplate230().getName()):new SimpleScalar(env.getTemplate().getName());
         }
         if(this.name === BuiltinVariable.MAIN_TEMPLATE_NAME || this.name === BuiltinVariable.MAIN_TEMPLATE_NAME_CC) {
             return SimpleScalar.newInstanceOrNull(env.getMainTemplate().getName());
@@ -213,7 +199,7 @@ export class BuiltinVariable extends Expression {
             return SimpleScalar.newInstanceOrNull(env.getCurrentTemplate().getName());
         }
         if(this.name === BuiltinVariable.PASS) {
-            return Macro.DO_NOTHING_MACRO_$LI$();
+            return (require('./Macro').Macro).DO_NOTHING_MACRO_$LI$();
         }
         if(this.name === BuiltinVariable.OUTPUT_ENCODING || this.name === BuiltinVariable.OUTPUT_ENCODING_CC) {
             let s : string = env.getOutputEncoding();
@@ -227,28 +213,28 @@ export class BuiltinVariable extends Expression {
             return new SimpleScalar(env.getCurrentRecoveredErrorMessage());
         }
         if(this.name === BuiltinVariable.NOW) {
-            return new SimpleDate(new Date(), TemplateDateModel.DATETIME);
+            return new (require('../template/SimpleDate').SimpleDate)(new Date(), (require('../template/TemplateDateModel').TemplateDateModel).DATETIME);
         }
         if(this.name === BuiltinVariable.VERSION) {
-            return new SimpleScalar(Configuration.getVersionNumber());
+            return new SimpleScalar((require('../template/Configuration').Configuration).getVersionNumber());
         }
         if(this.name === BuiltinVariable.INCOMPATIBLE_IMPROVEMENTS || this.name === BuiltinVariable.INCOMPATIBLE_IMPROVEMENTS_CC) {
             return new SimpleScalar(env.getConfiguration().getIncompatibleImprovements().toString());
         }
         if(this.name === BuiltinVariable.GET_OPTIONAL_TEMPLATE) {
-            return GetOptionalTemplateMethod.INSTANCE_$LI$();
+            return (require('../core/GetOptionalTemplateMethod').GetOptionalTemplateMethod).INSTANCE_$LI$();
         }
         if(this.name === BuiltinVariable.GET_OPTIONAL_TEMPLATE_CC) {
-            return GetOptionalTemplateMethod.INSTANCE_CC_$LI$();
+            return (require('../core/GetOptionalTemplateMethod').GetOptionalTemplateMethod).INSTANCE_CC_$LI$();
         }
         if(this.name === BuiltinVariable.CALLER_TEMPLATE_NAME || this.name === BuiltinVariable.CALLER_TEMPLATE_NAME_CC) {
-            let ctx : Macro.Context = env.getCurrentMacroContext();
+            let ctx : /*Macro.Context*/any = env.getCurrentMacroContext();
             if(ctx == null) {
                 throw new TemplateException("Can\'t get ." + this.name + " here, as there\'s no macro or function (that\'s implemented in the template) call in context.", env);
             }
-            let callPlace : TemplateObject = ctx.callPlace;
+            let callPlace : /*TemplateObject*/any = ctx.callPlace;
             let name : string = callPlace != null?callPlace.getTemplate().getName():null;
-            return name != null?new SimpleScalar(name):TemplateScalarModel.EMPTY_STRING;
+            return name != null?new SimpleScalar(name):(require('../template/TemplateScalarModel').TemplateScalarModel).EMPTY_STRING;
         }
         throw new _MiscTemplateException(this, "Invalid special variable: ", this.name);
     }
@@ -328,9 +314,9 @@ BuiltinVariable["__class"] = "freemarker.core.BuiltinVariable";
 export namespace BuiltinVariable {
 
     export class VarsHash implements TemplateHashModel {
-        env : Environment;
+        env : /*Environment*/any;
 
-        constructor(env : Environment) {
+        constructor(env : /*Environment*/any) {
             if(this.env===undefined) this.env = null;
             this.env = env;
         }

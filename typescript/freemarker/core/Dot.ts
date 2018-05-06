@@ -1,13 +1,11 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateException } from '../template/TemplateException';
-import { TemplateHashModel } from '../template/TemplateHashModel';
-import { TemplateModel } from '../template/TemplateModel';
-import { Expression } from './Expression';
-import { Environment } from './Environment';
-import { NonHashException } from './NonHashException';
-import { _CoreStringUtils } from './_CoreStringUtils';
-import { ParameterRole } from './ParameterRole';
-import { Identifier } from './Identifier';
+import {TemplateHashModel} from '../template/TemplateHashModel';
+import {TemplateModel} from '../template/TemplateModel';
+import {Expression} from './Expression';
+import {NonHashException} from './NonHashException';
+import {_CoreStringUtils} from './_CoreStringUtils';
+import {ParameterRole} from './ParameterRole';
+import {Identifier} from './Identifier';
 
 /**
  * The dot operator. Used to reference items inside a
@@ -33,7 +31,7 @@ export class Dot extends Expression {
      * @param {Environment} env
      * @return {*}
      */
-    _eval(env : Environment) : TemplateModel {
+    _eval(env : /*Environment*/any) : TemplateModel {
         let leftModel : TemplateModel = this.target.eval(env);
         if(leftModel != null && (leftModel["__interfaces"] != null && leftModel["__interfaces"].indexOf("freemarker.template.TemplateHashModel") >= 0 || leftModel.constructor != null && leftModel.constructor["__interfaces"] != null && leftModel.constructor["__interfaces"].indexOf("freemarker.template.TemplateHashModel") >= 0)) {
             return (<TemplateHashModel><any>leftModel)['get$java_lang_String'](this.key);

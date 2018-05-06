@@ -1,5 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { SpecialBuiltIn } from './SpecialBuiltIn';
+import {SpecialBuiltIn} from './SpecialBuiltIn';
 
 /**
  * A string built-in whose usage is banned when auto-escaping with a markup-output format is active.

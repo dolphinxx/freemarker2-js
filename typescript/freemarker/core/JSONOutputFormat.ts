@@ -1,5 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { OutputFormat } from './OutputFormat';
+import {OutputFormat} from './OutputFormat';
 
 /**
  * Represents the JSON output format (MIME type "application/json", name "JSON"). This format doesn't support escaping.
@@ -46,6 +46,6 @@ JSONOutputFormat["__class"] = "freemarker.core.JSONOutputFormat";
 
 
 
-var __Function = Function;
+
 
 JSONOutputFormat.INSTANCE_$LI$();

@@ -1,10 +1,10 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateBooleanModel } from '../TemplateBooleanModel';
-import { TemplateModelException } from '../TemplateModelException';
-import { TemplateNumberModel } from '../TemplateNumberModel';
-import { TemplateTransformModel } from '../TemplateTransformModel';
-import { Writer } from '../../../java/io/Writer';
-import { Character } from '../../../java/lang/Character';
+import {TemplateBooleanModel} from '../TemplateBooleanModel';
+import {TemplateModelException} from '../TemplateModelException';
+import {TemplateNumberModel} from '../TemplateNumberModel';
+import {TemplateTransformModel} from '../TemplateTransformModel';
+import {Writer} from '../../../java/io/Writer';
+import {Character} from '../../../java/lang/Character';
 
 /**
  * @param {number} defaultBufferSize the default amount of characters to buffer
@@ -50,13 +50,13 @@ export class StandardCompress implements TemplateTransformModel {
                 if(num != null) bufferSize = /* intValue */(num.getAsNumber()|0);
             } catch(e) {
                 throw new TemplateModelException("Expecting numerical argument to " + StandardCompress.BUFFER_SIZE_KEY);
-            };
+            }
             try {
                 let flag : TemplateBooleanModel = <TemplateBooleanModel><any>/* get */args.get(StandardCompress.SINGLE_LINE_KEY);
                 if(flag != null) singleLine = flag.getAsBoolean();
             } catch(e) {
                 throw new TemplateModelException("Expecting boolean argument to " + StandardCompress.SINGLE_LINE_KEY);
-            };
+            }
         }
         return (() => { let __o : any = new StandardCompress.StandardCompressWriter(out, bufferSize, singleLine); __o.__delegate = new StandardCompress.StandardCompressWriter(out, bufferSize, singleLine); return __o; })();
     }
@@ -126,7 +126,7 @@ export namespace StandardCompress {
                     off += room;
                     len -= room;
                 }
-            };
+            }
         }
 
         writeHelper(cbuf : string[], off : number, len : number) {
@@ -142,7 +142,7 @@ export namespace StandardCompress {
                 } else {
                     this.buf[this.pos++] = c;
                 }
-            };
+            }
         }
 
         updateLineBreakState(c : string) {
@@ -211,6 +211,6 @@ export namespace StandardCompress {
 
 
 
-var __Function = Function;
+
 
 StandardCompress.INSTANCE_$LI$();

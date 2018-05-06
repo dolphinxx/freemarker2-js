@@ -1,15 +1,12 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateException } from '../template/TemplateException';
-import { TemplateElement } from './TemplateElement';
-import { Case } from './Case';
-import { Expression } from './Expression';
-import { MixedContent } from './MixedContent';
-import { Environment } from './Environment';
-import { EvalUtil } from './EvalUtil';
-import { BreakOrContinueException } from './BreakOrContinueException';
-import { StringBuilder } from '../../java/lang/StringBuilder';
-import { ParameterRole } from './ParameterRole';
-import { ParseException } from './ParseException';
+import {TemplateElement} from './TemplateElement';
+import {Case} from './Case';
+import {Expression} from './Expression';
+import {MixedContent} from './MixedContent';
+import {Environment} from './Environment';
+import {EvalUtil} from './EvalUtil';
+import {StringBuilder} from '../../java/lang/StringBuilder';
+import {ParameterRole} from './ParameterRole';
 
 /**
  * An instruction representing a switch-case structure.
@@ -33,7 +30,7 @@ export class SwitchBlock extends TemplateElement {
         this.setChildBufferCapacity(ignoredCnt + 4);
         for(let i : number = 0; i < ignoredCnt; i++) {
             this.addChild$freemarker_core_TemplateElement(ignoredSectionBeforeFirstCase.getChild(i));
-        };
+        }
         this.firstCaseIndex = ignoredCnt;
     }
 
@@ -52,7 +49,7 @@ export class SwitchBlock extends TemplateElement {
      * @param {Environment} env
      * @return {Array}
      */
-    accept(env : Environment) : TemplateElement[] {
+    accept(env : /*Environment*/any) : TemplateElement[] {
         let processedCase : boolean = false;
         let ln : number = this.getChildCount();
         try {
@@ -68,12 +65,12 @@ export class SwitchBlock extends TemplateElement {
                     env.visit$freemarker_core_TemplateElement(cas);
                     processedCase = true;
                 }
-            };
+            }
             if(!processedCase && this.defaultCase != null) {
                 env.visit$freemarker_core_TemplateElement(this.defaultCase);
             }
         } catch(br) {
-        };
+        }
         return null;
     }
 
@@ -100,7 +97,7 @@ export class SwitchBlock extends TemplateElement {
             let ln : number = this.getChildCount();
             for(let i : number = 0; i < ln; i++) {
                 buf.append(this.getChild(i).getCanonicalForm());
-            };
+            }
             buf.append("</").append(this.getNodeTypeSymbol()).append('>');
         }
         return buf.toString();
@@ -161,7 +158,7 @@ export class SwitchBlock extends TemplateElement {
         let i : number = 0;
         while((i < ln && !(this.getChild(i) != null && this.getChild(i) instanceof <any>Case))) {
             i++;
-        };
+        }
         this.firstCaseIndex = i;
         return result;
     }
@@ -170,4 +167,4 @@ SwitchBlock["__class"] = "freemarker.core.SwitchBlock";
 
 
 
-var __Function = Function;
+

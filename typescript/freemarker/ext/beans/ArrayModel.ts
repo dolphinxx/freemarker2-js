@@ -1,13 +1,12 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { ModelFactory } from '../util/ModelFactory';
-import { ObjectWrapper } from '../../template/ObjectWrapper';
-import { TemplateCollectionModel } from '../../template/TemplateCollectionModel';
-import { TemplateModel } from '../../template/TemplateModel';
-import { TemplateModelException } from '../../template/TemplateModelException';
-import { TemplateModelIterator } from '../../template/TemplateModelIterator';
-import { TemplateSequenceModel } from '../../template/TemplateSequenceModel';
-import { BeanModel } from './BeanModel';
-import { BeansWrapper } from './BeansWrapper';
+import {ModelFactory} from '../util/ModelFactory';
+import {ObjectWrapper} from '../../template/ObjectWrapper';
+import {TemplateCollectionModel} from '../../template/TemplateCollectionModel';
+import {TemplateModel} from '../../template/TemplateModel';
+import {TemplateModelIterator} from '../../template/TemplateModelIterator';
+import {TemplateSequenceModel} from '../../template/TemplateSequenceModel';
+import {BeanModel} from './BeanModel';
+import {BeansWrapper} from './BeansWrapper';
 
 /**
  * Creates a new model that wraps the specified array object.
@@ -51,7 +50,7 @@ export class ArrayModel extends BeanModel implements TemplateCollectionModel, Te
             return this.wrap(/* get */this.object[index]);
         } catch(e) {
             return null;
-        };
+        }
     }
 
     /**
@@ -128,6 +127,6 @@ export namespace ArrayModel {
 
 
 
-var __Function = Function;
+
 
 ArrayModel.FACTORY_$LI$();

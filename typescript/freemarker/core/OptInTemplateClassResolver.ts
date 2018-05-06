@@ -1,12 +1,9 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { Template } from '../template/Template';
-import { TemplateException } from '../template/TemplateException';
-import { ClassUtil } from '../template/utility/ClassUtil';
-import { StringUtil } from '../template/utility/StringUtil';
-import { TemplateClassResolver } from './TemplateClassResolver';
-import { Environment } from './Environment';
-import { _MiscTemplateException } from './_MiscTemplateException';
-import { Configurable } from './Configurable';
+import {ClassUtil} from '../template/utility/ClassUtil';
+import {StringUtil} from '../template/utility/StringUtil';
+import {TemplateClassResolver} from './TemplateClassResolver';
+import {_MiscTemplateException} from './_MiscTemplateException';
+import {Configurable} from './Configurable';
 
 /**
  * Creates a new instance.
@@ -44,7 +41,7 @@ export class OptInTemplateClassResolver implements TemplateClassResolver {
         if(this.allowedClasses===undefined) this.allowedClasses = null;
         if(this.trustedTemplatePrefixes===undefined) this.trustedTemplatePrefixes = null;
         if(this.trustedTemplateNames===undefined) this.trustedTemplateNames = null;
-        this.allowedClasses = allowedClasses != null?allowedClasses:Collections.EMPTY_SET;
+        this.allowedClasses = allowedClasses != null?allowedClasses:[];
         if(trustedTemplates != null) {
             this.trustedTemplateNames = <any>([]);
             this.trustedTemplatePrefixes = <any>([]);
@@ -57,14 +54,14 @@ export class OptInTemplateClassResolver implements TemplateClassResolver {
                 } else {
                     /* add */((s, e) => { if(s.indexOf(e)==-1) { s.push(e); return true; } else { return false; } })(this.trustedTemplateNames, li);
                 }
-            };
+            }
         } else {
-            this.trustedTemplateNames = Collections.EMPTY_SET;
-            this.trustedTemplatePrefixes = Collections.EMPTY_LIST;
+            this.trustedTemplateNames = [];
+            this.trustedTemplatePrefixes = [];
         }
     }
 
-    public resolve(className : string, env : Environment, template : Template) : any {
+    public resolve(className : string, env : /*Environment*/any, template : /*Template*/any) : any {
         let templateName : string = this.safeGetTemplateName(template);
         if(templateName != null && (/* contains */(this.trustedTemplateNames.indexOf(<any>(templateName)) >= 0) || this.hasMatchingPrefix(templateName))) {
             return TemplateClassResolver.SAFER_RESOLVER.resolve(className, env, template);
@@ -76,7 +73,7 @@ export class OptInTemplateClassResolver implements TemplateClassResolver {
                     return ClassUtil.forName(className);
                 } catch(e) {
                     throw new _MiscTemplateException(e, env);
-                };
+                }
             }
         }
     }
@@ -87,7 +84,7 @@ export class OptInTemplateClassResolver implements TemplateClassResolver {
      * @param {Template} template
      * @return {String}
      */
-    safeGetTemplateName(template : Template) : string {
+    safeGetTemplateName(template : /*Template*/any) : string {
         if(template == null) return null;
         let name : string = template.getName();
         if(name == null) return null;
@@ -115,7 +112,7 @@ export class OptInTemplateClassResolver implements TemplateClassResolver {
         for(let i : number = 0; i < /* size */(<number>this.trustedTemplatePrefixes.length); i++) {
             let prefix : string = <string>/* get */this.trustedTemplatePrefixes[i];
             if(/* startsWith */((str, searchString, position = 0) => str.substr(position, searchString.length) === searchString)(name, prefix)) return true;
-        };
+        }
         return false;
     }
 }
@@ -125,4 +122,4 @@ OptInTemplateClassResolver["__interfaces"] = ["freemarker.core.TemplateClassReso
 
 
 
-var __Function = Function;
+

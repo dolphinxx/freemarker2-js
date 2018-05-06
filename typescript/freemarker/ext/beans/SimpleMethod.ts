@@ -1,15 +1,15 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateMarkupOutputModel } from '../../core/TemplateMarkupOutputModel';
-import { _DelayedFTLTypeDescription } from '../../core/_DelayedFTLTypeDescription';
-import { _DelayedOrdinal } from '../../core/_DelayedOrdinal';
-import { _ErrorDescriptionBuilder } from '../../core/_ErrorDescriptionBuilder';
-import { _TemplateModelException } from '../../core/_TemplateModelException';
-import { ObjectWrapperAndUnwrapper } from '../../template/ObjectWrapperAndUnwrapper';
-import { TemplateModel } from '../../template/TemplateModel';
-import { TemplateModelException } from '../../template/TemplateModelException';
-import { ClassUtil } from '../../template/utility/ClassUtil';
-import { BeansWrapper } from './BeansWrapper';
-import { _MethodUtil } from './_MethodUtil';
+import {_DelayedFTLTypeDescription} from '../../core/_DelayedFTLTypeDescription';
+import {_DelayedOrdinal} from '../../core/_DelayedOrdinal';
+import {_ErrorDescriptionBuilder} from '../../core/_ErrorDescriptionBuilder';
+import {_TemplateModelException} from '../../core/_TemplateModelException';
+import {ObjectWrapperAndUnwrapper} from '../../template/ObjectWrapperAndUnwrapper';
+import {TemplateModel} from '../../template/TemplateModel';
+import {TemplateModelException} from '../../template/TemplateModelException';
+import {ClassUtil} from '../../template/utility/ClassUtil';
+import {BeansWrapper} from './BeansWrapper';
+import {_MethodUtil} from './_MethodUtil';
+import {List} from "../../../java/util/List";
 
 /**
  * This class is used for as a base for non-overloaded method models and for constructors.
@@ -19,20 +19,20 @@ import { _MethodUtil } from './_MethodUtil';
 export class SimpleMethod {
     static MARKUP_OUTPUT_TO_STRING_TIP : string = "A markup output value can be converted to markup string like value?markup_string. But consider if the Java method whose argument it will be can handle markup strings properly.";
 
-    /*private*/ member : Member;
+    /*private*/ member : /*Member*/any;
 
     /*private*/ argTypes : Array<any>;
 
-    constructor(member : Member, argTypes : Array) {
+    constructor(member : /*Member*/any, argTypes : Array<any>) {
         if(this.member===undefined) this.member = null;
         if(this.argTypes===undefined) this.argTypes = null;
         this.member = member;
         this.argTypes = argTypes;
     }
 
-    unwrapArguments$java_util_List$freemarker_ext_beans_BeansWrapper(__arguments : Array<any>, wrapper : BeansWrapper) : Array {
+    unwrapArguments$java_util_List$freemarker_ext_beans_BeansWrapper(__arguments : Array<any>, wrapper : BeansWrapper) : Array<any> {
         if(__arguments == null) {
-            __arguments = Collections.EMPTY_LIST;
+            __arguments = new List();
         }
         let isVarArg : boolean = _MethodUtil.isVarargs(this.member);
         let typesLen : number = this.argTypes.length;
@@ -47,7 +47,7 @@ export class SimpleMethod {
         return args;
     }
 
-    public unwrapArguments$java_util_List$java_lang_Class_A$boolean$freemarker_ext_beans_BeansWrapper(args : Array<any>, argTypes : Array, isVarargs : boolean, w : BeansWrapper) : Array {
+    public unwrapArguments$java_util_List$java_lang_Class_A$boolean$freemarker_ext_beans_BeansWrapper(args : Array<any>, argTypes : Array<any>, isVarargs : boolean, w : BeansWrapper) : Array<any> {
         if(args == null) return null;
         let typesLen : number = argTypes.length;
         let argsLen : number = /* size */(<number>args.length);
@@ -66,7 +66,7 @@ export class SimpleMethod {
                 throw this.createNullToPrimitiveArgumentException(argIdx, argType);
             }
             unwrappedArgs[argIdx++] = unwrappedArgVal;
-        };
+        }
         if(isVarargs) {
             let varargType : any = argTypes[typesLen - 1];
             let varargItemType : any = varargType.getComponentType();
@@ -90,8 +90,8 @@ export class SimpleMethod {
                             throw this.createNullToPrimitiveArgumentException(argIdx + varargIdx, varargItemType);
                         }
                         /* set */(varargArray[varargIdx]=varargIdx);
-                    };
-                    unwrappedArgs[argIdx++] = varargArray<any>;
+                    }
+                    unwrappedArgs[argIdx++] = varargArray;
                 }
             }
         }
@@ -107,7 +107,7 @@ export class SimpleMethod {
     }
 
     /*private*/ createArgumentTypeMismarchException(argIdx : number, argVal : TemplateModel, targetType : any) : TemplateModelException {
-        let desc : _ErrorDescriptionBuilder = new _ErrorDescriptionBuilder(_MethodUtil.invocationErrorMessageStart$java_lang_reflect_Member(this.member), " couldn\'t be called: Can\'t convert the ", new _DelayedOrdinal(argIdx + 1), " argument\'s value to the target Java type, ", ClassUtil.getShortClassName(targetType), ". The type of the actual value was: ", new _DelayedFTLTypeDescription(argVal));
+        let desc : _ErrorDescriptionBuilder = new _ErrorDescriptionBuilder([_MethodUtil.invocationErrorMessageStart$java_lang_reflect_Member(this.member), " couldn\'t be called: Can\'t convert the ", new _DelayedOrdinal(argIdx + 1), " argument\'s value to the target Java type, ", ClassUtil.getShortClassName(targetType), ". The type of the actual value was: ", new _DelayedFTLTypeDescription(argVal)]);
         if((argVal != null && (argVal["__interfaces"] != null && argVal["__interfaces"].indexOf("freemarker.core.TemplateMarkupOutputModel") >= 0 || argVal.constructor != null && argVal.constructor["__interfaces"] != null && argVal.constructor["__interfaces"].indexOf("freemarker.core.TemplateMarkupOutputModel") >= 0)) && (targetType.isAssignableFrom(String))) {
             desc.tip$java_lang_String(SimpleMethod.MARKUP_OUTPUT_TO_STRING_TIP);
         }
@@ -118,7 +118,7 @@ export class SimpleMethod {
         return new _TemplateModelException(_MethodUtil.invocationErrorMessageStart$java_lang_reflect_Member(this.member), " couldn\'t be called: The value of the ", new _DelayedOrdinal(argIdx + 1), " argument was null, but the target Java parameter type (", ClassUtil.getShortClassName(targetType), ") is primitive and so can\'t store null.");
     }
 
-    getMember() : Member {
+    getMember() : /*Member*/any {
         return this.member;
     }
 }
@@ -126,4 +126,4 @@ SimpleMethod["__class"] = "freemarker.ext.beans.SimpleMethod";
 
 
 
-var __Function = Function;
+

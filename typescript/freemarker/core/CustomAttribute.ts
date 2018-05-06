@@ -1,10 +1,10 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { Configuration } from '../template/Configuration';
-import { Template } from '../template/Template';
-import { Environment } from './Environment';
-import { Configurable } from './Configurable';
-import { TemplateConfiguration } from './TemplateConfiguration';
-import { BugException } from './BugException';
+import {Configuration} from '../template/Configuration';
+import {Template} from '../template/Template';
+import {Environment} from './Environment';
+import {Configurable} from './Configurable';
+import {TemplateConfiguration} from './TemplateConfiguration';
+import {BugException} from './BugException';
 
 /**
  * Creates a new custom attribute with the specified scope
@@ -51,7 +51,7 @@ export class CustomAttribute {
         return null;
     }
 
-    public get$freemarker_core_Environment(env : Environment) : any {
+    public get$freemarker_core_Environment(env : /*Environment*/any) : any {
         return this.getScopeConfigurable(env).getCustomAttribute$java_lang_Object$freemarker_core_CustomAttribute(this.key, this);
     }
 
@@ -68,7 +68,7 @@ export class CustomAttribute {
      * @param {Environment} env
      */
     public get(env? : any) : any {
-        if(((env != null && env instanceof <any>Environment) || env === null)) {
+        if(((ClassUtil.isInstanceOf(env, 'freemarker.core.Environment')) || env === null)) {
             return <any>this.get$freemarker_core_Environment(env);
         } else if(((env != null && env instanceof <any>Template) || env === null)) {
             return <any>this.get$freemarker_template_Template(env);
@@ -106,7 +106,7 @@ export class CustomAttribute {
         return (<Configurable>cfg).getCustomAttribute$java_lang_Object$freemarker_core_CustomAttribute(this.key, this);
     }
 
-    public set$java_lang_Object$freemarker_core_Environment(value : any, env : Environment) {
+    public set$java_lang_Object$freemarker_core_Environment(value : any, env : /*Environment*/any) {
         this.getScopeConfigurable(env).setCustomAttribute$java_lang_Object$java_lang_Object(this.key, value);
     }
 
@@ -123,7 +123,7 @@ export class CustomAttribute {
      * @param {Environment} env
      */
     public set(value? : any, env? : any) : any {
-        if(((value != null) || value === null) && ((env != null && env instanceof <any>Environment) || env === null)) {
+        if(((value != null) || value === null) && ((ClassUtil.isInstanceOf(env, 'freemarker.core.Environment')) || env === null)) {
             return <any>this.set$java_lang_Object$freemarker_core_Environment(value, env);
         } else if(((value != null) || value === null) && ((env != null && env instanceof <any>Template) || env === null)) {
             return <any>this.set$java_lang_Object$freemarker_template_Template(value, env);
@@ -169,7 +169,7 @@ export class CustomAttribute {
         return c;
     }
 
-    /*private*/ getScopeConfigurable(env : Environment) : Configurable {
+    /*private*/ getScopeConfigurable(env : /*Environment*/any) : Configurable {
         switch((this.scope)) {
         case 0 /* SCOPE_ENVIRONMENT */:
             return env;

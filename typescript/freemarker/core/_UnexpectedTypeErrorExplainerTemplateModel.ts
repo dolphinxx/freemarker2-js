@@ -1,5 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateModel } from '../template/TemplateModel';
+import {TemplateModel} from '../template/TemplateModel';
 
 /**
  * Don't use this; used internally by FreeMarker, might changes without notice.
@@ -16,4 +16,4 @@ export interface _UnexpectedTypeErrorExplainerTemplateModel extends TemplateMode
 }
 
 
-var __Function = Function;
+

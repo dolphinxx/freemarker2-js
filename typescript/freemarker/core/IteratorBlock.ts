@@ -1,36 +1,34 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { KeyValuePair } from '../template/KeyValuePair';
-import { KeyValuePairIterator } from '../template/KeyValuePairIterator';
-import { SimpleNumber } from '../template/SimpleNumber';
-import { TemplateBooleanModel } from '../template/TemplateBooleanModel';
-import { TemplateCollectionModel } from '../template/TemplateCollectionModel';
-import { TemplateException } from '../template/TemplateException';
-import { TemplateHashModelEx } from '../template/TemplateHashModelEx';
-import { TemplateHashModelEx2 } from '../template/TemplateHashModelEx2';
-import { TemplateModel } from '../template/TemplateModel';
-import { TemplateModelIterator } from '../template/TemplateModelIterator';
-import { TemplateScalarModel } from '../template/TemplateScalarModel';
-import { TemplateSequenceModel } from '../template/TemplateSequenceModel';
-import { Constants } from '../template/utility/Constants';
-import { TemplateElement } from './TemplateElement';
-import { Expression } from './Expression';
-import { TemplateElements } from './TemplateElements';
-import { Environment } from './Environment';
-import { LocalContextStack } from './LocalContextStack';
-import { LocalContext } from './LocalContext';
-import { StringBuilder } from '../../java/lang/StringBuilder';
-import { _CoreStringUtils } from './_CoreStringUtils';
-import { ListElseContainer } from './ListElseContainer';
-import { ParameterRole } from './ParameterRole';
-import { _MiscTemplateException } from './_MiscTemplateException';
-import { BreakOrContinueException } from './BreakOrContinueException';
-import { NonSequenceOrCollectionException } from './NonSequenceOrCollectionException';
-import { _ErrorDescriptionBuilder } from './_ErrorDescriptionBuilder';
-import { _DelayedAOrAn } from './_DelayedAOrAn';
-import { _DelayedFTLTypeDescription } from './_DelayedFTLTypeDescription';
-import { TemplateModelException } from '../template/TemplateModelException';
-import { _MessageUtil } from './_MessageUtil';
-import { NonExtendedHashException } from './NonExtendedHashException';
+import {KeyValuePair} from '../template/KeyValuePair';
+import {KeyValuePairIterator} from '../template/KeyValuePairIterator';
+import {SimpleNumber} from '../template/SimpleNumber';
+import {TemplateBooleanModel} from '../template/TemplateBooleanModel';
+import {TemplateCollectionModel} from '../template/TemplateCollectionModel';
+import {TemplateHashModelEx} from '../template/TemplateHashModelEx';
+import {TemplateHashModelEx2} from '../template/TemplateHashModelEx2';
+import {TemplateModel} from '../template/TemplateModel';
+import {TemplateModelIterator} from '../template/TemplateModelIterator';
+import {TemplateScalarModel} from '../template/TemplateScalarModel';
+import {TemplateSequenceModel} from '../template/TemplateSequenceModel';
+import {Constants} from '../template/utility/Constants';
+import {TemplateElement} from './TemplateElement';
+import {Expression} from './Expression';
+import {TemplateElements} from './TemplateElements';
+import {Environment} from './Environment';
+import {LocalContextStack} from './LocalContextStack';
+import {LocalContext} from './LocalContext';
+import {StringBuilder} from '../../java/lang/StringBuilder';
+import {_CoreStringUtils} from './_CoreStringUtils';
+import {ListElseContainer} from './ListElseContainer';
+import {ParameterRole} from './ParameterRole';
+import {_MiscTemplateException} from './_MiscTemplateException';
+import {BreakOrContinueException} from './BreakOrContinueException';
+import {NonSequenceOrCollectionException} from './NonSequenceOrCollectionException';
+import {_ErrorDescriptionBuilder} from './_ErrorDescriptionBuilder';
+import {_DelayedAOrAn} from './_DelayedAOrAn';
+import {_DelayedFTLTypeDescription} from './_DelayedFTLTypeDescription';
+import {_MessageUtil} from './_MessageUtil';
+import {NonExtendedHashException} from './NonExtendedHashException';
 
 /**
  * A #list (or #foreach) element, or pre-#else section of it inside a {link ListElseContainer}.
@@ -72,12 +70,12 @@ export class IteratorBlock extends TemplateElement {
      * @param {Environment} env
      * @return {Array}
      */
-    accept(env : Environment) : TemplateElement[] {
+    accept(env : /*Environment*/any) : TemplateElement[] {
         this.acceptWithResult(env);
         return null;
     }
 
-    acceptWithResult(env : Environment) : boolean {
+    acceptWithResult(env : /*Environment*/any) : boolean {
         let listedValue : TemplateModel = this.listedExp.eval(env);
         if(listedValue == null) {
             if(env.isClassicCompatible()) {
@@ -95,7 +93,7 @@ export class IteratorBlock extends TemplateElement {
      * @return {IteratorBlock.IterationContext} The matching context or {@code null} if no such context exists.
      * @param {Environment} env
      */
-    static findEnclosingIterationContext(env : Environment, loopVariableName : string) : IteratorBlock.IterationContext {
+    static findEnclosingIterationContext(env : /*Environment*/any, loopVariableName : string) : IteratorBlock.IterationContext {
         let ctxStack : LocalContextStack = env.getLocalContextStack();
         if(ctxStack != null) {
             for(let i : number = ctxStack.size() - 1; i >= 0; i--) {
@@ -103,7 +101,7 @@ export class IteratorBlock extends TemplateElement {
                 if((ctx != null && ctx instanceof <any>IteratorBlock.IterationContext) && (loopVariableName == null || /* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(loopVariableName,(<IteratorBlock.IterationContext>ctx).getLoopVariableName())) || /* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(loopVariableName,(<IteratorBlock.IterationContext>ctx).getLoopVariable2Name())))) {
                     return <IteratorBlock.IterationContext>ctx;
                 }
-            };
+            }
         }
         return null;
     }
@@ -277,11 +275,11 @@ export namespace IteratorBlock {
             this.loopVar2Name = loopVar2Name;
         }
 
-        accept(env : Environment) : boolean {
+        accept(env : /*Environment*/any) : boolean {
             return this.executeNestedContent(env, this.__parent.getChildBuffer());
         }
 
-        loopForItemsElement(env : Environment, childBuffer : TemplateElement[], loopVarName : string, loopVar2Name : string) {
+        loopForItemsElement(env : /*Environment*/any, childBuffer : TemplateElement[], loopVarName : string, loopVar2Name : string) {
             try {
                 if(this.alreadyEntered) {
                     throw new _MiscTemplateException(env, "The #items directive was already entered earlier for this listing.");
@@ -293,7 +291,7 @@ export namespace IteratorBlock {
             } finally {
                 this.loopVarName = null;
                 this.loopVar2Name = null;
-            };
+            }
         }
 
         /**
@@ -304,11 +302,11 @@ export namespace IteratorBlock {
          * @return {boolean}
          * @private
          */
-        executeNestedContent(env : Environment, childBuffer : TemplateElement[]) : boolean {
+        executeNestedContent(env : /*Environment*/any, childBuffer : TemplateElement[]) : boolean {
             return !this.__parent.hashListing?this.executedNestedContentForCollOrSeqListing(env, childBuffer):this.executedNestedContentForHashListing(env, childBuffer);
         }
 
-        executedNestedContentForCollOrSeqListing(env : Environment, childBuffer : TemplateElement[]) : boolean {
+        executedNestedContentForCollOrSeqListing(env : /*Environment*/any, childBuffer : TemplateElement[]) : boolean {
             let listNotEmpty : boolean;
             if(this.listedValue != null && (this.listedValue["__interfaces"] != null && this.listedValue["__interfaces"].indexOf("freemarker.template.TemplateCollectionModel") >= 0 || this.listedValue.constructor != null && this.listedValue.constructor["__interfaces"] != null && this.listedValue.constructor["__interfaces"].indexOf("freemarker.template.TemplateCollectionModel") >= 0)) {
                 let collModel : TemplateCollectionModel = <TemplateCollectionModel><any>this.listedValue;
@@ -325,7 +323,7 @@ export namespace IteratorBlock {
                                 if(br === BreakOrContinueException.BREAK_INSTANCE_$LI$()) {
                                     break listLoop;
                                 }
-                            };
+                            }
                             this.index++;
                         } while((this.__hasNext));
                         this.openedIterator = null;
@@ -349,8 +347,8 @@ export namespace IteratorBlock {
                                 if(br === BreakOrContinueException.BREAK_INSTANCE_$LI$()) {
                                     break listLoop;
                                 }
-                            };
-                        };
+                            }
+                        }
                     } else {
                         env.visit$freemarker_core_TemplateElement_A(childBuffer);
                     }
@@ -364,7 +362,7 @@ export namespace IteratorBlock {
                 try {
                     env.visit$freemarker_core_TemplateElement_A(childBuffer);
                 } catch(br) {
-                };
+                }
             } else if((this.listedValue != null && (this.listedValue["__interfaces"] != null && this.listedValue["__interfaces"].indexOf("freemarker.template.TemplateHashModelEx") >= 0 || this.listedValue.constructor != null && this.listedValue.constructor["__interfaces"] != null && this.listedValue.constructor["__interfaces"].indexOf("freemarker.template.TemplateHashModelEx") >= 0)) && !NonSequenceOrCollectionException.isWrappedIterable(this.listedValue)) {
                 throw new NonSequenceOrCollectionException(env, new _ErrorDescriptionBuilder("The value you try to list is ", new _DelayedAOrAn(new _DelayedFTLTypeDescription(this.listedValue)), ", thus you must specify two loop variables after the \"as\"; one for the key, and another for the value, like ", "<#... as k, v>", ")."));
             } else {
@@ -373,7 +371,7 @@ export namespace IteratorBlock {
             return listNotEmpty;
         }
 
-        executedNestedContentForHashListing(env : Environment, childBuffer : TemplateElement[]) : boolean {
+        executedNestedContentForHashListing(env : /*Environment*/any, childBuffer : TemplateElement[]) : boolean {
             let hashNotEmpty : boolean;
             if(this.listedValue != null && (this.listedValue["__interfaces"] != null && this.listedValue["__interfaces"].indexOf("freemarker.template.TemplateHashModelEx") >= 0 || this.listedValue.constructor != null && this.listedValue.constructor["__interfaces"] != null && this.listedValue.constructor["__interfaces"].indexOf("freemarker.template.TemplateHashModelEx") >= 0)) {
                 let listedHash : TemplateHashModelEx = <TemplateHashModelEx><any>this.listedValue;
@@ -393,7 +391,7 @@ export namespace IteratorBlock {
                                     if(br === BreakOrContinueException.BREAK_INSTANCE_$LI$()) {
                                         break listLoop;
                                     }
-                                };
+                                }
                                 this.index++;
                             } while((this.__hasNext));
                             this.openedIterator = null;
@@ -420,7 +418,7 @@ export namespace IteratorBlock {
                                     if(br === BreakOrContinueException.BREAK_INSTANCE_$LI$()) {
                                         break listLoop;
                                     }
-                                };
+                                }
                                 this.index++;
                             } while((this.__hasNext));
                         } else {
@@ -499,4 +497,4 @@ export namespace IteratorBlock {
 
 
 
-var __Function = Function;
+

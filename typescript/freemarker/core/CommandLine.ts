@@ -1,9 +1,7 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { Configuration } from '../template/Configuration';
-import { Version } from '../template/Version';
-import { DateUtil } from '../template/utility/DateUtil';
-import { System } from '../../java/lang/System';
-import { Boolean } from '../../java/lang/Boolean';
+import {Configuration} from '../template/Configuration';
+import {Version} from '../template/Version';
+import {DateUtil} from '../template/utility/DateUtil';
 
 /**
  * FreeMarker command-line utility, the Main-Class of <tt>freemarker.jar</tt>.

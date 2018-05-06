@@ -1,12 +1,12 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { Environment } from '../../core/Environment';
-import { SimpleScalar } from '../SimpleScalar';
-import { TemplateModel } from '../TemplateModel';
-import { TemplateModelException } from '../TemplateModelException';
-import { TemplateScalarModel } from '../TemplateScalarModel';
-import { TemplateTransformModel } from '../TemplateTransformModel';
-import { Writer } from '../../../java/io/Writer';
-import { StringBuilder } from '../../../java/lang/StringBuilder';
+import {Environment} from '../../core/Environment';
+import {SimpleScalar} from '../SimpleScalar';
+import {TemplateModel} from '../TemplateModel';
+import {TemplateModelException} from '../TemplateModelException';
+import {TemplateScalarModel} from '../TemplateScalarModel';
+import {TemplateTransformModel} from '../TemplateTransformModel';
+import {Writer} from '../../../java/io/Writer';
+import {StringBuilder} from '../../../java/lang/StringBuilder';
 
 /**
  * A transform that captures the output of a block of FTL code and stores that in a variable.
@@ -67,7 +67,7 @@ export class CaptureOutput implements TemplateTransformModel {
             if(global) {
                 throw new TemplateModelException("Cannot specify namespace for a global assignment");
             }
-            if(!(nsModel != null && nsModel instanceof <any>Environment.Namespace)) {
+            if(!(ClassUtil.isInstanceOf(nsModel, 'freemarker.core.Environment').Namespace)) {
                 throw new TemplateModelException("namespace parameter does not specify a namespace. It is a " + /* getName */(c => c["__class"]?c["__class"]:c["name"])((<any>nsModel.constructor)));
             }
         } else if(/* size */((m) => { let r=0; m.forEach((v, k, m) => r++); return r; })(<any>args) !== 1) throw new TemplateModelException("Bad parameters. Use only one of \'var\' or \'local\' or \'global\' parameters.");
@@ -133,7 +133,7 @@ export namespace CaptureOutput {
                 }
             } catch(ise) {
                 throw Object.defineProperty(new Error("Could not set variable " + this.varName + ": " + ise.message), '__classes', { configurable: true, value: ['java.lang.Throwable','java.io.IOException','java.lang.Object','java.lang.Exception'] });
-            };
+            }
         }
 
         constructor(__parent: any, private buf: any, private out: any, private localVar: any, private env: any, private varName: any, private globalVar: any, private nsModel: any) {
@@ -147,4 +147,4 @@ export namespace CaptureOutput {
 
 
 
-var __Function = Function;
+

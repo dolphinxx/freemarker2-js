@@ -1,18 +1,12 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { _MethodUtil } from '../ext/beans/_MethodUtil';
-import { Logger } from '../log/Logger';
-import { Configuration } from '../template/Configuration';
-import { Template } from '../template/Template';
-import { ClassUtil } from '../template/utility/ClassUtil';
-import { StringUtil } from '../template/utility/StringUtil';
-import { Expression } from './Expression';
-import { TemplateElement } from './TemplateElement';
-import { StringBuilder } from '../../java/lang/StringBuilder';
-import { TemplateObject } from './TemplateObject';
-import { ParameterRole } from './ParameterRole';
-import { Character } from '../../java/lang/Character';
-import { _CoreAPI } from './_CoreAPI';
-import { StringLiteral } from './StringLiteral';
+import {_MethodUtil} from '../ext/beans/_MethodUtil';
+import {Logger} from '../log/Logger';
+import {ClassUtil} from '../template/utility/ClassUtil';
+import {StringUtil} from '../template/utility/StringUtil';
+import {TemplateElement} from './TemplateElement';
+import {StringBuilder} from '../../java/lang/StringBuilder';
+import {ParameterRole} from './ParameterRole';
+import {Character} from '../../java/lang/Character';
 
 /**
  * Used internally only, might changes without notice!
@@ -29,7 +23,7 @@ export class _ErrorDescriptionBuilder {
 
     /*private*/ descriptionParts : Array<any>;
 
-    /*private*/ blamed : Expression;
+    /*private*/ blamed : /*Expression*/any;
 
     /*private*/ __showBlamer : boolean;
 
@@ -37,7 +31,7 @@ export class _ErrorDescriptionBuilder {
 
     /*private*/ __tips : Array<any>;
 
-    /*private*/ __template : Template;
+    /*private*/ __template : /*Template*/any;
 
     public constructor(description? : any) {
         if(((typeof description === 'string') || description === null)) {
@@ -103,7 +97,7 @@ export class _ErrorDescriptionBuilder {
                 }
             } catch(e) {
                 _ErrorDescriptionBuilder.LOG_$LI$().error$java_lang_String$java_lang_Throwable("Error when searching blamer for better error message.", e);
-            };
+            }
         }
         if(this.description != null) {
             sb.append(this.description);
@@ -114,7 +108,7 @@ export class _ErrorDescriptionBuilder {
         if(this.blamed != null) {
             for(let idx : number = sb.length() - 1; idx >= 0 && Character.isWhitespace(sb.charAt(idx)); idx--) {
                 sb.deleteCharAt(idx);
-            };
+            }
             let lastChar : string = sb.length() > 0?(sb.charAt(sb.length() - 1)):String.fromCharCode(0);
             if((c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(lastChar) != 0) {
                 sb.append('\n');
@@ -126,7 +120,7 @@ export class _ErrorDescriptionBuilder {
             for(let i : number = 0; i < lines.length; i++) {
                 sb.append(i === 0?"==> ":"\n    ");
                 sb.append(lines[i]);
-            };
+            }
             sb.append("  [");
             sb.append(this.blamed.getStartLocation());
             sb.append(']');
@@ -146,11 +140,12 @@ export class _ErrorDescriptionBuilder {
                 if(this.__tips != null) {
                     for(let i : number = 0; i < this.__tips.length; i++) {
                         allTips[dst++] = this.__tips[i];
-                    };
+                    }
                 }
                 if(extraTip != null) allTips[dst++] = extraTip;
             }
             if(allTips != null && allTips.length > 0) {
+                const _CoreAPI = require('./_CoreAPI')._CoreAPI;
                 sb.append("\n\n");
                 for(let i : number = 0; i < allTips.length; i++) {
                     if(i !== 0) sb.append('\n');
@@ -160,9 +155,9 @@ export class _ErrorDescriptionBuilder {
                     if(!(tip != null && tip instanceof <any>Array && (tip.length==0 || tip[0] == null ||tip[0] != null))) {
                         sb.append(allTips[i]);
                     } else {
-                        this.appendParts(sb, <Array>tip);
+                        this.appendParts(sb, <Array<any>>tip);
                     }
-                };
+                }
                 sb.append('\n').append(_CoreAPI.ERROR_MESSAGE_HR);
             }
         }
@@ -177,22 +172,22 @@ export class _ErrorDescriptionBuilder {
         } else throw new Error('invalid overload');
     }
 
-    containsSingleInterpolatoinLiteral(exp : Expression, recursionDepth : number) : boolean {
+    containsSingleInterpolatoinLiteral(exp : /*Expression*/any, recursionDepth : number) : boolean {
         if(exp == null) return false;
         if(recursionDepth > 20) return false;
-        if((exp != null && exp instanceof <any>StringLiteral) && (<StringLiteral>exp).isSingleInterpolationLiteral()) return true;
+        if((ClassUtil.isInstanceOf(exp, 'freemarker.core.StringLiteral')) && (</*StringLiteral*/any>exp).isSingleInterpolationLiteral()) return true;
         let paramCnt : number = exp.getParameterCount();
         for(let i : number = 0; i < paramCnt; i++) {
             let paramValue : any = exp.getParameterValue(i);
-            if(paramValue != null && paramValue instanceof <any>Expression) {
-                let result : boolean = this.containsSingleInterpolatoinLiteral(<Expression>paramValue, recursionDepth + 1);
+            if(paramValue != null && paramValue instanceof <any>(require('./Expression').Expression)) {
+                let result : boolean = this.containsSingleInterpolatoinLiteral(</*Expression*/any>paramValue, recursionDepth + 1);
                 if(result) return true;
             }
-        };
+        }
         return false;
     }
 
-    findBlaming(parent : TemplateObject, blamed : Expression, recursionDepth : number) : _ErrorDescriptionBuilder.Blaming {
+    findBlaming(parent : /*TemplateObject*/any, blamed : /*Expression*/any, recursionDepth : number) : _ErrorDescriptionBuilder.Blaming {
         if(recursionDepth > 50) return null;
         let paramCnt : number = parent.getParameterCount();
         for(let i : number = 0; i < paramCnt; i++) {
@@ -202,20 +197,20 @@ export class _ErrorDescriptionBuilder {
                 blaming.blamer = parent;
                 blaming.roleOfblamed = parent.getParameterRole(i);
                 return blaming;
-            } else if(paramValue != null && paramValue instanceof <any>TemplateObject) {
-                let blaming : _ErrorDescriptionBuilder.Blaming = this.findBlaming(<TemplateObject>paramValue, blamed, recursionDepth + 1);
+            } else if(paramValue != null && paramValue instanceof <any>(require('./TemplateObject').TemplateObject)) {
+                let blaming : _ErrorDescriptionBuilder.Blaming = this.findBlaming(/*<TemplateObject>*/paramValue, blamed, recursionDepth + 1);
                 if(blaming != null) return blaming;
             }
-        };
+        }
         return null;
     }
 
-    appendParts(sb : StringBuilder, parts : Array) {
-        let template : Template = this.__template != null?this.__template:(this.blamed != null?this.blamed.getTemplate():null);
+    appendParts(sb : StringBuilder, parts : Array<any>) {
+        let template : /*Template*/any = this.__template != null?this.__template:(this.blamed != null?this.blamed.getTemplate():null);
         for(let i : number = 0; i < parts.length; i++) {
             let partObj : any = parts[i];
             if(partObj != null && partObj instanceof <any>Array && (partObj.length==0 || partObj[0] == null ||partObj[0] != null)) {
-                this.appendParts(sb, <Array>partObj);
+                this.appendParts(sb, <Array<any>>partObj);
             } else {
                 let partStr : string;
                 partStr = _ErrorDescriptionBuilder.tryToString(partObj);
@@ -224,7 +219,7 @@ export class _ErrorDescriptionBuilder {
                 }
                 if(template != null) {
                     if(partStr.length > 4 && (c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(partStr.charAt(0)) == '<'.charCodeAt(0) && (((c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(partStr.charAt(1)) == '#'.charCodeAt(0) || (c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(partStr.charAt(1)) == '@'.charCodeAt(0)) || ((c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(partStr.charAt(1)) == '/'.charCodeAt(0)) && ((c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(partStr.charAt(2)) == '#'.charCodeAt(0) || (c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(partStr.charAt(2)) == '@'.charCodeAt(0))) && (c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(partStr.charAt(partStr.length - 1)) == '>'.charCodeAt(0)) {
-                        if(template.getActualTagSyntax() === Configuration.SQUARE_BRACKET_TAG_SYNTAX) {
+                        if(template.getActualTagSyntax() === (require('../template/Configuration').Configuration).SQUARE_BRACKET_TAG_SYNTAX) {
                             sb.append('[');
                             sb.append(partStr, 1, partStr.length - 1);
                             sb.append(']');
@@ -238,7 +233,7 @@ export class _ErrorDescriptionBuilder {
                     sb.append(partStr);
                 }
             }
-        };
+        }
     }
 
     public static toString$java_lang_Object(partObj : any) : string {
@@ -255,8 +250,8 @@ export class _ErrorDescriptionBuilder {
             return null;
         } else if(partObj != null) {
             partStr = ClassUtil.getShortClassName(<any>partObj);
-        } else if((partObj != null && (partObj instanceof Function)) || (partObj != null && partObj instanceof <any>Constructor)) {
-            partStr = _MethodUtil.toString(<Member><any>partObj);
+        } else if((partObj != null && (partObj instanceof Function))/* || (partObj != null && partObj instanceof <any>Constructor)*/) {
+            partStr = _MethodUtil.toString(<any>partObj);
         } else {
             partStr = suppressToStringException?StringUtil.tryToString(partObj):partObj.toString();
         }
@@ -271,7 +266,7 @@ export class _ErrorDescriptionBuilder {
         } else throw new Error('invalid overload');
     }
 
-    splitToLines(s : string) : Array {
+    splitToLines(s : string) : Array<any> {
         s = StringUtil.replace$java_lang_String$java_lang_String$java_lang_String(s, "\r\n", "\n");
         s = StringUtil.replace$java_lang_String$java_lang_String$java_lang_String(s, "\r", "\n");
         let lines : Array<any> = StringUtil.split$java_lang_String$char(s, '\n');
@@ -283,12 +278,12 @@ export class _ErrorDescriptionBuilder {
      * @param {Template} template
      * @return {_ErrorDescriptionBuilder}
      */
-    public template(template : Template) : _ErrorDescriptionBuilder {
+    public template(template : /*Template*/any) : _ErrorDescriptionBuilder {
         this.__template = template;
         return this;
     }
 
-    public blame(blamedExpr : Expression) : _ErrorDescriptionBuilder {
+    public blame(blamedExpr : /*Expression*/any) : _ErrorDescriptionBuilder {
         this.blamed = blamedExpr;
         return this;
     }
@@ -313,7 +308,7 @@ export class _ErrorDescriptionBuilder {
         } else throw new Error('invalid overload');
     }
 
-    public tip$java_lang_Object_A(...tip : Array) : _ErrorDescriptionBuilder {
+    public tip$java_lang_Object_A(...tip : Array<any>) : _ErrorDescriptionBuilder {
         this.tip$java_lang_Object(<any>tip);
         return this;
     }
@@ -332,7 +327,7 @@ export class _ErrorDescriptionBuilder {
                 let newTips : Array<any> = (s => { let a=[]; while(s-->0) a.push(null); return a; })(origTipsLen + 1);
                 for(let i : number = 0; i < origTipsLen; i++) {
                     newTips[i] = this.__tips[i];
-                };
+                }
                 newTips[origTipsLen] = tip;
                 this.__tips = newTips;
             }
@@ -340,7 +335,7 @@ export class _ErrorDescriptionBuilder {
         return this;
     }
 
-    public tips(...tips : Array) : _ErrorDescriptionBuilder {
+    public tips(...tips : Array<any>) : _ErrorDescriptionBuilder {
         if(tips == null || tips.length === 0) {
             return this;
         }
@@ -352,10 +347,10 @@ export class _ErrorDescriptionBuilder {
             let newTips : Array<any> = (s => { let a=[]; while(s-->0) a.push(null); return a; })(origTipsLen + additionalTipsLen);
             for(let i : number = 0; i < origTipsLen; i++) {
                 newTips[i] = this.__tips[i];
-            };
+            }
             for(let i : number = 0; i < additionalTipsLen; i++) {
                 newTips[origTipsLen + i] = tips[i];
-            };
+            }
             this.__tips = newTips;
         }
         return this;
@@ -367,7 +362,7 @@ _ErrorDescriptionBuilder["__class"] = "freemarker.core._ErrorDescriptionBuilder"
 export namespace _ErrorDescriptionBuilder {
 
     export class Blaming {
-        blamer : TemplateObject;
+        blamer : /*TemplateObject*/any;
 
         roleOfblamed : ParameterRole;
 
@@ -382,6 +377,6 @@ export namespace _ErrorDescriptionBuilder {
 
 
 
-var __Function = Function;
+
 
 _ErrorDescriptionBuilder.LOG_$LI$();

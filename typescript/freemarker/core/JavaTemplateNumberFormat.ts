@@ -1,9 +1,8 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateModelException } from '../template/TemplateModelException';
-import { TemplateNumberModel } from '../template/TemplateNumberModel';
-import { BackwardCompatibleTemplateNumberFormat } from './BackwardCompatibleTemplateNumberFormat';
-import { UnformattableValueException } from './UnformattableValueException';
-import { TemplateFormatUtil } from './TemplateFormatUtil';
+import {TemplateNumberModel} from '../template/TemplateNumberModel';
+import {BackwardCompatibleTemplateNumberFormat} from './BackwardCompatibleTemplateNumberFormat';
+import {UnformattableValueException} from './UnformattableValueException';
+import {TemplateFormatUtil} from './TemplateFormatUtil';
 
 export class JavaTemplateNumberFormat extends BackwardCompatibleTemplateNumberFormat {
     /*private*/ formatString : string;
@@ -41,7 +40,7 @@ export class JavaTemplateNumberFormat extends BackwardCompatibleTemplateNumberFo
             return this.javaNumberFormat.format(number);
         } catch(e) {
             throw new UnformattableValueException("This format can\'t format the " + number + " number. Reason: " + e.message, e);
-        };
+        }
     }
 
     /**
@@ -73,4 +72,4 @@ JavaTemplateNumberFormat["__class"] = "freemarker.core.JavaTemplateNumberFormat"
 
 
 
-var __Function = Function;
+

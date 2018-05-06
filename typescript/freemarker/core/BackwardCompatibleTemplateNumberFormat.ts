@@ -1,7 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateNumberFormat } from './TemplateNumberFormat';
-import { UnformattableValueException } from './UnformattableValueException';
-import { TemplateNumberModel } from '../template/TemplateNumberModel';
+import {TemplateNumberFormat} from './TemplateNumberFormat';
 
 /**
  * Only exists for emulating pre-2.3.24-IcI {@code ?string} behavior.

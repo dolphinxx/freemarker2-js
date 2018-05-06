@@ -1,7 +1,6 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateDateFormatFactory } from './TemplateDateFormatFactory';
-import { DateUtil } from '../template/utility/DateUtil';
-import { Environment } from './Environment';
+import {TemplateDateFormatFactory} from './TemplateDateFormatFactory';
+import {DateUtil} from '../template/utility/DateUtil';
 
 export abstract class ISOLikeTemplateDateFormatFactory extends TemplateDateFormatFactory {
     static DATE_TO_CAL_CONVERTER_KEY : any; public static DATE_TO_CAL_CONVERTER_KEY_$LI$() : any { if(ISOLikeTemplateDateFormatFactory.DATE_TO_CAL_CONVERTER_KEY == null) ISOLikeTemplateDateFormatFactory.DATE_TO_CAL_CONVERTER_KEY = <any>new Object(); return ISOLikeTemplateDateFormatFactory.DATE_TO_CAL_CONVERTER_KEY; };
@@ -12,7 +11,7 @@ export abstract class ISOLikeTemplateDateFormatFactory extends TemplateDateForma
         super();
     }
 
-    public getISOBuiltInCalendar(env : Environment) : DateUtil.DateToISO8601CalendarFactory {
+    public getISOBuiltInCalendar(env : /*Environment*/any) : DateUtil.DateToISO8601CalendarFactory {
         let r : DateUtil.DateToISO8601CalendarFactory = <DateUtil.DateToISO8601CalendarFactory><any>env.getCustomState(ISOLikeTemplateDateFormatFactory.DATE_TO_CAL_CONVERTER_KEY_$LI$());
         if(r == null) {
             r = new DateUtil.TrivialDateToISO8601CalendarFactory();
@@ -21,7 +20,7 @@ export abstract class ISOLikeTemplateDateFormatFactory extends TemplateDateForma
         return r;
     }
 
-    public getCalendarFieldsToDateCalculator(env : Environment) : DateUtil.CalendarFieldsToDateConverter {
+    public getCalendarFieldsToDateCalculator(env : /*Environment*/any) : DateUtil.CalendarFieldsToDateConverter {
         let r : DateUtil.CalendarFieldsToDateConverter = <DateUtil.CalendarFieldsToDateConverter><any>env.getCustomState(ISOLikeTemplateDateFormatFactory.CAL_TO_DATE_CONVERTER_KEY_$LI$());
         if(r == null) {
             r = new DateUtil.TrivialCalendarFieldsToDateConverter();
@@ -34,7 +33,7 @@ ISOLikeTemplateDateFormatFactory["__class"] = "freemarker.core.ISOLikeTemplateDa
 
 
 
-var __Function = Function;
+
 
 ISOLikeTemplateDateFormatFactory.CAL_TO_DATE_CONVERTER_KEY_$LI$();
 

@@ -1,7 +1,6 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateModel } from './TemplateModel';
-import { TemplateModelException } from './TemplateModelException';
-import { TemplateSequenceModel } from './TemplateSequenceModel';
+import {TemplateModel} from './TemplateModel';
+import {TemplateSequenceModel} from './TemplateSequenceModel';
 
 /**
  * "node" template language data type: an object that is a node in a tree.
@@ -61,4 +60,4 @@ export interface TemplateNodeModel extends TemplateModel {
 }
 
 
-var __Function = Function;
+

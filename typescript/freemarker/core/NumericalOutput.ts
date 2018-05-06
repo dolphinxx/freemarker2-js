@@ -1,14 +1,13 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateException } from '../template/TemplateException';
-import { StringUtil } from '../template/utility/StringUtil';
-import { Writer } from '../../java/io/Writer';
-import { Interpolation } from './Interpolation';
-import { Expression } from './Expression';
-import { MarkupOutputFormat } from './MarkupOutputFormat';
-import { TemplateElement } from './TemplateElement';
-import { Environment } from './Environment';
-import { StringBuilder } from '../../java/lang/StringBuilder';
-import { ParameterRole } from './ParameterRole';
+import {StringUtil} from '../template/utility/StringUtil';
+import {Writer} from '../../java/io/Writer';
+import {Interpolation} from './Interpolation';
+import {Expression} from './Expression';
+import {MarkupOutputFormat} from './MarkupOutputFormat';
+import {TemplateElement} from './TemplateElement';
+import {Environment} from './Environment';
+import {StringBuilder} from '../../java/lang/StringBuilder';
+import {ParameterRole} from './ParameterRole';
 
 /**
  * An interpolation like <code>#{numericalExp; format}</code>; it's deprecated, but still supported. The class name is
@@ -88,7 +87,7 @@ export class NumericalOutput extends Interpolation {
      * @param {Environment} env
      * @return {Array}
      */
-    accept(env : Environment) : TemplateElement[] {
+    accept(env : /*Environment*/any) : TemplateElement[] {
         let s : string = this.calculateInterpolatedStringOrMarkup(env);
         let out : Writer = env.getOut();
         if(this.autoEscapeOutputFormat != null) {
@@ -104,7 +103,7 @@ export class NumericalOutput extends Interpolation {
      * @param {Environment} env
      * @return {String}
      */
-    calculateInterpolatedStringOrMarkup(env : Environment) : string {
+    calculateInterpolatedStringOrMarkup(env : /*Environment*/any) : string {
         let num : number = this.expression.evalToNumber(env);
         let fmth : NumericalOutput.FormatHolder = this.formatCache;
         if(fmth == null || !fmth.locale.equals(env.getLocale())) {
@@ -123,7 +122,7 @@ export class NumericalOutput extends Interpolation {
                     this.formatCache = new NumericalOutput.FormatHolder(fmt, env.getLocale());
                     fmth = this.formatCache;
                 }
-            };
+            }
         }
         let s : string = fmth.format.format(num);
         return s;
@@ -257,4 +256,4 @@ export namespace NumericalOutput {
 
 
 
-var __Function = Function;
+

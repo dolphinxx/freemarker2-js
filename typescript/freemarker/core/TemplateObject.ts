@@ -1,10 +1,7 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { Template } from '../template/Template';
-import { Token } from './Token';
-import { TemplateElements } from './TemplateElements';
-import { TemplateElement } from './TemplateElement';
-import { _MessageUtil } from './_MessageUtil';
-import { ParameterRole } from './ParameterRole';
+import {Token} from './Token';
+import {ParameterRole} from './ParameterRole';
+import {ClassUtil} from "../template/utility/ClassUtil";
 
 /**
  * <b>Internal API - subject to change:</b> Represent a node in the parsed template (either a {link Expression} or a
@@ -18,7 +15,7 @@ import { ParameterRole } from './ParameterRole';
  * @class
  */
 export abstract class TemplateObject {
-    /*private*/ template : Template;
+    /*private*/ template : /*Template*/any;
 
     beginColumn : number;
 
@@ -35,12 +32,12 @@ export abstract class TemplateObject {
      */
     static RUNTIME_EVAL_LINE_DISPLACEMENT : number = -1000000000;
 
-    setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_Token(template : Template, begin : Token, end : Token) {
+    setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_Token(template : /*Template*/any, begin : Token, end : Token) {
         this.setLocation$freemarker_template_Template$int$int$int$int(template, begin.beginColumn, begin.beginLine, end.endColumn, end.endLine);
     }
 
-    setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_Token$freemarker_core_TemplateElements(template : Template, tagBegin : Token, tagEnd : Token, children : TemplateElements) {
-        let lastChild : TemplateElement = children.getLast();
+    setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_Token$freemarker_core_TemplateElements(template : /*Template*/any, tagBegin : Token, tagEnd : Token, children : /*TemplateElements*/any) {
+        let lastChild : /*TemplateElement*/any = children.getLast();
         if(lastChild != null) {
             this.setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_TemplateObject(template, tagBegin, lastChild);
         } else {
@@ -48,19 +45,19 @@ export abstract class TemplateObject {
         }
     }
 
-    setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_TemplateObject(template : Template, begin : Token, end : TemplateObject) {
+    setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_TemplateObject(template : /*Template*/any, begin : Token, end : TemplateObject) {
         this.setLocation$freemarker_template_Template$int$int$int$int(template, begin.beginColumn, begin.beginLine, end.endColumn, end.endLine);
     }
 
-    setLocation$freemarker_template_Template$freemarker_core_TemplateObject$freemarker_core_Token(template : Template, begin : TemplateObject, end : Token) {
+    setLocation$freemarker_template_Template$freemarker_core_TemplateObject$freemarker_core_Token(template : /*Template*/any, begin : TemplateObject, end : Token) {
         this.setLocation$freemarker_template_Template$int$int$int$int(template, begin.beginColumn, begin.beginLine, end.endColumn, end.endLine);
     }
 
-    setLocation$freemarker_template_Template$freemarker_core_TemplateObject$freemarker_core_TemplateObject(template : Template, begin : TemplateObject, end : TemplateObject) {
+    setLocation$freemarker_template_Template$freemarker_core_TemplateObject$freemarker_core_TemplateObject(template : /*Template*/any, begin : TemplateObject, end : TemplateObject) {
         this.setLocation$freemarker_template_Template$int$int$int$int(template, begin.beginColumn, begin.beginLine, end.endColumn, end.endLine);
     }
 
-    public setLocation$freemarker_template_Template$int$int$int$int(template : Template, beginColumn : number, beginLine : number, endColumn : number, endLine : number) {
+    public setLocation$freemarker_template_Template$int$int$int$int(template : /*Template*/any, beginColumn : number, beginLine : number, endColumn : number, endLine : number) {
         this.template = template;
         this.beginColumn = beginColumn;
         this.beginLine = beginLine;
@@ -69,9 +66,10 @@ export abstract class TemplateObject {
     }
 
     public setLocation(template? : any, beginColumn? : any, beginLine? : any, endColumn? : any, endLine? : any) : any {
+        const Template = require('../template/Template').Template;
         if(((template != null && template instanceof <any>Template) || template === null) && ((typeof beginColumn === 'number') || beginColumn === null) && ((typeof beginLine === 'number') || beginLine === null) && ((typeof endColumn === 'number') || endColumn === null) && ((typeof endLine === 'number') || endLine === null)) {
             return <any>this.setLocation$freemarker_template_Template$int$int$int$int(template, beginColumn, beginLine, endColumn, endLine);
-        } else if(((template != null && template instanceof <any>Template) || template === null) && ((beginColumn != null && beginColumn instanceof <any>Token) || beginColumn === null) && ((beginLine != null && beginLine instanceof <any>Token) || beginLine === null) && ((endColumn != null && endColumn instanceof <any>TemplateElements) || endColumn === null) && endLine === undefined) {
+        } else if(((template != null && template instanceof <any>Template) || template === null) && ((beginColumn != null && beginColumn instanceof <any>Token) || beginColumn === null) && ((beginLine != null && beginLine instanceof <any>Token) || beginLine === null) && ((ClassUtil.isInstanceOf(endColumn, 'freemarker.core.TemplateElements')) || endColumn === null) && endLine === undefined) {
             return <any>this.setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_Token$freemarker_core_TemplateElements(template, beginColumn, beginLine, endColumn);
         } else if(((template != null && template instanceof <any>Template) || template === null) && ((beginColumn != null && beginColumn instanceof <any>Token) || beginColumn === null) && ((beginLine != null && beginLine instanceof <any>Token) || beginLine === null) && endColumn === undefined && endLine === undefined) {
             return <any>this.setLocation$freemarker_template_Template$freemarker_core_Token$freemarker_core_Token(template, beginColumn, beginLine);
@@ -106,7 +104,7 @@ export abstract class TemplateObject {
      * @return {String}
      */
     public getStartLocation() : string {
-        return _MessageUtil.formatLocationForEvaluationError$freemarker_template_Template$int$int(this.template, this.beginLine, this.beginColumn);
+        return (require('./_MessageUtil')._MessageUtil).formatLocationForEvaluationError$freemarker_template_Template$int$int(this.template, this.beginLine, this.beginColumn);
     }
 
     /**
@@ -119,7 +117,7 @@ export abstract class TemplateObject {
     }
 
     public getEndLocation() : string {
-        return _MessageUtil.formatLocationForEvaluationError$freemarker_template_Template$int$int(this.template, this.endLine, this.endColumn);
+        return (require('./_MessageUtil')._MessageUtil).formatLocationForEvaluationError$freemarker_template_Template$int$int(this.template, this.endLine, this.endColumn);
     }
 
     /**
@@ -151,7 +149,7 @@ export abstract class TemplateObject {
             s = this.getSource();
         } catch(e) {
             s = null;
-        };
+        }
         return s != null?s:this.getCanonicalForm();
     }
 
@@ -176,7 +174,7 @@ export abstract class TemplateObject {
         return true;
     }
 
-    public getTemplate() : Template {
+    public getTemplate() : /*Template*/any {
         return this.template;
     }
 
@@ -265,4 +263,4 @@ TemplateObject["__class"] = "freemarker.core.TemplateObject";
 
 
 
-var __Function = Function;
+

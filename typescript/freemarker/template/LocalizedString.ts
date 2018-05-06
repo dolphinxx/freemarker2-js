@@ -1,7 +1,6 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { Environment } from '../core/Environment';
-import { TemplateScalarModel } from './TemplateScalarModel';
-import { TemplateModelException } from './TemplateModelException';
+import {Environment} from '../core/Environment';
+import {TemplateScalarModel} from './TemplateScalarModel';
 
 /**
  * An abstract base class for scalars that vary by locale.
@@ -39,4 +38,4 @@ LocalizedString["__interfaces"] = ["freemarker.template.TemplateScalarModel","fr
 
 
 
-var __Function = Function;
+

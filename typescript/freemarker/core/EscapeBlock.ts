@@ -1,12 +1,11 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateException } from '../template/TemplateException';
-import { TemplateElement } from './TemplateElement';
-import { Expression } from './Expression';
-import { TemplateElements } from './TemplateElements';
-import { Environment } from './Environment';
-import { StringBuilder } from '../../java/lang/StringBuilder';
-import { _CoreStringUtils } from './_CoreStringUtils';
-import { ParameterRole } from './ParameterRole';
+import {TemplateElement} from './TemplateElement';
+import {Expression} from './Expression';
+import {TemplateElements} from './TemplateElements';
+import {Environment} from './Environment';
+import {StringBuilder} from '../../java/lang/StringBuilder';
+import {_CoreStringUtils} from './_CoreStringUtils';
+import {ParameterRole} from './ParameterRole';
 
 /**
  * Representation of the compile-time #escape directive.
@@ -40,7 +39,7 @@ export class EscapeBlock extends TemplateElement {
      * @param {Environment} env
      * @return {Array}
      */
-    accept(env : Environment) : TemplateElement[] {
+    accept(env : /*Environment*/any) : TemplateElement[] {
         return this.getChildBuffer();
     }
 
@@ -140,4 +139,4 @@ EscapeBlock["__class"] = "freemarker.core.EscapeBlock";
 
 
 
-var __Function = Function;
+

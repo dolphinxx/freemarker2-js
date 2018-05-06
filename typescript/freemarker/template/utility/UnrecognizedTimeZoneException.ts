@@ -1,5 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { StringUtil } from './StringUtil';
+import {StringUtil} from './StringUtil';
 
 /**
  * Indicates that the time zone name is not recognized.
@@ -27,4 +27,4 @@ UnrecognizedTimeZoneException["__interfaces"] = ["java.io.Serializable"];
 
 
 
-var __Function = Function;
+

@@ -1,9 +1,8 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateConfiguration } from '../core/TemplateConfiguration';
-import { Configuration } from '../template/Configuration';
-import { TemplateConfigurationFactory } from './TemplateConfigurationFactory';
-import { TemplateSourceMatcher } from './TemplateSourceMatcher';
-import { TemplateConfigurationFactoryException } from './TemplateConfigurationFactoryException';
+import {TemplateConfiguration} from '../core/TemplateConfiguration';
+import {Configuration} from '../template/Configuration';
+import {TemplateConfigurationFactory} from './TemplateConfigurationFactory';
+import {TemplateSourceMatcher} from './TemplateSourceMatcher';
 
 /**
  * Returns the given {link TemplateConfiguration} directly, or another {link TemplateConfigurationFactory}'s result, when

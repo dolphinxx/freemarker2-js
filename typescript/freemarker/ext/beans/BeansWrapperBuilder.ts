@@ -1,8 +1,8 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { Version } from '../../template/Version';
-import { BeansWrapperConfiguration } from './BeansWrapperConfiguration';
-import { BeansWrapper } from './BeansWrapper';
-import { _BeansAPI } from './_BeansAPI';
+import {Version} from '../../template/Version';
+import {BeansWrapperConfiguration} from './BeansWrapperConfiguration';
+import {BeansWrapper} from './BeansWrapper';
+import {_BeansAPI} from './_BeansAPI';
 
 /**
  * See {link BeansWrapperConfiguration#BeansWrapperConfiguration(Version)}.
@@ -11,7 +11,7 @@ import { _BeansAPI } from './_BeansAPI';
  * @extends BeansWrapperConfiguration
  */
 export class BeansWrapperBuilder extends BeansWrapperConfiguration {
-    static INSTANCE_CACHE : Map<any, any>; public static INSTANCE_CACHE_$LI$() : Map { if(BeansWrapperBuilder.INSTANCE_CACHE == null) BeansWrapperBuilder.INSTANCE_CACHE = <any>(new Map<any, any>()); return BeansWrapperBuilder.INSTANCE_CACHE; };
+    static INSTANCE_CACHE : Map<any, any>; public static INSTANCE_CACHE_$LI$() : Map<any, any> { if(BeansWrapperBuilder.INSTANCE_CACHE == null) BeansWrapperBuilder.INSTANCE_CACHE = <any>(new Map<any, any>()); return BeansWrapperBuilder.INSTANCE_CACHE; };
 
     static INSTANCE_CACHE_REF_QUEUE : ReferenceQueue; public static INSTANCE_CACHE_REF_QUEUE_$LI$() : ReferenceQueue { if(BeansWrapperBuilder.INSTANCE_CACHE_REF_QUEUE == null) BeansWrapperBuilder.INSTANCE_CACHE_REF_QUEUE = <any>(new ReferenceQueue<BeansWrapper>()); return BeansWrapperBuilder.INSTANCE_CACHE_REF_QUEUE; };
 
@@ -25,14 +25,14 @@ export class BeansWrapperBuilder extends BeansWrapperConfiguration {
     static clearInstanceCache() {
         {
             /* clear */(<any>BeansWrapperBuilder.INSTANCE_CACHE_$LI$()).clear();
-        };
+        }
     }
 
     /**
      * For unit testing only
      * @return {Map}
      */
-    static getInstanceCache() : Map {
+    static getInstanceCache() : Map<any, any> {
         return BeansWrapperBuilder.INSTANCE_CACHE_$LI$();
     }
 
@@ -70,7 +70,7 @@ export namespace BeansWrapperBuilder {
 
 
 
-var __Function = Function;
+
 
 BeansWrapperBuilder.BeansWrapperFactory.INSTANCE_$LI$();
 

@@ -1,17 +1,15 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateModelException } from '../../template/TemplateModelException';
-import { ClassUtil } from '../../template/utility/ClassUtil';
-import { NullArgumentException } from '../../template/utility/NullArgumentException';
-import { ReflectionCallableMemberDescriptor } from './ReflectionCallableMemberDescriptor';
-import { System } from '../../../java/lang/System';
-import { TypeFlags } from './TypeFlags';
-import { MaybeEmptyCallableMemberDescriptor } from './MaybeEmptyCallableMemberDescriptor';
-import { ArgumentTypes } from './ArgumentTypes';
-import { CallableMemberDescriptor } from './CallableMemberDescriptor';
-import { MaybeEmptyMemberAndArguments } from './MaybeEmptyMemberAndArguments';
-import { BeansWrapper } from './BeansWrapper';
-import { Character } from '../../../java/lang/Character';
-import { _MethodUtil } from './_MethodUtil';
+import {ClassUtil} from '../../template/utility/ClassUtil';
+import {NullArgumentException} from '../../template/utility/NullArgumentException';
+import {ReflectionCallableMemberDescriptor} from './ReflectionCallableMemberDescriptor';
+import {System} from '../../../java/lang/System';
+import {TypeFlags} from './TypeFlags';
+import {MaybeEmptyCallableMemberDescriptor} from './MaybeEmptyCallableMemberDescriptor';
+import {ArgumentTypes} from './ArgumentTypes';
+import {CallableMemberDescriptor} from './CallableMemberDescriptor';
+import {MaybeEmptyMemberAndArguments} from './MaybeEmptyMemberAndArguments';
+import {BeansWrapper} from './BeansWrapper';
+import {_MethodUtil} from './_MethodUtil';
 
 /**
  * Encapsulates the rules and data structures (including cache) for choosing of the best matching callable member for
@@ -78,7 +76,7 @@ export abstract class OverloadedMethodsSubset {
             } else {
                 for(let paramIdx : number = 0; paramIdx < prepedParamTypes.length; paramIdx++) {
                     unwrappingHints[paramIdx] = this.getCommonSupertypeForUnwrappingHint(unwrappingHints[paramIdx], prepedParamTypes[paramIdx]);
-                };
+                }
             }
         }
         let typeFlagsByParamIdx : number[] = OverloadedMethodsSubset.ALL_ZEROS_ARRAY_$LI$();
@@ -91,13 +89,13 @@ export abstract class OverloadedMethodsSubset {
                     }
                     typeFlagsByParamIdx[paramIdx] = typeFlags;
                 }
-            };
+            }
             this.mergeInTypesFlags(paramCount, typeFlagsByParamIdx);
         }
         this.afterWideningUnwrappingHints(this.bugfixed?prepedParamTypes:this.unwrappingHintsByParamCount[paramCount], typeFlagsByParamIdx);
     }
 
-    getUnwrappingHintsByParamCount() : Array {
+    getUnwrappingHintsByParamCount() : Array<any> {
         return this.unwrappingHintsByParamCount;
     }
 
@@ -111,7 +109,7 @@ export abstract class OverloadedMethodsSubset {
                     memberDesc = argTypes.getMostSpecific(this.memberDescs, varArg);
                     /* put */this.argTypesToMemberDescCache.set(argTypes, memberDesc);
                 }
-            };
+            }
         }
         return memberDesc;
     }
@@ -184,9 +182,9 @@ export abstract class OverloadedMethodsSubset {
                 if(_MethodUtil.isMoreOrSameSpecificParameterType(clazz, maxClazz, false, 0) !== 0) {
                     maxIter.remove();
                 }
-            };
+            }
             /* add */(max.push(clazz)>0);
-        };
+        }
         if(/* size */(<number>max.length) > 1) {
             if(this.bugfixed) {
                 for(let it : any = /* iterator */((a) => { var i = 0; return { next: function() { return i<a.length?a[i++]:null; }, hasNext: function() { return i<a.length; }}})(max); it.hasNext(); ) {
@@ -198,7 +196,7 @@ export abstract class OverloadedMethodsSubset {
                             it.remove();
                         }
                     }
-                };
+                }
                 /* remove */(a => { let index = a.indexOf("java.lang.Cloneable"); if(index>=0) { a.splice(index, 1); return true; } else { return false; }})(max);
                 if(/* size */(<number>max.length) > 1) {
                     /* remove */(a => { let index = a.indexOf("java.io.Serializable"); if(index>=0) { a.splice(index, 1); return true; } else { return false; }})(max);
@@ -260,7 +258,7 @@ export abstract class OverloadedMethodsSubset {
                 dstTypeFlagsByParamIdx = (s => { let a=[]; while(s-->0) a.push(0); return a; })(dstParamCount);
                 for(let paramIdx : number = 0; paramIdx < dstParamCount; paramIdx++) {
                     dstTypeFlagsByParamIdx[paramIdx] = srcTypeFlagsByParamIdx[paramIdx < srcParamCount?paramIdx:srcParamCount - 1];
-                };
+                }
             } else {
                 dstTypeFlagsByParamIdx = OverloadedMethodsSubset.ALL_ZEROS_ARRAY_$LI$();
             }
@@ -289,7 +287,7 @@ export abstract class OverloadedMethodsSubset {
                     }
                     dstTypeFlagsByParamIdx[paramIdx] = mergedTypeFlags;
                 }
-            };
+            }
         }
     }
 
@@ -309,14 +307,14 @@ export abstract class OverloadedMethodsSubset {
                     }
                 }
             }
-        };
+        }
     }
 }
 OverloadedMethodsSubset["__class"] = "freemarker.ext.beans.OverloadedMethodsSubset";
 
 
 
-var __Function = Function;
+
 
 OverloadedMethodsSubset.ZERO_PARAM_COUNT_TYPE_FLAGS_ARRAY_$LI$();
 

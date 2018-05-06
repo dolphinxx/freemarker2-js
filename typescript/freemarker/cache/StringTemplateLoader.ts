@@ -1,11 +1,10 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { StringUtil } from '../template/utility/StringUtil';
-import { Reader } from '../../java/io/Reader';
-import { StringReader } from '../../java/io/StringReader';
-import { TemplateLoader } from './TemplateLoader';
-import { System } from '../../java/lang/System';
-import { StringBuilder } from '../../java/lang/StringBuilder';
-import { TemplateLoaderUtils } from './TemplateLoaderUtils';
+import {StringUtil} from '../template/utility/StringUtil';
+import {Reader} from '../../java/io/Reader';
+import {StringReader} from '../../java/io/StringReader';
+import {TemplateLoader} from './TemplateLoader';
+import {StringBuilder} from '../../java/lang/StringBuilder';
+import {TemplateLoaderUtils} from './TemplateLoaderUtils';
 
 /**
  * A {link TemplateLoader} that uses a {link Map} with {link String}-s as its source of

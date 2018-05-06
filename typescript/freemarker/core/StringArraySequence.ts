@@ -1,8 +1,8 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { SimpleScalar } from '../template/SimpleScalar';
-import { TemplateModel } from '../template/TemplateModel';
-import { TemplateScalarModel } from '../template/TemplateScalarModel';
-import { TemplateSequenceModel } from '../template/TemplateSequenceModel';
+import {SimpleScalar} from '../template/SimpleScalar';
+import {TemplateModel} from '../template/TemplateModel';
+import {TemplateScalarModel} from '../template/TemplateScalarModel';
+import {TemplateSequenceModel} from '../template/TemplateSequenceModel';
 
 /**
  * Warning: Does not copy the argument array!
@@ -14,10 +14,10 @@ export class StringArraySequence implements TemplateSequenceModel {
 
     /*private*/ array : TemplateScalarModel[];
 
-    public constructor(stringArray : Array) {
+    public constructor(stringArray : Array<any>) {
         if(this.stringArray===undefined) this.stringArray = null;
         if(this.array===undefined) this.array = null;
-        this.stringArray = stringArray<any>;
+        this.stringArray = stringArray;
     }
 
     public get(s? : any) : any {
@@ -48,4 +48,4 @@ StringArraySequence["__interfaces"] = ["freemarker.template.TemplateSequenceMode
 
 
 
-var __Function = Function;
+

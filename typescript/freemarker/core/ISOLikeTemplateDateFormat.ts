@@ -1,17 +1,15 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateDateModel } from '../template/TemplateDateModel';
-import { TemplateModelException } from '../template/TemplateModelException';
-import { DateUtil } from '../template/utility/DateUtil';
-import { StringUtil } from '../template/utility/StringUtil';
-import { TemplateDateFormat } from './TemplateDateFormat';
-import { ISOLikeTemplateDateFormatFactory } from './ISOLikeTemplateDateFormatFactory';
-import { Environment } from './Environment';
-import { Boolean } from '../../java/lang/Boolean';
-import { InvalidFormatParametersException } from './InvalidFormatParametersException';
-import { UnknownDateTypeFormattingUnsupportedException } from './UnknownDateTypeFormattingUnsupportedException';
-import { TemplateFormatUtil } from './TemplateFormatUtil';
-import { UnparsableValueException } from './UnparsableValueException';
-import { BugException } from './BugException';
+import {TemplateDateModel} from '../template/TemplateDateModel';
+import {DateUtil} from '../template/utility/DateUtil';
+import {StringUtil} from '../template/utility/StringUtil';
+import {TemplateDateFormat} from './TemplateDateFormat';
+import {ISOLikeTemplateDateFormatFactory} from './ISOLikeTemplateDateFormatFactory';
+import {Environment} from './Environment';
+import {InvalidFormatParametersException} from './InvalidFormatParametersException';
+import {UnknownDateTypeFormattingUnsupportedException} from './UnknownDateTypeFormattingUnsupportedException';
+import {TemplateFormatUtil} from './TemplateFormatUtil';
+import {UnparsableValueException} from './UnparsableValueException';
+import {BugException} from './BugException';
 
 /**
  * @param {String} formatString The value of the ..._format setting, like "iso nz".
@@ -44,7 +42,7 @@ export abstract class ISOLikeTemplateDateFormat extends TemplateDateFormat {
 
     accuracy : number;
 
-    public constructor(formatString : string, parsingStart : number, dateType : number, zonelessInput : boolean, timeZone : string, factory : ISOLikeTemplateDateFormatFactory, env : Environment) {
+    public constructor(formatString : string, parsingStart : number, dateType : number, zonelessInput : boolean, timeZone : string, factory : ISOLikeTemplateDateFormatFactory, env : /*Environment*/any) {
         super();
         if(this.factory===undefined) this.factory = null;
         if(this.env===undefined) this.env = null;
@@ -144,7 +142,7 @@ export abstract class ISOLikeTemplateDateFormat extends TemplateDateFormat {
                 }
                 afterSeparator = false;
             }
-        };
+        }
         this.accuracy = accuracy;
         this.showZoneOffset = showZoneOffset;
         this.forceUTC = forceUTC;
@@ -198,7 +196,7 @@ export abstract class ISOLikeTemplateDateFormat extends TemplateDateFormat {
             }
         } catch(e) {
             throw new UnparsableValueException(e.message, e);
-        };
+        }
     }
 
     abstract parseDate(s : string, tz : string, calToDateConverter : DateUtil.CalendarFieldsToDateConverter) : Date;
@@ -252,4 +250,4 @@ ISOLikeTemplateDateFormat["__class"] = "freemarker.core.ISOLikeTemplateDateForma
 
 
 
-var __Function = Function;
+

@@ -1,8 +1,7 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { Environment } from '../core/Environment';
-import { Logger } from '../log/Logger';
-import { AttemptExceptionReporter } from './AttemptExceptionReporter';
-import { TemplateException } from './TemplateException';
+import {Logger} from '../log/Logger';
+import {AttemptExceptionReporter} from './AttemptExceptionReporter';
+import {TemplateException} from './TemplateException';
 
 /**
  * Default {link AttemptExceptionReporter} implementation, factored out from {link AttemptExceptionReporter} so that
@@ -20,7 +19,7 @@ export class LoggingAttemptExceptionReporter implements AttemptExceptionReporter
         this.logAsWarn = logAsWarn;
     }
 
-    public report(te : TemplateException, env : Environment) {
+    public report(te : TemplateException, env : /*Environment*/any) {
         let message : string = "Error executing FreeMarker template part in the #attempt block";
         if(!this.logAsWarn) {
             LoggingAttemptExceptionReporter.LOG_$LI$().error$java_lang_String$java_lang_Throwable(message, te);
@@ -35,6 +34,6 @@ LoggingAttemptExceptionReporter["__interfaces"] = ["freemarker.template.AttemptE
 
 
 
-var __Function = Function;
+
 
 LoggingAttemptExceptionReporter.LOG_$LI$();

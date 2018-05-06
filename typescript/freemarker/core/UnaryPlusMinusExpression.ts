@@ -1,13 +1,12 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { SimpleNumber } from '../template/SimpleNumber';
-import { TemplateException } from '../template/TemplateException';
-import { TemplateModel } from '../template/TemplateModel';
-import { TemplateNumberModel } from '../template/TemplateNumberModel';
-import { Expression } from './Expression';
-import { Environment } from './Environment';
-import { NonNumericalException } from './NonNumericalException';
-import { ArithmeticEngine } from './ArithmeticEngine';
-import { ParameterRole } from './ParameterRole';
+import {SimpleNumber} from '../template/SimpleNumber';
+import {TemplateModel} from '../template/TemplateModel';
+import {TemplateNumberModel} from '../template/TemplateNumberModel';
+import {Expression} from './Expression';
+import {Environment} from './Environment';
+import {NonNumericalException} from './NonNumericalException';
+import {ArithmeticEngine} from './ArithmeticEngine';
+import {ParameterRole} from './ParameterRole';
 
 export class UnaryPlusMinusExpression extends Expression {
     static TYPE_MINUS : number = 0;
@@ -33,14 +32,14 @@ export class UnaryPlusMinusExpression extends Expression {
      * @param {Environment} env
      * @return {*}
      */
-    _eval(env : Environment) : TemplateModel {
+    _eval(env : /*Environment*/any) : TemplateModel {
         let targetModel : TemplateNumberModel = null;
         let tm : TemplateModel = this.target.eval(env);
         try {
             targetModel = <TemplateNumberModel><any>tm;
         } catch(cce) {
             throw new NonNumericalException(this.target, tm, env);
-        };
+        }
         if(!this.isMinus) {
             return targetModel;
         }
@@ -130,4 +129,4 @@ UnaryPlusMinusExpression["__class"] = "freemarker.core.UnaryPlusMinusExpression"
 
 
 
-var __Function = Function;
+

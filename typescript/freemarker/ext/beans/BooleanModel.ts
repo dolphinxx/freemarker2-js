@@ -1,8 +1,8 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateBooleanModel } from '../../template/TemplateBooleanModel';
-import { BeanModel } from './BeanModel';
-import { Boolean } from '../../../java/lang/Boolean';
-import { BeansWrapper } from './BeansWrapper';
+import {TemplateBooleanModel} from '../../template/TemplateBooleanModel';
+import {BeanModel} from './BeanModel';
+import {Boolean} from '../../../java/lang/Boolean';
+import {BeansWrapper} from './BeansWrapper';
 
 /**
  * <p>A class that will wrap instances of {link java.lang.Boolean} into a
@@ -31,4 +31,4 @@ BooleanModel["__interfaces"] = ["freemarker.ext.util.WrapperTemplateModel","free
 
 
 
-var __Function = Function;
+

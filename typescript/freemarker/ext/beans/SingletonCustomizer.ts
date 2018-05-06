@@ -28,4 +28,4 @@
 export interface SingletonCustomizer {}
 
 
-var __Function = Function;
+

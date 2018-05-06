@@ -1,9 +1,8 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { StringUtil } from '../template/utility/StringUtil';
-import { _Java6 } from './_Java6';
-import { _JavaVersions } from './_JavaVersions';
-import { StringBuilder } from '../../java/lang/StringBuilder';
-import { Character } from '../../java/lang/Character';
+import {StringUtil} from '../template/utility/StringUtil';
+import {_JavaVersions} from './_JavaVersions';
+import {StringBuilder} from '../../java/lang/StringBuilder';
+import {Character} from '../../java/lang/Character';
 
 export class ExtendedDecimalFormatParser {
     static __static_initialized : boolean = false;
@@ -104,10 +103,10 @@ export class ExtendedDecimalFormatParser {
                 try {
                     e.initCause((<Error>null));
                 } catch(e2) {
-                };
+                }
             }
             throw pe;
-        };
+        }
         if(this.roundingMode != null) {
             if(_JavaVersions.JAVA_6_$LI$() == null) {
                 throw Object.defineProperty(new Error("Setting rounding mode needs Java 6 or later"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.text.ParseException','java.lang.Exception'] });
@@ -155,7 +154,7 @@ export class ExtendedDecimalFormatParser {
                     handler.handle(this, value);
                 } catch(e) {
                     throw this.newInvalidParameterValueException(name, value, valuePos, e);
-                };
+                }
             }
             this.skipWS();
             if(this.fetchChar(',')) {
@@ -189,7 +188,7 @@ export class ExtendedDecimalFormatParser {
                 sb.append(", ");
             }
             sb.append(legalNameArr[i]);
-        };
+        }
         return Object.defineProperty(new Error(sb.toString()), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.text.ParseException','java.lang.Exception'] });
     }
 
@@ -197,7 +196,7 @@ export class ExtendedDecimalFormatParser {
         let ln : number = this.src.length;
         while((this.pos < ln && this.isWS(this.src.charAt(this.pos)))) {
             this.pos++;
-        };
+        }
     }
 
     fetchChar(fetchedChar : string) : boolean {
@@ -228,7 +227,7 @@ export class ExtendedDecimalFormatParser {
                 break scanUntilEnd;
             }
             this.pos++;
-        };
+        }
         return !firstChar?this.src.substring(startPos, this.pos):null;
     }
 
@@ -261,7 +260,7 @@ export class ExtendedDecimalFormatParser {
                 }
             }
             this.pos++;
-        };
+        }
         if((c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(openedQuot) != 0) {
             throw Object.defineProperty(new Error("The " + openedQuot + " quotation wasn\'t closed when the end of the source was reached."), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.text.ParseException','java.lang.Exception'] });
         }
@@ -296,7 +295,7 @@ export class ExtendedDecimalFormatParser {
                 }
             }
             pos++;
-        };
+        }
         let stdFormatStr : string;
         if(semicolonCnt < 2) {
             stdFormatStr = this.src;
@@ -328,7 +327,7 @@ export class ExtendedDecimalFormatParser {
         let i : number = this.src.length - 1;
         while((i >= 0 && Character.isWhitespace(this.src.charAt(i)))) {
             i--;
-        };
+        }
         let ln : number = i + 1;
         if(this.pos < ln) {
             let qEndPos : number = this.pos + ExtendedDecimalFormatParser.MAX_QUOTATION_LENGTH;
@@ -408,7 +407,7 @@ export namespace ExtendedDecimalFormatParser {
                 parser.multipier = parseFloat(value);
             } catch(e) {
                 throw new ExtendedDecimalFormatParser.InvalidParameterValueException("Malformed integer.");
-            };
+            }
         }
 
         constructor() {
@@ -569,7 +568,7 @@ export namespace ExtendedDecimalFormatParser {
                 currency = Currency.getInstance(value);
             } catch(e) {
                 throw new ExtendedDecimalFormatParser.InvalidParameterValueException("Not a known ISO 4217 code.");
-            };
+            }
             parser.symbols.setCurrency(currency);
         }
 
@@ -583,7 +582,7 @@ export namespace ExtendedDecimalFormatParser {
 
 
 
-var __Function = Function;
+
 
 ExtendedDecimalFormatParser.PARAM_HANDLERS_$LI$();
 

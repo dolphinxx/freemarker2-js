@@ -1,8 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateModel } from './TemplateModel';
-import { TemplateModelException } from './TemplateModelException';
-import { FalseTemplateBooleanModel } from './FalseTemplateBooleanModel';
-import { TrueTemplateBooleanModel } from './TrueTemplateBooleanModel';
+import {TemplateModel} from './TemplateModel';
 
 /**
  * "boolean" template language data type; same as in Java; either {@code true} or {@code false}.
@@ -16,7 +13,7 @@ export interface TemplateBooleanModel extends TemplateModel {
     /**
      * @return {boolean} whether to interpret this object as true or false in a boolean context
      */
-    getAsBoolean() : boolean;
+    getAsBoolean(): boolean;
 }
 
 export namespace TemplateBooleanModel {
@@ -24,14 +21,10 @@ export namespace TemplateBooleanModel {
     /**
      * A singleton object to represent boolean false
      */
-    export let FALSE : TemplateBooleanModel = new FalseTemplateBooleanModel();
+    export let FALSE: TemplateBooleanModel = {getAsBoolean: () => false};
 
     /**
      * A singleton object to represent boolean true
      */
-    export let TRUE : TemplateBooleanModel = new TrueTemplateBooleanModel();
+    export let TRUE: TemplateBooleanModel = {getAsBoolean: () => true};
 }
-
-
-
-var __Function = Function;

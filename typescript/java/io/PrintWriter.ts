@@ -1,12 +1,11 @@
 import {Writer} from './Writer';
 import {PrintStream} from "./PrintStream";
-import {_SecurityUtils} from "../../org/apache/freemarker/core/util/_SecurityUtils";
 import {OutputStream} from "./OutputStream";
 import {OutputStreamWriter} from "./OutputStreamWriter";
 import {BufferedWriter} from "./BufferedWriter";
-import construct = Reflect.construct;
 import {IOException} from "./IOException";
 import {UnsupportedOperationException} from "../lang/UnsupportedOperationException";
+import {System} from "../lang/System";
 
 export class PrintWriter extends Writer {
 
@@ -44,7 +43,7 @@ export class PrintWriter extends Writer {
             this.psOut = <PrintStream> out;
         }
         this.autoFlush = autoFlush;
-        this.lineSeparator = _SecurityUtils.getSystemProperty$java_lang_String$java_lang_String("line.separator", "\n");
+        this.lineSeparator = System.getProperty("line.separator", "\n");
     }
 
 // /**
@@ -576,7 +575,7 @@ export class PrintWriter extends Writer {
         * java.util.Locale#getDefault() Locale.getDefault()}, regardless of any
      * previous invocations of other formatting methods on this object.
      *
-     * @param  format
+     * param  format
      *         A format string as described in <a
      *         href="../util/Formatter.html#syntax">Format string syntax</a>.
      *

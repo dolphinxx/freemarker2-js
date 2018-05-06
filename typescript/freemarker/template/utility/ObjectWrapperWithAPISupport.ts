@@ -1,7 +1,6 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { ObjectWrapper } from '../ObjectWrapper';
-import { TemplateHashModel } from '../TemplateHashModel';
-import { TemplateModelException } from '../TemplateModelException';
+import {ObjectWrapper} from '../ObjectWrapper';
+import {TemplateHashModel} from '../TemplateHashModel';
 
 /**
  * <b>Experimental - subject to change:</b> Implemented by {link ObjectWrapper}-s to help {link TemplateModel}-s to
@@ -26,4 +25,4 @@ export interface ObjectWrapperWithAPISupport extends ObjectWrapper {
 }
 
 
-var __Function = Function;
+

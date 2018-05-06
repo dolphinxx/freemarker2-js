@@ -1,6 +1,6 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateSequenceModel } from './TemplateSequenceModel';
-import { TemplateModel } from './TemplateModel';
+import {TemplateSequenceModel} from './TemplateSequenceModel';
+import {TemplateModel} from './TemplateModel';
 
 /**
  * A sequence that wraps a {link List} of {link TemplateModel}-s. It does not copy the original
@@ -45,4 +45,4 @@ TemplateModelListSequence["__interfaces"] = ["freemarker.template.TemplateSequen
 
 
 
-var __Function = Function;
+

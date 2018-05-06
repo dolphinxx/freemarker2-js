@@ -1,28 +1,22 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { KeyValuePair } from '../template/KeyValuePair';
-import { KeyValuePairIterator } from '../template/KeyValuePairIterator';
-import { MalformedTemplateNameException } from '../template/MalformedTemplateNameException';
-import { SimpleHash } from '../template/SimpleHash';
-import { Template } from '../template/Template';
-import { TemplateBooleanModel } from '../template/TemplateBooleanModel';
-import { TemplateDirectiveBody } from '../template/TemplateDirectiveBody';
-import { TemplateDirectiveModel } from '../template/TemplateDirectiveModel';
-import { TemplateException } from '../template/TemplateException';
-import { TemplateHashModelEx } from '../template/TemplateHashModelEx';
-import { TemplateMethodModelEx } from '../template/TemplateMethodModelEx';
-import { TemplateModel } from '../template/TemplateModel';
-import { TemplateModelException } from '../template/TemplateModelException';
-import { TemplateScalarModel } from '../template/TemplateScalarModel';
-import { TemplateModelUtils } from '../template/utility/TemplateModelUtils';
-import { BuiltinVariable } from './BuiltinVariable';
-import { _MessageUtil } from './_MessageUtil';
-import { Environment } from './Environment';
-import { EvalUtil } from './EvalUtil';
-import { _TemplateModelException } from './_TemplateModelException';
-import { _DelayedAOrAn } from './_DelayedAOrAn';
-import { _DelayedFTLTypeDescription } from './_DelayedFTLTypeDescription';
-import { _DelayedJQuote } from './_DelayedJQuote';
-import { ObjectWrapper } from '../template/ObjectWrapper';
+import {TemplateException} from '../template/TemplateException';
+import {TemplateMethodModelEx} from '../template/TemplateMethodModelEx';
+import {TemplateModel} from '../template/TemplateModel';
+import {TemplateModelException} from '../template/TemplateModelException';
+import {TemplateModelUtils} from '../template/utility/TemplateModelUtils';
+import {BuiltinVariable} from './BuiltinVariable';
+import {_MessageUtil} from './_MessageUtil';
+import {EvalUtil} from './EvalUtil';
+import {_TemplateModelException} from './_TemplateModelException';
+import {_DelayedAOrAn} from './_DelayedAOrAn';
+import {_DelayedFTLTypeDescription} from './_DelayedFTLTypeDescription';
+import {_DelayedJQuote} from './_DelayedJQuote';
+import {Map} from "../../java/util/Map";
+import {SimpleHash} from "../template/SimpleHash";
+import {TemplateBooleanModel} from "../template/TemplateBooleanModel";
+import {TemplateScalarModel} from "../template/TemplateScalarModel";
+import {TemplateDirectiveModel} from "../template/TemplateDirectiveModel";
+import {TemplateDirectiveBody} from "../template/TemplateDirectiveBody";
 
 /**
  * Implements {@code .get_optional_template(name, options)}.
@@ -58,7 +52,7 @@ export class GetOptionalTemplateMethod implements TemplateMethodModelEx {
         if(argCnt < 1 || argCnt > 2) {
             throw _MessageUtil.newArgCntError$java_lang_String$int$int$int(this.methodName, argCnt, 1, 2);
         }
-        let env : Environment = Environment.getCurrentEnvironment();
+        let env : /*Environment*/any = (require('./Environment').Environment).getCurrentEnvironment();
         if(env == null) {
             throw Object.defineProperty(new Error("No freemarer.core.Environment is associated to the current thread."), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.IllegalStateException','java.lang.Object','java.lang.RuntimeException','java.lang.Exception'] });
         }
@@ -68,37 +62,37 @@ export class GetOptionalTemplateMethod implements TemplateMethodModelEx {
             if(!(arg != null && (arg["__interfaces"] != null && arg["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0 || arg.constructor != null && arg.constructor["__interfaces"] != null && arg.constructor["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0))) {
                 throw _MessageUtil.newMethodArgMustBeStringException(this.methodName, 0, arg);
             }
-            let templateName : string = EvalUtil.modelToString(<TemplateScalarModel><any>arg, null, env);
+            let templateName : string = EvalUtil.modelToString(/*<TemplateScalarModel>*/<any>arg, null, env);
             try {
                 absTemplateName = env.toFullTemplateName(env.getCurrentTemplate().getName(), templateName);
             } catch(e) {
                 throw new _TemplateModelException(e, "Failed to convert template path to full path; see cause exception.");
-            };
-        };
-        let options : TemplateHashModelEx;
+            }
+        }
+        let options : /*TemplateHashModelEx*/any;
         if(argCnt > 1) {
             let arg : TemplateModel = <TemplateModel><any>/* get */args[1];
             if(!(arg != null && (arg["__interfaces"] != null && arg["__interfaces"].indexOf("freemarker.template.TemplateHashModelEx") >= 0 || arg.constructor != null && arg.constructor["__interfaces"] != null && arg.constructor["__interfaces"].indexOf("freemarker.template.TemplateHashModelEx") >= 0))) {
                 throw _MessageUtil.newMethodArgMustBeExtendedHashException(this.methodName, 1, arg);
             }
-            options = <TemplateHashModelEx><any>arg;
+            options = /*<TemplateHashModelEx>*/<any>arg;
         } else {
             options = null;
         }
         let encoding : string = null;
         let parse : boolean = true;
         if(options != null) {
-            let kvpi : KeyValuePairIterator = TemplateModelUtils.getKeyValuePairIterator(options);
+            let kvpi : /*KeyValuePairIterator*/any = TemplateModelUtils.getKeyValuePairIterator(options);
             while((kvpi.hasNext())) {
-                let kvp : KeyValuePair = kvpi.next();
+                let kvp : /*KeyValuePair*/any = kvpi.next();
                 let optName : string;
                 {
                     let optNameTM : TemplateModel = kvp.getKey();
                     if(!(optNameTM != null && (optNameTM["__interfaces"] != null && optNameTM["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0 || optNameTM.constructor != null && optNameTM.constructor["__interfaces"] != null && optNameTM.constructor["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0))) {
                         throw _MessageUtil.newMethodArgInvalidValueException(this.methodName, 1, "All keys in the options hash must be strings, but found ", new _DelayedAOrAn(new _DelayedFTLTypeDescription(optNameTM)));
                     }
-                    optName = (<TemplateScalarModel><any>optNameTM).getAsString();
-                };
+                    optName = (/*<TemplateScalarModel>*/<any>optNameTM).getAsString();
+                }
                 let optValue : TemplateModel = kvp.getValue();
                 if(/* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(GetOptionalTemplateMethod.OPTION_ENCODING,optName))) {
                     encoding = this.getStringOption(GetOptionalTemplateMethod.OPTION_ENCODING, optValue);
@@ -107,14 +101,14 @@ export class GetOptionalTemplateMethod implements TemplateMethodModelEx {
                 } else {
                     throw _MessageUtil.newMethodArgInvalidValueException(this.methodName, 1, "Unsupported option ", new _DelayedJQuote(optName), "; valid names are: ", new _DelayedJQuote(GetOptionalTemplateMethod.OPTION_ENCODING), ", ", new _DelayedJQuote(GetOptionalTemplateMethod.OPTION_PARSE), ".");
                 }
-            };
+            }
         }
-        let template : Template;
+        let template : /*Template*/any;
         try {
             template = env.getTemplateForInclusion(absTemplateName, encoding, parse, true);
         } catch(e) {
             throw new _TemplateModelException(e, "I/O error when trying to load optional template ", new _DelayedJQuote(absTemplateName), "; see cause exception");
-        };
+        }
         let result : SimpleHash = new SimpleHash(env.getObjectWrapper());
         result.put$java_lang_String$java_lang_Object(GetOptionalTemplateMethod.RESULT_EXISTS, template != null);
         if(template != null) {
@@ -147,7 +141,7 @@ export namespace GetOptionalTemplateMethod {
 
     export class GetOptionalTemplateMethod$0 implements TemplateDirectiveModel {
         public __parent: any;
-        public execute(env : Environment, params : Map<any, any>, loopVars : TemplateModel[], body : TemplateDirectiveBody) {
+        public execute(env : /*Environment*/any, params : Map<any, any>, loopVars : TemplateModel[], body : TemplateDirectiveBody) {
             if(!/* isEmpty */((m) => { if(m.entries==null) m.entries=[]; return m.entries.length == 0; })(<any>params)) {
                 throw new TemplateException("This directive supports no parameters.", env);
             }
@@ -187,7 +181,7 @@ export namespace GetOptionalTemplateMethod {
                     throw new _TemplateModelException(e, "Failed to import loaded template; see cause exception");
 
                 }
-            };
+            }
         }
 
         constructor(__parent: any, private env: any, private template: any) {
@@ -201,7 +195,7 @@ export namespace GetOptionalTemplateMethod {
 
 
 
-var __Function = Function;
+
 
 GetOptionalTemplateMethod.INSTANCE_CC_$LI$();
 

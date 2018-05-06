@@ -1,32 +1,32 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { BugException } from '../core/BugException';
-import { Configurable } from '../core/Configurable';
-import { Environment } from '../core/Environment';
-import { FMParser } from '../core/FMParser';
-import { LibraryLoad } from '../core/LibraryLoad';
-import { Macro } from '../core/Macro';
-import { OutputFormat } from '../core/OutputFormat';
-import { ParseException } from '../core/ParseException';
-import { ParserConfiguration } from '../core/ParserConfiguration';
-import { TemplateElement } from '../core/TemplateElement';
-import { TextBlock } from '../core/TextBlock';
-import { TokenMgrError } from '../core/TokenMgrError';
-import { _CoreAPI } from '../core/_CoreAPI';
-import { BufferedReader } from '../../java/io/BufferedReader';
-import { Reader } from '../../java/io/Reader';
-import { StringReader } from '../../java/io/StringReader';
-import { StringWriter } from '../../java/io/StringWriter';
-import { Writer } from '../../java/io/Writer';
-import { Version } from './Version';
-import { Configuration } from './Configuration';
-import { _TemplateAPI } from './_TemplateAPI';
-import { TemplateException } from './TemplateException';
-import { ObjectWrapper } from './ObjectWrapper';
-import { TemplateNodeModel } from './TemplateNodeModel';
-import { TemplateHashModel } from './TemplateHashModel';
-import { SimpleHash } from './SimpleHash';
-import { TemplateModel } from './TemplateModel';
-import { StringBuilder } from '../../java/lang/StringBuilder';
+import {BugException} from '../core/BugException';
+import {Configurable} from '../core/Configurable';
+import {FMParser} from '../core/FMParser';
+import {LibraryLoad} from '../core/LibraryLoad';
+import {OutputFormat} from '../core/OutputFormat';
+import {ParseException} from '../core/ParseException';
+import {ParserConfiguration} from '../core/ParserConfiguration';
+import {TemplateElement} from '../core/TemplateElement';
+import {TextBlock} from '../core/TextBlock';
+import {_CoreAPI} from '../core/_CoreAPI';
+import {BufferedReader} from '../../java/io/BufferedReader';
+import {Reader} from '../../java/io/Reader';
+import {StringReader} from '../../java/io/StringReader';
+import {StringWriter} from '../../java/io/StringWriter';
+import {Writer} from '../../java/io/Writer';
+import {Version} from './Version';
+import {Configuration} from './Configuration';
+import {_TemplateAPI} from './_TemplateAPI';
+import {TemplateException} from './TemplateException';
+import {ObjectWrapper} from './ObjectWrapper';
+import {TemplateNodeModel} from './TemplateNodeModel';
+import {TemplateHashModel} from './TemplateHashModel';
+import {SimpleHash} from './SimpleHash';
+import {TemplateModel} from './TemplateModel';
+import {StringBuilder} from '../../java/lang/StringBuilder';
+import {PrintStream} from "../../java/io/PrintStream";
+import {FilterReader} from "../../java/io/FilterReader";
+import {Map} from "../../java/util/Map";
 
 /**
  * Same as {link #Template(String, String, Reader, Configuration, String)}, but also specifies a
@@ -154,7 +154,7 @@ export class Template extends Configurable {
                     if(!(reader != null && reader instanceof <any>BufferedReader) && !(reader != null && reader instanceof <any>StringReader)) {
                         reader = new BufferedReader(reader, Template.READER_BUFFER_SIZE);
                     }
-                    ltbReader = (() => { let __o : any = new Template.LineTableBuilder(reader, actualParserConfiguration); __o.__delegate = new Template.LineTableBuilder(this, reader, actualParserConfiguration); return __o; })();
+                    ltbReader = (() => { let __o : any = new Template.LineTableBuilder(this, reader, actualParserConfiguration); __o.__delegate = new Template.LineTableBuilder(this, reader, actualParserConfiguration); return __o; })();
                     reader = ltbReader;
                     try {
                         let parser : FMParser = new FMParser(this, reader, actualParserConfiguration);
@@ -168,22 +168,20 @@ export class Template extends Configurable {
                                 throw exc;
                             }
                             this.rootElement = null;
-                        };
+                        }
                         this.actualTagSyntax = parser._getLastTagSyntax();
                         this.interpolationSyntax = actualParserConfiguration.getInterpolationSyntax();
                         this.actualNamingConvention = parser._getLastNamingConvention();
                     } catch(exc) {
                         throw exc.toParseException(this);
-                    };
+                    }
                 } catch(e) {
                     e.setTemplateName(this.getSourceName());
                     throw e;
                 } finally {
                     reader.close();
-                };
+                }
                 ltbReader.throwFailure();
-                this.namespaceURIToPrefixLookup = Collections.unmodifiableMap<any, any>(this.namespaceURIToPrefixLookup);
-                this.prefixToNamespaceURILookup = Collections.unmodifiableMap<any, any>(this.prefixToNamespaceURILookup);
             })();
         } else if(((typeof name === 'string') || name === null) && ((typeof sourceName === 'string') || sourceName === null) && ((reader != null && reader instanceof <any>Reader) || reader === null) && ((cfg != null && cfg instanceof <any>Configuration) || cfg === null) && ((typeof customParserConfiguration === 'string') || customParserConfiguration === null) && encoding === undefined) {
             let __args = Array.prototype.slice.call(arguments);
@@ -240,7 +238,7 @@ export class Template extends Configurable {
                         if(!(reader != null && reader instanceof <any>BufferedReader) && !(reader != null && reader instanceof <any>StringReader)) {
                             reader = new BufferedReader(reader, Template.READER_BUFFER_SIZE);
                         }
-                        ltbReader = (() => { let __o : any = new Template.LineTableBuilder(reader, actualParserConfiguration); __o.__delegate = new Template.LineTableBuilder(this, reader, actualParserConfiguration); return __o; })();
+                        ltbReader = (() => { let __o : any = new Template.LineTableBuilder(this, reader, actualParserConfiguration); __o.__delegate = new Template.LineTableBuilder(this, reader, actualParserConfiguration); return __o; })();
                         reader = ltbReader;
                         try {
                             let parser : FMParser = new FMParser(this, reader, actualParserConfiguration);
@@ -254,22 +252,20 @@ export class Template extends Configurable {
                                     throw exc;
                                 }
                                 this.rootElement = null;
-                            };
+                            }
                             this.actualTagSyntax = parser._getLastTagSyntax();
                             this.interpolationSyntax = actualParserConfiguration.getInterpolationSyntax();
                             this.actualNamingConvention = parser._getLastNamingConvention();
                         } catch(exc) {
                             throw exc.toParseException(this);
-                        };
+                        }
                     } catch(e) {
                         e.setTemplateName(this.getSourceName());
                         throw e;
                     } finally {
                         reader.close();
-                    };
+                    }
                     ltbReader.throwFailure();
-                    this.namespaceURIToPrefixLookup = Collections.unmodifiableMap<any, any>(this.namespaceURIToPrefixLookup);
-                    this.prefixToNamespaceURILookup = Collections.unmodifiableMap<any, any>(this.prefixToNamespaceURILookup);
                 })();
             }
         } else if(((typeof name === 'string') || name === null) && ((typeof sourceName === 'string') || sourceName === null) && ((reader != null && reader instanceof <any>Configuration) || reader === null) && ((cfg != null && (cfg["__interfaces"] != null && cfg["__interfaces"].indexOf("freemarker.core.ParserConfiguration") >= 0 || cfg.constructor != null && cfg.constructor["__interfaces"] != null && cfg.constructor["__interfaces"].indexOf("freemarker.core.ParserConfiguration") >= 0)) || cfg === null) && customParserConfiguration === undefined && encoding === undefined) {
@@ -374,7 +370,7 @@ export class Template extends Configurable {
                             if(!(reader != null && reader instanceof <any>BufferedReader) && !(reader != null && reader instanceof <any>StringReader)) {
                                 reader = new BufferedReader(reader, Template.READER_BUFFER_SIZE);
                             }
-                            ltbReader = (() => { let __o : any = new Template.LineTableBuilder(reader, actualParserConfiguration); __o.__delegate = new Template.LineTableBuilder(this, reader, actualParserConfiguration); return __o; })();
+                            ltbReader = (() => { let __o : any = new Template.LineTableBuilder(this, reader, actualParserConfiguration); __o.__delegate = new Template.LineTableBuilder(this, reader, actualParserConfiguration); return __o; })();
                             reader = ltbReader;
                             try {
                                 let parser : FMParser = new FMParser(this, reader, actualParserConfiguration);
@@ -388,22 +384,22 @@ export class Template extends Configurable {
                                         throw exc;
                                     }
                                     this.rootElement = null;
-                                };
+                                }
                                 this.actualTagSyntax = parser._getLastTagSyntax();
                                 this.interpolationSyntax = actualParserConfiguration.getInterpolationSyntax();
                                 this.actualNamingConvention = parser._getLastNamingConvention();
                             } catch(exc) {
                                 throw exc.toParseException(this);
-                            };
+                            }
                         } catch(e) {
                             e.setTemplateName(this.getSourceName());
                             throw e;
                         } finally {
                             reader.close();
-                        };
+                        }
                         ltbReader.throwFailure();
-                        this.namespaceURIToPrefixLookup = Collections.unmodifiableMap<any, any>(this.namespaceURIToPrefixLookup);
-                        this.prefixToNamespaceURILookup = Collections.unmodifiableMap<any, any>(this.prefixToNamespaceURILookup);
+                        this.namespaceURIToPrefixLookup = this.namespaceURIToPrefixLookup;
+                        this.prefixToNamespaceURILookup = this.prefixToNamespaceURILookup;
                     })();
                 }
             }
@@ -464,7 +460,7 @@ export class Template extends Configurable {
                             if(!(reader != null && reader instanceof <any>BufferedReader) && !(reader != null && reader instanceof <any>StringReader)) {
                                 reader = new BufferedReader(reader, Template.READER_BUFFER_SIZE);
                             }
-                            ltbReader = (() => { let __o : any = new Template.LineTableBuilder(reader, actualParserConfiguration); __o.__delegate = new Template.LineTableBuilder(this, reader, actualParserConfiguration); return __o; })();
+                            ltbReader = (() => { let __o : any = new Template.LineTableBuilder(this, reader, actualParserConfiguration); __o.__delegate = new Template.LineTableBuilder(this, reader, actualParserConfiguration); return __o; })();
                             reader = ltbReader;
                             try {
                                 let parser : FMParser = new FMParser(this, reader, actualParserConfiguration);
@@ -478,22 +474,20 @@ export class Template extends Configurable {
                                         throw exc;
                                     }
                                     this.rootElement = null;
-                                };
+                                }
                                 this.actualTagSyntax = parser._getLastTagSyntax();
                                 this.interpolationSyntax = actualParserConfiguration.getInterpolationSyntax();
                                 this.actualNamingConvention = parser._getLastNamingConvention();
                             } catch(exc) {
                                 throw exc.toParseException(this);
-                            };
+                            }
                         } catch(e) {
                             e.setTemplateName(this.getSourceName());
                             throw e;
                         } finally {
                             reader.close();
-                        };
+                        }
                         ltbReader.throwFailure();
-                        this.namespaceURIToPrefixLookup = Collections.unmodifiableMap<any, any>(this.namespaceURIToPrefixLookup);
-                        this.prefixToNamespaceURILookup = Collections.unmodifiableMap<any, any>(this.prefixToNamespaceURILookup);
                     })();
                 }
             }
@@ -559,7 +553,7 @@ export class Template extends Configurable {
                                 if(!(reader != null && reader instanceof <any>BufferedReader) && !(reader != null && reader instanceof <any>StringReader)) {
                                     reader = new BufferedReader(reader, Template.READER_BUFFER_SIZE);
                                 }
-                                ltbReader = (() => { let __o : any = new Template.LineTableBuilder(reader, actualParserConfiguration); __o.__delegate = new Template.LineTableBuilder(this, reader, actualParserConfiguration); return __o; })();
+                                ltbReader = (() => { let __o : any = new Template.LineTableBuilder(this, reader, actualParserConfiguration); __o.__delegate = new Template.LineTableBuilder(this, reader, actualParserConfiguration); return __o; })();
                                 reader = ltbReader;
                                 try {
                                     let parser : FMParser = new FMParser(this, reader, actualParserConfiguration);
@@ -573,22 +567,20 @@ export class Template extends Configurable {
                                             throw exc;
                                         }
                                         this.rootElement = null;
-                                    };
+                                    }
                                     this.actualTagSyntax = parser._getLastTagSyntax();
                                     this.interpolationSyntax = actualParserConfiguration.getInterpolationSyntax();
                                     this.actualNamingConvention = parser._getLastNamingConvention();
                                 } catch(exc) {
                                     throw exc.toParseException(this);
-                                };
+                                }
                             } catch(e) {
                                 e.setTemplateName(this.getSourceName());
                                 throw e;
                             } finally {
                                 reader.close();
-                            };
+                            }
                             ltbReader.throwFailure();
-                            this.namespaceURIToPrefixLookup = Collections.unmodifiableMap<any, any>(this.namespaceURIToPrefixLookup);
-                            this.prefixToNamespaceURILookup = Collections.unmodifiableMap<any, any>(this.prefixToNamespaceURILookup);
                         })();
                     }
                 }
@@ -658,7 +650,7 @@ export class Template extends Configurable {
                                     if(!(reader != null && reader instanceof <any>BufferedReader) && !(reader != null && reader instanceof <any>StringReader)) {
                                         reader = new BufferedReader(reader, Template.READER_BUFFER_SIZE);
                                     }
-                                    ltbReader = (() => { let __o : any = new Template.LineTableBuilder(reader, actualParserConfiguration); __o.__delegate = new Template.LineTableBuilder(this, reader, actualParserConfiguration); return __o; })();
+                                    ltbReader = (() => { let __o : any = new Template.LineTableBuilder(this, reader, actualParserConfiguration); __o.__delegate = new Template.LineTableBuilder(this, reader, actualParserConfiguration); return __o; })();
                                     reader = ltbReader;
                                     try {
                                         let parser : FMParser = new FMParser(this, reader, actualParserConfiguration);
@@ -672,22 +664,20 @@ export class Template extends Configurable {
                                                 throw exc;
                                             }
                                             this.rootElement = null;
-                                        };
+                                        }
                                         this.actualTagSyntax = parser._getLastTagSyntax();
                                         this.interpolationSyntax = actualParserConfiguration.getInterpolationSyntax();
                                         this.actualNamingConvention = parser._getLastNamingConvention();
                                     } catch(exc) {
                                         throw exc.toParseException(this);
-                                    };
+                                    }
                                 } catch(e) {
                                     e.setTemplateName(this.getSourceName());
                                     throw e;
                                 } finally {
                                     reader.close();
-                                };
+                                }
                                 ltbReader.throwFailure();
-                                this.namespaceURIToPrefixLookup = Collections.unmodifiableMap<any, any>(this.namespaceURIToPrefixLookup);
-                                this.prefixToNamespaceURILookup = Collections.unmodifiableMap<any, any>(this.prefixToNamespaceURILookup);
                             })();
                         }
                     }
@@ -807,7 +797,7 @@ export class Template extends Configurable {
                                     if(!(reader != null && reader instanceof <any>BufferedReader) && !(reader != null && reader instanceof <any>StringReader)) {
                                         reader = new BufferedReader(reader, Template.READER_BUFFER_SIZE);
                                     }
-                                    ltbReader = (() => { let __o : any = new Template.LineTableBuilder(reader, actualParserConfiguration); __o.__delegate = new Template.LineTableBuilder(this, reader, actualParserConfiguration); return __o; })();
+                                    ltbReader = (() => { let __o : any = new Template.LineTableBuilder(this, reader, actualParserConfiguration); __o.__delegate = new Template.LineTableBuilder(this, reader, actualParserConfiguration); return __o; })();
                                     reader = ltbReader;
                                     try {
                                         let parser : FMParser = new FMParser(this, reader, actualParserConfiguration);
@@ -821,22 +811,20 @@ export class Template extends Configurable {
                                                 throw exc;
                                             }
                                             this.rootElement = null;
-                                        };
+                                        }
                                         this.actualTagSyntax = parser._getLastTagSyntax();
                                         this.interpolationSyntax = actualParserConfiguration.getInterpolationSyntax();
                                         this.actualNamingConvention = parser._getLastNamingConvention();
                                     } catch(exc) {
                                         throw exc.toParseException(this);
-                                    };
+                                    }
                                 } catch(e) {
                                     e.setTemplateName(this.getSourceName());
                                     throw e;
                                 } finally {
                                     reader.close();
-                                };
+                                }
                                 ltbReader.throwFailure();
-                                this.namespaceURIToPrefixLookup = Collections.unmodifiableMap<any, any>(this.namespaceURIToPrefixLookup);
-                                this.prefixToNamespaceURILookup = Collections.unmodifiableMap<any, any>(this.prefixToNamespaceURILookup);
                             })();
                         }
                     }
@@ -855,7 +843,7 @@ export class Template extends Configurable {
             template = new Template(name, sourceName, new StringReader("X"), config);
         } catch(e) {
             throw new BugException("Plain text template creation failed", e);
-        };
+        }
         _CoreAPI.replaceText(<TextBlock>template.rootElement, content);
         return template;
     }
@@ -881,9 +869,9 @@ export class Template extends Configurable {
     static normalizeTemplateLanguageVersion(incompatibleImprovements : Version) : Version {
         _TemplateAPI.checkVersionNotNullAndSupported(incompatibleImprovements);
         let v : number = incompatibleImprovements.intValue();
-        if(v < _TemplateAPI.VERSION_INT_2_3_19_$LI$()) {
+        if(v < /*_TemplateAPI.VERSION_INT_2_3_19_$LI$()*/2003019) {
             return Configuration.VERSION_2_3_0_$LI$();
-        } else if(v > _TemplateAPI.VERSION_INT_2_3_21_$LI$()) {
+        } else if(v > /*_TemplateAPI.VERSION_INT_2_3_21_$LI$()*/2003021) {
             return Configuration.VERSION_2_3_21_$LI$();
         } else {
             return incompatibleImprovements;
@@ -895,7 +883,7 @@ export class Template extends Configurable {
     }
 
     public process$java_lang_Object$java_io_Writer$freemarker_template_ObjectWrapper$freemarker_template_TemplateNodeModel(dataModel : any, out : Writer, wrapper : ObjectWrapper, rootNode : TemplateNodeModel) {
-        let env : Environment = this.createProcessingEnvironment$java_lang_Object$java_io_Writer$freemarker_template_ObjectWrapper(dataModel, out, wrapper);
+        let env : any = this.createProcessingEnvironment$java_lang_Object$java_io_Writer$freemarker_template_ObjectWrapper(dataModel, out, wrapper);
         if(rootNode != null) {
             env.setCurrentVisitorNode(rootNode);
         }
@@ -929,7 +917,7 @@ export class Template extends Configurable {
         this.createProcessingEnvironment$java_lang_Object$java_io_Writer$freemarker_template_ObjectWrapper(dataModel, out, wrapper).process();
     }
 
-    public createProcessingEnvironment$java_lang_Object$java_io_Writer$freemarker_template_ObjectWrapper(dataModel : any, out : Writer, wrapper : ObjectWrapper) : Environment {
+    public createProcessingEnvironment$java_lang_Object$java_io_Writer$freemarker_template_ObjectWrapper(dataModel : any, out : Writer, wrapper : ObjectWrapper) : any {
         let dataModelHash : TemplateHashModel;
         if(dataModel != null && (dataModel["__interfaces"] != null && dataModel["__interfaces"].indexOf("freemarker.template.TemplateHashModel") >= 0 || dataModel.constructor != null && dataModel.constructor["__interfaces"] != null && dataModel.constructor["__interfaces"].indexOf("freemarker.template.TemplateHashModel") >= 0)) {
             dataModelHash = <TemplateHashModel><any>dataModel;
@@ -950,7 +938,7 @@ export class Template extends Configurable {
                 }
             }
         }
-        return new Environment(this, dataModelHash, out);
+        return new (require('../core/Environment'))(this, dataModelHash, out);
     }
 
     /**
@@ -1004,7 +992,7 @@ export class Template extends Configurable {
         } else throw new Error('invalid overload');
     }
 
-    public createProcessingEnvironment$java_lang_Object$java_io_Writer(dataModel : any, out : Writer) : Environment {
+    public createProcessingEnvironment$java_lang_Object$java_io_Writer(dataModel : any, out : Writer) : any {
         return this.createProcessingEnvironment$java_lang_Object$java_io_Writer$freemarker_template_ObjectWrapper(dataModel, out, null);
     }
 
@@ -1019,7 +1007,7 @@ export class Template extends Configurable {
             this.dump$java_io_Writer(sw);
         } catch(ioe) {
             throw Object.defineProperty(new Error(ioe.message), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.lang.RuntimeException','java.lang.Exception'] });
-        };
+        }
         return sw.toString();
     }
 
@@ -1265,7 +1253,7 @@ export class Template extends Configurable {
      * @deprecated Should only be used internally, and might will be removed later.
      * @param {Macro} macro
      */
-    public addMacro(macro : Macro) {
+    public addMacro(macro : any/*Macro*/) {
         /* put */this.macros.set(macro.getName(), macro);
     }
 
@@ -1305,7 +1293,7 @@ export class Template extends Configurable {
             if(i < /* size */(<number>this.lines.length)) {
                 buf.append(/* get */this.lines[i]);
             }
-        };
+        }
         let lastLineLength : number = /* get */this.lines[endLine].toString().length;
         let trailingCharsToDelete : number = lastLineLength - endColumn - 1;
         buf.delete(0, beginColumn);
@@ -1442,9 +1430,9 @@ export class Template extends Configurable {
                     element = elem;
                     continue mainloop;
                 }
-            };
+            }
             break;
-        };
+        }
         return /* isEmpty */(elements.length == 0)?null:elements;
     }
 }
@@ -1459,8 +1447,8 @@ export namespace Template {
      * @extends FilterReader
      * @class
      */
-    export class LineTableBuilder {
-        public __parent: any;
+    export class LineTableBuilder extends FilterReader{
+        public __parent: Template;
         tabSize : number;
 
         lineBuf : StringBuilder;
@@ -1474,7 +1462,8 @@ export namespace Template {
          */
         failure : Error;
 
-        constructor(__parent: any, r : Reader, parserConfiguration : ParserConfiguration) {
+        constructor(__parent: Template, r : Reader, parserConfiguration : ParserConfiguration) {
+            super(r);
             this.__parent = __parent;
             if(this.tabSize===undefined) this.tabSize = 0;
             this.lineBuf = new StringBuilder("");
@@ -1502,12 +1491,12 @@ export namespace Template {
 
         public read$() : number {
             try {
-                let c : number = this.in.read();
+                let c : number = this.reader.read();
                 this.handleChar(c);
                 return c;
             } catch(e) {
                 throw this.rememberException(e);
-            };
+            }
         }
 
         rememberException(e : Error) : Error {
@@ -1525,15 +1514,15 @@ export namespace Template {
 
         public read$char_A$int$int(cbuf : string[], off : number, len : number) : number {
             try {
-                let numchars : number = this.in.read(cbuf, off, len);
+                let numchars : number = this.reader.read(cbuf, off, len);
                 for(let i : number = off; i < off + numchars; i++) {
                     let c : string = cbuf[i];
                     this.handleChar((c).charCodeAt(0));
-                };
+                }
                 return numchars;
             } catch(e) {
                 throw this.rememberException(e);
-            };
+            }
         }
 
         /**
@@ -1578,7 +1567,7 @@ export namespace Template {
                 let numSpaces : number = this.tabSize - (this.lineBuf.length() % this.tabSize);
                 for(let i : number = 0; i < numSpaces; i++) {
                     this.lineBuf.append(' ');
-                };
+                }
             } else {
                 this.lineBuf.append(String.fromCharCode(c));
             }
@@ -1668,7 +1657,3 @@ export namespace Template {
 
 
 }
-
-
-
-var __Function = Function;

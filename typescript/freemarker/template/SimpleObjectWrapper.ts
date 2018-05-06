@@ -1,9 +1,9 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { DefaultObjectWrapper } from './DefaultObjectWrapper';
-import { Version } from './Version';
-import { TemplateModel } from './TemplateModel';
-import { TemplateModelException } from './TemplateModelException';
-import { TemplateHashModel } from './TemplateHashModel';
+import {DefaultObjectWrapper} from './DefaultObjectWrapper';
+import {Version} from './Version';
+import {TemplateModel} from './TemplateModel';
+import {TemplateModelException} from './TemplateModelException';
+import {TemplateHashModel} from './TemplateHashModel';
 
 /**
  * @param {Version} incompatibleImprovements see in {link BeansWrapper#BeansWrapper(Version)}.
@@ -49,6 +49,6 @@ SimpleObjectWrapper["__interfaces"] = ["freemarker.template.utility.WriteProtect
 
 
 
-var __Function = Function;
+
 
 SimpleObjectWrapper.instance_$LI$();

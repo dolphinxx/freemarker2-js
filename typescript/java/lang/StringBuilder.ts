@@ -19,7 +19,7 @@ export class StringBuilder extends AbstractStringBuilder implements CharSequence
             super(s);
         } else if (((s != null && (s["__interfaces"] != null && s["__interfaces"].indexOf("java.lang.CharSequence") >= 0 || s.constructor != null && s.constructor["__interfaces"] != null && s.constructor["__interfaces"].indexOf("java.lang.CharSequence") >= 0 || typeof s === "string")) || s === null)) {
             let __args = Array.prototype.slice.call(arguments);
-            super(/* valueOf */new String(s).toString());
+            super(/* valueOf */String(s));
         } else if (((typeof s === 'number') || s === null)) {
             let __args = Array.prototype.slice.call(arguments);
             let ignoredCapacity: any = __args[0];
@@ -41,7 +41,7 @@ export class StringBuilder extends AbstractStringBuilder implements CharSequence
     }
 
     public append$char_A(x: string[]): StringBuilder {
-        this.string += /* valueOf */new String(x).toString();
+        this.string += /* valueOf */String(x);
         return this;
     }
 
@@ -59,7 +59,7 @@ export class StringBuilder extends AbstractStringBuilder implements CharSequence
             return <any>this.append$char_A(x);
         } else if (((typeof x === 'string') || x === null) && start === undefined && len === undefined) {
             return <any>this.append$java_lang_String(x);
-        } else if (((x != null && x instanceof <any>java.lang.StringBuffer) || x === null) && start === undefined && len === undefined) {
+        } else if (((x != null && x instanceof <any>StringBuilder) || x === null) && start === undefined && len === undefined) {
             return <any>this.append$java_lang_StringBuffer(x);
         } else if (((x != null && (x["__interfaces"] != null && x["__interfaces"].indexOf("java.lang.CharSequence") >= 0 || x.constructor != null && x.constructor["__interfaces"] != null && x.constructor["__interfaces"].indexOf("java.lang.CharSequence") >= 0 || typeof x === "string")) || x === null) && start === undefined && len === undefined) {
             return <any>this.append$java_lang_CharSequence(x);
@@ -120,7 +120,7 @@ export class StringBuilder extends AbstractStringBuilder implements CharSequence
         return this;
     }
 
-    public append$java_lang_StringBuffer(x: java.lang.StringBuffer): StringBuilder {
+    public append$java_lang_StringBuffer(x: StringBuilder): StringBuilder {
         this.string += x;
         return this;
     }
@@ -141,16 +141,16 @@ export class StringBuilder extends AbstractStringBuilder implements CharSequence
     }
 
     public insert$int$boolean(index: number, x: boolean): StringBuilder {
-        return this.insert$int$java_lang_CharSequence(index, /* valueOf */new String(x).toString());
+        return this.insert$int$java_lang_CharSequence(index, /* valueOf */String(x).toString());
     }
 
     public insert$int$char(index: number, x: string): StringBuilder {
-        this.replace0(index, index, /* valueOf */new String(x).toString());
+        this.replace0(index, index, /* valueOf */String(x).toString());
         return this;
     }
 
     public insert$int$char_A(index: number, x: string[]): StringBuilder {
-        return this.insert$int$java_lang_CharSequence(index, /* valueOf */new String(x).toString());
+        return this.insert$int$java_lang_CharSequence(index, /* valueOf */String(x).toString());
     }
 
     public insert$int$char_A$int$int(index: number, x: string[], offset: number, len: number): StringBuilder {
@@ -194,23 +194,23 @@ export class StringBuilder extends AbstractStringBuilder implements CharSequence
     }
 
     public insert$int$double(index: number, x: number): StringBuilder {
-        return this.insert$int$java_lang_CharSequence(index, /* valueOf */new String(x).toString());
+        return this.insert$int$java_lang_CharSequence(index, /* valueOf */String(x).toString());
     }
 
     public insert$int$float(index: number, x: number): StringBuilder {
-        return this.insert$int$java_lang_CharSequence(index, /* valueOf */new String(x).toString());
+        return this.insert$int$java_lang_CharSequence(index, /* valueOf */String(x).toString());
     }
 
     public insert$int$int(index: number, x: number): StringBuilder {
-        return this.insert$int$java_lang_CharSequence(index, /* valueOf */new String(x).toString());
+        return this.insert$int$java_lang_CharSequence(index, /* valueOf */String(x).toString());
     }
 
     public insert$int$long(index: number, x: number): StringBuilder {
-        return this.insert$int$java_lang_CharSequence(index, /* valueOf */new String(x).toString());
+        return this.insert$int$java_lang_CharSequence(index, /* valueOf */String(x).toString());
     }
 
     public insert$int$java_lang_Object(index: number, x: any): StringBuilder {
-        return this.insert$int$java_lang_CharSequence(index, /* valueOf */new String(x).toString());
+        return this.insert$int$java_lang_CharSequence(index, /* valueOf */String(x).toString());
     }
 
     public insert$int$java_lang_String(index: number, x: string): StringBuilder {

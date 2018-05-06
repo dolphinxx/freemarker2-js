@@ -1,8 +1,6 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateElement } from './TemplateElement';
-import { ParseException } from './ParseException';
-import { Environment } from './Environment';
-import { ParameterRole } from './ParameterRole';
+import {TemplateElement} from './TemplateElement';
+import {ParameterRole} from './ParameterRole';
 
 /**
  * Encapsulates an array of <tt>TemplateElement</tt> objects.
@@ -51,7 +49,7 @@ export class MixedContent extends TemplateElement {
      * @param {Environment} env
      * @return {Array}
      */
-    accept(env : Environment) : TemplateElement[] {
+    accept(env : /*Environment*/any) : TemplateElement[] {
         return this.getChildBuffer();
     }
 
@@ -88,7 +86,7 @@ export class MixedContent extends TemplateElement {
             if(!this.getChild(i).isOutputCacheable()) {
                 return false;
             }
-        };
+        }
         return true;
     }
 
@@ -147,4 +145,4 @@ MixedContent["__class"] = "freemarker.core.MixedContent";
 
 
 
-var __Function = Function;
+

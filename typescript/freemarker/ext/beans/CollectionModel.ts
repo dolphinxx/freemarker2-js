@@ -1,14 +1,14 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { ModelFactory } from '../util/ModelFactory';
-import { ObjectWrapper } from '../../template/ObjectWrapper';
-import { TemplateCollectionModel } from '../../template/TemplateCollectionModel';
-import { TemplateModel } from '../../template/TemplateModel';
-import { TemplateModelException } from '../../template/TemplateModelException';
-import { TemplateModelIterator } from '../../template/TemplateModelIterator';
-import { TemplateSequenceModel } from '../../template/TemplateSequenceModel';
-import { StringModel } from './StringModel';
-import { BeansWrapper } from './BeansWrapper';
-import { IteratorModel } from './IteratorModel';
+import {ModelFactory} from '../util/ModelFactory';
+import {ObjectWrapper} from '../../template/ObjectWrapper';
+import {TemplateCollectionModel} from '../../template/TemplateCollectionModel';
+import {TemplateModel} from '../../template/TemplateModel';
+import {TemplateModelException} from '../../template/TemplateModelException';
+import {TemplateModelIterator} from '../../template/TemplateModelIterator';
+import {TemplateSequenceModel} from '../../template/TemplateSequenceModel';
+import {StringModel} from './StringModel';
+import {BeansWrapper} from './BeansWrapper';
+import {IteratorModel} from './IteratorModel';
 
 /**
  * Creates a new model that wraps the specified collection object.
@@ -42,7 +42,7 @@ export class CollectionModel extends StringModel implements TemplateCollectionMo
                 return this.wrap(/* get */(<Array<any>><any>this.object)[index]);
             } catch(e) {
                 return null;
-            };
+            }
         } else {
             throw new TemplateModelException("Underlying collection is not a list, it\'s " + /* getName */(c => c["__class"]?c["__class"]:c["name"])((<any>this.object.constructor)));
         }
@@ -96,6 +96,6 @@ export namespace CollectionModel {
 
 
 
-var __Function = Function;
+
 
 CollectionModel.FACTORY_$LI$();

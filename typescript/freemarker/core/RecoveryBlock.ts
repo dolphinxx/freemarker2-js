@@ -1,9 +1,9 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateElement } from './TemplateElement';
-import { TemplateElements } from './TemplateElements';
-import { Environment } from './Environment';
-import { StringBuilder } from '../../java/lang/StringBuilder';
-import { ParameterRole } from './ParameterRole';
+import {TemplateElement} from './TemplateElement';
+import {TemplateElements} from './TemplateElements';
+import {Environment} from './Environment';
+import {StringBuilder} from '../../java/lang/StringBuilder';
+import {ParameterRole} from './ParameterRole';
 
 export class RecoveryBlock extends TemplateElement {
     constructor(children : TemplateElements) {
@@ -16,7 +16,7 @@ export class RecoveryBlock extends TemplateElement {
      * @param {Environment} env
      * @return {Array}
      */
-    accept(env : Environment) : TemplateElement[] {
+    accept(env : /*Environment*/any) : TemplateElement[] {
         return this.getChildBuffer();
     }
 
@@ -89,4 +89,4 @@ RecoveryBlock["__class"] = "freemarker.core.RecoveryBlock";
 
 
 
-var __Function = Function;
+

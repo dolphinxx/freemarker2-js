@@ -1,6 +1,6 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { ObjectWrapperAndUnwrapper } from '../ObjectWrapperAndUnwrapper';
-import { ObjectWrapperWithAPISupport } from './ObjectWrapperWithAPISupport';
+import {ObjectWrapperAndUnwrapper} from '../ObjectWrapperAndUnwrapper';
+import {ObjectWrapperWithAPISupport} from './ObjectWrapperWithAPISupport';
 
 /**
  * <b>Experimental - subject to change:</b> Union of the interfaces that a typical feature rich {link ObjectWrapper} is
@@ -16,4 +16,4 @@ import { ObjectWrapperWithAPISupport } from './ObjectWrapperWithAPISupport';
 export interface RichObjectWrapper extends ObjectWrapperAndUnwrapper, ObjectWrapperWithAPISupport {}
 
 
-var __Function = Function;
+

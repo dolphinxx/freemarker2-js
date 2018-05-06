@@ -24,4 +24,4 @@ _TimeZoneBuilder["__class"] = "freemarker.core._TimeZoneBuilder";
 
 
 
-var __Function = Function;
+

@@ -1,7 +1,7 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { _DelayedOrdinal } from '../../core/_DelayedOrdinal';
-import { MaybeEmptyMemberAndArguments } from './MaybeEmptyMemberAndArguments';
-import { EmptyCallableMemberDescriptor } from './EmptyCallableMemberDescriptor';
+import {_DelayedOrdinal} from '../../core/_DelayedOrdinal';
+import {MaybeEmptyMemberAndArguments} from './MaybeEmptyMemberAndArguments';
+import {EmptyCallableMemberDescriptor} from './EmptyCallableMemberDescriptor';
 
 /**
  * Describes a failed member lookup. Instances of this must not be cached as instances may store the actual argument
@@ -65,7 +65,7 @@ export class EmptyMemberAndArguments extends MaybeEmptyMemberAndArguments {
     /**
      * @return {Array} {@code null} if the error has occurred earlier than the full argument list was unwrapped.
      */
-    getUnwrappedArguments() : Array {
+    getUnwrappedArguments() : Array<any> {
         return this.unwrappedArguments;
     }
 
@@ -77,6 +77,6 @@ EmptyMemberAndArguments["__class"] = "freemarker.ext.beans.EmptyMemberAndArgumen
 
 
 
-var __Function = Function;
+
 
 EmptyMemberAndArguments.WRONG_NUMBER_OF_ARGUMENTS_$LI$();

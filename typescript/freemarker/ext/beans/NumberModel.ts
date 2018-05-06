@@ -1,10 +1,10 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { ModelFactory } from '../util/ModelFactory';
-import { ObjectWrapper } from '../../template/ObjectWrapper';
-import { TemplateModel } from '../../template/TemplateModel';
-import { TemplateNumberModel } from '../../template/TemplateNumberModel';
-import { BeanModel } from './BeanModel';
-import { BeansWrapper } from './BeansWrapper';
+import {ModelFactory} from '../util/ModelFactory';
+import {ObjectWrapper} from '../../template/ObjectWrapper';
+import {TemplateModel} from '../../template/TemplateModel';
+import {TemplateNumberModel} from '../../template/TemplateNumberModel';
+import {BeanModel} from './BeanModel';
+import {BeansWrapper} from './BeansWrapper';
 
 /**
  * Creates a new model that wraps the specified number object.
@@ -50,6 +50,6 @@ export namespace NumberModel {
 
 
 
-var __Function = Function;
+
 
 NumberModel.FACTORY_$LI$();

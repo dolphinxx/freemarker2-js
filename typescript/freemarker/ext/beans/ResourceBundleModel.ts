@@ -1,14 +1,14 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { _DelayedJQuote } from '../../core/_DelayedJQuote';
-import { _TemplateModelException } from '../../core/_TemplateModelException';
-import { ModelFactory } from '../util/ModelFactory';
-import { ObjectWrapper } from '../../template/ObjectWrapper';
-import { TemplateMethodModelEx } from '../../template/TemplateMethodModelEx';
-import { TemplateModel } from '../../template/TemplateModel';
-import { TemplateModelException } from '../../template/TemplateModelException';
-import { BeanModel } from './BeanModel';
-import { BeansWrapper } from './BeansWrapper';
-import { StringModel } from './StringModel';
+import {_DelayedJQuote} from '../../core/_DelayedJQuote';
+import {_TemplateModelException} from '../../core/_TemplateModelException';
+import {ModelFactory} from '../util/ModelFactory';
+import {ObjectWrapper} from '../../template/ObjectWrapper';
+import {TemplateMethodModelEx} from '../../template/TemplateMethodModelEx';
+import {TemplateModel} from '../../template/TemplateModel';
+import {TemplateModelException} from '../../template/TemplateModelException';
+import {BeanModel} from './BeanModel';
+import {BeansWrapper} from './BeansWrapper';
+import {StringModel} from './StringModel';
 
 /**
  * <p>A hash model that wraps a resource bundle. Makes it convenient to store
@@ -50,7 +50,7 @@ export class ResourceBundleModel extends BeanModel implements TemplateMethodMode
             return this.wrap((<ResourceBundle>this.object).getObject(key));
         } catch(e) {
             throw new _TemplateModelException(e, "No ", new _DelayedJQuote(key), " key in the ResourceBundle. Note that conforming to the ResourceBundle Java API, this is an error and not just a missing sub-variable (a null).");
-        };
+        }
     }
 
     /**
@@ -78,7 +78,7 @@ export class ResourceBundleModel extends BeanModel implements TemplateMethodMode
         let e : any = (<ResourceBundle>this.object).getKeys();
         while((e.hasMoreElements())) {
             /* add */((s, e) => { if(s.indexOf(e)==-1) { s.push(e); return true; } else { return false; } })(set, e.nextElement());
-        };
+        }
         return set;
     }
 
@@ -112,7 +112,7 @@ export class ResourceBundleModel extends BeanModel implements TemplateMethodMode
                 throw new TemplateModelException(e.message);
 
             }
-        };
+        }
     }
 
     /**
@@ -124,7 +124,7 @@ export class ResourceBundleModel extends BeanModel implements TemplateMethodMode
     public format(key : string, params : Array) : string {
         {
             if(this.formats == null) this.formats = <any>(new Map<any, any>());
-        };
+        }
         let format : MessageFormat = null;
         {
             format = <MessageFormat>/* get */this.formats.get(key);
@@ -133,10 +133,10 @@ export class ResourceBundleModel extends BeanModel implements TemplateMethodMode
                 format.setLocale(this.getBundle().getLocale());
                 /* put */this.formats.set(key, format);
             }
-        };
+        }
         {
             return format.format(params);
-        };
+        }
     }
 
     public getBundle() : ResourceBundle {
@@ -165,6 +165,6 @@ export namespace ResourceBundleModel {
 
 
 
-var __Function = Function;
+
 
 ResourceBundleModel.FACTORY_$LI$();

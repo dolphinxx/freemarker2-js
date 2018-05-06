@@ -1,6 +1,6 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { UnformattableValueException } from './UnformattableValueException';
-import { _MessageUtil } from './_MessageUtil';
+import {UnformattableValueException} from './UnformattableValueException';
+import {_MessageUtil} from './_MessageUtil';
 
 /**
  * Thrown when a string can't be parsed to {link TemplateDateModel}, because the provided target type is
@@ -22,4 +22,4 @@ UnknownDateTypeParsingUnsupportedException["__interfaces"] = ["java.io.Serializa
 
 
 
-var __Function = Function;
+

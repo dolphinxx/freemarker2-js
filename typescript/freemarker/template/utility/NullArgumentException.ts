@@ -8,8 +8,9 @@
  * @class
  * @extends Error
  */
-export class NullArgumentException {
+export class NullArgumentException extends Error{
     public constructor(argumentName? : any, details? : any) {
+        super();
         if(((typeof argumentName === 'string') || argumentName === null) && ((typeof details === 'string') || details === null)) {
             let __args = Array.prototype.slice.call(arguments);
             (<any>Object).setPrototypeOf(this, NullArgumentException.prototype);
@@ -53,4 +54,4 @@ NullArgumentException["__interfaces"] = ["java.io.Serializable"];
 
 
 
-var __Function = Function;
+

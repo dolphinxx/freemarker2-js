@@ -30,7 +30,7 @@ export abstract class _DelayedConversionToString {
                     this.stringValue = stringValue;
                     this.object = null;
                 }
-            };
+            }
         }
         return stringValue;
     }
@@ -41,4 +41,4 @@ _DelayedConversionToString["__class"] = "freemarker.core._DelayedConversionToStr
 
 
 
-var __Function = Function;
+

@@ -1,7 +1,7 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { PrintWriter } from '../../java/io/PrintWriter';
-import { StackTraceWriter } from './StackTraceWriter';
-import { TemplateException } from './TemplateException';
+import {PrintWriter} from '../../java/io/PrintWriter';
+import {StackTraceWriter} from './StackTraceWriter';
+import {TemplateException} from './TemplateException';
 
 export class PrintWriterStackTraceWriter implements StackTraceWriter {
     /*private*/ out : PrintWriter;
@@ -45,4 +45,4 @@ PrintWriterStackTraceWriter["__interfaces"] = ["freemarker.template.StackTraceWr
 
 
 
-var __Function = Function;
+

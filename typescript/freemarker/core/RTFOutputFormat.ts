@@ -1,8 +1,8 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { StringUtil } from '../template/utility/StringUtil';
-import { Writer } from '../../java/io/Writer';
-import { CommonMarkupOutputFormat } from './CommonMarkupOutputFormat';
-import { TemplateRTFOutputModel } from './TemplateRTFOutputModel';
+import {StringUtil} from '../template/utility/StringUtil';
+import {Writer} from '../../java/io/Writer';
+import {CommonMarkupOutputFormat} from './CommonMarkupOutputFormat';
+import {TemplateRTFOutputModel} from './TemplateRTFOutputModel';
 
 /**
  * Represents the Rich Text Format output format (MIME type "application/rtf", name "RTF"). This format escapes by
@@ -90,6 +90,6 @@ RTFOutputFormat["__class"] = "freemarker.core.RTFOutputFormat";
 
 
 
-var __Function = Function;
+
 
 RTFOutputFormat.INSTANCE_$LI$();

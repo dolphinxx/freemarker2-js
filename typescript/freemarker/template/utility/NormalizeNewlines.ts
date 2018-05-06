@@ -1,12 +1,12 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import { TemplateTransformModel } from '../TemplateTransformModel';
-import { BufferedReader } from '../../../java/io/BufferedReader';
-import { PrintWriter } from '../../../java/io/PrintWriter';
-import { Reader } from '../../../java/io/Reader';
-import { StringReader } from '../../../java/io/StringReader';
-import { StringWriter } from '../../../java/io/StringWriter';
-import { Writer } from '../../../java/io/Writer';
-import { StringBuilder } from '../../../java/lang/StringBuilder';
+import {TemplateTransformModel} from '../TemplateTransformModel';
+import {BufferedReader} from '../../../java/io/BufferedReader';
+import {PrintWriter} from '../../../java/io/PrintWriter';
+import {Reader} from '../../../java/io/Reader';
+import {StringReader} from '../../../java/io/StringReader';
+import {StringWriter} from '../../../java/io/StringWriter';
+import {Writer} from '../../../java/io/Writer';
+import {StringBuilder} from '../../../java/lang/StringBuilder';
 
 /**
  * <p>Transformer that supports FreeMarker legacy behavior: all newlines appearing
@@ -63,7 +63,7 @@ export class NormalizeNewlines implements TemplateTransformModel {
         }
         while(((line = br.readLine()) != null)) {
             pw.println(line);
-        };
+        }
     }
 
     constructor() {
@@ -116,4 +116,4 @@ export namespace NormalizeNewlines {
 
 
 
-var __Function = Function;
+
