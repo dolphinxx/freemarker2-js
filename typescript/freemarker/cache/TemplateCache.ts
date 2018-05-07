@@ -22,6 +22,8 @@ import {TemplateLookupResult} from './TemplateLookupResult';
 import {StringBuilder} from '../../java/lang/StringBuilder';
 import {Boolean} from '../../java/lang/Boolean';
 import {TemplateLookupContext} from './TemplateLookupContext';
+import {StringTokenizer} from "../../java/util/StringTokenizer";
+import {ClassUtil} from "../template/utility/ClassUtil";
 
 /**
  * @param {*} templateLoader         The {link TemplateLoader} to use. Can be {@code null}, though then every request will result in
@@ -85,7 +87,7 @@ export class TemplateCache {
     /*private*/ config : Configuration;
 
     public constructor(templateLoader? : any, cacheStorage? : any, templateLookupStrategy? : any, templateNameFormat? : any, templateConfigurations? : any, config? : any) {
-        if(((templateLoader != null && (templateLoader["__interfaces"] != null && templateLoader["__interfaces"].indexOf("freemarker.cache.TemplateLoader") >= 0 || templateLoader.constructor != null && templateLoader.constructor["__interfaces"] != null && templateLoader.constructor["__interfaces"].indexOf("freemarker.cache.TemplateLoader") >= 0)) || templateLoader === null) && ((cacheStorage != null && (cacheStorage["__interfaces"] != null && cacheStorage["__interfaces"].indexOf("freemarker.cache.CacheStorage") >= 0 || cacheStorage.constructor != null && cacheStorage.constructor["__interfaces"] != null && cacheStorage.constructor["__interfaces"].indexOf("freemarker.cache.CacheStorage") >= 0)) || cacheStorage === null) && ((templateLookupStrategy != null && templateLookupStrategy instanceof <any>TemplateLookupStrategy) || templateLookupStrategy === null) && ((templateNameFormat != null && templateNameFormat instanceof <any>TemplateNameFormat) || templateNameFormat === null) && ((templateConfigurations != null && templateConfigurations instanceof <any>TemplateConfigurationFactory) || templateConfigurations === null) && ((config != null && config instanceof <any>Configuration) || config === null)) {
+        if(arguments.length === 6) {
             let __args = Array.prototype.slice.call(arguments);
             if(this.templateLoader===undefined) this.templateLoader = null;
             if(this.storage===undefined) this.storage = null;
@@ -115,7 +117,7 @@ export class TemplateCache {
                 this.templateConfigurations = templateConfigurations;
                 this.config = config;
             })();
-        } else if(((templateLoader != null && (templateLoader["__interfaces"] != null && templateLoader["__interfaces"].indexOf("freemarker.cache.TemplateLoader") >= 0 || templateLoader.constructor != null && templateLoader.constructor["__interfaces"] != null && templateLoader.constructor["__interfaces"].indexOf("freemarker.cache.TemplateLoader") >= 0)) || templateLoader === null) && ((cacheStorage != null && (cacheStorage["__interfaces"] != null && cacheStorage["__interfaces"].indexOf("freemarker.cache.CacheStorage") >= 0 || cacheStorage.constructor != null && cacheStorage.constructor["__interfaces"] != null && cacheStorage.constructor["__interfaces"].indexOf("freemarker.cache.CacheStorage") >= 0)) || cacheStorage === null) && ((templateLookupStrategy != null && templateLookupStrategy instanceof <any>TemplateLookupStrategy) || templateLookupStrategy === null) && ((templateNameFormat != null && templateNameFormat instanceof <any>TemplateNameFormat) || templateNameFormat === null) && ((templateConfigurations != null && templateConfigurations instanceof <any>Configuration) || templateConfigurations === null) && config === undefined) {
+        } else if(arguments.length === 5) {
             let __args = Array.prototype.slice.call(arguments);
             let config : any = __args[4];
             {
@@ -150,7 +152,7 @@ export class TemplateCache {
                     this.config = config;
                 })();
             }
-        } else if(((templateLoader != null && (templateLoader["__interfaces"] != null && templateLoader["__interfaces"].indexOf("freemarker.cache.TemplateLoader") >= 0 || templateLoader.constructor != null && templateLoader.constructor["__interfaces"] != null && templateLoader.constructor["__interfaces"].indexOf("freemarker.cache.TemplateLoader") >= 0)) || templateLoader === null) && ((cacheStorage != null && (cacheStorage["__interfaces"] != null && cacheStorage["__interfaces"].indexOf("freemarker.cache.CacheStorage") >= 0 || cacheStorage.constructor != null && cacheStorage.constructor["__interfaces"] != null && cacheStorage.constructor["__interfaces"].indexOf("freemarker.cache.CacheStorage") >= 0)) || cacheStorage === null) && ((templateLookupStrategy != null && templateLookupStrategy instanceof <any>Configuration) || templateLookupStrategy === null) && templateNameFormat === undefined && templateConfigurations === undefined && config === undefined) {
+        } else if(arguments.length === 3) {
             let __args = Array.prototype.slice.call(arguments);
             let config : any = __args[2];
             {
@@ -190,7 +192,7 @@ export class TemplateCache {
                     })();
                 }
             }
-        } else if(((templateLoader != null && (templateLoader["__interfaces"] != null && templateLoader["__interfaces"].indexOf("freemarker.cache.TemplateLoader") >= 0 || templateLoader.constructor != null && templateLoader.constructor["__interfaces"] != null && templateLoader.constructor["__interfaces"].indexOf("freemarker.cache.TemplateLoader") >= 0)) || templateLoader === null) && ((cacheStorage != null && (cacheStorage["__interfaces"] != null && cacheStorage["__interfaces"].indexOf("freemarker.cache.CacheStorage") >= 0 || cacheStorage.constructor != null && cacheStorage.constructor["__interfaces"] != null && cacheStorage.constructor["__interfaces"].indexOf("freemarker.cache.CacheStorage") >= 0)) || cacheStorage === null) && templateLookupStrategy === undefined && templateNameFormat === undefined && templateConfigurations === undefined && config === undefined) {
+        } else if(arguments.length === 2 && ClassUtil.isAssignableFrom(cacheStorage, "freemarker.cache.CacheStorage")) {
             let __args = Array.prototype.slice.call(arguments);
             {
                 let __args = Array.prototype.slice.call(arguments);
@@ -233,7 +235,7 @@ export class TemplateCache {
                     }
                 }
             }
-        } else if(((templateLoader != null && (templateLoader["__interfaces"] != null && templateLoader["__interfaces"].indexOf("freemarker.cache.TemplateLoader") >= 0 || templateLoader.constructor != null && templateLoader.constructor["__interfaces"] != null && templateLoader.constructor["__interfaces"].indexOf("freemarker.cache.TemplateLoader") >= 0)) || templateLoader === null) && ((cacheStorage != null && cacheStorage instanceof <any>Configuration) || cacheStorage === null) && templateLookupStrategy === undefined && templateNameFormat === undefined && templateConfigurations === undefined && config === undefined) {
+        } else if(arguments.length === 2 && ClassUtil.isAssignableFrom(cacheStorage, 'freemarker.template.Configuration')) {
             let __args = Array.prototype.slice.call(arguments);
             let config : any = __args[1];
             {
@@ -277,7 +279,7 @@ export class TemplateCache {
                     }
                 }
             }
-        } else if(((templateLoader != null && (templateLoader["__interfaces"] != null && templateLoader["__interfaces"].indexOf("freemarker.cache.TemplateLoader") >= 0 || templateLoader.constructor != null && templateLoader.constructor["__interfaces"] != null && templateLoader.constructor["__interfaces"].indexOf("freemarker.cache.TemplateLoader") >= 0)) || templateLoader === null) && cacheStorage === undefined && templateLookupStrategy === undefined && templateNameFormat === undefined && templateConfigurations === undefined && config === undefined) {
+        } else if(arguments.length === 1) {
             let __args = Array.prototype.slice.call(arguments);
             {
                 let __args = Array.prototype.slice.call(arguments);
@@ -324,7 +326,7 @@ export class TemplateCache {
                     }
                 }
             }
-        } else if(templateLoader === undefined && cacheStorage === undefined && templateLookupStrategy === undefined && templateNameFormat === undefined && templateConfigurations === undefined && config === undefined) {
+        } else if(arguments.length === 0) {
             let __args = Array.prototype.slice.call(arguments);
             {
                 let __args = Array.prototype.slice.call(arguments);
@@ -430,7 +432,7 @@ export class TemplateCache {
         try {
             name = this.templateNameFormat.normalizeRootBasedName(name);
         } catch(e) {
-            if(this.templateNameFormat !== TemplateNameFormat.DEFAULT_2_3_0_$LI$() || this.config.getIncompatibleImprovements().intValue() >= _TemplateAPI.VERSION_INT_2_4_0_$LI$()) {
+            if(this.templateNameFormat !== TemplateNameFormat.DEFAULT_2_3_0_$LI$() || this.config.getIncompatibleImprovements().intValue() >= /*_TemplateAPI.VERSION_INT_2_4_0_$LI$()*/2004000) {
                 throw e;
             }
             return new TemplateCache.MaybeMissingTemplate(null, e);
@@ -605,11 +607,12 @@ export class TemplateCache {
     static INIT_CAUSE : Function; public static INIT_CAUSE_$LI$() : Function { if(TemplateCache.INIT_CAUSE == null) TemplateCache.INIT_CAUSE = TemplateCache.getInitCauseMethod(); return TemplateCache.INIT_CAUSE; };
 
     static getInitCauseMethod() : Function {
-        try {
-            return /* getMethod */((c,p) => { if(c.prototype.hasOwnProperty(p) && typeof c.prototype[p] == 'function') return {owner:c,name:p,fn:c.prototype[p]}; else return null; })("java.lang.Throwable","initCause");
-        } catch(e) {
-            return null;
-        }
+        // try {
+        //     return /* getMethod */((c,p) => { if(c.prototype.hasOwnProperty(p) && typeof c.prototype[p] == 'function') return {owner:c,name:p,fn:c.prototype[p]}; else return null; })("java.lang.Throwable","initCause");
+        // } catch(e) {
+        //     return null;
+        // }
+        return null;
     }
 
     /**
@@ -627,7 +630,7 @@ export class TemplateCache {
         if(TemplateCache.INIT_CAUSE_$LI$() != null) {
             ioe = Object.defineProperty(new Error(message), '__classes', { configurable: true, value: ['java.lang.Throwable','java.io.IOException','java.lang.Object','java.lang.Exception'] });
             try {
-                /* invoke */TemplateCache.INIT_CAUSE_$LI$().fn.apply(ioe, [cause]);
+                /* invoke */TemplateCache.INIT_CAUSE_$LI$().apply(ioe, [cause]);
             } catch(__e) {
                 if(__e != null && (__e["__classes"] && __e["__classes"].indexOf("java.lang.RuntimeException") >= 0) || __e != null && __e instanceof <any>Error) {
                     let ex : Error = <Error>__e;
@@ -685,25 +688,25 @@ export class TemplateCache {
         let template : Template;
         {
             if(parseAsFTL) {
-                try {
+                // try {
                     let reader : Reader = templateLoader.getReader(source, initialEncoding);
                     try {
                         template = new Template(name, sourceName, reader, this.config, tc, initialEncoding);
                     } finally {
                         reader.close();
                     }
-                } catch(wee) {
-                    let actualEncoding : string = wee.getTemplateSpecifiedEncoding();
-                    if(TemplateCache.LOG_$LI$().isDebugEnabled()) {
-                        TemplateCache.LOG_$LI$().debug$java_lang_String("Initial encoding \"" + initialEncoding + "\" was incorrect, re-reading with \"" + actualEncoding + "\". Template: " + sourceName);
-                    }
-                    let reader : Reader = templateLoader.getReader(source, actualEncoding);
-                    try {
-                        template = new Template(name, sourceName, reader, this.config, tc, actualEncoding);
-                    } finally {
-                        reader.close();
-                    }
-                }
+                // } catch(wee) {
+                //     let actualEncoding : string = wee.getTemplateSpecifiedEncoding();
+                //     if(TemplateCache.LOG_$LI$().isDebugEnabled()) {
+                //         TemplateCache.LOG_$LI$().debug$java_lang_String("Initial encoding \"" + initialEncoding + "\" was incorrect, re-reading with \"" + actualEncoding + "\". Template: " + sourceName);
+                //     }
+                //     let reader : Reader = templateLoader.getReader(source, actualEncoding);
+                //     try {
+                //         template = new Template(name, sourceName, reader, this.config, tc, actualEncoding);
+                //     } finally {
+                //         reader.close();
+                //     }
+                // }
             } else {
                 let sw : StringWriter = new StringWriter();
                 let buf : string[] = (s => { let a=[]; while(s-->0) a.push(null); return a; })(4096);
@@ -931,7 +934,7 @@ export class TemplateCache {
      */
     modifyForConfIcI(templateSource : any) : any {
         if(templateSource == null) return null;
-        if(this.config.getIncompatibleImprovements().intValue() < _TemplateAPI.VERSION_INT_2_3_21_$LI$()) {
+        if(this.config.getIncompatibleImprovements().intValue() < /*_TemplateAPI.VERSION_INT_2_3_21_$LI$()*/2003021) {
             return templateSource;
         }
         return templateSource;
@@ -987,7 +990,7 @@ export namespace TemplateCache {
         public equals(o : any) : boolean {
             if(o != null && o instanceof <any>TemplateCache.TemplateKey) {
                 let tk : TemplateCache.TemplateKey = <TemplateCache.TemplateKey>o;
-                return this.parse === tk.parse && /* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(this.name,tk.name)) && this.locale.equals(tk.locale) && this.nullSafeEquals(this.customLookupCondition, tk.customLookupCondition) && /* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(this.encoding,tk.encoding));
+                return this.parse === tk.parse && /* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(this.name,tk.name)) && this.locale === tk.locale && this.nullSafeEquals(this.customLookupCondition, tk.customLookupCondition) && /* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(this.encoding,tk.encoding));
             }
             return false;
         }
@@ -1001,7 +1004,7 @@ export namespace TemplateCache {
          * @return {number}
          */
         public hashCode() : number {
-            return /* hashCode */(<any>((o: any) => { if(o.hashCode) { return o.hashCode(); } else { return o.toString(); } })(this.name)) ^ /* hashCode */(<any>((o: any) => { if(o.hashCode) { return o.hashCode(); } else { return o.toString(); } })(this.locale)) ^ /* hashCode */(<any>((o: any) => { if(o.hashCode) { return o.hashCode(); } else { return o.toString(); } })(this.encoding)) ^ (this.customLookupCondition != null?/* hashCode */(<any>((o: any) => { if(o.hashCode) { return o.hashCode(); } else { return o.toString(); } })(this.customLookupCondition)):0) ^ Boolean.hashCode();
+            return /* hashCode */(<any>((o: any) => { if(o.hashCode) { return o.hashCode(); } else { return o.toString(); } })(this.name)) ^ /* hashCode */(<any>((o: any) => { if(o.hashCode) { return o.hashCode(); } else { return o.toString(); } })(this.locale)) ^ /* hashCode */(<any>((o: any) => { if(o.hashCode) { return o.hashCode(); } else { return o.toString(); } })(this.encoding)) ^ (this.customLookupCondition != null?/* hashCode */(<any>((o: any) => { if(o.hashCode) { return o.hashCode(); } else { return o.toString(); } })(this.customLookupCondition)):0) ^ new Boolean(this.parse).hashCode();
         }
     }
     TemplateKey["__class"] = "freemarker.cache.TemplateCache.TemplateKey";

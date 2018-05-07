@@ -30,8 +30,10 @@ const SimpleHash = require('../dist/freemarker/template/SimpleHash').SimpleHash;
 const FileTemplateLoader = require('../dist/freemarker/cache/FileTemplateLoader').FileTemplateLoader;
 const TemplateExceptionHandler = require('../dist/freemarker/template/TemplateExceptionHandler').TemplateExceptionHandler;
 const config = new Configuration();
+config.setLocale('zh_CN');
+config.setEncoding('UTF-8');
 config.setTemplateLoader(new FileTemplateLoader(path.resolve(__dirname, '../ftl')));
-config.setTemplateExceptionHandler(TemplateExceptionHandler.DEBUG_HANDLER)
+config.setTemplateExceptionHandler(TemplateExceptionHandler.DEBUG_HANDLER);
 // const reader = new StringReader('');
 
 // const template = new Template('foo', reader, configuration);

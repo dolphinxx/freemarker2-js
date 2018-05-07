@@ -1031,7 +1031,14 @@ export class Configurable {
      * @return {Locale}
      */
     public getLocale() : string {
-        return this.locale != null?this.locale:this.parent.getLocale();
+        if(this.locale != null) {
+            return this.locale;
+        }
+        if(this.parent) {
+            return this.parent.getLocale();
+        }
+        return null;
+        // return this.locale != null?this.locale:this.parent.getLocale();
     }
 
     /**

@@ -13,7 +13,7 @@ export class ClassUtil {
     }
 
     public static isInstanceOf(instance: any, type: string): boolean {
-        if(instance == null || instance === undefined) {
+        if(instance === null || instance === undefined) {
             return false;
         }
         if(instance.hasOwnProperty('__class') && instance['__class'] === type) {
@@ -26,11 +26,28 @@ export class ClassUtil {
     }
 
     public static isAssignableFrom(instance: any, type:string):boolean {
+        if(instance === null || instance === undefined) {
+            return false;
+        }
         if(ClassUtil.isInstanceOf(instance, type)) {
             return true;
         }
-        // TODO
-        return false;
+        if(instance.hasOwnProperty('__interfaces') && instance['__interfaces'].indexOf(type) !== -1) {
+            return true;
+        }
+        const proto = instance.__proto__;
+        if(proto == null) {
+            return false;
+        }
+        const pConstructor = proto.constructor;
+        if(pConstructor == null) {
+            return false;
+        }
+        if(pConstructor.hasOwnProperty('__interfaces') && pConstructor['__interfaces'].indexOf(type) !== -1) {
+            return true;
+        }
+
+        return ClassUtil.isAssignableFrom(pConstructor, type);
     }
 
     /**

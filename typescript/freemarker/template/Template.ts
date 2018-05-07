@@ -27,6 +27,7 @@ import {StringBuilder} from '../../java/lang/StringBuilder';
 import {PrintStream} from "../../java/io/PrintStream";
 import {FilterReader} from "../../java/io/FilterReader";
 import {Map} from "../../java/util/Map";
+import {TokenMgrError} from "../core/TokenMgrError";
 
 /**
  * Same as {link #Template(String, String, Reader, Configuration, String)}, but also specifies a
@@ -173,10 +174,13 @@ export class Template extends Configurable {
                         this.interpolationSyntax = actualParserConfiguration.getInterpolationSyntax();
                         this.actualNamingConvention = parser._getLastNamingConvention();
                     } catch(exc) {
-                        throw exc.toParseException(this);
+                        if(exc instanceof TokenMgrError) {
+                            exc = exc.toParseException(this);
+                        }
+                        throw exc;
                     }
                 } catch(e) {
-                    e.setTemplateName(this.getSourceName());
+                    ParseException.prototype.setTemplateName.apply(e, [this.getSourceName()]);
                     throw e;
                 } finally {
                     reader.close();

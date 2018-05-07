@@ -11,6 +11,8 @@ import {_MethodUtil} from './_MethodUtil';
 import {CharacterOrString} from './CharacterOrString';
 import {Boolean} from '../../../java/lang/Boolean';
 import {BeansWrapper} from './BeansWrapper';
+import {List} from "../../../java/util/List";
+import {BooleanHelper} from "../../../javaemul/internal/BooleanHelper";
 
 /**
  * The argument types of a method call; usable as cache key.
@@ -39,7 +41,7 @@ export class ArgumentTypes {
 
     /*private*/ bugfixed : boolean;
 
-    constructor(args : Array, bugfixed : boolean) {
+    constructor(args : Array<any>, bugfixed : boolean) {
         if(this.types===undefined) this.types = null;
         if(this.bugfixed===undefined) this.bugfixed = false;
         let ln : number = args.length;
@@ -92,14 +94,14 @@ export class ArgumentTypes {
      * @param {boolean} varArg
      */
     getMostSpecific(memberDescs : List, varArg : boolean) : MaybeEmptyCallableMemberDescriptor {
-        let applicables : LinkedList = this.getApplicables(memberDescs, varArg);
+        let applicables : List = this.getApplicables(memberDescs, varArg);
         if(/* isEmpty */(applicables.length == 0)) {
             return EmptyCallableMemberDescriptor.NO_SUCH_METHOD_$LI$();
         }
         if(/* size */(<number>applicables.length) === 1) {
-            return applicables.getFirst();
+            return applicables.get(0);
         }
-        let maximals : LinkedList = <any>([]);
+        let maximals : List = <any>([]);
         for(let index147=0; index147 < applicables.length; index147++) {
             let applicable = applicables[index147];
             {
@@ -121,7 +123,7 @@ export class ArgumentTypes {
         if(/* size */(<number>maximals.length) > 1) {
             return EmptyCallableMemberDescriptor.AMBIGUOUS_METHOD_$LI$();
         }
-        return maximals.getFirst();
+        return maximals.get(0);
     }
 
     /**
@@ -155,7 +157,7 @@ export class ArgumentTypes {
      * @return {number} More than 0 if the first parameter list is preferred, less then 0 if the other is preferred,
      * 0 if there's no decision
      */
-    compareParameterListPreferability(paramTypes1 : Array, paramTypes2 : Array, varArg : boolean) : number {
+    compareParameterListPreferability(paramTypes1 : Array<any>, paramTypes2 : Array<any>, varArg : boolean) : number {
         let argTypesLen : number = this.types.length;
         let paramTypes1Len : number = paramTypes1.length;
         let paramTypes2Len : number = paramTypes2.length;
@@ -177,7 +179,7 @@ export class ArgumentTypes {
                     winerParam = 0;
                 } else {
                     let argType : any = this.types[i];
-                    let argIsNum : boolean = Number.isAssignableFrom(argType);
+                    let argIsNum : boolean = !isNaN(argType);
                     let numConvPrice1 : number;
                     if(argIsNum && ClassUtil.isNumerical(paramType1)) {
                         let nonPrimParamType1 : any = /* isPrimitive */(paramType1 === <any>'__erasedPrimitiveType__')?ClassUtil.primitiveClassToBoxingClass(paramType1):paramType1;
@@ -194,7 +196,7 @@ export class ArgumentTypes {
                     }
                     if(numConvPrice1 === Number.MAX_VALUE) {
                         if(numConvPrice2 === Number.MAX_VALUE) {
-                            if("java.util.List".isAssignableFrom(argType) && (paramType1.isArray() || paramType2.isArray())) {
+                            if(ClassUtil.isAssignableFrom(argType, "java.util.List") && (paramType1.isArray() || paramType2.isArray())) {
                                 if(paramType1.isArray()) {
                                     if(paramType2.isArray()) {
                                         let r : number = this.compareParameterListPreferability_cmpTypeSpecificty(paramType1.getComponentType(), paramType2.getComponentType());
@@ -208,7 +210,7 @@ export class ArgumentTypes {
                                             winerParam = 0;
                                         }
                                     } else {
-                                        if("java.util.Collection".isAssignableFrom(paramType2)) {
+                                        if(ClassUtil.isAssignableFrom(paramType2, "java.util.Collection")) {
                                             winerParam = 2;
                                             paramList2StrongWinCnt++;
                                         } else {
@@ -217,7 +219,7 @@ export class ArgumentTypes {
                                         }
                                     }
                                 } else {
-                                    if("java.util.Collection".isAssignableFrom(paramType1)) {
+                                    if(ClassUtil.isAssignableFrom(paramType1, "java.util.Collection")) {
                                         winerParam = 1;
                                         paramList1StrongWinCnt++;
                                     } else {
@@ -225,9 +227,9 @@ export class ArgumentTypes {
                                         paramList2WeakWinCnt++;
                                     }
                                 }
-                            } else if(argType.isArray() && ("java.util.List".isAssignableFrom(paramType1) || "java.util.List".isAssignableFrom(paramType2))) {
-                                if("java.util.List".isAssignableFrom(paramType1)) {
-                                    if("java.util.List".isAssignableFrom(paramType2)) {
+                            } else if(argType.isArray() && (ClassUtil.isAssignableFrom(paramType1, "java.util.List") || ClassUtil.isAssignableFrom(paramType2, "java.util.List"))) {
+                                if(ClassUtil.isAssignableFrom(paramType1, "java.util.List")) {
+                                    if(ClassUtil.isAssignableFrom(paramType2, "java.util.List")) {
                                         winerParam = 0;
                                     } else {
                                         winerParam = 2;
@@ -382,7 +384,7 @@ export class ArgumentTypes {
         }
     }
 
-    static getParamType(paramTypes : Array, paramTypesLen : number, i : number, varArg : boolean) : any {
+    static getParamType(paramTypes : Array<any>, paramTypesLen : number, i : number, varArg : boolean) : any {
         return varArg && i >= paramTypesLen - 1?paramTypes[paramTypesLen - 1].getComponentType():paramTypes[i];
     }
 
@@ -393,8 +395,8 @@ export class ArgumentTypes {
      * @param {boolean} varArg
      * @return {LinkedList}
      */
-    getApplicables(memberDescs : List, varArg : boolean) : LinkedList {
-        let applicables : LinkedList = <any>([]);
+    getApplicables(memberDescs : List, varArg : boolean) : List {
+        let applicables : List = <any>([]);
         for(let index148=0; index148 < memberDescs.length; index148++) {
             let memberDesc = memberDescs[index148];
             {
@@ -495,34 +497,34 @@ export class ArgumentTypes {
                 }
                 formalNP = formal;
             }
-            if(Number.isAssignableFrom(actual) && Number.isAssignableFrom(formalNP)) {
+            if(!isNaN(actual) && !isNaN(formalNP)) {
                 return OverloadedNumberUtil.getArgumentConversionPrice(actual, formalNP) === Number.MAX_VALUE?ArgumentTypes.CONVERSION_DIFFICULTY_IMPOSSIBLE:ArgumentTypes.CONVERSION_DIFFICULTY_REFLECTION;
             } else if(formal.isArray()) {
-                return "java.util.List".isAssignableFrom(actual)?ArgumentTypes.CONVERSION_DIFFICULTY_FREEMARKER:ArgumentTypes.CONVERSION_DIFFICULTY_IMPOSSIBLE;
-            } else if(actual.isArray() && formal.isAssignableFrom("java.util.List")) {
+                return ClassUtil.isAssignableFrom(actual, "java.util.List")?ArgumentTypes.CONVERSION_DIFFICULTY_FREEMARKER:ArgumentTypes.CONVERSION_DIFFICULTY_IMPOSSIBLE;
+            } else if(actual.isArray() && ClassUtil.isAssignableFrom(formal, "java.util.List")) {
                 return ArgumentTypes.CONVERSION_DIFFICULTY_FREEMARKER;
-            } else if(actual === CharacterOrString && (formal.isAssignableFrom(String) || formal.isAssignableFrom(String) || formal === String)) {
+            } else if(actual === CharacterOrString && (typeof formal === 'string')) {
                 return ArgumentTypes.CONVERSION_DIFFICULTY_FREEMARKER;
             } else {
                 return ArgumentTypes.CONVERSION_DIFFICULTY_IMPOSSIBLE;
             }
         } else {
             if(/* isPrimitive */(formal === <any>'__erasedPrimitiveType__')) {
-                if(formal === javaemul.internal.BooleanHelper.TYPE) {
+                if(formal === BooleanHelper.TYPE) {
                     return actual === Boolean?ArgumentTypes.CONVERSION_DIFFICULTY_REFLECTION:ArgumentTypes.CONVERSION_DIFFICULTY_IMPOSSIBLE;
-                } else if(formal === javaemul.internal.DoubleHelper.TYPE && (actual === Number || actual === Number || actual === Number || actual === Number || actual === Number || actual === Number)) {
+                } else if(formal === DoubleHelper.TYPE && (actual === Number || actual === Number || actual === Number || actual === Number || actual === Number || actual === Number)) {
                     return ArgumentTypes.CONVERSION_DIFFICULTY_REFLECTION;
-                } else if(formal === javaemul.internal.IntegerHelper.TYPE && (actual === Number || actual === Number || actual === Number)) {
+                } else if(formal === IntegerHelper.TYPE && (actual === Number || actual === Number || actual === Number)) {
                     return ArgumentTypes.CONVERSION_DIFFICULTY_REFLECTION;
-                } else if(formal === javaemul.internal.LongHelper.TYPE && (actual === Number || actual === Number || actual === Number || actual === Number)) {
+                } else if(formal === LongHelper.TYPE && (actual === Number || actual === Number || actual === Number || actual === Number)) {
                     return ArgumentTypes.CONVERSION_DIFFICULTY_REFLECTION;
-                } else if(formal === javaemul.internal.FloatHelper.TYPE && (actual === Number || actual === Number || actual === Number || actual === Number || actual === Number)) {
+                } else if(formal === FloatHelper.TYPE && (actual === Number || actual === Number || actual === Number || actual === Number || actual === Number)) {
                     return ArgumentTypes.CONVERSION_DIFFICULTY_REFLECTION;
-                } else if(formal === javaemul.internal.CharacterHelper.TYPE) {
+                } else if(formal === CharacterHelper.TYPE) {
                     return actual === String?ArgumentTypes.CONVERSION_DIFFICULTY_REFLECTION:ArgumentTypes.CONVERSION_DIFFICULTY_IMPOSSIBLE;
-                } else if(formal === javaemul.internal.ByteHelper.TYPE && actual === Number) {
+                } else if(formal === ByteHelper.TYPE && actual === Number) {
                     return ArgumentTypes.CONVERSION_DIFFICULTY_REFLECTION;
-                } else if(formal === javaemul.internal.ShortHelper.TYPE && (actual === Number || actual === Number)) {
+                } else if(formal === ShortHelper.TYPE && (actual === Number || actual === Number)) {
                     return ArgumentTypes.CONVERSION_DIFFICULTY_REFLECTION;
                 } else if(BigDecimal.isAssignableFrom(actual) && ClassUtil.isNumerical(formal)) {
                     return ArgumentTypes.CONVERSION_DIFFICULTY_REFLECTION;
@@ -574,7 +576,7 @@ export namespace ArgumentTypes {
          * @param {Array} args
          * @return {*}
          */
-        invokeMethod(bw : BeansWrapper, obj : any, args : Array) : TemplateModel {
+        invokeMethod(bw : BeansWrapper, obj : any, args : Array<any>) : TemplateModel {
             this.convertArgsToReflectionCompatible(bw, args);
             return this.callableMemberDesc.invokeMethod(bw, obj, args);
         }
@@ -638,7 +640,7 @@ export namespace ArgumentTypes {
             return this.callableMemberDesc.getName();
         }
 
-        convertArgsToReflectionCompatible(bw : BeansWrapper, args : Array) {
+        convertArgsToReflectionCompatible(bw : BeansWrapper, args : Array<any>) {
             let paramTypes : Array<any> = this.callableMemberDesc.getParamTypes();
             let ln : number = paramTypes.length;
             for(let i : number = 0; i < ln; i++) {

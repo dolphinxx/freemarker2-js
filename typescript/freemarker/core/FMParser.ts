@@ -209,7 +209,7 @@ export class FMParser implements FMParserConstants {
                 {
                     let __args = Array.prototype.slice.call(arguments);
                     let newTemplate : any = true;
-                    let tkMan : any = FMParser.readerToTokenManager(reader, __args[3]);
+                    let tkMan : any = FMParser.readerToTokenManager(reader, pCfg);
                     {
                         let __args = Array.prototype.slice.call(arguments);
                         let tm : any = tkMan;
@@ -360,7 +360,7 @@ export class FMParser implements FMParserConstants {
                     {
                         let __args = Array.prototype.slice.call(arguments);
                         let newTemplate : any = true;
-                        let tkMan : any = FMParser.readerToTokenManager(reader, __args[3]);
+                        let tkMan : any = FMParser.readerToTokenManager(reader, pCfg);
                         {
                             let __args = Array.prototype.slice.call(arguments);
                             let tm : any = tkMan;
@@ -514,7 +514,7 @@ export class FMParser implements FMParserConstants {
                         {
                             let __args = Array.prototype.slice.call(arguments);
                             let newTemplate : any = true;
-                            let tkMan : any = FMParser.readerToTokenManager(reader, __args[3]);
+                            let tkMan : any = FMParser.readerToTokenManager(reader, pCfg);
                             {
                                 let __args = Array.prototype.slice.call(arguments);
                                 let tm : any = tkMan;
@@ -672,7 +672,7 @@ export class FMParser implements FMParserConstants {
                             {
                                 let __args = Array.prototype.slice.call(arguments);
                                 let newTemplate : any = true;
-                                let tkMan : any = FMParser.readerToTokenManager(reader, __args[3]);
+                                let tkMan : any = FMParser.readerToTokenManager(reader, pCfg);
                                 {
                                     let __args = Array.prototype.slice.call(arguments);
                                     let tm : any = tkMan;
@@ -957,7 +957,7 @@ export class FMParser implements FMParserConstants {
             {
                 let __args = Array.prototype.slice.call(arguments);
                 let newTemplate : any = true;
-                let tkMan : any = FMParser.readerToTokenManager(reader, __args[3]);
+                let tkMan : any = FMParser.readerToTokenManager(reader, pCfg);
                 {
                     let __args = Array.prototype.slice.call(arguments);
                     let tm : any = tkMan;
@@ -1195,7 +1195,7 @@ export class FMParser implements FMParserConstants {
                                 {
                                     let __args = Array.prototype.slice.call(arguments);
                                     let newTemplate : any = true;
-                                    let tkMan : any = FMParser.readerToTokenManager(reader, __args[3]);
+                                    let tkMan : any = FMParser.readerToTokenManager(reader, pCfg);
                                     {
                                         let __args = Array.prototype.slice.call(arguments);
                                         let tm : any = tkMan;

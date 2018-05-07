@@ -996,6 +996,8 @@ export class Configuration extends Configurable implements ParserConfiguration {
 
     /*private*/ templateLoaderExplicitlySet : boolean;
 
+    templateLoader:TemplateLoader;
+
     /*private*/ templateLookupStrategyExplicitlySet : boolean;
 
     /*private*/ templateNameFormatExplicitlySet : boolean;
@@ -1162,7 +1164,7 @@ export class Configuration extends Configurable implements ParserConfiguration {
     }
 
     createTemplateCache() {
-        this.cache = new TemplateCache(this.getDefaultTemplateLoader(), this.getDefaultCacheStorage(), this.getDefaultTemplateLookupStrategy(), this.getDefaultTemplateNameFormat(), null, this);
+        this.cache = new TemplateCache(this.templateLoader/*getDefaultTemplateLoader()*/, this.getDefaultCacheStorage(), this.getDefaultTemplateLookupStrategy(), this.getDefaultTemplateNameFormat(), null, this);
         this.cache.clear();
         this.cache.setDelay(5000);
     }
@@ -1179,11 +1181,11 @@ export class Configuration extends Configurable implements ParserConfiguration {
         this.recreateTemplateCacheWith(this.cache.getTemplateLoader(), this.cache.getCacheStorage(), this.cache.getTemplateLookupStrategy(), this.cache.getTemplateNameFormat(), this.getTemplateConfigurations());
     }
 
-    getDefaultTemplateLoader() : TemplateLoader {
-        return Configuration.createDefaultTemplateLoader(this.getIncompatibleImprovements(), this.getTemplateLoader());
-    }
+    // getDefaultTemplateLoader() : TemplateLoader {
+    //     return Configuration.createDefaultTemplateLoader(this.getIncompatibleImprovements(), this.getTemplateLoader());
+    // }
 
-    public static createDefaultTemplateLoader(incompatibleImprovements : Version, existingTemplateLoader : TemplateLoader = null) : TemplateLoader {
+    // public static createDefaultTemplateLoader(incompatibleImprovements : Version, existingTemplateLoader : TemplateLoader = null) : TemplateLoader {
         // if(incompatibleImprovements.intValue() < _TemplateAPI.VERSION_INT_2_3_21_$LI$()) {
         //     if(existingTemplateLoader != null && existingTemplateLoader instanceof <any>Configuration.LegacyDefaultFileTemplateLoader) {
         //         return existingTemplateLoader;
@@ -1197,8 +1199,7 @@ export class Configuration extends Configurable implements ParserConfiguration {
         // } else {
         //     return null;
         // }
-        throw new Error();
-    }
+    // }
 
     getDefaultTemplateLookupStrategy() : TemplateLookupStrategy {
         return Configuration.getDefaultTemplateLookupStrategy(this.getIncompatibleImprovements());
@@ -1471,6 +1472,7 @@ export class Configuration extends Configurable implements ParserConfiguration {
      */
     public setTemplateLoader(templateLoader : TemplateLoader) {
         {
+            this.templateLoader = templateLoader;
             if(this.cache.getTemplateLoader() !== templateLoader) {
                 this.recreateTemplateCacheWith(templateLoader, this.cache.getCacheStorage(), this.cache.getTemplateLookupStrategy(), this.cache.getTemplateNameFormat(), this.cache.getTemplateConfigurations());
             }
@@ -1486,10 +1488,10 @@ export class Configuration extends Configurable implements ParserConfiguration {
      * @since 2.3.22
      */
     public unsetTemplateLoader() {
-        if(this.templateLoaderExplicitlySet) {
-            this.setTemplateLoader(this.getDefaultTemplateLoader());
-            this.templateLoaderExplicitlySet = false;
-        }
+        // if(this.templateLoaderExplicitlySet) {
+        //     this.setTemplateLoader(this.getDefaultTemplateLoader());
+        //     this.templateLoaderExplicitlySet = false;
+        // }
     }
 
     /**
@@ -1507,10 +1509,11 @@ export class Configuration extends Configurable implements ParserConfiguration {
      * @return {*}
      */
     public getTemplateLoader() : TemplateLoader {
-        if(this.cache == null) {
-            return null;
-        }
-        return this.cache.getTemplateLoader();
+        return this.templateLoader;
+        // if(this.cache == null) {
+        //     return null;
+        // }
+        // return this.cache.getTemplateLoader();
     }
 
     /**

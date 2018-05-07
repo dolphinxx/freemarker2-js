@@ -864,7 +864,7 @@ export class StringUtil {
     }
 
     public static jQuote$java_lang_Object(obj : any) : string {
-        return StringUtil.jQuote$java_lang_Object(obj != null?obj.toString():null);
+        return StringUtil.jQuote$java_lang_String(obj != null?obj.toString():null);
     }
 
     public static jQuote$java_lang_String(s : string) : string {
