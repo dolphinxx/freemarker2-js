@@ -75,525 +75,106 @@ export class ParseException {
     templateName: string;
 
     public constructor(description?: any, template?: any, lineNumber?: any, columnNumber?: any, endLineNumber?: any, endColumnNumber?: any, cause?: any) {
-        if (((typeof description === 'string') || description === null) && ((template != null && template['__class'].indexOf('freemarker.template.Template') !== -1) || template === null) && ((typeof lineNumber === 'number') || lineNumber === null) && ((typeof columnNumber === 'number') || columnNumber === null) && ((typeof endLineNumber === 'number') || endLineNumber === null) && ((typeof endColumnNumber === 'number') || endColumnNumber === null) && ((cause != null && (cause["__classes"] && cause["__classes"].indexOf("java.lang.Throwable") >= 0) || cause != null && cause instanceof <any>Error) || cause === null)) {
-            let __args = Array.prototype.slice.call(arguments);
-            {
-                let __args = Array.prototype.slice.call(arguments);
-                let templateName: any = template == null ? null : template.getSourceName();
-                if (this.currentToken === undefined) this.currentToken = null;
-                if (this.messageAndDescriptionRendered === undefined) this.messageAndDescriptionRendered = false;
-                if (this.message === undefined) this.message = null;
-                if (this.description === undefined) this.description = null;
-                if (this.columnNumber === undefined) this.columnNumber = 0;
-                if (this.lineNumber === undefined) this.lineNumber = 0;
-                if (this.endColumnNumber === undefined) this.endColumnNumber = 0;
-                if (this.endLineNumber === undefined) this.endLineNumber = 0;
-                if (this.expectedTokenSequences === undefined) this.expectedTokenSequences = null;
-                if (this.tokenImage === undefined) this.tokenImage = null;
-                if (this.specialConstructor === undefined) this.specialConstructor = false;
-                if (this.templateName === undefined) this.templateName = null;
-                this.eol = System.getProperty("line.separator", "\n");
-                (<any>Object).setPrototypeOf(this, ParseException.prototype);
-                if (this.currentToken === undefined) this.currentToken = null;
-                if (this.messageAndDescriptionRendered === undefined) this.messageAndDescriptionRendered = false;
-                if (this.message === undefined) this.message = null;
-                if (this.description === undefined) this.description = null;
-                if (this.columnNumber === undefined) this.columnNumber = 0;
-                if (this.lineNumber === undefined) this.lineNumber = 0;
-                if (this.endColumnNumber === undefined) this.endColumnNumber = 0;
-                if (this.endLineNumber === undefined) this.endLineNumber = 0;
-                if (this.expectedTokenSequences === undefined) this.expectedTokenSequences = null;
-                if (this.tokenImage === undefined) this.tokenImage = null;
-                if (this.specialConstructor === undefined) this.specialConstructor = false;
-                if (this.templateName === undefined) this.templateName = null;
-                (() => {
-                    this.description = description;
-                    this.templateName = templateName;
-                    this.lineNumber = lineNumber;
-                    this.columnNumber = columnNumber;
-                    this.endLineNumber = endLineNumber;
-                    this.endColumnNumber = endColumnNumber;
-                })();
-            }
-        } else if (((typeof description === 'string') || description === null) && ((typeof template === 'string') || template === null) && ((typeof lineNumber === 'number') || lineNumber === null) && ((typeof columnNumber === 'number') || columnNumber === null) && ((typeof endLineNumber === 'number') || endLineNumber === null) && ((typeof endColumnNumber === 'number') || endColumnNumber === null) && ((cause != null && (cause["__classes"] && cause["__classes"].indexOf("java.lang.Throwable") >= 0) || cause != null && cause instanceof <any>Error) || cause === null)) {
-            let __args = Array.prototype.slice.call(arguments);
-            let templateName: any = __args[1];
-            if (this.currentToken === undefined) this.currentToken = null;
-            if (this.messageAndDescriptionRendered === undefined) this.messageAndDescriptionRendered = false;
-            if (this.message === undefined) this.message = null;
-            if (this.description === undefined) this.description = null;
-            if (this.columnNumber === undefined) this.columnNumber = 0;
-            if (this.lineNumber === undefined) this.lineNumber = 0;
-            if (this.endColumnNumber === undefined) this.endColumnNumber = 0;
-            if (this.endLineNumber === undefined) this.endLineNumber = 0;
-            if (this.expectedTokenSequences === undefined) this.expectedTokenSequences = null;
-            if (this.tokenImage === undefined) this.tokenImage = null;
-            if (this.specialConstructor === undefined) this.specialConstructor = false;
-            if (this.templateName === undefined) this.templateName = null;
-            this.eol = SecurityUtilities.getSystemProperty$java_lang_String$java_lang_String("line.separator", "\n");
-            (<any>Object).setPrototypeOf(this, ParseException.prototype);
-            if (this.currentToken === undefined) this.currentToken = null;
-            if (this.messageAndDescriptionRendered === undefined) this.messageAndDescriptionRendered = false;
-            if (this.message === undefined) this.message = null;
-            if (this.description === undefined) this.description = null;
-            if (this.columnNumber === undefined) this.columnNumber = 0;
-            if (this.lineNumber === undefined) this.lineNumber = 0;
-            if (this.endColumnNumber === undefined) this.endColumnNumber = 0;
-            if (this.endLineNumber === undefined) this.endLineNumber = 0;
-            if (this.expectedTokenSequences === undefined) this.expectedTokenSequences = null;
-            if (this.tokenImage === undefined) this.tokenImage = null;
-            if (this.specialConstructor === undefined) this.specialConstructor = false;
-            if (this.templateName === undefined) this.templateName = null;
-            (() => {
+        this.eol = System.getProperty("line.separator", "\n");
+        if (arguments.length === 7) {
+            this.description = description;
+            this.templateName = typeof arguments[1] === 'string' ? template : template.getSourceName();
+            this.lineNumber = lineNumber;
+            this.columnNumber = columnNumber;
+            this.endLineNumber = endLineNumber;
+            this.endColumnNumber = endColumnNumber;
+            console.error((<Error>cause));
+            return;
+        }
+        if (arguments.length === 6) {
+            this.description = description;
+            this.templateName = template === null ? null : template.getSourceName();
+            this.lineNumber = lineNumber;
+            this.columnNumber = columnNumber;
+            this.endLineNumber = endLineNumber;
+            this.endColumnNumber = endColumnNumber;
+            return;
+        }
+        if (arguments.length === 5) {
+            this.description = description;
+            this.templateName = template === null ? null : template.getSourceName();
+            this.lineNumber = lineNumber;
+            this.columnNumber = columnNumber;
+            this.endLineNumber = 0;
+            this.endColumnNumber = 0;
+            console.error((<Error>endLineNumber));
+            return;
+        }
+        if (arguments.length === 4) {
+            if (typeof arguments[2] === 'number') {
                 this.description = description;
-                this.templateName = templateName;
+                this.templateName = template === null ? null : template.getSourceName();
                 this.lineNumber = lineNumber;
                 this.columnNumber = columnNumber;
-                this.endLineNumber = endLineNumber;
-                this.endColumnNumber = endColumnNumber;
-            })();
-        } else if (((typeof description === 'string') || description === null) && ((template != null && template['__class'].indexOf('freemarker.template.Template') !== -1) || template === null) && ((typeof lineNumber === 'number') || lineNumber === null) && ((typeof columnNumber === 'number') || columnNumber === null) && ((typeof endLineNumber === 'number') || endLineNumber === null) && ((typeof endColumnNumber === 'number') || endColumnNumber === null) && cause === undefined) {
-            let __args = Array.prototype.slice.call(arguments);
-            {
-                let __args = Array.prototype.slice.call(arguments);
-                let cause: any = null;
-                {
-                    let __args = Array.prototype.slice.call(arguments);
-                    let templateName: any = template == null ? null : template.getSourceName();
-                    if (this.currentToken === undefined) this.currentToken = null;
-                    if (this.messageAndDescriptionRendered === undefined) this.messageAndDescriptionRendered = false;
-                    if (this.message === undefined) this.message = null;
-                    if (this.description === undefined) this.description = null;
-                    if (this.columnNumber === undefined) this.columnNumber = 0;
-                    if (this.lineNumber === undefined) this.lineNumber = 0;
-                    if (this.endColumnNumber === undefined) this.endColumnNumber = 0;
-                    if (this.endLineNumber === undefined) this.endLineNumber = 0;
-                    if (this.expectedTokenSequences === undefined) this.expectedTokenSequences = null;
-                    if (this.tokenImage === undefined) this.tokenImage = null;
-                    if (this.specialConstructor === undefined) this.specialConstructor = false;
-                    if (this.templateName === undefined) this.templateName = null;
-                    this.eol = SecurityUtilities.getSystemProperty$java_lang_String$java_lang_String("line.separator", "\n");
-                    (<any>Object).setPrototypeOf(this, ParseException.prototype);
-                    if (this.currentToken === undefined) this.currentToken = null;
-                    if (this.messageAndDescriptionRendered === undefined) this.messageAndDescriptionRendered = false;
-                    if (this.message === undefined) this.message = null;
-                    if (this.description === undefined) this.description = null;
-                    if (this.columnNumber === undefined) this.columnNumber = 0;
-                    if (this.lineNumber === undefined) this.lineNumber = 0;
-                    if (this.endColumnNumber === undefined) this.endColumnNumber = 0;
-                    if (this.endLineNumber === undefined) this.endLineNumber = 0;
-                    if (this.expectedTokenSequences === undefined) this.expectedTokenSequences = null;
-                    if (this.tokenImage === undefined) this.tokenImage = null;
-                    if (this.specialConstructor === undefined) this.specialConstructor = false;
-                    if (this.templateName === undefined) this.templateName = null;
-                    (() => {
-                        this.description = description;
-                        this.templateName = templateName;
-                        this.lineNumber = lineNumber;
-                        this.columnNumber = columnNumber;
-                        this.endLineNumber = endLineNumber;
-                        this.endColumnNumber = endColumnNumber;
-                    })();
-                }
+                this.endLineNumber = 0;
+                this.endColumnNumber = 0;
+                return;
             }
-        } else if (((typeof description === 'string') || description === null) && ((template != null && template['__class'].indexOf('freemarker.template.Template') !== -1) || template === null) && ((typeof lineNumber === 'number') || lineNumber === null) && ((typeof columnNumber === 'number') || columnNumber === null) && ((endLineNumber != null && (endLineNumber["__classes"] && endLineNumber["__classes"].indexOf("java.lang.Throwable") >= 0) || endLineNumber != null && endLineNumber instanceof <any>Error) || endLineNumber === null) && endColumnNumber === undefined && cause === undefined) {
-            let __args = Array.prototype.slice.call(arguments);
-            let cause: any = __args[4];
-            {
-                let __args = Array.prototype.slice.call(arguments);
-                let templateName: any = template == null ? null : template.getSourceName();
-                let endLineNumber: any = 0;
-                let endColumnNumber: any = 0;
-                if (this.currentToken === undefined) this.currentToken = null;
-                if (this.messageAndDescriptionRendered === undefined) this.messageAndDescriptionRendered = false;
-                if (this.message === undefined) this.message = null;
-                if (this.description === undefined) this.description = null;
-                if (this.columnNumber === undefined) this.columnNumber = 0;
-                if (this.lineNumber === undefined) this.lineNumber = 0;
-                if (this.endColumnNumber === undefined) this.endColumnNumber = 0;
-                if (this.endLineNumber === undefined) this.endLineNumber = 0;
-                if (this.expectedTokenSequences === undefined) this.expectedTokenSequences = null;
-                if (this.tokenImage === undefined) this.tokenImage = null;
-                if (this.specialConstructor === undefined) this.specialConstructor = false;
-                if (this.templateName === undefined) this.templateName = null;
-                this.eol = SecurityUtilities.getSystemProperty$java_lang_String$java_lang_String("line.separator", "\n");
-                (<any>Object).setPrototypeOf(this, ParseException.prototype);
-                if (this.currentToken === undefined) this.currentToken = null;
-                if (this.messageAndDescriptionRendered === undefined) this.messageAndDescriptionRendered = false;
-                if (this.message === undefined) this.message = null;
-                if (this.description === undefined) this.description = null;
-                if (this.columnNumber === undefined) this.columnNumber = 0;
-                if (this.lineNumber === undefined) this.lineNumber = 0;
-                if (this.endColumnNumber === undefined) this.endColumnNumber = 0;
-                if (this.endLineNumber === undefined) this.endLineNumber = 0;
-                if (this.expectedTokenSequences === undefined) this.expectedTokenSequences = null;
-                if (this.tokenImage === undefined) this.tokenImage = null;
-                if (this.specialConstructor === undefined) this.specialConstructor = false;
-                if (this.templateName === undefined) this.templateName = null;
-                (() => {
-                    this.description = description;
-                    this.templateName = templateName;
-                    this.lineNumber = lineNumber;
-                    this.columnNumber = columnNumber;
-                    this.endLineNumber = endLineNumber;
-                    this.endColumnNumber = endColumnNumber;
-                })();
-            }
-        } else if (((typeof description === 'string') || description === null) && ((template != null && template['__class'].indexOf('freemarker.template.Template') !== -1) || template === null) && ((lineNumber != null && lineNumber instanceof <any>Token) || lineNumber === null) && ((columnNumber != null && (columnNumber["__classes"] && columnNumber["__classes"].indexOf("java.lang.Throwable") >= 0) || columnNumber != null && columnNumber instanceof <any>Error) || columnNumber === null) && endLineNumber === undefined && endColumnNumber === undefined && cause === undefined) {
-            let __args = Array.prototype.slice.call(arguments);
-            let tk: any = __args[2];
-            let cause: any = __args[3];
-            {
-                let __args = Array.prototype.slice.call(arguments);
-                let templateName: any = template == null ? null : template.getSourceName();
-                let lineNumber: any = tk.beginLine;
-                let columnNumber: any = tk.beginColumn;
-                let endLineNumber: any = tk.endLine;
-                let endColumnNumber: any = tk.endColumn;
-                if (this.currentToken === undefined) this.currentToken = null;
-                if (this.messageAndDescriptionRendered === undefined) this.messageAndDescriptionRendered = false;
-                if (this.message === undefined) this.message = null;
-                if (this.description === undefined) this.description = null;
-                if (this.columnNumber === undefined) this.columnNumber = 0;
-                if (this.lineNumber === undefined) this.lineNumber = 0;
-                if (this.endColumnNumber === undefined) this.endColumnNumber = 0;
-                if (this.endLineNumber === undefined) this.endLineNumber = 0;
-                if (this.expectedTokenSequences === undefined) this.expectedTokenSequences = null;
-                if (this.tokenImage === undefined) this.tokenImage = null;
-                if (this.specialConstructor === undefined) this.specialConstructor = false;
-                if (this.templateName === undefined) this.templateName = null;
-                this.eol = SecurityUtilities.getSystemProperty$java_lang_String$java_lang_String("line.separator", "\n");
-                (<any>Object).setPrototypeOf(this, ParseException.prototype);
-                if (this.currentToken === undefined) this.currentToken = null;
-                if (this.messageAndDescriptionRendered === undefined) this.messageAndDescriptionRendered = false;
-                if (this.message === undefined) this.message = null;
-                if (this.description === undefined) this.description = null;
-                if (this.columnNumber === undefined) this.columnNumber = 0;
-                if (this.lineNumber === undefined) this.lineNumber = 0;
-                if (this.endColumnNumber === undefined) this.endColumnNumber = 0;
-                if (this.endLineNumber === undefined) this.endLineNumber = 0;
-                if (this.expectedTokenSequences === undefined) this.expectedTokenSequences = null;
-                if (this.tokenImage === undefined) this.tokenImage = null;
-                if (this.specialConstructor === undefined) this.specialConstructor = false;
-                if (this.templateName === undefined) this.templateName = null;
-                (() => {
-                    this.description = description;
-                    this.templateName = templateName;
-                    this.lineNumber = lineNumber;
-                    this.columnNumber = columnNumber;
-                    this.endLineNumber = endLineNumber;
-                    this.endColumnNumber = endColumnNumber;
-                })();
-            }
-        } else if (((typeof description === 'string') || description === null) && ((template != null && template['__class'].indexOf('freemarker.template.Template') !== -1) || template === null) && ((typeof lineNumber === 'number') || lineNumber === null) && ((typeof columnNumber === 'number') || columnNumber === null) && endLineNumber === undefined && endColumnNumber === undefined && cause === undefined) {
-            let __args = Array.prototype.slice.call(arguments);
-            {
-                let __args = Array.prototype.slice.call(arguments);
-                let cause: any = null;
-                {
-                    let __args = Array.prototype.slice.call(arguments);
-                    let templateName: any = template == null ? null : template.getSourceName();
-                    let endLineNumber: any = 0;
-                    let endColumnNumber: any = 0;
-                    if (this.currentToken === undefined) this.currentToken = null;
-                    if (this.messageAndDescriptionRendered === undefined) this.messageAndDescriptionRendered = false;
-                    if (this.message === undefined) this.message = null;
-                    if (this.description === undefined) this.description = null;
-                    if (this.columnNumber === undefined) this.columnNumber = 0;
-                    if (this.lineNumber === undefined) this.lineNumber = 0;
-                    if (this.endColumnNumber === undefined) this.endColumnNumber = 0;
-                    if (this.endLineNumber === undefined) this.endLineNumber = 0;
-                    if (this.expectedTokenSequences === undefined) this.expectedTokenSequences = null;
-                    if (this.tokenImage === undefined) this.tokenImage = null;
-                    if (this.specialConstructor === undefined) this.specialConstructor = false;
-                    if (this.templateName === undefined) this.templateName = null;
-                    this.eol = SecurityUtilities.getSystemProperty$java_lang_String$java_lang_String("line.separator", "\n");
-                    (<any>Object).setPrototypeOf(this, ParseException.prototype);
-                    if (this.currentToken === undefined) this.currentToken = null;
-                    if (this.messageAndDescriptionRendered === undefined) this.messageAndDescriptionRendered = false;
-                    if (this.message === undefined) this.message = null;
-                    if (this.description === undefined) this.description = null;
-                    if (this.columnNumber === undefined) this.columnNumber = 0;
-                    if (this.lineNumber === undefined) this.lineNumber = 0;
-                    if (this.endColumnNumber === undefined) this.endColumnNumber = 0;
-                    if (this.endLineNumber === undefined) this.endLineNumber = 0;
-                    if (this.expectedTokenSequences === undefined) this.expectedTokenSequences = null;
-                    if (this.tokenImage === undefined) this.tokenImage = null;
-                    if (this.specialConstructor === undefined) this.specialConstructor = false;
-                    if (this.templateName === undefined) this.templateName = null;
-                    (() => {
-                        this.description = description;
-                        this.templateName = templateName;
-                        this.lineNumber = lineNumber;
-                        this.columnNumber = columnNumber;
-                        this.endLineNumber = endLineNumber;
-                        this.endColumnNumber = endColumnNumber;
-                    })();
-                }
-            }
-        } else if (((description != null && description instanceof <any>Token) || description === null) && ((template != null && template instanceof <any>Array && (template.length == 0 || template[0] == null || template[0] instanceof Array)) || template === null) && ((lineNumber != null && lineNumber instanceof <any>Array && (lineNumber.length == 0 || lineNumber[0] == null || (typeof lineNumber[0] === 'string'))) || lineNumber === null) && columnNumber === undefined && endLineNumber === undefined && endColumnNumber === undefined && cause === undefined) {
-            let __args = Array.prototype.slice.call(arguments);
-            let currentTokenVal: any = __args[0];
-            let expectedTokenSequencesVal: any = __args[1];
-            let tokenImageVal: any = __args[2];
-            if (this.currentToken === undefined) this.currentToken = null;
-            if (this.messageAndDescriptionRendered === undefined) this.messageAndDescriptionRendered = false;
-            if (this.message === undefined) this.message = null;
-            if (this.description === undefined) this.description = null;
-            if (this.columnNumber === undefined) this.columnNumber = 0;
-            if (this.lineNumber === undefined) this.lineNumber = 0;
-            if (this.endColumnNumber === undefined) this.endColumnNumber = 0;
-            if (this.endLineNumber === undefined) this.endLineNumber = 0;
-            if (this.expectedTokenSequences === undefined) this.expectedTokenSequences = null;
-            if (this.tokenImage === undefined) this.tokenImage = null;
-            if (this.specialConstructor === undefined) this.specialConstructor = false;
-            if (this.templateName === undefined) this.templateName = null;
-            this.eol = SecurityUtilities.getSystemProperty$java_lang_String$java_lang_String("line.separator", "\n");
-            (<any>Object).setPrototypeOf(this, ParseException.prototype);
-            if (this.currentToken === undefined) this.currentToken = null;
-            if (this.messageAndDescriptionRendered === undefined) this.messageAndDescriptionRendered = false;
-            if (this.message === undefined) this.message = null;
-            if (this.description === undefined) this.description = null;
-            if (this.columnNumber === undefined) this.columnNumber = 0;
-            if (this.lineNumber === undefined) this.lineNumber = 0;
-            if (this.endColumnNumber === undefined) this.endColumnNumber = 0;
-            if (this.endLineNumber === undefined) this.endLineNumber = 0;
-            if (this.expectedTokenSequences === undefined) this.expectedTokenSequences = null;
-            if (this.tokenImage === undefined) this.tokenImage = null;
-            if (this.specialConstructor === undefined) this.specialConstructor = false;
-            if (this.templateName === undefined) this.templateName = null;
-            (() => {
-                this.currentToken = currentTokenVal;
+            const tk = <Token>arguments[2];
+            this.description = description;
+            this.templateName = template === null ? null : template.getSourceName();
+            this.lineNumber = tk.beginLine;
+            this.columnNumber = tk.beginColumn;
+            this.endLineNumber = tk.endLine;
+            this.endColumnNumber = tk.endColumn;
+            console.error((<Error>arguments[3]));
+            return;
+        }
+        if (arguments.length === 3) {
+            if (Array.isArray(arguments[1])) {
+                this.currentToken = <Token>arguments[0];
                 this.specialConstructor = true;
-                this.expectedTokenSequences = expectedTokenSequencesVal;
-                this.tokenImage = tokenImageVal;
-                this.lineNumber = this.currentToken.next.beginLine;
-                this.columnNumber = this.currentToken.next.beginColumn;
-                this.endLineNumber = this.currentToken.next.endLine;
-                this.endColumnNumber = this.currentToken.next.endColumn;
-            })();
-        } else if (((typeof description === 'string') || description === null) && ((template != null && template['__class'].indexOf('freemarker.template.Template') !== -1) || template === null) && ((lineNumber != null && lineNumber instanceof <any>Token) || lineNumber === null) && columnNumber === undefined && endLineNumber === undefined && endColumnNumber === undefined && cause === undefined) {
-            let __args = Array.prototype.slice.call(arguments);
-            let tk: any = __args[2];
-            {
-                let __args = Array.prototype.slice.call(arguments);
-                let cause: any = null;
-                {
-                    let __args = Array.prototype.slice.call(arguments);
-                    let templateName: any = template == null ? null : template.getSourceName();
-                    let lineNumber: any = tk.beginLine;
-                    let columnNumber: any = tk.beginColumn;
-                    let endLineNumber: any = tk.endLine;
-                    let endColumnNumber: any = tk.endColumn;
-                    if (this.currentToken === undefined) this.currentToken = null;
-                    if (this.messageAndDescriptionRendered === undefined) this.messageAndDescriptionRendered = false;
-                    if (this.message === undefined) this.message = null;
-                    if (this.description === undefined) this.description = null;
-                    if (this.columnNumber === undefined) this.columnNumber = 0;
-                    if (this.lineNumber === undefined) this.lineNumber = 0;
-                    if (this.endColumnNumber === undefined) this.endColumnNumber = 0;
-                    if (this.endLineNumber === undefined) this.endLineNumber = 0;
-                    if (this.expectedTokenSequences === undefined) this.expectedTokenSequences = null;
-                    if (this.tokenImage === undefined) this.tokenImage = null;
-                    if (this.specialConstructor === undefined) this.specialConstructor = false;
-                    if (this.templateName === undefined) this.templateName = null;
-                    this.eol = SecurityUtilities.getSystemProperty$java_lang_String$java_lang_String("line.separator", "\n");
-                    (<any>Object).setPrototypeOf(this, ParseException.prototype);
-                    if (this.currentToken === undefined) this.currentToken = null;
-                    if (this.messageAndDescriptionRendered === undefined) this.messageAndDescriptionRendered = false;
-                    if (this.message === undefined) this.message = null;
-                    if (this.description === undefined) this.description = null;
-                    if (this.columnNumber === undefined) this.columnNumber = 0;
-                    if (this.lineNumber === undefined) this.lineNumber = 0;
-                    if (this.endColumnNumber === undefined) this.endColumnNumber = 0;
-                    if (this.endLineNumber === undefined) this.endLineNumber = 0;
-                    if (this.expectedTokenSequences === undefined) this.expectedTokenSequences = null;
-                    if (this.tokenImage === undefined) this.tokenImage = null;
-                    if (this.specialConstructor === undefined) this.specialConstructor = false;
-                    if (this.templateName === undefined) this.templateName = null;
-                    (() => {
-                        this.description = description;
-                        this.templateName = templateName;
-                        this.lineNumber = lineNumber;
-                        this.columnNumber = columnNumber;
-                        this.endLineNumber = endLineNumber;
-                        this.endColumnNumber = endColumnNumber;
-                    })();
-                }
+                this.expectedTokenSequences = arguments[1];
+                this.tokenImage = arguments[2];
+                this.lineNumber = this.currentToken.beginLine;
+                this.columnNumber = this.currentToken.beginColumn;
+                this.endLineNumber = this.currentToken.endLine;
+                this.endColumnNumber = this.currentToken.endColumn;
+                return;
             }
-        } else if (((typeof description === 'string') || description === null) && ((template != null && template instanceof <any>TemplateObject) || template === null) && ((lineNumber != null && (lineNumber["__classes"] && lineNumber["__classes"].indexOf("java.lang.Throwable") >= 0) || lineNumber != null && lineNumber instanceof <any>Error) || lineNumber === null) && columnNumber === undefined && endLineNumber === undefined && endColumnNumber === undefined && cause === undefined) {
-            let __args = Array.prototype.slice.call(arguments);
-            let tobj: any = __args[1];
-            let cause: any = __args[2];
-            {
-                let __args = Array.prototype.slice.call(arguments);
-                let templateName: any = tobj.getTemplate() == null ? null : tobj.getTemplate().getSourceName();
-                let lineNumber: any = tobj.beginLine;
-                let columnNumber: any = tobj.beginColumn;
-                let endLineNumber: any = tobj.endLine;
-                let endColumnNumber: any = tobj.endColumn;
-                if (this.currentToken === undefined) this.currentToken = null;
-                if (this.messageAndDescriptionRendered === undefined) this.messageAndDescriptionRendered = false;
-                if (this.message === undefined) this.message = null;
-                if (this.description === undefined) this.description = null;
-                if (this.columnNumber === undefined) this.columnNumber = 0;
-                if (this.lineNumber === undefined) this.lineNumber = 0;
-                if (this.endColumnNumber === undefined) this.endColumnNumber = 0;
-                if (this.endLineNumber === undefined) this.endLineNumber = 0;
-                if (this.expectedTokenSequences === undefined) this.expectedTokenSequences = null;
-                if (this.tokenImage === undefined) this.tokenImage = null;
-                if (this.specialConstructor === undefined) this.specialConstructor = false;
-                if (this.templateName === undefined) this.templateName = null;
-                this.eol = SecurityUtilities.getSystemProperty$java_lang_String$java_lang_String("line.separator", "\n");
-                (<any>Object).setPrototypeOf(this, ParseException.prototype);
-                if (this.currentToken === undefined) this.currentToken = null;
-                if (this.messageAndDescriptionRendered === undefined) this.messageAndDescriptionRendered = false;
-                if (this.message === undefined) this.message = null;
-                if (this.description === undefined) this.description = null;
-                if (this.columnNumber === undefined) this.columnNumber = 0;
-                if (this.lineNumber === undefined) this.lineNumber = 0;
-                if (this.endColumnNumber === undefined) this.endColumnNumber = 0;
-                if (this.endLineNumber === undefined) this.endLineNumber = 0;
-                if (this.expectedTokenSequences === undefined) this.expectedTokenSequences = null;
-                if (this.tokenImage === undefined) this.tokenImage = null;
-                if (this.specialConstructor === undefined) this.specialConstructor = false;
-                if (this.templateName === undefined) this.templateName = null;
-                (() => {
-                    this.description = description;
-                    this.templateName = templateName;
-                    this.lineNumber = lineNumber;
-                    this.columnNumber = columnNumber;
-                    this.endLineNumber = endLineNumber;
-                    this.endColumnNumber = endColumnNumber;
-                })();
+            if (typeof arguments[1] === 'number') {
+                this.description = description;
+                this.lineNumber = arguments[1];
+                this.columnNumber = arguments[2];
+                this.endLineNumber = 0;
+                this.endColumnNumber = 0;
+                return;
             }
-        } else if (((typeof description === 'string') || description === null) && ((typeof template === 'number') || template === null) && ((typeof lineNumber === 'number') || lineNumber === null) && columnNumber === undefined && endLineNumber === undefined && endColumnNumber === undefined && cause === undefined) {
-            let __args = Array.prototype.slice.call(arguments);
-            let lineNumber: any = __args[1];
-            let columnNumber: any = __args[2];
-            {
-                let __args = Array.prototype.slice.call(arguments);
-                let template: any = null;
-                let cause: any = null;
-                {
-                    let __args = Array.prototype.slice.call(arguments);
-                    let templateName: any = template == null ? null : template.getSourceName();
-                    let endLineNumber: any = 0;
-                    let endColumnNumber: any = 0;
-                    if (this.currentToken === undefined) this.currentToken = null;
-                    if (this.messageAndDescriptionRendered === undefined) this.messageAndDescriptionRendered = false;
-                    if (this.message === undefined) this.message = null;
-                    if (this.description === undefined) this.description = null;
-                    if (this.columnNumber === undefined) this.columnNumber = 0;
-                    if (this.lineNumber === undefined) this.lineNumber = 0;
-                    if (this.endColumnNumber === undefined) this.endColumnNumber = 0;
-                    if (this.endLineNumber === undefined) this.endLineNumber = 0;
-                    if (this.expectedTokenSequences === undefined) this.expectedTokenSequences = null;
-                    if (this.tokenImage === undefined) this.tokenImage = null;
-                    if (this.specialConstructor === undefined) this.specialConstructor = false;
-                    if (this.templateName === undefined) this.templateName = null;
-                    this.eol = SecurityUtilities.getSystemProperty$java_lang_String$java_lang_String("line.separator", "\n");
-                    (<any>Object).setPrototypeOf(this, ParseException.prototype);
-                    if (this.currentToken === undefined) this.currentToken = null;
-                    if (this.messageAndDescriptionRendered === undefined) this.messageAndDescriptionRendered = false;
-                    if (this.message === undefined) this.message = null;
-                    if (this.description === undefined) this.description = null;
-                    if (this.columnNumber === undefined) this.columnNumber = 0;
-                    if (this.lineNumber === undefined) this.lineNumber = 0;
-                    if (this.endColumnNumber === undefined) this.endColumnNumber = 0;
-                    if (this.endLineNumber === undefined) this.endLineNumber = 0;
-                    if (this.expectedTokenSequences === undefined) this.expectedTokenSequences = null;
-                    if (this.tokenImage === undefined) this.tokenImage = null;
-                    if (this.specialConstructor === undefined) this.specialConstructor = false;
-                    if (this.templateName === undefined) this.templateName = null;
-                    (() => {
-                        this.description = description;
-                        this.templateName = templateName;
-                        this.lineNumber = lineNumber;
-                        this.columnNumber = columnNumber;
-                        this.endLineNumber = endLineNumber;
-                        this.endColumnNumber = endColumnNumber;
-                    })();
-                }
+            if (arguments[2] instanceof Token) {
+                const tk = <Token>arguments[2];
+                this.description = description;
+                this.templateName = template === null ? null : template.getSourceName();
+                this.lineNumber = tk.beginLine;
+                this.columnNumber = tk.beginColumn;
+                this.endLineNumber = tk.endLine;
+                this.endColumnNumber = tk.endColumn;
+                return;
             }
-        } else if (((typeof description === 'string') || description === null) && ((template != null && template instanceof <any>TemplateObject) || template === null) && lineNumber === undefined && columnNumber === undefined && endLineNumber === undefined && endColumnNumber === undefined && cause === undefined) {
-            let __args = Array.prototype.slice.call(arguments);
-            let tobj: any = __args[1];
-            {
-                let __args = Array.prototype.slice.call(arguments);
-                let cause: any = null;
-                {
-                    let __args = Array.prototype.slice.call(arguments);
-                    let templateName: any = tobj.getTemplate() == null ? null : tobj.getTemplate().getSourceName();
-                    let lineNumber: any = tobj.beginLine;
-                    let columnNumber: any = tobj.beginColumn;
-                    let endLineNumber: any = tobj.endLine;
-                    let endColumnNumber: any = tobj.endColumn;
-                    if (this.currentToken === undefined) this.currentToken = null;
-                    if (this.messageAndDescriptionRendered === undefined) this.messageAndDescriptionRendered = false;
-                    if (this.message === undefined) this.message = null;
-                    if (this.description === undefined) this.description = null;
-                    if (this.columnNumber === undefined) this.columnNumber = 0;
-                    if (this.lineNumber === undefined) this.lineNumber = 0;
-                    if (this.endColumnNumber === undefined) this.endColumnNumber = 0;
-                    if (this.endLineNumber === undefined) this.endLineNumber = 0;
-                    if (this.expectedTokenSequences === undefined) this.expectedTokenSequences = null;
-                    if (this.tokenImage === undefined) this.tokenImage = null;
-                    if (this.specialConstructor === undefined) this.specialConstructor = false;
-                    if (this.templateName === undefined) this.templateName = null;
-                    this.eol = SecurityUtilities.getSystemProperty$java_lang_String$java_lang_String("line.separator", "\n");
-                    (<any>Object).setPrototypeOf(this, ParseException.prototype);
-                    if (this.currentToken === undefined) this.currentToken = null;
-                    if (this.messageAndDescriptionRendered === undefined) this.messageAndDescriptionRendered = false;
-                    if (this.message === undefined) this.message = null;
-                    if (this.description === undefined) this.description = null;
-                    if (this.columnNumber === undefined) this.columnNumber = 0;
-                    if (this.lineNumber === undefined) this.lineNumber = 0;
-                    if (this.endColumnNumber === undefined) this.endColumnNumber = 0;
-                    if (this.endLineNumber === undefined) this.endLineNumber = 0;
-                    if (this.expectedTokenSequences === undefined) this.expectedTokenSequences = null;
-                    if (this.tokenImage === undefined) this.tokenImage = null;
-                    if (this.specialConstructor === undefined) this.specialConstructor = false;
-                    if (this.templateName === undefined) this.templateName = null;
-                    (() => {
-                        this.description = description;
-                        this.templateName = templateName;
-                        this.lineNumber = lineNumber;
-                        this.columnNumber = columnNumber;
-                        this.endLineNumber = endLineNumber;
-                        this.endColumnNumber = endColumnNumber;
-                    })();
-                }
-            }
-        } else if (description === undefined && template === undefined && lineNumber === undefined && columnNumber === undefined && endLineNumber === undefined && endColumnNumber === undefined && cause === undefined) {
-            let __args = Array.prototype.slice.call(arguments);
-            if (this.currentToken === undefined) this.currentToken = null;
-            if (this.messageAndDescriptionRendered === undefined) this.messageAndDescriptionRendered = false;
-            if (this.message === undefined) this.message = null;
-            if (this.description === undefined) this.description = null;
-            if (this.columnNumber === undefined) this.columnNumber = 0;
-            if (this.lineNumber === undefined) this.lineNumber = 0;
-            if (this.endColumnNumber === undefined) this.endColumnNumber = 0;
-            if (this.endLineNumber === undefined) this.endLineNumber = 0;
-            if (this.expectedTokenSequences === undefined) this.expectedTokenSequences = null;
-            if (this.tokenImage === undefined) this.tokenImage = null;
-            if (this.specialConstructor === undefined) this.specialConstructor = false;
-            if (this.templateName === undefined) this.templateName = null;
-            this.eol = SecurityUtilities.getSystemProperty$java_lang_String$java_lang_String("line.separator", "\n");
-            (<any>Object).setPrototypeOf(this, ParseException.prototype);
-            if (this.currentToken === undefined) this.currentToken = null;
-            if (this.messageAndDescriptionRendered === undefined) this.messageAndDescriptionRendered = false;
-            if (this.message === undefined) this.message = null;
-            if (this.description === undefined) this.description = null;
-            if (this.columnNumber === undefined) this.columnNumber = 0;
-            if (this.lineNumber === undefined) this.lineNumber = 0;
-            if (this.endColumnNumber === undefined) this.endColumnNumber = 0;
-            if (this.endLineNumber === undefined) this.endLineNumber = 0;
-            if (this.expectedTokenSequences === undefined) this.expectedTokenSequences = null;
-            if (this.tokenImage === undefined) this.tokenImage = null;
-            if (this.specialConstructor === undefined) this.specialConstructor = false;
-            if (this.templateName === undefined) this.templateName = null;
-        } else throw new Error('invalid overload');
+
+            const tobj = arguments[1];
+            const cause = arguments[2];
+            this.description = description;
+            this.templateName = tobj.getTemplate() == null ? null : tobj.getTemplate().getSourceName();
+            this.lineNumber = tobj.beginLine;
+            this.columnNumber = tobj.beginColumn;
+            this.endLineNumber = tobj.endLine;
+            this.endColumnNumber = tobj.endColumn;
+            console.error((<Error>cause));
+        }
+        if (arguments.length === 2) {
+            const tobj = arguments[1];
+            this.description = description;
+            this.templateName = tobj.getTemplate() == null ? null : tobj.getTemplate().getSourceName();
+            this.lineNumber = tobj.beginLine;
+            this.columnNumber = tobj.beginColumn;
+            this.endLineNumber = tobj.endLine;
+            this.endColumnNumber = tobj.endColumn;
+        }
     }
 
     /**
