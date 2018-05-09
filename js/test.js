@@ -51,6 +51,7 @@ console.log(writer.toString());
 console.log('\n----------------------------');
 if(exception != null) {
     setTimeout(() => {
+        console.log("ParseException?". exception instanceof ParseException);
         if(exception.getDescription) {
             console.error(exception.getDescription());
         }

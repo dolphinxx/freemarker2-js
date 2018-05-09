@@ -81,8 +81,8 @@ export class ClassUtil {
     public static getShortClassName(pClass: any, shortenFreeMarkerClasses: boolean = false): string {
         if (pClass == null) {
             return null;
-        } else if (pClass.isArray()) {
-            return ClassUtil.getShortClassName(pClass.getComponentType()) + "[]";
+        } else if (Array.isArray(pClass)) {
+            return pClass + "[]";
         } else {
             let cn: string = /* getName */(c => c["__class"] ? c["__class"] : c["name"])(pClass);
             if (/* startsWith */((str, searchString, position = 0) => str.substr(position, searchString.length) === searchString)(cn, "java.lang.") || /* startsWith */((str, searchString, position = 0) => str.substr(position, searchString.length) === searchString)(cn, "java.util.")) {

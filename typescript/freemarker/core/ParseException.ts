@@ -34,9 +34,6 @@ export class ParseException {
     messageAndDescriptionRendered: boolean;
 
     /*private*/
-    message: string;
-
-    /*private*/
     description: string;
 
     public columnNumber: number;
@@ -64,7 +61,7 @@ export class ParseException {
     /**
      * The end of line string for this machine.
      */
-    eol: string = SecurityUtilities.getSystemProperty("line.separator", "\n");
+    eol: string = System.getProperty("line.separator", "\n");
 
     /**
      * @deprecated Will be remove without replacement in 2.4.
@@ -74,8 +71,15 @@ export class ParseException {
     /*private*/
     templateName: string;
 
+    cause: Error;
+
+    name:string;
+
+    message:string;
+
     public constructor(description?: any, template?: any, lineNumber?: any, columnNumber?: any, endLineNumber?: any, endColumnNumber?: any, cause?: any) {
-        this.eol = System.getProperty("line.separator", "\n");
+        // super(description === undefined ? "" : description);
+        this.name = ParseException['__class'];
         if (arguments.length === 7) {
             this.description = description;
             this.templateName = typeof arguments[1] === 'string' ? template : template.getSourceName();
@@ -83,29 +87,23 @@ export class ParseException {
             this.columnNumber = columnNumber;
             this.endLineNumber = endLineNumber;
             this.endColumnNumber = endColumnNumber;
-            console.error((<Error>cause));
-            return;
-        }
-        if (arguments.length === 6) {
+            this.cause = <Error>cause;
+        } else if (arguments.length === 6) {
             this.description = description;
             this.templateName = template === null ? null : template.getSourceName();
             this.lineNumber = lineNumber;
             this.columnNumber = columnNumber;
             this.endLineNumber = endLineNumber;
             this.endColumnNumber = endColumnNumber;
-            return;
-        }
-        if (arguments.length === 5) {
+        } else if (arguments.length === 5) {
             this.description = description;
             this.templateName = template === null ? null : template.getSourceName();
             this.lineNumber = lineNumber;
             this.columnNumber = columnNumber;
             this.endLineNumber = 0;
             this.endColumnNumber = 0;
-            console.error((<Error>endLineNumber));
-            return;
-        }
-        if (arguments.length === 4) {
+            this.cause = <Error>endLineNumber;
+        } else if (arguments.length === 4) {
             if (typeof arguments[2] === 'number') {
                 this.description = description;
                 this.templateName = template === null ? null : template.getSourceName();
@@ -113,19 +111,17 @@ export class ParseException {
                 this.columnNumber = columnNumber;
                 this.endLineNumber = 0;
                 this.endColumnNumber = 0;
-                return;
+            } else {
+                const tk = <Token>arguments[2];
+                this.description = description;
+                this.templateName = template === null ? null : template.getSourceName();
+                this.lineNumber = tk.beginLine;
+                this.columnNumber = tk.beginColumn;
+                this.endLineNumber = tk.endLine;
+                this.endColumnNumber = tk.endColumn;
+                this.cause = <Error>arguments[3];
             }
-            const tk = <Token>arguments[2];
-            this.description = description;
-            this.templateName = template === null ? null : template.getSourceName();
-            this.lineNumber = tk.beginLine;
-            this.columnNumber = tk.beginColumn;
-            this.endLineNumber = tk.endLine;
-            this.endColumnNumber = tk.endColumn;
-            console.error((<Error>arguments[3]));
-            return;
-        }
-        if (arguments.length === 3) {
+        } else if (arguments.length === 3) {
             if (Array.isArray(arguments[1])) {
                 this.currentToken = <Token>arguments[0];
                 this.specialConstructor = true;
@@ -135,17 +131,13 @@ export class ParseException {
                 this.columnNumber = this.currentToken.beginColumn;
                 this.endLineNumber = this.currentToken.endLine;
                 this.endColumnNumber = this.currentToken.endColumn;
-                return;
-            }
-            if (typeof arguments[1] === 'number') {
+            } else if (typeof arguments[1] === 'number') {
                 this.description = description;
                 this.lineNumber = arguments[1];
                 this.columnNumber = arguments[2];
                 this.endLineNumber = 0;
                 this.endColumnNumber = 0;
-                return;
-            }
-            if (arguments[2] instanceof Token) {
+            } else if (arguments[2] instanceof Token) {
                 const tk = <Token>arguments[2];
                 this.description = description;
                 this.templateName = template === null ? null : template.getSourceName();
@@ -153,20 +145,18 @@ export class ParseException {
                 this.columnNumber = tk.beginColumn;
                 this.endLineNumber = tk.endLine;
                 this.endColumnNumber = tk.endColumn;
-                return;
+            } else {
+                const tobj = arguments[1];
+                const cause = arguments[2];
+                this.description = description;
+                this.templateName = tobj.getTemplate() == null ? null : tobj.getTemplate().getSourceName();
+                this.lineNumber = tobj.beginLine;
+                this.columnNumber = tobj.beginColumn;
+                this.endLineNumber = tobj.endLine;
+                this.endColumnNumber = tobj.endColumn;
+                this.cause = <Error>cause;
             }
-
-            const tobj = arguments[1];
-            const cause = arguments[2];
-            this.description = description;
-            this.templateName = tobj.getTemplate() == null ? null : tobj.getTemplate().getSourceName();
-            this.lineNumber = tobj.beginLine;
-            this.columnNumber = tobj.beginColumn;
-            this.endLineNumber = tobj.endLine;
-            this.endColumnNumber = tobj.endColumn;
-            console.error((<Error>cause));
-        }
-        if (arguments.length === 2) {
+        } else if (arguments.length === 2) {
             const tobj = arguments[1];
             this.description = description;
             this.templateName = tobj.getTemplate() == null ? null : tobj.getTemplate().getSourceName();
@@ -175,6 +165,10 @@ export class ParseException {
             this.endLineNumber = tobj.endLine;
             this.endColumnNumber = tobj.endColumn;
         }
+        this.name = ParseException['__class'];
+        Error.captureStackTrace(this, ParseException);
+        this.message = this.getMessage();
+        console.error("cause:", this.cause);
     }
 
     /**
