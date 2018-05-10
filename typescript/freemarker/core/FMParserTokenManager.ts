@@ -309,7 +309,7 @@ export class FMParserTokenManager implements FMParserConstants {
         for(; ; ) {
             if(++this.jjround === 2147483647) this.ReInitRounds();
             if(this.curChar < 64) {
-                let l : number = 1 << this.curChar;
+                let l : number = Math.pow(2, this.curChar);
                 do {
                     switch((this.jjstateSet[--i])) {
                         case 0:
@@ -372,7 +372,7 @@ export class FMParserTokenManager implements FMParserConstants {
                     }
                 } while((i !== startsAt));
             } else if(this.curChar < 128) {
-                let l : number = 1 << (this.curChar & 63);
+                let l : number = Math.pow(2, (this.curChar & 63));
                 do {
                     switch((this.jjstateSet[--i])) {
                         case 0:
@@ -412,11 +412,11 @@ export class FMParserTokenManager implements FMParserConstants {
                     }
                 } while((i !== startsAt));
             } else {
-                let hiByte : number = (this.curChar >> 8);
-                let i1 : number = hiByte >> 6;
-                let l1 : number = 1 << (hiByte & 63);
-                let i2 : number = (this.curChar & 255) >> 6;
-                let l2 : number = 1 << (this.curChar & 63);
+                let hiByte : number = (this.curChar * Math.pow(2, -8));
+                let i1 : number = hiByte * Math.pow(2, -6);
+                let l1 : number = Math.pow(2, (hiByte & 63));
+                let i2 : number = (this.curChar & 255) * Math.pow(2, -6);
+                let l2 : number = Math.pow(2, (this.curChar & 63));
                 do {
                     switch((this.jjstateSet[--i])) {
                         case 0:
@@ -588,7 +588,7 @@ export class FMParserTokenManager implements FMParserConstants {
         for(; ; ) {
             if(++this.jjround === 2147483647) this.ReInitRounds();
             if(this.curChar < 64) {
-                let l : number = 1 << this.curChar;
+                let l : number = Math.pow(2, this.curChar);
                 do {
                     switch((this.jjstateSet[--i])) {
                         case 697:
@@ -2045,7 +2045,7 @@ export class FMParserTokenManager implements FMParserConstants {
                     }
                 } while((i !== startsAt));
             } else if(this.curChar < 128) {
-                let l : number = 1 << (this.curChar & 63);
+                let l : number = Math.pow(2, (this.curChar & 63));
                 do {
                     switch((this.jjstateSet[--i])) {
                         case 697:
@@ -3634,11 +3634,11 @@ export class FMParserTokenManager implements FMParserConstants {
                     }
                 } while((i !== startsAt));
             } else {
-                let hiByte : number = (this.curChar >> 8);
-                let i1 : number = hiByte >> 6;
-                let l1 : number = 1 << (hiByte & 63);
-                let i2 : number = (this.curChar & 255) >> 6;
-                let l2 : number = 1 << (this.curChar & 63);
+                let hiByte : number = (this.curChar * Math.pow(2, -8));
+                let i1 : number = hiByte * Math.pow(2, -6);
+                let l1 : number = Math.pow(2, (hiByte & 63));
+                let i2 : number = (this.curChar & 255) * Math.pow(2, -6);
+                let l2 : number = Math.pow(2, (this.curChar & 63));
                 do {
                     switch((this.jjstateSet[--i])) {
                         case 2:
@@ -3943,7 +3943,7 @@ export class FMParserTokenManager implements FMParserConstants {
         for(; ; ) {
             if(++this.jjround === 2147483647) this.ReInitRounds();
             if(this.curChar < 64) {
-                let l : number = 1 << this.curChar;
+                let l : number = Math.pow(2, this.curChar);
                 do {
                     switch((this.jjstateSet[--i])) {
                         case 47:
@@ -4223,7 +4223,7 @@ export class FMParserTokenManager implements FMParserConstants {
                     }
                 } while((i !== startsAt));
             } else if(this.curChar < 128) {
-                let l : number = 1 << (this.curChar & 63);
+                let l : number = Math.pow(2, (this.curChar & 63));
                 do {
                     switch((this.jjstateSet[--i])) {
                         case 1:
@@ -4469,11 +4469,11 @@ export class FMParserTokenManager implements FMParserConstants {
                     }
                 } while((i !== startsAt));
             } else {
-                let hiByte : number = (this.curChar >> 8);
-                let i1 : number = hiByte >> 6;
-                let l1 : number = 1 << (hiByte & 63);
-                let i2 : number = (this.curChar & 255) >> 6;
-                let l2 : number = 1 << (this.curChar & 63);
+                let hiByte : number = (this.curChar * Math.pow(2, -8));
+                let i1 : number = hiByte * Math.pow(2, -6);
+                let l1 : number = Math.pow(2, (hiByte & 63));
+                let i2 : number = (this.curChar & 255) * Math.pow(2, -6);
+                let l2 : number = Math.pow(2, (this.curChar & 63));
                 do {
                     switch((this.jjstateSet[--i])) {
                         case 1:
@@ -4793,7 +4793,7 @@ export class FMParserTokenManager implements FMParserConstants {
         for(; ; ) {
             if(++this.jjround === 2147483647) this.ReInitRounds();
             if(this.curChar < 64) {
-                let l : number = 1 << this.curChar;
+                let l : number = Math.pow(2, this.curChar);
                 do {
                     switch((this.jjstateSet[--i])) {
                         case 1:
@@ -5063,7 +5063,7 @@ export class FMParserTokenManager implements FMParserConstants {
                     }
                 } while((i !== startsAt));
             } else if(this.curChar < 128) {
-                let l : number = 1 << (this.curChar & 63);
+                let l : number = Math.pow(2, (this.curChar & 63));
                 do {
                     switch((this.jjstateSet[--i])) {
                         case 1:
@@ -5306,11 +5306,11 @@ export class FMParserTokenManager implements FMParserConstants {
                     }
                 } while((i !== startsAt));
             } else {
-                let hiByte : number = (this.curChar >> 8);
-                let i1 : number = hiByte >> 6;
-                let l1 : number = 1 << (hiByte & 63);
-                let i2 : number = (this.curChar & 255) >> 6;
-                let l2 : number = 1 << (this.curChar & 63);
+                let hiByte : number = (this.curChar * Math.pow(2, -8));
+                let i1 : number = hiByte * Math.pow(2, -6);
+                let l1 : number = Math.pow(2, (hiByte & 63));
+                let i2 : number = (this.curChar & 255) * Math.pow(2, -6);
+                let l2 : number = Math.pow(2, (this.curChar & 63));
                 do {
                     switch((this.jjstateSet[--i])) {
                         case 1:
@@ -5408,7 +5408,7 @@ export class FMParserTokenManager implements FMParserConstants {
         for(; ; ) {
             if(++this.jjround === 2147483647) this.ReInitRounds();
             if(this.curChar < 64) {
-                let l : number = 1 << this.curChar;
+                let l : number = Math.pow(2, this.curChar);
                 do {
                     switch((this.jjstateSet[--i])) {
                         case 3:
@@ -5443,7 +5443,7 @@ export class FMParserTokenManager implements FMParserConstants {
                     }
                 } while((i !== startsAt));
             } else if(this.curChar < 128) {
-                let l : number = 1 << (this.curChar & 63);
+                let l : number = Math.pow(2, (this.curChar & 63));
                 do {
                     switch((this.jjstateSet[--i])) {
                         case 1:
@@ -5462,11 +5462,11 @@ export class FMParserTokenManager implements FMParserConstants {
                     }
                 } while((i !== startsAt));
             } else {
-                let hiByte : number = (this.curChar >> 8);
-                let i1 : number = hiByte >> 6;
-                let l1 : number = 1 << (hiByte & 63);
-                let i2 : number = (this.curChar & 255) >> 6;
-                let l2 : number = 1 << (this.curChar & 63);
+                let hiByte : number = (this.curChar * Math.pow(2, -8));
+                let i1 : number = hiByte * Math.pow(2, -6);
+                let l1 : number = Math.pow(2, (hiByte & 63));
+                let i2 : number = (this.curChar & 255) * Math.pow(2, -6);
+                let l2 : number = Math.pow(2, (this.curChar & 63));
                 do {
                     switch((this.jjstateSet[--i])) {
                         case 1:
@@ -5558,7 +5558,7 @@ export class FMParserTokenManager implements FMParserConstants {
         for(; ; ) {
             if(++this.jjround === 2147483647) this.ReInitRounds();
             if(this.curChar < 64) {
-                let l : number = 1 << this.curChar;
+                let l : number = Math.pow(2, this.curChar);
                 do {
                     switch((this.jjstateSet[--i])) {
                         case 2:
@@ -5595,7 +5595,7 @@ export class FMParserTokenManager implements FMParserConstants {
                     }
                 } while((i !== startsAt));
             } else if(this.curChar < 128) {
-                let l : number = 1 << (this.curChar & 63);
+                let l : number = Math.pow(2, (this.curChar & 63));
                 do {
                     switch((this.jjstateSet[--i])) {
                         case 2:
@@ -5620,11 +5620,11 @@ export class FMParserTokenManager implements FMParserConstants {
                     }
                 } while((i !== startsAt));
             } else {
-                let hiByte : number = (this.curChar >> 8);
-                let i1 : number = hiByte >> 6;
-                let l1 : number = 1 << (hiByte & 63);
-                let i2 : number = (this.curChar & 255) >> 6;
-                let l2 : number = 1 << (this.curChar & 63);
+                let hiByte : number = (this.curChar * Math.pow(2, -8));
+                let i1 : number = hiByte * Math.pow(2, -6);
+                let l1 : number = Math.pow(2, (hiByte & 63));
+                let i2 : number = (this.curChar & 255) * Math.pow(2, -6);
+                let l2 : number = Math.pow(2, (this.curChar & 63));
                 do {
                     switch((this.jjstateSet[--i])) {
                         case 2:
@@ -5917,7 +5917,7 @@ export class FMParserTokenManager implements FMParserConstants {
         for(; ; ) {
             if(++this.jjround === 2147483647) this.ReInitRounds();
             if(this.curChar < 64) {
-                let l : number = 1 << this.curChar;
+                let l : number = Math.pow(2, this.curChar);
                 do {
                     switch((this.jjstateSet[--i])) {
                         case 43:
@@ -6180,7 +6180,7 @@ export class FMParserTokenManager implements FMParserConstants {
                     }
                 } while((i !== startsAt));
             } else if(this.curChar < 128) {
-                let l : number = 1 << (this.curChar & 63);
+                let l : number = Math.pow(2, (this.curChar & 63));
                 do {
                     switch((this.jjstateSet[--i])) {
                         case 40:
@@ -6426,11 +6426,11 @@ export class FMParserTokenManager implements FMParserConstants {
                     }
                 } while((i !== startsAt));
             } else {
-                let hiByte : number = (this.curChar >> 8);
-                let i1 : number = hiByte >> 6;
-                let l1 : number = 1 << (hiByte & 63);
-                let i2 : number = (this.curChar & 255) >> 6;
-                let l2 : number = 1 << (this.curChar & 63);
+                let hiByte : number = (this.curChar * Math.pow(2, -8));
+                let i1 : number = hiByte * Math.pow(2, -6);
+                let l1 : number = Math.pow(2, (hiByte & 63));
+                let i2 : number = (this.curChar & 255) * Math.pow(2, -6);
+                let l2 : number = Math.pow(2, (this.curChar & 63));
                 do {
                     switch((this.jjstateSet[--i])) {
                         case 0:
@@ -6750,7 +6750,7 @@ export class FMParserTokenManager implements FMParserConstants {
         for(; ; ) {
             if(++this.jjround === 2147483647) this.ReInitRounds();
             if(this.curChar < 64) {
-                let l : number = 1 << this.curChar;
+                let l : number = Math.pow(2, this.curChar);
                 do {
                     switch((this.jjstateSet[--i])) {
                         case 46:
@@ -7044,7 +7044,7 @@ export class FMParserTokenManager implements FMParserConstants {
                     }
                 } while((i !== startsAt));
             } else if(this.curChar < 128) {
-                let l : number = 1 << (this.curChar & 63);
+                let l : number = Math.pow(2, (this.curChar & 63));
                 do {
                     switch((this.jjstateSet[--i])) {
                         case 46:
@@ -7290,11 +7290,11 @@ export class FMParserTokenManager implements FMParserConstants {
                     }
                 } while((i !== startsAt));
             } else {
-                let hiByte : number = (this.curChar >> 8);
-                let i1 : number = hiByte >> 6;
-                let l1 : number = 1 << (hiByte & 63);
-                let i2 : number = (this.curChar & 255) >> 6;
-                let l2 : number = 1 << (this.curChar & 63);
+                let hiByte : number = (this.curChar * Math.pow(2, -8));
+                let i1 : number = hiByte * Math.pow(2, -6);
+                let l1 : number = Math.pow(2, (hiByte & 63));
+                let i2 : number = (this.curChar & 255) * Math.pow(2, -6);
+                let l2 : number = Math.pow(2, (this.curChar & 63));
                 do {
                     switch((this.jjstateSet[--i])) {
                         case 1:
@@ -7500,7 +7500,7 @@ export class FMParserTokenManager implements FMParserConstants {
                 case 5:
                     try {
                         this.input_stream.backup(0);
-                        while(((this.curChar < 64 && (!bigInt("4611686018427387904").and(1 << this.curChar).eq(0))) || (this.curChar >> 6) === 1 && (536870912 & (1 << (this.curChar & 63))) !== 0)) this.curChar = (this.input_stream.BeginToken()).charCodeAt(0);
+                        while(((this.curChar < 64 && (!bigInt("4611686018427387904").and(Math.pow(2, this.curChar)).eq(0))) || (this.curChar * Math.pow(2, -6)) === 1 && (536870912 & (Math.pow(2, this.curChar & 63))) !== 0)) this.curChar = (this.input_stream.BeginToken()).charCodeAt(0);
                     } catch(e1) {
                         continue EOFLoop;
                     }
@@ -7521,7 +7521,7 @@ export class FMParserTokenManager implements FMParserConstants {
             }
             if(this.jjmatchedKind !== 2147483647) {
                 if(this.jjmatchedPos + 1 < curPos) this.input_stream.backup(curPos - this.jjmatchedPos - 1);
-                if((FMParserTokenManager.jjtoToken[this.jjmatchedKind >> 6] & (1 << (this.jjmatchedKind & 63))) !== 0) {
+                if((FMParserTokenManager.jjtoToken[this.jjmatchedKind * Math.pow(2, -6)] & (Math.pow(2, (this.jjmatchedKind & 63)))) !== 0) {
                     matchedToken = this.jjFillToken();
                     this.TokenLexicalActions(matchedToken);
                     if(FMParserTokenManager.jjnewLexState[this.jjmatchedKind] !== -1) this.curLexState = FMParserTokenManager.jjnewLexState[this.jjmatchedKind];
