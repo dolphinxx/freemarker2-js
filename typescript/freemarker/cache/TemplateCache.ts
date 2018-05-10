@@ -446,6 +446,9 @@ export class TemplateCache {
         try {
             name = this.templateNameFormat.normalizeRootBasedName(name);
         } catch (e) {
+            if(!(e instanceof MalformedTemplateNameException)) {
+                throw e;
+            }
             if (this.templateNameFormat !== TemplateNameFormat.DEFAULT_2_3_0_$LI$() || this.config.getIncompatibleImprovements().intValue() >= /*_TemplateAPI.VERSION_INT_2_4_0_$LI$()*/2004000) {
                 throw e;
             }
@@ -1230,57 +1233,16 @@ export namespace TemplateCache {
         missingTemplateCauseException: MalformedTemplateNameException;
 
         public constructor(normalizedName?: any, missingTemplateCauseException?: any) {
-            if (((typeof normalizedName === 'string') || normalizedName === null) && ((missingTemplateCauseException != null && missingTemplateCauseException instanceof <any>MalformedTemplateNameException) || missingTemplateCauseException === null)) {
-                let __args = Array.prototype.slice.call(arguments);
-                if (this.template === undefined) this.template = null;
-                if (this.missingTemplateNormalizedName === undefined) this.missingTemplateNormalizedName = null;
-                if (this.missingTemplateReason === undefined) this.missingTemplateReason = null;
-                if (this.missingTemplateCauseException === undefined) this.missingTemplateCauseException = null;
-                if (this.template === undefined) this.template = null;
-                if (this.missingTemplateNormalizedName === undefined) this.missingTemplateNormalizedName = null;
-                if (this.missingTemplateReason === undefined) this.missingTemplateReason = null;
-                if (this.missingTemplateCauseException === undefined) this.missingTemplateCauseException = null;
-                (() => {
-                    this.template = null;
-                    this.missingTemplateNormalizedName = normalizedName;
-                    this.missingTemplateReason = null;
-                    this.missingTemplateCauseException = missingTemplateCauseException;
-                })();
-            } else if (((typeof normalizedName === 'string') || normalizedName === null) && ((typeof missingTemplateCauseException === 'string') || missingTemplateCauseException === null)) {
-                let __args = Array.prototype.slice.call(arguments);
-                let missingTemplateReason: any = __args[1];
-                if (this.template === undefined) this.template = null;
-                if (this.missingTemplateNormalizedName === undefined) this.missingTemplateNormalizedName = null;
-                if (this.missingTemplateReason === undefined) this.missingTemplateReason = null;
-                if (this.missingTemplateCauseException === undefined) this.missingTemplateCauseException = null;
-                if (this.template === undefined) this.template = null;
-                if (this.missingTemplateNormalizedName === undefined) this.missingTemplateNormalizedName = null;
-                if (this.missingTemplateReason === undefined) this.missingTemplateReason = null;
-                if (this.missingTemplateCauseException === undefined) this.missingTemplateCauseException = null;
-                (() => {
-                    this.template = null;
-                    this.missingTemplateNormalizedName = normalizedName;
-                    this.missingTemplateReason = missingTemplateReason;
-                    this.missingTemplateCauseException = null;
-                })();
-            } else if (((normalizedName != null && normalizedName instanceof <any>Template) || normalizedName === null) && missingTemplateCauseException === undefined) {
-                let __args = Array.prototype.slice.call(arguments);
-                let template: any = __args[0];
-                if (this.template === undefined) this.template = null;
-                if (this.missingTemplateNormalizedName === undefined) this.missingTemplateNormalizedName = null;
-                if (this.missingTemplateReason === undefined) this.missingTemplateReason = null;
-                if (this.missingTemplateCauseException === undefined) this.missingTemplateCauseException = null;
-                if (this.template === undefined) this.template = null;
-                if (this.missingTemplateNormalizedName === undefined) this.missingTemplateNormalizedName = null;
-                if (this.missingTemplateReason === undefined) this.missingTemplateReason = null;
-                if (this.missingTemplateCauseException === undefined) this.missingTemplateCauseException = null;
-                (() => {
-                    this.template = template;
-                    this.missingTemplateNormalizedName = null;
-                    this.missingTemplateReason = null;
-                    this.missingTemplateCauseException = null;
-                })();
-            } else throw new Error('invalid overload');
+            if(arguments.length === 1) {
+                this.template = <Template>arguments[0];
+                return;
+            }
+            this.missingTemplateNormalizedName = normalizedName;
+            if(typeof arguments[1] === 'string') {
+                this.missingTemplateReason = <string>arguments[1];
+            } else {
+                this.missingTemplateCauseException = <MalformedTemplateNameException>arguments[1];
+            }
         }
 
         /**
