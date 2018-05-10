@@ -15,6 +15,7 @@ import * as bigInt from 'big-integer';
 import {BigInteger} from "big-integer";
 import {PrintStream} from "../../java/io/PrintStream";
 import {StringTokenizer} from "../../java/util/StringTokenizer";
+import BigNumber from "bignumber.js";
 
 /**
  * Constructor.
@@ -71,6 +72,42 @@ export class FMParserTokenManager implements FMParserConstants {
 
     static toBigInt(value:number|BigInteger):BigInteger {
         return (typeof value === 'number')?bigInt(<number>value) : <BigInteger>value;
+    }
+
+    static toJSNumber(value: number | BigInteger | BigNumber): number {
+        if (typeof value === 'number') {
+            return <number>value;
+        }
+        if (value instanceof BigNumber) {
+            return (<BigNumber>value).toNumber();
+        }
+        return (<BigInteger>value).toJSNumber();
+    }
+
+    static pow(base:number|BigInteger, exponent:number):BigInteger {
+        let result:BigInteger = bigInt(1);
+        for(let i = 0;i < exponent;i++) {
+            result = result.multiply(base);
+        }
+        return result;
+    }
+
+    static _pow(base:number|BigInteger, exponent:number):BigNumber {
+        base = FMParserTokenManager.toJSNumber(base);
+        let result:BigNumber = new BigNumber(1);
+        for(let i = 0;i < exponent;i++) {
+            result = result.dividedBy(base);
+        }
+        return result;
+    }
+
+    static shiftLeft(base:number|BigInteger, positions:number):BigInteger {
+        return FMParserTokenManager.pow(2, positions).multiply(base);
+    }
+
+    static shiftRight(base:number|BigInteger|BigNumber, positions:number):BigNumber {
+        const p:BigNumber = FMParserTokenManager._pow(2, positions);
+        return p.multipliedBy(FMParserTokenManager.toJSNumber(base));
     }
 
     setParser(parser : FMParser) {
@@ -309,7 +346,7 @@ export class FMParserTokenManager implements FMParserConstants {
         for(; ; ) {
             if(++this.jjround === 2147483647) this.ReInitRounds();
             if(this.curChar < 64) {
-                let l : number = 1 << this.curChar;
+                let l : BigInteger = FMParserTokenManager.shiftLeft(1, this.curChar);
                 do {
                     switch((this.jjstateSet[--i])) {
                         case 0:
@@ -336,7 +373,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         case 4:
-                            if((4294977024 & l) !== 0) {
+                            if((!bigInt(4294977024).and(l).eq(0))) {
                                 this.jjAddStates(2, 3);
                             }
                             break;
@@ -372,11 +409,11 @@ export class FMParserTokenManager implements FMParserConstants {
                     }
                 } while((i !== startsAt));
             } else if(this.curChar < 128) {
-                let l : number = 1 << (this.curChar & 63);
+                let l : BigInteger = FMParserTokenManager.shiftLeft(1, (this.curChar & 63));
                 do {
                     switch((this.jjstateSet[--i])) {
                         case 0:
-                            if((-134217729 & l) !== 0) {
+                            if((!bigInt(-134217729).and(l).eq(0))) {
                                 if(kind > 155) kind = 155;
                                 {
                                     this.jjCheckNAdd(6);
@@ -395,7 +432,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(this.curChar === 93 && kind > 154) kind = 154;
                             break;
                         case 6:
-                            if((-134217729 & l) === 0) break;
+                            if((bigInt(-134217729).and(l).eq(0))) break;
                             if(kind > 155) kind = 155;
                         {
                             this.jjCheckNAdd(6);
@@ -412,11 +449,11 @@ export class FMParserTokenManager implements FMParserConstants {
                     }
                 } while((i !== startsAt));
             } else {
-                let hiByte : number = (this.curChar >> 8);
+                let hiByte : number = this.curChar >> 8;
                 let i1 : number = hiByte >> 6;
-                let l1 : number = 1 << (hiByte & 63);
+                let l1 : BigInteger = FMParserTokenManager.shiftLeft(1, (hiByte & 63));
                 let i2 : number = (this.curChar & 255) >> 6;
-                let l2 : number = 1 << (this.curChar & 63);
+                let l2 : BigInteger = FMParserTokenManager.shiftLeft(1, (this.curChar & 63));
                 do {
                     switch((this.jjstateSet[--i])) {
                         case 0:
@@ -428,7 +465,7 @@ export class FMParserTokenManager implements FMParserConstants {
                         }
                             break;
                         default:
-                            if(i1 === 0 || l1 === 0 || i2 === 0 || l2 === 0) break; else break;
+                            if(i1 === 0 || l1.eq(0) || i2 === 0 || l2.eq(0)) break; else break;
                     }
                 } while((i !== startsAt));
             }
@@ -588,7 +625,7 @@ export class FMParserTokenManager implements FMParserConstants {
         for(; ; ) {
             if(++this.jjround === 2147483647) this.ReInitRounds();
             if(this.curChar < 64) {
-                let l : number = 1 << this.curChar;
+                let l : BigInteger = FMParserTokenManager.shiftLeft(1, this.curChar);
                 do {
                     switch((this.jjstateSet[--i])) {
                         case 697:
@@ -786,7 +823,7 @@ export class FMParserTokenManager implements FMParserConstants {
                                 {
                                     this.jjCheckNAdd(1);
                                 }
-                            } else if((4294977024 & l) !== 0) {
+                            } else if((!bigInt(4294977024).and(l).eq(0))) {
                                 if(kind > 79) kind = 79;
                                 {
                                     this.jjCheckNAdd(0);
@@ -805,7 +842,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         case 0:
-                            if((4294977024 & l) === 0) break;
+                            if((bigInt(4294977024).and(l).eq(0))) break;
                             if(kind > 79) kind = 79;
                         {
                             this.jjCheckNAdd(0);
@@ -824,7 +861,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         case 5:
-                            if((4294977024 & l) !== 0) {
+                            if((!bigInt(4294977024).and(l).eq(0))) {
                                 this.jjAddStates(148, 149);
                             }
                             break;
@@ -832,7 +869,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(this.curChar === 62 && kind > 6) kind = 6;
                             break;
                         case 14:
-                            if((4294977024 & l) !== 0) {
+                            if((!bigInt(4294977024).and(l).eq(0))) {
                                 this.jjAddStates(150, 151);
                             }
                             break;
@@ -840,24 +877,24 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(this.curChar === 62 && kind > 7) kind = 7;
                             break;
                         case 23:
-                            if((4294977024 & l) !== 0 && kind > 8) kind = 8;
+                            if((!bigInt(4294977024).and(l).eq(0)) && kind > 8) kind = 8;
                             break;
                         case 28:
-                            if((4294977024 & l) !== 0 && kind > 9) kind = 9;
+                            if((!bigInt(4294977024).and(l).eq(0)) && kind > 9) kind = 9;
                             break;
                         case 33:
-                            if((4294977024 & l) !== 0 && kind > 10) kind = 10;
+                            if((!bigInt(4294977024).and(l).eq(0)) && kind > 10) kind = 10;
                             break;
                         case 38:
-                            if((4294977024 & l) !== 0) {
+                            if((!bigInt(4294977024).and(l).eq(0))) {
                                 this.jjAddStates(152, 153);
                             }
                             break;
                         case 40:
-                            if((4294977024 & l) !== 0 && kind > 11) kind = 11;
+                            if((!bigInt(4294977024).and(l).eq(0)) && kind > 11) kind = 11;
                             break;
                         case 47:
-                            if((4294977024 & l) !== 0) {
+                            if((!bigInt(4294977024).and(l).eq(0))) {
                                 this.jjAddStates(154, 155);
                             }
                             break;
@@ -865,58 +902,58 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(this.curChar === 62 && kind > 12) kind = 12;
                             break;
                         case 54:
-                            if((4294977024 & l) !== 0 && kind > 13) kind = 13;
+                            if((!bigInt(4294977024).and(l).eq(0)) && kind > 13) kind = 13;
                             break;
                         case 60:
-                            if((4294977024 & l) !== 0 && kind > 14) kind = 14;
+                            if((!bigInt(4294977024).and(l).eq(0)) && kind > 14) kind = 14;
                             break;
                         case 67:
-                            if((4294977024 & l) !== 0 && kind > 15) kind = 15;
+                            if((!bigInt(4294977024).and(l).eq(0)) && kind > 15) kind = 15;
                             break;
                         case 72:
-                            if((4294977024 & l) !== 0 && kind > 16) kind = 16;
+                            if((!bigInt(4294977024).and(l).eq(0)) && kind > 16) kind = 16;
                             break;
                         case 79:
-                            if((4294977024 & l) !== 0 && kind > 17) kind = 17;
+                            if((!bigInt(4294977024).and(l).eq(0)) && kind > 17) kind = 17;
                             break;
                         case 86:
-                            if((4294977024 & l) !== 0 && kind > 18) kind = 18;
+                            if((!bigInt(4294977024).and(l).eq(0)) && kind > 18) kind = 18;
                             break;
                         case 92:
-                            if((4294977024 & l) !== 0 && kind > 19) kind = 19;
+                            if((!bigInt(4294977024).and(l).eq(0)) && kind > 19) kind = 19;
                             break;
                         case 100:
-                            if((4294977024 & l) !== 0 && kind > 20) kind = 20;
+                            if((!bigInt(4294977024).and(l).eq(0)) && kind > 20) kind = 20;
                             break;
                         case 107:
-                            if((4294977024 & l) !== 0 && kind > 21) kind = 21;
+                            if((!bigInt(4294977024).and(l).eq(0)) && kind > 21) kind = 21;
                             break;
                         case 116:
-                            if((4294977024 & l) !== 0 && kind > 22) kind = 22;
+                            if((!bigInt(4294977024).and(l).eq(0)) && kind > 22) kind = 22;
                             break;
                         case 122:
-                            if((4294977024 & l) !== 0 && kind > 23) kind = 23;
+                            if((!bigInt(4294977024).and(l).eq(0)) && kind > 23) kind = 23;
                             break;
                         case 132:
-                            if((4294977024 & l) !== 0 && kind > 24) kind = 24;
+                            if((!bigInt(4294977024).and(l).eq(0)) && kind > 24) kind = 24;
                             break;
                         case 138:
-                            if((4294977024 & l) !== 0 && kind > 25) kind = 25;
+                            if((!bigInt(4294977024).and(l).eq(0)) && kind > 25) kind = 25;
                             break;
                         case 143:
-                            if((4294977024 & l) !== 0 && kind > 26) kind = 26;
+                            if((!bigInt(4294977024).and(l).eq(0)) && kind > 26) kind = 26;
                             break;
                         case 150:
-                            if((4294977024 & l) !== 0 && kind > 27) kind = 27;
+                            if((!bigInt(4294977024).and(l).eq(0)) && kind > 27) kind = 27;
                             break;
                         case 155:
-                            if((4294977024 & l) !== 0 && kind > 28) kind = 28;
+                            if((!bigInt(4294977024).and(l).eq(0)) && kind > 28) kind = 28;
                             break;
                         case 165:
-                            if((4294977024 & l) !== 0 && kind > 29) kind = 29;
+                            if((!bigInt(4294977024).and(l).eq(0)) && kind > 29) kind = 29;
                             break;
                         case 178:
-                            if((4294977024 & l) !== 0) {
+                            if((!bigInt(4294977024).and(l).eq(0))) {
                                 this.jjAddStates(156, 157);
                             }
                             break;
@@ -924,7 +961,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(this.curChar === 62 && kind > 30) kind = 30;
                             break;
                         case 187:
-                            if((4294977024 & l) !== 0) {
+                            if((!bigInt(4294977024).and(l).eq(0))) {
                                 this.jjAddStates(158, 159);
                             }
                             break;
@@ -932,7 +969,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(this.curChar === 62 && kind > 31) kind = 31;
                             break;
                         case 201:
-                            if((4294977024 & l) !== 0) {
+                            if((!bigInt(4294977024).and(l).eq(0))) {
                                 this.jjAddStates(160, 161);
                             }
                             break;
@@ -940,7 +977,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(this.curChar === 62 && kind > 32) kind = 32;
                             break;
                         case 211:
-                            if((4294977024 & l) !== 0) {
+                            if((!bigInt(4294977024).and(l).eq(0))) {
                                 this.jjAddStates(162, 163);
                             }
                             break;
@@ -948,7 +985,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(this.curChar === 62 && kind > 33) kind = 33;
                             break;
                         case 222:
-                            if((4294977024 & l) !== 0) {
+                            if((!bigInt(4294977024).and(l).eq(0))) {
                                 this.jjAddStates(164, 165);
                             }
                             break;
@@ -956,7 +993,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(this.curChar === 62 && kind > 35) kind = 35;
                             break;
                         case 229:
-                            if((4294977024 & l) !== 0) {
+                            if((!bigInt(4294977024).and(l).eq(0))) {
                                 this.jjCheckNAddStates(166, 168);
                             }
                             break;
@@ -969,7 +1006,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(this.curChar === 62 && kind > 54) kind = 54;
                             break;
                         case 236:
-                            if((4294977024 & l) !== 0) {
+                            if((!bigInt(4294977024).and(l).eq(0))) {
                                 this.jjCheckNAddStates(169, 171);
                             }
                             break;
@@ -982,7 +1019,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(this.curChar === 62 && kind > 55) kind = 55;
                             break;
                         case 244:
-                            if((4294977024 & l) !== 0) {
+                            if((!bigInt(4294977024).and(l).eq(0))) {
                                 this.jjCheckNAddStates(172, 174);
                             }
                             break;
@@ -995,7 +1032,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(this.curChar === 62 && kind > 56) kind = 56;
                             break;
                         case 255:
-                            if((4294977024 & l) !== 0) {
+                            if((!bigInt(4294977024).and(l).eq(0))) {
                                 this.jjCheckNAddStates(175, 177);
                             }
                             break;
@@ -1008,7 +1045,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(this.curChar === 62 && kind > 57) kind = 57;
                             break;
                         case 264:
-                            if((4294977024 & l) !== 0) {
+                            if((!bigInt(4294977024).and(l).eq(0))) {
                                 this.jjCheckNAddStates(178, 180);
                             }
                             break;
@@ -1021,7 +1058,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(this.curChar === 62 && kind > 58) kind = 58;
                             break;
                         case 271:
-                            if((4294977024 & l) !== 0) {
+                            if((!bigInt(4294977024).and(l).eq(0))) {
                                 this.jjCheckNAddStates(181, 183);
                             }
                             break;
@@ -1034,7 +1071,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(this.curChar === 62 && kind > 59) kind = 59;
                             break;
                         case 279:
-                            if((4294977024 & l) !== 0) {
+                            if((!bigInt(4294977024).and(l).eq(0))) {
                                 this.jjCheckNAddStates(184, 186);
                             }
                             break;
@@ -1047,7 +1084,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(this.curChar === 62 && kind > 60) kind = 60;
                             break;
                         case 283:
-                            if((4294977024 & l) !== 0) {
+                            if((!bigInt(4294977024).and(l).eq(0))) {
                                 this.jjCheckNAddStates(187, 189);
                             }
                             break;
@@ -1060,7 +1097,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(this.curChar === 62 && kind > 61) kind = 61;
                             break;
                         case 288:
-                            if((4294977024 & l) !== 0) {
+                            if((!bigInt(4294977024).and(l).eq(0))) {
                                 this.jjCheckNAddStates(190, 192);
                             }
                             break;
@@ -1073,7 +1110,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(this.curChar === 62 && kind > 62) kind = 62;
                             break;
                         case 293:
-                            if((4294977024 & l) !== 0) {
+                            if((!bigInt(4294977024).and(l).eq(0))) {
                                 this.jjCheckNAddStates(193, 195);
                             }
                             break;
@@ -1086,7 +1123,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(this.curChar === 62 && kind > 63) kind = 63;
                             break;
                         case 298:
-                            if((4294977024 & l) !== 0) {
+                            if((!bigInt(4294977024).and(l).eq(0))) {
                                 this.jjAddStates(196, 197);
                             }
                             break;
@@ -1094,7 +1131,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(this.curChar === 62 && kind > 64) kind = 64;
                             break;
                         case 307:
-                            if((4294977024 & l) !== 0) {
+                            if((!bigInt(4294977024).and(l).eq(0))) {
                                 this.jjCheckNAddStates(198, 200);
                             }
                             break;
@@ -1107,10 +1144,10 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(this.curChar === 62 && kind > 65) kind = 65;
                             break;
                         case 316:
-                            if((4294977024 & l) !== 0 && kind > 66) kind = 66;
+                            if((!bigInt(4294977024).and(l).eq(0)) && kind > 66) kind = 66;
                             break;
                         case 323:
-                            if((4294977024 & l) !== 0) {
+                            if((!bigInt(4294977024).and(l).eq(0))) {
                                 this.jjCheckNAddStates(201, 203);
                             }
                             break;
@@ -1123,10 +1160,10 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(this.curChar === 62 && kind > 67) kind = 67;
                             break;
                         case 333:
-                            if((4294977024 & l) !== 0 && kind > 68) kind = 68;
+                            if((!bigInt(4294977024).and(l).eq(0)) && kind > 68) kind = 68;
                             break;
                         case 341:
-                            if((4294977024 & l) !== 0) {
+                            if((!bigInt(4294977024).and(l).eq(0))) {
                                 this.jjCheckNAddStates(204, 206);
                             }
                             break;
@@ -1139,10 +1176,10 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(this.curChar === 62 && kind > 69) kind = 69;
                             break;
                         case 352:
-                            if((4294977024 & l) !== 0 && kind > 70) kind = 70;
+                            if((!bigInt(4294977024).and(l).eq(0)) && kind > 70) kind = 70;
                             break;
                         case 361:
-                            if((4294977024 & l) !== 0) {
+                            if((!bigInt(4294977024).and(l).eq(0))) {
                                 this.jjAddStates(207, 208);
                             }
                             break;
@@ -1305,7 +1342,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         case 400:
-                            if((4294977024 & l) !== 0) {
+                            if((!bigInt(4294977024).and(l).eq(0))) {
                                 this.jjAddStates(209, 210);
                             }
                             break;
@@ -1328,7 +1365,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         case 407:
-                            if((4294977024 & l) !== 0) {
+                            if((!bigInt(4294977024).and(l).eq(0))) {
                                 this.jjAddStates(211, 212);
                             }
                             break;
@@ -1351,7 +1388,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         case 416:
-                            if((4294977024 & l) !== 0) {
+                            if((!bigInt(4294977024).and(l).eq(0))) {
                                 this.jjAddStates(213, 214);
                             }
                             break;
@@ -1374,7 +1411,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         case 426:
-                            if((4294977024 & l) !== 0) {
+                            if((!bigInt(4294977024).and(l).eq(0))) {
                                 this.jjAddStates(215, 216);
                             }
                             break;
@@ -1397,7 +1434,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         case 434:
-                            if((4294977024 & l) !== 0) {
+                            if((!bigInt(4294977024).and(l).eq(0))) {
                                 this.jjAddStates(217, 218);
                             }
                             break;
@@ -1420,7 +1457,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         case 446:
-                            if((4294977024 & l) !== 0) {
+                            if((!bigInt(4294977024).and(l).eq(0))) {
                                 this.jjAddStates(219, 220);
                             }
                             break;
@@ -1443,7 +1480,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         case 460:
-                            if((4294977024 & l) !== 0) {
+                            if((!bigInt(4294977024).and(l).eq(0))) {
                                 this.jjAddStates(221, 222);
                             }
                             break;
@@ -1466,7 +1503,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         case 470:
-                            if((4294977024 & l) !== 0) {
+                            if((!bigInt(4294977024).and(l).eq(0))) {
                                 this.jjAddStates(223, 224);
                             }
                             break;
@@ -1489,7 +1526,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         case 480:
-                            if((4294977024 & l) !== 0) {
+                            if((!bigInt(4294977024).and(l).eq(0))) {
                                 this.jjAddStates(225, 226);
                             }
                             break;
@@ -1512,7 +1549,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         case 491:
-                            if((4294977024 & l) !== 0) {
+                            if((!bigInt(4294977024).and(l).eq(0))) {
                                 this.jjAddStates(227, 228);
                             }
                             break;
@@ -1535,7 +1572,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         case 502:
-                            if((4294977024 & l) !== 0) {
+                            if((!bigInt(4294977024).and(l).eq(0))) {
                                 this.jjAddStates(229, 230);
                             }
                             break;
@@ -1558,7 +1595,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         case 515:
-                            if((4294977024 & l) !== 0) {
+                            if((!bigInt(4294977024).and(l).eq(0))) {
                                 this.jjAddStates(231, 232);
                             }
                             break;
@@ -1581,7 +1618,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         case 527:
-                            if((4294977024 & l) !== 0) {
+                            if((!bigInt(4294977024).and(l).eq(0))) {
                                 this.jjAddStates(233, 234);
                             }
                             break;
@@ -1604,7 +1641,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         case 544:
-                            if((4294977024 & l) !== 0) {
+                            if((!bigInt(4294977024).and(l).eq(0))) {
                                 this.jjAddStates(235, 236);
                             }
                             break;
@@ -1627,7 +1664,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         case 556:
-                            if((4294977024 & l) !== 0) {
+                            if((!bigInt(4294977024).and(l).eq(0))) {
                                 this.jjAddStates(237, 238);
                             }
                             break;
@@ -1650,7 +1687,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         case 573:
-                            if((4294977024 & l) !== 0) {
+                            if((!bigInt(4294977024).and(l).eq(0))) {
                                 this.jjAddStates(239, 240);
                             }
                             break;
@@ -1673,7 +1710,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         case 586:
-                            if((4294977024 & l) !== 0) {
+                            if((!bigInt(4294977024).and(l).eq(0))) {
                                 this.jjAddStates(241, 242);
                             }
                             break;
@@ -1696,7 +1733,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         case 600:
-                            if((4294977024 & l) !== 0) {
+                            if((!bigInt(4294977024).and(l).eq(0))) {
                                 this.jjAddStates(243, 244);
                             }
                             break;
@@ -1804,7 +1841,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         case 628:
-                            if((4294977024 & l) !== 0) {
+                            if((!bigInt(4294977024).and(l).eq(0))) {
                                 this.jjAddStates(245, 246);
                             }
                             break;
@@ -1832,7 +1869,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         case 642:
-                            if((4294977024 & l) !== 0) {
+                            if((!bigInt(4294977024).and(l).eq(0))) {
                                 this.jjAddStates(247, 248);
                             }
                             break;
@@ -1850,7 +1887,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         case 653:
-                            if((4294977024 & l) !== 0 && kind > 76) kind = 76;
+                            if((!bigInt(4294977024).and(l).eq(0)) && kind > 76) kind = 76;
                             break;
                         case 656:
                             if(this.curChar === 35) this.jjstateSet[this.jjnewStateCnt++] = 655;
@@ -2030,7 +2067,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         case 708:
-                            if((4294977024 & l) !== 0) {
+                            if((!bigInt(4294977024).and(l).eq(0))) {
                                 this.jjCheckNAddTwoStates(708, 709);
                             }
                             break;
@@ -2045,7 +2082,7 @@ export class FMParserTokenManager implements FMParserConstants {
                     }
                 } while((i !== startsAt));
             } else if(this.curChar < 128) {
-                let l : number = 1 << (this.curChar & 63);
+                let l:BigInteger = FMParserTokenManager.shiftLeft(1, (this.curChar & 63));
                 do {
                     switch((this.jjstateSet[--i])) {
                         case 697:
@@ -2137,7 +2174,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(this.curChar === 101) this.jjstateSet[this.jjnewStateCnt++] = 26;
                             break;
                         case 26:
-                            if((2199023256064 & l) !== 0) this.jjstateSet[this.jjnewStateCnt++] = 27;
+                            if(!bigInt(2199023256064).and(l).eq(0)) this.jjstateSet[this.jjnewStateCnt++] = 27;
                             break;
                         case 27:
                             if(this.curChar === 102) this.jjstateSet[this.jjnewStateCnt++] = 28;
@@ -2202,7 +2239,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(this.curChar === 114) this.jjstateSet[this.jjnewStateCnt++] = 52;
                             break;
                         case 52:
-                            if((137438953504 & l) !== 0) this.jjstateSet[this.jjnewStateCnt++] = 56;
+                            if((!bigInt(137438953504).and(l).eq(0))) this.jjstateSet[this.jjnewStateCnt++] = 56;
                             break;
                         case 53:
                             if(this.curChar === 104) this.jjstateSet[this.jjnewStateCnt++] = 54;
@@ -2487,7 +2524,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(this.curChar === 116) this.jjstateSet[this.jjnewStateCnt++] = 163;
                             break;
                         case 163:
-                            if((274877907008 & l) !== 0) this.jjstateSet[this.jjnewStateCnt++] = 169;
+                            if((!bigInt(274877907008).and(l).eq(0))) this.jjstateSet[this.jjnewStateCnt++] = 169;
                             break;
                         case 164:
                             if(this.curChar === 116) this.jjstateSet[this.jjnewStateCnt++] = 165;
@@ -2523,7 +2560,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(this.curChar === 111) this.jjstateSet[this.jjnewStateCnt++] = 176;
                             break;
                         case 176:
-                            if((137438953504 & l) !== 0) this.jjstateSet[this.jjnewStateCnt++] = 180;
+                            if((!bigInt(137438953504).and(l).eq(0))) this.jjstateSet[this.jjnewStateCnt++] = 180;
                             break;
                         case 177:
                             if(this.curChar === 99) {
@@ -3011,7 +3048,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(this.curChar === 111) this.jjstateSet[this.jjnewStateCnt++] = 359;
                             break;
                         case 359:
-                            if((137438953504 & l) !== 0) this.jjstateSet[this.jjnewStateCnt++] = 366;
+                            if((!bigInt(137438953504).and(l).eq(0))) this.jjstateSet[this.jjnewStateCnt++] = 366;
                             break;
                         case 360:
                             if(this.curChar === 101) {
@@ -3154,7 +3191,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(this.curChar === 114) this.jjstateSet[this.jjnewStateCnt++] = 458;
                             break;
                         case 458:
-                            if((137438953504 & l) !== 0) this.jjstateSet[this.jjnewStateCnt++] = 463;
+                            if((!bigInt(137438953504).and(l).eq(0))) this.jjstateSet[this.jjnewStateCnt++] = 463;
                             break;
                         case 459:
                             if(this.curChar === 104) {
@@ -3295,7 +3332,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(this.curChar === 116) this.jjstateSet[this.jjnewStateCnt++] = 525;
                             break;
                         case 525:
-                            if((274877907008 & l) !== 0) this.jjstateSet[this.jjnewStateCnt++] = 532;
+                            if((!bigInt(274877907008).and(l).eq(0))) this.jjstateSet[this.jjnewStateCnt++] = 532;
                             break;
                         case 526:
                             if(this.curChar === 116) {
@@ -3336,7 +3373,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(this.curChar === 111) this.jjstateSet[this.jjnewStateCnt++] = 542;
                             break;
                         case 542:
-                            if((137438953504 & l) !== 0) this.jjstateSet[this.jjnewStateCnt++] = 546;
+                            if((!bigInt(137438953504).and(l).eq(0))) this.jjstateSet[this.jjnewStateCnt++] = 546;
                             break;
                         case 543:
                             if(this.curChar === 99) {
@@ -3522,7 +3559,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(this.curChar === 111) this.jjstateSet[this.jjnewStateCnt++] = 640;
                             break;
                         case 640:
-                            if((137438953504 & l) !== 0) this.jjstateSet[this.jjnewStateCnt++] = 647;
+                            if((!bigInt(137438953504).and(l).eq(0))) this.jjstateSet[this.jjnewStateCnt++] = 647;
                             break;
                         case 641:
                             if(this.curChar === 101) {
@@ -3634,11 +3671,11 @@ export class FMParserTokenManager implements FMParserConstants {
                     }
                 } while((i !== startsAt));
             } else {
-                let hiByte : number = (this.curChar >> 8);
-                let i1 : number = hiByte >> 6;
-                let l1 : number = 1 << (hiByte & 63);
-                let i2 : number = (this.curChar & 255) >> 6;
-                let l2 : number = 1 << (this.curChar & 63);
+                let hiByte : number = this.curChar >>8;
+                let i1 : number = hiByte >>6;
+                let l1 : BigInteger = FMParserTokenManager.shiftLeft(1, (hiByte & 63));
+                let i2 : number = (this.curChar & 255) >>6;
+                let l2 : BigInteger = FMParserTokenManager.shiftLeft(1, (this.curChar & 63));
                 do {
                     switch((this.jjstateSet[--i])) {
                         case 2:
@@ -3662,7 +3699,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         default:
-                            if(i1 === 0 || l1 === 0 || i2 === 0 || l2 === 0) break; else break;
+                            if(i1 === 0 || l1.eq(0) || i2 === 0 || l2.eq(0)) break; else break;
                     }
                 } while((i !== startsAt));
             }
@@ -3943,7 +3980,7 @@ export class FMParserTokenManager implements FMParserConstants {
         for(; ; ) {
             if(++this.jjround === 2147483647) this.ReInitRounds();
             if(this.curChar < 64) {
-                let l : number = 1 << this.curChar;
+                let l : BigInteger = FMParserTokenManager.shiftLeft(1, this.curChar);
                 do {
                     switch((this.jjstateSet[--i])) {
                         case 47:
@@ -3959,7 +3996,7 @@ export class FMParserTokenManager implements FMParserConstants {
                                 {
                                     this.jjCheckNAddStates(343, 345);
                                 }
-                            } else if((4294977024 & l) !== 0) {
+                            } else if((!bigInt(4294977024).and(l).eq(0))) {
                                 if(kind > 85) kind = 85;
                                 {
                                     this.jjCheckNAdd(0);
@@ -3994,7 +4031,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(this.curChar === 60) this.jjstateSet[this.jjnewStateCnt++] = 2;
                             break;
                         case 2:
-                            if((42949672960 & l) !== 0) this.jjstateSet[this.jjnewStateCnt++] = 4; else if(this.curChar === 61) {
+                            if((!bigInt(42949672960).and(l).eq(0))) this.jjstateSet[this.jjnewStateCnt++] = 4; else if(this.curChar === 61) {
                                 if(kind > 142) kind = 142;
                             }
                             break;
@@ -4014,7 +4051,7 @@ export class FMParserTokenManager implements FMParserConstants {
                         }
                             break;
                         case 0:
-                            if((4294977024 & l) === 0) break;
+                            if((bigInt(4294977024).and(l).eq(0))) break;
                             if(kind > 85) kind = 85;
                         {
                             this.jjCheckNAdd(0);
@@ -4032,7 +4069,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         case 6:
-                            if((-17179869185 & l) !== 0) {
+                            if((!bigInt(-17179869185).and(l).eq(0))) {
                                 this.jjCheckNAddStates(359, 361);
                             }
                             break;
@@ -4055,7 +4092,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         case 13:
-                            if((-549755813889 & l) !== 0) {
+                            if((!bigInt(-549755813889).and(l).eq(0))) {
                                 this.jjCheckNAddStates(356, 358);
                             }
                             break;
@@ -4078,7 +4115,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         case 21:
-                            if((-17179869185 & l) !== 0) {
+                            if((!bigInt(-17179869185).and(l).eq(0))) {
                                 this.jjCheckNAddTwoStates(21, 22);
                             }
                             break;
@@ -4091,7 +4128,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         case 24:
-                            if((-549755813889 & l) !== 0) {
+                            if((!bigInt(-549755813889).and(l).eq(0))) {
                                 this.jjCheckNAddTwoStates(24, 25);
                             }
                             break;
@@ -4223,7 +4260,7 @@ export class FMParserTokenManager implements FMParserConstants {
                     }
                 } while((i !== startsAt));
             } else if(this.curChar < 128) {
-                let l : number = 1 << (this.curChar & 63);
+                let l : BigInteger = FMParserTokenManager.shiftLeft(1, (this.curChar & 63));
                 do {
                     switch((this.jjstateSet[--i])) {
                         case 1:
@@ -4261,7 +4298,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         case 6:
-                            if((-268435457 & l) !== 0) {
+                            if((!bigInt(-268435457).and(l).eq(0))) {
                                 this.jjCheckNAddStates(359, 361);
                             }
                             break;
@@ -4274,7 +4311,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(this.curChar === 120) this.jjstateSet[this.jjnewStateCnt++] = 9;
                             break;
                         case 9:
-                            if((541165879422 & l) !== 0) {
+                            if((!bigInt(541165879422).and(l).eq(0))) {
                                 this.jjCheckNAddStates(359, 361);
                             }
                             break;
@@ -4284,7 +4321,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         case 13:
-                            if((-268435457 & l) !== 0) {
+                            if((!bigInt(-268435457).and(l).eq(0))) {
                                 this.jjCheckNAddStates(356, 358);
                             }
                             break;
@@ -4297,7 +4334,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(this.curChar === 120) this.jjstateSet[this.jjnewStateCnt++] = 16;
                             break;
                         case 16:
-                            if((541165879422 & l) !== 0) {
+                            if((!bigInt(541165879422).and(l).eq(0))) {
                                 this.jjCheckNAddStates(356, 358);
                             }
                             break;
@@ -4469,11 +4506,11 @@ export class FMParserTokenManager implements FMParserConstants {
                     }
                 } while((i !== startsAt));
             } else {
-                let hiByte : number = (this.curChar >> 8);
+                let hiByte : number = this.curChar >> 8;
                 let i1 : number = hiByte >> 6;
-                let l1 : number = 1 << (hiByte & 63);
+                let l1 : BigInteger = FMParserTokenManager.shiftLeft(1, (hiByte & 63));
                 let i2 : number = (this.curChar & 255) >> 6;
-                let l2 : number = 1 << (this.curChar & 63);
+                let l2 : BigInteger = FMParserTokenManager.shiftLeft(1, (this.curChar & 63));
                 do {
                     switch((this.jjstateSet[--i])) {
                         case 1:
@@ -4512,7 +4549,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         default:
-                            if(i1 === 0 || l1 === 0 || i2 === 0 || l2 === 0) break; else break;
+                            if(i1 === 0 || l1.eq(0) || i2 === 0 || l2.eq(0)) break; else break;
                     }
                 } while((i !== startsAt));
             }
@@ -4793,7 +4830,7 @@ export class FMParserTokenManager implements FMParserConstants {
         for(; ; ) {
             if(++this.jjround === 2147483647) this.ReInitRounds();
             if(this.curChar < 64) {
-                let l : number = 1 << this.curChar;
+                let l : BigInteger = FMParserTokenManager.shiftLeft(1, this.curChar);
                 do {
                     switch((this.jjstateSet[--i])) {
                         case 1:
@@ -4802,7 +4839,7 @@ export class FMParserTokenManager implements FMParserConstants {
                                 {
                                     this.jjCheckNAddStates(377, 379);
                                 }
-                            } else if((4294977024 & l) !== 0) {
+                            } else if((!bigInt(4294977024).and(l).eq(0))) {
                                 if(kind > 85) kind = 85;
                                 {
                                     this.jjCheckNAdd(0);
@@ -4842,7 +4879,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         case 2:
-                            if((42949672960 & l) !== 0) this.jjstateSet[this.jjnewStateCnt++] = 4; else if(this.curChar === 61) {
+                            if((!bigInt(42949672960).and(l).eq(0))) this.jjstateSet[this.jjnewStateCnt++] = 4; else if(this.curChar === 61) {
                                 if(kind > 142) kind = 142;
                             }
                             break;
@@ -4859,7 +4896,7 @@ export class FMParserTokenManager implements FMParserConstants {
                         }
                             break;
                         case 0:
-                            if((4294977024 & l) === 0) break;
+                            if((bigInt(4294977024).and(l).eq(0))) break;
                             if(kind > 85) kind = 85;
                         {
                             this.jjCheckNAdd(0);
@@ -4877,7 +4914,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         case 6:
-                            if((-17179869185 & l) !== 0) {
+                            if((!bigInt(-17179869185).and(l).eq(0))) {
                                 this.jjCheckNAddStates(359, 361);
                             }
                             break;
@@ -4900,7 +4937,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         case 13:
-                            if((-549755813889 & l) !== 0) {
+                            if((!bigInt(-549755813889).and(l).eq(0))) {
                                 this.jjCheckNAddStates(356, 358);
                             }
                             break;
@@ -4923,7 +4960,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         case 21:
-                            if((-17179869185 & l) !== 0) {
+                            if((!bigInt(-17179869185).and(l).eq(0))) {
                                 this.jjCheckNAddTwoStates(21, 22);
                             }
                             break;
@@ -4936,7 +4973,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         case 24:
-                            if((-549755813889 & l) !== 0) {
+                            if((!bigInt(-549755813889).and(l).eq(0))) {
                                 this.jjCheckNAddTwoStates(24, 25);
                             }
                             break;
@@ -5063,7 +5100,7 @@ export class FMParserTokenManager implements FMParserConstants {
                     }
                 } while((i !== startsAt));
             } else if(this.curChar < 128) {
-                let l : number = 1 << (this.curChar & 63);
+                let l : BigInteger = FMParserTokenManager.shiftLeft(1, (this.curChar & 63));
                 do {
                     switch((this.jjstateSet[--i])) {
                         case 1:
@@ -5098,7 +5135,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         case 6:
-                            if((-268435457 & l) !== 0) {
+                            if((!bigInt(-268435457).and(l).eq(0))) {
                                 this.jjCheckNAddStates(359, 361);
                             }
                             break;
@@ -5111,7 +5148,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(this.curChar === 120) this.jjstateSet[this.jjnewStateCnt++] = 9;
                             break;
                         case 9:
-                            if((541165879422 & l) !== 0) {
+                            if((!bigInt(541165879422).and(l).eq(0))) {
                                 this.jjCheckNAddStates(359, 361);
                             }
                             break;
@@ -5121,7 +5158,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         case 13:
-                            if((-268435457 & l) !== 0) {
+                            if((!bigInt(-268435457).and(l).eq(0))) {
                                 this.jjCheckNAddStates(356, 358);
                             }
                             break;
@@ -5134,7 +5171,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(this.curChar === 120) this.jjstateSet[this.jjnewStateCnt++] = 16;
                             break;
                         case 16:
-                            if((541165879422 & l) !== 0) {
+                            if((!bigInt(541165879422).and(l).eq(0))) {
                                 this.jjCheckNAddStates(356, 358);
                             }
                             break;
@@ -5306,11 +5343,11 @@ export class FMParserTokenManager implements FMParserConstants {
                     }
                 } while((i !== startsAt));
             } else {
-                let hiByte : number = (this.curChar >> 8);
+                let hiByte : number = this.curChar >> 8;
                 let i1 : number = hiByte >> 6;
-                let l1 : number = 1 << (hiByte & 63);
+                let l1 : BigInteger = FMParserTokenManager.shiftLeft(1, (hiByte & 63));
                 let i2 : number = (this.curChar & 255) >> 6;
-                let l2 : number = 1 << (this.curChar & 63);
+                let l2 : BigInteger = FMParserTokenManager.shiftLeft(1, (this.curChar & 63));
                 do {
                     switch((this.jjstateSet[--i])) {
                         case 1:
@@ -5349,7 +5386,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         default:
-                            if(i1 === 0 || l1 === 0 || i2 === 0 || l2 === 0) break; else break;
+                            if(i1 === 0 || l1.eq(0) || i2 === 0 || l2.eq(0)) break; else break;
                     }
                 } while((i !== startsAt));
             }
@@ -5408,7 +5445,7 @@ export class FMParserTokenManager implements FMParserConstants {
         for(; ; ) {
             if(++this.jjround === 2147483647) this.ReInitRounds();
             if(this.curChar < 64) {
-                let l : number = 1 << this.curChar;
+                let l : BigInteger = FMParserTokenManager.shiftLeft(1, this.curChar);
                 do {
                     switch((this.jjstateSet[--i])) {
                         case 3:
@@ -5443,12 +5480,12 @@ export class FMParserTokenManager implements FMParserConstants {
                     }
                 } while((i !== startsAt));
             } else if(this.curChar < 128) {
-                let l : number = 1 << (this.curChar & 63);
+                let l : BigInteger = FMParserTokenManager.shiftLeft(1, (this.curChar & 63));
                 do {
                     switch((this.jjstateSet[--i])) {
                         case 1:
                         case 0:
-                            if((-536870913 & l) === 0) break;
+                            if((bigInt(-536870913).and(l).eq(0))) break;
                             kind = 87;
                         {
                             this.jjCheckNAdd(0);
@@ -5462,11 +5499,11 @@ export class FMParserTokenManager implements FMParserConstants {
                     }
                 } while((i !== startsAt));
             } else {
-                let hiByte : number = (this.curChar >> 8);
+                let hiByte : number = this.curChar >> 8;
                 let i1 : number = hiByte >> 6;
-                let l1 : number = 1 << (hiByte & 63);
+                let l1 : BigInteger = FMParserTokenManager.shiftLeft(1, (hiByte & 63));
                 let i2 : number = (this.curChar & 255) >> 6;
-                let l2 : number = 1 << (this.curChar & 63);
+                let l2 : BigInteger = FMParserTokenManager.shiftLeft(1, (this.curChar & 63));
                 do {
                     switch((this.jjstateSet[--i])) {
                         case 1:
@@ -5478,7 +5515,7 @@ export class FMParserTokenManager implements FMParserConstants {
                         }
                             break;
                         default:
-                            if(i1 === 0 || l1 === 0 || i2 === 0 || l2 === 0) break; else break;
+                            if(i1 === 0 || l1.eq(0) || i2 === 0 || l2.eq(0)) break; else break;
                     }
                 } while((i !== startsAt));
             }
@@ -5558,7 +5595,7 @@ export class FMParserTokenManager implements FMParserConstants {
         for(; ; ) {
             if(++this.jjround === 2147483647) this.ReInitRounds();
             if(this.curChar < 64) {
-                let l : number = 1 << this.curChar;
+                let l : BigInteger = FMParserTokenManager.shiftLeft(1, this.curChar);
                 do {
                     switch((this.jjstateSet[--i])) {
                         case 2:
@@ -5567,7 +5604,7 @@ export class FMParserTokenManager implements FMParserConstants {
                                 {
                                     this.jjCheckNAdd(1);
                                 }
-                            } else if((4294977024 & l) !== 0) {
+                            } else if((!bigInt(4294977024).and(l).eq(0))) {
                                 if(kind > 79) kind = 79;
                                 {
                                     this.jjCheckNAdd(0);
@@ -5577,7 +5614,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         case 0:
-                            if((4294977024 & l) === 0) break;
+                            if((bigInt(4294977024).and(l).eq(0))) break;
                             kind = 79;
                         {
                             this.jjCheckNAdd(0);
@@ -5595,7 +5632,7 @@ export class FMParserTokenManager implements FMParserConstants {
                     }
                 } while((i !== startsAt));
             } else if(this.curChar < 128) {
-                let l : number = 1 << (this.curChar & 63);
+                let l : BigInteger = FMParserTokenManager.shiftLeft(1, (this.curChar & 63));
                 do {
                     switch((this.jjstateSet[--i])) {
                         case 2:
@@ -5620,11 +5657,11 @@ export class FMParserTokenManager implements FMParserConstants {
                     }
                 } while((i !== startsAt));
             } else {
-                let hiByte : number = (this.curChar >> 8);
+                let hiByte : number =this.curChar >>8;
                 let i1 : number = hiByte >> 6;
-                let l1 : number = 1 << (hiByte & 63);
+                let l1 : BigInteger = FMParserTokenManager.shiftLeft(1, (hiByte & 63));
                 let i2 : number = (this.curChar & 255) >> 6;
-                let l2 : number = 1 << (this.curChar & 63);
+                let l2 : BigInteger = FMParserTokenManager.shiftLeft(1, (this.curChar & 63));
                 do {
                     switch((this.jjstateSet[--i])) {
                         case 2:
@@ -5636,7 +5673,7 @@ export class FMParserTokenManager implements FMParserConstants {
                         }
                             break;
                         default:
-                            if(i1 === 0 || l1 === 0 || i2 === 0 || l2 === 0) break; else break;
+                            if(i1 === 0 || l1.eq(0) || i2 === 0 || l2.eq(0)) break; else break;
                     }
                 } while((i !== startsAt));
             }
@@ -5917,7 +5954,7 @@ export class FMParserTokenManager implements FMParserConstants {
         for(; ; ) {
             if(++this.jjround === 2147483647) this.ReInitRounds();
             if(this.curChar < 64) {
-                let l : number = 1 << this.curChar;
+                let l : BigInteger = FMParserTokenManager.shiftLeft(1, this.curChar);
                 do {
                     switch((this.jjstateSet[--i])) {
                         case 43:
@@ -5940,7 +5977,7 @@ export class FMParserTokenManager implements FMParserConstants {
                                 {
                                     this.jjCheckNAddStates(395, 397);
                                 }
-                            } else if((4294977024 & l) !== 0) {
+                            } else if((!bigInt(4294977024).and(l).eq(0))) {
                                 if(kind > 151) kind = 151;
                                 {
                                     this.jjCheckNAdd(38);
@@ -5982,7 +6019,7 @@ export class FMParserTokenManager implements FMParserConstants {
                         }
                             break;
                         case 1:
-                            if((-17179869185 & l) !== 0) {
+                            if((!bigInt(-17179869185).and(l).eq(0))) {
                                 this.jjCheckNAddStates(411, 413);
                             }
                             break;
@@ -6005,7 +6042,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         case 8:
-                            if((-549755813889 & l) !== 0) {
+                            if((!bigInt(-549755813889).and(l).eq(0))) {
                                 this.jjCheckNAddStates(408, 410);
                             }
                             break;
@@ -6028,7 +6065,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         case 16:
-                            if((-17179869185 & l) !== 0) {
+                            if((!bigInt(-17179869185).and(l).eq(0))) {
                                 this.jjCheckNAddTwoStates(16, 17);
                             }
                             break;
@@ -6041,7 +6078,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         case 19:
-                            if((-549755813889 & l) !== 0) {
+                            if((!bigInt(-549755813889).and(l).eq(0))) {
                                 this.jjCheckNAddTwoStates(19, 20);
                             }
                             break;
@@ -6091,7 +6128,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(this.curChar === 61 && kind > 142) kind = 142;
                             break;
                         case 38:
-                            if((4294977024 & l) === 0) break;
+                            if((bigInt(4294977024).and(l).eq(0))) break;
                             if(kind > 151) kind = 151;
                         {
                             this.jjCheckNAdd(38);
@@ -6180,7 +6217,7 @@ export class FMParserTokenManager implements FMParserConstants {
                     }
                 } while((i !== startsAt));
             } else if(this.curChar < 128) {
-                let l : number = 1 << (this.curChar & 63);
+                let l : BigInteger = FMParserTokenManager.shiftLeft(1, (this.curChar & 63));
                 do {
                     switch((this.jjstateSet[--i])) {
                         case 40:
@@ -6218,7 +6255,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         case 1:
-                            if((-268435457 & l) !== 0) {
+                            if((!bigInt(-268435457).and(l).eq(0))) {
                                 this.jjCheckNAddStates(411, 413);
                             }
                             break;
@@ -6231,7 +6268,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(this.curChar === 120) this.jjstateSet[this.jjnewStateCnt++] = 4;
                             break;
                         case 4:
-                            if((541165879422 & l) !== 0) {
+                            if((!bigInt(541165879422).and(l).eq(0))) {
                                 this.jjCheckNAddStates(411, 413);
                             }
                             break;
@@ -6241,7 +6278,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         case 8:
-                            if((-268435457 & l) !== 0) {
+                            if((!bigInt(-268435457).and(l).eq(0))) {
                                 this.jjCheckNAddStates(408, 410);
                             }
                             break;
@@ -6254,7 +6291,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(this.curChar === 120) this.jjstateSet[this.jjnewStateCnt++] = 11;
                             break;
                         case 11:
-                            if((541165879422 & l) !== 0) {
+                            if((!bigInt(541165879422).and(l).eq(0))) {
                                 this.jjCheckNAddStates(408, 410);
                             }
                             break;
@@ -6426,11 +6463,11 @@ export class FMParserTokenManager implements FMParserConstants {
                     }
                 } while((i !== startsAt));
             } else {
-                let hiByte : number = (this.curChar >> 8);
+                let hiByte : number = this.curChar >> 8;
                 let i1 : number = hiByte >> 6;
-                let l1 : number = 1 << (hiByte & 63);
+                let l1 : BigInteger = FMParserTokenManager.shiftLeft(1, (hiByte && 63));
                 let i2 : number = (this.curChar & 255) >> 6;
-                let l2 : number = 1 << (this.curChar & 63);
+                let l2 : BigInteger = FMParserTokenManager.shiftLeft(1, (this.curChar & 63));
                 do {
                     switch((this.jjstateSet[--i])) {
                         case 0:
@@ -6469,7 +6506,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         default:
-                            if(i1 === 0 || l1 === 0 || i2 === 0 || l2 === 0) break; else break;
+                            if(i1 === 0 || l1.eq(0) || i2 === 0 || l2.eq(0)) break; else break;
                     }
                 } while((i !== startsAt));
             }
@@ -6750,7 +6787,7 @@ export class FMParserTokenManager implements FMParserConstants {
         for(; ; ) {
             if(++this.jjround === 2147483647) this.ReInitRounds();
             if(this.curChar < 64) {
-                let l : number = 1 << this.curChar;
+                let l : BigInteger = FMParserTokenManager.shiftLeft(1, this.curChar);
                 do {
                     switch((this.jjstateSet[--i])) {
                         case 46:
@@ -6773,7 +6810,7 @@ export class FMParserTokenManager implements FMParserConstants {
                                 {
                                     this.jjCheckNAddStates(427, 429);
                                 }
-                            } else if((4294977024 & l) !== 0) {
+                            } else if((!bigInt(4294977024).and(l).eq(0))) {
                                 if(kind > 85) kind = 85;
                                 {
                                     this.jjCheckNAdd(0);
@@ -6810,7 +6847,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(this.curChar === 60) this.jjstateSet[this.jjnewStateCnt++] = 2;
                             break;
                         case 2:
-                            if((42949672960 & l) !== 0) this.jjstateSet[this.jjnewStateCnt++] = 4; else if(this.curChar === 61) {
+                            if((!bigInt(42949672960).and(l).eq(0))) this.jjstateSet[this.jjnewStateCnt++] = 4; else if(this.curChar === 61) {
                                 if(kind > 142) kind = 142;
                             }
                             break;
@@ -6823,7 +6860,7 @@ export class FMParserTokenManager implements FMParserConstants {
                         }
                             break;
                         case 0:
-                            if((4294977024 & l) === 0) break;
+                            if((bigInt(4294977024).and(l).eq(0))) break;
                             if(kind > 85) kind = 85;
                         {
                             this.jjCheckNAdd(0);
@@ -6841,7 +6878,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         case 6:
-                            if((-17179869185 & l) !== 0) {
+                            if((!bigInt(-17179869185).and(l).eq(0))) {
                                 this.jjCheckNAddStates(359, 361);
                             }
                             break;
@@ -6864,7 +6901,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         case 13:
-                            if((-549755813889 & l) !== 0) {
+                            if((!bigInt(-549755813889).and(l).eq(0))) {
                                 this.jjCheckNAddStates(356, 358);
                             }
                             break;
@@ -6887,7 +6924,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         case 21:
-                            if((-17179869185 & l) !== 0) {
+                            if((!bigInt(-17179869185).and(l).eq(0))) {
                                 this.jjCheckNAddTwoStates(21, 22);
                             }
                             break;
@@ -6900,7 +6937,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         case 24:
-                            if((-549755813889 & l) !== 0) {
+                            if((!bigInt(-549755813889).and(l).eq(0))) {
                                 this.jjCheckNAddTwoStates(24, 25);
                             }
                             break;
@@ -6955,7 +6992,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         case 44:
-                            if((4294977024 & l) === 0) break;
+                            if((bigInt(4294977024).and(l).eq(0))) break;
                             if(kind > 152) kind = 152;
                         {
                             this.jjCheckNAdd(44);
@@ -7044,7 +7081,7 @@ export class FMParserTokenManager implements FMParserConstants {
                     }
                 } while((i !== startsAt));
             } else if(this.curChar < 128) {
-                let l : number = 1 << (this.curChar & 63);
+                let l : BigInteger = FMParserTokenManager.shiftLeft(1, (this.curChar & 63));
                 do {
                     switch((this.jjstateSet[--i])) {
                         case 46:
@@ -7082,7 +7119,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         case 6:
-                            if((-268435457 & l) !== 0) {
+                            if((!bigInt(-268435457).and(l).eq(0))) {
                                 this.jjCheckNAddStates(359, 361);
                             }
                             break;
@@ -7095,7 +7132,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(this.curChar === 120) this.jjstateSet[this.jjnewStateCnt++] = 9;
                             break;
                         case 9:
-                            if((541165879422 & l) !== 0) {
+                            if((!bigInt(541165879422).and(l).eq(0))) {
                                 this.jjCheckNAddStates(359, 361);
                             }
                             break;
@@ -7105,7 +7142,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         case 13:
-                            if((-268435457 & l) !== 0) {
+                            if((!bigInt(-268435457).and(l).eq(0))) {
                                 this.jjCheckNAddStates(356, 358);
                             }
                             break;
@@ -7118,7 +7155,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             if(this.curChar === 120) this.jjstateSet[this.jjnewStateCnt++] = 16;
                             break;
                         case 16:
-                            if((541165879422 & l) !== 0) {
+                            if((!bigInt(541165879422).and(l).eq(0))) {
                                 this.jjCheckNAddStates(356, 358);
                             }
                             break;
@@ -7290,11 +7327,11 @@ export class FMParserTokenManager implements FMParserConstants {
                     }
                 } while((i !== startsAt));
             } else {
-                let hiByte : number = (this.curChar >> 8);
+                let hiByte : number = this.curChar >> 8;
                 let i1 : number = hiByte >> 6;
-                let l1 : number = 1 << (hiByte & 63);
+                let l1 : BigInteger = FMParserTokenManager.shiftLeft(1, (hiByte && 63));
                 let i2 : number = (this.curChar & 255) >> 6;
-                let l2 : number = 1 << (this.curChar & 63);
+                let l2 : BigInteger = FMParserTokenManager.shiftLeft(1, (this.curChar & 63));
                 do {
                     switch((this.jjstateSet[--i])) {
                         case 1:
@@ -7333,7 +7370,7 @@ export class FMParserTokenManager implements FMParserConstants {
                             }
                             break;
                         default:
-                            if(i1 === 0 || l1 === 0 || i2 === 0 || l2 === 0) break; else break;
+                            if(i1 === 0 || l1.eq(0) || i2 === 0 || l2.eq(0)) break; else break;
                     }
                 } while((i !== startsAt));
             }
@@ -7354,7 +7391,12 @@ export class FMParserTokenManager implements FMParserConstants {
 
     static jjnextStates : number[] = [10, 12, 4, 5, 3, 4, 5, 697, 712, 369, 370, 371, 372, 373, 374, 375, 376, 377, 378, 379, 380, 381, 382, 383, 384, 385, 386, 387, 388, 389, 390, 391, 392, 393, 394, 395, 396, 397, 398, 404, 405, 413, 414, 423, 424, 431, 432, 443, 444, 455, 456, 467, 468, 477, 478, 488, 489, 499, 500, 512, 513, 522, 523, 539, 540, 551, 552, 570, 571, 583, 584, 597, 598, 608, 609, 610, 611, 612, 613, 614, 615, 616, 617, 618, 619, 620, 621, 622, 623, 624, 625, 626, 636, 637, 638, 650, 651, 656, 662, 663, 665, 12, 21, 24, 31, 36, 45, 50, 58, 65, 70, 77, 84, 90, 98, 105, 114, 120, 130, 136, 141, 148, 153, 161, 174, 183, 199, 209, 218, 227, 234, 242, 253, 262, 269, 277, 278, 286, 291, 296, 305, 314, 321, 331, 339, 350, 357, 367, 5, 6, 14, 15, 38, 41, 47, 48, 178, 179, 187, 188, 201, 202, 211, 212, 222, 223, 229, 230, 231, 236, 237, 238, 244, 245, 246, 255, 256, 257, 264, 265, 266, 271, 272, 273, 279, 280, 281, 283, 284, 285, 288, 289, 290, 293, 294, 295, 298, 299, 307, 308, 309, 323, 324, 325, 341, 342, 343, 361, 362, 400, 401, 407, 408, 416, 417, 426, 427, 434, 435, 446, 447, 460, 461, 470, 471, 480, 481, 491, 492, 502, 503, 515, 516, 527, 528, 544, 545, 556, 557, 573, 574, 586, 587, 600, 601, 628, 629, 642, 643, 700, 701, 703, 708, 709, 704, 710, 703, 705, 706, 708, 709, 369, 370, 371, 372, 373, 374, 375, 376, 377, 378, 379, 380, 381, 382, 383, 384, 385, 386, 387, 388, 389, 390, 391, 392, 393, 394, 395, 396, 397, 667, 668, 669, 670, 671, 672, 673, 674, 675, 676, 677, 678, 679, 680, 681, 682, 683, 684, 609, 610, 611, 612, 613, 614, 615, 616, 617, 618, 619, 620, 621, 622, 623, 624, 625, 685, 637, 686, 651, 689, 692, 663, 693, 193, 198, 562, 567, 658, 659, 699, 711, 708, 709, 52, 53, 54, 75, 78, 81, 85, 86, 95, 48, 50, 44, 45, 13, 14, 17, 6, 7, 10, 61, 63, 65, 68, 71, 20, 23, 8, 11, 15, 18, 21, 22, 24, 25, 49, 50, 51, 72, 75, 78, 82, 83, 92, 45, 47, 58, 60, 62, 65, 68, 3, 5, 48, 49, 50, 71, 74, 77, 81, 82, 91, 44, 46, 40, 41, 8, 9, 12, 1, 2, 5, 57, 59, 61, 64, 67, 3, 6, 10, 13, 16, 17, 19, 20, 54, 55, 56, 77, 80, 83, 87, 88, 97, 50, 52, 46, 47, 63, 65, 67, 70, 73];
 
-    /*private*/ static jjCanMove_0(hiByte : number, i1 : number, i2 : number, l1 : number, l2 : number) : boolean {
+    /*private*/ static jjCanMove_0(hiByte : number|BigInteger, i1 : number|BigInteger, i2 : number|BigInteger, l1 : number|BigInteger, l2 : number|BigInteger) : boolean {
+        hiByte = FMParserTokenManager.toJSNumber(hiByte);
+        i1 = FMParserTokenManager.toJSNumber(i1);
+        i2 = FMParserTokenManager.toJSNumber(i2);
+        l1 = FMParserTokenManager.toJSNumber(l1);
+        l2 = FMParserTokenManager.toJSNumber(l2);
         switch((hiByte)) {
             case 0:
                 return ((!FMParserTokenManager.jjbitVec2[i2].and(l2).eq(0)));
@@ -7363,7 +7405,12 @@ export class FMParserTokenManager implements FMParserConstants {
         }
     }
 
-    /*private*/ static jjCanMove_1(hiByte : number, i1 : number, i2 : number, l1 : number, l2 : number) : boolean {
+    /*private*/ static jjCanMove_1(hiByte : number|BigInteger|BigNumber, i1 : number|BigInteger, i2 : number|BigInteger, l1 : number|BigInteger, l2 : number|BigInteger) : boolean {
+        hiByte = FMParserTokenManager.toJSNumber(hiByte);
+        i1 = FMParserTokenManager.toJSNumber(i1);
+        i2 = FMParserTokenManager.toJSNumber(i2);
+        l1 = FMParserTokenManager.toJSNumber(l1);
+        l2 = FMParserTokenManager.toJSNumber(l2);
         switch((hiByte)) {
             case 0:
                 return ((!FMParserTokenManager.jjbitVec4[i2].and(l2).eq(0)));
@@ -7500,7 +7547,7 @@ export class FMParserTokenManager implements FMParserConstants {
                 case 5:
                     try {
                         this.input_stream.backup(0);
-                        while(((this.curChar < 64 && (!bigInt("4611686018427387904").and(1 << this.curChar).eq(0))) || (this.curChar >> 6) === 1 && (536870912 & (1 << (this.curChar & 63))) !== 0)) this.curChar = (this.input_stream.BeginToken()).charCodeAt(0);
+                        while(((this.curChar < 64 && (!bigInt("4611686018427387904").and(FMParserTokenManager.shiftLeft(1, this.curChar)).eq(0))) || ((this.curChar >> 6) === 1) && (!bigInt(536870912).and(FMParserTokenManager.shiftLeft(1, (this.curChar & 63))).eq(0)))) this.curChar = (this.input_stream.BeginToken()).charCodeAt(0);
                     } catch(e1) {
                         continue EOFLoop;
                     }
@@ -7521,7 +7568,7 @@ export class FMParserTokenManager implements FMParserConstants {
             }
             if(this.jjmatchedKind !== 2147483647) {
                 if(this.jjmatchedPos + 1 < curPos) this.input_stream.backup(curPos - this.jjmatchedPos - 1);
-                if((FMParserTokenManager.jjtoToken[this.jjmatchedKind >> 6] & (1 << (this.jjmatchedKind & 63))) !== 0) {
+                if(!bigInt(FMParserTokenManager.jjtoToken[((this.jjmatchedKind >> 6))]).and(FMParserTokenManager.shiftLeft(1, (this.jjmatchedKind & 63))).eq(0)) {
                     matchedToken = this.jjFillToken();
                     this.TokenLexicalActions(matchedToken);
                     if(FMParserTokenManager.jjnewLexState[this.jjmatchedKind] !== -1) this.curLexState = FMParserTokenManager.jjnewLexState[this.jjmatchedKind];
