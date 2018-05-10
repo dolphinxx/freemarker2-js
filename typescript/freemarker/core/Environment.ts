@@ -71,6 +71,7 @@ import {Entry} from "../../java/util/Entry";
 import {Map} from "../../java/util/Map";
 import {List} from "../../java/util/List";
 import {IdentityHashMap} from "../ext/util/IdentityHashMap";
+import {ClassUtil} from "../template/utility/ClassUtil";
 
 /**
  * Object that represents the runtime environment during template processing. For every invocation of a
@@ -397,7 +398,11 @@ export class Environment extends Configurable {
                 }
             }
         } catch(te) {
-            this.handleTemplateException(te);
+            if(te instanceof TemplateException) {
+                this.handleTemplateException(te);
+                return;
+            }
+            throw te;
         } finally {
             this.popElement();
         }
@@ -428,7 +433,11 @@ export class Environment extends Configurable {
                         }
                     }
                 } catch(te) {
-                    this.handleTemplateException(te);
+                    if(te instanceof TemplateException) {
+                        this.handleTemplateException(te);
+                        return;
+                    }
+                    throw te;
                 } finally {
                     this.popElement();
                 }
@@ -591,7 +600,11 @@ export class Environment extends Configurable {
                 }
             }
         } catch(te) {
-            this.handleTemplateException(te);
+            if(te instanceof TemplateException) {
+                this.handleTemplateException(te);
+                return;
+            }
+            throw te;
         }
     }
 
@@ -704,8 +717,11 @@ export class Environment extends Configurable {
         try {
             return ictxt.accept(this);
         } catch(te) {
-            this.handleTemplateException(te);
-            return true;
+            if(te instanceof TemplateException) {
+                this.handleTemplateException(te);
+                return true;
+            }
+            throw te;
         } finally {
             this.localContextStack.pop();
         }
@@ -745,10 +761,10 @@ export class Environment extends Configurable {
                     } else if(/* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(nodeType,"document"))) {
                         this.recurse(node, namespaces);
                     } else if(!/* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(nodeType,"pi")) && !/* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(nodeType,"comment")) && !/* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(nodeType,"document_type"))) {
-                        throw <any>new (__Function.prototype.bind.apply(_MiscTemplateException, [null, this].concat(<any[]>this.noNodeHandlerDefinedDescription(node, node.getNodeNamespace(), nodeType))));
+                        throw <any>new (Function.prototype.bind.apply(_MiscTemplateException, [null, this].concat(<any[]>this.noNodeHandlerDefinedDescription(node, node.getNodeNamespace(), nodeType))));
                     }
                 } else {
-                    throw <any>new (__Function.prototype.bind.apply(_MiscTemplateException, [null, this].concat(<any[]>this.noNodeHandlerDefinedDescription(node, node.getNodeNamespace(), "default"))));
+                    throw <any>new (Function.prototype.bind.apply(_MiscTemplateException, [null, this].concat(<any[]>this.noNodeHandlerDefinedDescription(node, node.getNodeNamespace(), "default"))));
                 }
             }
         } finally {
