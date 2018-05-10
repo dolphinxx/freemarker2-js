@@ -3,13 +3,14 @@ import {Entry} from "./Entry";
 import {Iterator as _Iterator} from "./Iterator";
 import {Iterable as _Iterable} from "../lang/Iterable";
 import {HashCodes} from "../../javaemul/internal/HashCodes";
+import * as isPlainObject from 'is-plain-object';
 
 export class Map<K = any, V = any> implements _Iterable<Entry<K, V>>, Iterable<Entry<K, V>> {
     keys: Array<K>;
     valueArray: Array<V>;
 
-    public constructor(map?:Map<K, V>) {
-        if(map !== undefined) {
+    public constructor(map?: Map<K, V>) {
+        if (map !== undefined) {
             this.keys = map.keys.slice(0);
             this.valueArray = map.valueArray.slice(0);
             return;
@@ -59,7 +60,7 @@ export class Map<K = any, V = any> implements _Iterable<Entry<K, V>>, Iterable<E
         return this.keys.indexOf(key) !== -1;
     }
 
-    public has(key:any):boolean{
+    public has(key: any): boolean {
         return this.containsKey(key);
     }
 
@@ -115,7 +116,7 @@ export class Map<K = any, V = any> implements _Iterable<Entry<K, V>>, Iterable<E
         if (index === -1) {
             return null;
         }
-        return this.values[index];
+        return this.valueArray[index];
     }
 
     // Modification Operations
@@ -148,6 +149,9 @@ export class Map<K = any, V = any> implements _Iterable<Entry<K, V>>, Iterable<E
         const prev: V = this.get(key);
         if (prev !== null) {
             this.valueArray.splice(this.keys.indexOf(key), 1, value);
+        } else {
+            this.keys.push(key);
+            this.valueArray.push(value);
         }
         return prev;
     }
@@ -197,7 +201,7 @@ export class Map<K = any, V = any> implements _Iterable<Entry<K, V>>, Iterable<E
         return prev;
     }
 
-    public delete(key:K):V {
+    public delete(key: K): V {
         return this.remove(key);
     }
 
@@ -402,6 +406,23 @@ export class Map<K = any, V = any> implements _Iterable<Entry<K, V>>, Iterable<E
                 }
             }
         }
+    }
+
+    public static fromObject(obj: Object, deep?: boolean): Map<any, any> {
+        const result = new Map();
+        if (obj == null) {
+            return result;
+        }
+        for (let o in obj) {
+            if (obj.hasOwnProperty(o)) {
+                if (deep && isPlainObject(obj[o])) {
+                    result.put(o, Map.fromObject(obj[o], true));
+                } else {
+                    result.put(o, obj[o]);
+                }
+            }
+        }
+        return result;
     }
 }
 
