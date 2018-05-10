@@ -15,16 +15,17 @@
  * @extends Error
  */
 export class MalformedTemplateNameException {
+    private name:string;
+    private description:string;
     /*private*/ templateName : string;
 
     /*private*/ malformednessDescription : string;
 
     public constructor(templateName : string, malformednessDescription : string) {
-        (<any>Object).setPrototypeOf(this, MalformedTemplateNameException.prototype);
-        if(this.templateName===undefined) this.templateName = null;
-        if(this.malformednessDescription===undefined) this.malformednessDescription = null;
+        this.description = "Malformed template name, " + (require('./utility/StringUtil').StringUtil).jQuote(templateName) + ": " + malformednessDescription;
         this.templateName = templateName;
         this.malformednessDescription = malformednessDescription;
+        this.name = MalformedTemplateNameException['__class'];
     }
 
     public getTemplateName() : string {
