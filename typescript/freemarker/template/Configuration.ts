@@ -61,6 +61,7 @@ import {DefaultObjectWrapperBuilder} from './DefaultObjectWrapperBuilder';
 import {Entry} from "../../java/util/Entry";
 import {Set} from "../../java/util/Set";
 import {Map} from "../../java/util/Map";
+import {List} from "../../java/util/List";
 
 /**
  * Creates a new instance and sets which of the non-backward-compatible bugfixes/improvements should be enabled.
@@ -3480,80 +3481,53 @@ export class Configuration extends Configurable implements ParserConfiguration {
     }
 
     doAutoImports(env : /*Environment*/any, t : Template) {
-        let envAutoImports : Map<any, any> = env.getAutoImportsWithoutFallback();
-        let tAutoImports : Map<any, any> = t.getAutoImportsWithoutFallback();
+        let envAutoImports : Map<string, string> = env.getAutoImportsWithoutFallback();
+        let tAutoImports : Map<string, string> = t.getAutoImportsWithoutFallback();
         let lazyAutoImports : boolean = env.getLazyAutoImports() != null?env.getLazyAutoImports():env.getLazyImports();
-        {
-            let array173 = /* entrySet */(o => { let s = []; for (let e in o) s.push({ k: e, v: o[e], getKey: function() { return this.k }, getValue: function() { return this.v } }); return s; })(this.getAutoImportsWithoutFallback());
-            for(let index172=0; index172 < array173.length; index172++) {
-                let autoImport = array173[index172];
-                {
-                    let nsVarName : string = autoImport.getKey();
-                    if((tAutoImports == null || !/* containsKey */tAutoImports.has(nsVarName)) && (envAutoImports == null || !/* containsKey */envAutoImports.has(nsVarName))) {
-                        env.importLib$java_lang_String$java_lang_String$boolean(autoImport.getValue(), nsVarName, lazyAutoImports);
-                    }
-                }
+        this.getAutoImportsWithoutFallback().forEach(autoImport => {
+            let nsVarName = autoImport.getKey();
+            if ((tAutoImports == null || !tAutoImports.containsKey(nsVarName))
+                && (envAutoImports == null || !envAutoImports.containsKey(nsVarName))) {
+                env.importLib(autoImport.getValue(), nsVarName, lazyAutoImports);
             }
-        }
+        });
+
         if(tAutoImports != null) {
-            {
-                let array175 = /* entrySet */(o => { let s = []; for (let e in o) s.push({ k: e, v: o[e], getKey: function() { return this.k }, getValue: function() { return this.v } }); return s; })(tAutoImports);
-                for(let index174=0; index174 < array175.length; index174++) {
-                    let autoImport = array175[index174];
-                    {
-                        let nsVarName : string = autoImport.getKey();
-                        if(envAutoImports == null || !/* containsKey */envAutoImports.has(nsVarName)) {
-                            env.importLib$java_lang_String$java_lang_String$boolean(autoImport.getValue(), nsVarName, lazyAutoImports);
-                        }
-                    }
+            tAutoImports.forEach(autoImport => {
+                let nsVarName = autoImport.getKey();
+                if (envAutoImports == null || !envAutoImports.containsKey(nsVarName)) {
+                    env.importLib(autoImport.getValue(), nsVarName, lazyAutoImports);
                 }
-            }
+            });
         }
         if(envAutoImports != null) {
-            {
-                let array177 = /* entrySet */(o => { let s = []; for (let e in o) s.push({ k: e, v: o[e], getKey: function() { return this.k }, getValue: function() { return this.v } }); return s; })(envAutoImports);
-                for(let index176=0; index176 < array177.length; index176++) {
-                    let autoImport = array177[index176];
-                    {
-                        let nsVarName : string = autoImport.getKey();
-                        env.importLib$java_lang_String$java_lang_String$boolean(autoImport.getValue(), nsVarName, lazyAutoImports);
-                    }
-                }
-            }
+            envAutoImports.forEach(autoImport => {
+                let nsVarName:string = autoImport.getKey();
+                env.importLib(autoImport.getValue(), nsVarName, lazyAutoImports);
+            });
         }
     }
 
     doAutoIncludes(env : /*Environment*/any, t : Template) {
-        let tAutoIncludes : Array<any> = t.getAutoIncludesWithoutFallback();
-        let envAutoIncludes : Array<any> = env.getAutoIncludesWithoutFallback();
-        {
-            let array179 = this.getAutoIncludesWithoutFallback();
-            for(let index178=0; index178 < array179.length; index178++) {
-                let templateName = array179[index178];
-                {
-                    if((tAutoIncludes == null || !/* contains */(tAutoIncludes.indexOf(<any>(templateName)) >= 0)) && (envAutoIncludes == null || !/* contains */(envAutoIncludes.indexOf(<any>(templateName)) >= 0))) {
-                        env.include$freemarker_template_Template(this.getTemplate$java_lang_String$java_util_Locale(templateName, env.getLocale()));
-                    }
-                }
+        let tAutoIncludes : List<string> = t.getAutoIncludesWithoutFallback();
+        let envAutoIncludes : List<string> = env.getAutoIncludesWithoutFallback();
+        this.getAutoIncludesWithoutFallback().forEach(templateName => {
+            if ((tAutoIncludes == null || !tAutoIncludes.contains(templateName))
+                && (envAutoIncludes == null || !envAutoIncludes.contains(templateName))) {
+                env.include(this.getTemplate(templateName, env.getLocale()));
             }
-        }
+        });
         if(tAutoIncludes != null) {
-            for(let index180=0; index180 < tAutoIncludes.length; index180++) {
-                let templateName = tAutoIncludes[index180];
-                {
-                    if(envAutoIncludes == null || !/* contains */(envAutoIncludes.indexOf(<any>(templateName)) >= 0)) {
-                        env.include$freemarker_template_Template(this.getTemplate$java_lang_String$java_util_Locale(templateName, env.getLocale()));
-                    }
+            tAutoIncludes.forEach(templateName => {
+                if (envAutoIncludes == null || !envAutoIncludes.contains(templateName)) {
+                    env.include(this.getTemplate(templateName, env.getLocale()));
                 }
-            }
+            });
         }
         if(envAutoIncludes != null) {
-            for(let index181=0; index181 < envAutoIncludes.length; index181++) {
-                let templateName = envAutoIncludes[index181];
-                {
-                    env.include$freemarker_template_Template(this.getTemplate$java_lang_String$java_util_Locale(templateName, env.getLocale()));
-                }
-            }
+            envAutoIncludes.forEach(templateName => {
+                env.include(this.getTemplate(templateName, env.getLocale()));
+            });
         }
     }
 
@@ -3640,12 +3614,11 @@ export class Configuration extends Configurable implements ParserConfiguration {
      * @since 2.3.24
      * @return {Set}
      */
-    public getSupportedBuiltInNames(namingConvention? : any) : any {
-        if(((typeof namingConvention === 'number') || namingConvention === null)) {
-            return <any>this.getSupportedBuiltInNames$int(namingConvention);
-        } else if(namingConvention === undefined) {
-            return <any>this.getSupportedBuiltInNames$();
-        } else throw new Error('invalid overload');
+    public getSupportedBuiltInNames(namingConvention? : number) : any {
+        if(namingConvention !== undefined) {
+            return _CoreAPI.getSupportedBuiltInNames(namingConvention);
+        }
+        return this.getSupportedBuiltInNames$int(this.getNamingConvention()).toArray();
     }
 
     public getSupportedBuiltInDirectiveNames$() : Array<any> {
