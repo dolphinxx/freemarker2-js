@@ -942,7 +942,7 @@ export class Template extends Configurable {
                 }
             }
         }
-        return new (require('../core/Environment'))(this, dataModelHash, out);
+        return new (require('../core/Environment').Environment)(this, dataModelHash, out);
     }
 
     /**
