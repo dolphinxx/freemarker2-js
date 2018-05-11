@@ -2,9 +2,9 @@
 import {TemplateDirectiveBody} from '../template/TemplateDirectiveBody';
 import {TemplateException} from '../template/TemplateException';
 import {StringUtil} from '../template/utility/StringUtil';
-import {Environment} from './Environment';
 import {TemplateElement} from './TemplateElement';
 import {ThreadInterruptionSupportTemplatePostProcessor} from './ThreadInterruptionSupportTemplatePostProcessor';
+import {ClassUtil} from "../template/utility/ClassUtil";
 
 /**
  * [2.4] Should become public somehow; this is more intelligent than a {@code null} check, for example, when the body
@@ -18,13 +18,13 @@ export class NestedContentNotSupportedException extends TemplateException {
         if(body == null) {
             return;
         }
-        if(ClassUtil.isInstanceOf(body, 'freemarker.core.Environment').NestedElementTemplateDirectiveBody) {
-            let tes : TemplateElement[] = (<Environment.NestedElementTemplateDirectiveBody><any>body).getChildrenBuffer();
+        if(ClassUtil.isInstanceOf(body, 'freemarker.core.NestedElementTemplateDirectiveBody')) {
+            let tes : TemplateElement[] = (/*<Environment.NestedElementTemplateDirectiveBody>*/<any>body).getChildrenBuffer();
             if(tes == null || tes.length === 0 || (tes[0] != null && tes[0] instanceof <any>ThreadInterruptionSupportTemplatePostProcessor.ThreadInterruptionCheck) && (tes.length === 1 || tes[1] == null)) {
                 return;
             }
         }
-        throw new NestedContentNotSupportedException(Environment.getCurrentEnvironment());
+        throw new NestedContentNotSupportedException((require('./Environment').Environment).getCurrentEnvironment());
     }
 
     public constructor(description? : any, cause? : any, env? : any) {

@@ -207,7 +207,11 @@ export abstract class Expression extends TemplateObject {
         return this.modelToBoolean$freemarker_template_TemplateModel$freemarker_core_Environment$freemarker_template_Configuration(model, null, cfg);
     }
 
-    public modelToBoolean$freemarker_template_TemplateModel$freemarker_core_Environment$freemarker_template_Configuration(model : TemplateModel, env : /*Environment*/any, cfg : /*Configuration*/any) : boolean {
+    public modelToBoolean$freemarker_template_TemplateModel$freemarker_core_Environment$freemarker_template_Configuration(model : TemplateModel|boolean, env : /*Environment*/any, cfg : /*Configuration*/any) : boolean {
+        if(typeof model === 'boolean') {
+            return <boolean>model;
+        }
+        model = <TemplateModel>model;
         if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateBooleanModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateBooleanModel") >= 0)) {
             return (/*<TemplateBooleanModel>*/<any>model).getAsBoolean();
         } else if(env != null?env.isClassicCompatible():cfg.isClassicCompatible()) {

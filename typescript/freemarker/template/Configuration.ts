@@ -57,7 +57,6 @@ import {TemplateModel} from './TemplateModel';
 import {TemplateHashModelEx} from './TemplateHashModelEx';
 import {TemplateModelIterator} from './TemplateModelIterator';
 import {TemplateScalarModel} from './TemplateScalarModel';
-import {DefaultObjectWrapperBuilder} from './DefaultObjectWrapperBuilder';
 import {Entry} from "../../java/util/Entry";
 import {Set} from "../../java/util/Set";
 import {Map} from "../../java/util/Map";
@@ -3591,7 +3590,7 @@ export class Configuration extends Configurable implements ParserConfiguration {
         if(incompatibleImprovements.intValue() < /*_TemplateAPI.VERSION_INT_2_3_21*/2003021) {
             return new (require('./DefaultObjectWrapper').DefaultObjectWrapper)();
         } else {
-            return new DefaultObjectWrapperBuilder(incompatibleImprovements).build();
+            return new (require('./DefaultObjectWrapperBuilder').DefaultObjectWrapperBuilder)(incompatibleImprovements).build();
         }
     }
 

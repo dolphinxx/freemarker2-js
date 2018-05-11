@@ -1,9 +1,7 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import {Configuration} from '../template/Configuration';
 import {TemplateDirectiveBody} from '../template/TemplateDirectiveBody';
 import {TemplateException} from '../template/TemplateException';
 import {TemplateModelException} from '../template/TemplateModelException';
-import {_TemplateAPI} from '../template/_TemplateAPI';
 import {ClassUtil} from '../template/utility/ClassUtil';
 import {Writer} from '../../java/io/Writer';
 import {BuiltIn} from './BuiltIn';
@@ -11,9 +9,7 @@ import {TemplateElement} from './TemplateElement';
 import {StringBuilder} from '../../java/lang/StringBuilder';
 import {ThreadInterruptionSupportTemplatePostProcessor} from './ThreadInterruptionSupportTemplatePostProcessor';
 import {NestedContentNotSupportedException} from './NestedContentNotSupportedException';
-import {TextBlock} from './TextBlock';
 import {_TemplateModelException} from './_TemplateModelException';
-import {FMParser} from './FMParser';
 import {Set} from '../../java/util/Set';
 
 /**
@@ -145,6 +141,7 @@ export class _CoreAPI {
      */
     public static getSupportedBuiltInNames(namingConvention: number): Set<any> {
         let names: Set<any>;
+        const Configuration = require('../template/Configuration').Configuration;
         if (namingConvention === Configuration.AUTO_DETECT_NAMING_CONVENTION) {
             names = BuiltIn.BUILT_INS_BY_NAME.keySet();
         } else if (namingConvention === Configuration.LEGACY_NAMING_CONVENTION) {
@@ -192,7 +189,7 @@ export class _CoreAPI {
         NestedContentNotSupportedException.check(body);
     }
 
-    public static replaceText(textBlock: TextBlock, text: string) {
+    public static replaceText(textBlock: /*TextBlock*/any, text: string) {
         textBlock.replaceText(text);
     }
 
@@ -230,7 +227,7 @@ export class _CoreAPI {
         if (e != null && e instanceof <any>TemplateModelException) {
             return <TemplateModelException>e;
         } else {
-            return new _TemplateModelException(_TemplateAPI.getBlamedExpression(e), (<Error>null), e.getEnvironment(), modelOpMsg);
+            return new _TemplateModelException((require('../template/_TemplateAPI')._TemplateAPI).getBlamedExpression(e), (<Error>null), e.getEnvironment(), modelOpMsg);
         }
     }
 
@@ -242,7 +239,7 @@ export class _CoreAPI {
         return te.getChild(index);
     }
 
-    public static setPreventStrippings(parser: FMParser, preventStrippings: boolean) {
+    public static setPreventStrippings(parser: /*FMParser*/any, preventStrippings: boolean) {
         parser.setPreventStrippings(preventStrippings);
     }
 }

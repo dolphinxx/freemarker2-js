@@ -1,5 +1,4 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import {Environment} from '../../core/Environment';
 import {SimpleScalar} from '../SimpleScalar';
 import {TemplateModel} from '../TemplateModel';
 import {TemplateModelException} from '../TemplateModelException';
@@ -7,6 +6,8 @@ import {TemplateScalarModel} from '../TemplateScalarModel';
 import {TemplateTransformModel} from '../TemplateTransformModel';
 import {Writer} from '../../../java/io/Writer';
 import {StringBuilder} from '../../../java/lang/StringBuilder';
+import {Map} from "../../../java/util/Map";
+import {ClassUtil} from "./ClassUtil";
 
 /**
  * A transform that captures the output of a block of FTL code and stores that in a variable.
@@ -67,7 +68,7 @@ export class CaptureOutput implements TemplateTransformModel {
             if(global) {
                 throw new TemplateModelException("Cannot specify namespace for a global assignment");
             }
-            if(!(ClassUtil.isInstanceOf(nsModel, 'freemarker.core.Environment').Namespace)) {
+            if(!(ClassUtil.isInstanceOf(nsModel, 'freemarker.core.Environment.Namespace'))) {
                 throw new TemplateModelException("namespace parameter does not specify a namespace. It is a " + /* getName */(c => c["__class"]?c["__class"]:c["name"])((<any>nsModel.constructor)));
             }
         } else if(/* size */((m) => { let r=0; m.forEach((v, k, m) => r++); return r; })(<any>args) !== 1) throw new TemplateModelException("Bad parameters. Use only one of \'var\' or \'local\' or \'global\' parameters.");
@@ -79,7 +80,7 @@ export class CaptureOutput implements TemplateTransformModel {
             throw new TemplateModelException("\'var\' or \'local\' or \'global\' parameter evaluates to null string");
         }
         let buf : StringBuilder = new StringBuilder("");
-        let env : Environment = Environment.getCurrentEnvironment();
+        let env : /*Environment*/any = (require('../../core/Environment').Environment).getCurrentEnvironment();
         let localVar : boolean = local;
         let globalVar : boolean = global;
         return new CaptureOutput.CaptureOutput$0(this, buf, out, localVar, env, varName, globalVar, nsModel);
@@ -95,7 +96,7 @@ CaptureOutput["__interfaces"] = ["freemarker.template.TemplateTransformModel","f
 
 export namespace CaptureOutput {
 
-    export class CaptureOutput$0 {
+    export class CaptureOutput$0 extends Writer{
         public __parent: any;
         /**
          * 
@@ -128,7 +129,7 @@ export namespace CaptureOutput {
                     if(this.nsModel == null) {
                         this.env.setVariable(this.varName, result);
                     } else {
-                        (<Environment.Namespace><any>this.nsModel).put$java_lang_String$java_lang_Object(this.varName, result);
+                        (/*<Environment.Namespace>*/<any>this.nsModel).put$java_lang_String$java_lang_Object(this.varName, result);
                     }
                 }
             } catch(ise) {
@@ -137,6 +138,7 @@ export namespace CaptureOutput {
         }
 
         constructor(__parent: any, private buf: any, private out: any, private localVar: any, private env: any, private varName: any, private globalVar: any, private nsModel: any) {
+            super();
             this.__parent = __parent;
         }
     }

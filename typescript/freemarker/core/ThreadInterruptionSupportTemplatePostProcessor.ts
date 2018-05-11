@@ -1,9 +1,7 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import {Template} from '../template/Template';
 import {TemplatePostProcessor} from './TemplatePostProcessor';
 import {TemplatePostProcessorException} from './TemplatePostProcessorException';
 import {TemplateElement} from './TemplateElement';
-import {Environment} from './Environment';
 import {ParameterRole} from './ParameterRole';
 import {FlowControlException} from './FlowControlException';
 
@@ -34,7 +32,7 @@ export class ThreadInterruptionSupportTemplatePostProcessor extends TemplatePost
      * 
      * @param {Template} t
      */
-    public postProcess(t : Template) {
+    public postProcess(t : /*Template*/any) {
         let te : TemplateElement = t.getRootTreeNode();
         this.addInterruptionChecks(te);
     }
@@ -79,9 +77,9 @@ export namespace ThreadInterruptionSupportTemplatePostProcessor {
          * @return {Array}
          */
         accept(env : /*Environment*/any) : TemplateElement[] {
-            if(java.lang.Thread.currentThread().isInterrupted()) {
-                throw new ThreadInterruptionSupportTemplatePostProcessor.TemplateProcessingThreadInterruptedException();
-            }
+            // if(java.lang.Thread.currentThread().isInterrupted()) {
+            //     throw new ThreadInterruptionSupportTemplatePostProcessor.TemplateProcessingThreadInterruptedException();
+            // }
             return null;
         }
 

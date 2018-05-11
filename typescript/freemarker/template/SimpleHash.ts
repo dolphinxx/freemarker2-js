@@ -31,83 +31,11 @@ export class SimpleHash extends WrappingTemplateModel implements TemplateHashMod
 
     /*private*/ putFailed : boolean;
 
-    /*private*/ unwrappedMap : Map<any, any>;
+    // /*private*/ unwrappedMap : Map<any, any>;
 
     public constructor(map? : any, wrapper? : any) {
-        if(((map != null && (map instanceof Map)) || map === null) && ((wrapper != null && (wrapper["__interfaces"] != null && wrapper["__interfaces"].indexOf("freemarker.template.ObjectWrapper") >= 0 || wrapper.constructor != null && wrapper.constructor["__interfaces"] != null && wrapper.constructor["__interfaces"].indexOf("freemarker.template.ObjectWrapper") >= 0)) || wrapper === null)) {
-            let __args = Array.prototype.slice.call(arguments);
-            super(wrapper);
-            if(this.map===undefined) this.map = null;
-            if(this.putFailed===undefined) this.putFailed = false;
-            if(this.unwrappedMap===undefined) this.unwrappedMap = null;
-            if(this.map===undefined) this.map = null;
-            if(this.putFailed===undefined) this.putFailed = false;
-            if(this.unwrappedMap===undefined) this.unwrappedMap = null;
-            (() => {
-                let mapCopy : Map<any, any>;
-                try {
-                    mapCopy = this.copyMap(map);
-                } catch(cme) {
-                    {
-                        mapCopy = this.copyMap(map);
-                    }
-                }
-                this.map = mapCopy;
-            })();
-        } else if(((map != null && (map instanceof Map)) || map === null) && wrapper === undefined) {
-            let __args = Array.prototype.slice.call(arguments);
-            {
-                let __args = Array.prototype.slice.call(arguments);
-                let wrapper : any = null;
-                super(wrapper);
-                if(this.map===undefined) this.map = null;
-                if(this.putFailed===undefined) this.putFailed = false;
-                if(this.unwrappedMap===undefined) this.unwrappedMap = null;
-                if(this.map===undefined) this.map = null;
-                if(this.putFailed===undefined) this.putFailed = false;
-                if(this.unwrappedMap===undefined) this.unwrappedMap = null;
-                (() => {
-                    let mapCopy : Map<any, any>;
-                    try {
-                        mapCopy = this.copyMap(map);
-                    } catch(cme) {
-                        {
-                            mapCopy = this.copyMap(map);
-                        }
-                    }
-                    this.map = mapCopy;
-                })();
-            }
-        } else if(((map != null && (map["__interfaces"] != null && map["__interfaces"].indexOf("freemarker.template.ObjectWrapper") >= 0 || map.constructor != null && map.constructor["__interfaces"] != null && map.constructor["__interfaces"].indexOf("freemarker.template.ObjectWrapper") >= 0)) || map === null) && wrapper === undefined) {
-            let __args = Array.prototype.slice.call(arguments);
-            let wrapper : any = __args[0];
-            super(wrapper);
-            if(this.map===undefined) this.map = null;
-            if(this.putFailed===undefined) this.putFailed = false;
-            if(this.unwrappedMap===undefined) this.unwrappedMap = null;
-            if(this.map===undefined) this.map = null;
-            if(this.putFailed===undefined) this.putFailed = false;
-            if(this.unwrappedMap===undefined) this.unwrappedMap = null;
-            (() => {
-                this.map = <any>(new Map<any, any>());
-            })();
-        } else if(map === undefined && wrapper === undefined) {
-            let __args = Array.prototype.slice.call(arguments);
-            {
-                let __args = Array.prototype.slice.call(arguments);
-                let wrapper : any = <ObjectWrapper><any>null;
-                super(wrapper);
-                if(this.map===undefined) this.map = null;
-                if(this.putFailed===undefined) this.putFailed = false;
-                if(this.unwrappedMap===undefined) this.unwrappedMap = null;
-                if(this.map===undefined) this.map = null;
-                if(this.putFailed===undefined) this.putFailed = false;
-                if(this.unwrappedMap===undefined) this.unwrappedMap = null;
-                (() => {
-                    this.map = <any>(new Map<any, any>());
-                })();
-            }
-        } else throw new Error('invalid overload');
+        super(wrapper);
+        this.map = map === undefined ? new Map() : (map instanceof Map) ? <Map>map : Map.fromObject(map);
     }
 
     copyMap(map : Map<any, any>) : Map<any, any> {
@@ -129,7 +57,7 @@ export class SimpleHash extends WrappingTemplateModel implements TemplateHashMod
 
     public put$java_lang_String$java_lang_Object(key : string, value : any) {
         /* put */this.map.set(key, value);
-        this.unwrappedMap = null;
+        // this.unwrappedMap = null;
     }
 
     public put$java_lang_String$boolean(key : string, b : boolean) {
@@ -260,27 +188,28 @@ export class SimpleHash extends WrappingTemplateModel implements TemplateHashMod
      * @return {Map}
      */
     public toMap() : Map<any, any> {
-        if(this.unwrappedMap == null) {
-            let mapClass : any = (<any>this.map.constructor);
-            let m : Map<any, any> = null;
-            try {
-                m = <Map<any, any>><any>/* newInstance */new (mapClass)();
-            } catch(e) {
-                throw new TemplateModelException("Error instantiating map of type " + /* getName */(c => c["__class"]?c["__class"]:c["name"])(mapClass) + "\n" + e.message);
-            }
-            let bw : /*BeansWrapper*/any = (require('../ext/beans/BeansWrapper').BeansWrapper).getDefaultInstance();
-            for(let it : any = /* iterator */((a) => { var i = 0; return { next: function() { return i<a.length?a[i++]:null; }, hasNext: function() { return i<a.length; }}})(/* entrySet */((m) => { if(m.entries==null) m.entries=[]; return m.entries; })(<any>this.map)); it.hasNext(); ) {
-                let entry : Entry<any, any> = <Entry<any, any>><any>it.next();
-                let key : any = entry.getKey();
-                let value : any = entry.getValue();
-                if(value != null && (value["__interfaces"] != null && value["__interfaces"].indexOf("freemarker.template.TemplateModel") >= 0 || value.constructor != null && value.constructor["__interfaces"] != null && value.constructor["__interfaces"].indexOf("freemarker.template.TemplateModel") >= 0)) {
-                    value = bw.unwrap$freemarker_template_TemplateModel(<TemplateModel><any>value);
-                }
-                /* put */m.set(key, value);
-            }
-            this.unwrappedMap = m;
-        }
-        return this.unwrappedMap;
+        // if(this.unwrappedMap == null) {
+        //     let mapClass : any = (<any>this.map.constructor);
+        //     let m : Map<any, any> = null;
+        //     try {
+        //         m = <Map<any, any>><any>/* newInstance */new (mapClass)();
+        //     } catch(e) {
+        //         throw new TemplateModelException("Error instantiating map of type " + /* getName */(c => c["__class"]?c["__class"]:c["name"])(mapClass) + "\n" + e.message);
+        //     }
+        //     let bw : /*BeansWrapper*/any = (require('../ext/beans/BeansWrapper').BeansWrapper).getDefaultInstance();
+        //     for(let it : any = /* iterator */((a) => { var i = 0; return { next: function() { return i<a.length?a[i++]:null; }, hasNext: function() { return i<a.length; }}})(/* entrySet */((m) => { if(m.entries==null) m.entries=[]; return m.entries; })(<any>this.map)); it.hasNext(); ) {
+        //         let entry : Entry<any, any> = <Entry<any, any>><any>it.next();
+        //         let key : any = entry.getKey();
+        //         let value : any = entry.getValue();
+        //         if(value != null && (value["__interfaces"] != null && value["__interfaces"].indexOf("freemarker.template.TemplateModel") >= 0 || value.constructor != null && value.constructor["__interfaces"] != null && value.constructor["__interfaces"].indexOf("freemarker.template.TemplateModel") >= 0)) {
+        //             value = bw.unwrap$freemarker_template_TemplateModel(<TemplateModel><any>value);
+        //         }
+        //         /* put */m.set(key, value);
+        //     }
+        //     this.unwrappedMap = m;
+        // }
+        // return this.unwrappedMap;
+        return this.map;
     }
 
     /**

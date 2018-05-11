@@ -3,6 +3,7 @@ import {InputStream} from '../../../java/io/InputStream';
 import {StringBuilder} from '../../../java/lang/StringBuilder';
 import {Boolean} from '../../../java/lang/Boolean';
 import {Map} from "../../../java/util/Map";
+import * as isPlainObject from 'is-plain-object';
 
 /**
  *
@@ -12,8 +13,20 @@ export class ClassUtil {
     constructor() {
     }
 
-    public static isInstanceOf(instance: any, type: string): boolean {
+    public static isInstanceOf(instance: any, type: any): boolean {
         if(instance === null || instance === undefined) {
+            return false;
+        }
+        if(typeof type !== 'string') {
+            return instance instanceof type;
+        }
+        if(typeof instance === 'string') {
+            return type === 'string';
+        }
+        if(typeof instance === 'number') {
+            return type === 'number';
+        }
+        if(isPlainObject(instance)) {
             return false;
         }
         if(instance.hasOwnProperty('__class') && instance['__class'] === type) {
@@ -25,11 +38,23 @@ export class ClassUtil {
         return false;
     }
 
-    public static isAssignableFrom(instance: any, type:string):boolean {
+    public static isAssignableFrom(instance: any, type:any):boolean {
         if(instance === null || instance === undefined) {
             return false;
         }
-        if(ClassUtil.isInstanceOf(instance, type)) {
+        if(typeof type !== 'string') {
+            return instance instanceof type;
+        }
+        if(typeof instance === 'string') {
+            return type === 'string';
+        }
+        if(typeof instance === 'number') {
+            return type === 'number';
+        }
+        if(isPlainObject(instance)) {
+            return false;
+        }
+        if(instance.hasOwnProperty('__class') && instance['__class'] === type) {
             return true;
         }
         if(instance.hasOwnProperty('__interfaces') && instance['__interfaces'].indexOf(type) !== -1) {
@@ -40,13 +65,15 @@ export class ClassUtil {
             return false;
         }
         const pConstructor = proto.constructor;
-        if(pConstructor == null) {
+        if(pConstructor == null || pConstructor === instance) {
             return false;
+        }
+        if(pConstructor.hasOwnProperty('__classs') && pConstructor['__class'] === type) {
+            return true;
         }
         if(pConstructor.hasOwnProperty('__interfaces') && pConstructor['__interfaces'].indexOf(type) !== -1) {
             return true;
         }
-
         return ClassUtil.isAssignableFrom(pConstructor, type);
     }
 

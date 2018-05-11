@@ -3,6 +3,7 @@ import {_BeansAPI} from '../ext/beans/_BeansAPI';
 import {DefaultObjectWrapperConfiguration} from './DefaultObjectWrapperConfiguration';
 import {DefaultObjectWrapper} from './DefaultObjectWrapper';
 import {Version} from './Version';
+import {Map} from "../../java/util/Map";
 
 /**
  * Creates a builder that creates a {link DefaultObjectWrapper} with the given {@code incompatibleImprovements};

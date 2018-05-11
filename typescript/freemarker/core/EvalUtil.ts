@@ -90,7 +90,7 @@ export class EvalUtil {
      */
     static newModelHasStoredNullException(expected : any, model : TemplateModel, expr : /*Expression*/any) : /*TemplateModelException*/any {
         const _TemplateModelException = require('./_TemplateModelException')._TemplateModelException;
-        return <any>new (__Function.prototype.bind.apply(_TemplateModelException, [null, expr].concat(<any[]>_TemplateModelException.modelHasStoredNullDescription(expected, model))));
+        return <any>new (Function.prototype.bind.apply(_TemplateModelException, [null, expr].concat(<any[]>_TemplateModelException.modelHasStoredNullDescription(expected, model))));
     }
 
     static compare$freemarker_core_Expression$int$java_lang_String$freemarker_core_Expression$freemarker_core_Expression$freemarker_core_Environment(leftExp : /*Expression*/any, operator : number, operatorString : string, rightExp : /*Expression*/any, defaultBlamed : /*Expression*/any, env : /*Environment*/any) : boolean {
@@ -120,114 +120,115 @@ export class EvalUtil {
     static VALUE_OF_THE_COMPARISON_IS_UNKNOWN_DATE_LIKE : string = "value of the comparison is a date-like value where it\'s not known if it\'s a date (no time part), time, or date-time, and thus can\'t be used in a comparison.";
 
     public static compare$freemarker_template_TemplateModel$freemarker_core_Expression$int$java_lang_String$freemarker_template_TemplateModel$freemarker_core_Expression$freemarker_core_Expression$boolean$boolean$boolean$boolean$freemarker_core_Environment(leftValue : TemplateModel, leftExp : /*Expression*/any, operator : number, operatorString : string, rightValue : TemplateModel, rightExp : /*Expression*/any, defaultBlamed : /*Expression*/any, quoteOperandsInErrors : boolean, typeMismatchMeansNotEqual : boolean, leftNullReturnsFalse : boolean, rightNullReturnsFalse : boolean, env : /*Environment*/any) : boolean {
-        // if(leftValue == null) {
-        //     if(env != null && env.isClassicCompatible()) {
-        //         leftValue = TemplateScalarModel.EMPTY_STRING;
-        //     } else {
-        //         if(leftNullReturnsFalse) {
-        //             return false;
-        //         } else {
-        //             if(leftExp != null) {
-        //                 throw InvalidReferenceException.getInstance$freemarker_core_Expression$freemarker_core_Environment(leftExp, env);
-        //             } else {
-        //                 throw new _MiscTemplateException(defaultBlamed, env, "The left operand of the comparison was undefined or null.");
-        //             }
-        //         }
-        //     }
-        // }
-        // if(rightValue == null) {
-        //     if(env != null && env.isClassicCompatible()) {
-        //         rightValue = TemplateScalarModel.EMPTY_STRING;
-        //     } else {
-        //         if(rightNullReturnsFalse) {
-        //             return false;
-        //         } else {
-        //             if(rightExp != null) {
-        //                 throw InvalidReferenceException.getInstance$freemarker_core_Expression$freemarker_core_Environment(rightExp, env);
-        //             } else {
-        //                 throw new _MiscTemplateException(defaultBlamed, env, "The right operand of the comparison was undefined or null.");
-        //             }
-        //         }
-        //     }
-        // }
-        // let cmpResult : number;
-        // if((leftValue != null && (leftValue["__interfaces"] != null && leftValue["__interfaces"].indexOf("freemarker.template.TemplateNumberModel") >= 0 || leftValue.constructor != null && leftValue.constructor["__interfaces"] != null && leftValue.constructor["__interfaces"].indexOf("freemarker.template.TemplateNumberModel") >= 0)) && (rightValue != null && (rightValue["__interfaces"] != null && rightValue["__interfaces"].indexOf("freemarker.template.TemplateNumberModel") >= 0 || rightValue.constructor != null && rightValue.constructor["__interfaces"] != null && rightValue.constructor["__interfaces"].indexOf("freemarker.template.TemplateNumberModel") >= 0))) {
-        //     let leftNum : number = EvalUtil.modelToNumber(<TemplateNumberModel><any>leftValue, leftExp);
-        //     let rightNum : number = EvalUtil.modelToNumber(<TemplateNumberModel><any>rightValue, rightExp);
-        //     let ae : ArithmeticEngine = env != null?env.getArithmeticEngine():(leftExp != null?leftExp.getTemplate().getArithmeticEngine():ArithmeticEngine.BIGDECIMAL_ENGINE_$LI$());
-        //     try {
-        //         cmpResult = ae.compareNumbers(leftNum, rightNum);
-        //     } catch(e) {
-        //         throw new _MiscTemplateException(defaultBlamed, e, env, "Unexpected error while comparing two numbers: ", e);
-        //     };
-        // } else if((leftValue != null && (leftValue["__interfaces"] != null && leftValue["__interfaces"].indexOf("freemarker.template.TemplateDateModel") >= 0 || leftValue.constructor != null && leftValue.constructor["__interfaces"] != null && leftValue.constructor["__interfaces"].indexOf("freemarker.template.TemplateDateModel") >= 0)) && (rightValue != null && (rightValue["__interfaces"] != null && rightValue["__interfaces"].indexOf("freemarker.template.TemplateDateModel") >= 0 || rightValue.constructor != null && rightValue.constructor["__interfaces"] != null && rightValue.constructor["__interfaces"].indexOf("freemarker.template.TemplateDateModel") >= 0))) {
-        //     let leftDateModel : TemplateDateModel = <TemplateDateModel><any>leftValue;
-        //     let rightDateModel : TemplateDateModel = <TemplateDateModel><any>rightValue;
-        //     let leftDateType : number = leftDateModel.getDateType();
-        //     let rightDateType : number = rightDateModel.getDateType();
-        //     if(leftDateType === TemplateDateModel.UNKNOWN || rightDateType === TemplateDateModel.UNKNOWN) {
-        //         let sideName : string;
-        //         let sideExp : Expression;
-        //         if(leftDateType === TemplateDateModel.UNKNOWN) {
-        //             sideName = "left";
-        //             sideExp = leftExp;
-        //         } else {
-        //             sideName = "right";
-        //             sideExp = rightExp;
-        //         }
-        //         throw new _MiscTemplateException(sideExp != null?sideExp:defaultBlamed, env, "The ", sideName, " ", EvalUtil.VALUE_OF_THE_COMPARISON_IS_UNKNOWN_DATE_LIKE);
-        //     }
-        //     if(leftDateType !== rightDateType) {
-        //         throw new _MiscTemplateException(defaultBlamed, env, "Can\'t compare dates of different types. Left date type is ", /* get */TemplateDateModel.TYPE_NAMES[leftDateType], ", right date type is ", /* get */TemplateDateModel.TYPE_NAMES[rightDateType], ".");
-        //     }
-        //     let leftDate : Date = EvalUtil.modelToDate(leftDateModel, leftExp);
-        //     let rightDate : Date = EvalUtil.modelToDate(rightDateModel, rightExp);
-        //     cmpResult = leftDate.compareTo(rightDate);
-        // } else if((leftValue != null && (leftValue["__interfaces"] != null && leftValue["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0 || leftValue.constructor != null && leftValue.constructor["__interfaces"] != null && leftValue.constructor["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0)) && (rightValue != null && (rightValue["__interfaces"] != null && rightValue["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0 || rightValue.constructor != null && rightValue.constructor["__interfaces"] != null && rightValue.constructor["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0))) {
-        //     if(operator !== EvalUtil.CMP_OP_EQUALS && operator !== EvalUtil.CMP_OP_NOT_EQUALS) {
-        //         throw new _MiscTemplateException(defaultBlamed, env, "Can\'t use operator \"", EvalUtil.cmpOpToString(operator, operatorString), "\" on string values.");
-        //     }
-        //     let leftString : string = EvalUtil.modelToString(<TemplateScalarModel><any>leftValue, leftExp, env);
-        //     let rightString : string = EvalUtil.modelToString(<TemplateScalarModel><any>rightValue, rightExp, env);
-        //     cmpResult = env.getCollator().compare(leftString, rightString);
-        // } else if((leftValue != null && (leftValue["__interfaces"] != null && leftValue["__interfaces"].indexOf("freemarker.template.TemplateBooleanModel") >= 0 || leftValue.constructor != null && leftValue.constructor["__interfaces"] != null && leftValue.constructor["__interfaces"].indexOf("freemarker.template.TemplateBooleanModel") >= 0)) && (rightValue != null && (rightValue["__interfaces"] != null && rightValue["__interfaces"].indexOf("freemarker.template.TemplateBooleanModel") >= 0 || rightValue.constructor != null && rightValue.constructor["__interfaces"] != null && rightValue.constructor["__interfaces"].indexOf("freemarker.template.TemplateBooleanModel") >= 0))) {
-        //     if(operator !== EvalUtil.CMP_OP_EQUALS && operator !== EvalUtil.CMP_OP_NOT_EQUALS) {
-        //         throw new _MiscTemplateException(defaultBlamed, env, "Can\'t use operator \"", EvalUtil.cmpOpToString(operator, operatorString), "\" on boolean values.");
-        //     }
-        //     let leftBool : boolean = (<TemplateBooleanModel><any>leftValue).getAsBoolean();
-        //     let rightBool : boolean = (<TemplateBooleanModel><any>rightValue).getAsBoolean();
-        //     cmpResult = (leftBool?1:0) - (rightBool?1:0);
-        // } else if(env.isClassicCompatible()) {
-        //     let leftSting : string = leftExp.evalAndCoerceToPlainText$freemarker_core_Environment(env);
-        //     let rightString : string = rightExp.evalAndCoerceToPlainText$freemarker_core_Environment(env);
-        //     cmpResult = env.getCollator().compare(leftSting, rightString);
-        // } else {
-        //     if(typeMismatchMeansNotEqual) {
-        //         if(operator === EvalUtil.CMP_OP_EQUALS) {
-        //             return false;
-        //         } else if(operator === EvalUtil.CMP_OP_NOT_EQUALS) {
-        //             return true;
-        //         }
-        //     }
-        //     throw new _MiscTemplateException(defaultBlamed, env, "Can\'t compare values of these types. ", "Allowed comparisons are between two numbers, two strings, two dates, or two booleans.\n", "Left hand operand ", (quoteOperandsInErrors && leftExp != null?["(", new _DelayedGetCanonicalForm(leftExp), ") value "]:""), "is ", new _DelayedAOrAn(new _DelayedFTLTypeDescription(leftValue)), ".\n", "Right hand operand ", (quoteOperandsInErrors && rightExp != null?["(", new _DelayedGetCanonicalForm(rightExp), ") value "]:""), "is ", new _DelayedAOrAn(new _DelayedFTLTypeDescription(rightValue)), ".");
-        // }
-        // switch((operator)) {
-        // case 1 /* CMP_OP_EQUALS */:
-        //     return cmpResult === 0;
-        // case 2 /* CMP_OP_NOT_EQUALS */:
-        //     return cmpResult !== 0;
-        // case 3 /* CMP_OP_LESS_THAN */:
-        //     return cmpResult < 0;
-        // case 4 /* CMP_OP_GREATER_THAN */:
-        //     return cmpResult > 0;
-        // case 5 /* CMP_OP_LESS_THAN_EQUALS */:
-        //     return cmpResult <= 0;
-        // case 6 /* CMP_OP_GREATER_THAN_EQUALS */:
-        //     return cmpResult >= 0;
-        // default:
-        //     throw new BugException("Unsupported comparator operator code: " + operator);
-        // }
-        throw new Error();
+        const InvalidReferenceException = (require('./InvalidReferenceException').InvalidReferenceException);
+        const _MiscTemplateException = (require('./_MiscTemplateException')._MiscTemplateException);
+        if(leftValue == null) {
+            if(env != null && env.isClassicCompatible()) {
+                leftValue = TemplateScalarModel.EMPTY_STRING;
+            } else {
+                if(leftNullReturnsFalse) {
+                    return false;
+                } else {
+                    if(leftExp != null) {
+                        throw InvalidReferenceException.getInstance$freemarker_core_Expression$freemarker_core_Environment(leftExp, env);
+                    } else {
+                        throw new _MiscTemplateException(defaultBlamed, env, "The left operand of the comparison was undefined or null.");
+                    }
+                }
+            }
+        }
+        if(rightValue == null) {
+            if(env != null && env.isClassicCompatible()) {
+                rightValue = TemplateScalarModel.EMPTY_STRING;
+            } else {
+                if(rightNullReturnsFalse) {
+                    return false;
+                } else {
+                    if(rightExp != null) {
+                        throw InvalidReferenceException.getInstance$freemarker_core_Expression$freemarker_core_Environment(rightExp, env);
+                    } else {
+                        throw new _MiscTemplateException(defaultBlamed, env, "The right operand of the comparison was undefined or null.");
+                    }
+                }
+            }
+        }
+        let cmpResult : number;
+        if((leftValue != null && ClassUtil.isAssignableFrom(leftValue, "freemarker.template.TemplateNumberModel")/*(leftValue["__interfaces"] != null && leftValue["__interfaces"].indexOf("freemarker.template.TemplateNumberModel") >= 0 || leftValue.constructor != null && leftValue.constructor["__interfaces"] != null && leftValue.constructor["__interfaces"].indexOf("freemarker.template.TemplateNumberModel") >= 0)) && (rightValue != null && (rightValue["__interfaces"] != null && rightValue["__interfaces"].indexOf("freemarker.template.TemplateNumberModel") >= 0 || rightValue.constructor != null && rightValue.constructor["__interfaces"] != null && rightValue.constructor["__interfaces"].indexOf("freemarker.template.TemplateNumberModel") >= 0)*/)) {
+            let leftNum : number = EvalUtil.modelToNumber(<TemplateNumberModel><any>leftValue, leftExp);
+            let rightNum : number = EvalUtil.modelToNumber(<TemplateNumberModel><any>rightValue, rightExp);
+            let ae : ArithmeticEngine = env != null?env.getArithmeticEngine():(leftExp != null?leftExp.getTemplate().getArithmeticEngine():ArithmeticEngine.BIGDECIMAL_ENGINE_$LI$());
+            try {
+                cmpResult = ae.compareNumbers(leftNum, rightNum);
+            } catch(e) {
+                throw new _MiscTemplateException(defaultBlamed, e, env, "Unexpected error while comparing two numbers: ", e);
+            }
+        } else if((leftValue != null && ClassUtil.isAssignableFrom(leftValue, "freemarker.template.TemplateDateModel")/*(leftValue["__interfaces"] != null && leftValue["__interfaces"].indexOf("freemarker.template.TemplateDateModel") >= 0 || leftValue.constructor != null && leftValue.constructor["__interfaces"] != null && leftValue.constructor["__interfaces"].indexOf("freemarker.template.TemplateDateModel") >= 0)) && (rightValue != null && (rightValue["__interfaces"] != null && rightValue["__interfaces"].indexOf("freemarker.template.TemplateDateModel") >= 0 || rightValue.constructor != null && rightValue.constructor["__interfaces"] != null && rightValue.constructor["__interfaces"].indexOf("freemarker.template.TemplateDateModel") >= 0)*/)) {
+            let leftDateModel : TemplateDateModel = <TemplateDateModel><any>leftValue;
+            let rightDateModel : TemplateDateModel = <TemplateDateModel><any>rightValue;
+            let leftDateType : number = leftDateModel.getDateType();
+            let rightDateType : number = rightDateModel.getDateType();
+            if(leftDateType === TemplateDateModel.UNKNOWN || rightDateType === TemplateDateModel.UNKNOWN) {
+                let sideName : string;
+                let sideExp : /*Expression*/any;
+                if(leftDateType === TemplateDateModel.UNKNOWN) {
+                    sideName = "left";
+                    sideExp = leftExp;
+                } else {
+                    sideName = "right";
+                    sideExp = rightExp;
+                }
+                throw new _MiscTemplateException(sideExp != null?sideExp:defaultBlamed, env, "The ", sideName, " ", EvalUtil.VALUE_OF_THE_COMPARISON_IS_UNKNOWN_DATE_LIKE);
+            }
+            if(leftDateType !== rightDateType) {
+                throw new _MiscTemplateException(defaultBlamed, env, "Can\'t compare dates of different types. Left date type is ", /* get */TemplateDateModel.TYPE_NAMES[leftDateType], ", right date type is ", /* get */TemplateDateModel.TYPE_NAMES[rightDateType], ".");
+            }
+            let leftDate : Date = EvalUtil.modelToDate(leftDateModel, leftExp);
+            let rightDate : Date = EvalUtil.modelToDate(rightDateModel, rightExp);
+            cmpResult = leftDate.compareTo(rightDate);
+        } else if((leftValue != null && ClassUtil.isAssignableFrom(leftValue, "freemarker.template.TemplateScalarModel")/*(leftValue["__interfaces"] != null && leftValue["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0 || leftValue.constructor != null && leftValue.constructor["__interfaces"] != null && leftValue.constructor["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0)) && (rightValue != null && (rightValue["__interfaces"] != null && rightValue["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0 || rightValue.constructor != null && rightValue.constructor["__interfaces"] != null && rightValue.constructor["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0)*/)) {
+            if(operator !== EvalUtil.CMP_OP_EQUALS && operator !== EvalUtil.CMP_OP_NOT_EQUALS) {
+                throw new _MiscTemplateException(defaultBlamed, env, "Can\'t use operator \"", EvalUtil.cmpOpToString(operator, operatorString), "\" on string values.");
+            }
+            let leftString : string = EvalUtil.modelToString(<TemplateScalarModel><any>leftValue, leftExp, env);
+            let rightString : string = EvalUtil.modelToString(<TemplateScalarModel><any>rightValue, rightExp, env);
+            cmpResult = env.getCollator().compare(leftString, rightString);
+        } else if((leftValue != null && ClassUtil.isAssignableFrom(leftValue, "freemarker.template.TemplateBooleanModel")/*(leftValue["__interfaces"] != null && leftValue["__interfaces"].indexOf("freemarker.template.TemplateBooleanModel") >= 0 || leftValue.constructor != null && leftValue.constructor["__interfaces"] != null && leftValue.constructor["__interfaces"].indexOf("freemarker.template.TemplateBooleanModel") >= 0)) && (rightValue != null && (rightValue["__interfaces"] != null && rightValue["__interfaces"].indexOf("freemarker.template.TemplateBooleanModel") >= 0 || rightValue.constructor != null && rightValue.constructor["__interfaces"] != null && rightValue.constructor["__interfaces"].indexOf("freemarker.template.TemplateBooleanModel") >= 0)*/)) {
+            if(operator !== EvalUtil.CMP_OP_EQUALS && operator !== EvalUtil.CMP_OP_NOT_EQUALS) {
+                throw new _MiscTemplateException(defaultBlamed, env, "Can\'t use operator \"", EvalUtil.cmpOpToString(operator, operatorString), "\" on boolean values.");
+            }
+            let leftBool : boolean = (<TemplateBooleanModel><any>leftValue).getAsBoolean();
+            let rightBool : boolean = (<TemplateBooleanModel><any>rightValue).getAsBoolean();
+            cmpResult = (leftBool?1:0) - (rightBool?1:0);
+        } else if(env.isClassicCompatible()) {
+            let leftSting : string = leftExp.evalAndCoerceToPlainText$freemarker_core_Environment(env);
+            let rightString : string = rightExp.evalAndCoerceToPlainText$freemarker_core_Environment(env);
+            cmpResult = env.getCollator().compare(leftSting, rightString);
+        } else {
+            if(typeMismatchMeansNotEqual) {
+                if(operator === EvalUtil.CMP_OP_EQUALS) {
+                    return false;
+                } else if(operator === EvalUtil.CMP_OP_NOT_EQUALS) {
+                    return true;
+                }
+            }
+            throw new _MiscTemplateException(defaultBlamed, env, "Can\'t compare values of these types. ", "Allowed comparisons are between two numbers, two strings, two dates, or two booleans.\n", "Left hand operand ", (quoteOperandsInErrors && leftExp != null?["(", new (require('./_DelayedGetCanonicalForm')._DelayedGetCanonicalForm)(leftExp), ") value "]:""), "is ", new (require('./_DelayedAOrAn')._DelayedAOrAn)(new _DelayedFTLTypeDescription(leftValue)), ".\n", "Right hand operand ", (quoteOperandsInErrors && rightExp != null?["(", new (require('./_DelayedGetCanonicalForm')._DelayedGetCanonicalForm)(rightExp), ") value "]:""), "is ", new (require('./_DelayedAOrAn')._DelayedAOrAn)(new (require('./_DelayedFTLTypeDescription')._DelayedFTLTypeDescription)(rightValue)), ".");
+        }
+        switch((operator)) {
+        case 1 /* CMP_OP_EQUALS */:
+            return cmpResult === 0;
+        case 2 /* CMP_OP_NOT_EQUALS */:
+            return cmpResult !== 0;
+        case 3 /* CMP_OP_LESS_THAN */:
+            return cmpResult < 0;
+        case 4 /* CMP_OP_GREATER_THAN */:
+            return cmpResult > 0;
+        case 5 /* CMP_OP_LESS_THAN_EQUALS */:
+            return cmpResult <= 0;
+        case 6 /* CMP_OP_GREATER_THAN_EQUALS */:
+            return cmpResult >= 0;
+        default:
+            throw new BugException("Unsupported comparator operator code: " + operator);
+        }
     }
 
     /**
@@ -257,7 +258,7 @@ export class EvalUtil {
         // } else if(((leftValue != null && (leftValue["__interfaces"] != null && leftValue["__interfaces"].indexOf("freemarker.template.TemplateModel") >= 0 || leftValue.constructor != null && leftValue.constructor["__interfaces"] != null && leftValue.constructor["__interfaces"].indexOf("freemarker.template.TemplateModel") >= 0)) || leftValue === null) && ((typeof leftExp === 'number') || leftExp === null) && ((operator != null && (operator["__interfaces"] != null && operator["__interfaces"].indexOf("freemarker.template.TemplateModel") >= 0 || operator.constructor != null && operator.constructor["__interfaces"] != null && operator.constructor["__interfaces"].indexOf("freemarker.template.TemplateModel") >= 0)) || operator === null) && ((ClassUtil.isInstanceOf(operatorString, 'freemarker.core.Environment')) || operatorString === null) && rightValue === undefined && rightExp === undefined && defaultBlamed === undefined && quoteOperandsInErrors === undefined && typeMismatchMeansNotEqual === undefined && leftNullReturnsFalse === undefined && rightNullReturnsFalse === undefined && env === undefined) {
         //     return <any>EvalUtil.compare$freemarker_template_TemplateModel$int$freemarker_template_TemplateModel$freemarker_core_Environment(leftValue, leftExp, operator, operatorString);
         // } else throw new Error('invalid overload');
-        throw new Error();
+        return leftValue === rightValue;
     }
 
     /*private*/ static cmpOpToString(operator : number, operatorString : string) : string {
@@ -495,9 +496,9 @@ export class EvalUtil {
                 const _MiscTemplateException = require('./_MiscTemplateException')._MiscTemplateException;
                 let message : Array<any> = ["Concatenation left hand operand is in ", new _DelayedToString(leftOF), " format, while the right hand operand is in ", new _DelayedToString(rightOF), ". Conversion to common format wasn\'t possible."];
                 if(ClassUtil.isInstanceOf(parent, 'freemarker.core.Expression')) {
-                    throw <any>new (__Function.prototype.bind.apply(_MiscTemplateException, [null, </*Expression*/any>parent].concat(<any[]>message)));
+                    throw <any>new (Function.prototype.bind.apply(_MiscTemplateException, [null, </*Expression*/any>parent].concat(<any[]>message)));
                 } else {
-                    throw <any>new (__Function.prototype.bind.apply(_MiscTemplateException, [null].concat(<any[]>message)));
+                    throw <any>new (Function.prototype.bind.apply(_MiscTemplateException, [null].concat(<any[]>message)));
                 }
             }
         } else {

@@ -2,7 +2,6 @@
 import {TemplateModel} from '../template/TemplateModel';
 import {TemplateModelException} from '../template/TemplateModelException';
 import {ClassUtil} from '../template/utility/ClassUtil';
-import {Environment} from './Environment';
 import {_ErrorDescriptionBuilder} from './_ErrorDescriptionBuilder';
 import {Expression} from './Expression';
 
@@ -10,7 +9,7 @@ export class _TemplateModelException extends TemplateModelException {
     public constructor(blamed? : any, cause? : any, env? : any, ...descriptionParts : any[]) {
         if(((blamed != null && blamed instanceof <any>Expression) || blamed === null) && ((cause != null && (cause["__classes"] && cause["__classes"].indexOf("java.lang.Throwable") >= 0) || cause != null && cause instanceof <any>Error) || cause === null) && ((ClassUtil.isInstanceOf(env, 'freemarker.core.Environment')) || env === null) && ((descriptionParts != null && descriptionParts instanceof <any>Array && (descriptionParts.length==0 || descriptionParts[0] == null ||(descriptionParts[0] != null))) || descriptionParts === null)) {
             let __args = Array.prototype.slice.call(arguments);
-            super(cause, env, <any>new (__Function.prototype.bind.apply(_ErrorDescriptionBuilder, [null].concat(<any[]>descriptionParts))).blame(blamed), true);
+            super(cause, env, <any>new (Function.prototype.bind.apply(_ErrorDescriptionBuilder, [null].concat(<any[]>descriptionParts))).blame(blamed), true);
             (<any>Object).setPrototypeOf(this, _TemplateModelException.prototype);
         } else if(((blamed != null && blamed instanceof <any>Expression) || blamed === null) && ((cause != null && (cause["__classes"] && cause["__classes"].indexOf("java.lang.Throwable") >= 0) || cause != null && cause instanceof <any>Error) || cause === null) && ((ClassUtil.isInstanceOf(env, 'freemarker.core.Environment')) || env === null) && ((typeof descriptionParts === 'string') || descriptionParts === null)) {
             let __args = Array.prototype.slice.call(arguments);
@@ -36,7 +35,7 @@ export class _TemplateModelException extends TemplateModelException {
             let cause : any = __args[0];
             let env : any = __args[1];
             let descriptionParts : any[] = __args[2];
-            super(cause, env, <any>new (__Function.prototype.bind.apply(_ErrorDescriptionBuilder, [null].concat(<any[]>descriptionParts))), true);
+            super(cause, env, <any>new (Function.prototype.bind.apply(_ErrorDescriptionBuilder, [null].concat(<any[]>descriptionParts))), true);
             (<any>Object).setPrototypeOf(this, _TemplateModelException.prototype);
         } else if(((blamed != null && blamed instanceof <any>Expression) || blamed === null) && ((ClassUtil.isInstanceOf(cause, 'freemarker.core.Environment')) || cause === null) && ((env != null && env instanceof <any>Array && (env.length==0 || env[0] == null ||(env[0] != null))) || env === null) && descriptionParts === undefined) {
             let __args = Array.prototype.slice.call(arguments);
@@ -45,7 +44,7 @@ export class _TemplateModelException extends TemplateModelException {
             {
                 let __args = Array.prototype.slice.call(arguments);
                 let cause : any = null;
-                super(cause, env, <any>new (__Function.prototype.bind.apply(_ErrorDescriptionBuilder, [null].concat(<any[]>descriptionParts))).blame(blamed), true);
+                super(cause, env, <any>new (Function.prototype.bind.apply(_ErrorDescriptionBuilder, [null].concat(<any[]>descriptionParts))).blame(blamed), true);
                 (<any>Object).setPrototypeOf(this, _TemplateModelException.prototype);
             }
         } else if(((blamed != null && blamed instanceof <any>Expression) || blamed === null) && ((ClassUtil.isInstanceOf(cause, 'freemarker.core.Environment')) || cause === null) && ((typeof env === 'string') || env === null) && descriptionParts === undefined) {
@@ -105,7 +104,7 @@ export class _TemplateModelException extends TemplateModelException {
             {
                 let __args = Array.prototype.slice.call(arguments);
                 let cause : any = <Error>null;
-                super(cause, env, <any>new (__Function.prototype.bind.apply(_ErrorDescriptionBuilder, [null].concat(<any[]>descriptionParts))), true);
+                super(cause, env, <any>new (Function.prototype.bind.apply(_ErrorDescriptionBuilder, [null].concat(<any[]>descriptionParts))), true);
                 (<any>Object).setPrototypeOf(this, _TemplateModelException.prototype);
             }
         } else if(((blamed != null && (blamed["__classes"] && blamed["__classes"].indexOf("java.lang.Throwable") >= 0) || blamed != null && blamed instanceof <any>Error) || blamed === null) && ((cause != null && cause instanceof <any>Array && (cause.length==0 || cause[0] == null ||(cause[0] != null))) || cause === null) && env === undefined && descriptionParts === undefined) {
@@ -115,7 +114,7 @@ export class _TemplateModelException extends TemplateModelException {
             {
                 let __args = Array.prototype.slice.call(arguments);
                 let env : any = null;
-                super(cause, env, <any>new (__Function.prototype.bind.apply(_ErrorDescriptionBuilder, [null].concat(<any[]>descriptionParts))), true);
+                super(cause, env, <any>new (Function.prototype.bind.apply(_ErrorDescriptionBuilder, [null].concat(<any[]>descriptionParts))), true);
                 (<any>Object).setPrototypeOf(this, _TemplateModelException.prototype);
             }
         } else if(((blamed != null && blamed instanceof <any>Expression) || blamed === null) && ((cause != null && cause instanceof <any>Array && (cause.length==0 || cause[0] == null ||(cause[0] != null))) || cause === null) && env === undefined && descriptionParts === undefined) {
@@ -127,7 +126,7 @@ export class _TemplateModelException extends TemplateModelException {
                 {
                     let __args = Array.prototype.slice.call(arguments);
                     let cause : any = null;
-                    super(cause, env, <any>new (__Function.prototype.bind.apply(_ErrorDescriptionBuilder, [null].concat(<any[]>descriptionParts))).blame(blamed), true);
+                    super(cause, env, <any>new (Function.prototype.bind.apply(_ErrorDescriptionBuilder, [null].concat(<any[]>descriptionParts))).blame(blamed), true);
                     (<any>Object).setPrototypeOf(this, _TemplateModelException.prototype);
                 }
             }
@@ -177,11 +176,11 @@ export class _TemplateModelException extends TemplateModelException {
             let descriptionParts : any[] = __args[0];
             {
                 let __args = Array.prototype.slice.call(arguments);
-                let env : any = <Environment>null;
+                let env : any = /*<Environment>*/null;
                 {
                     let __args = Array.prototype.slice.call(arguments);
                     let cause : any = <Error>null;
-                    super(cause, env, <any>new (__Function.prototype.bind.apply(_ErrorDescriptionBuilder, [null].concat(<any[]>descriptionParts))), true);
+                    super(cause, env, <any>new (Function.prototype.bind.apply(_ErrorDescriptionBuilder, [null].concat(<any[]>descriptionParts))), true);
                     (<any>Object).setPrototypeOf(this, _TemplateModelException.prototype);
                 }
             }

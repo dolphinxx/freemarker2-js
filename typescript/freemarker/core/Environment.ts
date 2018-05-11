@@ -2270,7 +2270,7 @@ export class Environment extends Configurable {
     }
 
     public getNodeProcessor(ns? : any, localName? : any, nsURI? : any) : any {
-        if(((ClassUtil.isInstanceOf(ns, 'freemarker.core.Environment').Namespace) || ns === null) && ((typeof localName === 'string') || localName === null) && ((typeof nsURI === 'string') || nsURI === null)) {
+        if(((ClassUtil.isInstanceOf(ns, 'freemarker.core.Environment.Namespace')) || ns === null) && ((typeof localName === 'string') || localName === null) && ((typeof nsURI === 'string') || nsURI === null)) {
             return <any>this.getNodeProcessor$freemarker_core_Environment_Namespace$java_lang_String$java_lang_String(ns, localName, nsURI);
         } else if(((typeof ns === 'string') || ns === null) && ((typeof localName === 'string') || localName === null) && ((typeof nsURI === 'number') || nsURI === null)) {
             return <any>this.getNodeProcessor$java_lang_String$java_lang_String$int(ns, localName, nsURI);
@@ -2391,7 +2391,7 @@ export class Environment extends Configurable {
                     this.globalNamespace.put$java_lang_String$java_lang_Object(targetNsVarName, existingNamespace);
                 }
             }
-            if(!lazyImport && (ClassUtil.isInstanceOf(existingNamespace, 'freemarker.core.Environment').LazilyInitializedNamespace)) {
+            if(!lazyImport && (ClassUtil.isInstanceOf(existingNamespace, 'freemarker.core.Environment.LazilyInitializedNamespace'))) {
                 (</*Environment.LazilyInitializedNamespace*/any>existingNamespace).ensureInitializedTME();
             }
         } else {

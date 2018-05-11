@@ -1,6 +1,12 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
 import {BeansWrapper} from '../ext/beans/BeansWrapper';
 import {TemplateModel} from './TemplateModel';
+import {ClassUtil} from "./utility/ClassUtil";
+import {Collection} from "../../java/util/Collection";
+import {List} from "../../java/util/List";
+import {Map} from "../../java/util/Map";
+import {Iterator} from "../../java/util/Iterator";
+import {Iterable} from "../../java/lang/Iterable";
 
 /**
  * Use {link DefaultObjectWrapperBuilder} instead if possible. Instances created with this constructor won't share
@@ -31,16 +37,106 @@ import {TemplateModel} from './TemplateModel';
  */
 export class DefaultObjectWrapper extends BeansWrapper {
 
+    private useAdaptersForContainers:boolean;
+    private forceLegacyNonListCollections:boolean;
+    private iterableSupport:boolean;
+    private useAdapterForEnumerations:boolean;
+
     public constructor(dowCfg?: any, writeProtected?: any) {
-        super();
+        if(arguments.length === 0) {
+            const defaultVersion:any = (require('./Configuration').Configuration).DEFAULT_INCOMPATIBLE_IMPROVEMENTS;
+            dowCfg = new (require('./DefaultObjectWrapperConfiguration').DefaultObjectWrapperConfiguration)(defaultVersion);
+            writeProtected = false;
+        } else if(arguments.length === 1) {
+            dowCfg = new (require('./DefaultObjectWrapperConfiguration').DefaultObjectWrapperConfiguration)(dowCfg);
+            writeProtected = false;
+        } else {
+            if(!(ClassUtil.isAssignableFrom(dowCfg, 'freemarker.template.DefaultObjectWrapperConfiguration'))) {
+                dowCfg = new (require('./DefaultObjectWrapperConfiguration').DefaultObjectWrapperConfiguration)(dowCfg.getIncompaibleImprovements());
+            }
+        }
+        super(dowCfg, writeProtected);
+        this.useAdaptersForContainers = dowCfg.getUseAdaptersForContainers();
+        this.useAdapterForEnumerations = this.useAdaptersForContainers && this.getIncompatibleImprovements().intValue() >= 2003026;
+        this.forceLegacyNonListCollections = dowCfg.getForceLegacyNonListCollections();
+        this.iterableSupport = dowCfg.getIterableSupport();
+        this.finalizeConstruction(writeProtected);
     }
 
-    public wrap(object?: any, method?: any): any {
-        return object;
+    public wrap(obj: any, method? : any): any {
+        if(arguments.length === 2) {
+            throw new Error();
+        }
+        return this.wrap$java_lang_Object(obj);
     }
 
-    public wrap$java_lang_Object(obj: any): TemplateModel {
-        return obj;
+    public wrap$java_lang_Object(obj: any): any {
+        if (obj == null) {
+            return super.wrap(null);
+        }
+        if (ClassUtil.isAssignableFrom(obj, 'freemarker.template.TemplateModel')) {
+            return <TemplateModel> obj;
+        }
+        if (typeof obj === 'string') {
+            return new (require('./SimpleScalar').SimpleScalar)(<string> obj);
+        }
+        if (typeof obj === 'number') {
+            return new (require('./SimpleNumber').SimpleNumber)(<number> obj);
+        }
+        // if (obj instanceof java.util.Date) {
+        //     if (obj instanceof java.sql.Date) {
+        //         return new SimpleDate((java.sql.Date) obj);
+        //     }
+        //     if (obj instanceof java.sql.Time) {
+        //         return new SimpleDate((java.sql.Time) obj);
+        //     }
+        //     if (obj instanceof java.sql.Timestamp) {
+        //         return new SimpleDate((java.sql.Timestamp) obj);
+        //     }
+        //     return new SimpleDate((java.util.Date) obj, getDefaultDateType());
+        // }
+        if (Array.isArray(obj)) {
+            if (this.useAdaptersForContainers) {
+                return (require('./DefaultArrayAdapter').DefaultArrayAdapter).adapt(obj, this);
+            } else {
+                obj = this.convertArray(obj);
+                // Falls through (a strange legacy...)
+            }
+        }
+        if (ClassUtil.isAssignableFrom(obj, 'java.util.Collection')) {
+            if (this.useAdaptersForContainers) {
+                if (obj instanceof List) {
+                    return (require('./DefaultListAdapter').DefaultListAdapter).adapt(<List> obj, this);
+                } else {
+                    return this.forceLegacyNonListCollections
+                        ? new (require('./SimpleSequence').SimpleSequence)(<Collection> obj, this)
+                        : (require('./DefaultNonListCollectionAdapter').DefaultNonListCollectionAdapter).adapt(<Collection> obj, this);
+                }
+            } else {
+                return new (require('./SimpleSequence').SimpleSequence)(<Collection> obj, this);
+            }
+        }
+        if (obj instanceof Map) {
+            return this.useAdaptersForContainers
+                ? (require('./DefaultMapAdapter').DefaultMapAdapter).adapt(<Map> obj, this)
+                : new (require('./SimpleHash').SimpleHash)(<Map> obj, this);
+        }
+        if (typeof obj === 'boolean') {
+            return <boolean>obj ? (require('./TemplateBooleanModel').TemplateBooleanModel).TRUE : (require('./TemplateBooleanModel').TemplateBooleanModel).FALSE;
+        }
+        if (ClassUtil.isAssignableFrom(obj, 'java.util.Iterator')) {
+            return this.useAdaptersForContainers
+                ? (require('./DefaultIteratorAdapter').DefaultIteratorAdapter).adapt(<Iterator> obj, this)
+                : new (require('./SimpleCollection').SimpleCollection)(<Iterator> obj, this);
+        }
+        // if (this.useAdapterForEnumerations && obj instanceof Enumeration) {
+        //     return DefaultEnumerationAdapter.adapt((Enumeration<?>) obj, this);
+        // }
+        if (this.iterableSupport && ClassUtil.isAssignableFrom(obj, 'java.lang.Iterable')) {
+            return (require('./DefaultIterableAdapter').DefaultIterableAdapter).adapt(<Iterable> obj, this);
+        }
+
+        return this.handleUnknownType(obj);
     }
 
     /**

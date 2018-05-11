@@ -6,6 +6,7 @@ import {Logger} from "../../log/Logger";
 import {TemplateModelException} from "../../template/TemplateModelException";
 import {ClassUtil} from "../../template/utility/ClassUtil";
 import {System} from "../../../java/lang/System";
+import {Map} from "../../../java/util/Map";
 
 /**
  * Use {link BeansWrapperBuilder} instead of the public constructors if possible.
@@ -990,7 +991,7 @@ export class BeansWrapper implements RichObjectWrapper, WriteProtectable {
     }
 
     static is2321Bugfixed(version : /*Version*/any) : boolean {
-        return version.intValue() >= (require('../../template/_TemplateAPI')._TemplateAPI).VERSION_INT_2_3_21_$LI$();
+        return version.intValue() >= /*(require('../../template/_TemplateAPI')._TemplateAPI).VERSION_INT_2_3_21_$LI$()*/2003021;
     }
 
     is2324Bugfixed() : boolean {
@@ -998,7 +999,7 @@ export class BeansWrapper implements RichObjectWrapper, WriteProtectable {
     }
 
     static is2324Bugfixed(version : /*Version*/any) : boolean {
-        return version.intValue() >= (require('../../template/_TemplateAPI')._TemplateAPI).VERSION_INT_2_3_24_$LI$();
+        return version.intValue() >= /*(require('../../template/_TemplateAPI')._TemplateAPI).VERSION_INT_2_3_24_$LI$()*/2003024;
     }
 
     /**
@@ -1012,10 +1013,10 @@ export class BeansWrapper implements RichObjectWrapper, WriteProtectable {
         const _TemplateAPI = require('../../template/_TemplateAPI')._TemplateAPI;
         const Configuration = require('../../template/Configuration').Configuration;
         _TemplateAPI.checkVersionNotNullAndSupported(incompatibleImprovements);
-        if(incompatibleImprovements.intValue() < _TemplateAPI.VERSION_INT_2_3_0_$LI$()) {
+        if(incompatibleImprovements.intValue() < /*_TemplateAPI.VERSION_INT_2_3_0_$LI$()*/2003000) {
             throw Object.defineProperty(new Error("Version must be at least 2.3.0."), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.lang.RuntimeException','java.lang.IllegalArgumentException','java.lang.Exception'] });
         }
-        return incompatibleImprovements.intValue() >= _TemplateAPI.VERSION_INT_2_3_27_$LI$()?(require('../../template/Configuration').Configuration).VERSION_2_3_27_$LI$():incompatibleImprovements.intValue() === _TemplateAPI.VERSION_INT_2_3_26_$LI$()?Configuration.VERSION_2_3_26_$LI$():BeansWrapper.is2324Bugfixed(incompatibleImprovements)?Configuration.VERSION_2_3_24_$LI$():BeansWrapper.is2321Bugfixed(incompatibleImprovements)?Configuration.VERSION_2_3_21_$LI$():Configuration.VERSION_2_3_0_$LI$();
+        return incompatibleImprovements.intValue() >= /*_TemplateAPI.VERSION_INT_2_3_27_$LI$()*/2003027?(require('../../template/Configuration').Configuration).VERSION_2_3_27_$LI$():incompatibleImprovements.intValue() === /*_TemplateAPI.VERSION_INT_2_3_26_$LI$()*/2003026?Configuration.VERSION_2_3_26_$LI$():BeansWrapper.is2324Bugfixed(incompatibleImprovements)?Configuration.VERSION_2_3_24_$LI$():BeansWrapper.is2321Bugfixed(incompatibleImprovements)?Configuration.VERSION_2_3_21_$LI$():Configuration.VERSION_2_3_0_$LI$();
     }
 
     /**
@@ -1062,12 +1063,10 @@ export class BeansWrapper implements RichObjectWrapper, WriteProtectable {
      * @return {*}
      */
     public wrap(object? : any, method? : any) : any {
-        // if(((object != null) || object === null) && ((method != null && (method instanceof Function)) || method === null)) {
-        //     return <any>this.wrap$java_lang_Object$java_lang_reflect_Method(object, method);
-        // } else if(((object != null) || object === null) && method === undefined) {
-        //     return <any>this.wrap$java_lang_Object(object);
-        // } else throw new Error('invalid overload');
-        return object;
+        if(arguments.length === 2) {
+            throw new Error();
+        }
+        return this.wrap$java_lang_Object(object);
     }
 
     /**
@@ -1134,12 +1133,11 @@ export class BeansWrapper implements RichObjectWrapper, WriteProtectable {
     }
 
     public unwrap$freemarker_template_TemplateModel$java_lang_Class(model : TemplateModel, targetClass : any) : any {
-        // let obj : any = this.tryUnwrapTo$freemarker_template_TemplateModel$java_lang_Class(model, targetClass);
-        // if(obj === ObjectWrapperAndUnwrapper.CANT_UNWRAP_TO_TARGET_CLASS) {
-        //     throw new TemplateModelException("Can not unwrap model of type " + /* getName */(c => c["__class"]?c["__class"]:c["name"])((<any>model.constructor)) + " to type " + /* getName */(c => c["__class"]?c["__class"]:c["name"])(targetClass));
-        // }
-        // return obj;
-        return model;
+        let obj : any = this.tryUnwrapTo$freemarker_template_TemplateModel$java_lang_Class(model, targetClass);
+        if(obj === (require('../../template/ObjectWrapperAndUnwrapper').ObjectWrapperAndUnwrapper).CANT_UNWRAP_TO_TARGET_CLASS) {
+            throw new TemplateModelException("Can not unwrap model of type " + /* getName */(c => c["__class"]?c["__class"]:c["name"])((<any>model.constructor)) + " to type " + /* getName */(c => c["__class"]?c["__class"]:c["name"])(targetClass));
+        }
+        return obj;
     }
 
     /**
@@ -1156,13 +1154,11 @@ export class BeansWrapper implements RichObjectWrapper, WriteProtectable {
      * <p>
      * see #tryUnwrapTo(TemplateModel, Class)
      */
-    public unwrap(model? : any, targetClass? : any) : any {
-        // if(((model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateModel") >= 0)) || model === null) && ((targetClass != null) || targetClass === null)) {
-        //     return <any>this.unwrap$freemarker_template_TemplateModel$java_lang_Class(model, targetClass);
-        // } else if(((model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateModel") >= 0)) || model === null) && targetClass === undefined) {
-        //     return <any>this.unwrap$freemarker_template_TemplateModel(model);
-        // } else throw new Error('invalid overload');
-        return model;
+    public unwrap(model : any, targetClass? : any) : any {
+        if(targetClass === undefined) {
+            return <any>this.unwrap$freemarker_template_TemplateModel(model);
+        }
+        return <any>this.unwrap$freemarker_template_TemplateModel$java_lang_Class(model, targetClass);
     }
 
     public tryUnwrapTo$freemarker_template_TemplateModel$java_lang_Class(model : TemplateModel, targetClass : any) : any {
@@ -1170,166 +1166,171 @@ export class BeansWrapper implements RichObjectWrapper, WriteProtectable {
     }
 
     tryUnwrapTo$freemarker_template_TemplateModel$java_lang_Class$int(model : TemplateModel, targetClass : any, typeFlags : number) : any {
-        // let res : any = this.tryUnwrapTo$freemarker_template_TemplateModel$java_lang_Class$int$java_util_Map(model, targetClass, typeFlags, null);
-        // if((typeFlags & TypeFlags.WIDENED_NUMERICAL_UNWRAPPING_HINT) !== 0 && (typeof res === 'number')) {
-        //     return OverloadedNumberUtil.addFallbackType(<number>res, typeFlags);
-        // } else {
-        //     return res;
-        // }
-        return model;
+        let res : any = this.tryUnwrapTo$freemarker_template_TemplateModel$java_lang_Class$int$java_util_Map(model, targetClass, typeFlags, null);
+        if((typeFlags & (require('./TypeFlags').TypeFlags).WIDENED_NUMERICAL_UNWRAPPING_HINT) !== 0 && (typeof res === 'number')) {
+            return (require('./OverloadedNumberUtil').OverloadedNumberUtil).addFallbackType(<number>res, typeFlags);
+        } else {
+            return res;
+        }
     }
 
     public tryUnwrapTo$freemarker_template_TemplateModel$java_lang_Class$int$java_util_Map(model : TemplateModel, targetClass : any, typeFlags : number, recursionStops : Map<any, any>) : any {
-        // if(model == null || model === this.nullModel) {
-        //     return null;
-        // }
-        // let is2321Bugfixed : boolean = this.is2321Bugfixed();
-        // if(is2321Bugfixed && /* isPrimitive */(targetClass === <any>'__erasedPrimitiveType__')) {
-        //     targetClass = ClassUtil.primitiveClassToBoxingClass(targetClass);
-        // }
-        // if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.AdapterTemplateModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.AdapterTemplateModel") >= 0)) {
-        //     let wrapped : any = (<AdapterTemplateModel><any>model).getAdaptedObject(targetClass);
-        //     if(targetClass === Object || /* isInstance */((c:any,o:any) => { if(typeof c === 'string') return (o.constructor && o.constructor["__interfaces"] && o.constructor["__interfaces"].indexOf(c) >= 0) || (o["__interfaces"] && o["__interfaces"].indexOf(c) >= 0); else if(typeof c === 'function') return (o instanceof c) || (o.constructor && o.constructor === c); })(targetClass, wrapped)) {
-        //         return wrapped;
-        //     }
-        //     if(targetClass !== Object && ((typeof wrapped === 'number') && ClassUtil.isNumerical(targetClass))) {
-        //         let number : number = BeansWrapper.forceUnwrappedNumberToType(<number>wrapped, targetClass, is2321Bugfixed);
-        //         if(number != null) return number;
-        //     }
-        // }
-        // if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.ext.util.WrapperTemplateModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.ext.util.WrapperTemplateModel") >= 0)) {
-        //     let wrapped : any = (<WrapperTemplateModel><any>model).getWrappedObject();
-        //     if(targetClass === Object || /* isInstance */((c:any,o:any) => { if(typeof c === 'string') return (o.constructor && o.constructor["__interfaces"] && o.constructor["__interfaces"].indexOf(c) >= 0) || (o["__interfaces"] && o["__interfaces"].indexOf(c) >= 0); else if(typeof c === 'function') return (o instanceof c) || (o.constructor && o.constructor === c); })(targetClass, wrapped)) {
-        //         return wrapped;
-        //     }
-        //     if(targetClass !== Object && ((typeof wrapped === 'number') && ClassUtil.isNumerical(targetClass))) {
-        //         let number : number = BeansWrapper.forceUnwrappedNumberToType(<number>wrapped, targetClass, is2321Bugfixed);
-        //         if(number != null) {
-        //             return number;
-        //         }
-        //     }
-        // }
-        // if(targetClass !== Object) {
-        //     if(String === targetClass) {
-        //         if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0)) {
-        //             return (<TemplateScalarModel><any>model).getAsString();
-        //         }
-        //         return ObjectWrapperAndUnwrapper.CANT_UNWRAP_TO_TARGET_CLASS;
-        //     }
-        //     if(ClassUtil.isNumerical(targetClass)) {
-        //         if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateNumberModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateNumberModel") >= 0)) {
-        //             let number : number = BeansWrapper.forceUnwrappedNumberToType((<TemplateNumberModel><any>model).getAsNumber(), targetClass, is2321Bugfixed);
-        //             if(number != null) {
-        //                 return number;
-        //             }
-        //         }
-        //     }
-        //     if(Boolean === targetClass || Boolean === targetClass) {
-        //         if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateBooleanModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateBooleanModel") >= 0)) {
-        //             return (<TemplateBooleanModel><any>model).getAsBoolean();
-        //         }
-        //         return ObjectWrapperAndUnwrapper.CANT_UNWRAP_TO_TARGET_CLASS;
-        //     }
-        //     if("java.util.Map" === targetClass) {
-        //         if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateHashModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateHashModel") >= 0)) {
-        //             return (() => { let __o : any = new HashAdapter(<TemplateHashModel><any>model, this); __o.__delegate = new HashAdapter(<TemplateHashModel><any>model, this); return __o; })();
-        //         }
-        //     }
-        //     if("java.util.List" === targetClass) {
-        //         if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0)) {
-        //             return (() => { let __o : any = new SequenceAdapter(<TemplateSequenceModel><any>model, this); __o.__delegate = <TemplateSequenceModel><any>model.slice(0); return __o; })();
-        //         }
-        //     }
-        //     if("java.util.Set" === targetClass) {
-        //         if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateCollectionModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateCollectionModel") >= 0)) {
-        //             return new SetAdapter(<TemplateCollectionModel><any>model, this);
-        //         }
-        //     }
-        //     if("java.util.Collection" === targetClass || "java.lang.Iterable" === targetClass) {
-        //         if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateCollectionModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateCollectionModel") >= 0)) {
-        //             return (() => { let __o : any = new CollectionAdapter(<TemplateCollectionModel><any>model, this); __o.__delegate = <TemplateCollectionModel><any>model.slice(0); return __o; })();
-        //         }
-        //         if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0)) {
-        //             return (() => { let __o : any = new SequenceAdapter(<TemplateSequenceModel><any>model, this); __o.__delegate = <TemplateSequenceModel><any>model.slice(0); return __o; })();
-        //         }
-        //     }
-        //     if(targetClass.isArray()) {
-        //         if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0)) {
-        //             return this.unwrapSequenceToArray(<TemplateSequenceModel><any>model, targetClass, true, recursionStops);
-        //         }
-        //         return ObjectWrapperAndUnwrapper.CANT_UNWRAP_TO_TARGET_CLASS;
-        //     }
-        //     if(String === targetClass || targetClass === String) {
-        //         if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0)) {
-        //             let s : string = (<TemplateScalarModel><any>model).getAsString();
-        //             if(s.length === 1) {
-        //                 return s.charAt(0);
-        //             }
-        //         }
-        //         return ObjectWrapperAndUnwrapper.CANT_UNWRAP_TO_TARGET_CLASS;
-        //     }
-        //     if(Date.isAssignableFrom(targetClass) && (model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateDateModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateDateModel") >= 0))) {
-        //         let date : Date = (<TemplateDateModel><any>model).getAsDate();
-        //         if(/* isInstance */((c:any,o:any) => { if(typeof c === 'string') return (o.constructor && o.constructor["__interfaces"] && o.constructor["__interfaces"].indexOf(c) >= 0) || (o["__interfaces"] && o["__interfaces"].indexOf(c) >= 0); else if(typeof c === 'function') return (o instanceof c) || (o.constructor && o.constructor === c); })(targetClass, date)) {
-        //             return date;
-        //         }
-        //     }
-        // }
-        // let itf : number = typeFlags;
-        // do {
-        //     if((itf === 0 || (itf & TypeFlags.ACCEPTS_NUMBER) !== 0) && (model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateNumberModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateNumberModel") >= 0))) {
-        //         let number : number = (<TemplateNumberModel><any>model).getAsNumber();
-        //         if(itf !== 0 || /* isInstance */((c:any,o:any) => { if(typeof c === 'string') return (o.constructor && o.constructor["__interfaces"] && o.constructor["__interfaces"].indexOf(c) >= 0) || (o["__interfaces"] && o["__interfaces"].indexOf(c) >= 0); else if(typeof c === 'function') return (o instanceof c) || (o.constructor && o.constructor === c); })(targetClass, number)) {
-        //             return number;
-        //         }
-        //     }
-        //     if((itf === 0 || (itf & TypeFlags.ACCEPTS_DATE) !== 0) && (model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateDateModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateDateModel") >= 0))) {
-        //         let date : Date = (<TemplateDateModel><any>model).getAsDate();
-        //         if(itf !== 0 || /* isInstance */((c:any,o:any) => { if(typeof c === 'string') return (o.constructor && o.constructor["__interfaces"] && o.constructor["__interfaces"].indexOf(c) >= 0) || (o["__interfaces"] && o["__interfaces"].indexOf(c) >= 0); else if(typeof c === 'function') return (o instanceof c) || (o.constructor && o.constructor === c); })(targetClass, date)) {
-        //             return date;
-        //         }
-        //     }
-        //     if((itf === 0 || (itf & (TypeFlags.ACCEPTS_STRING | TypeFlags.CHARACTER)) !== 0) && (model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0)) && (itf !== 0 || targetClass.isAssignableFrom(String))) {
-        //         let strVal : string = (<TemplateScalarModel><any>model).getAsString();
-        //         if(itf === 0 || (itf & TypeFlags.CHARACTER) === 0) {
-        //             return strVal;
-        //         } else {
-        //             if(strVal.length === 1) {
-        //                 if((itf & TypeFlags.ACCEPTS_STRING) !== 0) {
-        //                     return new CharacterOrString(strVal);
-        //                 } else {
-        //                     return strVal.charAt(0);
-        //                 }
-        //             } else if((itf & TypeFlags.ACCEPTS_STRING) !== 0) {
-        //                 return strVal;
-        //             }
-        //         }
-        //     }
-        //     if((itf === 0 || (itf & TypeFlags.ACCEPTS_BOOLEAN) !== 0) && (model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateBooleanModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateBooleanModel") >= 0)) && (itf !== 0 || targetClass.isAssignableFrom(Boolean))) {
-        //         return (<TemplateBooleanModel><any>model).getAsBoolean();
-        //     }
-        //     if((itf === 0 || (itf & TypeFlags.ACCEPTS_MAP) !== 0) && (model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateHashModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateHashModel") >= 0)) && (itf !== 0 || targetClass.isAssignableFrom(HashAdapter))) {
-        //         return (() => { let __o : any = new HashAdapter(<TemplateHashModel><any>model, this); __o.__delegate = new HashAdapter(<TemplateHashModel><any>model, this); return __o; })();
-        //     }
-        //     if((itf === 0 || (itf & TypeFlags.ACCEPTS_LIST) !== 0) && (model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0)) && (itf !== 0 || targetClass.isAssignableFrom(SequenceAdapter))) {
-        //         return (() => { let __o : any = new SequenceAdapter(<TemplateSequenceModel><any>model, this); __o.__delegate = <TemplateSequenceModel><any>model.slice(0); return __o; })();
-        //     }
-        //     if((itf === 0 || (itf & TypeFlags.ACCEPTS_SET) !== 0) && (model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateCollectionModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateCollectionModel") >= 0)) && (itf !== 0 || targetClass.isAssignableFrom(SetAdapter))) {
-        //         return new SetAdapter(<TemplateCollectionModel><any>model, this);
-        //     }
-        //     if((itf & TypeFlags.ACCEPTS_ARRAY) !== 0 && (model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0))) {
-        //         return (() => { let __o : any = new SequenceAdapter(<TemplateSequenceModel><any>model, this); __o.__delegate = <TemplateSequenceModel><any>model.slice(0); return __o; })();
-        //     }
-        //     if(itf === 0) {
-        //         break;
-        //     }
-        //     itf = 0;
-        // } while((true));
-        // if(/* isInstance */((c:any,o:any) => { if(typeof c === 'string') return (o.constructor && o.constructor["__interfaces"] && o.constructor["__interfaces"].indexOf(c) >= 0) || (o["__interfaces"] && o["__interfaces"].indexOf(c) >= 0); else if(typeof c === 'function') return (o instanceof c) || (o.constructor && o.constructor === c); })(targetClass, model)) {
-        //     return model;
-        // }
-        // return ObjectWrapperAndUnwrapper.CANT_UNWRAP_TO_TARGET_CLASS;
-        return model;
+        if(model == null || model === this.nullModel) {
+            return null;
+        }
+        let is2321Bugfixed : boolean = this.is2321Bugfixed();
+        if(is2321Bugfixed && /* isPrimitive */(targetClass === <any>'__erasedPrimitiveType__')) {
+            targetClass = ClassUtil.primitiveClassToBoxingClass(targetClass);
+        }
+        if(model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.AdapterTemplateModel")/*(model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.AdapterTemplateModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.AdapterTemplateModel") >= 0)*/) {
+            let wrapped : any = (/*<AdapterTemplateModel>*/<any>model).getAdaptedObject(targetClass);
+            if(targetClass === Object || ClassUtil.isAssignableFrom(wrapped, targetClass)/*/!* isInstance *!/((c:any,o:any) => { if(typeof c === 'string') return (o.constructor && o.constructor["__interfaces"] && o.constructor["__interfaces"].indexOf(c) >= 0) || (o["__interfaces"] && o["__interfaces"].indexOf(c) >= 0); else if(typeof c === 'function') return (o instanceof c) || (o.constructor && o.constructor === c); })(targetClass, wrapped)*/) {
+                return wrapped;
+            }
+            if(targetClass !== Object && ((typeof wrapped === 'number') && ClassUtil.isNumerical(targetClass))) {
+                let number : number = BeansWrapper.forceUnwrappedNumberToType(<number>wrapped, targetClass, is2321Bugfixed);
+                if(number != null) return number;
+            }
+        }
+        if(model != null && ClassUtil.isAssignableFrom(model, "freemarker.ext.util.WrapperTemplateModel")/*(model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.ext.util.WrapperTemplateModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.ext.util.WrapperTemplateModel") >= 0)*/) {
+            let wrapped : any = (/*<WrapperTemplateModel>*/<any>model).getWrappedObject();
+            if(targetClass === Object || ClassUtil.isAssignableFrom(wrapped, targetClass)/*/!* isInstance *!/((c:any,o:any) => { if(typeof c === 'string') return (o.constructor && o.constructor["__interfaces"] && o.constructor["__interfaces"].indexOf(c) >= 0) || (o["__interfaces"] && o["__interfaces"].indexOf(c) >= 0); else if(typeof c === 'function') return (o instanceof c) || (o.constructor && o.constructor === c); })(targetClass, wrapped)*/) {
+                return wrapped;
+            }
+            if(targetClass !== Object && ((typeof wrapped === 'number') && ClassUtil.isNumerical(targetClass))) {
+                let number : number = BeansWrapper.forceUnwrappedNumberToType(<number>wrapped, targetClass, is2321Bugfixed);
+                if(number != null) {
+                    return number;
+                }
+            }
+        }
+        if(targetClass !== Object) {
+            if(String === targetClass) {
+                if(model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateScalarModel")/*(model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0)*/) {
+                    return (/*<TemplateScalarModel>*/<any>model).getAsString();
+                }
+                return (require('../../template/ObjectWrapperAndUnwrapper').ObjectWrapperAndUnwrapper).CANT_UNWRAP_TO_TARGET_CLASS;
+            }
+            if(ClassUtil.isNumerical(targetClass)) {
+                if(model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateNumberModel")/*(model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateNumberModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateNumberModel") >= 0)*/) {
+                    let number : number = BeansWrapper.forceUnwrappedNumberToType((/*<TemplateNumberModel>*/<any>model).getAsNumber(), targetClass, is2321Bugfixed);
+                    if(number != null) {
+                        return number;
+                    }
+                }
+            }
+            if(Boolean === targetClass || Boolean === targetClass) {
+                if(model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateBooleanModel")/*(model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateBooleanModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateBooleanModel") >= 0)*/) {
+                    return (/*<TemplateBooleanModel>*/<any>model).getAsBoolean();
+                }
+                return (require('../../template/ObjectWrapperAndUnwrapper').ObjectWrapperAndUnwrapper).CANT_UNWRAP_TO_TARGET_CLASS;
+            }
+            if("java.util.Map" === targetClass) {
+                if(model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateHashModel")/*(model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateHashModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateHashModel") >= 0)*/) {
+                    return (() => { let __o : any = new (require('./HashAdapter').HashAdapter)(/*<TemplateHashModel>*/<any>model, this); __o.__delegate = new (require('./HashAdapter').HashAdapter)(/*<TemplateHashModel>*/<any>model, this); return __o; })();
+                }
+            }
+            if("java.util.List" === targetClass) {
+                if(model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateSequenceModel")/*(model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0)*/) {
+                    // return (() => { let __o : any = new SequenceAdapter(<TemplateSequenceModel><any>model, this); __o.__delegate = <TemplateSequenceModel><any>model.slice(0); return __o; })();
+                    return new (require('./SequenceAdapter').SequenceAdapter)(model, this);
+                }
+            }
+            if("java.util.Set" === targetClass) {
+                if(model != null && ClassUtil.isAssignableFrom(model, 'freemarker.template.TemplateCollectionModel')/*(model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateCollectionModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateCollectionModel") >= 0)*/) {
+                    return new (require('./SetAdapter').SetAdapter)(/*<TemplateCollectionModel>*/<any>model, this);
+                }
+            }
+            if("java.util.Collection" === targetClass || "java.lang.Iterable" === targetClass) {
+                if(model != null && ClassUtil.isAssignableFrom(model, 'freemarker.template.TemplateCollectionModel')/*(model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateCollectionModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateCollectionModel") >= 0)*/) {
+                    // return (() => { let __o : any = new CollectionAdapter(<TemplateCollectionModel><any>model, this); __o.__delegate = <TemplateCollectionModel><any>model.slice(0); return __o; })();
+                    return new (require('./CollectionAdapter').CollectionAdapter)(model, this);
+                }
+                if(model != null && ClassUtil.isAssignableFrom(model, 'freemarker.template.TemplateSequenceModel')/*(model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0)*/) {
+                    // return (() => { let __o : any = new SequenceAdapter(<TemplateSequenceModel><any>model, this); __o.__delegate = <TemplateSequenceModel><any>model.slice(0); return __o; })();
+                    return new (require('./SequenceAdapter').SequenceAdapter)(model, this);
+                }
+            }
+            if(targetClass.isArray()) {
+                if(model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateSequenceModel")/*(model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0)*/) {
+                    return this.unwrapSequenceToArray(/*<TemplateSequenceModel>*/<any>model, targetClass, true, recursionStops);
+                }
+                return (require('../../template/ObjectWrapperAndUnwrapper').ObjectWrapperAndUnwrapper).CANT_UNWRAP_TO_TARGET_CLASS;
+            }
+            if(String === targetClass || targetClass === String) {
+                if(model != null && ClassUtil.isAssignableFrom(model, '"freemarker.template.TemplateScalarModel"')/*(model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0)*/) {
+                    let s : string = (/*<TemplateScalarModel>*/<any>model).getAsString();
+                    if(s.length === 1) {
+                        return s.charAt(0);
+                    }
+                }
+                return (require('../../template/ObjectWrapperAndUnwrapper').ObjectWrapperAndUnwrapper).CANT_UNWRAP_TO_TARGET_CLASS;
+            }
+            // if(Date.isAssignableFrom(targetClass) && (model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateDateModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateDateModel") >= 0))) {
+            //     let date : Date = (<TemplateDateModel><any>model).getAsDate();
+            //     if(/* isInstance */((c:any,o:any) => { if(typeof c === 'string') return (o.constructor && o.constructor["__interfaces"] && o.constructor["__interfaces"].indexOf(c) >= 0) || (o["__interfaces"] && o["__interfaces"].indexOf(c) >= 0); else if(typeof c === 'function') return (o instanceof c) || (o.constructor && o.constructor === c); })(targetClass, date)) {
+            //         return date;
+            //     }
+            // }
+        }
+        let itf : number = typeFlags;
+        const TypeFlags = (require('./TypeFlags').TypeFlags);
+        do {
+            if((itf === 0 || (itf & (require('./TypeFlags').TypeFlags).ACCEPTS_NUMBER) !== 0) && (model != null && ClassUtil.isAssignableFrom(model, 'freemarker.template.TemplateNumberModel')/*(model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateNumberModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateNumberModel") >= 0))*/)) {
+                let num : number = (/*<TemplateNumberModel>*/<any>model).getAsNumber();
+                if(itf !== 0 || ClassUtil.isAssignableFrom(num, targetClass)/*/!* isInstance *!/((c:any,o:any) => { if(typeof c === 'string') return (o.constructor && o.constructor["__interfaces"] && o.constructor["__interfaces"].indexOf(c) >= 0) || (o["__interfaces"] && o["__interfaces"].indexOf(c) >= 0); else if(typeof c === 'function') return (o instanceof c) || (o.constructor && o.constructor === c); })(targetClass, number)*/) {
+                    return num;
+                }
+            }
+            if((itf === 0 || (itf & TypeFlags.ACCEPTS_DATE) !== 0) && (model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateDateModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateDateModel") >= 0))) {
+                let date : Date = (/*<TemplateDateModel>*/<any>model).getAsDate();
+                if(itf !== 0 || ClassUtil.isAssignableFrom(date, targetClass)/*/!* isInstance *!/((c:any,o:any) => { if(typeof c === 'string') return (o.constructor && o.constructor["__interfaces"] && o.constructor["__interfaces"].indexOf(c) >= 0) || (o["__interfaces"] && o["__interfaces"].indexOf(c) >= 0); else if(typeof c === 'function') return (o instanceof c) || (o.constructor && o.constructor === c); })(targetClass, date)*/) {
+                    return date;
+                }
+            }
+            if((itf === 0 || (itf & (TypeFlags.ACCEPTS_STRING | TypeFlags.CHARACTER)) !== 0) && (model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateScalarModel")/*(model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0)*/) && (itf !== 0 || targetClass === String)) {
+                let strVal : string = (/*<TemplateScalarModel>*/<any>model).getAsString();
+                if(itf === 0 || (itf & TypeFlags.CHARACTER) === 0) {
+                    return strVal;
+                } else {
+                    if(strVal.length === 1) {
+                        if((itf & TypeFlags.ACCEPTS_STRING) !== 0) {
+                            return new (require('./CharacterOrString').CharacterOrString)(strVal);
+                        } else {
+                            return strVal.charAt(0);
+                        }
+                    } else if((itf & TypeFlags.ACCEPTS_STRING) !== 0) {
+                        return strVal;
+                    }
+                }
+            }
+            if((itf === 0 || (itf & TypeFlags.ACCEPTS_BOOLEAN) !== 0) && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateBooleanModel")/*(model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateBooleanModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateBooleanModel") >= 0)*/ && (itf !== 0 || targetClass === Boolean)) {
+                return (/*<TemplateBooleanModel>*/<any>model).getAsBoolean();
+            }
+            if((itf === 0 || (itf & TypeFlags.ACCEPTS_MAP) !== 0) && (model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateHashModel")/*(model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateHashModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateHashModel") >= 0)*/) && (itf !== 0 || targetClass === 'freemarker.ext.beans.HashAdapter')) {
+                // return (() => { let __o : any = new HashAdapter(<TemplateHashModel><any>model, this); __o.__delegate = new HashAdapter(<TemplateHashModel><any>model, this); return __o; })();
+                return new (require('./HashAdapter').HashAdapter)(model, this);
+            }
+            if((itf === 0 || (itf & TypeFlags.ACCEPTS_LIST) !== 0) && (model != null && ClassUtil.isAssignableFrom(model, '"freemarker.template.TemplateSequenceModel"')/*(model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0)*/) && (itf !== 0 || targetClass === 'freemarker.ext.beans.SequenceAdapter')) {
+                // return (() => { let __o : any = new SequenceAdapter(<TemplateSequenceModel><any>model, this); __o.__delegate = <TemplateSequenceModel><any>model.slice(0); return __o; })();
+                return new (require('./SequenceAdapter').SequenceAdapter)(model, this);
+            }
+            if((itf === 0 || (itf & TypeFlags.ACCEPTS_SET) !== 0) && (model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateCollectionModel")/*(model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateCollectionModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateCollectionModel") >= 0)*/) && (itf !== 0 || targetClass === 'freemarker.ext.beans.SetAdapter')) {
+                return new (require('./SetAdapter').SetAdapter)(/*<TemplateCollectionModel>*/<any>model, this);
+            }
+            if((itf & TypeFlags.ACCEPTS_ARRAY) !== 0 && (model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateSequenceModel")/*(model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0)*/)) {
+                // return (() => { let __o : any = new SequenceAdapter(<TemplateSequenceModel><any>model, this); __o.__delegate = <TemplateSequenceModel><any>model.slice(0); return __o; })();
+                return new (require('./SequenceAdapter').SequenceAdapter)(model, this);
+            }
+            if(itf === 0) {
+                break;
+            }
+            itf = 0;
+        } while((true));
+        if(ClassUtil.isAssignableFrom(model, targetClass)/*/!* isInstance *!/((c:any,o:any) => { if(typeof c === 'string') return (o.constructor && o.constructor["__interfaces"] && o.constructor["__interfaces"].indexOf(c) >= 0) || (o["__interfaces"] && o["__interfaces"].indexOf(c) >= 0); else if(typeof c === 'function') return (o instanceof c) || (o.constructor && o.constructor === c); })(targetClass, model)*/) {
+            return model;
+        }
+        return (require('../../template/ObjectWrapperAndUnwrapper').ObjectWrapperAndUnwrapper).CANT_UNWRAP_TO_TARGET_CLASS;
     }
 
     /**
