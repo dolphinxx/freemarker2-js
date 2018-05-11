@@ -5,6 +5,7 @@ import {EvalUtil} from './EvalUtil';
 import {BugException} from './BugException';
 import {ParameterRole} from './ParameterRole';
 import {Configuration} from '../template/Configuration';
+import {ClassUtil} from "../template/utility/ClassUtil";
 
 /**
  * A class that handles comparisons.
