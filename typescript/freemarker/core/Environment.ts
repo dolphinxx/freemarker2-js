@@ -72,6 +72,7 @@ import {Map} from "../../java/util/Map";
 import {List} from "../../java/util/List";
 import {IdentityHashMap} from "../ext/util/IdentityHashMap";
 import {ClassUtil} from "../template/utility/ClassUtil";
+import {Collator} from "../../java/text/Collator";
 
 /**
  * Object that represents the runtime environment during template processing. For every invocation of a
@@ -1120,7 +1121,7 @@ export class Environment extends Configurable {
 
     getCollator() : any {
         if(this.cachedCollator == null) {
-            this.cachedCollator = /* getInstance */((o1, o2) => o1.toString().localeCompare(o2.toString()));
+            this.cachedCollator = Collator.getInstance()/* getInstance *//*((o1, o2) => o1.toString().localeCompare(o2.toString()))*/;
         }
         return this.cachedCollator;
     }
