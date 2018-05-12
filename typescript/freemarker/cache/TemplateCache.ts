@@ -1173,7 +1173,7 @@ export namespace TemplateCache {
          * @return {TemplateLookupResult}
          */
         public lookupWithAcquisitionStrategy(name: string): TemplateLookupResult {
-            if (/* startsWith */((str, searchString, position = 0) => str.substr(position, searchString.length) === searchString)(name, "/")) {
+            if (name.startsWith("/")) {
                 throw Object.defineProperty(new Error("Non-normalized name, starts with \"/\": " + name), '__classes', {
                     configurable: true,
                     value: ['java.lang.Throwable', 'java.lang.Object', 'java.lang.RuntimeException', 'java.lang.IllegalArgumentException', 'java.lang.Exception']
