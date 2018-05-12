@@ -48,19 +48,22 @@ export abstract class CommonMarkupOutputFormat<MO extends CommonTemplateMarkupOu
      * @param {CommonTemplateMarkupOutputModel} mo
      * @param {Writer} out
      */
-    public output(mo? : any, out? : any) : any {
-        if(((mo != null) || mo === null) && ((out != null && out instanceof <any>Writer) || out === null)) {
-            return <any>this.output$freemarker_core_CommonTemplateMarkupOutputModel$java_io_Writer(mo, out);
-        } else if(((typeof mo === 'string') || mo === null) && ((out != null && out instanceof <any>Writer) || out === null)) {
+    public output(mo : any, out : Writer) : any {
+        if(typeof mo === 'string') {
             return <any>this.output$java_lang_String$java_io_Writer(mo, out);
-        } else if(((mo != null) || mo === null) && ((out != null && out instanceof <any>Writer) || out === null)) {
-            return <any>this.output$freemarker_core_TemplateMarkupOutputModel$java_io_Writer(mo, out);
-        } else throw new Error('invalid overload');
+        } else {
+            return this.output$freemarker_core_CommonTemplateMarkupOutputModel$java_io_Writer(mo, out);
+        }
     }
 
     public output$java_lang_String$java_io_Writer(textToEsc : string, out : Writer) { throw new Error('cannot invoke abstract overloaded method... check your argument(s) type(s)'); }
 
-    public getSourcePlainText$freemarker_core_CommonTemplateMarkupOutputModel(mo : MO) : string {
+    /**
+     * 
+     * @param {CommonTemplateMarkupOutputModel} mo
+     * @return {String}
+     */
+    public getSourcePlainText(mo : any) : any {
         return mo.getPlainTextContent();
     }
 
@@ -69,15 +72,7 @@ export abstract class CommonMarkupOutputFormat<MO extends CommonTemplateMarkupOu
      * @param {CommonTemplateMarkupOutputModel} mo
      * @return {String}
      */
-    public getSourcePlainText(mo? : any) : any {
-        if(((mo != null) || mo === null)) {
-            return <any>this.getSourcePlainText$freemarker_core_CommonTemplateMarkupOutputModel(mo);
-        } else if(((mo != null) || mo === null)) {
-            return <any>this.getSourcePlainText$freemarker_core_TemplateMarkupOutputModel(mo);
-        } else throw new Error('invalid overload');
-    }
-
-    public getMarkupString$freemarker_core_CommonTemplateMarkupOutputModel(mo : MO) : string {
+    public getMarkupString(mo : any) : any {
         let mc : string = mo.getMarkupContent();
         if(mc != null) {
             return mc;
@@ -89,18 +84,11 @@ export abstract class CommonMarkupOutputFormat<MO extends CommonTemplateMarkupOu
 
     /**
      * 
-     * @param {CommonTemplateMarkupOutputModel} mo
-     * @return {String}
+     * @param {CommonTemplateMarkupOutputModel} mo1
+     * @param {CommonTemplateMarkupOutputModel} mo2
+     * @return {CommonTemplateMarkupOutputModel}
      */
-    public getMarkupString(mo? : any) : any {
-        if(((mo != null) || mo === null)) {
-            return <any>this.getMarkupString$freemarker_core_CommonTemplateMarkupOutputModel(mo);
-        } else if(((mo != null) || mo === null)) {
-            return <any>this.getMarkupString$freemarker_core_TemplateMarkupOutputModel(mo);
-        } else throw new Error('invalid overload');
-    }
-
-    public concat$freemarker_core_CommonTemplateMarkupOutputModel$freemarker_core_CommonTemplateMarkupOutputModel(mo1 : MO, mo2 : MO) : MO {
+    public concat(mo1 : any, mo2 : any) : any {
         let pc1 : string = mo1.getPlainTextContent();
         let mc1 : string = mo1.getMarkupContent();
         let pc2 : string = mo2.getPlainTextContent();
@@ -119,37 +107,15 @@ export abstract class CommonMarkupOutputFormat<MO extends CommonTemplateMarkupOu
 
     /**
      * 
-     * @param {CommonTemplateMarkupOutputModel} mo1
-     * @param {CommonTemplateMarkupOutputModel} mo2
-     * @return {CommonTemplateMarkupOutputModel}
+     * @param {CommonTemplateMarkupOutputModel} mo
+     * @return {boolean}
      */
-    public concat(mo1? : any, mo2? : any) : any {
-        if(((mo1 != null) || mo1 === null) && ((mo2 != null) || mo2 === null)) {
-            return <any>this.concat$freemarker_core_CommonTemplateMarkupOutputModel$freemarker_core_CommonTemplateMarkupOutputModel(mo1, mo2);
-        } else if(((mo1 != null) || mo1 === null) && ((mo2 != null) || mo2 === null)) {
-            return <any>this.concat$freemarker_core_TemplateMarkupOutputModel$freemarker_core_TemplateMarkupOutputModel(mo1, mo2);
-        } else throw new Error('invalid overload');
-    }
-
-    public isEmpty$freemarker_core_CommonTemplateMarkupOutputModel(mo : MO) : boolean {
+    public isEmpty(mo : any) : any {
         let s : string = mo.getPlainTextContent();
         if(s != null) {
             return s.length === 0;
         }
         return mo.getMarkupContent().length === 0;
-    }
-
-    /**
-     * 
-     * @param {CommonTemplateMarkupOutputModel} mo
-     * @return {boolean}
-     */
-    public isEmpty(mo? : any) : any {
-        if(((mo != null) || mo === null)) {
-            return <any>this.isEmpty$freemarker_core_CommonTemplateMarkupOutputModel(mo);
-        } else if(((mo != null) || mo === null)) {
-            return <any>this.isEmpty$freemarker_core_TemplateMarkupOutputModel(mo);
-        } else throw new Error('invalid overload');
     }
 
     /**

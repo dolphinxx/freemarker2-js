@@ -47,7 +47,7 @@ export namespace BuiltInsForDates {
          */
         _eval(env : /*Environment*/any) : TemplateModel {
             let model : TemplateModel = this.target.eval(env);
-            if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateDateModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateDateModel") >= 0)) {
+            if(model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateDateModel")) {
                 let tdm : TemplateDateModel = <TemplateDateModel><any>model;
                 let tdmDateType : number = tdm.getDateType();
                 if(tdmDateType !== TemplateDateModel.UNKNOWN) {

@@ -13,7 +13,7 @@ export abstract class BuiltInForNode extends BuiltIn {
      */
     _eval(env : /*Environment*/any) : TemplateModel {
         let model : TemplateModel = this.target.eval(env);
-        if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateNodeModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateNodeModel") >= 0)) {
+        if(model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateNodeModel")) {
             return this.calculateResult(<TemplateNodeModel><any>model, env);
         } else {
             throw new NonNodeException(this.target, model, env);

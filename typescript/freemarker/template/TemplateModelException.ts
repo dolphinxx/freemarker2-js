@@ -1,7 +1,5 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import {_ErrorDescriptionBuilder} from '../core/_ErrorDescriptionBuilder';
 import {TemplateException} from './TemplateException';
-import {ClassUtil} from './utility/ClassUtil';
 
 /**
  * Constructs a TemplateModelException with both a description of the error
@@ -22,154 +20,182 @@ export class TemplateModelException extends TemplateException {
     replaceWithCause: boolean;
 
     public constructor(cause?: any, env?: any, description?: any, preventAmbiguity?: any) {
-        if (((ClassUtil.isInstanceOf(cause, "java.lang.Throwable") || cause != null && cause instanceof <any>Error) || cause === null) && (ClassUtil.isInstanceOf(env, 'freemarker.core.Environment')|| env === null) && ((typeof description === 'string') || description === null) && ((typeof preventAmbiguity === 'boolean') || preventAmbiguity === null)) {
-            let __args = Array.prototype.slice.call(arguments);
-            super(description, cause, env);
-            if (this.replaceWithCause === undefined) this.replaceWithCause = false;
-            (<any>Object).setPrototypeOf(this, TemplateModelException.prototype);
-            if (this.replaceWithCause === undefined) this.replaceWithCause = false;
-            (() => {
+        if(arguments.length === 4) {
+            super(arguments[0], arguments[1], null, arguments[2]);
+            this.replaceWithCause = false;
+            return;
+        }
+        if(arguments.length === 3) {
+            super(arguments[0], arguments[2], null);
+            this.replaceWithCause = arguments[1];
+            return;
+        }
+        if(arguments.length === 2) {
+            super(arguments[0], arguments[1], null);
+            this.replaceWithCause = false;
+            return;
+        }
+        if(arguments.length === 1) {
+            if(typeof arguments[0] === 'string') {
+                super(arguments[0], null, null);
                 this.replaceWithCause = false;
-            })();
-        } else if (((ClassUtil.isInstanceOf(cause, "java.lang.Throwable") || cause != null && cause instanceof <any>Error) || cause === null) && ((ClassUtil.isInstanceOf(env, 'freemarker.core.Environment')) || env === null) && ((description != null && description instanceof <any>_ErrorDescriptionBuilder) || description === null) && ((typeof preventAmbiguity === 'boolean') || preventAmbiguity === null)) {
-            let __args = Array.prototype.slice.call(arguments);
-            let descriptionBuilder: any = __args[2];
-            super(cause, env, null, descriptionBuilder);
-            if (this.replaceWithCause === undefined) this.replaceWithCause = false;
-            (<any>Object).setPrototypeOf(this, TemplateModelException.prototype);
-            if (this.replaceWithCause === undefined) this.replaceWithCause = false;
-            (() => {
+                return;
+            } else {
+                super(null, arguments[0], null);
                 this.replaceWithCause = false;
-            })();
-        } else if (((typeof cause === 'string') || cause === null) && ((typeof env === 'boolean') || env === null) && ((ClassUtil.isInstanceOf(description, "java.lang.Throwable") || description != null && description instanceof <any>Error) || description === null) && preventAmbiguity === undefined) {
-            let __args = Array.prototype.slice.call(arguments);
-            let description: any = __args[0];
-            let replaceWithCause: any = __args[1];
-            let cause: any = __args[2];
-            super(description, cause, null);
-            if (this.replaceWithCause === undefined) this.replaceWithCause = false;
-            (<any>Object).setPrototypeOf(this, TemplateModelException.prototype);
-            if (this.replaceWithCause === undefined) this.replaceWithCause = false;
-            (() => {
-                this.replaceWithCause = replaceWithCause;
-            })();
-        } else if (((typeof cause === 'string') || cause === null) && ((ClassUtil.isInstanceOf(env, "java.lang.Exception") || env != null && env instanceof <any>Error) || env === null) && description === undefined && preventAmbiguity === undefined) {
-            let __args = Array.prototype.slice.call(arguments);
-            let description: any = __args[0];
-            let cause: any = __args[1];
-            {
-                let __args = Array.prototype.slice.call(arguments);
-                let cause: any = <Error>__args[1];
-                {
-                    let __args = Array.prototype.slice.call(arguments);
-                    let replaceWithCause: any = false;
-                    super(description, cause, null);
-                    if (this.replaceWithCause === undefined) this.replaceWithCause = false;
-                    (<any>Object).setPrototypeOf(this, TemplateModelException.prototype);
-                    if (this.replaceWithCause === undefined) this.replaceWithCause = false;
-                    (() => {
-                        this.replaceWithCause = replaceWithCause;
-                    })();
-                }
+                return;
             }
-        } else if (((typeof cause === 'string') || cause === null) && ((env != null && (env["__classes"] && env["__classes"].indexOf("java.lang.Throwable") >= 0) || env != null && env instanceof <any>Error) || env === null) && description === undefined && preventAmbiguity === undefined) {
-            let __args = Array.prototype.slice.call(arguments);
-            let description: any = __args[0];
-            let cause: any = __args[1];
-            {
-                let __args = Array.prototype.slice.call(arguments);
-                let replaceWithCause: any = false;
-                super(description, cause, null);
-                if (this.replaceWithCause === undefined) this.replaceWithCause = false;
-                (<any>Object).setPrototypeOf(this, TemplateModelException.prototype);
-                if (this.replaceWithCause === undefined) this.replaceWithCause = false;
-                (() => {
-                    this.replaceWithCause = replaceWithCause;
-                })();
-            }
-        } else if (((typeof cause === 'string') || cause === null) && env === undefined && description === undefined && preventAmbiguity === undefined) {
-            let __args = Array.prototype.slice.call(arguments);
-            let description: any = __args[0];
-            {
-                let __args = Array.prototype.slice.call(arguments);
-                let cause: any = null;
-                {
-                    let __args = Array.prototype.slice.call(arguments);
-                    let cause: any = <Error>__args[1];
-                    {
-                        let __args = Array.prototype.slice.call(arguments);
-                        let replaceWithCause: any = false;
-                        super(description, cause, null);
-                        if (this.replaceWithCause === undefined) this.replaceWithCause = false;
-                        (<any>Object).setPrototypeOf(this, TemplateModelException.prototype);
-                        if (this.replaceWithCause === undefined) this.replaceWithCause = false;
-                        (() => {
-                            this.replaceWithCause = replaceWithCause;
-                        })();
-                    }
-                }
-            }
-        } else if (((cause != null && (cause["__classes"] && cause["__classes"].indexOf("java.lang.Exception") >= 0) || cause != null && cause instanceof <any>Error) || cause === null) && env === undefined && description === undefined && preventAmbiguity === undefined) {
-            let __args = Array.prototype.slice.call(arguments);
-            {
-                let __args = Array.prototype.slice.call(arguments);
-                let description: any = null;
-                {
-                    let __args = Array.prototype.slice.call(arguments);
-                    let cause: any = <Error>__args[1];
-                    {
-                        let __args = Array.prototype.slice.call(arguments);
-                        let replaceWithCause: any = false;
-                        super(description, cause, null);
-                        if (this.replaceWithCause === undefined) this.replaceWithCause = false;
-                        (<any>Object).setPrototypeOf(this, TemplateModelException.prototype);
-                        if (this.replaceWithCause === undefined) this.replaceWithCause = false;
-                        (() => {
-                            this.replaceWithCause = replaceWithCause;
-                        })();
-                    }
-                }
-            }
-        } else if (((cause != null && (cause["__classes"] && cause["__classes"].indexOf("java.lang.Throwable") >= 0) || cause != null && cause instanceof <any>Error) || cause === null) && env === undefined && description === undefined && preventAmbiguity === undefined) {
-            let __args = Array.prototype.slice.call(arguments);
-            {
-                let __args = Array.prototype.slice.call(arguments);
-                let description: any = null;
-                {
-                    let __args = Array.prototype.slice.call(arguments);
-                    let replaceWithCause: any = false;
-                    super(description, cause, null);
-                    if (this.replaceWithCause === undefined) this.replaceWithCause = false;
-                    (<any>Object).setPrototypeOf(this, TemplateModelException.prototype);
-                    if (this.replaceWithCause === undefined) this.replaceWithCause = false;
-                    (() => {
-                        this.replaceWithCause = replaceWithCause;
-                    })();
-                }
-            }
-        } else if (cause === undefined && env === undefined && description === undefined && preventAmbiguity === undefined) {
-            let __args = Array.prototype.slice.call(arguments);
-            {
-                let __args = Array.prototype.slice.call(arguments);
-                let description: any = null;
-                let cause: any = null;
-                {
-                    let __args = Array.prototype.slice.call(arguments);
-                    let cause: any = <Error>__args[1];
-                    {
-                        let __args = Array.prototype.slice.call(arguments);
-                        let replaceWithCause: any = false;
-                        super(description, cause, null);
-                        if (this.replaceWithCause === undefined) this.replaceWithCause = false;
-                        (<any>Object).setPrototypeOf(this, TemplateModelException.prototype);
-                        if (this.replaceWithCause === undefined) this.replaceWithCause = false;
-                        (() => {
-                            this.replaceWithCause = replaceWithCause;
-                        })();
-                    }
-                }
-            }
-        } else throw new Error('invalid overload');
+        }
+        super(null, null, null);
+        this.replaceWithCause = false;
+        // if (((ClassUtil.isInstanceOf(cause, "java.lang.Throwable") || cause != null && cause instanceof <any>Error) || cause === null) && (ClassUtil.isInstanceOf(env, 'freemarker.core.Environment')|| env === null) && ((typeof description === 'string') || description === null) && ((typeof preventAmbiguity === 'boolean') || preventAmbiguity === null)) {
+        //     let __args = Array.prototype.slice.call(arguments);
+        //     super(description, cause, env);
+        //     if (this.replaceWithCause === undefined) this.replaceWithCause = false;
+        //     (<any>Object).setPrototypeOf(this, TemplateModelException.prototype);
+        //     if (this.replaceWithCause === undefined) this.replaceWithCause = false;
+        //     (() => {
+        //         this.replaceWithCause = false;
+        //     })();
+        // } else if (((ClassUtil.isInstanceOf(cause, "java.lang.Throwable") || cause != null && cause instanceof <any>Error) || cause === null) && ((ClassUtil.isInstanceOf(env, 'freemarker.core.Environment')) || env === null) && ((description != null && description instanceof <any>_ErrorDescriptionBuilder) || description === null) && ((typeof preventAmbiguity === 'boolean') || preventAmbiguity === null)) {
+        //     let __args = Array.prototype.slice.call(arguments);
+        //     let descriptionBuilder: any = __args[2];
+        //     super(cause, env, null, descriptionBuilder);
+        //     if (this.replaceWithCause === undefined) this.replaceWithCause = false;
+        //     (<any>Object).setPrototypeOf(this, TemplateModelException.prototype);
+        //     if (this.replaceWithCause === undefined) this.replaceWithCause = false;
+        //     (() => {
+        //         this.replaceWithCause = false;
+        //     })();
+        // } else if (((typeof cause === 'string') || cause === null) && ((typeof env === 'boolean') || env === null) && ((ClassUtil.isInstanceOf(description, "java.lang.Throwable") || description != null && description instanceof <any>Error) || description === null) && preventAmbiguity === undefined) {
+        //     let __args = Array.prototype.slice.call(arguments);
+        //     let description: any = __args[0];
+        //     let replaceWithCause: any = __args[1];
+        //     let cause: any = __args[2];
+        //     super(description, cause, null);
+        //     if (this.replaceWithCause === undefined) this.replaceWithCause = false;
+        //     (<any>Object).setPrototypeOf(this, TemplateModelException.prototype);
+        //     if (this.replaceWithCause === undefined) this.replaceWithCause = false;
+        //     (() => {
+        //         this.replaceWithCause = replaceWithCause;
+        //     })();
+        // } else if (((typeof cause === 'string') || cause === null) && ((ClassUtil.isInstanceOf(env, "java.lang.Exception") || env != null && env instanceof <any>Error) || env === null) && description === undefined && preventAmbiguity === undefined) {
+        //     let __args = Array.prototype.slice.call(arguments);
+        //     let description: any = __args[0];
+        //     let cause: any = __args[1];
+        //     {
+        //         let __args = Array.prototype.slice.call(arguments);
+        //         let cause: any = <Error>__args[1];
+        //         {
+        //             let __args = Array.prototype.slice.call(arguments);
+        //             let replaceWithCause: any = false;
+        //             super(description, cause, null);
+        //             if (this.replaceWithCause === undefined) this.replaceWithCause = false;
+        //             (<any>Object).setPrototypeOf(this, TemplateModelException.prototype);
+        //             if (this.replaceWithCause === undefined) this.replaceWithCause = false;
+        //             (() => {
+        //                 this.replaceWithCause = replaceWithCause;
+        //             })();
+        //         }
+        //     }
+        // } else if (((typeof cause === 'string') || cause === null) && ((env != null && (env["__classes"] && env["__classes"].indexOf("java.lang.Throwable") >= 0) || env != null && env instanceof <any>Error) || env === null) && description === undefined && preventAmbiguity === undefined) {
+        //     let __args = Array.prototype.slice.call(arguments);
+        //     let description: any = __args[0];
+        //     let cause: any = __args[1];
+        //     {
+        //         let __args = Array.prototype.slice.call(arguments);
+        //         let replaceWithCause: any = false;
+        //         super(description, cause, null);
+        //         if (this.replaceWithCause === undefined) this.replaceWithCause = false;
+        //         (<any>Object).setPrototypeOf(this, TemplateModelException.prototype);
+        //         if (this.replaceWithCause === undefined) this.replaceWithCause = false;
+        //         (() => {
+        //             this.replaceWithCause = replaceWithCause;
+        //         })();
+        //     }
+        // } else if (((typeof cause === 'string') || cause === null) && env === undefined && description === undefined && preventAmbiguity === undefined) {
+        //     let __args = Array.prototype.slice.call(arguments);
+        //     let description: any = __args[0];
+        //     {
+        //         let __args = Array.prototype.slice.call(arguments);
+        //         let cause: any = null;
+        //         {
+        //             let __args = Array.prototype.slice.call(arguments);
+        //             let cause: any = <Error>__args[1];
+        //             {
+        //                 let __args = Array.prototype.slice.call(arguments);
+        //                 let replaceWithCause: any = false;
+        //                 super(description, cause, null);
+        //                 if (this.replaceWithCause === undefined) this.replaceWithCause = false;
+        //                 (<any>Object).setPrototypeOf(this, TemplateModelException.prototype);
+        //                 if (this.replaceWithCause === undefined) this.replaceWithCause = false;
+        //                 (() => {
+        //                     this.replaceWithCause = replaceWithCause;
+        //                 })();
+        //             }
+        //         }
+        //     }
+        // } else if (((cause != null && (cause["__classes"] && cause["__classes"].indexOf("java.lang.Exception") >= 0) || cause != null && cause instanceof <any>Error) || cause === null) && env === undefined && description === undefined && preventAmbiguity === undefined) {
+        //     let __args = Array.prototype.slice.call(arguments);
+        //     {
+        //         let __args = Array.prototype.slice.call(arguments);
+        //         let description: any = null;
+        //         {
+        //             let __args = Array.prototype.slice.call(arguments);
+        //             let cause: any = <Error>__args[1];
+        //             {
+        //                 let __args = Array.prototype.slice.call(arguments);
+        //                 let replaceWithCause: any = false;
+        //                 super(description, cause, null);
+        //                 if (this.replaceWithCause === undefined) this.replaceWithCause = false;
+        //                 (<any>Object).setPrototypeOf(this, TemplateModelException.prototype);
+        //                 if (this.replaceWithCause === undefined) this.replaceWithCause = false;
+        //                 (() => {
+        //                     this.replaceWithCause = replaceWithCause;
+        //                 })();
+        //             }
+        //         }
+        //     }
+        // } else if (((cause != null && (cause["__classes"] && cause["__classes"].indexOf("java.lang.Throwable") >= 0) || cause != null && cause instanceof <any>Error) || cause === null) && env === undefined && description === undefined && preventAmbiguity === undefined) {
+        //     let __args = Array.prototype.slice.call(arguments);
+        //     {
+        //         let __args = Array.prototype.slice.call(arguments);
+        //         let description: any = null;
+        //         {
+        //             let __args = Array.prototype.slice.call(arguments);
+        //             let replaceWithCause: any = false;
+        //             super(description, cause, null);
+        //             if (this.replaceWithCause === undefined) this.replaceWithCause = false;
+        //             (<any>Object).setPrototypeOf(this, TemplateModelException.prototype);
+        //             if (this.replaceWithCause === undefined) this.replaceWithCause = false;
+        //             (() => {
+        //                 this.replaceWithCause = replaceWithCause;
+        //             })();
+        //         }
+        //     }
+        // } else if (cause === undefined && env === undefined && description === undefined && preventAmbiguity === undefined) {
+        //     let __args = Array.prototype.slice.call(arguments);
+        //     {
+        //         let __args = Array.prototype.slice.call(arguments);
+        //         let description: any = null;
+        //         let cause: any = null;
+        //         {
+        //             let __args = Array.prototype.slice.call(arguments);
+        //             let cause: any = <Error>__args[1];
+        //             {
+        //                 let __args = Array.prototype.slice.call(arguments);
+        //                 let replaceWithCause: any = false;
+        //                 super(description, cause, null);
+        //                 if (this.replaceWithCause === undefined) this.replaceWithCause = false;
+        //                 (<any>Object).setPrototypeOf(this, TemplateModelException.prototype);
+        //                 if (this.replaceWithCause === undefined) this.replaceWithCause = false;
+        //                 (() => {
+        //                     this.replaceWithCause = replaceWithCause;
+        //                 })();
+        //             }
+        //         }
+        //     }
+        // } else throw new Error('invalid overload');
     }
 
     /**

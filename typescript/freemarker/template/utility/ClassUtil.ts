@@ -179,7 +179,7 @@ export class ClassUtil {
                 return "freemarker.template.TemplateDateModel";
             } else if (tm != null && tm instanceof <any>(require('../../ext/beans/StringModel').StringModel)) {
                 let wrapped: any = (<any>tm).getWrappedObject();
-                return (typeof wrapped === 'string') ? "freemarker.template.TemplateScalarModel" : ((tm != null && (tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.template.TemplateHashModelEx") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.template.TemplateHashModelEx") >= 0)) ? "freemarker.template.TemplateHashModelEx" : null);
+                return (typeof wrapped === 'string') ? "freemarker.template.TemplateScalarModel" : ((tm != null && ClassUtil.isAssignableFrom(tm, "freemarker.template.TemplateHashModelEx")) ? "freemarker.template.TemplateHashModelEx" : null);
             } else {
                 return null;
             }
@@ -244,9 +244,9 @@ export class ClassUtil {
     static getUnwrappedClass(tm: /*TemplateModel*/any): any {
         let unwrapped: any;
         try {
-            if (tm != null && (tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.ext.util.WrapperTemplateModel") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.ext.util.WrapperTemplateModel") >= 0)) {
+            if (tm != null && ClassUtil.isAssignableFrom(tm, "freemarker.ext.util.WrapperTemplateModel")) {
                 unwrapped = (<any>tm).getWrappedObject();
-            } else if (tm != null && (tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.template.AdapterTemplateModel") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.template.AdapterTemplateModel") >= 0)) {
+            } else if (tm != null && ClassUtil.isAssignableFrom(tm, "freemarker.template.AdapterTemplateModel")) {
                 unwrapped = (<any>tm).getAdaptedObject(Object);
             } else {
                 unwrapped = null;

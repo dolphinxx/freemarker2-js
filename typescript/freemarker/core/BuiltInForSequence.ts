@@ -13,7 +13,7 @@ export abstract class BuiltInForSequence extends BuiltIn {
      */
     _eval(env : /*Environment*/any) : TemplateModel {
         let model : TemplateModel = this.target.eval(env);
-        if(!(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0))) {
+        if(!(model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateSequenceModel"))) {
             throw new NonSequenceException(this.target, model, env);
         }
         return this.calculateResult(<TemplateSequenceModel><any>model);

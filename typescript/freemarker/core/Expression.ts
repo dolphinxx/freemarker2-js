@@ -163,7 +163,7 @@ export abstract class Expression extends TemplateObject {
     }
 
     modelToNumber(model : TemplateModel, env : /*Environment*/any) : number {
-        if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateNumberModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateNumberModel") >= 0)) {
+        if(model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateNumberModel")) {
             return (require('./EvalUtil').EvalUtil).modelToNumber(/*<TemplateNumberModel>*/<any>model, this);
         } else {
             throw new (require('./NonNumericalException').NonNumericalException)(this, model, env);
@@ -212,7 +212,7 @@ export abstract class Expression extends TemplateObject {
             return <boolean>model;
         }
         model = <TemplateModel>model;
-        if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateBooleanModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateBooleanModel") >= 0)) {
+        if(model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateBooleanModel")) {
             return (/*<TemplateBooleanModel>*/<any>model).getAsBoolean();
         } else if(env != null?env.isClassicCompatible():cfg.isClassicCompatible()) {
             return model != null && !Expression.isEmpty(model);
@@ -222,11 +222,11 @@ export abstract class Expression extends TemplateObject {
     }
 
     public modelToBoolean(model? : any, env? : any, cfg? : any) : any {
-        if(((model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateModel") >= 0)) || model === null) && ((ClassUtil.isInstanceOf(env, 'freemarker.core.Environment')) || env === null) && ((ClassUtil.isInstanceOf(cfg, 'freemarker.template.Configuration')) || cfg === null)) {
+        if(((model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateModel")) || model === null) && ((ClassUtil.isInstanceOf(env, 'freemarker.core.Environment')) || env === null) && ((ClassUtil.isInstanceOf(cfg, 'freemarker.template.Configuration')) || cfg === null)) {
             return <any>this.modelToBoolean$freemarker_template_TemplateModel$freemarker_core_Environment$freemarker_template_Configuration(model, env, cfg);
-        } else if(((model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateModel") >= 0)) || model === null) && ((ClassUtil.isInstanceOf(env, 'freemarker.core.Environment')) || env === null) && cfg === undefined) {
+        } else if(((model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateModel")) || model === null) && ((ClassUtil.isInstanceOf(env, 'freemarker.core.Environment')) || env === null) && cfg === undefined) {
             return <any>this.modelToBoolean$freemarker_template_TemplateModel$freemarker_core_Environment(model, env);
-        } else if(((model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateModel") >= 0)) || model === null) && ((ClassUtil.isInstanceOf(env, 'freemarker.template.Configuration')) || env === null) && cfg === undefined) {
+        } else if(((model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateModel")) || model === null) && ((ClassUtil.isInstanceOf(env, 'freemarker.template.Configuration')) || env === null) && cfg === undefined) {
             return <any>this.modelToBoolean$freemarker_template_TemplateModel$freemarker_template_Configuration(model, env);
         } else throw new Error('invalid overload');
     }
@@ -252,21 +252,21 @@ export abstract class Expression extends TemplateObject {
     static isEmpty(model : TemplateModel) : boolean {
         if(ClassUtil.isInstanceOf(model, 'freemarker.ext.beans')) {
             return (/*<BeanModel>*/<any>model).isEmpty();
-        } else if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0)) {
+        } else if(model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateSequenceModel")) {
             return (/*<TemplateSequenceModel>*/<any>model).size() === 0;
-        } else if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0)) {
+        } else if(model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateScalarModel")) {
             let s : string = (/*<TemplateScalarModel>*/<any>model).getAsString();
             return (s == null || s.length === 0);
         } else if(model == null) {
             return true;
-        } else if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.core.TemplateMarkupOutputModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.core.TemplateMarkupOutputModel") >= 0)) {
+        } else if(model != null && ClassUtil.isAssignableFrom(model, "freemarker.core.TemplateMarkupOutputModel")) {
             let mo : /*TemplateMarkupOutputModel<any>*/any = /*<TemplateMarkupOutputModel<any>>*/<any>model;
             return mo.getOutputFormat().isEmpty(mo);
-        } else if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateCollectionModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateCollectionModel") >= 0)) {
+        } else if(model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateCollectionModel")) {
             return !(/*<TemplateCollectionModel>*/<any>model).iterator().hasNext();
-        } else if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateHashModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateHashModel") >= 0)) {
+        } else if(model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateHashModel")) {
             return (/*<TemplateHashModel>*/<any>model).isEmpty();
-        } else return !(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateNumberModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateNumberModel") >= 0)) && !(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateDateModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateDateModel") >= 0)) && !(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateBooleanModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateBooleanModel") >= 0));
+        } else return !(model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateNumberModel")) && !(model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateDateModel")) && !(model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateBooleanModel"));
     }
 
     assertNonNull(model : TemplateModel, env : /*Environment*/any) {

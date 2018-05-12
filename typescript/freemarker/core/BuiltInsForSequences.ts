@@ -34,6 +34,7 @@ import {_DelayedFTLTypeDescription} from './_DelayedFTLTypeDescription';
 import {_DelayedJQuote} from './_DelayedJQuote';
 import {BugException} from './BugException';
 import {_DelayedGetMessage} from './_DelayedGetMessage';
+import {ClassUtil} from "../template/utility/ClassUtil";
 
 /**
  * A holder for builtins that operate exclusively on sequence or collection left-hand value.
@@ -181,9 +182,9 @@ export namespace BuiltInsForSequences {
          */
         _eval(env : /*Environment*/any) : TemplateModel {
             let model : TemplateModel = this.target.eval(env);
-            if((model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0)) && !BuiltInsForSequences.isBuggySeqButGoodCollection(model)) {
+            if((model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateSequenceModel")) && !BuiltInsForSequences.isBuggySeqButGoodCollection(model)) {
                 return this.calculateResultForSequence(<TemplateSequenceModel><any>model);
-            } else if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateCollectionModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateCollectionModel") >= 0)) {
+            } else if(model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateCollectionModel")) {
                 return this.calculateResultForColletion(<TemplateCollectionModel><any>model);
             } else {
                 throw new NonSequenceOrCollectionException(this.target, model, env);
@@ -222,12 +223,12 @@ export namespace BuiltInsForSequences {
          */
         _eval(env : /*Environment*/any) : TemplateModel {
             let model : TemplateModel = this.target.eval(env);
-            if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateCollectionModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateCollectionModel") >= 0)) {
+            if(model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateCollectionModel")) {
                 if(model != null && model instanceof <any>RightUnboundedRangeModel) {
                     throw new _TemplateModelException("The sequence to join was right-unbounded numerical range, thus it\'s infinitely long.");
                 }
                 return new joinBI.BIMethodForCollection(this, env, <TemplateCollectionModel><any>model);
-            } else if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0)) {
+            } else if(model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateSequenceModel")) {
                 return new joinBI.BIMethodForCollection(this, env, new CollectionAndSequence(<TemplateSequenceModel><any>model));
             } else {
                 throw new NonSequenceOrCollectionException(this.target, model, env);
@@ -378,9 +379,9 @@ export namespace BuiltInsForSequences {
          */
         _eval(env : /*Environment*/any) : TemplateModel {
             let model : TemplateModel = this.target.eval(env);
-            if((model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0)) && !BuiltInsForSequences.isBuggySeqButGoodCollection(model)) {
+            if((model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateSequenceModel")) && !BuiltInsForSequences.isBuggySeqButGoodCollection(model)) {
                 return new seq_containsBI.BIMethodForSequence(this, <TemplateSequenceModel><any>model, env);
-            } else if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateCollectionModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateCollectionModel") >= 0)) {
+            } else if(model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateCollectionModel")) {
                 return new seq_containsBI.BIMethodForCollection(this, <TemplateCollectionModel><any>model, env);
             } else {
                 throw new NonSequenceOrCollectionException(this.target, model, env);
@@ -499,8 +500,8 @@ export namespace BuiltInsForSequences {
                 if(this.m_col===undefined) this.m_col = null;
                 if(this.m_env===undefined) this.m_env = null;
                 let model : TemplateModel = __parent.target.eval(env);
-                this.m_seq = (model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0)) && !BuiltInsForSequences.isBuggySeqButGoodCollection(model)?<TemplateSequenceModel><any>model:null;
-                this.m_col = this.m_seq == null && (model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateCollectionModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateCollectionModel") >= 0))?<TemplateCollectionModel><any>model:null;
+                this.m_seq = (model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateSequenceModel")) && !BuiltInsForSequences.isBuggySeqButGoodCollection(model)?<TemplateSequenceModel><any>model:null;
+                this.m_col = this.m_seq == null && (model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateCollectionModel"))?<TemplateCollectionModel><any>model:null;
                 if(this.m_seq == null && this.m_col == null) {
                     throw new NonSequenceOrCollectionException(__parent.target, model, env);
                 }
@@ -892,10 +893,10 @@ export namespace BuiltInsForSequences {
          */
         _eval(env : /*Environment*/any) : TemplateModel {
             let model : TemplateModel = this.target.eval(env);
-            if((model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0)) && !BuiltInsForSequences.isBuggySeqButGoodCollection(model)) {
+            if((model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateSequenceModel")) && !BuiltInsForSequences.isBuggySeqButGoodCollection(model)) {
                 return model;
             }
-            if(!(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateCollectionModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateCollectionModel") >= 0))) {
+            if(!(model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateCollectionModel"))) {
                 throw new NonSequenceOrCollectionException(this.target, model, env);
             }
             let coll : TemplateCollectionModel = <TemplateCollectionModel><any>model;
@@ -931,9 +932,9 @@ export namespace BuiltInsForSequences {
          */
         _eval(env : /*Environment*/any) : TemplateModel {
             let model : TemplateModel = this.target.eval(env);
-            if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateCollectionModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateCollectionModel") >= 0)) {
+            if(model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateCollectionModel")) {
                 return this.calculateResultForColletion(<TemplateCollectionModel><any>model, env);
-            } else if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0)) {
+            } else if(model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateSequenceModel")) {
                 return this.calculateResultForSequence(<TemplateSequenceModel><any>model, env);
             } else {
                 throw new NonSequenceOrCollectionException(this.target, model, env);

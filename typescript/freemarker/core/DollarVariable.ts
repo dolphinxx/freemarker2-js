@@ -71,7 +71,7 @@ export class DollarVariable extends Interpolation {
         } else {
             let mo : TemplateMarkupOutputModel<any> = <TemplateMarkupOutputModel<any>><any>moOrStr;
             let moOF : MarkupOutputFormat<any> = mo.getOutputFormat();
-            if(moOF !== this.outputFormat && !this.outputFormat.isOutputFormatMixingAllowed()) {
+            if(moOF.__proto__.constructor !== this.outputFormat.__proto__.constructor && !this.outputFormat.isOutputFormatMixingAllowed()) {
                 let srcPlainText : string;
                 srcPlainText = moOF.getSourcePlainText(mo);
                 if(srcPlainText == null) {

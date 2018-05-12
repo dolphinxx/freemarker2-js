@@ -1006,7 +1006,7 @@ export class BeansWrapper implements RichObjectWrapper, WriteProtectable {
                     return num;
                 }
             }
-            if((itf === 0 || (itf & TypeFlags.ACCEPTS_DATE) !== 0) && (model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateDateModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateDateModel") >= 0))) {
+            if((itf === 0 || (itf & TypeFlags.ACCEPTS_DATE) !== 0) && (model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateDateModel"))) {
                 let date : Date = (/*<TemplateDateModel>*/<any>model).getAsDate();
                 if(itf !== 0 || ClassUtil.isAssignableFrom(date, targetClass)/*/!* isInstance *!/((c:any,o:any) => { if(typeof c === 'string') return (o.constructor && o.constructor["__interfaces"] && o.constructor["__interfaces"].indexOf(c) >= 0) || (o["__interfaces"] && o["__interfaces"].indexOf(c) >= 0); else if(typeof c === 'function') return (o instanceof c) || (o.constructor && o.constructor === c); })(targetClass, date)*/) {
                     return date;

@@ -1,5 +1,4 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import {EmptyMap} from '../template/EmptyMap';
 import {TemplateDirectiveModel} from '../template/TemplateDirectiveModel';
 import {TemplateModel} from '../template/TemplateModel';
 import {TemplateTransformModel} from '../template/TemplateTransformModel';
@@ -23,6 +22,9 @@ import {Dot} from './Dot';
 import {ParameterRole} from './ParameterRole';
 import {MiscUtil} from './MiscUtil';
 import {CallPlaceCustomDataInitializationException} from './CallPlaceCustomDataInitializationException';
+import {Map} from "../../java/util/Map";
+import {Entry} from "../../java/util/Entry";
+import {ClassUtil} from "../template/utility/ClassUtil";
 
 /**
  * An element for the unified macro/transform syntax.
@@ -40,7 +42,7 @@ export class UnifiedCall extends TemplateElement implements DirectiveCallPlace {
 
     legacySyntax : boolean;
 
-    /*private*/ sortedNamedArgsCache : SoftReference;
+    /*private*/ sortedNamedArgsCache : any;
 
     /*private*/ customDataHolder : UnifiedCall.CustomDataHolder;
 
@@ -110,20 +112,26 @@ export class UnifiedCall extends TemplateElement implements DirectiveCallPlace {
             }
             env.invoke(macro, this.namedArgs, this.positionalArgs, this.bodyParameterNames, this);
         } else {
-            let isDirectiveModel : boolean = (tm != null && (tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.template.TemplateDirectiveModel") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.template.TemplateDirectiveModel") >= 0));
-            if(isDirectiveModel || (tm != null && (tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.template.TemplateTransformModel") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.template.TemplateTransformModel") >= 0))) {
+            let isDirectiveModel : boolean = (tm != null && ClassUtil.isAssignableFrom(tm, "freemarker.template.TemplateDirectiveModel"));
+            if(isDirectiveModel || (tm != null && ClassUtil.isAssignableFrom(tm, "freemarker.template.TemplateTransformModel"))) {
                 let args : Map<any, any>;
-                if(this.namedArgs != null && !/* isEmpty */((m) => { if(m.entries==null) m.entries=[]; return m.entries.length == 0; })(<any>this.namedArgs)) {
+                if(this.namedArgs != null && !this.namedArgs.isEmpty()) {
                     args = <any>(new Map<any, any>());
-                    for(let it : any = /* iterator */((a) => { var i = 0; return { next: function() { return i<a.length?a[i++]:null; }, hasNext: function() { return i<a.length; }}})(/* entrySet */((m) => { if(m.entries==null) m.entries=[]; return m.entries; })(<any>this.namedArgs)); it.hasNext(); ) {
-                        let entry : Entry = <Entry><any>it.next();
+                    this.namedArgs.entrySet().forEach(entry => {
                         let key : string = <string>entry.getKey();
                         let valueExp : Expression = <Expression>entry.getValue();
                         let value : TemplateModel = valueExp.eval(env);
-                        /* put */args.set(key, value);
-                    }
+                        args.put(key, value);
+                    });
+                    // for(let it : any = /* iterator */((a) => { var i = 0; return { next: function() { return i<a.length?a[i++]:null; }, hasNext: function() { return i<a.length; }}})(/* entrySet */((m) => { if(m.entries==null) m.entries=[]; return m.entries; })(<any>this.namedArgs)); it.hasNext(); ) {
+                    //     let entry : Entry = <Entry><any>it.next();
+                    //     let key : string = <string>entry.getKey();
+                    //     let valueExp : Expression = <Expression>entry.getValue();
+                    //     let value : TemplateModel = valueExp.eval(env);
+                    //     /* put */args.set(key, value);
+                    // }
                 } else {
-                    args = EmptyMap.instance_$LI$();
+                    args = new Map();
                 }
                 if(isDirectiveModel) {
                     env.visit$freemarker_core_TemplateElement_A$freemarker_template_TemplateDirectiveModel$java_util_Map$java_util_List(this.getChildBuffer(), <TemplateDirectiveModel><any>tm, args, this.bodyParameterNames);
@@ -233,7 +241,7 @@ export class UnifiedCall extends TemplateElement implements DirectiveCallPlace {
                 return /* get */this.positionalArgs[idx - base];
             } else {
                 base += positionalArgsSize;
-                let namedArgsSize : number = this.namedArgs != null?/* size */((m) => { let r=0; m.forEach((v, k, m) => r++); return r; })(<any>this.namedArgs):0;
+                let namedArgsSize : number = this.namedArgs != null?this.namedArgs.size():0;
                 if(idx - base < namedArgsSize * 2) {
                     let namedArg : Entry = <Entry><any>/* get */this.getSortedNamedArgs()[((idx - base) / 2|0)];
                     return (idx - base) % 2 === 0?namedArg.getKey():namedArg.getValue();
@@ -265,7 +273,7 @@ export class UnifiedCall extends TemplateElement implements DirectiveCallPlace {
                 return ParameterRole.ARGUMENT_VALUE_$LI$();
             } else {
                 base += positionalArgsSize;
-                let namedArgsSize : number = this.namedArgs != null?/* size */((m) => { let r=0; m.forEach((v, k, m) => r++); return r; })(<any>this.namedArgs):0;
+                let namedArgsSize : number = this.namedArgs != null?this.namedArgs.size():0;
                 if(idx - base < namedArgsSize * 2) {
                     return (idx - base) % 2 === 0?ParameterRole.ARGUMENT_NAME_$LI$():ParameterRole.ARGUMENT_VALUE_$LI$();
                 } else {
@@ -288,13 +296,13 @@ export class UnifiedCall extends TemplateElement implements DirectiveCallPlace {
      * @private
      */
     getSortedNamedArgs() : Array<any> {
-        let ref : Reference = this.sortedNamedArgsCache;
+        let ref : any = this.sortedNamedArgsCache;
         if(ref != null) {
-            let res : Array<any> = <Array<any>><any>ref.get();
+            let res : Array<any> = <Array<any>><any>ref;
             if(res != null) return res;
         }
         let res : Array<any> = MiscUtil.sortMapOfExpressions(this.namedArgs);
-        this.sortedNamedArgsCache = <any>(new SoftReference(res));
+        this.sortedNamedArgsCache = <any>(res);
         return res;
     }
 

@@ -24,7 +24,7 @@ export class NonSequenceOrCollectionException extends UnexpectedTypeException {
     static ITERABLE_SUPPORT_HINT : string = "The problematic value is a java.lang.Iterable. Using DefaultObjectWrapper(..., iterableSupport=true) as the object_wrapper setting of the FreeMarker configuration should solve this.";
 
     public constructor(blamed? : any, model? : any, tip? : any, env? : any) {
-        if(((blamed != null && blamed instanceof <any>Expression) || blamed === null) && ((model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateModel") >= 0)) || model === null) && ((typeof tip === 'string') || tip === null) && ((ClassUtil.isInstanceOf(env, 'freemarker.core.Environment')) || env === null)) {
+        if(((blamed != null && blamed instanceof <any>Expression) || blamed === null) && ((model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateModel")) || model === null) && ((typeof tip === 'string') || tip === null) && ((ClassUtil.isInstanceOf(env, 'freemarker.core.Environment')) || env === null)) {
             let __args = Array.prototype.slice.call(arguments);
             {
                 let __args = Array.prototype.slice.call(arguments);
@@ -32,12 +32,12 @@ export class NonSequenceOrCollectionException extends UnexpectedTypeException {
                 super(blamed, model, "sequence or collection", NonSequenceOrCollectionException.EXPECTED_TYPES_$LI$(), NonSequenceOrCollectionException.extendTipsIfIterable(model, tips), env);
                 (<any>Object).setPrototypeOf(this, NonSequenceOrCollectionException.prototype);
             }
-        } else if(((blamed != null && blamed instanceof <any>Expression) || blamed === null) && ((model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateModel") >= 0)) || model === null) && ((tip != null && tip instanceof <any>Array && (tip.length==0 || tip[0] == null ||(tip[0] != null))) || tip === null) && ((ClassUtil.isInstanceOf(env, 'freemarker.core.Environment')) || env === null)) {
+        } else if(((blamed != null && blamed instanceof <any>Expression) || blamed === null) && ((model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateModel")) || model === null) && ((tip != null && tip instanceof <any>Array && (tip.length==0 || tip[0] == null ||(tip[0] != null))) || tip === null) && ((ClassUtil.isInstanceOf(env, 'freemarker.core.Environment')) || env === null)) {
             let __args = Array.prototype.slice.call(arguments);
             let tips : any = __args[2];
             super(blamed, model, "sequence or collection", NonSequenceOrCollectionException.EXPECTED_TYPES_$LI$(), NonSequenceOrCollectionException.extendTipsIfIterable(model, tips), env);
             (<any>Object).setPrototypeOf(this, NonSequenceOrCollectionException.prototype);
-        } else if(((blamed != null && blamed instanceof <any>Expression) || blamed === null) && ((model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateModel") >= 0)) || model === null) && ((ClassUtil.isInstanceOf(tip, 'freemarker.core.Environment')) || tip === null) && env === undefined) {
+        } else if(((blamed != null && blamed instanceof <any>Expression) || blamed === null) && ((model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateModel")) || model === null) && ((ClassUtil.isInstanceOf(tip, 'freemarker.core.Environment')) || tip === null) && env === undefined) {
             let __args = Array.prototype.slice.call(arguments);
             let env : any = __args[2];
             {
@@ -81,7 +81,7 @@ export class NonSequenceOrCollectionException extends UnexpectedTypeException {
     }
 
     public static isWrappedIterable(model : TemplateModel) : boolean {
-        return (model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.ext.util.WrapperTemplateModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.ext.util.WrapperTemplateModel") >= 0)) && ((<WrapperTemplateModel><any>model).getWrappedObject() != null && ((<WrapperTemplateModel><any>model).getWrappedObject()["__interfaces"] != null && (<WrapperTemplateModel><any>model).getWrappedObject()["__interfaces"].indexOf("java.lang.Iterable") >= 0 || (<WrapperTemplateModel><any>model).getWrappedObject().constructor != null && (<WrapperTemplateModel><any>model).getWrappedObject().constructor["__interfaces"] != null && (<WrapperTemplateModel><any>model).getWrappedObject().constructor["__interfaces"].indexOf("java.lang.Iterable") >= 0));
+        return (model != null && ClassUtil.isAssignableFrom(model, "freemarker.ext.util.WrapperTemplateModel")) && ((<WrapperTemplateModel><any>model).getWrappedObject() != null && ((<WrapperTemplateModel><any>model).getWrappedObject()["__interfaces"] != null && (<WrapperTemplateModel><any>model).getWrappedObject()["__interfaces"].indexOf("java.lang.Iterable") >= 0 || (<WrapperTemplateModel><any>model).getWrappedObject().constructor != null && (<WrapperTemplateModel><any>model).getWrappedObject().constructor["__interfaces"] != null && (<WrapperTemplateModel><any>model).getWrappedObject().constructor["__interfaces"].indexOf("java.lang.Iterable") >= 0));
     }
 }
 NonSequenceOrCollectionException["__class"] = "freemarker.core.NonSequenceOrCollectionException";

@@ -17,6 +17,7 @@ import {TemplateNumberModel} from '../TemplateNumberModel';
 import {TemplateScalarModel} from '../TemplateScalarModel';
 import {TemplateSequenceModel} from '../TemplateSequenceModel';
 import {Map} from "../../../java/util/Map";
+import {ClassUtil} from "./ClassUtil";
 
 /**
  * Utility methods for unwrapping {link TemplateModel}-s.
@@ -64,28 +65,28 @@ export class DeepUnwrap {
     }
 
     public static unwrap$freemarker_template_TemplateModel$freemarker_template_TemplateModel$boolean(model : TemplateModel, nullModel : TemplateModel, permissive : boolean) : any {
-        if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.AdapterTemplateModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.AdapterTemplateModel") >= 0)) {
+        if(model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.AdapterTemplateModel")) {
             return (<AdapterTemplateModel><any>model).getAdaptedObject(DeepUnwrap.OBJECT_CLASS_$LI$());
         }
-        if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.ext.util.WrapperTemplateModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.ext.util.WrapperTemplateModel") >= 0)) {
+        if(model != null && ClassUtil.isAssignableFrom(model, "freemarker.ext.util.WrapperTemplateModel")) {
             return (<WrapperTemplateModel><any>model).getWrappedObject();
         }
         if(model === nullModel) {
             return null;
         }
-        if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0)) {
+        if(model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateScalarModel")) {
             return (<TemplateScalarModel><any>model).getAsString();
         }
-        if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateNumberModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateNumberModel") >= 0)) {
+        if(model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateNumberModel")) {
             return (<TemplateNumberModel><any>model).getAsNumber();
         }
-        if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateDateModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateDateModel") >= 0)) {
+        if(model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateDateModel")) {
             return (<TemplateDateModel><any>model).getAsDate();
         }
-        if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateBooleanModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateBooleanModel") >= 0)) {
+        if(model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateBooleanModel")) {
             return (<TemplateBooleanModel><any>model).getAsBoolean();
         }
-        if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0)) {
+        if(model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateSequenceModel")) {
             let seq : TemplateSequenceModel = <TemplateSequenceModel><any>model;
             let size : number = seq.size();
             let list : Array<any> = <any>([]);
@@ -94,7 +95,7 @@ export class DeepUnwrap {
             }
             return list;
         }
-        if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateCollectionModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateCollectionModel") >= 0)) {
+        if(model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateCollectionModel")) {
             let coll : TemplateCollectionModel = <TemplateCollectionModel><any>model;
             let list : Array<any> = <any>([]);
             let it : TemplateModelIterator = coll.iterator();
@@ -103,10 +104,10 @@ export class DeepUnwrap {
             }
             return list;
         }
-        if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateHashModelEx") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateHashModelEx") >= 0)) {
+        if(model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateHashModelEx")) {
             let hash : TemplateHashModelEx = <TemplateHashModelEx><any>model;
             let map : Map<any, any> = <any>(new Map<any, any>());
-            if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateHashModelEx2") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateHashModelEx2") >= 0)) {
+            if(model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateHashModelEx2")) {
                 let kvps : KeyValuePairIterator = (<TemplateHashModelEx2><any>model).keyValuePairIterator();
                 while((kvps.hasNext())) {
                     let kvp : KeyValuePair = kvps.next();
@@ -128,11 +129,11 @@ export class DeepUnwrap {
     }
 
     public static unwrap(model? : any, nullModel? : any, permissive? : any) : any {
-        if(((model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateModel") >= 0)) || model === null) && ((nullModel != null && (nullModel["__interfaces"] != null && nullModel["__interfaces"].indexOf("freemarker.template.TemplateModel") >= 0 || nullModel.constructor != null && nullModel.constructor["__interfaces"] != null && nullModel.constructor["__interfaces"].indexOf("freemarker.template.TemplateModel") >= 0)) || nullModel === null) && ((typeof permissive === 'boolean') || permissive === null)) {
+        if(((model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateModel")) || model === null) && ((nullModel != null && (nullModel["__interfaces"] != null && nullModel["__interfaces"].indexOf("freemarker.template.TemplateModel") >= 0 || nullModel.constructor != null && nullModel.constructor["__interfaces"] != null && nullModel.constructor["__interfaces"].indexOf("freemarker.template.TemplateModel") >= 0)) || nullModel === null) && ((typeof permissive === 'boolean') || permissive === null)) {
             return <any>DeepUnwrap.unwrap$freemarker_template_TemplateModel$freemarker_template_TemplateModel$boolean(model, nullModel, permissive);
-        } else if(((model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateModel") >= 0)) || model === null) && ((typeof nullModel === 'boolean') || nullModel === null) && permissive === undefined) {
+        } else if(((model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateModel")) || model === null) && ((typeof nullModel === 'boolean') || nullModel === null) && permissive === undefined) {
             return <any>DeepUnwrap.unwrap$freemarker_template_TemplateModel$boolean(model, nullModel);
-        } else if(((model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateModel") >= 0)) || model === null) && nullModel === undefined && permissive === undefined) {
+        } else if(((model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateModel")) || model === null) && nullModel === undefined && permissive === undefined) {
             return <any>DeepUnwrap.unwrap$freemarker_template_TemplateModel(model);
         } else throw new Error('invalid overload');
     }

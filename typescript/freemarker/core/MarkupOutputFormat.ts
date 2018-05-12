@@ -74,26 +74,18 @@ export abstract class MarkupOutputFormat<MO extends TemplateMarkupOutputModel<an
      * @param {CommonTemplateMarkupOutputModel} mo
      * @return {String}
      */
-    public getSourcePlainText(mo? : any) : any {
-        if(((mo != null) || mo === null)) {
-            return <any>this.getSourcePlainText$freemarker_core_TemplateMarkupOutputModel(mo);
-        } else throw new Error('invalid overload');
+    public getSourcePlainText(mo : any) : any {
+        throw new Error('cannot invoke abstract overloaded method... check your argument(s) type(s)');
     }
-
-    public getSourcePlainText$freemarker_core_TemplateMarkupOutputModel(mo : MO) : string { throw new Error('cannot invoke abstract overloaded method... check your argument(s) type(s)'); }
 
     /**
      * 
      * @param {CommonTemplateMarkupOutputModel} mo
      * @return {String}
      */
-    public getMarkupString(mo? : any) : any {
-        if(((mo != null) || mo === null)) {
-            return <any>this.getMarkupString$freemarker_core_TemplateMarkupOutputModel(mo);
-        } else throw new Error('invalid overload');
+    public getMarkupString(mo : any) : any {
+        throw new Error('cannot invoke abstract overloaded method... check your argument(s) type(s)');
     }
-
-    public getMarkupString$freemarker_core_TemplateMarkupOutputModel(mo : MO) : string { throw new Error('cannot invoke abstract overloaded method... check your argument(s) type(s)'); }
 
     /**
      * 
@@ -101,13 +93,9 @@ export abstract class MarkupOutputFormat<MO extends TemplateMarkupOutputModel<an
      * @param {CommonTemplateMarkupOutputModel} mo2
      * @return {CommonTemplateMarkupOutputModel}
      */
-    public concat(mo1? : any, mo2? : any) : any {
-        if(((mo1 != null) || mo1 === null) && ((mo2 != null) || mo2 === null)) {
-            return <any>this.concat$freemarker_core_TemplateMarkupOutputModel$freemarker_core_TemplateMarkupOutputModel(mo1, mo2);
-        } else throw new Error('invalid overload');
+    public concat(mo1 : any, mo2 : any) : any {
+        throw new Error('cannot invoke abstract overloaded method... check your argument(s) type(s)');
     }
-
-    public concat$freemarker_core_TemplateMarkupOutputModel$freemarker_core_TemplateMarkupOutputModel(mo1 : MO, mo2 : MO) : MO { throw new Error('cannot invoke abstract overloaded method... check your argument(s) type(s)'); }
 
     /**
      * Should give the same result as {link #fromPlainTextByEscaping(String)} and then
@@ -122,13 +110,9 @@ export abstract class MarkupOutputFormat<MO extends TemplateMarkupOutputModel<an
      * @param {CommonTemplateMarkupOutputModel} mo
      * @return {boolean}
      */
-    public isEmpty(mo? : any) : any {
-        if(((mo != null) || mo === null)) {
-            return <any>this.isEmpty$freemarker_core_TemplateMarkupOutputModel(mo);
-        } else throw new Error('invalid overload');
+    public isEmpty(mo : any) : any {
+        throw new Error('cannot invoke abstract overloaded method... check your argument(s) type(s)');
     }
-
-    public isEmpty$freemarker_core_TemplateMarkupOutputModel(mo : MO) : boolean { throw new Error('cannot invoke abstract overloaded method... check your argument(s) type(s)'); }
 
     /**
      * Tells if a string built-in that can't handle a {link TemplateMarkupOutputModel} left hand operand can bypass

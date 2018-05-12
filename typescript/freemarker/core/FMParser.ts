@@ -1781,13 +1781,13 @@ export class FMParser implements FMParserConstants {
         } catch(e) {
             throw new ParseException(e.message + "\nCould not evaluate expression: " + exp.getCanonicalForm(), exp, e);
         }
-        if(tm != null && (tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.template.TemplateBooleanModel") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.template.TemplateBooleanModel") >= 0)) {
+        if(tm != null && ClassUtil.isAssignableFrom(tm, "freemarker.template.TemplateBooleanModel")) {
             try {
                 return (<TemplateBooleanModel><any>tm).getAsBoolean();
             } catch(tme) {
             }
         }
-        if(legacyCompat && (tm != null && (tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0))) {
+        if(legacyCompat && (tm != null && ClassUtil.isAssignableFrom(tm, "freemarker.template.TemplateScalarModel"))) {
             try {
                 return StringUtil.getYesNo((<TemplateScalarModel><any>tm).getAsString());
             } catch(e) {

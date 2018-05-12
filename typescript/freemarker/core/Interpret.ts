@@ -41,12 +41,12 @@ export class Interpret extends OutputFormatBoundBuiltIn {
         let model : TemplateModel = this.target.eval(env);
         let sourceExpr : Expression = null;
         let id : string = "anonymous_interpreted";
-        if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0)) {
+        if(model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateSequenceModel")) {
             sourceExpr = (<Expression>new DynamicKeyName(this.target, new NumberLiteral(0)).copyLocationFrom(this.target));
             if((<TemplateSequenceModel><any>model).size() > 1) {
                 id = (<Expression>new DynamicKeyName(this.target, new NumberLiteral(1)).copyLocationFrom(this.target)).evalAndCoerceToPlainText$freemarker_core_Environment(env);
             }
-        } else if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0)) {
+        } else if(model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateScalarModel")) {
             sourceExpr = this.target;
         } else {
             throw new UnexpectedTypeException(this.target, model, "sequence or string", ["freemarker.template.TemplateSequenceModel", "freemarker.template.TemplateScalarModel"], env);

@@ -12,6 +12,7 @@ import {_TemplateModelException} from './_TemplateModelException';
 import {BuiltIn} from './BuiltIn';
 import {Environment} from './Environment';
 import {EvalUtil} from './EvalUtil';
+import {ClassUtil} from "../template/utility/ClassUtil";
 
 /**
  * A holder for builtins that operate exclusively on number left-hand value.
@@ -361,7 +362,7 @@ export namespace BuiltInsForNumbers {
          */
         _eval(env : /*Environment*/any) : TemplateModel {
             let model : TemplateModel = this.target.eval(env);
-            if(!(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateNumberModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateNumberModel") >= 0)) && (model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateDateModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateDateModel") >= 0))) {
+            if(!(model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateNumberModel")) && (model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateDateModel"))) {
                 let date : Date = EvalUtil.modelToDate(<TemplateDateModel><any>model, this.target);
                 return new SimpleNumber(date.getTime());
             } else {

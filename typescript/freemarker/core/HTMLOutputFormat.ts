@@ -43,20 +43,20 @@ export class HTMLOutputFormat extends CommonMarkupOutputFormat<TemplateHTMLOutpu
         StringUtil.XHTMLEnc$java_lang_String$java_io_Writer(textToEsc, out);
     }
 
-    /**
-     * 
-     * @param {String} textToEsc
-     * @param {Writer} out
-     */
-    public output(textToEsc? : any, out? : any) : any {
-        if(((typeof textToEsc === 'string') || textToEsc === null) && ((out != null && out instanceof <any>Writer) || out === null)) {
-            return <any>this.output$java_lang_String$java_io_Writer(textToEsc, out);
-        } else if(((textToEsc != null) || textToEsc === null) && ((out != null && out instanceof <any>Writer) || out === null)) {
-            super.output(textToEsc, out);
-        } else if(((textToEsc != null) || textToEsc === null) && ((out != null && out instanceof <any>Writer) || out === null)) {
-            return <any>this.output$freemarker_core_TemplateMarkupOutputModel$java_io_Writer(textToEsc, out);
-        } else throw new Error('invalid overload');
-    }
+    // /**
+    //  *
+    //  * @param {String} textToEsc
+    //  * @param {Writer} out
+    //  */
+    // public output(textToEsc? : any, out? : any) : any {
+    //     if(((typeof textToEsc === 'string') || textToEsc === null) && ((out != null && out instanceof <any>Writer) || out === null)) {
+    //         return <any>this.output$java_lang_String$java_io_Writer(textToEsc, out);
+    //     } else if(((textToEsc != null) || textToEsc === null) && ((out != null && out instanceof <any>Writer) || out === null)) {
+    //         super.output(textToEsc, out);
+    //     } else if(((textToEsc != null) || textToEsc === null) && ((out != null && out instanceof <any>Writer) || out === null)) {
+    //         return <any>this.output$freemarker_core_TemplateMarkupOutputModel$java_io_Writer(textToEsc, out);
+    //     } else throw new Error('invalid overload');
+    // }
 
     /**
      * 
@@ -73,7 +73,7 @@ export class HTMLOutputFormat extends CommonMarkupOutputFormat<TemplateHTMLOutpu
      * @return {boolean}
      */
     public isLegacyBuiltInBypassed(builtInName : string) : boolean {
-        return /* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(builtInName,"html")) || /* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(builtInName,"xml")) || /* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(builtInName,"xhtml"));
+        return builtInName === "html" || builtInName === "xml" || builtInName === "xhtml"/*(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(builtInName,"html")) || /!* equals *!/(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(builtInName,"xml")) || /!* equals *!/(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(builtInName,"xhtml"))*/;
     }
 
     /**

@@ -4,6 +4,7 @@ import {BuiltIn} from './BuiltIn';
 import {Environment} from './Environment';
 import {TemplateMarkupOutputModel} from './TemplateMarkupOutputModel';
 import {NonMarkupOutputException} from './NonMarkupOutputException';
+import {ClassUtil} from "../template/utility/ClassUtil";
 
 export abstract class BuiltInForMarkupOutput extends BuiltIn {
     /**
@@ -13,7 +14,7 @@ export abstract class BuiltInForMarkupOutput extends BuiltIn {
      */
     _eval(env : /*Environment*/any) : TemplateModel {
         let model : TemplateModel = this.target.eval(env);
-        if(!(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.core.TemplateMarkupOutputModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.core.TemplateMarkupOutputModel") >= 0))) {
+        if(!(model != null && ClassUtil.isAssignableFrom(model, "freemarker.core.TemplateMarkupOutputModel"))) {
             throw new NonMarkupOutputException(this.target, model, env);
         }
         return this.calculateResult(<TemplateMarkupOutputModel<any>><any>model);

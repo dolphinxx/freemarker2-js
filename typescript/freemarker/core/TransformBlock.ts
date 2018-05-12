@@ -1,5 +1,4 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import {EmptyMap} from '../template/EmptyMap';
 import {TemplateModel} from '../template/TemplateModel';
 import {TemplateTransformModel} from '../template/TemplateTransformModel';
 import {TemplateElement} from './TemplateElement';
@@ -11,6 +10,8 @@ import {StringBuilder} from '../../java/lang/StringBuilder';
 import {_MessageUtil} from './_MessageUtil';
 import {ParameterRole} from './ParameterRole';
 import {MiscUtil} from './MiscUtil';
+import {Map} from "../../java/util/Map";
+import {Entry} from "../../java/util/Entry";
 
 /**
  * A template element that contains a nested block
@@ -24,7 +25,7 @@ export class TransformBlock extends TemplateElement {
 
     namedArgs : Map<any, any>;
 
-    /*private*/ sortedNamedArgsCache : SoftReference;
+    /*private*/ sortedNamedArgsCache : any;
 
     constructor(transformExpression : Expression, namedArgs : Map<any, any>, children : TemplateElements) {
         super();
@@ -55,7 +56,7 @@ export class TransformBlock extends TemplateElement {
                     /* put */args.set(key, value);
                 }
             } else {
-                args = EmptyMap.instance_$LI$();
+                args = new Map();
             }
             env.visitAndTransform(this.getChildBuffer(), ttm, args);
         } else {
@@ -154,13 +155,13 @@ export class TransformBlock extends TemplateElement {
      * @private
      */
     /*private*/ getSortedNamedArgs() : Array<any> {
-        let ref : Reference = this.sortedNamedArgsCache;
+        let ref : any = this.sortedNamedArgsCache;
         if(ref != null) {
-            let res : Array<any> = <Array<any>><any>ref.get();
+            let res : Array<any> = <Array<any>><any>ref;
             if(res != null) return res;
         }
         let res : Array<any> = MiscUtil.sortMapOfExpressions(this.namedArgs);
-        this.sortedNamedArgsCache = <any>(new SoftReference(res));
+        this.sortedNamedArgsCache = <any>(res);
         return res;
     }
 

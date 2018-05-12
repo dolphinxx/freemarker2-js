@@ -1800,11 +1800,11 @@ export class Environment extends Configurable {
     getTransform(exp : Expression) : TemplateTransformModel {
         let ttm : TemplateTransformModel = null;
         let tm : TemplateModel = exp.eval(this);
-        if(tm != null && (tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.template.TemplateTransformModel") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.template.TemplateTransformModel") >= 0)) {
+        if(tm != null && ClassUtil.isAssignableFrom(tm, "freemarker.template.TemplateTransformModel")) {
             ttm = <TemplateTransformModel><any>tm;
         } else if(exp != null && exp instanceof <any>Identifier) {
             tm = this.configuration.getSharedVariable(exp.toString());
-            if(tm != null && (tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.template.TemplateTransformModel") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.template.TemplateTransformModel") >= 0)) {
+            if(tm != null && ClassUtil.isAssignableFrom(tm, "freemarker.template.TemplateTransformModel")) {
                 ttm = <TemplateTransformModel><any>tm;
             }
         }

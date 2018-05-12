@@ -54,7 +54,7 @@ export class Include extends TemplateElement {
             if(encodingExp.isLiteral()) {
                 try {
                     let tm : TemplateModel = encodingExp.eval(null);
-                    if(!(tm != null && (tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0))) {
+                    if(!(tm != null && ClassUtil.isAssignableFrom(tm, "freemarker.template.TemplateScalarModel"))) {
                         throw new ParseException("Expected a string as the value of the \"encoding\" argument", encodingExp);
                     }
                     this.encoding = (<TemplateScalarModel><any>tm).getAsString();
@@ -122,7 +122,7 @@ export class Include extends TemplateElement {
             parse = this.parse;
         } else {
             let tm : TemplateModel = this.parseExp.eval(env);
-            if(tm != null && (tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0)) {
+            if(tm != null && ClassUtil.isAssignableFrom(tm, "freemarker.template.TemplateScalarModel")) {
                 parse = this.getYesNo(this.parseExp, EvalUtil.modelToString(<TemplateScalarModel><any>tm, this.parseExp, env));
             } else {
                 parse = this.parseExp.modelToBoolean$freemarker_template_TemplateModel$freemarker_core_Environment(tm, env);

@@ -13,7 +13,7 @@ export abstract class BuiltInForNodeEx extends BuiltIn {
      */
     _eval(env : /*Environment*/any) : TemplateModel {
         let model : TemplateModel = this.target.eval(env);
-        if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateNodeModelEx") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateNodeModelEx") >= 0)) {
+        if(model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateNodeModelEx")) {
             return this.calculateResult(<TemplateNodeModelEx><any>model, env);
         } else {
             throw new NonExtendedNodeException(this.target, model, env);

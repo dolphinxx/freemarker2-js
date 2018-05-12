@@ -324,9 +324,9 @@ export class EvalUtil {
      * @param {Environment} env
      */
     public static coerceModelToStringOrMarkup(tm? : any, exp? : any, returnNullOnNonCoercableType? : any, seqTip? : any, env? : any) : any {
-        if(((tm != null && (tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.template.TemplateModel") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.template.TemplateModel") >= 0)) || tm === null) && ((ClassUtil.isInstanceOf(exp, 'freemarker.core.Expression')) || exp === null) && ((typeof returnNullOnNonCoercableType === 'boolean') || returnNullOnNonCoercableType === null) && ((typeof seqTip === 'string') || seqTip === null) && ((ClassUtil.isInstanceOf(env, 'freemarker.core.Environment')) || env === null)) {
+        if(((tm != null && ClassUtil.isAssignableFrom(tm, "freemarker.template.TemplateModel")) || tm === null) && ((ClassUtil.isInstanceOf(exp, 'freemarker.core.Expression')) || exp === null) && ((typeof returnNullOnNonCoercableType === 'boolean') || returnNullOnNonCoercableType === null) && ((typeof seqTip === 'string') || seqTip === null) && ((ClassUtil.isInstanceOf(env, 'freemarker.core.Environment')) || env === null)) {
             return <any>EvalUtil.coerceModelToStringOrMarkup$freemarker_template_TemplateModel$freemarker_core_Expression$boolean$java_lang_String$freemarker_core_Environment(tm, exp, returnNullOnNonCoercableType, seqTip, env);
-        } else if(((tm != null && (tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.template.TemplateModel") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.template.TemplateModel") >= 0)) || tm === null) && ((ClassUtil.isInstanceOf(exp, 'freemarker.core.Expression')) || exp === null) && ((typeof returnNullOnNonCoercableType === 'string') || returnNullOnNonCoercableType === null) && ((ClassUtil.isInstanceOf(seqTip, 'freemarker.core.Environment')) || seqTip === null) && env === undefined) {
+        } else if(((tm != null && ClassUtil.isAssignableFrom(tm, "freemarker.template.TemplateModel")) || tm === null) && ((ClassUtil.isInstanceOf(exp, 'freemarker.core.Expression')) || exp === null) && ((typeof returnNullOnNonCoercableType === 'string') || returnNullOnNonCoercableType === null) && ((ClassUtil.isInstanceOf(seqTip, 'freemarker.core.Environment')) || seqTip === null) && env === undefined) {
             return <any>EvalUtil.coerceModelToStringOrMarkup$freemarker_template_TemplateModel$freemarker_core_Expression$java_lang_String$freemarker_core_Environment(tm, exp, returnNullOnNonCoercableType, seqTip);
         } else throw new Error('invalid overload');
     }
@@ -342,7 +342,7 @@ export class EvalUtil {
      * @param {Environment} env
      */
     static coerceModelToStringOrUnsupportedMarkup(tm : TemplateModel, exp : /*Expression*/any, seqTip : string, env : /*Environment*/any) : string {
-        if(tm != null && (tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.template.TemplateNumberModel") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.template.TemplateNumberModel") >= 0)) {
+        if(tm != null && ClassUtil.isAssignableFrom(tm, "freemarker.template.TemplateNumberModel")) {
             let tnm : TemplateNumberModel = <TemplateNumberModel><any>tm;
             let format : TemplateNumberFormat = env.getTemplateNumberFormat$freemarker_core_Expression$boolean(exp, false);
             try {
@@ -350,7 +350,7 @@ export class EvalUtil {
             } catch(e) {
                 throw _MessageUtil.newCantFormatNumberException(format, exp, e, false);
             }
-        } else if(tm != null && (tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.template.TemplateDateModel") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.template.TemplateDateModel") >= 0)) {
+        } else if(tm != null && ClassUtil.isAssignableFrom(tm, "freemarker.template.TemplateDateModel")) {
             let tdm : TemplateDateModel = <TemplateDateModel><any>tm;
             let format : TemplateDateFormat = env.getTemplateDateFormat$freemarker_template_TemplateDateModel$freemarker_core_Expression$boolean(tdm, exp, false);
             try {
@@ -374,9 +374,9 @@ export class EvalUtil {
      * @param {Environment} env
      */
     static coerceModelToPlainText(tm : TemplateModel, exp : /*Expression*/any, seqTip : string, env : /*Environment*/any) : string {
-        if(tm != null && (tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.template.TemplateNumberModel") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.template.TemplateNumberModel") >= 0)) {
+        if(tm != null && ClassUtil.isAssignableFrom(tm, "freemarker.template.TemplateNumberModel")) {
             return EvalUtil.assertFormatResultNotNull$java_lang_String(env.formatNumberToPlainText$freemarker_template_TemplateNumberModel$freemarker_core_Expression$boolean(<TemplateNumberModel><any>tm, exp, false));
-        } else if(tm != null && (tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.template.TemplateDateModel") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.template.TemplateDateModel") >= 0)) {
+        } else if(tm != null && ClassUtil.isAssignableFrom(tm, "freemarker.template.TemplateDateModel")) {
             return EvalUtil.assertFormatResultNotNull$java_lang_String(env.formatDateToPlainText$freemarker_template_TemplateDateModel$freemarker_core_Expression$boolean(<TemplateDateModel><any>tm, exp, false));
         } else {
             return EvalUtil.coerceModelToTextualCommon(tm, exp, seqTip, false, false, env);

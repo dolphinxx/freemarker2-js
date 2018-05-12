@@ -37,6 +37,7 @@ import {_MessageUtil} from './_MessageUtil';
 import {BugException} from './BugException';
 import {TemplateNumberFormat} from './TemplateNumberFormat';
 import {BackwardCompatibleTemplateNumberFormat} from './BackwardCompatibleTemplateNumberFormat';
+import {ClassUtil} from "../template/utility/ClassUtil";
 
 /**
  * A holder for builtins that didn't fit into any other category.
@@ -67,7 +68,7 @@ export namespace BuiltInsForMultipleTypes {
          */
         _eval(env : /*Environment*/any) : TemplateModel {
             let model : TemplateModel = this.target.eval(env);
-            if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateDateModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateDateModel") >= 0)) {
+            if(model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateDateModel")) {
                 let dmodel : TemplateDateModel = <TemplateDateModel><any>model;
                 let dtype : number = dmodel.getDateType();
                 if(this.dateType === dtype) {
@@ -182,7 +183,7 @@ export namespace BuiltInsForMultipleTypes {
                 throw new _MiscTemplateException(this, "Can\'t use ?api, because the \"", Configurable.API_BUILTIN_ENABLED_KEY_$LI$(), "\" configuration setting is false. Think twice before you set it to true though. Especially, it shouldn\'t abused for modifying Map-s and Collection-s.");
             }
             let tm : TemplateModel = this.target.eval(env);
-            if(!(tm != null && (tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.template.TemplateModelWithAPISupport") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.template.TemplateModelWithAPISupport") >= 0))) {
+            if(!(tm != null && ClassUtil.isAssignableFrom(tm, "freemarker.template.TemplateModelWithAPISupport"))) {
                 this.target.assertNonNull(tm, env);
                 throw new APINotSupportedTemplateException(env, this.target, tm);
             }
@@ -207,7 +208,7 @@ export namespace BuiltInsForMultipleTypes {
         _eval(env : /*Environment*/any) : TemplateModel {
             let tm : TemplateModel = this.target.eval(env);
             this.target.assertNonNull(tm, env);
-            return (tm != null && (tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.template.TemplateModelWithAPISupport") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.template.TemplateModelWithAPISupport") >= 0))?TemplateBooleanModel.TRUE:TemplateBooleanModel.FALSE;
+            return (tm != null && ClassUtil.isAssignableFrom(tm, "freemarker.template.TemplateModelWithAPISupport"))?TemplateBooleanModel.TRUE:TemplateBooleanModel.FALSE;
         }
 
         constructor() {
@@ -228,7 +229,7 @@ export namespace BuiltInsForMultipleTypes {
         _eval(env : /*Environment*/any) : TemplateModel {
             let tm : TemplateModel = this.target.eval(env);
             this.target.assertNonNull(tm, env);
-            return (tm != null && (tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.template.TemplateBooleanModel") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.template.TemplateBooleanModel") >= 0))?TemplateBooleanModel.TRUE:TemplateBooleanModel.FALSE;
+            return (tm != null && ClassUtil.isAssignableFrom(tm, "freemarker.template.TemplateBooleanModel"))?TemplateBooleanModel.TRUE:TemplateBooleanModel.FALSE;
         }
 
         constructor() {
@@ -249,7 +250,7 @@ export namespace BuiltInsForMultipleTypes {
         _eval(env : /*Environment*/any) : TemplateModel {
             let tm : TemplateModel = this.target.eval(env);
             this.target.assertNonNull(tm, env);
-            return (tm != null && (tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.template.TemplateCollectionModel") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.template.TemplateCollectionModel") >= 0))?TemplateBooleanModel.TRUE:TemplateBooleanModel.FALSE;
+            return (tm != null && ClassUtil.isAssignableFrom(tm, "freemarker.template.TemplateCollectionModel"))?TemplateBooleanModel.TRUE:TemplateBooleanModel.FALSE;
         }
 
         constructor() {
@@ -270,7 +271,7 @@ export namespace BuiltInsForMultipleTypes {
         _eval(env : /*Environment*/any) : TemplateModel {
             let tm : TemplateModel = this.target.eval(env);
             this.target.assertNonNull(tm, env);
-            return (tm != null && (tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.template.TemplateCollectionModelEx") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.template.TemplateCollectionModelEx") >= 0))?TemplateBooleanModel.TRUE:TemplateBooleanModel.FALSE;
+            return (tm != null && ClassUtil.isAssignableFrom(tm, "freemarker.template.TemplateCollectionModelEx"))?TemplateBooleanModel.TRUE:TemplateBooleanModel.FALSE;
         }
 
         constructor() {
@@ -291,7 +292,7 @@ export namespace BuiltInsForMultipleTypes {
         _eval(env : /*Environment*/any) : TemplateModel {
             let tm : TemplateModel = this.target.eval(env);
             this.target.assertNonNull(tm, env);
-            return (tm != null && (tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.template.TemplateDateModel") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.template.TemplateDateModel") >= 0))?TemplateBooleanModel.TRUE:TemplateBooleanModel.FALSE;
+            return (tm != null && ClassUtil.isAssignableFrom(tm, "freemarker.template.TemplateDateModel"))?TemplateBooleanModel.TRUE:TemplateBooleanModel.FALSE;
         }
 
         constructor() {
@@ -320,7 +321,7 @@ export namespace BuiltInsForMultipleTypes {
         _eval(env : /*Environment*/any) : TemplateModel {
             let tm : TemplateModel = this.target.eval(env);
             this.target.assertNonNull(tm, env);
-            return (tm != null && (tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.template.TemplateDateModel") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.template.TemplateDateModel") >= 0)) && (<TemplateDateModel><any>tm).getDateType() === this.dateType?TemplateBooleanModel.TRUE:TemplateBooleanModel.FALSE;
+            return (tm != null && ClassUtil.isAssignableFrom(tm, "freemarker.template.TemplateDateModel")) && (<TemplateDateModel><any>tm).getDateType() === this.dateType?TemplateBooleanModel.TRUE:TemplateBooleanModel.FALSE;
         }
     }
     is_dateOfTypeBI["__class"] = "freemarker.core.BuiltInsForMultipleTypes.is_dateOfTypeBI";
@@ -337,7 +338,7 @@ export namespace BuiltInsForMultipleTypes {
         _eval(env : /*Environment*/any) : TemplateModel {
             let tm : TemplateModel = this.target.eval(env);
             this.target.assertNonNull(tm, env);
-            return ((tm != null && (tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.template.TemplateTransformModel") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.template.TemplateTransformModel") >= 0)) || (tm != null && tm instanceof <any>Macro) || (tm != null && (tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.template.TemplateDirectiveModel") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.template.TemplateDirectiveModel") >= 0)))?TemplateBooleanModel.TRUE:TemplateBooleanModel.FALSE;
+            return ((tm != null && ClassUtil.isAssignableFrom(tm, "freemarker.template.TemplateTransformModel")) || (tm != null && tm instanceof <any>Macro) || (tm != null && ClassUtil.isAssignableFrom(tm, "freemarker.template.TemplateDirectiveModel")))?TemplateBooleanModel.TRUE:TemplateBooleanModel.FALSE;
         }
 
         constructor() {
@@ -358,7 +359,7 @@ export namespace BuiltInsForMultipleTypes {
         _eval(env : /*Environment*/any) : TemplateModel {
             let tm : TemplateModel = this.target.eval(env);
             this.target.assertNonNull(tm, env);
-            return ((tm != null && (tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0)) || (tm != null && (tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.template.TemplateCollectionModel") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.template.TemplateCollectionModel") >= 0))) && (_TemplateAPI.getTemplateLanguageVersionAsInt$freemarker_core_TemplateObject(this) < _TemplateAPI.VERSION_INT_2_3_21_$LI$() || !((tm != null && tm instanceof <any>SimpleMethodModel) || (tm != null && tm instanceof <any>OverloadedMethodsModel)))?TemplateBooleanModel.TRUE:TemplateBooleanModel.FALSE;
+            return ((tm != null && ClassUtil.isAssignableFrom(tm, "freemarker.template.TemplateSequenceModel")) || (tm != null && ClassUtil.isAssignableFrom(tm, "freemarker.template.TemplateCollectionModel"))) && (_TemplateAPI.getTemplateLanguageVersionAsInt$freemarker_core_TemplateObject(this) < _TemplateAPI.VERSION_INT_2_3_21_$LI$() || !((tm != null && tm instanceof <any>SimpleMethodModel) || (tm != null && tm instanceof <any>OverloadedMethodsModel)))?TemplateBooleanModel.TRUE:TemplateBooleanModel.FALSE;
         }
 
         constructor() {
@@ -379,7 +380,7 @@ export namespace BuiltInsForMultipleTypes {
         _eval(env : /*Environment*/any) : TemplateModel {
             let tm : TemplateModel = this.target.eval(env);
             this.target.assertNonNull(tm, env);
-            return (tm != null && (tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.template.TemplateHashModelEx") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.template.TemplateHashModelEx") >= 0))?TemplateBooleanModel.TRUE:TemplateBooleanModel.FALSE;
+            return (tm != null && ClassUtil.isAssignableFrom(tm, "freemarker.template.TemplateHashModelEx"))?TemplateBooleanModel.TRUE:TemplateBooleanModel.FALSE;
         }
 
         constructor() {
@@ -400,7 +401,7 @@ export namespace BuiltInsForMultipleTypes {
         _eval(env : /*Environment*/any) : TemplateModel {
             let tm : TemplateModel = this.target.eval(env);
             this.target.assertNonNull(tm, env);
-            return (tm != null && (tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.template.TemplateHashModel") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.template.TemplateHashModel") >= 0))?TemplateBooleanModel.TRUE:TemplateBooleanModel.FALSE;
+            return (tm != null && ClassUtil.isAssignableFrom(tm, "freemarker.template.TemplateHashModel"))?TemplateBooleanModel.TRUE:TemplateBooleanModel.FALSE;
         }
 
         constructor() {
@@ -421,7 +422,7 @@ export namespace BuiltInsForMultipleTypes {
         _eval(env : /*Environment*/any) : TemplateModel {
             let tm : TemplateModel = this.target.eval(env);
             this.target.assertNonNull(tm, env);
-            return (tm != null && (tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0))?TemplateBooleanModel.TRUE:TemplateBooleanModel.FALSE;
+            return (tm != null && ClassUtil.isAssignableFrom(tm, "freemarker.template.TemplateSequenceModel"))?TemplateBooleanModel.TRUE:TemplateBooleanModel.FALSE;
         }
 
         constructor() {
@@ -463,7 +464,7 @@ export namespace BuiltInsForMultipleTypes {
         _eval(env : /*Environment*/any) : TemplateModel {
             let tm : TemplateModel = this.target.eval(env);
             this.target.assertNonNull(tm, env);
-            return (tm != null && (tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.core.TemplateMarkupOutputModel") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.core.TemplateMarkupOutputModel") >= 0))?TemplateBooleanModel.TRUE:TemplateBooleanModel.FALSE;
+            return (tm != null && ClassUtil.isAssignableFrom(tm, "freemarker.core.TemplateMarkupOutputModel"))?TemplateBooleanModel.TRUE:TemplateBooleanModel.FALSE;
         }
 
         constructor() {
@@ -484,7 +485,7 @@ export namespace BuiltInsForMultipleTypes {
         _eval(env : /*Environment*/any) : TemplateModel {
             let tm : TemplateModel = this.target.eval(env);
             this.target.assertNonNull(tm, env);
-            return (tm != null && (tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.template.TemplateMethodModel") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.template.TemplateMethodModel") >= 0))?TemplateBooleanModel.TRUE:TemplateBooleanModel.FALSE;
+            return (tm != null && ClassUtil.isAssignableFrom(tm, "freemarker.template.TemplateMethodModel"))?TemplateBooleanModel.TRUE:TemplateBooleanModel.FALSE;
         }
 
         constructor() {
@@ -505,7 +506,7 @@ export namespace BuiltInsForMultipleTypes {
         _eval(env : /*Environment*/any) : TemplateModel {
             let tm : TemplateModel = this.target.eval(env);
             this.target.assertNonNull(tm, env);
-            return (tm != null && (tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.template.TemplateNodeModel") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.template.TemplateNodeModel") >= 0))?TemplateBooleanModel.TRUE:TemplateBooleanModel.FALSE;
+            return (tm != null && ClassUtil.isAssignableFrom(tm, "freemarker.template.TemplateNodeModel"))?TemplateBooleanModel.TRUE:TemplateBooleanModel.FALSE;
         }
 
         constructor() {
@@ -526,7 +527,7 @@ export namespace BuiltInsForMultipleTypes {
         _eval(env : /*Environment*/any) : TemplateModel {
             let tm : TemplateModel = this.target.eval(env);
             this.target.assertNonNull(tm, env);
-            return (tm != null && (tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.template.TemplateNumberModel") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.template.TemplateNumberModel") >= 0))?TemplateBooleanModel.TRUE:TemplateBooleanModel.FALSE;
+            return (tm != null && ClassUtil.isAssignableFrom(tm, "freemarker.template.TemplateNumberModel"))?TemplateBooleanModel.TRUE:TemplateBooleanModel.FALSE;
         }
 
         constructor() {
@@ -547,7 +548,7 @@ export namespace BuiltInsForMultipleTypes {
         _eval(env : /*Environment*/any) : TemplateModel {
             let tm : TemplateModel = this.target.eval(env);
             this.target.assertNonNull(tm, env);
-            return ((tm != null && (tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0)) && (!((tm != null && tm instanceof <any>OverloadedMethodsModel) || (tm != null && tm instanceof <any>SimpleMethodModel)) || !env.isIcI2324OrLater()))?TemplateBooleanModel.TRUE:TemplateBooleanModel.FALSE;
+            return ((tm != null && ClassUtil.isAssignableFrom(tm, "freemarker.template.TemplateSequenceModel")) && (!((tm != null && tm instanceof <any>OverloadedMethodsModel) || (tm != null && tm instanceof <any>SimpleMethodModel)) || !env.isIcI2324OrLater()))?TemplateBooleanModel.TRUE:TemplateBooleanModel.FALSE;
         }
 
         constructor() {
@@ -568,7 +569,7 @@ export namespace BuiltInsForMultipleTypes {
         _eval(env : /*Environment*/any) : TemplateModel {
             let tm : TemplateModel = this.target.eval(env);
             this.target.assertNonNull(tm, env);
-            return (tm != null && (tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0))?TemplateBooleanModel.TRUE:TemplateBooleanModel.FALSE;
+            return (tm != null && ClassUtil.isAssignableFrom(tm, "freemarker.template.TemplateScalarModel"))?TemplateBooleanModel.TRUE:TemplateBooleanModel.FALSE;
         }
 
         constructor() {
@@ -589,7 +590,7 @@ export namespace BuiltInsForMultipleTypes {
         _eval(env : /*Environment*/any) : TemplateModel {
             let tm : TemplateModel = this.target.eval(env);
             this.target.assertNonNull(tm, env);
-            return (tm != null && (tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.template.TemplateTransformModel") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.template.TemplateTransformModel") >= 0))?TemplateBooleanModel.TRUE:TemplateBooleanModel.FALSE;
+            return (tm != null && ClassUtil.isAssignableFrom(tm, "freemarker.template.TemplateTransformModel"))?TemplateBooleanModel.TRUE:TemplateBooleanModel.FALSE;
         }
 
         constructor() {
@@ -634,11 +635,11 @@ export namespace BuiltInsForMultipleTypes {
         _eval(env : /*Environment*/any) : TemplateModel {
             let model : TemplateModel = this.target.eval(env);
             let size : number;
-            if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0)) {
+            if(model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateSequenceModel")) {
                 size = (<TemplateSequenceModel><any>model).size();
-            } else if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateCollectionModelEx") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateCollectionModelEx") >= 0)) {
+            } else if(model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateCollectionModelEx")) {
                 size = (<TemplateCollectionModelEx><any>model).size();
-            } else if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateHashModelEx") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateHashModelEx") >= 0)) {
+            } else if(model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateHashModelEx")) {
                 size = (<TemplateHashModelEx><any>model).size();
             } else {
                 throw new UnexpectedTypeException(this.target, model, "extended-hash or sequence or extended collection", ["freemarker.template.TemplateHashModelEx", "freemarker.template.TemplateSequenceModel", "freemarker.template.TemplateCollectionModelEx"], env);
@@ -663,16 +664,16 @@ export namespace BuiltInsForMultipleTypes {
          */
         _eval(env : /*Environment*/any) : TemplateModel {
             let model : TemplateModel = this.target.eval(env);
-            if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateNumberModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateNumberModel") >= 0)) {
+            if(model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateNumberModel")) {
                 return new stringBI.NumberFormatter(this, <TemplateNumberModel><any>model, env);
-            } else if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateDateModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateDateModel") >= 0)) {
+            } else if(model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateDateModel")) {
                 let dm : TemplateDateModel = <TemplateDateModel><any>model;
                 return new stringBI.DateFormatter(this, dm, env);
             } else if(model != null && model instanceof <any>SimpleScalar) {
                 return model;
-            } else if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateBooleanModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateBooleanModel") >= 0)) {
+            } else if(model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateBooleanModel")) {
                 return new stringBI.BooleanFormatter(this, <TemplateBooleanModel><any>model, env);
-            } else if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0)) {
+            } else if(model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateScalarModel")) {
                 return new SimpleScalar((<TemplateScalarModel><any>model).getAsString());
             } else if(env.isClassicCompatible() && (model != null && model instanceof <any>BeanModel)) {
                 return new SimpleScalar(_BeansAPI.getAsClassicCompatibleString(<BeanModel><any>model));
@@ -886,9 +887,9 @@ export namespace BuiltInsForMultipleTypes {
          */
         _eval(env : /*Environment*/any) : TemplateModel {
             let model : TemplateModel = this.target.eval(env);
-            if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateNumberModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateNumberModel") >= 0)) {
+            if(model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateNumberModel")) {
                 return this.formatNumber(env, model);
-            } else if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateBooleanModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateBooleanModel") >= 0)) {
+            } else if(model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateBooleanModel")) {
                 return new SimpleScalar((<TemplateBooleanModel><any>model).getAsBoolean()?MiscUtil.C_TRUE:MiscUtil.C_FALSE);
             } else {
                 throw new UnexpectedTypeException(this.target, model, "number or boolean", ["freemarker.template.TemplateNumberModel", "freemarker.template.TemplateBooleanModel"], env);
@@ -916,9 +917,9 @@ export namespace BuiltInsForMultipleTypes {
          */
         _eval(env : /*Environment*/any) : TemplateModel {
             let model : TemplateModel = this.target.eval(env);
-            if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateNumberModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateNumberModel") >= 0)) {
+            if(model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateNumberModel")) {
                 return this.formatNumber(env, model);
-            } else if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateBooleanModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateBooleanModel") >= 0)) {
+            } else if(model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateBooleanModel")) {
                 return new SimpleScalar((<TemplateBooleanModel><any>model).getAsBoolean()?MiscUtil.C_TRUE:MiscUtil.C_FALSE);
             } else {
                 throw new UnexpectedTypeException(this.target, model, "number or boolean", ["freemarker.template.TemplateNumberModel", "freemarker.template.TemplateBooleanModel"], env);

@@ -8,6 +8,7 @@ import {BeansWrapper} from './BeansWrapper';
 import {OverloadedMethods} from './OverloadedMethods';
 import {SimpleMethodModel} from './SimpleMethodModel';
 import {OverloadedMethodsModel} from './OverloadedMethodsModel';
+import {ClassUtil} from "../../template/utility/ClassUtil";
 
 /**
  * Wraps the static fields and methods of a class in a
@@ -37,7 +38,7 @@ export class StaticModel implements TemplateHashModelEx {
 
     public get$java_lang_String(key : string) : TemplateModel {
         let model : any = /* get */this.map.get(key);
-        if(model != null && (model["__interfaces"] != null && model["__interfaces"].indexOf("freemarker.template.TemplateModel") >= 0 || model.constructor != null && model.constructor["__interfaces"] != null && model.constructor["__interfaces"].indexOf("freemarker.template.TemplateModel") >= 0)) return <TemplateModel><any>model;
+        if(model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateModel")) return <TemplateModel><any>model;
         if(model != null && model instanceof <any>Field) {
             try {
                 return this.wrapper.getOuterIdentity()['wrap$java_lang_Object'](/* get */null[(<Field>model).name]);

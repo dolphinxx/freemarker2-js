@@ -3021,7 +3021,7 @@ export class Configuration extends Configurable implements ParserConfiguration {
      * @param {*} tm
      */
     public setSharedVariable(name? : any, tm? : any) : any {
-        if(((typeof name === 'string') || name === null) && ((tm != null && (tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.template.TemplateModel") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.template.TemplateModel") >= 0)) || tm === null)) {
+        if(((typeof name === 'string') || name === null) && ((tm != null && ClassUtil.isAssignableFrom(tm, "freemarker.template.TemplateModel")) || tm === null)) {
             return <any>this.setSharedVariable$java_lang_String$freemarker_template_TemplateModel(name, tm);
         } else if(((typeof name === 'string') || name === null) && ((tm != null) || tm === null)) {
             return <any>this.setSharedVariable$java_lang_String$java_lang_Object(name, tm);
