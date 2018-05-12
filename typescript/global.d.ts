@@ -6,6 +6,10 @@ declare module NodeJS {
     }
 }
 
+interface Object {
+    __proto__: any;
+}
+
 interface String {
     repeat: (string) => string;
     startsWith: (string) => string;

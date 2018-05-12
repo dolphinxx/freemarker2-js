@@ -13,9 +13,9 @@ let configuration = null;
 
 function getConfiguration() {
     if(configuration === null) {
-        configuration =  new Configuration(Configuration.VERSION_2_3_0);
+        configuration =  new Configuration(Configuration.VERSION_2_3_29);
         configuration.setTemplateLoader(new FileTemplateLoader(__dirname, 'utf-8'));
-        configuration.setOutputFormat(new HTMLOutputFormat());
+        // configuration.setOutputFormat(new HTMLOutputFormat());
         applyEnvironmentIndependentDefaults();
     }
     return configuration;
@@ -36,7 +36,7 @@ function applyEnvironmentIndependentDefaults() {
     }
 }
 
-function assertOutputForNamed(name) {
+function assertOutputForNamed(description, name) {
     let expectedOut;
     {
         let resName = name + ".out";
@@ -47,23 +47,33 @@ function assertOutputForNamed(name) {
         }
         expectedOut = removeTxtCopyrightComment(fs.readFileSync(file, {encoding: 'UTF-8'}));
     }
-    assertOutput(getConfiguration().getTemplate(name), expectedOut, true);
+    assertOutput(description, getConfiguration().getTemplate(name), expectedOut, true);
 }
 
-function assertOutput(t, expectedOut, normalizeNewlines) {
+function assertOutput(description, t, expectedOut, normalizeNewlines) {
     let actualOut = getOutput(t);
 
     if (normalizeNewlines) {
         expectedOut = normalizeNewLines(expectedOut);
         actualOut = normalizeNewLines(actualOut);
     }
-    assertEquals(expectedOut, actualOut);
+    assertEquals(description, expectedOut, actualOut);
 }
 
-function assertEquals(expected, actual) {
+function assertEquals(description, expected, actual) {
     if(expected !== actual) {
-        throw new Error(`expected:\n${expected}\nactual:\n${actual}`);
+        throw new Error(`${description} in ${getScriptFileName()} expected:\n${expected}\nactual:\n${actual}`);
     }
+    console.info(`${description} in ${getScriptFileName()} passed!`);
+}
+let filename = null;
+function getScriptFileName() {
+    if(filename !== null) {
+        return filename;
+    }
+    let _filename = __filename.replace(/\\/g, '/');
+    filename = _filename.substring(_filename.lastIndexOf('/') + 1);
+    return filename;
 }
 
 function getOutput(t) {
@@ -110,4 +120,11 @@ function removeTxtCopyrightComment(s) {
     return s.substring(commentEnd);
 }
 
-assertOutputForNamed("AutoEscapingExample-infoBox.ftlh");
+assertOutputForNamed("testInfoBox", "AutoEscapingExample-infoBox.ftlh");
+assertOutputForNamed("testCapture", "AutoEscapingExample-capture.ftlh");
+assertOutputForNamed("testMarkup", "AutoEscapingExample-markup.ftlh");
+assertOutputForNamed("testConvert", "AutoEscapingExample-convert.ftlh");
+assertOutputForNamed("testConvert2", "AutoEscapingExample-convert2.ftl");
+assertOutputForNamed("testStringLiteral", "AutoEscapingExample-stringLiteral.ftlh");
+assertOutputForNamed("testStringLiteral2", "AutoEscapingExample-stringLiteral2.ftlh");
+assertOutputForNamed("testStringConcat", "AutoEscapingExample-stringConcat.ftlh");

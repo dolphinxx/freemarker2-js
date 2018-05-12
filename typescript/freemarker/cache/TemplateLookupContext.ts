@@ -1,5 +1,6 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
 import {TemplateLookupResult} from './TemplateLookupResult';
+import {Locale} from "../../java/util/Locale";
 
 /**
  * Used as the parameter of {link TemplateLookupStrategy#lookup(TemplateLookupContext)}.
@@ -11,7 +12,7 @@ import {TemplateLookupResult} from './TemplateLookupResult';
 export abstract class TemplateLookupContext {
     /*private*/ templateName : string;
 
-    /*private*/ templateLocale : string;
+    /*private*/ templateLocale : Locale;
 
     /*private*/ customLookupCondition : any;
 
@@ -41,7 +42,7 @@ export abstract class TemplateLookupContext {
      */
     public abstract lookupWithLocalizedThenAcquisitionStrategy(templateName : string, templateLocale : string) : TemplateLookupResult;
 
-    constructor(templateName : string, templateLocale : string, customLookupCondition : any) {
+    constructor(templateName : string, templateLocale : Locale, customLookupCondition : any) {
         if(this.templateName===undefined) this.templateName = null;
         if(this.templateLocale===undefined) this.templateLocale = null;
         if(this.customLookupCondition===undefined) this.customLookupCondition = null;
@@ -63,7 +64,7 @@ export abstract class TemplateLookupContext {
      * locale requested.
      * @return {Locale}
      */
-    public getTemplateLocale() : string {
+    public getTemplateLocale() : Locale {
         return this.templateLocale;
     }
 

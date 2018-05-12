@@ -3,6 +3,7 @@ import {Version} from '../../template/Version';
 import {BeansWrapperConfiguration} from './BeansWrapperConfiguration';
 import {BeansWrapper} from './BeansWrapper';
 import {_BeansAPI} from './_BeansAPI';
+import {Map} from "../../../java/util/Map";
 
 /**
  * See {link BeansWrapperConfiguration#BeansWrapperConfiguration(Version)}.
@@ -13,7 +14,7 @@ import {_BeansAPI} from './_BeansAPI';
 export class BeansWrapperBuilder extends BeansWrapperConfiguration {
     static INSTANCE_CACHE : Map<any, any>; public static INSTANCE_CACHE_$LI$() : Map<any, any> { if(BeansWrapperBuilder.INSTANCE_CACHE == null) BeansWrapperBuilder.INSTANCE_CACHE = <any>(new Map<any, any>()); return BeansWrapperBuilder.INSTANCE_CACHE; };
 
-    static INSTANCE_CACHE_REF_QUEUE : ReferenceQueue; public static INSTANCE_CACHE_REF_QUEUE_$LI$() : ReferenceQueue { if(BeansWrapperBuilder.INSTANCE_CACHE_REF_QUEUE == null) BeansWrapperBuilder.INSTANCE_CACHE_REF_QUEUE = <any>(new ReferenceQueue<BeansWrapper>()); return BeansWrapperBuilder.INSTANCE_CACHE_REF_QUEUE; };
+    static INSTANCE_CACHE_REF_QUEUE : Array<BeansWrapper> = [];
 
     public constructor(incompatibleImprovements : Version) {
         super(incompatibleImprovements);
@@ -42,7 +43,7 @@ export class BeansWrapperBuilder extends BeansWrapperConfiguration {
      * @return {BeansWrapper}
      */
     public build() : BeansWrapper {
-        return <any>(_BeansAPI.getBeansWrapperSubclassSingleton<any, any>(this, BeansWrapperBuilder.INSTANCE_CACHE_$LI$(), BeansWrapperBuilder.INSTANCE_CACHE_REF_QUEUE_$LI$(), BeansWrapperBuilder.BeansWrapperFactory.INSTANCE_$LI$()));
+        return <any>(_BeansAPI.getBeansWrapperSubclassSingleton<any, any>(this, BeansWrapperBuilder.INSTANCE_CACHE_$LI$(), BeansWrapperBuilder.INSTANCE_CACHE_REF_QUEUE, BeansWrapperBuilder.BeansWrapperFactory.INSTANCE_$LI$()));
     }
 }
 BeansWrapperBuilder["__class"] = "freemarker.ext.beans.BeansWrapperBuilder";
@@ -73,7 +74,5 @@ export namespace BeansWrapperBuilder {
 
 
 BeansWrapperBuilder.BeansWrapperFactory.INSTANCE_$LI$();
-
-BeansWrapperBuilder.INSTANCE_CACHE_REF_QUEUE_$LI$();
 
 BeansWrapperBuilder.INSTANCE_CACHE_$LI$();

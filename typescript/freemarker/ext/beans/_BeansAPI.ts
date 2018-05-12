@@ -6,6 +6,7 @@ import {CallableMemberDescriptor} from './CallableMemberDescriptor';
 import {BeansWrapperConfiguration} from './BeansWrapperConfiguration';
 import {ClassIntrospectorBuilder} from './ClassIntrospectorBuilder';
 import {Map} from "../../../java/util/Map";
+import {Iterator as _Iterator} from "../../../java/util/Iterator";
 
 /**
  * For internal use only; don't depend on this, there's no backward compatibility guarantee at all!
@@ -108,68 +109,70 @@ export class _BeansAPI {
      * @param {ReferenceQueue} instanceCacheRefQue
      * @return {BeansWrapper}
      */
-    public static getBeansWrapperSubclassSingleton<BW extends BeansWrapper, BWC extends BeansWrapperConfiguration>(settings : BWC, instanceCache : Map, instanceCacheRefQue : /*ReferenceQueue*/any, beansWrapperSubclassFactory : _BeansAPI._BeansWrapperSubclassFactory<BW, BWC>) : BW {
-        // let tccl : ClassLoader = java.lang.Thread.currentThread().getContextClassLoader();
-        // let instanceRef : Reference;
-        // let tcclScopedCache : Map<any, any>;
-        // {
-        //     tcclScopedCache = /* get */instanceCache.get(tccl);
-        //     if(tcclScopedCache == null) {
-        //         tcclScopedCache = <any>(new Map<any, any>());
-        //         /* put */instanceCache.set(tccl, tcclScopedCache);
-        //         instanceRef = null;
-        //     } else {
-        //         instanceRef = /* get */tcclScopedCache.get(settings);
-        //     }
-        // };
-        // let instance : BW = instanceRef != null?instanceRef.get():null;
-        // if(instance != null) {
-        //     return instance;
-        // }
-        // settings = <any>(/* clone */_BeansAPI.clone<any>(settings));
-        // instance = beansWrapperSubclassFactory.create(settings);
-        // if(!instance.isWriteProtected()) {
-        //     throw new BugException();
-        // }
-        // {
-        //     instanceRef = /* get */tcclScopedCache.get(settings);
-        //     let concurrentInstance : BW = instanceRef != null?instanceRef.get():null;
-        //     if(concurrentInstance == null) {
-        //         /* put */tcclScopedCache.set(settings, instance);
-        //     } else {
-        //         instance = concurrentInstance;
-        //     }
-        // };
-        // _BeansAPI.removeClearedReferencesFromCache<any, any>(instanceCache, instanceCacheRefQue);
-        // return instance;
-        throw new Error();
+    public static getBeansWrapperSubclassSingleton<BW extends BeansWrapper, BWC extends BeansWrapperConfiguration>(settings : BWC, instanceCache : Map, instanceCacheRefQue : Array<BeansWrapper>, beansWrapperSubclassFactory : _BeansAPI._BeansWrapperSubclassFactory<BW, BWC>) : BW {
+        let instanceRef : any;
+        let tcclScopedCache : Map<any, any>;
+        {
+            tcclScopedCache = instanceCache.get('NODEJS');
+            if(tcclScopedCache == null) {
+                tcclScopedCache = <any>(new Map<any, any>());
+                instanceCache.put('NODEJS', tcclScopedCache);
+                instanceRef = null;
+            } else {
+                instanceRef = tcclScopedCache.get(settings);
+            }
+        }
+        let instance : BW = instanceRef != null?instanceRef:null;
+        if(instance != null) {
+            return instance;
+        }
+        settings = <any>(/* clone */_BeansAPI.clone<any>(settings));
+        instance = beansWrapperSubclassFactory.create(settings);
+        if(!instance.isWriteProtected()) {
+            throw new (require('../../core/BugException').BugException)();
+        }
+        {
+            instanceRef = /* get */tcclScopedCache.get(settings);
+            let concurrentInstance : BW = instanceRef != null?instanceRef.get():null;
+            if(concurrentInstance == null) {
+                /* put */tcclScopedCache.set(settings, instance);
+            } else {
+                instance = concurrentInstance;
+            }
+        }
+        _BeansAPI.removeClearedReferencesFromCache<any, any>(instanceCache, instanceCacheRefQue);
+        return instance;
     }
 
     static clone<BWC extends BeansWrapperConfiguration>(settings : BWC) : BWC {
         return <BWC><any>/* clone */settings.clone(true);
     }
 
-    static removeClearedReferencesFromCache<BW extends BeansWrapper, BWC extends BeansWrapperConfiguration>(instanceCache : Map, instanceCacheRefQue : /*ReferenceQueue*/any) {
-        // let clearedRef : Reference;
-        // while(((clearedRef = instanceCacheRefQue.poll()) != null)) {
-        //     {
-        //         findClearedRef: {
-        //             let array168 = /* values */((m) => { let r=[]; m.forEach((v, k, m) => r.push(v)); return r; })(<any>instanceCache);
-        //             for(let index167=0; index167 < array168.length; index167++) {
-        //                 let tcclScopedCache = array168[index167];
-        //                 {
-        //                     for(let it2 : Iterator = /* iterator */((a) => { var i = 0; return { next: function() { return i<a.length?a[i++]:null; }, hasNext: function() { return i<a.length; }}})(/* values */((m) => { let r=[]; m.forEach((v, k, m) => r.push(v)); return r; })(<any>tcclScopedCache)); it2.hasNext(); ) {
-        //                         if(it2.next() === clearedRef) {
-        //                             it2.remove();
-        //                             break findClearedRef;
-        //                         }
-        //                     };
-        //                 }
-        //             }
-        //         }
-        //     };
-        // };
-        throw new Error();
+    static removeClearedReferencesFromCache<BW extends BeansWrapper, BWC extends BeansWrapperConfiguration>(instanceCache : Map<string, Map<BWC, BW>>, instanceCacheRefQue : Array<BeansWrapper>) {
+        let clearedRef : BeansWrapper;
+        while(((clearedRef = instanceCacheRefQue.shift()) != null)) {
+            {
+                findClearedRef: {
+                    let array168:Array<Map<BWC, BW>> =instanceCache.values();
+                    for(let index167=0; index167 < array168.length; index167++) {
+                        let tcclScopedCache:Map<BWC, BW> = array168[index167];
+                        let tcclScopedCacheValues:Array<BW> = tcclScopedCache.values();
+                        for(let i = tcclScopedCacheValues.length - 1;i >= 0;i --) {
+                            if(tcclScopedCacheValues[i] === clearedRef) {
+                                tcclScopedCacheValues.splice(i, 1);
+                                break findClearedRef;
+                            }
+                            // for(let it2 : _Iterator = /*((a) => { var i = 0; return { next: function() { return i<a.length?a[i++]:null; }, hasNext: function() { return i<a.length; }}})*/(((m) => { let r=[]; m.forEach((v, k, m) => r.push(v)); return r; })(<any>tcclScopedCache)); it2.hasNext(); ) {
+                            //     if(it2.next() === clearedRef) {
+                            //         it2.remove();
+                            //         break findClearedRef;
+                            //     }
+                            // };
+                        }
+                    }
+                }
+            }
+        }
     }
 
     public static getClassIntrospectorBuilder(bwc : BeansWrapperConfiguration) : ClassIntrospectorBuilder {

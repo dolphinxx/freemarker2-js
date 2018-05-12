@@ -54,7 +54,7 @@ export class DefaultObjectWrapper extends BeansWrapper {
             writeProtected = false;
         } else {
             if(!(ClassUtil.isAssignableFrom(dowCfg, 'freemarker.template.DefaultObjectWrapperConfiguration'))) {
-                dowCfg = new (require('./DefaultObjectWrapperConfiguration').DefaultObjectWrapperConfiguration)(dowCfg.getIncompaibleImprovements());
+                dowCfg = new (require('./DefaultObjectWrapperConfiguration').DefaultObjectWrapperConfiguration)(dowCfg.getIncompatibleImprovements());
             }
         }
         super(dowCfg, writeProtected);

@@ -2,6 +2,7 @@
 import {Appendable} from "./Appendable";
 import {AbstractStringBuilder} from "./AbstractStringBuilder";
 import {CharSequence} from "./CharSequence";
+import {System} from "./System";
 
 /**
  * A fast way to create strings using multiple appends.
@@ -226,6 +227,47 @@ export class StringBuilder extends AbstractStringBuilder implements CharSequence
     public reverse(): StringBuilder {
         this.reverse0();
         return this;
+    }
+
+    /**
+     * Characters are copied from this sequence into the
+     * destination character array {@code dst}. The first character to
+     * be copied is at index {@code srcBegin}; the last character to
+     * be copied is at index {@code srcEnd-1}. The total number of
+     * characters to be copied is {@code srcEnd-srcBegin}. The
+     * characters are copied into the subarray of {@code dst} starting
+     * at index {@code dstBegin} and ending at index:
+     * <pre>{@code
+     * dstbegin + (srcEnd-srcBegin) - 1
+     * }</pre>
+     *
+     * @param      srcBegin   start copying at this offset.
+     * @param      srcEnd     stop copying at this offset.
+     * @param      dst        the array to copy the data into.
+     * @param      dstBegin   offset into {@code dst}.
+     * @throws     IndexOutOfBoundsException  if any of the following is true:
+     *             <ul>
+     *             <li>{@code srcBegin} is negative
+     *             <li>{@code dstBegin} is negative
+     *             <li>the {@code srcBegin} argument is greater than
+     *             the {@code srcEnd} argument.
+     *             <li>{@code srcEnd} is greater than
+     *             {@code this.length()}.
+     *             <li>{@code dstBegin+srcEnd-srcBegin} is greater than
+     *             {@code dst.length}
+     *             </ul>
+     */
+    public getChars(srcBegin: number, srcEnd: number, dst: Array<string>, dstBegin: number): void {
+        if (srcBegin < 0)
+            throw new Error('StringIndexOutOfBoundsException:' + srcBegin);
+        if ((srcEnd < 0) || (srcEnd > this.string.length))
+            throw new Error('StringIndexOutOfBoundsException:' + srcEnd);
+        if (srcBegin > srcEnd)
+            throw new Error('StringIndexOutOfBoundsException:' + "srcBegin > srcEnd");
+        for (let i = 0; i < srcEnd - srcBegin; i++) {
+            dst[dstBegin + i] = this.string.charAt(srcBegin + i);
+        }
+        // System.arraycopy(this.string, srcBegin, dst, dstBegin, srcEnd - srcBegin);
     }
 }
 

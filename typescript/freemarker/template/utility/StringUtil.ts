@@ -139,9 +139,12 @@ export class StringUtil {
         if(firstEscIdx === -1) {
             return s;
         } else {
-            let esced : string[] = (s => { let a=[]; while(s-->0) a.push(null); return a; })(ln + plusOutLn);
+            let esced : Array<string> = new Array<string>(ln + plusOutLn);
             if(firstEscIdx !== 0) {
-                /* getChars */((a, s, e, d, l) => { d.splice.apply(d, [l, e-s].concat(<any>a.substring(s, e).split(''))); })(s, 0, firstEscIdx, esced, 0);
+                for(let i = 0;i<firstEscIdx;i++) {
+                    esced[i] = s.charAt(i);
+                }
+                // s.getChars(0, firstEscIdx, esced, 0);
             }
             let dst : number = firstEscIdx;
             scan: for(let i : number = firstEscIdx; i <= lastEscIdx; i++) {
@@ -175,9 +178,12 @@ export class StringUtil {
                 esced[dst++] = c;
             }
             if(lastEscIdx !== ln - 1) {
-                /* getChars */((a, s, e, d, l) => { d.splice.apply(d, [l, e-s].concat(<any>a.substring(s, e).split(''))); })(s, lastEscIdx + 1, ln, esced, dst);
+                for(let i = 0;i < ln - (lastEscIdx + 1);i ++) {
+                    esced[i + dst] = s.charAt(i + lastEscIdx + 1);
+                }
+                // /* getChars */((a, s, e, d, l) => { d.splice.apply(d, [l, e-s].concat(<any>a.substring(s, e).split(''))); })(s, lastEscIdx + 1, ln, esced, dst);
             }
-            return /* valueOf */String(esced).toString();
+            return esced.join('');
         }
     }
 

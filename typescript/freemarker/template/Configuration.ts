@@ -3151,7 +3151,7 @@ export class Configuration extends Configurable implements ParserConfiguration {
     }
 
     public removeTemplateFromCache$java_lang_String(name : string) {
-        let loc : string = this.getLocale();
+        let loc : Locale = this.getLocale();
         this.removeTemplateFromCache$java_lang_String$java_util_Locale$java_lang_Object$java_lang_String$boolean(name, loc, null, this.getEncoding(loc), true);
     }
 

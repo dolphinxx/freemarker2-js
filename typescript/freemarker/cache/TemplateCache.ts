@@ -500,7 +500,7 @@ export class TemplateCache {
         } else throw new Error('invalid overload');
     }
 
-    public getTemplate$java_lang_String$java_util_Locale$java_lang_String$boolean(name: string, locale: string, encoding: string, parseAsFTL: boolean): Template {
+    public getTemplate$java_lang_String$java_util_Locale$java_lang_String$boolean(name: string, locale: Locale, encoding: string, parseAsFTL: boolean): Template {
         return this.getTemplate$java_lang_String$java_util_Locale$java_lang_Object$java_lang_String$boolean(name, locale, null, encoding, parseAsFTL).getTemplate();
     }
 
@@ -514,7 +514,7 @@ export class TemplateCache {
         return _TemplateAPI.createDefaultTemplateLoader(Configuration.VERSION_2_3_0_$LI$());
     }
 
-    getTemplateInternal(name: string, locale: string, customLookupCondition: any, encoding: string, parseAsFTL: boolean): Template {
+    getTemplateInternal(name: string, locale: Locale, customLookupCondition: any, encoding: string, parseAsFTL: boolean): Template {
         let debug: boolean = TemplateCache.LOG_$LI$().isDebugEnabled();
         let debugName: string = debug ? this.buildDebugName(name, locale, customLookupCondition, encoding, parseAsFTL) : null;
         let tk: TemplateCache.TemplateKey = new TemplateCache.TemplateKey(name, locale, customLookupCondition, encoding, parseAsFTL);
@@ -698,7 +698,7 @@ export class TemplateCache {
         }
     }
 
-    loadTemplate(templateLoader: TemplateLoader, source: any, name: string, sourceName: string, locale: string, customLookupCondition: any, initialEncoding: string, parseAsFTL: boolean): Template {
+    loadTemplate(templateLoader: TemplateLoader, source: any, name: string, sourceName: string, locale: Locale, customLookupCondition: any, initialEncoding: string, parseAsFTL: boolean): Template {
         let tc: TemplateConfiguration;
         try {
             tc = this.templateConfigurations != null ? this.templateConfigurations.get(sourceName, source) : null;
@@ -824,11 +824,11 @@ export class TemplateCache {
     public clear() {
     }
 
-    public removeTemplate$java_lang_String$java_util_Locale$java_lang_String$boolean(name: string, locale: string, encoding: string, parse: boolean) {
+    public removeTemplate$java_lang_String$java_util_Locale$java_lang_String$boolean(name: string, locale: Locale, encoding: string, parse: boolean) {
         this.removeTemplate$java_lang_String$java_util_Locale$java_lang_Object$java_lang_String$boolean(name, locale, null, encoding, parse);
     }
 
-    public removeTemplate$java_lang_String$java_util_Locale$java_lang_Object$java_lang_String$boolean(name: string, locale: string, customLookupCondition: any, encoding: string, parse: boolean) {
+    public removeTemplate$java_lang_String$java_util_Locale$java_lang_Object$java_lang_String$boolean(name: string, locale: Locale, customLookupCondition: any, encoding: string, parse: boolean) {
         if (name == null) {
             throw Object.defineProperty(new Error("Argument \"name\" can\'t be null"), '__classes', {
                 configurable: true,
@@ -886,7 +886,7 @@ export class TemplateCache {
         } else throw new Error('invalid overload');
     }
 
-    buildDebugName(name: string, locale: string, customLookupCondition: any, encoding: string, parse: boolean): string {
+    buildDebugName(name: string, locale: Locale, customLookupCondition: any, encoding: string, parse: boolean): string {
         return StringUtil.jQuoteNoXSS$java_lang_Object(name) + "(" + StringUtil.jQuoteNoXSS$java_lang_Object(locale) + (customLookupCondition != null ? ", cond=" + StringUtil.jQuoteNoXSS$java_lang_Object(customLookupCondition) : "") + ", " + encoding + (parse ? ", parsed)" : ", unparsed]");
     }
 
@@ -911,7 +911,7 @@ export class TemplateCache {
         }
     }
 
-    lookupTemplate(name: string, locale: string, customLookupCondition: any): TemplateLookupResult {
+    lookupTemplate(name: string, locale: Locale, customLookupCondition: any): TemplateLookupResult {
         let lookupResult: TemplateLookupResult = this.templateLookupStrategy.lookup(new TemplateCache.TemplateCacheTemplateLookupContext(this, name, locale, customLookupCondition));
         if (lookupResult == null) {
             throw Object.defineProperty(new Error("Lookup result shouldn\'t be null"), '__classes', {
@@ -1021,7 +1021,7 @@ export namespace TemplateCache {
     export class TemplateKey {
         name: string;
 
-        locale: string;
+        locale: Locale;
 
         customLookupCondition: any;
 
@@ -1029,7 +1029,7 @@ export namespace TemplateCache {
 
         parse: boolean;
 
-        constructor(name: string, locale: string, customLookupCondition: any, encoding: string, parse: boolean) {
+        constructor(name: string, locale: Locale, customLookupCondition: any, encoding: string, parse: boolean) {
             if (this.name === undefined) this.name = null;
             if (this.locale === undefined) this.locale = null;
             if (this.customLookupCondition === undefined) this.customLookupCondition = null;
@@ -1162,7 +1162,7 @@ export namespace TemplateCache {
     export class TemplateCacheTemplateLookupContext extends TemplateLookupContext {
         public __parent: any;
 
-        constructor(__parent: any, templateName: string, templateLocale: string, customLookupCondition: any) {
+        constructor(__parent: any, templateName: string, templateLocale: Locale, customLookupCondition: any) {
             super(templateName, __parent.localizedLookup ? templateLocale : null, customLookupCondition);
             this.__parent = __parent;
         }
