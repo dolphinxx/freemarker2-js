@@ -1,6 +1,7 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
 import {LocalizedString} from './LocalizedString';
 import {TemplateModelException} from './TemplateModelException';
+import {Locale} from "../../java/util/Locale";
 
 /**
  * @param {String} resourceBundleLookupKey The lookup key for the resource bundle
@@ -26,7 +27,7 @@ export class ResourceBundleLocalizedString extends LocalizedString {
      * @param {Locale} locale
      * @return {String}
      */
-    public getLocalizedString(locale : string) : string {
+    public getLocalizedString(locale : Locale) : string {
         try {
             let rb : ResourceBundle = ResourceBundle.getBundle(this.resourceBundleLookupKey, locale);
             return rb.getString(this.resourceKey);

@@ -2,6 +2,7 @@
 import {TemplateModel} from '../../template/TemplateModel';
 import {TemplateModelAdapter} from '../../template/TemplateModelAdapter';
 import {IdentityHashMap} from "./IdentityHashMap";
+import {Map} from "../../../java/util/Map";
 
 /**
  * Internally used by various wrapper implementations to implement model

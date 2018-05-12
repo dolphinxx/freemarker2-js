@@ -61,6 +61,7 @@ import {Entry} from "../../java/util/Entry";
 import {Set} from "../../java/util/Set";
 import {Map} from "../../java/util/Map";
 import {List} from "../../java/util/List";
+import {Locale} from "../../java/util/Locale";
 
 /**
  * Creates a new instance and sets which of the non-backward-compatible bugfixes/improvements should be enabled.
@@ -1877,7 +1878,7 @@ export class Configuration extends Configurable implements ParserConfiguration {
      * 
      * @param {Locale} locale
      */
-    public setLocale(locale : string) {
+    public setLocale(locale : Locale) {
         super.setLocale(locale);
         this.localeExplicitlySet = true;
     }
@@ -1905,7 +1906,7 @@ export class Configuration extends Configurable implements ParserConfiguration {
         return this.localeExplicitlySet;
     }
 
-    static getDefaultLocale() : string {
+    static getDefaultLocale() : Locale {
         return /* getDefault */(global.DEFAULT_LOCALE);
     }
 
@@ -2741,7 +2742,7 @@ export class Configuration extends Configurable implements ParserConfiguration {
         return this.getTemplate$java_lang_String$java_util_Locale$java_lang_Object$java_lang_String$boolean$boolean(name, null, null, null, true, false);
     }
 
-    public getTemplate$java_lang_String$java_util_Locale(name : string, locale : string) : Template {
+    public getTemplate$java_lang_String$java_util_Locale(name : string, locale : Locale) : Template {
         return this.getTemplate$java_lang_String$java_util_Locale$java_lang_Object$java_lang_String$boolean$boolean(name, locale, null, null, true, false);
     }
 
@@ -2749,19 +2750,19 @@ export class Configuration extends Configurable implements ParserConfiguration {
         return this.getTemplate$java_lang_String$java_util_Locale$java_lang_Object$java_lang_String$boolean$boolean(name, null, null, encoding, true, false);
     }
 
-    public getTemplate$java_lang_String$java_util_Locale$java_lang_String(name : string, locale : string, encoding : string) : Template {
+    public getTemplate$java_lang_String$java_util_Locale$java_lang_String(name : string, locale : Locale, encoding : string) : Template {
         return this.getTemplate$java_lang_String$java_util_Locale$java_lang_Object$java_lang_String$boolean$boolean(name, locale, null, encoding, true, false);
     }
 
-    public getTemplate$java_lang_String$java_util_Locale$java_lang_String$boolean(name : string, locale : string, encoding : string, parseAsFTL : boolean) : Template {
+    public getTemplate$java_lang_String$java_util_Locale$java_lang_String$boolean(name : string, locale : Locale, encoding : string, parseAsFTL : boolean) : Template {
         return this.getTemplate$java_lang_String$java_util_Locale$java_lang_Object$java_lang_String$boolean$boolean(name, locale, null, encoding, parseAsFTL, false);
     }
 
-    public getTemplate$java_lang_String$java_util_Locale$java_lang_String$boolean$boolean(name : string, locale : string, encoding : string, parseAsFTL : boolean, ignoreMissing : boolean) : Template {
+    public getTemplate$java_lang_String$java_util_Locale$java_lang_String$boolean$boolean(name : string, locale : Locale, encoding : string, parseAsFTL : boolean, ignoreMissing : boolean) : Template {
         return this.getTemplate$java_lang_String$java_util_Locale$java_lang_Object$java_lang_String$boolean$boolean(name, locale, null, encoding, parseAsFTL, ignoreMissing);
     }
 
-    public getTemplate$java_lang_String$java_util_Locale$java_lang_Object$java_lang_String$boolean$boolean(name : string, locale : string, customLookupCondition : any, encoding : string, parseAsFTL : boolean, ignoreMissing : boolean) : Template {
+    public getTemplate$java_lang_String$java_util_Locale$java_lang_Object$java_lang_String$boolean$boolean(name : string, locale : Locale, customLookupCondition : any, encoding : string, parseAsFTL : boolean, ignoreMissing : boolean) : Template {
         if(locale == null) {
             locale = this.getLocale();
         }
@@ -2968,7 +2969,7 @@ export class Configuration extends Configurable implements ParserConfiguration {
      * encoding {link Map} (see earlier) is empty.
      * @return {String}
      */
-    public getEncoding(locale : string) : string {
+    public getEncoding(locale : Locale) : string {
         if(this.localeToCharsetMap.isEmpty()) {
             return this.defaultEncoding;
         } else {
@@ -2988,7 +2989,7 @@ export class Configuration extends Configurable implements ParserConfiguration {
      * @param {Locale} locale
      * @param {String} encoding
      */
-    public setEncoding(locale : string, encoding : string) {
+    public setEncoding(locale : Locale, encoding : string) {
         /* put */this.localeToCharsetMap.set(locale.toString(), encoding);
     }
 
@@ -3154,7 +3155,7 @@ export class Configuration extends Configurable implements ParserConfiguration {
         this.removeTemplateFromCache$java_lang_String$java_util_Locale$java_lang_Object$java_lang_String$boolean(name, loc, null, this.getEncoding(loc), true);
     }
 
-    public removeTemplateFromCache$java_lang_String$java_util_Locale(name : string, locale : string) {
+    public removeTemplateFromCache$java_lang_String$java_util_Locale(name : string, locale : Locale) {
         this.removeTemplateFromCache$java_lang_String$java_util_Locale$java_lang_Object$java_lang_String$boolean(name, locale, null, this.getEncoding(locale), true);
     }
 
@@ -3162,15 +3163,15 @@ export class Configuration extends Configurable implements ParserConfiguration {
         this.removeTemplateFromCache$java_lang_String$java_util_Locale$java_lang_Object$java_lang_String$boolean(name, this.getLocale(), null, encoding, true);
     }
 
-    public removeTemplateFromCache$java_lang_String$java_util_Locale$java_lang_String(name : string, locale : string, encoding : string) {
+    public removeTemplateFromCache$java_lang_String$java_util_Locale$java_lang_String(name : string, locale : Locale, encoding : string) {
         this.removeTemplateFromCache$java_lang_String$java_util_Locale$java_lang_Object$java_lang_String$boolean(name, locale, null, encoding, true);
     }
 
-    public removeTemplateFromCache$java_lang_String$java_util_Locale$java_lang_String$boolean(name : string, locale : string, encoding : string, parse : boolean) {
+    public removeTemplateFromCache$java_lang_String$java_util_Locale$java_lang_String$boolean(name : string, locale : Locale, encoding : string, parse : boolean) {
         this.removeTemplateFromCache$java_lang_String$java_util_Locale$java_lang_Object$java_lang_String$boolean(name, locale, null, encoding, parse);
     }
 
-    public removeTemplateFromCache$java_lang_String$java_util_Locale$java_lang_Object$java_lang_String$boolean(name : string, locale : string, customLookupCondition : any, encoding : string, parse : boolean) {
+    public removeTemplateFromCache$java_lang_String$java_util_Locale$java_lang_Object$java_lang_String$boolean(name : string, locale : Locale, customLookupCondition : any, encoding : string, parse : boolean) {
         this.cache.removeTemplate$java_lang_String$java_util_Locale$java_lang_Object$java_lang_String$boolean(name, locale, customLookupCondition, encoding, parse);
     }
 

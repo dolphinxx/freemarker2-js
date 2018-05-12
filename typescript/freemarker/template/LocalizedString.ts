@@ -1,6 +1,7 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
 import {Environment} from '../core/Environment';
 import {TemplateScalarModel} from './TemplateScalarModel';
+import {Locale} from "../../java/util/Locale";
 
 /**
  * An abstract base class for scalars that vary by locale.
@@ -23,11 +24,11 @@ import {TemplateScalarModel} from './TemplateScalarModel';
 export abstract class LocalizedString implements TemplateScalarModel {
     public getAsString() : string {
         let env : Environment = Environment.getCurrentEnvironment();
-        let locale : string = env.getLocale();
+        let locale : Locale = env.getLocale();
         return this.getLocalizedString(locale);
     }
 
-    public abstract getLocalizedString(locale : string) : string;
+    public abstract getLocalizedString(locale : Locale) : string;
 
     constructor() {
     }

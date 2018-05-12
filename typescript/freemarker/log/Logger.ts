@@ -45,7 +45,7 @@ export class Logger {
     public debug$java_lang_String(message : string) {
     }
 
-    public debug$java_lang_String$java_lang_Throwable(message : string, t : Error) {
+    public debug$java_lang_String$java_lang_Throwable(message : string, t : any) {
     }
 
     /**
@@ -102,7 +102,7 @@ export class Logger {
     public error$java_lang_String(message : string) {
     }
 
-    public error$java_lang_String$java_lang_Throwable(message : string, t : Error) {
+    public error$java_lang_String$java_lang_Throwable(message : string, t : any) {
     }
 
     /**

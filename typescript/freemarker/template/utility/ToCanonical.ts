@@ -15,7 +15,7 @@ export class ToCanonical {
      * @deprecated Will be removed (main method in a library, often classified as CWE-489 "Leftover Debug Code").
      * @param {Array} args
      */
-    public static main(args : Array) {
+    public static main(args : Array<any>) {
         ToCanonical.config_$LI$().setWhitespaceStripping(false);
         if(args.length === 0) {
             ToCanonical.usage();

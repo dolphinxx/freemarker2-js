@@ -1,5 +1,4 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import {Configuration} from '../template/Configuration';
 import {SimpleScalar} from '../template/SimpleScalar';
 import {Template} from '../template/Template';
 import {TemplateModel} from '../template/TemplateModel';
@@ -18,6 +17,7 @@ import {TemplateMarkupOutputModel} from './TemplateMarkupOutputModel';
 import {Interpolation} from './Interpolation';
 import {EvalUtil} from './EvalUtil';
 import {ParameterRole} from './ParameterRole';
+import {List} from "../../java/util/List";
 
 export class StringLiteral extends Expression implements TemplateScalarModel {
     /*private*/ value : string;
@@ -42,6 +42,7 @@ export class StringLiteral extends Expression implements TemplateScalarModel {
         let parentTemplate : Template = this.getTemplate();
         let pcfg : ParserConfiguration = parentTemplate.getParserConfiguration();
         let intSyn : number = pcfg.getInterpolationSyntax();
+        const Configuration = require('../template/Configuration').Configuration;
         if(this.value.length > 3 && ((intSyn === Configuration.LEGACY_INTERPOLATION_SYNTAX || intSyn === Configuration.DOLLAR_INTERPOLATION_SYNTAX) && (this.value.indexOf("${") !== -1 || intSyn === Configuration.LEGACY_INTERPOLATION_SYNTAX && this.value.indexOf("#{") !== -1) || intSyn === Configuration.SQUARE_BRACKET_INTERPOLATION_SYNTAX && this.value.indexOf("[=") !== -1)) {
             try {
                 let simpleCharacterStream : SimpleCharStream = new SimpleCharStream(new StringReader(this.value), this.beginLine, this.beginColumn + 1, this.value.length);

@@ -1,6 +1,8 @@
+import {Locale} from "./java/util/Locale";
+
 declare module NodeJS {
     interface Global {
-        DEFAULT_LOCALE:string
+        DEFAULT_LOCALE:Locale
     }
 }
 

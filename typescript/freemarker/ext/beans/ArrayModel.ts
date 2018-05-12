@@ -28,8 +28,8 @@ export class ArrayModel extends BeanModel implements TemplateCollectionModel, Te
     public constructor(array : any, wrapper : BeansWrapper) {
         super(array, wrapper);
         if(this.length===undefined) this.length = 0;
-        let clazz : any = (<any>array.constructor);
-        if(!clazz.isArray()) throw Object.defineProperty(new Error("Object is not an array, it\'s " + /* getName */(c => c["__class"]?c["__class"]:c["name"])((<any>array.constructor))), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.lang.RuntimeException','java.lang.IllegalArgumentException','java.lang.Exception'] });
+        // let clazz : any = (<any>array.constructor);
+        if(!Array.isArray(array)/*clazz.isArray()*/) throw Object.defineProperty(new Error("Object is not an array, it\'s " + /* getName */(c => c["__class"]?c["__class"]:c["name"])((<any>array.constructor))), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.lang.RuntimeException','java.lang.IllegalArgumentException','java.lang.Exception'] });
         this.length = /* getLength */array.length;
     }
 
@@ -77,7 +77,7 @@ ArrayModel["__interfaces"] = ["freemarker.ext.util.WrapperTemplateModel","freema
 export namespace ArrayModel {
 
     export class Iterator implements TemplateSequenceModel, TemplateModelIterator {
-        public __parent: any;
+        public __parent: ArrayModel;
         position : number;
 
         public hasNext() : boolean {
@@ -91,7 +91,7 @@ export namespace ArrayModel {
         }
 
         public get$int(index : number) : TemplateModel {
-            return this.get$int(index);
+            return this.__parent.get$int(index);
         }
 
         public next() : TemplateModel {
@@ -99,10 +99,10 @@ export namespace ArrayModel {
         }
 
         public size() : number {
-            return this.size();
+            return this.__parent.size();
         }
 
-        constructor(__parent: any) {
+        constructor(__parent: ArrayModel) {
             this.__parent = __parent;
             this.position = 0;
         }

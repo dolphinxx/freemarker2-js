@@ -27,7 +27,7 @@ export class SimpleMethodModel extends SimpleMethod implements TemplateMethodMod
 
     /*private*/ wrapper : BeansWrapper;
 
-    constructor(object : any, method : Function, argTypes : Array, wrapper : BeansWrapper) {
+    constructor(object : any, method : Function, argTypes : Array<any>, wrapper : BeansWrapper) {
         super(method, argTypes);
         if(this.object===undefined) this.object = null;
         if(this.wrapper===undefined) this.wrapper = null;
@@ -68,7 +68,7 @@ export class SimpleMethodModel extends SimpleMethod implements TemplateMethodMod
     }
 
     public size() : number {
-        throw new _TemplateModelException(new _ErrorDescriptionBuilder("Getting the number of items or listing the items is not supported on this ", new _DelayedFTLTypeDescription(this), " value, because this value wraps the following Java method, not a real listable value: ", new _DelayedToString(this.getMember())).tips("Maybe you should to call this method first and then do something with its return value.", "obj.someMethod(i) and obj.someMethod[i] does the same for this method, hence it\'s a \"+sequence\"."));
+        throw new _TemplateModelException(new _ErrorDescriptionBuilder(["Getting the number of items or listing the items is not supported on this ", new _DelayedFTLTypeDescription(this), " value, because this value wraps the following Java method, not a real listable value: ", new _DelayedToString(this.getMember())]).tips("Maybe you should to call this method first and then do something with its return value.", "obj.someMethod(i) and obj.someMethod[i] does the same for this method, hence it\'s a \"+sequence\"."));
     }
 
     /**
@@ -84,14 +84,14 @@ export class SimpleMethodModel extends SimpleMethod implements TemplateMethodMod
      * @param {Array} expectedClasses
      * @return {Array}
      */
-    public explainTypeError(expectedClasses : Array) : Array<any> {
+    public explainTypeError(expectedClasses : Array<any>) : Array<any> {
         let member : Member = this.getMember();
         if(!(member != null && (member instanceof Function))) {
             return null;
         }
         let m : Function = <Function><any>member;
         let returnType : any = m.getReturnType();
-        if(returnType == null || returnType === void || returnType === "java.lang.Void") {
+        if(returnType == null || returnType === /*void*/undefined || returnType === "java.lang.Void") {
             return null;
         }
         let mName : string = /* getName */m.name;

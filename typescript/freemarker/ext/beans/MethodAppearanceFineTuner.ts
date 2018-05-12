@@ -1,6 +1,4 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import {BeansWrapper} from './BeansWrapper';
-
 /**
  * Used for customizing how the methods are visible from templates, via
  * {link BeansWrapper#setMethodAppearanceFineTuner(MethodAppearanceFineTuner)}.

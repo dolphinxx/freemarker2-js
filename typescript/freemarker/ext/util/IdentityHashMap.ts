@@ -2,6 +2,7 @@
 import {System} from '../../../java/lang/System';
 import {Entry} from "../../../java/util/Entry";
 import {Set} from "../../../java/util/Set";
+import {Map} from "../../../java/util/Map";
 
 /**
  * Constructs a new, empty map with the specified initial

@@ -3,6 +3,9 @@ import {Logger} from '../log/Logger';
 import {TemplateNumberFormatFactory} from './TemplateNumberFormatFactory';
 import {TemplateNumberFormat} from './TemplateNumberFormat';
 import {Map} from "../../java/util/Map";
+import {JavaTemplateNumberFormat} from "./JavaTemplateNumberFormat";
+import {DecimalFormat} from "../../java/text/DecimalFormat";
+import {Locale} from "../../java/util/Locale";
 
 /**
  * Deals with {link TemplateNumberFormat}-s that just wrap a Java {link NumberFormat}.
@@ -29,7 +32,7 @@ export class JavaTemplateNumberFormatFactory extends TemplateNumberFormatFactory
      * @param {Environment} env
      * @return {TemplateNumberFormat}
      */
-    public get(params : string, locale : string, env : /*Environment*/any) : TemplateNumberFormat {
+    public get(params : string, locale : Locale, env : /*Environment*/any) : TemplateNumberFormat {
         // let cacheKey : JavaTemplateNumberFormatFactory.CacheKey = new JavaTemplateNumberFormatFactory.CacheKey(params, locale);
         // let jFormat : /*NumberFormat*/any = /* get */JavaTemplateNumberFormatFactory.GLOBAL_FORMAT_CACHE_$LI$().get(cacheKey);
         // if(jFormat == null) {
@@ -68,7 +71,7 @@ export class JavaTemplateNumberFormatFactory extends TemplateNumberFormatFactory
         // }
         // jFormat = <NumberFormat>/* clone *//* clone */((o:any) => { if(o.clone!=undefined) { return (<any>o).clone(); } else { let clone = Object.create(o); for(let p in o) { if (o.hasOwnProperty(p)) clone[p] = o[p]; } return clone; } })(jFormat);
         // return new JavaTemplateNumberFormat(jFormat, params);
-        throw new Error();
+       return new JavaTemplateNumberFormat(new DecimalFormat(), params);
     }
 }
 JavaTemplateNumberFormatFactory["__class"] = "freemarker.core.JavaTemplateNumberFormatFactory";
@@ -79,9 +82,9 @@ export namespace JavaTemplateNumberFormatFactory {
     export class CacheKey {
         pattern : string;
 
-        locale : string;
+        locale : Locale;
 
-        constructor(pattern : string, locale : string) {
+        constructor(pattern : string, locale : Locale) {
             if(this.pattern===undefined) this.pattern = null;
             if(this.locale===undefined) this.locale = null;
             this.pattern = pattern;

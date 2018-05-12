@@ -4,6 +4,8 @@ import {TemplateDateFormatFactory} from './TemplateDateFormatFactory';
 import {TemplateDateFormat} from './TemplateDateFormat';
 import {JavaTemplateDateFormat} from './JavaTemplateDateFormat';
 import {Map} from '../../java/util/Map';
+import {SimpleDateFormat} from "../../java/text/SimpleDateFormat";
+import {Locale} from "../../java/util/Locale";
 
 export class JavaTemplateDateFormatFactory extends TemplateDateFormatFactory {
     static INSTANCE : JavaTemplateDateFormatFactory; public static INSTANCE_$LI$() : JavaTemplateDateFormatFactory { if(JavaTemplateDateFormatFactory.INSTANCE == null) JavaTemplateDateFormatFactory.INSTANCE = new JavaTemplateDateFormatFactory(); return JavaTemplateDateFormatFactory.INSTANCE; };
@@ -27,7 +29,7 @@ export class JavaTemplateDateFormatFactory extends TemplateDateFormatFactory {
      * @param {Environment} env
      * @return {TemplateDateFormat}
      */
-    public get(params : string, dateType : number, locale : string, timeZone : string, zonelessInput : boolean, env : /*Environment*/any) : TemplateDateFormat {
+    public get(params : string, dateType : number, locale : Locale, timeZone : string, zonelessInput : boolean, env : /*Environment*/any) : TemplateDateFormat {
         return new JavaTemplateDateFormat(this.getJavaDateFormat(dateType, params, locale, timeZone));
     }
 
@@ -40,7 +42,7 @@ export class JavaTemplateDateFormatFactory extends TemplateDateFormatFactory {
      * @return {DateFormat}
      * @private
      */
-    getJavaDateFormat(dateType : number, nameOrPattern : string, locale : string, timeZone : string) : /*DateFormat*/any {
+    getJavaDateFormat(dateType : number, nameOrPattern : string, locale : Locale, timeZone : string) : /*DateFormat*/any {
         // let cacheKey : JavaTemplateDateFormatFactory.CacheKey = new JavaTemplateDateFormatFactory.CacheKey(dateType, nameOrPattern, locale, timeZone);
         // let jFormat : DateFormat;
         // jFormat = /* get */JavaTemplateDateFormatFactory.GLOBAL_FORMAT_CACHE_$LI$().get(cacheKey);
@@ -100,7 +102,7 @@ export class JavaTemplateDateFormatFactory extends TemplateDateFormatFactory {
         //     }
         // }
         // return <DateFormat>/* clone *//* clone */((o:any) => { if(o.clone!=undefined) { return (<any>o).clone(); } else { let clone = Object.create(o); for(let p in o) { if (o.hasOwnProperty(p)) clone[p] = o[p]; } return clone; } })(jFormat);
-        throw new Error();
+        return new SimpleDateFormat(nameOrPattern, locale);
     }
 
     parseDateStyleToken(token : string) : number {
@@ -130,11 +132,11 @@ JavaTemplateDateFormatFactory["__class"] = "freemarker.core.JavaTemplateDateForm
 //
 //         pattern : string;
 //
-//         locale : string;
+//         locale : Locale;
 //
 //         timeZone : string;
 //
-//         constructor(dateType : number, pattern : string, locale : string, timeZone : string) {
+//         constructor(dateType : number, pattern : string, locale : Locale, timeZone : string) {
 //             if(this.dateType===undefined) this.dateType = 0;
 //             if(this.pattern===undefined) this.pattern = null;
 //             if(this.locale===undefined) this.locale = null;

@@ -3,6 +3,8 @@ import {TemplateDateModel} from '../template/TemplateDateModel';
 import {TemplateDateFormat} from './TemplateDateFormat';
 import {TemplateFormatUtil} from './TemplateFormatUtil';
 import {UnparsableValueException} from './UnparsableValueException';
+import {DateFormat} from "../../java/text/DateFormat";
+import {SimpleDateFormat} from "../../java/text/SimpleDateFormat";
 
 /**
  * Java {link DateFormat}-based format.

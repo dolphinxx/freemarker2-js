@@ -21,6 +21,8 @@
     "big-integer": "^1.6.28",
     "bignumber.js": "^7.0.1",
     "j4ts": "0.0.4-0.6.0-SNAPSHOT",
-    "mathjs": "^4.1.2"
+    "mathjs": "^4.1.2",
+    "moment": "^2.22.1",
+    "moment-jdateformatparser": "^1.1.0"
   }
 }

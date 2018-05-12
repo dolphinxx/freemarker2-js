@@ -4,7 +4,6 @@ import {Expression} from './Expression';
 import {EvalUtil} from './EvalUtil';
 import {BugException} from './BugException';
 import {ParameterRole} from './ParameterRole';
-import {Configuration} from '../template/Configuration';
 import {ClassUtil} from "../template/utility/ClassUtil";
 
 /**
@@ -48,6 +47,7 @@ export class ComparisonExpression extends BooleanExpression {
     }
 
     public evalToBoolean(env? : any, cfg? : any) : any {
+        const Configuration = require('../template/Configuration').Configuration;
         if(((ClassUtil.isInstanceOf(env, 'freemarker.core.Environment')) || env === null) && ((cfg != null && cfg instanceof <any>Configuration) || cfg === null)) {
             super.evalToBoolean(env, cfg);
         } else if(((ClassUtil.isInstanceOf(env, 'freemarker.core.Environment')) || env === null) && cfg === undefined) {

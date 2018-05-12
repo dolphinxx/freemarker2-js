@@ -14,67 +14,79 @@ export class ClassUtil {
     }
 
     public static isInstanceOf(instance: any, type: any): boolean {
-        if(instance === null || instance === undefined) {
+        if (instance === null || instance === undefined) {
             return false;
         }
-        if(typeof type !== 'string') {
+        if (typeof type !== 'string') {
             return instance instanceof type;
         }
-        if(typeof instance === 'string') {
+        if (typeof instance === 'string') {
             return type === 'string';
         }
-        if(typeof instance === 'number') {
+        if (typeof instance === 'number') {
             return type === 'number';
         }
-        if(isPlainObject(instance)) {
+        if (isPlainObject(instance)) {
             return false;
         }
-        if(instance.hasOwnProperty('__class') && instance['__class'] === type) {
+        if (instance.hasOwnProperty('__class') && instance['__class'] === type) {
             return true;
         }
-        if(instance.__proto__ && instance.__proto__.constructor && instance.__proto__.constructor.hasOwnProperty('__class') && instance.__proto__.constructor['__class'] === type) {
+        if (instance.__proto__ && instance.__proto__.constructor && instance.__proto__.constructor.hasOwnProperty('__class') && instance.__proto__.constructor['__class'] === type) {
             return true;
         }
         return false;
     }
 
-    public static isAssignableFrom(instance: any, type:any):boolean {
-        if(instance === null || instance === undefined) {
+    public static isAssignableFrom(instance: any, type: any): boolean {
+        if (instance === null || instance === undefined) {
             return false;
         }
-        if(typeof type !== 'string') {
+        if (typeof type !== 'string') {
             return instance instanceof type;
         }
-        if(typeof instance === 'string') {
+        if (typeof instance === 'string') {
             return type === 'string';
         }
-        if(typeof instance === 'number') {
+        if (typeof instance === 'number') {
             return type === 'number';
         }
-        if(isPlainObject(instance)) {
+        if (isPlainObject(instance)) {
             return false;
         }
-        if(instance.hasOwnProperty('__class') && instance['__class'] === type) {
+        if (instance.hasOwnProperty('__class') && instance['__class'] === type) {
             return true;
         }
-        if(instance.hasOwnProperty('__interfaces') && instance['__interfaces'].indexOf(type) !== -1) {
+        if (instance.hasOwnProperty('__interfaces') && instance['__interfaces'].indexOf(type) !== -1) {
             return true;
         }
         const proto = instance.__proto__;
-        if(proto == null) {
+        if (proto == null) {
             return false;
         }
         const pConstructor = proto.constructor;
-        if(pConstructor == null || pConstructor === instance) {
+        if (pConstructor == null || pConstructor === instance) {
             return false;
         }
-        if(pConstructor.hasOwnProperty('__classs') && pConstructor['__class'] === type) {
+        if (pConstructor.hasOwnProperty('__classs') && pConstructor['__class'] === type) {
             return true;
         }
-        if(pConstructor.hasOwnProperty('__interfaces') && pConstructor['__interfaces'].indexOf(type) !== -1) {
+        if (pConstructor.hasOwnProperty('__interfaces') && pConstructor['__interfaces'].indexOf(type) !== -1) {
             return true;
         }
         return ClassUtil.isAssignableFrom(pConstructor, type);
+    }
+
+    public static isException(e: any): boolean {
+        const proto = e.__proto__;
+        if (proto == null) {
+            return false;
+        }
+        const pConstructor = proto.constructor;
+        if (pConstructor == null) {
+            return false;
+        }
+        return pConstructor.hasOwnProperty('__class') && pConstructor['__class'].endsWith('Exception');
     }
 
     /**
@@ -111,20 +123,23 @@ export class ClassUtil {
         } else if (Array.isArray(pClass)) {
             return pClass + "[]";
         } else {
-            let cn: string = /* getName */(c => c["__class"] ? c["__class"] : c["name"])(pClass);
-            if (/* startsWith */((str, searchString, position = 0) => str.substr(position, searchString.length) === searchString)(cn, "java.lang.") || /* startsWith */((str, searchString, position = 0) => str.substr(position, searchString.length) === searchString)(cn, "java.util.")) {
+            let cn: string = (typeof pClass === 'string') ? pClass : (/* getName */(c => c["__class"] ? c["__class"] : c["name"])(pClass));
+            if(cn == null) {
+                return null;
+            }
+            if (cn.startsWith("java.lang.") ||cn.startsWith("java.util.")) {
                 return cn.substring(10);
             } else {
                 if (shortenFreeMarkerClasses) {
-                    if (/* startsWith */((str, searchString, position = 0) => str.substr(position, searchString.length) === searchString)(cn, "freemarker.template.")) {
+                    if (cn.startsWith("freemarker.template.")) {
                         return "f.t" + cn.substring(19);
-                    } else if (/* startsWith */((str, searchString, position = 0) => str.substr(position, searchString.length) === searchString)(cn, "freemarker.ext.beans.")) {
+                    } else if (cn.startsWith("freemarker.ext.beans.")) {
                         return "f.e.b" + cn.substring(20);
-                    } else if (/* startsWith */((str, searchString, position = 0) => str.substr(position, searchString.length) === searchString)(cn, "freemarker.core.")) {
+                    } else if (cn.startsWith("freemarker.core.")) {
                         return "f.c" + cn.substring(15);
-                    } else if (/* startsWith */((str, searchString, position = 0) => str.substr(position, searchString.length) === searchString)(cn, "freemarker.ext.")) {
+                    } else if (cn.startsWith("freemarker.ext.")) {
                         return "f.e" + cn.substring(14);
-                    } else if (/* startsWith */((str, searchString, position = 0) => str.substr(position, searchString.length) === searchString)(cn, "freemarker.")) {
+                    } else if (cn.startsWith( "freemarker.")) {
                         return "f" + cn.substring(10);
                     }
                 }

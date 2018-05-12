@@ -9,6 +9,7 @@ import {System} from '../../../java/lang/System';
 import {StringTokenizer} from "../../../java/util/StringTokenizer";
 import {Pattern} from "../../../java/util/regex/Pattern";
 import {Map} from "../../../java/util/Map";
+import {Locale} from "../../../java/util/Locale";
 
 /**
  * Some text related utilities.
@@ -657,7 +658,7 @@ export class StringUtil {
 
     public static deduceLocale(input : string) : string {
         // if(input == null) return null;
-        // let locale : string = /* getDefault */(global.DEFAULT_LOCALE);
+        // let locale : Locale = /* getDefault */(global.DEFAULT_LOCALE);
         // if(input.length > 0 && (c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(input.charAt(0)) == '\"'.charCodeAt(0)) input = input.substring(1, input.length - 1);
         // let st : StringTokenizer = new StringTokenizer(input, ",_ ");
         // let lang : string = "";

@@ -2,6 +2,7 @@
 import {TemplateValueFormatFactory} from './TemplateValueFormatFactory';
 import {TemplateNumberFormat} from './TemplateNumberFormat';
 import {TemplateValueFormatException} from './TemplateValueFormatException';
+import {Locale} from "../../java/util/Locale";
 
 /**
  * Factory for a certain kind of number formatting ({link TemplateNumberFormat}). Usually a singleton (one-per-VM or
@@ -36,7 +37,7 @@ export abstract class TemplateNumberFormatFactory extends TemplateValueFormatFac
      * {link InvalidFormatParametersException} if the {@code params} is malformed.
      * @return {TemplateNumberFormat}
      */
-    public abstract get(params : string, locale : string, env : /*Environment*/any) : TemplateNumberFormat;
+    public abstract get(params : string, locale : Locale, env : /*Environment*/any) : TemplateNumberFormat;
 }
 TemplateNumberFormatFactory["__class"] = "freemarker.core.TemplateNumberFormatFactory";
 

@@ -1,5 +1,7 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
 import {TemplateDateModel} from './TemplateDateModel';
+import {Time} from "../../java/sql/Time";
+import {Timestamp} from "../../java/sql/Timestamp";
 
 /**
  * Creates a new date model wrapping the specified date object and
@@ -46,7 +48,7 @@ export class SimpleDate implements TemplateDateModel {
             }
         } else if(((date != null && date instanceof <any>Time) || date === null) && type === undefined) {
             let __args = Array.prototype.slice.call(arguments);
-            let time : any = __args[0];
+            let time : Time = __args[0];
             {
                 let __args = Array.prototype.slice.call(arguments);
                 let date : any = time;

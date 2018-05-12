@@ -22,6 +22,7 @@ import {BeansWrapper} from './BeansWrapper';
 import {ClassIntrospector} from './ClassIntrospector';
 import {InvalidPropertyException} from './InvalidPropertyException';
 import {Set} from '../../../java/util/Set';
+import {Map} from "../../../java/util/Map";
 
 /**
  * Creates a new model that wraps the specified object. Note that there are
@@ -51,91 +52,71 @@ export class BeanModel implements TemplateHashModelEx, AdapterTemplateModel, Wra
 
     /*private*/ memberCache : Map<any, any>;
 
-    public constructor(object? : any, wrapper? : any, inrospectNow? : any) {
-        if(((object != null) || object === null) && ((wrapper != null && wrapper instanceof <any>BeansWrapper) || wrapper === null) && ((typeof inrospectNow === 'boolean') || inrospectNow === null)) {
-            let __args = Array.prototype.slice.call(arguments);
-            if(this.object===undefined) this.object = null;
-            if(this.wrapper===undefined) this.wrapper = null;
-            if(this.memberCache===undefined) this.memberCache = null;
-            if(this.object===undefined) this.object = null;
-            if(this.wrapper===undefined) this.wrapper = null;
-            if(this.memberCache===undefined) this.memberCache = null;
-            (() => {
-                this.object = object;
-                this.wrapper = wrapper;
-                if(inrospectNow && object != null) {
-                    wrapper.getClassIntrospector().get((<any>object.constructor));
-                }
-            })();
-        } else if(((object != null) || object === null) && ((wrapper != null && wrapper instanceof <any>BeansWrapper) || wrapper === null) && inrospectNow === undefined) {
-            let __args = Array.prototype.slice.call(arguments);
-            {
-                let __args = Array.prototype.slice.call(arguments);
-                let inrospectNow : any = true;
-                if(this.object===undefined) this.object = null;
-                if(this.wrapper===undefined) this.wrapper = null;
-                if(this.memberCache===undefined) this.memberCache = null;
-                if(this.object===undefined) this.object = null;
-                if(this.wrapper===undefined) this.wrapper = null;
-                if(this.memberCache===undefined) this.memberCache = null;
-                (() => {
-                    this.object = object;
-                    this.wrapper = wrapper;
-                    if(inrospectNow && object != null) {
-                        wrapper.getClassIntrospector().get((<any>object.constructor));
-                    }
-                })();
-            }
-        } else throw new Error('invalid overload');
+    public constructor(object : any, wrapper : any, introspectNow? : any) {
+        if(introspectNow === undefined) {
+            introspectNow = true;
+        }
+        this.object = object;
+        this.wrapper = wrapper;
+        // if(introspectNow && object != null) {
+        //     this.wrapper.getClassIntrospector().get(object.constructor);
+        // }
     }
 
     public get$java_lang_String(key : string) : TemplateModel {
-        let clazz : any = (<any>this.object.constructor);
-        let classInfo : Map<any, any> = this.wrapper.getClassIntrospector().get(clazz);
-        let retval : TemplateModel = null;
-        try {
-            if(this.wrapper.isMethodsShadowItems()) {
-                let fd : any = /* get */classInfo.get(key);
-                if(fd != null) {
-                    retval = this.invokeThroughDescriptor(fd, classInfo);
-                } else {
-                    retval = this.invokeGenericGet(classInfo, clazz, key);
-                }
-            } else {
-                let model : TemplateModel = this.invokeGenericGet(classInfo, clazz, key);
-                let nullModel : TemplateModel = this.wrapper.wrap$java_lang_Object(null);
-                if(model !== nullModel && model !== BeanModel.UNKNOWN_$LI$()) {
-                    return model;
-                }
-                let fd : any = /* get */classInfo.get(key);
-                if(fd != null) {
-                    retval = this.invokeThroughDescriptor(fd, classInfo);
-                    if(retval === BeanModel.UNKNOWN_$LI$() && model === nullModel) {
-                        retval = nullModel;
-                    }
-                }
+        if(this.object.hasOwnProperty(key)) {
+            const value = this.object[key];
+            if(typeof value === 'function') {
+                return new (require('./SimpleMethodModel').SimpleMethodModel)(this.object, value, null, this.wrapper)
             }
-            if(retval === BeanModel.UNKNOWN_$LI$()) {
-                if(this.wrapper.isStrict()) {
-                    throw new InvalidPropertyException("No such bean property: " + key);
-                } else if(BeanModel.LOG_$LI$().isDebugEnabled()) {
-                    this.logNoSuchKey(key, classInfo);
-                }
-                retval = this.wrapper.wrap$java_lang_Object(null);
-            }
-            return retval;
-        } catch(__e) {
-            if(__e != null && __e instanceof <any>TemplateModelException) {
-                let e : TemplateModelException = <TemplateModelException>__e;
-                throw e;
-
-            }
-            if(__e != null && (__e["__classes"] && __e["__classes"].indexOf("java.lang.Exception") >= 0) || __e != null && __e instanceof <any>Error) {
-                let e : Error = <Error>__e;
-                throw new _TemplateModelException(e, "An error has occurred when reading existing sub-variable ", new _DelayedJQuote(key), "; see cause exception! The type of the containing value was: ", new _DelayedFTLTypeDescription(this));
-
-            }
+            return this.wrapper.wrap(value);
         }
+        // let clazz : any = (<any>this.object.constructor);
+        // let classInfo : Map<any, any> = this.wrapper.getClassIntrospector().get(clazz);
+        // let retval : TemplateModel = null;
+        // try {
+        //     if(this.wrapper.isMethodsShadowItems()) {
+        //         let fd : any = /* get */classInfo.get(key);
+        //         if(fd != null) {
+        //             retval = this.invokeThroughDescriptor(fd, classInfo);
+        //         } else {
+        //             retval = this.invokeGenericGet(classInfo, clazz, key);
+        //         }
+        //     } else {
+        //         let model : TemplateModel = this.invokeGenericGet(classInfo, clazz, key);
+        //         let nullModel : TemplateModel = this.wrapper.wrap$java_lang_Object(null);
+        //         if(model !== nullModel && model !== BeanModel.UNKNOWN_$LI$()) {
+        //             return model;
+        //         }
+        //         let fd : any = /* get */classInfo.get(key);
+        //         if(fd != null) {
+        //             retval = this.invokeThroughDescriptor(fd, classInfo);
+        //             if(retval === BeanModel.UNKNOWN_$LI$() && model === nullModel) {
+        //                 retval = nullModel;
+        //             }
+        //         }
+        //     }
+        //     if(retval === BeanModel.UNKNOWN_$LI$()) {
+        //         if(this.wrapper.isStrict()) {
+        //             throw new InvalidPropertyException("No such bean property: " + key);
+        //         } else if(BeanModel.LOG_$LI$().isDebugEnabled()) {
+        //             this.logNoSuchKey(key, classInfo);
+        //         }
+        //         retval = this.wrapper.wrap$java_lang_Object(null);
+        //     }
+        //     return retval;
+        // } catch(__e) {
+        //     if(__e != null && __e instanceof <any>TemplateModelException) {
+        //         let e : TemplateModelException = <TemplateModelException>__e;
+        //         throw e;
+        //
+        //     }
+        //     if(__e != null && (__e["__classes"] && __e["__classes"].indexOf("java.lang.Exception") >= 0) || __e != null && __e instanceof <any>Error) {
+        //         let e : Error = <Error>__e;
+        //         throw new _TemplateModelException(e, "An error has occurred when reading existing sub-variable ", new _DelayedJQuote(key), "; see cause exception! The type of the containing value was: ", new _DelayedFTLTypeDescription(this));
+        //
+        //     }
+        // }
     }
 
     /**

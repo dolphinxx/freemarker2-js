@@ -73,6 +73,7 @@ import {List} from "../../java/util/List";
 import {IdentityHashMap} from "../ext/util/IdentityHashMap";
 import {ClassUtil} from "../template/utility/ClassUtil";
 import {Collator} from "../../java/text/Collator";
+import {Locale} from "../../java/util/Locale";
 
 /**
  * Object that represents the runtime environment during template processing. For every invocation of a
@@ -192,7 +193,7 @@ export class Environment extends Configurable {
 
     /*private*/ inAttemptBlock : boolean;
 
-    /*private*/ lastThrowable : Error;
+    /*private*/ lastThrowable : any;
 
     /*private*/ lastReturnValue : TemplateModel;
 
@@ -961,7 +962,7 @@ export class Environment extends Configurable {
 
     handleTemplateException(templateException : TemplateException) {
         if((templateException != null && templateException instanceof <any>TemplateModelException) && (<TemplateModelException>templateException).getReplaceWithCause() && ((<Error>null) != null && (<Error>null) instanceof <any>TemplateException)) {
-            templateException = <TemplateException>(<Error>null);
+            templateException = <TemplateException>(null);
         }
         if(this.lastThrowable === templateException) {
             throw templateException;
@@ -996,8 +997,8 @@ export class Environment extends Configurable {
      * 
      * @param {Locale} locale
      */
-    public setLocale(locale : string) {
-        let prevLocale : string = this.getLocale();
+    public setLocale(locale : Locale) {
+        let prevLocale : Locale = this.getLocale();
         super.setLocale(locale);
         if(locale !== prevLocale) {
             this.cachedTemplateNumberFormats = null;
@@ -1269,7 +1270,7 @@ export class Environment extends Configurable {
         return this.getTemplateNumberFormat$java_lang_String$boolean(formatString, true);
     }
 
-    public getTemplateNumberFormat$java_lang_String$java_util_Locale(formatString : string, locale : string) : TemplateNumberFormat {
+    public getTemplateNumberFormat$java_lang_String$java_util_Locale(formatString : string, locale : Locale) : TemplateNumberFormat {
         if(locale === this.getLocale()) {
             this.getTemplateNumberFormat$java_lang_String(formatString);
         }
@@ -1349,7 +1350,7 @@ export class Environment extends Configurable {
      * @return {TemplateNumberFormat}
      * @private
      */
-    getTemplateNumberFormatWithoutCache(formatString : string, locale : string) : TemplateNumberFormat {
+    getTemplateNumberFormatWithoutCache(formatString : string, locale : Locale) : TemplateNumberFormat {
         let formatStringLen : number = formatString.length;
         if(formatStringLen > 1 && (c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(formatString.charAt(0)) == '@'.charCodeAt(0) && (this.isIcI2324OrLater() || this.hasCustomFormats()) && Character.isLetter(formatString.charAt(1))) {
             let name : string;
@@ -1497,13 +1498,13 @@ export class Environment extends Configurable {
         return this.getTemplateDateFormat$java_lang_String$int$boolean$boolean$boolean(formatString, dateType, this.shouldUseSQLDTTimeZone(isSQLDateOrTime), isSQLDateOrTime, true);
     }
 
-    public getTemplateDateFormat$java_lang_String$int$java_lang_Class$java_util_Locale(formatString : string, dateType : number, dateClass : any, locale : string) : TemplateDateFormat {
+    public getTemplateDateFormat$java_lang_String$int$java_lang_Class$java_util_Locale(formatString : string, dateType : number, dateClass : any, locale : Locale) : TemplateDateFormat {
         let isSQLDateOrTime : boolean = Environment.isSQLDateOrTimeClass(dateClass);
         let useSQLDTTZ : boolean = this.shouldUseSQLDTTimeZone(isSQLDateOrTime);
         return this.getTemplateDateFormat$java_lang_String$int$java_util_Locale$java_util_TimeZone$boolean(formatString, dateType, locale, useSQLDTTZ?this.getSQLDateAndTimeTimeZone():this.getTimeZone(), isSQLDateOrTime);
     }
 
-    public getTemplateDateFormat$java_lang_String$int$java_lang_Class$java_util_Locale$java_util_TimeZone$java_util_TimeZone(formatString : string, dateType : number, dateClass : any, locale : string, timeZone : string, sqlDateAndTimeTimeZone : string) : TemplateDateFormat {
+    public getTemplateDateFormat$java_lang_String$int$java_lang_Class$java_util_Locale$java_util_TimeZone$java_util_TimeZone(formatString : string, dateType : number, dateClass : any, locale : Locale, timeZone : string, sqlDateAndTimeTimeZone : string) : TemplateDateFormat {
         let isSQLDateOrTime : boolean = Environment.isSQLDateOrTimeClass(dateClass);
         let useSQLDTTZ : boolean = this.shouldUseSQLDTTimeZone(isSQLDateOrTime);
         return this.getTemplateDateFormat$java_lang_String$int$java_util_Locale$java_util_TimeZone$boolean(formatString, dateType, locale, useSQLDTTZ?sqlDateAndTimeTimeZone:timeZone, isSQLDateOrTime);
@@ -1555,9 +1556,9 @@ export class Environment extends Configurable {
         } else throw new Error('invalid overload');
     }
 
-    public getTemplateDateFormat$java_lang_String$int$java_util_Locale$java_util_TimeZone$boolean(formatString : string, dateType : number, locale : string, timeZone : string, zonelessInput : boolean) : TemplateDateFormat {
-        let currentLocale : string = this.getLocale();
-        if(locale === currentLocale) {
+    public getTemplateDateFormat$java_lang_String$int$java_util_Locale$java_util_TimeZone$boolean(formatString : string, dateType : number, locale : Locale, timeZone : string, zonelessInput : boolean) : TemplateDateFormat {
+        let currentLocale : Locale = this.getLocale();
+        if(locale.equals(currentLocale)) {
             let equalCurrentTZ : number;
             let currentTimeZone : string = this.getTimeZone();
             if(/* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(timeZone,currentTimeZone))) {
@@ -1723,7 +1724,7 @@ export class Environment extends Configurable {
      * @return {TemplateDateFormat}
      * @private
      */
-    getTemplateDateFormatWithoutCache(formatString : string, dateType : number, locale : string, timeZone : string, zonelessInput : boolean) : TemplateDateFormat {
+    getTemplateDateFormatWithoutCache(formatString : string, dateType : number, locale : Locale, timeZone : string, zonelessInput : boolean) : TemplateDateFormat {
         let formatStringLen : number = formatString.length;
         let formatParams : string;
         let formatFactory : /*TemplateDateFormatFactory*/any;
@@ -2512,9 +2513,12 @@ export class Environment extends Configurable {
     }
 
     importMacros(template : Template) {
-        for(let it : any = /* iterator */((a) => { var i = 0; return { next: function() { return i<a.length?a[i++]:null; }, hasNext: function() { return i<a.length; }}})(/* values */((m) => { let r=[]; m.forEach((v, k, m) => r.push(v)); return r; })(<any>template.getMacros())); it.hasNext(); ) {
-            this.visitMacroDef(<Macro>it.next());
-        }
+        template.getMacros().values().forEach(item => {
+            this.visitMacroDef(<Macro>item);
+        });
+        // for(let it : any = /* iterator */((a) => { var i = 0; return { next: function() { return i<a.length?a[i++]:null; }, hasNext: function() { return i<a.length; }}})(/* values */((m) => { let r=[]; m.forEach((v, k, m) => r.push(v)); return r; })(<any>template.getMacros())); it.hasNext(); ) {
+        //     this.visitMacroDef(<Macro>it.next());
+        // }
     }
 
     /**
@@ -2659,10 +2663,10 @@ export namespace Environment {
 
 
     export class Namespace extends SimpleHash {
-        public __parent: any;
+        public __parent: Environment;
         template : Template;
 
-        public constructor(__parent: any, template? : any) {
+        public constructor(__parent: Environment, template? : any) {
             if(((template != null && template instanceof <any>Template) || template === null)) {
                 let __args = Array.prototype.slice.call(arguments, [1]);
                 super();
@@ -2688,7 +2692,7 @@ export namespace Environment {
          * @return {Template} the Template object with which this Namespace is associated.
          */
         public getTemplate() : Template {
-            return this.template == null?this.getTemplate():this.template;
+            return this.template == null?this.__parent.getTemplate():this.template;
         }
 
         setTemplate(template : Template) {
@@ -2708,7 +2712,7 @@ export namespace Environment {
         public __parent: any;
         templateName : string;
 
-        locale : string;
+        locale : Locale;
 
         encoding : string;
 

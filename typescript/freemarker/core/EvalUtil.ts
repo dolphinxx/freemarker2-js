@@ -184,7 +184,7 @@ export class EvalUtil {
             }
             let leftDate : Date = EvalUtil.modelToDate(leftDateModel, leftExp);
             let rightDate : Date = EvalUtil.modelToDate(rightDateModel, rightExp);
-            cmpResult = leftDate.compareTo(rightDate);
+            cmpResult = leftDate.getTime() - rightDate.getTime();
         } else if((leftValue != null && ClassUtil.isAssignableFrom(leftValue, "freemarker.template.TemplateScalarModel")/*(leftValue["__interfaces"] != null && leftValue["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0 || leftValue.constructor != null && leftValue.constructor["__interfaces"] != null && leftValue.constructor["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0)) && (rightValue != null && (rightValue["__interfaces"] != null && rightValue["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0 || rightValue.constructor != null && rightValue.constructor["__interfaces"] != null && rightValue.constructor["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0)*/)) {
             if(operator !== EvalUtil.CMP_OP_EQUALS && operator !== EvalUtil.CMP_OP_NOT_EQUALS) {
                 throw new _MiscTemplateException(defaultBlamed, env, "Can\'t use operator \"", EvalUtil.cmpOpToString(operator, operatorString), "\" on string values.");
@@ -211,7 +211,7 @@ export class EvalUtil {
                     return true;
                 }
             }
-            throw new _MiscTemplateException(defaultBlamed, env, "Can\'t compare values of these types. ", "Allowed comparisons are between two numbers, two strings, two dates, or two booleans.\n", "Left hand operand ", (quoteOperandsInErrors && leftExp != null?["(", new (require('./_DelayedGetCanonicalForm')._DelayedGetCanonicalForm)(leftExp), ") value "]:""), "is ", new (require('./_DelayedAOrAn')._DelayedAOrAn)(new _DelayedFTLTypeDescription(leftValue)), ".\n", "Right hand operand ", (quoteOperandsInErrors && rightExp != null?["(", new (require('./_DelayedGetCanonicalForm')._DelayedGetCanonicalForm)(rightExp), ") value "]:""), "is ", new (require('./_DelayedAOrAn')._DelayedAOrAn)(new (require('./_DelayedFTLTypeDescription')._DelayedFTLTypeDescription)(rightValue)), ".");
+            throw new _MiscTemplateException(defaultBlamed, env, "Can\'t compare values of these types. ", "Allowed comparisons are between two numbers, two strings, two dates, or two booleans.\n", "Left hand operand ", (quoteOperandsInErrors && leftExp != null?["(", new (require('./_DelayedGetCanonicalForm')._DelayedGetCanonicalForm)(leftExp), ") value "]:""), "is ", new (require('./_DelayedAOrAn')._DelayedAOrAn)(new (require('./_DelayedFTLTypeDescription')._DelayedFTLTypeDescription)(leftValue)), ".\n", "Right hand operand ", (quoteOperandsInErrors && rightExp != null?["(", new (require('./_DelayedGetCanonicalForm')._DelayedGetCanonicalForm)(rightExp), ") value "]:""), "is ", new (require('./_DelayedAOrAn')._DelayedAOrAn)(new (require('./_DelayedFTLTypeDescription')._DelayedFTLTypeDescription)(rightValue)), ".");
         }
         switch((operator)) {
         case 1 /* CMP_OP_EQUALS */:
@@ -289,7 +289,7 @@ export class EvalUtil {
     }
 
     public static coerceModelToStringOrMarkup$freemarker_template_TemplateModel$freemarker_core_Expression$boolean$java_lang_String$freemarker_core_Environment(tm : TemplateModel, exp : /*Expression*/any, returnNullOnNonCoercableType : boolean, seqTip : string, env : /*Environment*/any) : any {
-        if(tm != null && (tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.template.TemplateNumberModel") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.template.TemplateNumberModel") >= 0)) {
+        if(tm != null && ClassUtil.isAssignableFrom(tm, "freemarker.template.TemplateNumberModel")/*(tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.template.TemplateNumberModel") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.template.TemplateNumberModel") >= 0)*/) {
             let tnm : TemplateNumberModel = <TemplateNumberModel><any>tm;
             let format : TemplateNumberFormat = env.getTemplateNumberFormat$freemarker_core_Expression$boolean(exp, false);
             try {
@@ -297,7 +297,7 @@ export class EvalUtil {
             } catch(e) {
                 throw _MessageUtil.newCantFormatNumberException(format, exp, e, false);
             }
-        } else if(tm != null && (tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.template.TemplateDateModel") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.template.TemplateDateModel") >= 0)) {
+        } else if(tm != null && ClassUtil.isAssignableFrom(tm, "freemarker.template.TemplateDateModel")/*(tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.template.TemplateDateModel") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.template.TemplateDateModel") >= 0)*/) {
             let tdm : TemplateDateModel = <TemplateDateModel><any>tm;
             let format : TemplateDateFormat = env.getTemplateDateFormat$freemarker_template_TemplateDateModel$freemarker_core_Expression$boolean(tdm, exp, false);
             try {
@@ -305,7 +305,7 @@ export class EvalUtil {
             } catch(e) {
                 throw _MessageUtil.newCantFormatDateException(format, exp, e, false);
             }
-        } else if(tm != null && (tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.core.TemplateMarkupOutputModel") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.core.TemplateMarkupOutputModel") >= 0)) {
+        } else if(tm != null && ClassUtil.isAssignableFrom(tm, "freemarker.core.TemplateMarkupOutputModel")/*(tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.core.TemplateMarkupOutputModel") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.core.TemplateMarkupOutputModel") >= 0)*/) {
             return tm;
         } else {
             return EvalUtil.coerceModelToTextualCommon(tm, exp, seqTip, true, returnNullOnNonCoercableType, env);
@@ -394,7 +394,7 @@ export class EvalUtil {
      * @private
      */
     /*private*/ static coerceModelToTextualCommon(tm : TemplateModel, exp : /*Expression*/any, seqHint : string, supportsTOM : boolean, returnNullOnNonCoercableType : boolean, env : /*Environment*/any) : string {
-        if(tm != null && (tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0)) {
+        if(tm != null && ClassUtil.isAssignableFrom(tm, "freemarker.template.TemplateScalarModel")/*(tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0)*/) {
             return EvalUtil.modelToString(<TemplateScalarModel><any>tm, exp, env);
         } else if(tm == null) {
             if(env.isClassicCompatible()) {
@@ -407,7 +407,7 @@ export class EvalUtil {
                     throw new InvalidReferenceException("Null/missing value (no more informatoin avilable)", env);
                 }
             }
-        } else if(tm != null && (tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.template.TemplateBooleanModel") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.template.TemplateBooleanModel") >= 0)) {
+        } else if(tm != null && ClassUtil.isAssignableFrom(tm, "freemarker.template.TemplateBooleanModel")/*(tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.template.TemplateBooleanModel") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.template.TemplateBooleanModel") >= 0)*/) {
             let booleanValue : boolean = (<TemplateBooleanModel><any>tm).getAsBoolean();
             let compatMode : number = env.getClassicCompatibleAsInt();
             if(compatMode === 0) {
@@ -434,7 +434,7 @@ export class EvalUtil {
             }
             const NonStringOrTemplateOutputException = require('./NonStringOrTemplateOutputException').NonStringOrTemplateOutputException;
             const NonStringException = require('./NonStringException').NonStringException;
-            if(seqHint != null && ((tm != null && (tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0)) || (tm != null && (tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.template.TemplateCollectionModel") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.template.TemplateCollectionModel") >= 0)))) {
+            if(seqHint != null && ClassUtil.isAssignableFrom(tm, "freemarker.template.TemplateSequenceModel")/*((tm != null && (tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0)) || (tm != null && (tm["__interfaces"] != null && tm["__interfaces"].indexOf("freemarker.template.TemplateCollectionModel") >= 0 || tm.constructor != null && tm.constructor["__interfaces"] != null && tm.constructor["__interfaces"].indexOf("freemarker.template.TemplateCollectionModel") >= 0)))*/) {
                 if(supportsTOM) {
                     throw new NonStringOrTemplateOutputException(exp, tm, seqHint, env);
                 } else {

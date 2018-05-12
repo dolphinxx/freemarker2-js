@@ -1,5 +1,4 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import {Configuration} from '../template/Configuration';
 import {SimpleScalar} from '../template/SimpleScalar';
 import {TemplateMethodModel} from '../template/TemplateMethodModel';
 import {TemplateModel} from '../template/TemplateModel';
@@ -36,7 +35,7 @@ export namespace BuiltInsForStringsEncoding {
         }
 
         public getMinimumICIVersion() : number {
-            return _TemplateAPI.VERSION_INT_2_3_20_$LI$();
+            return /*_TemplateAPI.VERSION_INT_2_3_20_$LI$()*/2003020;
         }
 
         public getPreviousICIChainMember() : any {
@@ -230,6 +229,7 @@ export namespace BuiltInsForStringsEncoding {
             if(this.cachedResult == null) {
                 let cs : string = this.env.getEffectiveURLEscapingCharset();
                 if(cs == null) {
+                    const Configuration = require('../template/Configuration').Configuration;
                     throw new _TemplateModelException("To do URL encoding, the framework that encloses FreeMarker must specify the \"", Configuration.OUTPUT_ENCODING_KEY_$LI$(), "\" setting or the \"", Configuration.URL_ESCAPING_CHARSET_KEY_$LI$(), "\" setting, so ask the programmers to set them. Or, as a last chance, you can set the url_encoding_charset setting in the template, e.g. <#setting ", Configuration.URL_ESCAPING_CHARSET_KEY_$LI$(), "=\'ISO-8859-1\'>, or give the charset explicitly to the built-in, e.g. foo?url(\'ISO-8859-1\').");
                 }
                 try {

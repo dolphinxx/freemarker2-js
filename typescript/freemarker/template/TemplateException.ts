@@ -10,7 +10,6 @@ import {PrintWriterStackTraceWriter} from './PrintWriterStackTraceWriter';
 import {PrintStreamStackTraceWriter} from './PrintStreamStackTraceWriter';
 import {StackTraceWriter} from './StackTraceWriter';
 import {PrintStream} from "../../java/io/PrintStream";
-import {ClassUtil} from "./utility/ClassUtil";
 
 /**
  * The same as {link #TemplateException(String, Throwable, Environment)}; it's exists only for binary
@@ -21,7 +20,7 @@ import {ClassUtil} from "./utility/ClassUtil";
  * @class
  * @extends Error
  */
-export class TemplateException extends Error {
+export class TemplateException {
     static FTL_INSTRUCTION_STACK_TRACE_TITLE : string = "FTL stack trace (\"~\" means nesting-related):";
 
     /*private*/ descriptionBuilder : _ErrorDescriptionBuilder;
@@ -64,487 +63,524 @@ export class TemplateException extends Error {
 
     /*private*/ messageWasAlreadyPrintedForThisTrace : boolean;
 
+    cause:any;
+
     public constructor(renderedDescription? : any, cause? : any, env? : any, blamedExpression? : any, descriptionBuilder? : any) {
-        if(((typeof renderedDescription === 'string') || renderedDescription === null) && ((cause != null && (cause["__classes"] && cause["__classes"].indexOf("java.lang.Throwable") >= 0) || cause != null && cause instanceof <any>Error) || cause === null) && ((ClassUtil.isInstanceOf(env, 'freemarker.template.Environment')) || env === null) && ((blamedExpression != null && blamedExpression instanceof <any>Expression) || blamedExpression === null) && ((descriptionBuilder != null && descriptionBuilder instanceof <any>_ErrorDescriptionBuilder) || descriptionBuilder === null)) {
-            let __args = Array.prototype.slice.call(arguments);
-            super(cause); this.message=cause;
-            if(this.descriptionBuilder===undefined) this.descriptionBuilder = null;
-            if(this.env===undefined) this.env = null;
-            if(this.blamedExpression===undefined) this.blamedExpression = null;
-            if(this.ftlInstructionStackSnapshot===undefined) this.ftlInstructionStackSnapshot = null;
-            if(this.renderedFtlInstructionStackSnapshot===undefined) this.renderedFtlInstructionStackSnapshot = null;
-            if(this.renderedFtlInstructionStackSnapshotTop===undefined) this.renderedFtlInstructionStackSnapshotTop = null;
-            if(this.description===undefined) this.description = null;
-            if(this.messageWithoutStackTop===undefined) this.messageWithoutStackTop = null;
-            if(this.message===undefined) this.message = null;
-            if(this.blamedExpressionStringCalculated===undefined) this.blamedExpressionStringCalculated = false;
-            if(this.blamedExpressionString===undefined) this.blamedExpressionString = null;
-            if(this.positionsCalculated===undefined) this.positionsCalculated = false;
-            if(this.templateName===undefined) this.templateName = null;
-            if(this.templateSourceName===undefined) this.templateSourceName = null;
-            if(this.lineNumber===undefined) this.lineNumber = null;
-            if(this.columnNumber===undefined) this.columnNumber = null;
-            if(this.endLineNumber===undefined) this.endLineNumber = null;
-            if(this.endColumnNumber===undefined) this.endColumnNumber = null;
-            if(this.messageWasAlreadyPrintedForThisTrace===undefined) this.messageWasAlreadyPrintedForThisTrace = false;
-            this.lock = <any>new Object();
-            (<any>Object).setPrototypeOf(this, TemplateException.prototype);
-            if(this.descriptionBuilder===undefined) this.descriptionBuilder = null;
-            if(this.env===undefined) this.env = null;
-            if(this.blamedExpression===undefined) this.blamedExpression = null;
-            if(this.ftlInstructionStackSnapshot===undefined) this.ftlInstructionStackSnapshot = null;
-            if(this.renderedFtlInstructionStackSnapshot===undefined) this.renderedFtlInstructionStackSnapshot = null;
-            if(this.renderedFtlInstructionStackSnapshotTop===undefined) this.renderedFtlInstructionStackSnapshotTop = null;
-            if(this.description===undefined) this.description = null;
-            if(this.messageWithoutStackTop===undefined) this.messageWithoutStackTop = null;
-            if(this.message===undefined) this.message = null;
-            if(this.blamedExpressionStringCalculated===undefined) this.blamedExpressionStringCalculated = false;
-            if(this.blamedExpressionString===undefined) this.blamedExpressionString = null;
-            if(this.positionsCalculated===undefined) this.positionsCalculated = false;
-            if(this.templateName===undefined) this.templateName = null;
-            if(this.templateSourceName===undefined) this.templateSourceName = null;
-            if(this.lineNumber===undefined) this.lineNumber = null;
-            if(this.columnNumber===undefined) this.columnNumber = null;
-            if(this.endLineNumber===undefined) this.endLineNumber = null;
-            if(this.endColumnNumber===undefined) this.endColumnNumber = null;
-            if(this.messageWasAlreadyPrintedForThisTrace===undefined) this.messageWasAlreadyPrintedForThisTrace = false;
-            (() => {
-                // if(env == null) env = Environment.getCurrentEnvironment();
-                this.env = env;
-                this.blamedExpression = blamedExpression;
-                this.descriptionBuilder = descriptionBuilder;
-                this.description = renderedDescription;
-                // if(env != null) this.ftlInstructionStackSnapshot = _CoreAPI.getInstructionStackSnapshot(env);
-            })();
-        } else if(((renderedDescription != null && (renderedDescription["__classes"] && renderedDescription["__classes"].indexOf("java.lang.Throwable") >= 0) || renderedDescription != null && renderedDescription instanceof <any>Error) || renderedDescription === null) && ((ClassUtil.isInstanceOf(cause, 'freemarker.template.Environment')) || cause === null) && ((env != null && env instanceof <any>Expression) || env === null) && ((blamedExpression != null && blamedExpression instanceof <any>_ErrorDescriptionBuilder) || blamedExpression === null) && descriptionBuilder === undefined) {
-            let __args = Array.prototype.slice.call(arguments);
-            let cause : any = __args[0];
-            let env : any = __args[1];
-            let blamedExpr : any = __args[2];
-            let descriptionBuilder : any = __args[3];
-            {
-                let __args = Array.prototype.slice.call(arguments);
-                let renderedDescription : any = null;
-                let blamedExpression : any = blamedExpr;
-                super(cause); this.message=cause;
-                if(this.descriptionBuilder===undefined) this.descriptionBuilder = null;
-                if(this.env===undefined) this.env = null;
-                if(this.blamedExpression===undefined) this.blamedExpression = null;
-                if(this.ftlInstructionStackSnapshot===undefined) this.ftlInstructionStackSnapshot = null;
-                if(this.renderedFtlInstructionStackSnapshot===undefined) this.renderedFtlInstructionStackSnapshot = null;
-                if(this.renderedFtlInstructionStackSnapshotTop===undefined) this.renderedFtlInstructionStackSnapshotTop = null;
-                if(this.description===undefined) this.description = null;
-                if(this.messageWithoutStackTop===undefined) this.messageWithoutStackTop = null;
-                if(this.message===undefined) this.message = null;
-                if(this.blamedExpressionStringCalculated===undefined) this.blamedExpressionStringCalculated = false;
-                if(this.blamedExpressionString===undefined) this.blamedExpressionString = null;
-                if(this.positionsCalculated===undefined) this.positionsCalculated = false;
-                if(this.templateName===undefined) this.templateName = null;
-                if(this.templateSourceName===undefined) this.templateSourceName = null;
-                if(this.lineNumber===undefined) this.lineNumber = null;
-                if(this.columnNumber===undefined) this.columnNumber = null;
-                if(this.endLineNumber===undefined) this.endLineNumber = null;
-                if(this.endColumnNumber===undefined) this.endColumnNumber = null;
-                if(this.messageWasAlreadyPrintedForThisTrace===undefined) this.messageWasAlreadyPrintedForThisTrace = false;
-                this.lock = <any>new Object();
-                (<any>Object).setPrototypeOf(this, TemplateException.prototype);
-                if(this.descriptionBuilder===undefined) this.descriptionBuilder = null;
-                if(this.env===undefined) this.env = null;
-                if(this.blamedExpression===undefined) this.blamedExpression = null;
-                if(this.ftlInstructionStackSnapshot===undefined) this.ftlInstructionStackSnapshot = null;
-                if(this.renderedFtlInstructionStackSnapshot===undefined) this.renderedFtlInstructionStackSnapshot = null;
-                if(this.renderedFtlInstructionStackSnapshotTop===undefined) this.renderedFtlInstructionStackSnapshotTop = null;
-                if(this.description===undefined) this.description = null;
-                if(this.messageWithoutStackTop===undefined) this.messageWithoutStackTop = null;
-                if(this.message===undefined) this.message = null;
-                if(this.blamedExpressionStringCalculated===undefined) this.blamedExpressionStringCalculated = false;
-                if(this.blamedExpressionString===undefined) this.blamedExpressionString = null;
-                if(this.positionsCalculated===undefined) this.positionsCalculated = false;
-                if(this.templateName===undefined) this.templateName = null;
-                if(this.templateSourceName===undefined) this.templateSourceName = null;
-                if(this.lineNumber===undefined) this.lineNumber = null;
-                if(this.columnNumber===undefined) this.columnNumber = null;
-                if(this.endLineNumber===undefined) this.endLineNumber = null;
-                if(this.endColumnNumber===undefined) this.endColumnNumber = null;
-                if(this.messageWasAlreadyPrintedForThisTrace===undefined) this.messageWasAlreadyPrintedForThisTrace = false;
-                (() => {
-                    // if(env == null) env = Environment.getCurrentEnvironment();
-                    this.env = env;
-                    this.blamedExpression = blamedExpression;
-                    this.descriptionBuilder = descriptionBuilder;
-                    this.description = renderedDescription;
-                    // if(env != null) this.ftlInstructionStackSnapshot = _CoreAPI.getInstructionStackSnapshot(env);
-                })();
+        if(arguments.length === 4) {
+            renderedDescription = null;
+            cause = arguments[0];
+            env = arguments[1];
+            blamedExpression = arguments[2];
+            descriptionBuilder = arguments[3];
+        } else if(arguments.length === 3) {
+
+        } else if(arguments.length === 2) {
+            if(typeof arguments[0] === 'string') {
+                cause = null;
+                env = arguments[1];
+            } else {
+                renderedDescription = null;
+                cause = arguments[0];
+                env = arguments[1];
             }
-        } else if(((typeof renderedDescription === 'string') || renderedDescription === null) && ((cause != null && (cause["__classes"] && cause["__classes"].indexOf("java.lang.Exception") >= 0) || cause != null && cause instanceof <any>Error) || cause === null) && ((ClassUtil.isInstanceOf(env, 'freemarker.template.Environment')) || env === null) && blamedExpression === undefined && descriptionBuilder === undefined) {
-            let __args = Array.prototype.slice.call(arguments);
-            let description : any = __args[0];
-            {
-                let __args = Array.prototype.slice.call(arguments);
-                let renderedDescription : any = description;
-                let blamedExpression : any = null;
-                let descriptionBuilder : any = null;
-                super(cause); this.message=cause;
-                if(this.descriptionBuilder===undefined) this.descriptionBuilder = null;
-                if(this.env===undefined) this.env = null;
-                if(this.blamedExpression===undefined) this.blamedExpression = null;
-                if(this.ftlInstructionStackSnapshot===undefined) this.ftlInstructionStackSnapshot = null;
-                if(this.renderedFtlInstructionStackSnapshot===undefined) this.renderedFtlInstructionStackSnapshot = null;
-                if(this.renderedFtlInstructionStackSnapshotTop===undefined) this.renderedFtlInstructionStackSnapshotTop = null;
-                if(this.description===undefined) this.description = null;
-                if(this.messageWithoutStackTop===undefined) this.messageWithoutStackTop = null;
-                if(this.message===undefined) this.message = null;
-                if(this.blamedExpressionStringCalculated===undefined) this.blamedExpressionStringCalculated = false;
-                if(this.blamedExpressionString===undefined) this.blamedExpressionString = null;
-                if(this.positionsCalculated===undefined) this.positionsCalculated = false;
-                if(this.templateName===undefined) this.templateName = null;
-                if(this.templateSourceName===undefined) this.templateSourceName = null;
-                if(this.lineNumber===undefined) this.lineNumber = null;
-                if(this.columnNumber===undefined) this.columnNumber = null;
-                if(this.endLineNumber===undefined) this.endLineNumber = null;
-                if(this.endColumnNumber===undefined) this.endColumnNumber = null;
-                if(this.messageWasAlreadyPrintedForThisTrace===undefined) this.messageWasAlreadyPrintedForThisTrace = false;
-                this.lock = <any>new Object();
-                (<any>Object).setPrototypeOf(this, TemplateException.prototype);
-                if(this.descriptionBuilder===undefined) this.descriptionBuilder = null;
-                if(this.env===undefined) this.env = null;
-                if(this.blamedExpression===undefined) this.blamedExpression = null;
-                if(this.ftlInstructionStackSnapshot===undefined) this.ftlInstructionStackSnapshot = null;
-                if(this.renderedFtlInstructionStackSnapshot===undefined) this.renderedFtlInstructionStackSnapshot = null;
-                if(this.renderedFtlInstructionStackSnapshotTop===undefined) this.renderedFtlInstructionStackSnapshotTop = null;
-                if(this.description===undefined) this.description = null;
-                if(this.messageWithoutStackTop===undefined) this.messageWithoutStackTop = null;
-                if(this.message===undefined) this.message = null;
-                if(this.blamedExpressionStringCalculated===undefined) this.blamedExpressionStringCalculated = false;
-                if(this.blamedExpressionString===undefined) this.blamedExpressionString = null;
-                if(this.positionsCalculated===undefined) this.positionsCalculated = false;
-                if(this.templateName===undefined) this.templateName = null;
-                if(this.templateSourceName===undefined) this.templateSourceName = null;
-                if(this.lineNumber===undefined) this.lineNumber = null;
-                if(this.columnNumber===undefined) this.columnNumber = null;
-                if(this.endLineNumber===undefined) this.endLineNumber = null;
-                if(this.endColumnNumber===undefined) this.endColumnNumber = null;
-                if(this.messageWasAlreadyPrintedForThisTrace===undefined) this.messageWasAlreadyPrintedForThisTrace = false;
-                (() => {
-                    // if(env == null) env = Environment.getCurrentEnvironment();
-                    this.env = env;
-                    this.blamedExpression = blamedExpression;
-                    this.descriptionBuilder = descriptionBuilder;
-                    this.description = renderedDescription;
-                    // if(env != null) this.ftlInstructionStackSnapshot = _CoreAPI.getInstructionStackSnapshot(env);
-                })();
-            }
-        } else if(((typeof renderedDescription === 'string') || renderedDescription === null) && ((cause != null && (cause["__classes"] && cause["__classes"].indexOf("java.lang.Throwable") >= 0) || cause != null && cause instanceof <any>Error) || cause === null) && ((ClassUtil.isInstanceOf(env, 'freemarker.template.Environment')) || env === null) && blamedExpression === undefined && descriptionBuilder === undefined) {
-            let __args = Array.prototype.slice.call(arguments);
-            let description : any = __args[0];
-            {
-                let __args = Array.prototype.slice.call(arguments);
-                let renderedDescription : any = description;
-                let blamedExpression : any = null;
-                let descriptionBuilder : any = null;
-                super(cause); this.message=cause;
-                if(this.descriptionBuilder===undefined) this.descriptionBuilder = null;
-                if(this.env===undefined) this.env = null;
-                if(this.blamedExpression===undefined) this.blamedExpression = null;
-                if(this.ftlInstructionStackSnapshot===undefined) this.ftlInstructionStackSnapshot = null;
-                if(this.renderedFtlInstructionStackSnapshot===undefined) this.renderedFtlInstructionStackSnapshot = null;
-                if(this.renderedFtlInstructionStackSnapshotTop===undefined) this.renderedFtlInstructionStackSnapshotTop = null;
-                if(this.description===undefined) this.description = null;
-                if(this.messageWithoutStackTop===undefined) this.messageWithoutStackTop = null;
-                if(this.message===undefined) this.message = null;
-                if(this.blamedExpressionStringCalculated===undefined) this.blamedExpressionStringCalculated = false;
-                if(this.blamedExpressionString===undefined) this.blamedExpressionString = null;
-                if(this.positionsCalculated===undefined) this.positionsCalculated = false;
-                if(this.templateName===undefined) this.templateName = null;
-                if(this.templateSourceName===undefined) this.templateSourceName = null;
-                if(this.lineNumber===undefined) this.lineNumber = null;
-                if(this.columnNumber===undefined) this.columnNumber = null;
-                if(this.endLineNumber===undefined) this.endLineNumber = null;
-                if(this.endColumnNumber===undefined) this.endColumnNumber = null;
-                if(this.messageWasAlreadyPrintedForThisTrace===undefined) this.messageWasAlreadyPrintedForThisTrace = false;
-                this.lock = <any>new Object();
-                (<any>Object).setPrototypeOf(this, TemplateException.prototype);
-                if(this.descriptionBuilder===undefined) this.descriptionBuilder = null;
-                if(this.env===undefined) this.env = null;
-                if(this.blamedExpression===undefined) this.blamedExpression = null;
-                if(this.ftlInstructionStackSnapshot===undefined) this.ftlInstructionStackSnapshot = null;
-                if(this.renderedFtlInstructionStackSnapshot===undefined) this.renderedFtlInstructionStackSnapshot = null;
-                if(this.renderedFtlInstructionStackSnapshotTop===undefined) this.renderedFtlInstructionStackSnapshotTop = null;
-                if(this.description===undefined) this.description = null;
-                if(this.messageWithoutStackTop===undefined) this.messageWithoutStackTop = null;
-                if(this.message===undefined) this.message = null;
-                if(this.blamedExpressionStringCalculated===undefined) this.blamedExpressionStringCalculated = false;
-                if(this.blamedExpressionString===undefined) this.blamedExpressionString = null;
-                if(this.positionsCalculated===undefined) this.positionsCalculated = false;
-                if(this.templateName===undefined) this.templateName = null;
-                if(this.templateSourceName===undefined) this.templateSourceName = null;
-                if(this.lineNumber===undefined) this.lineNumber = null;
-                if(this.columnNumber===undefined) this.columnNumber = null;
-                if(this.endLineNumber===undefined) this.endLineNumber = null;
-                if(this.endColumnNumber===undefined) this.endColumnNumber = null;
-                if(this.messageWasAlreadyPrintedForThisTrace===undefined) this.messageWasAlreadyPrintedForThisTrace = false;
-                (() => {
-                    // if(env == null) env = Environment.getCurrentEnvironment();
-                    this.env = env;
-                    this.blamedExpression = blamedExpression;
-                    this.descriptionBuilder = descriptionBuilder;
-                    this.description = renderedDescription;
-                    // if(env != null) this.ftlInstructionStackSnapshot = _CoreAPI.getInstructionStackSnapshot(env);
-                })();
-            }
-        } else if(((typeof renderedDescription === 'string') || renderedDescription === null) && ((ClassUtil.isInstanceOf(cause, 'freemarker.template.Environment')) || cause === null) && env === undefined && blamedExpression === undefined && descriptionBuilder === undefined) {
-            let __args = Array.prototype.slice.call(arguments);
-            let description : any = __args[0];
-            let env : any = __args[1];
-            {
-                let __args = Array.prototype.slice.call(arguments);
-                let cause : any = null;
-                {
-                    let __args = Array.prototype.slice.call(arguments);
-                    let renderedDescription : any = description;
-                    let blamedExpression : any = null;
-                    let descriptionBuilder : any = null;
-                    super(cause); this.message=cause;
-                    if(this.descriptionBuilder===undefined) this.descriptionBuilder = null;
-                    if(this.env===undefined) this.env = null;
-                    if(this.blamedExpression===undefined) this.blamedExpression = null;
-                    if(this.ftlInstructionStackSnapshot===undefined) this.ftlInstructionStackSnapshot = null;
-                    if(this.renderedFtlInstructionStackSnapshot===undefined) this.renderedFtlInstructionStackSnapshot = null;
-                    if(this.renderedFtlInstructionStackSnapshotTop===undefined) this.renderedFtlInstructionStackSnapshotTop = null;
-                    if(this.description===undefined) this.description = null;
-                    if(this.messageWithoutStackTop===undefined) this.messageWithoutStackTop = null;
-                    if(this.message===undefined) this.message = null;
-                    if(this.blamedExpressionStringCalculated===undefined) this.blamedExpressionStringCalculated = false;
-                    if(this.blamedExpressionString===undefined) this.blamedExpressionString = null;
-                    if(this.positionsCalculated===undefined) this.positionsCalculated = false;
-                    if(this.templateName===undefined) this.templateName = null;
-                    if(this.templateSourceName===undefined) this.templateSourceName = null;
-                    if(this.lineNumber===undefined) this.lineNumber = null;
-                    if(this.columnNumber===undefined) this.columnNumber = null;
-                    if(this.endLineNumber===undefined) this.endLineNumber = null;
-                    if(this.endColumnNumber===undefined) this.endColumnNumber = null;
-                    if(this.messageWasAlreadyPrintedForThisTrace===undefined) this.messageWasAlreadyPrintedForThisTrace = false;
-                    this.lock = <any>new Object();
-                    (<any>Object).setPrototypeOf(this, TemplateException.prototype);
-                    if(this.descriptionBuilder===undefined) this.descriptionBuilder = null;
-                    if(this.env===undefined) this.env = null;
-                    if(this.blamedExpression===undefined) this.blamedExpression = null;
-                    if(this.ftlInstructionStackSnapshot===undefined) this.ftlInstructionStackSnapshot = null;
-                    if(this.renderedFtlInstructionStackSnapshot===undefined) this.renderedFtlInstructionStackSnapshot = null;
-                    if(this.renderedFtlInstructionStackSnapshotTop===undefined) this.renderedFtlInstructionStackSnapshotTop = null;
-                    if(this.description===undefined) this.description = null;
-                    if(this.messageWithoutStackTop===undefined) this.messageWithoutStackTop = null;
-                    if(this.message===undefined) this.message = null;
-                    if(this.blamedExpressionStringCalculated===undefined) this.blamedExpressionStringCalculated = false;
-                    if(this.blamedExpressionString===undefined) this.blamedExpressionString = null;
-                    if(this.positionsCalculated===undefined) this.positionsCalculated = false;
-                    if(this.templateName===undefined) this.templateName = null;
-                    if(this.templateSourceName===undefined) this.templateSourceName = null;
-                    if(this.lineNumber===undefined) this.lineNumber = null;
-                    if(this.columnNumber===undefined) this.columnNumber = null;
-                    if(this.endLineNumber===undefined) this.endLineNumber = null;
-                    if(this.endColumnNumber===undefined) this.endColumnNumber = null;
-                    if(this.messageWasAlreadyPrintedForThisTrace===undefined) this.messageWasAlreadyPrintedForThisTrace = false;
-                    (() => {
-                        // if(env == null) env = Environment.getCurrentEnvironment();
-                        this.env = env;
-                        this.blamedExpression = blamedExpression;
-                        this.descriptionBuilder = descriptionBuilder;
-                        this.description = renderedDescription;
-                        // if(env != null) this.ftlInstructionStackSnapshot = _CoreAPI.getInstructionStackSnapshot(env);
-                    })();
-                }
-            }
-        } else if(((renderedDescription != null && (renderedDescription["__classes"] && renderedDescription["__classes"].indexOf("java.lang.Exception") >= 0) || renderedDescription != null && renderedDescription instanceof <any>Error) || renderedDescription === null) && ((ClassUtil.isInstanceOf(cause, 'freemarker.template.Environment')) || cause === null) && env === undefined && blamedExpression === undefined && descriptionBuilder === undefined) {
-            let __args = Array.prototype.slice.call(arguments);
-            let cause : any = __args[0];
-            let env : any = __args[1];
-            {
-                let __args = Array.prototype.slice.call(arguments);
-                let description : any = null;
-                {
-                    let __args = Array.prototype.slice.call(arguments);
-                    let renderedDescription : any = description;
-                    let blamedExpression : any = null;
-                    let descriptionBuilder : any = null;
-                    super(cause); this.message=cause;
-                    if(this.descriptionBuilder===undefined) this.descriptionBuilder = null;
-                    if(this.env===undefined) this.env = null;
-                    if(this.blamedExpression===undefined) this.blamedExpression = null;
-                    if(this.ftlInstructionStackSnapshot===undefined) this.ftlInstructionStackSnapshot = null;
-                    if(this.renderedFtlInstructionStackSnapshot===undefined) this.renderedFtlInstructionStackSnapshot = null;
-                    if(this.renderedFtlInstructionStackSnapshotTop===undefined) this.renderedFtlInstructionStackSnapshotTop = null;
-                    if(this.description===undefined) this.description = null;
-                    if(this.messageWithoutStackTop===undefined) this.messageWithoutStackTop = null;
-                    if(this.message===undefined) this.message = null;
-                    if(this.blamedExpressionStringCalculated===undefined) this.blamedExpressionStringCalculated = false;
-                    if(this.blamedExpressionString===undefined) this.blamedExpressionString = null;
-                    if(this.positionsCalculated===undefined) this.positionsCalculated = false;
-                    if(this.templateName===undefined) this.templateName = null;
-                    if(this.templateSourceName===undefined) this.templateSourceName = null;
-                    if(this.lineNumber===undefined) this.lineNumber = null;
-                    if(this.columnNumber===undefined) this.columnNumber = null;
-                    if(this.endLineNumber===undefined) this.endLineNumber = null;
-                    if(this.endColumnNumber===undefined) this.endColumnNumber = null;
-                    if(this.messageWasAlreadyPrintedForThisTrace===undefined) this.messageWasAlreadyPrintedForThisTrace = false;
-                    this.lock = <any>new Object();
-                    (<any>Object).setPrototypeOf(this, TemplateException.prototype);
-                    if(this.descriptionBuilder===undefined) this.descriptionBuilder = null;
-                    if(this.env===undefined) this.env = null;
-                    if(this.blamedExpression===undefined) this.blamedExpression = null;
-                    if(this.ftlInstructionStackSnapshot===undefined) this.ftlInstructionStackSnapshot = null;
-                    if(this.renderedFtlInstructionStackSnapshot===undefined) this.renderedFtlInstructionStackSnapshot = null;
-                    if(this.renderedFtlInstructionStackSnapshotTop===undefined) this.renderedFtlInstructionStackSnapshotTop = null;
-                    if(this.description===undefined) this.description = null;
-                    if(this.messageWithoutStackTop===undefined) this.messageWithoutStackTop = null;
-                    if(this.message===undefined) this.message = null;
-                    if(this.blamedExpressionStringCalculated===undefined) this.blamedExpressionStringCalculated = false;
-                    if(this.blamedExpressionString===undefined) this.blamedExpressionString = null;
-                    if(this.positionsCalculated===undefined) this.positionsCalculated = false;
-                    if(this.templateName===undefined) this.templateName = null;
-                    if(this.templateSourceName===undefined) this.templateSourceName = null;
-                    if(this.lineNumber===undefined) this.lineNumber = null;
-                    if(this.columnNumber===undefined) this.columnNumber = null;
-                    if(this.endLineNumber===undefined) this.endLineNumber = null;
-                    if(this.endColumnNumber===undefined) this.endColumnNumber = null;
-                    if(this.messageWasAlreadyPrintedForThisTrace===undefined) this.messageWasAlreadyPrintedForThisTrace = false;
-                    (() => {
-                        // if(env == null) env = Environment.getCurrentEnvironment();
-                        this.env = env;
-                        this.blamedExpression = blamedExpression;
-                        this.descriptionBuilder = descriptionBuilder;
-                        this.description = renderedDescription;
-                        // if(env != null) this.ftlInstructionStackSnapshot = _CoreAPI.getInstructionStackSnapshot(env);
-                    })();
-                }
-            }
-        } else if(((renderedDescription != null && (renderedDescription["__classes"] && renderedDescription["__classes"].indexOf("java.lang.Throwable") >= 0) || renderedDescription != null && renderedDescription instanceof <any>Error) || renderedDescription === null) && ((ClassUtil.isInstanceOf(cause, 'freemarker.template.Environment')) || cause === null) && env === undefined && blamedExpression === undefined && descriptionBuilder === undefined) {
-            let __args = Array.prototype.slice.call(arguments);
-            let cause : any = __args[0];
-            let env : any = __args[1];
-            {
-                let __args = Array.prototype.slice.call(arguments);
-                let description : any = null;
-                {
-                    let __args = Array.prototype.slice.call(arguments);
-                    let renderedDescription : any = description;
-                    let blamedExpression : any = null;
-                    let descriptionBuilder : any = null;
-                    super(cause); this.message=cause;
-                    if(this.descriptionBuilder===undefined) this.descriptionBuilder = null;
-                    if(this.env===undefined) this.env = null;
-                    if(this.blamedExpression===undefined) this.blamedExpression = null;
-                    if(this.ftlInstructionStackSnapshot===undefined) this.ftlInstructionStackSnapshot = null;
-                    if(this.renderedFtlInstructionStackSnapshot===undefined) this.renderedFtlInstructionStackSnapshot = null;
-                    if(this.renderedFtlInstructionStackSnapshotTop===undefined) this.renderedFtlInstructionStackSnapshotTop = null;
-                    if(this.description===undefined) this.description = null;
-                    if(this.messageWithoutStackTop===undefined) this.messageWithoutStackTop = null;
-                    if(this.message===undefined) this.message = null;
-                    if(this.blamedExpressionStringCalculated===undefined) this.blamedExpressionStringCalculated = false;
-                    if(this.blamedExpressionString===undefined) this.blamedExpressionString = null;
-                    if(this.positionsCalculated===undefined) this.positionsCalculated = false;
-                    if(this.templateName===undefined) this.templateName = null;
-                    if(this.templateSourceName===undefined) this.templateSourceName = null;
-                    if(this.lineNumber===undefined) this.lineNumber = null;
-                    if(this.columnNumber===undefined) this.columnNumber = null;
-                    if(this.endLineNumber===undefined) this.endLineNumber = null;
-                    if(this.endColumnNumber===undefined) this.endColumnNumber = null;
-                    if(this.messageWasAlreadyPrintedForThisTrace===undefined) this.messageWasAlreadyPrintedForThisTrace = false;
-                    this.lock = <any>new Object();
-                    (<any>Object).setPrototypeOf(this, TemplateException.prototype);
-                    if(this.descriptionBuilder===undefined) this.descriptionBuilder = null;
-                    if(this.env===undefined) this.env = null;
-                    if(this.blamedExpression===undefined) this.blamedExpression = null;
-                    if(this.ftlInstructionStackSnapshot===undefined) this.ftlInstructionStackSnapshot = null;
-                    if(this.renderedFtlInstructionStackSnapshot===undefined) this.renderedFtlInstructionStackSnapshot = null;
-                    if(this.renderedFtlInstructionStackSnapshotTop===undefined) this.renderedFtlInstructionStackSnapshotTop = null;
-                    if(this.description===undefined) this.description = null;
-                    if(this.messageWithoutStackTop===undefined) this.messageWithoutStackTop = null;
-                    if(this.message===undefined) this.message = null;
-                    if(this.blamedExpressionStringCalculated===undefined) this.blamedExpressionStringCalculated = false;
-                    if(this.blamedExpressionString===undefined) this.blamedExpressionString = null;
-                    if(this.positionsCalculated===undefined) this.positionsCalculated = false;
-                    if(this.templateName===undefined) this.templateName = null;
-                    if(this.templateSourceName===undefined) this.templateSourceName = null;
-                    if(this.lineNumber===undefined) this.lineNumber = null;
-                    if(this.columnNumber===undefined) this.columnNumber = null;
-                    if(this.endLineNumber===undefined) this.endLineNumber = null;
-                    if(this.endColumnNumber===undefined) this.endColumnNumber = null;
-                    if(this.messageWasAlreadyPrintedForThisTrace===undefined) this.messageWasAlreadyPrintedForThisTrace = false;
-                    (() => {
-                        // if(env == null) env = Environment.getCurrentEnvironment();
-                        this.env = env;
-                        this.blamedExpression = blamedExpression;
-                        this.descriptionBuilder = descriptionBuilder;
-                        this.description = renderedDescription;
-                        // if(env != null) this.ftlInstructionStackSnapshot = _CoreAPI.getInstructionStackSnapshot(env);
-                    })();
-                }
-            }
-        } else if(((ClassUtil.isInstanceOf(renderedDescription, 'freemarker.template.Environment')) || renderedDescription === null) && cause === undefined && env === undefined && blamedExpression === undefined && descriptionBuilder === undefined) {
-            let __args = Array.prototype.slice.call(arguments);
-            let env : any = __args[0];
-            {
-                let __args = Array.prototype.slice.call(arguments);
-                let description : any = null;
-                let cause : any = null;
-                {
-                    let __args = Array.prototype.slice.call(arguments);
-                    let renderedDescription : any = description;
-                    let blamedExpression : any = null;
-                    let descriptionBuilder : any = null;
-                    super(cause); this.message=cause;
-                    if(this.descriptionBuilder===undefined) this.descriptionBuilder = null;
-                    if(this.env===undefined) this.env = null;
-                    if(this.blamedExpression===undefined) this.blamedExpression = null;
-                    if(this.ftlInstructionStackSnapshot===undefined) this.ftlInstructionStackSnapshot = null;
-                    if(this.renderedFtlInstructionStackSnapshot===undefined) this.renderedFtlInstructionStackSnapshot = null;
-                    if(this.renderedFtlInstructionStackSnapshotTop===undefined) this.renderedFtlInstructionStackSnapshotTop = null;
-                    if(this.description===undefined) this.description = null;
-                    if(this.messageWithoutStackTop===undefined) this.messageWithoutStackTop = null;
-                    if(this.message===undefined) this.message = null;
-                    if(this.blamedExpressionStringCalculated===undefined) this.blamedExpressionStringCalculated = false;
-                    if(this.blamedExpressionString===undefined) this.blamedExpressionString = null;
-                    if(this.positionsCalculated===undefined) this.positionsCalculated = false;
-                    if(this.templateName===undefined) this.templateName = null;
-                    if(this.templateSourceName===undefined) this.templateSourceName = null;
-                    if(this.lineNumber===undefined) this.lineNumber = null;
-                    if(this.columnNumber===undefined) this.columnNumber = null;
-                    if(this.endLineNumber===undefined) this.endLineNumber = null;
-                    if(this.endColumnNumber===undefined) this.endColumnNumber = null;
-                    if(this.messageWasAlreadyPrintedForThisTrace===undefined) this.messageWasAlreadyPrintedForThisTrace = false;
-                    this.lock = <any>new Object();
-                    (<any>Object).setPrototypeOf(this, TemplateException.prototype);
-                    if(this.descriptionBuilder===undefined) this.descriptionBuilder = null;
-                    if(this.env===undefined) this.env = null;
-                    if(this.blamedExpression===undefined) this.blamedExpression = null;
-                    if(this.ftlInstructionStackSnapshot===undefined) this.ftlInstructionStackSnapshot = null;
-                    if(this.renderedFtlInstructionStackSnapshot===undefined) this.renderedFtlInstructionStackSnapshot = null;
-                    if(this.renderedFtlInstructionStackSnapshotTop===undefined) this.renderedFtlInstructionStackSnapshotTop = null;
-                    if(this.description===undefined) this.description = null;
-                    if(this.messageWithoutStackTop===undefined) this.messageWithoutStackTop = null;
-                    if(this.message===undefined) this.message = null;
-                    if(this.blamedExpressionStringCalculated===undefined) this.blamedExpressionStringCalculated = false;
-                    if(this.blamedExpressionString===undefined) this.blamedExpressionString = null;
-                    if(this.positionsCalculated===undefined) this.positionsCalculated = false;
-                    if(this.templateName===undefined) this.templateName = null;
-                    if(this.templateSourceName===undefined) this.templateSourceName = null;
-                    if(this.lineNumber===undefined) this.lineNumber = null;
-                    if(this.columnNumber===undefined) this.columnNumber = null;
-                    if(this.endLineNumber===undefined) this.endLineNumber = null;
-                    if(this.endColumnNumber===undefined) this.endColumnNumber = null;
-                    if(this.messageWasAlreadyPrintedForThisTrace===undefined) this.messageWasAlreadyPrintedForThisTrace = false;
-                    (() => {
-                        // if(env == null) env = Environment.getCurrentEnvironment();
-                        this.env = env;
-                        this.blamedExpression = blamedExpression;
-                        this.descriptionBuilder = descriptionBuilder;
-                        this.description = renderedDescription;
-                        // if(env != null) this.ftlInstructionStackSnapshot = _CoreAPI.getInstructionStackSnapshot(env);
-                    })();
-                }
-            }
-        } else throw new Error('invalid overload');
+        } else {
+            renderedDescription = null;
+            cause = null;
+            env = arguments[0];
+        }
+        // if(env == null) {
+        //     env = (require('../core/Environment').Environment).getCurrentEnvironment();
+        // }
+        this.env= env;
+        this.blamedExpression = blamedExpression;
+        this.descriptionBuilder = descriptionBuilder;
+        this.description = renderedDescription;
+        this.cause = cause;
+        if(env != null) {
+            this.ftlInstructionStackSnapshot = (require('../core/_CoreAPI')._CoreAPI).getInstructionStackSnapshot(env);
+        }
+
+
+        // if(((typeof renderedDescription === 'string') || renderedDescription === null) && ((cause != null && (cause["__classes"] && cause["__classes"].indexOf("java.lang.Throwable") >= 0) || cause != null && cause instanceof <any>Error) || cause === null) && ((ClassUtil.isInstanceOf(env, 'freemarker.template.Environment')) || env === null) && ((blamedExpression != null && blamedExpression instanceof <any>Expression) || blamedExpression === null) && ((descriptionBuilder != null && descriptionBuilder instanceof <any>_ErrorDescriptionBuilder) || descriptionBuilder === null)) {
+        //     let __args = Array.prototype.slice.call(arguments);
+        //     super(cause); this.message=cause;
+        //     if(this.descriptionBuilder===undefined) this.descriptionBuilder = null;
+        //     if(this.env===undefined) this.env = null;
+        //     if(this.blamedExpression===undefined) this.blamedExpression = null;
+        //     if(this.ftlInstructionStackSnapshot===undefined) this.ftlInstructionStackSnapshot = null;
+        //     if(this.renderedFtlInstructionStackSnapshot===undefined) this.renderedFtlInstructionStackSnapshot = null;
+        //     if(this.renderedFtlInstructionStackSnapshotTop===undefined) this.renderedFtlInstructionStackSnapshotTop = null;
+        //     if(this.description===undefined) this.description = null;
+        //     if(this.messageWithoutStackTop===undefined) this.messageWithoutStackTop = null;
+        //     if(this.message===undefined) this.message = null;
+        //     if(this.blamedExpressionStringCalculated===undefined) this.blamedExpressionStringCalculated = false;
+        //     if(this.blamedExpressionString===undefined) this.blamedExpressionString = null;
+        //     if(this.positionsCalculated===undefined) this.positionsCalculated = false;
+        //     if(this.templateName===undefined) this.templateName = null;
+        //     if(this.templateSourceName===undefined) this.templateSourceName = null;
+        //     if(this.lineNumber===undefined) this.lineNumber = null;
+        //     if(this.columnNumber===undefined) this.columnNumber = null;
+        //     if(this.endLineNumber===undefined) this.endLineNumber = null;
+        //     if(this.endColumnNumber===undefined) this.endColumnNumber = null;
+        //     if(this.messageWasAlreadyPrintedForThisTrace===undefined) this.messageWasAlreadyPrintedForThisTrace = false;
+        //     this.lock = <any>new Object();
+        //     (<any>Object).setPrototypeOf(this, TemplateException.prototype);
+        //     if(this.descriptionBuilder===undefined) this.descriptionBuilder = null;
+        //     if(this.env===undefined) this.env = null;
+        //     if(this.blamedExpression===undefined) this.blamedExpression = null;
+        //     if(this.ftlInstructionStackSnapshot===undefined) this.ftlInstructionStackSnapshot = null;
+        //     if(this.renderedFtlInstructionStackSnapshot===undefined) this.renderedFtlInstructionStackSnapshot = null;
+        //     if(this.renderedFtlInstructionStackSnapshotTop===undefined) this.renderedFtlInstructionStackSnapshotTop = null;
+        //     if(this.description===undefined) this.description = null;
+        //     if(this.messageWithoutStackTop===undefined) this.messageWithoutStackTop = null;
+        //     if(this.message===undefined) this.message = null;
+        //     if(this.blamedExpressionStringCalculated===undefined) this.blamedExpressionStringCalculated = false;
+        //     if(this.blamedExpressionString===undefined) this.blamedExpressionString = null;
+        //     if(this.positionsCalculated===undefined) this.positionsCalculated = false;
+        //     if(this.templateName===undefined) this.templateName = null;
+        //     if(this.templateSourceName===undefined) this.templateSourceName = null;
+        //     if(this.lineNumber===undefined) this.lineNumber = null;
+        //     if(this.columnNumber===undefined) this.columnNumber = null;
+        //     if(this.endLineNumber===undefined) this.endLineNumber = null;
+        //     if(this.endColumnNumber===undefined) this.endColumnNumber = null;
+        //     if(this.messageWasAlreadyPrintedForThisTrace===undefined) this.messageWasAlreadyPrintedForThisTrace = false;
+        //     (() => {
+        //         // if(env == null) env = Environment.getCurrentEnvironment();
+        //         this.env = env;
+        //         this.blamedExpression = blamedExpression;
+        //         this.descriptionBuilder = descriptionBuilder;
+        //         this.description = renderedDescription;
+        //         // if(env != null) this.ftlInstructionStackSnapshot = _CoreAPI.getInstructionStackSnapshot(env);
+        //     })();
+        // } else if(((renderedDescription != null && (renderedDescription["__classes"] && renderedDescription["__classes"].indexOf("java.lang.Throwable") >= 0) || renderedDescription != null && renderedDescription instanceof <any>Error) || renderedDescription === null) && ((ClassUtil.isInstanceOf(cause, 'freemarker.template.Environment')) || cause === null) && ((env != null && env instanceof <any>Expression) || env === null) && ((blamedExpression != null && blamedExpression instanceof <any>_ErrorDescriptionBuilder) || blamedExpression === null) && descriptionBuilder === undefined) {
+        //     let __args = Array.prototype.slice.call(arguments);
+        //     let cause : any = __args[0];
+        //     let env : any = __args[1];
+        //     let blamedExpr : any = __args[2];
+        //     let descriptionBuilder : any = __args[3];
+        //     {
+        //         let __args = Array.prototype.slice.call(arguments);
+        //         let renderedDescription : any = null;
+        //         let blamedExpression : any = blamedExpr;
+        //         super(cause); this.message=cause;
+        //         if(this.descriptionBuilder===undefined) this.descriptionBuilder = null;
+        //         if(this.env===undefined) this.env = null;
+        //         if(this.blamedExpression===undefined) this.blamedExpression = null;
+        //         if(this.ftlInstructionStackSnapshot===undefined) this.ftlInstructionStackSnapshot = null;
+        //         if(this.renderedFtlInstructionStackSnapshot===undefined) this.renderedFtlInstructionStackSnapshot = null;
+        //         if(this.renderedFtlInstructionStackSnapshotTop===undefined) this.renderedFtlInstructionStackSnapshotTop = null;
+        //         if(this.description===undefined) this.description = null;
+        //         if(this.messageWithoutStackTop===undefined) this.messageWithoutStackTop = null;
+        //         if(this.message===undefined) this.message = null;
+        //         if(this.blamedExpressionStringCalculated===undefined) this.blamedExpressionStringCalculated = false;
+        //         if(this.blamedExpressionString===undefined) this.blamedExpressionString = null;
+        //         if(this.positionsCalculated===undefined) this.positionsCalculated = false;
+        //         if(this.templateName===undefined) this.templateName = null;
+        //         if(this.templateSourceName===undefined) this.templateSourceName = null;
+        //         if(this.lineNumber===undefined) this.lineNumber = null;
+        //         if(this.columnNumber===undefined) this.columnNumber = null;
+        //         if(this.endLineNumber===undefined) this.endLineNumber = null;
+        //         if(this.endColumnNumber===undefined) this.endColumnNumber = null;
+        //         if(this.messageWasAlreadyPrintedForThisTrace===undefined) this.messageWasAlreadyPrintedForThisTrace = false;
+        //         this.lock = <any>new Object();
+        //         (<any>Object).setPrototypeOf(this, TemplateException.prototype);
+        //         if(this.descriptionBuilder===undefined) this.descriptionBuilder = null;
+        //         if(this.env===undefined) this.env = null;
+        //         if(this.blamedExpression===undefined) this.blamedExpression = null;
+        //         if(this.ftlInstructionStackSnapshot===undefined) this.ftlInstructionStackSnapshot = null;
+        //         if(this.renderedFtlInstructionStackSnapshot===undefined) this.renderedFtlInstructionStackSnapshot = null;
+        //         if(this.renderedFtlInstructionStackSnapshotTop===undefined) this.renderedFtlInstructionStackSnapshotTop = null;
+        //         if(this.description===undefined) this.description = null;
+        //         if(this.messageWithoutStackTop===undefined) this.messageWithoutStackTop = null;
+        //         if(this.message===undefined) this.message = null;
+        //         if(this.blamedExpressionStringCalculated===undefined) this.blamedExpressionStringCalculated = false;
+        //         if(this.blamedExpressionString===undefined) this.blamedExpressionString = null;
+        //         if(this.positionsCalculated===undefined) this.positionsCalculated = false;
+        //         if(this.templateName===undefined) this.templateName = null;
+        //         if(this.templateSourceName===undefined) this.templateSourceName = null;
+        //         if(this.lineNumber===undefined) this.lineNumber = null;
+        //         if(this.columnNumber===undefined) this.columnNumber = null;
+        //         if(this.endLineNumber===undefined) this.endLineNumber = null;
+        //         if(this.endColumnNumber===undefined) this.endColumnNumber = null;
+        //         if(this.messageWasAlreadyPrintedForThisTrace===undefined) this.messageWasAlreadyPrintedForThisTrace = false;
+        //         (() => {
+        //             // if(env == null) env = Environment.getCurrentEnvironment();
+        //             this.env = env;
+        //             this.blamedExpression = blamedExpression;
+        //             this.descriptionBuilder = descriptionBuilder;
+        //             this.description = renderedDescription;
+        //             // if(env != null) this.ftlInstructionStackSnapshot = _CoreAPI.getInstructionStackSnapshot(env);
+        //         })();
+        //     }
+        // } else if(((typeof renderedDescription === 'string') || renderedDescription === null) && ((cause != null && (cause["__classes"] && cause["__classes"].indexOf("java.lang.Exception") >= 0) || cause != null && cause instanceof <any>Error) || cause === null) && ((ClassUtil.isInstanceOf(env, 'freemarker.template.Environment')) || env === null) && blamedExpression === undefined && descriptionBuilder === undefined) {
+        //     let __args = Array.prototype.slice.call(arguments);
+        //     let description : any = __args[0];
+        //     {
+        //         let __args = Array.prototype.slice.call(arguments);
+        //         let renderedDescription : any = description;
+        //         let blamedExpression : any = null;
+        //         let descriptionBuilder : any = null;
+        //         super(cause); this.message=cause;
+        //         if(this.descriptionBuilder===undefined) this.descriptionBuilder = null;
+        //         if(this.env===undefined) this.env = null;
+        //         if(this.blamedExpression===undefined) this.blamedExpression = null;
+        //         if(this.ftlInstructionStackSnapshot===undefined) this.ftlInstructionStackSnapshot = null;
+        //         if(this.renderedFtlInstructionStackSnapshot===undefined) this.renderedFtlInstructionStackSnapshot = null;
+        //         if(this.renderedFtlInstructionStackSnapshotTop===undefined) this.renderedFtlInstructionStackSnapshotTop = null;
+        //         if(this.description===undefined) this.description = null;
+        //         if(this.messageWithoutStackTop===undefined) this.messageWithoutStackTop = null;
+        //         if(this.message===undefined) this.message = null;
+        //         if(this.blamedExpressionStringCalculated===undefined) this.blamedExpressionStringCalculated = false;
+        //         if(this.blamedExpressionString===undefined) this.blamedExpressionString = null;
+        //         if(this.positionsCalculated===undefined) this.positionsCalculated = false;
+        //         if(this.templateName===undefined) this.templateName = null;
+        //         if(this.templateSourceName===undefined) this.templateSourceName = null;
+        //         if(this.lineNumber===undefined) this.lineNumber = null;
+        //         if(this.columnNumber===undefined) this.columnNumber = null;
+        //         if(this.endLineNumber===undefined) this.endLineNumber = null;
+        //         if(this.endColumnNumber===undefined) this.endColumnNumber = null;
+        //         if(this.messageWasAlreadyPrintedForThisTrace===undefined) this.messageWasAlreadyPrintedForThisTrace = false;
+        //         this.lock = <any>new Object();
+        //         (<any>Object).setPrototypeOf(this, TemplateException.prototype);
+        //         if(this.descriptionBuilder===undefined) this.descriptionBuilder = null;
+        //         if(this.env===undefined) this.env = null;
+        //         if(this.blamedExpression===undefined) this.blamedExpression = null;
+        //         if(this.ftlInstructionStackSnapshot===undefined) this.ftlInstructionStackSnapshot = null;
+        //         if(this.renderedFtlInstructionStackSnapshot===undefined) this.renderedFtlInstructionStackSnapshot = null;
+        //         if(this.renderedFtlInstructionStackSnapshotTop===undefined) this.renderedFtlInstructionStackSnapshotTop = null;
+        //         if(this.description===undefined) this.description = null;
+        //         if(this.messageWithoutStackTop===undefined) this.messageWithoutStackTop = null;
+        //         if(this.message===undefined) this.message = null;
+        //         if(this.blamedExpressionStringCalculated===undefined) this.blamedExpressionStringCalculated = false;
+        //         if(this.blamedExpressionString===undefined) this.blamedExpressionString = null;
+        //         if(this.positionsCalculated===undefined) this.positionsCalculated = false;
+        //         if(this.templateName===undefined) this.templateName = null;
+        //         if(this.templateSourceName===undefined) this.templateSourceName = null;
+        //         if(this.lineNumber===undefined) this.lineNumber = null;
+        //         if(this.columnNumber===undefined) this.columnNumber = null;
+        //         if(this.endLineNumber===undefined) this.endLineNumber = null;
+        //         if(this.endColumnNumber===undefined) this.endColumnNumber = null;
+        //         if(this.messageWasAlreadyPrintedForThisTrace===undefined) this.messageWasAlreadyPrintedForThisTrace = false;
+        //         (() => {
+        //             // if(env == null) env = Environment.getCurrentEnvironment();
+        //             this.env = env;
+        //             this.blamedExpression = blamedExpression;
+        //             this.descriptionBuilder = descriptionBuilder;
+        //             this.description = renderedDescription;
+        //             // if(env != null) this.ftlInstructionStackSnapshot = _CoreAPI.getInstructionStackSnapshot(env);
+        //         })();
+        //     }
+        // } else if(((typeof renderedDescription === 'string') || renderedDescription === null) && ((cause != null && (cause["__classes"] && cause["__classes"].indexOf("java.lang.Throwable") >= 0) || cause != null && cause instanceof <any>Error) || cause === null) && ((ClassUtil.isInstanceOf(env, 'freemarker.template.Environment')) || env === null) && blamedExpression === undefined && descriptionBuilder === undefined) {
+        //     let __args = Array.prototype.slice.call(arguments);
+        //     let description : any = __args[0];
+        //     {
+        //         let __args = Array.prototype.slice.call(arguments);
+        //         let renderedDescription : any = description;
+        //         let blamedExpression : any = null;
+        //         let descriptionBuilder : any = null;
+        //         super(cause); this.message=cause;
+        //         if(this.descriptionBuilder===undefined) this.descriptionBuilder = null;
+        //         if(this.env===undefined) this.env = null;
+        //         if(this.blamedExpression===undefined) this.blamedExpression = null;
+        //         if(this.ftlInstructionStackSnapshot===undefined) this.ftlInstructionStackSnapshot = null;
+        //         if(this.renderedFtlInstructionStackSnapshot===undefined) this.renderedFtlInstructionStackSnapshot = null;
+        //         if(this.renderedFtlInstructionStackSnapshotTop===undefined) this.renderedFtlInstructionStackSnapshotTop = null;
+        //         if(this.description===undefined) this.description = null;
+        //         if(this.messageWithoutStackTop===undefined) this.messageWithoutStackTop = null;
+        //         if(this.message===undefined) this.message = null;
+        //         if(this.blamedExpressionStringCalculated===undefined) this.blamedExpressionStringCalculated = false;
+        //         if(this.blamedExpressionString===undefined) this.blamedExpressionString = null;
+        //         if(this.positionsCalculated===undefined) this.positionsCalculated = false;
+        //         if(this.templateName===undefined) this.templateName = null;
+        //         if(this.templateSourceName===undefined) this.templateSourceName = null;
+        //         if(this.lineNumber===undefined) this.lineNumber = null;
+        //         if(this.columnNumber===undefined) this.columnNumber = null;
+        //         if(this.endLineNumber===undefined) this.endLineNumber = null;
+        //         if(this.endColumnNumber===undefined) this.endColumnNumber = null;
+        //         if(this.messageWasAlreadyPrintedForThisTrace===undefined) this.messageWasAlreadyPrintedForThisTrace = false;
+        //         this.lock = <any>new Object();
+        //         (<any>Object).setPrototypeOf(this, TemplateException.prototype);
+        //         if(this.descriptionBuilder===undefined) this.descriptionBuilder = null;
+        //         if(this.env===undefined) this.env = null;
+        //         if(this.blamedExpression===undefined) this.blamedExpression = null;
+        //         if(this.ftlInstructionStackSnapshot===undefined) this.ftlInstructionStackSnapshot = null;
+        //         if(this.renderedFtlInstructionStackSnapshot===undefined) this.renderedFtlInstructionStackSnapshot = null;
+        //         if(this.renderedFtlInstructionStackSnapshotTop===undefined) this.renderedFtlInstructionStackSnapshotTop = null;
+        //         if(this.description===undefined) this.description = null;
+        //         if(this.messageWithoutStackTop===undefined) this.messageWithoutStackTop = null;
+        //         if(this.message===undefined) this.message = null;
+        //         if(this.blamedExpressionStringCalculated===undefined) this.blamedExpressionStringCalculated = false;
+        //         if(this.blamedExpressionString===undefined) this.blamedExpressionString = null;
+        //         if(this.positionsCalculated===undefined) this.positionsCalculated = false;
+        //         if(this.templateName===undefined) this.templateName = null;
+        //         if(this.templateSourceName===undefined) this.templateSourceName = null;
+        //         if(this.lineNumber===undefined) this.lineNumber = null;
+        //         if(this.columnNumber===undefined) this.columnNumber = null;
+        //         if(this.endLineNumber===undefined) this.endLineNumber = null;
+        //         if(this.endColumnNumber===undefined) this.endColumnNumber = null;
+        //         if(this.messageWasAlreadyPrintedForThisTrace===undefined) this.messageWasAlreadyPrintedForThisTrace = false;
+        //         (() => {
+        //             // if(env == null) env = Environment.getCurrentEnvironment();
+        //             this.env = env;
+        //             this.blamedExpression = blamedExpression;
+        //             this.descriptionBuilder = descriptionBuilder;
+        //             this.description = renderedDescription;
+        //             // if(env != null) this.ftlInstructionStackSnapshot = _CoreAPI.getInstructionStackSnapshot(env);
+        //         })();
+        //     }
+        // } else if(((typeof renderedDescription === 'string') || renderedDescription === null) && ((ClassUtil.isInstanceOf(cause, 'freemarker.template.Environment')) || cause === null) && env === undefined && blamedExpression === undefined && descriptionBuilder === undefined) {
+        //     let __args = Array.prototype.slice.call(arguments);
+        //     let description : any = __args[0];
+        //     let env : any = __args[1];
+        //     {
+        //         let __args = Array.prototype.slice.call(arguments);
+        //         let cause : any = null;
+        //         {
+        //             let __args = Array.prototype.slice.call(arguments);
+        //             let renderedDescription : any = description;
+        //             let blamedExpression : any = null;
+        //             let descriptionBuilder : any = null;
+        //             super(cause); this.message=cause;
+        //             if(this.descriptionBuilder===undefined) this.descriptionBuilder = null;
+        //             if(this.env===undefined) this.env = null;
+        //             if(this.blamedExpression===undefined) this.blamedExpression = null;
+        //             if(this.ftlInstructionStackSnapshot===undefined) this.ftlInstructionStackSnapshot = null;
+        //             if(this.renderedFtlInstructionStackSnapshot===undefined) this.renderedFtlInstructionStackSnapshot = null;
+        //             if(this.renderedFtlInstructionStackSnapshotTop===undefined) this.renderedFtlInstructionStackSnapshotTop = null;
+        //             if(this.description===undefined) this.description = null;
+        //             if(this.messageWithoutStackTop===undefined) this.messageWithoutStackTop = null;
+        //             if(this.message===undefined) this.message = null;
+        //             if(this.blamedExpressionStringCalculated===undefined) this.blamedExpressionStringCalculated = false;
+        //             if(this.blamedExpressionString===undefined) this.blamedExpressionString = null;
+        //             if(this.positionsCalculated===undefined) this.positionsCalculated = false;
+        //             if(this.templateName===undefined) this.templateName = null;
+        //             if(this.templateSourceName===undefined) this.templateSourceName = null;
+        //             if(this.lineNumber===undefined) this.lineNumber = null;
+        //             if(this.columnNumber===undefined) this.columnNumber = null;
+        //             if(this.endLineNumber===undefined) this.endLineNumber = null;
+        //             if(this.endColumnNumber===undefined) this.endColumnNumber = null;
+        //             if(this.messageWasAlreadyPrintedForThisTrace===undefined) this.messageWasAlreadyPrintedForThisTrace = false;
+        //             this.lock = <any>new Object();
+        //             (<any>Object).setPrototypeOf(this, TemplateException.prototype);
+        //             if(this.descriptionBuilder===undefined) this.descriptionBuilder = null;
+        //             if(this.env===undefined) this.env = null;
+        //             if(this.blamedExpression===undefined) this.blamedExpression = null;
+        //             if(this.ftlInstructionStackSnapshot===undefined) this.ftlInstructionStackSnapshot = null;
+        //             if(this.renderedFtlInstructionStackSnapshot===undefined) this.renderedFtlInstructionStackSnapshot = null;
+        //             if(this.renderedFtlInstructionStackSnapshotTop===undefined) this.renderedFtlInstructionStackSnapshotTop = null;
+        //             if(this.description===undefined) this.description = null;
+        //             if(this.messageWithoutStackTop===undefined) this.messageWithoutStackTop = null;
+        //             if(this.message===undefined) this.message = null;
+        //             if(this.blamedExpressionStringCalculated===undefined) this.blamedExpressionStringCalculated = false;
+        //             if(this.blamedExpressionString===undefined) this.blamedExpressionString = null;
+        //             if(this.positionsCalculated===undefined) this.positionsCalculated = false;
+        //             if(this.templateName===undefined) this.templateName = null;
+        //             if(this.templateSourceName===undefined) this.templateSourceName = null;
+        //             if(this.lineNumber===undefined) this.lineNumber = null;
+        //             if(this.columnNumber===undefined) this.columnNumber = null;
+        //             if(this.endLineNumber===undefined) this.endLineNumber = null;
+        //             if(this.endColumnNumber===undefined) this.endColumnNumber = null;
+        //             if(this.messageWasAlreadyPrintedForThisTrace===undefined) this.messageWasAlreadyPrintedForThisTrace = false;
+        //             (() => {
+        //                 // if(env == null) env = Environment.getCurrentEnvironment();
+        //                 this.env = env;
+        //                 this.blamedExpression = blamedExpression;
+        //                 this.descriptionBuilder = descriptionBuilder;
+        //                 this.description = renderedDescription;
+        //                 // if(env != null) this.ftlInstructionStackSnapshot = _CoreAPI.getInstructionStackSnapshot(env);
+        //             })();
+        //         }
+        //     }
+        // } else if(((renderedDescription != null && (renderedDescription["__classes"] && renderedDescription["__classes"].indexOf("java.lang.Exception") >= 0) || renderedDescription != null && renderedDescription instanceof <any>Error) || renderedDescription === null) && ((ClassUtil.isInstanceOf(cause, 'freemarker.template.Environment')) || cause === null) && env === undefined && blamedExpression === undefined && descriptionBuilder === undefined) {
+        //     let __args = Array.prototype.slice.call(arguments);
+        //     let cause : any = __args[0];
+        //     let env : any = __args[1];
+        //     {
+        //         let __args = Array.prototype.slice.call(arguments);
+        //         let description : any = null;
+        //         {
+        //             let __args = Array.prototype.slice.call(arguments);
+        //             let renderedDescription : any = description;
+        //             let blamedExpression : any = null;
+        //             let descriptionBuilder : any = null;
+        //             super(cause); this.message=cause;
+        //             if(this.descriptionBuilder===undefined) this.descriptionBuilder = null;
+        //             if(this.env===undefined) this.env = null;
+        //             if(this.blamedExpression===undefined) this.blamedExpression = null;
+        //             if(this.ftlInstructionStackSnapshot===undefined) this.ftlInstructionStackSnapshot = null;
+        //             if(this.renderedFtlInstructionStackSnapshot===undefined) this.renderedFtlInstructionStackSnapshot = null;
+        //             if(this.renderedFtlInstructionStackSnapshotTop===undefined) this.renderedFtlInstructionStackSnapshotTop = null;
+        //             if(this.description===undefined) this.description = null;
+        //             if(this.messageWithoutStackTop===undefined) this.messageWithoutStackTop = null;
+        //             if(this.message===undefined) this.message = null;
+        //             if(this.blamedExpressionStringCalculated===undefined) this.blamedExpressionStringCalculated = false;
+        //             if(this.blamedExpressionString===undefined) this.blamedExpressionString = null;
+        //             if(this.positionsCalculated===undefined) this.positionsCalculated = false;
+        //             if(this.templateName===undefined) this.templateName = null;
+        //             if(this.templateSourceName===undefined) this.templateSourceName = null;
+        //             if(this.lineNumber===undefined) this.lineNumber = null;
+        //             if(this.columnNumber===undefined) this.columnNumber = null;
+        //             if(this.endLineNumber===undefined) this.endLineNumber = null;
+        //             if(this.endColumnNumber===undefined) this.endColumnNumber = null;
+        //             if(this.messageWasAlreadyPrintedForThisTrace===undefined) this.messageWasAlreadyPrintedForThisTrace = false;
+        //             this.lock = <any>new Object();
+        //             (<any>Object).setPrototypeOf(this, TemplateException.prototype);
+        //             if(this.descriptionBuilder===undefined) this.descriptionBuilder = null;
+        //             if(this.env===undefined) this.env = null;
+        //             if(this.blamedExpression===undefined) this.blamedExpression = null;
+        //             if(this.ftlInstructionStackSnapshot===undefined) this.ftlInstructionStackSnapshot = null;
+        //             if(this.renderedFtlInstructionStackSnapshot===undefined) this.renderedFtlInstructionStackSnapshot = null;
+        //             if(this.renderedFtlInstructionStackSnapshotTop===undefined) this.renderedFtlInstructionStackSnapshotTop = null;
+        //             if(this.description===undefined) this.description = null;
+        //             if(this.messageWithoutStackTop===undefined) this.messageWithoutStackTop = null;
+        //             if(this.message===undefined) this.message = null;
+        //             if(this.blamedExpressionStringCalculated===undefined) this.blamedExpressionStringCalculated = false;
+        //             if(this.blamedExpressionString===undefined) this.blamedExpressionString = null;
+        //             if(this.positionsCalculated===undefined) this.positionsCalculated = false;
+        //             if(this.templateName===undefined) this.templateName = null;
+        //             if(this.templateSourceName===undefined) this.templateSourceName = null;
+        //             if(this.lineNumber===undefined) this.lineNumber = null;
+        //             if(this.columnNumber===undefined) this.columnNumber = null;
+        //             if(this.endLineNumber===undefined) this.endLineNumber = null;
+        //             if(this.endColumnNumber===undefined) this.endColumnNumber = null;
+        //             if(this.messageWasAlreadyPrintedForThisTrace===undefined) this.messageWasAlreadyPrintedForThisTrace = false;
+        //             (() => {
+        //                 // if(env == null) env = Environment.getCurrentEnvironment();
+        //                 this.env = env;
+        //                 this.blamedExpression = blamedExpression;
+        //                 this.descriptionBuilder = descriptionBuilder;
+        //                 this.description = renderedDescription;
+        //                 // if(env != null) this.ftlInstructionStackSnapshot = _CoreAPI.getInstructionStackSnapshot(env);
+        //             })();
+        //         }
+        //     }
+        // } else if(((renderedDescription != null && (renderedDescription["__classes"] && renderedDescription["__classes"].indexOf("java.lang.Throwable") >= 0) || renderedDescription != null && renderedDescription instanceof <any>Error) || renderedDescription === null) && ((ClassUtil.isInstanceOf(cause, 'freemarker.template.Environment')) || cause === null) && env === undefined && blamedExpression === undefined && descriptionBuilder === undefined) {
+        //     let __args = Array.prototype.slice.call(arguments);
+        //     let cause : any = __args[0];
+        //     let env : any = __args[1];
+        //     {
+        //         let __args = Array.prototype.slice.call(arguments);
+        //         let description : any = null;
+        //         {
+        //             let __args = Array.prototype.slice.call(arguments);
+        //             let renderedDescription : any = description;
+        //             let blamedExpression : any = null;
+        //             let descriptionBuilder : any = null;
+        //             super(cause); this.message=cause;
+        //             if(this.descriptionBuilder===undefined) this.descriptionBuilder = null;
+        //             if(this.env===undefined) this.env = null;
+        //             if(this.blamedExpression===undefined) this.blamedExpression = null;
+        //             if(this.ftlInstructionStackSnapshot===undefined) this.ftlInstructionStackSnapshot = null;
+        //             if(this.renderedFtlInstructionStackSnapshot===undefined) this.renderedFtlInstructionStackSnapshot = null;
+        //             if(this.renderedFtlInstructionStackSnapshotTop===undefined) this.renderedFtlInstructionStackSnapshotTop = null;
+        //             if(this.description===undefined) this.description = null;
+        //             if(this.messageWithoutStackTop===undefined) this.messageWithoutStackTop = null;
+        //             if(this.message===undefined) this.message = null;
+        //             if(this.blamedExpressionStringCalculated===undefined) this.blamedExpressionStringCalculated = false;
+        //             if(this.blamedExpressionString===undefined) this.blamedExpressionString = null;
+        //             if(this.positionsCalculated===undefined) this.positionsCalculated = false;
+        //             if(this.templateName===undefined) this.templateName = null;
+        //             if(this.templateSourceName===undefined) this.templateSourceName = null;
+        //             if(this.lineNumber===undefined) this.lineNumber = null;
+        //             if(this.columnNumber===undefined) this.columnNumber = null;
+        //             if(this.endLineNumber===undefined) this.endLineNumber = null;
+        //             if(this.endColumnNumber===undefined) this.endColumnNumber = null;
+        //             if(this.messageWasAlreadyPrintedForThisTrace===undefined) this.messageWasAlreadyPrintedForThisTrace = false;
+        //             this.lock = <any>new Object();
+        //             (<any>Object).setPrototypeOf(this, TemplateException.prototype);
+        //             if(this.descriptionBuilder===undefined) this.descriptionBuilder = null;
+        //             if(this.env===undefined) this.env = null;
+        //             if(this.blamedExpression===undefined) this.blamedExpression = null;
+        //             if(this.ftlInstructionStackSnapshot===undefined) this.ftlInstructionStackSnapshot = null;
+        //             if(this.renderedFtlInstructionStackSnapshot===undefined) this.renderedFtlInstructionStackSnapshot = null;
+        //             if(this.renderedFtlInstructionStackSnapshotTop===undefined) this.renderedFtlInstructionStackSnapshotTop = null;
+        //             if(this.description===undefined) this.description = null;
+        //             if(this.messageWithoutStackTop===undefined) this.messageWithoutStackTop = null;
+        //             if(this.message===undefined) this.message = null;
+        //             if(this.blamedExpressionStringCalculated===undefined) this.blamedExpressionStringCalculated = false;
+        //             if(this.blamedExpressionString===undefined) this.blamedExpressionString = null;
+        //             if(this.positionsCalculated===undefined) this.positionsCalculated = false;
+        //             if(this.templateName===undefined) this.templateName = null;
+        //             if(this.templateSourceName===undefined) this.templateSourceName = null;
+        //             if(this.lineNumber===undefined) this.lineNumber = null;
+        //             if(this.columnNumber===undefined) this.columnNumber = null;
+        //             if(this.endLineNumber===undefined) this.endLineNumber = null;
+        //             if(this.endColumnNumber===undefined) this.endColumnNumber = null;
+        //             if(this.messageWasAlreadyPrintedForThisTrace===undefined) this.messageWasAlreadyPrintedForThisTrace = false;
+        //             (() => {
+        //                 // if(env == null) env = Environment.getCurrentEnvironment();
+        //                 this.env = env;
+        //                 this.blamedExpression = blamedExpression;
+        //                 this.descriptionBuilder = descriptionBuilder;
+        //                 this.description = renderedDescription;
+        //                 // if(env != null) this.ftlInstructionStackSnapshot = _CoreAPI.getInstructionStackSnapshot(env);
+        //             })();
+        //         }
+        //     }
+        // } else if(((ClassUtil.isInstanceOf(renderedDescription, 'freemarker.template.Environment')) || renderedDescription === null) && cause === undefined && env === undefined && blamedExpression === undefined && descriptionBuilder === undefined) {
+        //     let __args = Array.prototype.slice.call(arguments);
+        //     let env : any = __args[0];
+        //     {
+        //         let __args = Array.prototype.slice.call(arguments);
+        //         let description : any = null;
+        //         let cause : any = null;
+        //         {
+        //             let __args = Array.prototype.slice.call(arguments);
+        //             let renderedDescription : any = description;
+        //             let blamedExpression : any = null;
+        //             let descriptionBuilder : any = null;
+        //             super(cause); this.message=cause;
+        //             if(this.descriptionBuilder===undefined) this.descriptionBuilder = null;
+        //             if(this.env===undefined) this.env = null;
+        //             if(this.blamedExpression===undefined) this.blamedExpression = null;
+        //             if(this.ftlInstructionStackSnapshot===undefined) this.ftlInstructionStackSnapshot = null;
+        //             if(this.renderedFtlInstructionStackSnapshot===undefined) this.renderedFtlInstructionStackSnapshot = null;
+        //             if(this.renderedFtlInstructionStackSnapshotTop===undefined) this.renderedFtlInstructionStackSnapshotTop = null;
+        //             if(this.description===undefined) this.description = null;
+        //             if(this.messageWithoutStackTop===undefined) this.messageWithoutStackTop = null;
+        //             if(this.message===undefined) this.message = null;
+        //             if(this.blamedExpressionStringCalculated===undefined) this.blamedExpressionStringCalculated = false;
+        //             if(this.blamedExpressionString===undefined) this.blamedExpressionString = null;
+        //             if(this.positionsCalculated===undefined) this.positionsCalculated = false;
+        //             if(this.templateName===undefined) this.templateName = null;
+        //             if(this.templateSourceName===undefined) this.templateSourceName = null;
+        //             if(this.lineNumber===undefined) this.lineNumber = null;
+        //             if(this.columnNumber===undefined) this.columnNumber = null;
+        //             if(this.endLineNumber===undefined) this.endLineNumber = null;
+        //             if(this.endColumnNumber===undefined) this.endColumnNumber = null;
+        //             if(this.messageWasAlreadyPrintedForThisTrace===undefined) this.messageWasAlreadyPrintedForThisTrace = false;
+        //             this.lock = <any>new Object();
+        //             (<any>Object).setPrototypeOf(this, TemplateException.prototype);
+        //             if(this.descriptionBuilder===undefined) this.descriptionBuilder = null;
+        //             if(this.env===undefined) this.env = null;
+        //             if(this.blamedExpression===undefined) this.blamedExpression = null;
+        //             if(this.ftlInstructionStackSnapshot===undefined) this.ftlInstructionStackSnapshot = null;
+        //             if(this.renderedFtlInstructionStackSnapshot===undefined) this.renderedFtlInstructionStackSnapshot = null;
+        //             if(this.renderedFtlInstructionStackSnapshotTop===undefined) this.renderedFtlInstructionStackSnapshotTop = null;
+        //             if(this.description===undefined) this.description = null;
+        //             if(this.messageWithoutStackTop===undefined) this.messageWithoutStackTop = null;
+        //             if(this.message===undefined) this.message = null;
+        //             if(this.blamedExpressionStringCalculated===undefined) this.blamedExpressionStringCalculated = false;
+        //             if(this.blamedExpressionString===undefined) this.blamedExpressionString = null;
+        //             if(this.positionsCalculated===undefined) this.positionsCalculated = false;
+        //             if(this.templateName===undefined) this.templateName = null;
+        //             if(this.templateSourceName===undefined) this.templateSourceName = null;
+        //             if(this.lineNumber===undefined) this.lineNumber = null;
+        //             if(this.columnNumber===undefined) this.columnNumber = null;
+        //             if(this.endLineNumber===undefined) this.endLineNumber = null;
+        //             if(this.endColumnNumber===undefined) this.endColumnNumber = null;
+        //             if(this.messageWasAlreadyPrintedForThisTrace===undefined) this.messageWasAlreadyPrintedForThisTrace = false;
+        //             (() => {
+        //                 // if(env == null) env = Environment.getCurrentEnvironment();
+        //                 this.env = env;
+        //                 this.blamedExpression = blamedExpression;
+        //                 this.descriptionBuilder = descriptionBuilder;
+        //                 this.description = renderedDescription;
+        //                 // if(env != null) this.ftlInstructionStackSnapshot = _CoreAPI.getInstructionStackSnapshot(env);
+        //             })();
+        //         }
+        //     }
+        // } else throw new Error('invalid overload');
     }
 
     /*private*/ renderMessages() {
@@ -712,6 +748,9 @@ export class TemplateException extends Error {
     }
 
     /*private*/ _printStackTrace$freemarker_template_StackTraceWriter$boolean$boolean$boolean(out : StackTraceWriter, heading : boolean, ftlStackTrace : boolean, javaStackTrace : boolean) {
+        if(this.message == null) {
+            this.renderMessages();
+        }
         if(heading) {
             out['println$java_lang_Object']("FreeMarker template error:");
         }
@@ -761,7 +800,7 @@ export class TemplateException extends Error {
     }
 
     public printStandardStackTrace$java_io_PrintStream(ps : PrintStream) {
-        console.error(super.message);
+        console.error(this.message, this.cause);
     }
 
     /**
@@ -779,7 +818,7 @@ export class TemplateException extends Error {
     }
 
     public printStandardStackTrace$java_io_PrintWriter(pw : PrintWriter) {
-        console.error(super.message);
+        console.error(this.message, this.cause);
     }
 
     /**

@@ -22,7 +22,7 @@ import {ParameterRole} from './ParameterRole';
 export class MethodCall extends Expression {
     /*private*/ target : Expression;
 
-    /*private*/ arguments : ListLiteral;
+    /*private*/ args : ListLiteral;
 
     public constructor(target? : any, __arguments? : any) {
         if(((target != null && target instanceof <any>Expression) || target === null) && ((__arguments != null && (__arguments instanceof Array)) || __arguments === null)) {
@@ -32,24 +32,24 @@ export class MethodCall extends Expression {
                 let __arguments : any = new ListLiteral(__args[1]);
                 super();
                 if(this.target===undefined) this.target = null;
-                if(this.arguments===undefined) this.arguments = null;
+                if(this.args===undefined) this.args = null;
                 if(this.target===undefined) this.target = null;
-                if(this.arguments===undefined) this.arguments = null;
+                if(this.args===undefined) this.args = null;
                 (() => {
                     this.target = target;
-                    this.arguments = __arguments;
+                    this.args = __arguments;
                 })();
             }
         } else if(((target != null && target instanceof <any>Expression) || target === null) && ((__arguments != null && __arguments instanceof <any>ListLiteral) || __arguments === null)) {
             let __args = Array.prototype.slice.call(arguments);
             super();
             if(this.target===undefined) this.target = null;
-            if(this.arguments===undefined) this.arguments = null;
+            if(this.args===undefined) this.args = null;
             if(this.target===undefined) this.target = null;
-            if(this.arguments===undefined) this.arguments = null;
+            if(this.args===undefined) this.args = null;
             (() => {
                 this.target = target;
-                this.arguments = __arguments;
+                this.args = __arguments;
             })();
         } else throw new Error('invalid overload');
     }
@@ -63,7 +63,7 @@ export class MethodCall extends Expression {
         let targetModel : TemplateModel = this.target.eval(env);
         if(targetModel != null && (targetModel["__interfaces"] != null && targetModel["__interfaces"].indexOf("freemarker.template.TemplateMethodModel") >= 0 || targetModel.constructor != null && targetModel.constructor["__interfaces"] != null && targetModel.constructor["__interfaces"].indexOf("freemarker.template.TemplateMethodModel") >= 0)) {
             let targetMethod : TemplateMethodModel = <TemplateMethodModel><any>targetModel;
-            let argumentStrings : Array<any> = (targetMethod != null && (targetMethod["__interfaces"] != null && targetMethod["__interfaces"].indexOf("freemarker.template.TemplateMethodModelEx") >= 0 || targetMethod.constructor != null && targetMethod.constructor["__interfaces"] != null && targetMethod.constructor["__interfaces"].indexOf("freemarker.template.TemplateMethodModelEx") >= 0))?this.arguments.getModelList(env):this.arguments.getValueList(env);
+            let argumentStrings : Array<any> = (targetMethod != null && (targetMethod["__interfaces"] != null && targetMethod["__interfaces"].indexOf("freemarker.template.TemplateMethodModelEx") >= 0 || targetMethod.constructor != null && targetMethod.constructor["__interfaces"] != null && targetMethod.constructor["__interfaces"].indexOf("freemarker.template.TemplateMethodModelEx") >= 0))?this.args.getModelList(env):this.args.getValueList(env);
             let result : any = targetMethod.exec(argumentStrings);
             return env.getObjectWrapper()['wrap$java_lang_Object'](result);
         } else if(targetModel != null && targetModel instanceof <any>Macro) {
@@ -75,7 +75,7 @@ export class MethodCall extends Expression {
             let prevOut : Writer = env.getOut();
             try {
                 env.setOut(NullWriter.INSTANCE_$LI$());
-                env.invoke(func, null, this.arguments.items, null, this);
+                env.invoke(func, null, this.args.items, null, this);
             } catch(e) {
                 throw new TemplateException("Unexpected exception during function execution", e, env);
             } finally {
@@ -95,7 +95,7 @@ export class MethodCall extends Expression {
         let buf : StringBuilder = new StringBuilder("");
         buf.append(this.target.getCanonicalForm());
         buf.append("(");
-        let list : string = this.arguments.getCanonicalForm();
+        let list : string = this.args.getCanonicalForm();
         buf.append(list, 1, list.length - 1);
         buf.append(")");
         return buf.toString();
@@ -129,7 +129,7 @@ export class MethodCall extends Expression {
      * @return {Expression}
      */
     deepCloneWithIdentifierReplaced_inner(replacedIdentifier : string, replacement : Expression, replacementState : Expression.ReplacemenetState) : Expression {
-        return new MethodCall(this.target.deepCloneWithIdentifierReplaced(replacedIdentifier, replacement, replacementState), <ListLiteral>this.arguments.deepCloneWithIdentifierReplaced(replacedIdentifier, replacement, replacementState));
+        return new MethodCall(this.target.deepCloneWithIdentifierReplaced(replacedIdentifier, replacement, replacementState), <ListLiteral>this.args.deepCloneWithIdentifierReplaced(replacedIdentifier, replacement, replacementState));
     }
 
     /**
@@ -137,7 +137,7 @@ export class MethodCall extends Expression {
      * @return {number}
      */
     getParameterCount() : number {
-        return 1 + /* size */(<number>this.arguments.items.length);
+        return 1 + /* size */(<number>this.args.items.length);
     }
 
     /**
@@ -149,7 +149,7 @@ export class MethodCall extends Expression {
         if(idx === 0) {
             return this.target;
         } else if(idx < this.getParameterCount()) {
-            return /* get */this.arguments.items[idx - 1];
+            return /* get */this.args.items[idx - 1];
         } else {
             throw Object.defineProperty(new Error(), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.IndexOutOfBoundsException','java.lang.Object','java.lang.RuntimeException','java.lang.Exception'] });
         }

@@ -6,6 +6,8 @@ import {Environment} from './Environment';
 import {TemplateFormatUtil} from './TemplateFormatUtil';
 import {_CoreLocaleUtils} from './_CoreLocaleUtils';
 import {AliasTargetTemplateValueFormatException} from './AliasTargetTemplateValueFormatException';
+import {Locale} from "../../java/util/Locale";
+import {Map} from "../../java/util/Map";
 
 /**
  * @param {String} defaultTargetFormatString    The format string this format will be an alias to if there's no locale-specific format string for the
@@ -61,12 +63,12 @@ export class AliasTemplateDateFormatFactory extends TemplateDateFormatFactory {
      * @param {Environment} env
      * @return {TemplateDateFormat}
      */
-    public get(params : string, dateType : number, locale : string, timeZone : string, zonelessInput : boolean, env : /*Environment*/any) : TemplateDateFormat {
+    public get(params : string, dateType : number, locale : Locale, timeZone : string, zonelessInput : boolean, env : /*Environment*/any) : TemplateDateFormat {
         TemplateFormatUtil.checkHasNoParameters(params);
         try {
             let targetFormatString : string;
             if(this.localizedTargetFormatStrings != null) {
-                let lookupLocale : string = locale;
+                let lookupLocale : Locale = locale;
                 targetFormatString = /* get */this.localizedTargetFormatStrings.get(lookupLocale);
                 while((targetFormatString == null && (lookupLocale = _CoreLocaleUtils.getLessSpecificLocale(lookupLocale)) != null)) {
                     targetFormatString = /* get */this.localizedTargetFormatStrings.get(lookupLocale);

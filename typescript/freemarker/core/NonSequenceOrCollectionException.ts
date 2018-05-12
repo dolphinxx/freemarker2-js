@@ -6,6 +6,7 @@ import {UnexpectedTypeException} from './UnexpectedTypeException';
 import {Environment} from './Environment';
 import {_ErrorDescriptionBuilder} from './_ErrorDescriptionBuilder';
 import {Expression} from './Expression';
+import {ClassUtil} from "../template/utility/ClassUtil";
 
 /**
  * Indicates that a {link TemplateSequenceModel} or {link TemplateCollectionModel} value was expected, but the value
@@ -65,7 +66,7 @@ export class NonSequenceOrCollectionException extends UnexpectedTypeException {
         } else throw new Error('invalid overload');
     }
 
-    /*private*/ static extendTipsIfIterable(model : TemplateModel, tips : Array) : Array<any> {
+    /*private*/ static extendTipsIfIterable(model : TemplateModel, tips : Array<any>) : Array<any> {
         if(NonSequenceOrCollectionException.isWrappedIterable(model)) {
             let tipsLen : number = tips != null?tips.length:0;
             let extendedTips : Array<any> = (s => { let a=[]; while(s-->0) a.push(null); return a; })(tipsLen + 1);

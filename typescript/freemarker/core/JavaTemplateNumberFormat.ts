@@ -3,6 +3,7 @@ import {TemplateNumberModel} from '../template/TemplateNumberModel';
 import {BackwardCompatibleTemplateNumberFormat} from './BackwardCompatibleTemplateNumberFormat';
 import {UnformattableValueException} from './UnformattableValueException';
 import {TemplateFormatUtil} from './TemplateFormatUtil';
+import {NumberFormat} from "../../java/text/NumberFormat";
 
 export class JavaTemplateNumberFormat extends BackwardCompatibleTemplateNumberFormat {
     /*private*/ formatString : string;

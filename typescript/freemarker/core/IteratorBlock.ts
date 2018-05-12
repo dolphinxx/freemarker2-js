@@ -320,9 +320,13 @@ export namespace IteratorBlock {
                             try {
                                 env.visit$freemarker_core_TemplateElement_A(childBuffer);
                             } catch(br) {
-                                if(br === BreakOrContinueException.BREAK_INSTANCE_$LI$()) {
-                                    break listLoop;
+                                if(br instanceof BreakOrContinueException) {
+                                    if(br === BreakOrContinueException.BREAK_INSTANCE_$LI$()) {
+                                        break listLoop;
+                                    }
+                                    return;
                                 }
+                                throw br;
                             }
                             this.index++;
                         } while((this.__hasNext));
@@ -364,7 +368,7 @@ export namespace IteratorBlock {
                 } catch(br) {
                 }
             } else if((this.listedValue != null && (this.listedValue["__interfaces"] != null && this.listedValue["__interfaces"].indexOf("freemarker.template.TemplateHashModelEx") >= 0 || this.listedValue.constructor != null && this.listedValue.constructor["__interfaces"] != null && this.listedValue.constructor["__interfaces"].indexOf("freemarker.template.TemplateHashModelEx") >= 0)) && !NonSequenceOrCollectionException.isWrappedIterable(this.listedValue)) {
-                throw new NonSequenceOrCollectionException(env, new _ErrorDescriptionBuilder("The value you try to list is ", new _DelayedAOrAn(new _DelayedFTLTypeDescription(this.listedValue)), ", thus you must specify two loop variables after the \"as\"; one for the key, and another for the value, like ", "<#... as k, v>", ")."));
+                throw new NonSequenceOrCollectionException(env, new _ErrorDescriptionBuilder(["The value you try to list is ", new _DelayedAOrAn(new _DelayedFTLTypeDescription(this.listedValue)), ", thus you must specify two loop variables after the \"as\"; one for the key, and another for the value, like ", "<#... as k, v>", ")."]));
             } else {
                 throw new NonSequenceOrCollectionException(this.__parent.listedExp, this.listedValue, env);
             }
@@ -388,9 +392,12 @@ export namespace IteratorBlock {
                                 try {
                                     env.visit$freemarker_core_TemplateElement_A(childBuffer);
                                 } catch(br) {
-                                    if(br === BreakOrContinueException.BREAK_INSTANCE_$LI$()) {
-                                        break listLoop;
+                                    if(br instanceof BreakOrContinueException) {
+                                        if(br === BreakOrContinueException.BREAK_INSTANCE_$LI$()) {
+                                            break listLoop;
+                                        }
                                     }
+                                    throw br;
                                 }
                                 this.index++;
                             } while((this.__hasNext));
@@ -427,7 +434,7 @@ export namespace IteratorBlock {
                     }
                 }
             } else if((this.listedValue != null && (this.listedValue["__interfaces"] != null && this.listedValue["__interfaces"].indexOf("freemarker.template.TemplateCollectionModel") >= 0 || this.listedValue.constructor != null && this.listedValue.constructor["__interfaces"] != null && this.listedValue.constructor["__interfaces"].indexOf("freemarker.template.TemplateCollectionModel") >= 0)) || (this.listedValue != null && (this.listedValue["__interfaces"] != null && this.listedValue["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0 || this.listedValue.constructor != null && this.listedValue.constructor["__interfaces"] != null && this.listedValue.constructor["__interfaces"].indexOf("freemarker.template.TemplateSequenceModel") >= 0))) {
-                throw new NonSequenceOrCollectionException(env, new _ErrorDescriptionBuilder("The value you try to list is ", new _DelayedAOrAn(new _DelayedFTLTypeDescription(this.listedValue)), ", thus you must specify only one loop variable after the \"as\" (there\'s no separate key and value)."));
+                throw new NonSequenceOrCollectionException(env, new _ErrorDescriptionBuilder(["The value you try to list is ", new _DelayedAOrAn(new _DelayedFTLTypeDescription(this.listedValue)), ", thus you must specify only one loop variable after the \"as\" (there\'s no separate key and value)."]));
             } else {
                 throw new NonExtendedHashException(this.__parent.listedExp, this.listedValue, env);
             }
@@ -477,7 +484,7 @@ export namespace IteratorBlock {
                 }
                 return this.localVarNames;
             } else {
-                return Collections.EMPTY_LIST;
+                return [];
             }
         }
 

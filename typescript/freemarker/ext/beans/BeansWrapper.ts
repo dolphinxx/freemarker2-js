@@ -7,6 +7,9 @@ import {TemplateModelException} from "../../template/TemplateModelException";
 import {ClassUtil} from "../../template/utility/ClassUtil";
 import {System} from "../../../java/lang/System";
 import {Map} from "../../../java/util/Map";
+import {ModelFactory} from "../util/ModelFactory";
+import {ObjectWrapper} from "../../template/ObjectWrapper";
+import {MethodAppearanceFineTuner} from "./MethodAppearanceFineTuner";
 
 /**
  * Use {link BeansWrapperBuilder} instead of the public constructors if possible.
@@ -168,358 +171,75 @@ export class BeansWrapper implements RichObjectWrapper, WriteProtectable {
     static ftmaDeprecationWarnLogged : boolean = false;
 
     public constructor(bwConf? : any, writeProtected? : any, finalizeConstruction? : any) {
-        // if(((bwConf != null && bwConf instanceof <any>BeansWrapperConfiguration) || bwConf === null) && ((typeof writeProtected === 'boolean') || writeProtected === null) && ((typeof finalizeConstruction === 'boolean') || finalizeConstruction === null)) {
-        //     let __args = Array.prototype.slice.call(arguments);
-        //     if(this.sharedIntrospectionLock===undefined) this.sharedIntrospectionLock = null;
-        //     if(this.classIntrospector===undefined) this.classIntrospector = null;
-        //     if(this.staticModels===undefined) this.staticModels = null;
-        //     if(this.enumModels===undefined) this.enumModels = null;
-        //     if(this.modelCache===undefined) this.modelCache = null;
-        //     if(this.falseModel===undefined) this.falseModel = null;
-        //     if(this.trueModel===undefined) this.trueModel = null;
-        //     if(this.writeProtected===undefined) this.writeProtected = false;
-        //     if(this.defaultDateType===undefined) this.defaultDateType = 0;
-        //     if(this.simpleMapWrapper===undefined) this.simpleMapWrapper = false;
-        //     if(this.strict===undefined) this.strict = false;
-        //     if(this.preferIndexedReadMethod===undefined) this.preferIndexedReadMethod = false;
-        //     if(this.incompatibleImprovements===undefined) this.incompatibleImprovements = null;
-        //     this.nullModel = null;
-        //     this.outerIdentity = this;
-        //     this.methodsShadowItems = true;
-        //     this.BOOLEAN_FACTORY = new BeansWrapper.BeansWrapper$0(this);
-        //     if(this.sharedIntrospectionLock===undefined) this.sharedIntrospectionLock = null;
-        //     if(this.classIntrospector===undefined) this.classIntrospector = null;
-        //     if(this.staticModels===undefined) this.staticModels = null;
-        //     if(this.enumModels===undefined) this.enumModels = null;
-        //     if(this.modelCache===undefined) this.modelCache = null;
-        //     if(this.falseModel===undefined) this.falseModel = null;
-        //     if(this.trueModel===undefined) this.trueModel = null;
-        //     if(this.writeProtected===undefined) this.writeProtected = false;
-        //     if(this.defaultDateType===undefined) this.defaultDateType = 0;
-        //     if(this.simpleMapWrapper===undefined) this.simpleMapWrapper = false;
-        //     if(this.strict===undefined) this.strict = false;
-        //     if(this.preferIndexedReadMethod===undefined) this.preferIndexedReadMethod = false;
-        //     if(this.incompatibleImprovements===undefined) this.incompatibleImprovements = null;
-        //     (() => {
-        //         if(bwConf.getMethodAppearanceFineTuner() == null) {
-        //             let thisClass : any = (<any>this.constructor);
-        //             let overridden : boolean = false;
-        //             let testFailed : boolean = false;
-        //             try {
-        //                 while((!overridden && thisClass !== DefaultObjectWrapper && thisClass !== BeansWrapper && thisClass !== SimpleObjectWrapper)) {
-        //                     try {
-        //                         /* getDeclaredMethod */((c,p) => { if(c.prototype.hasOwnProperty(p) && typeof c.prototype[p] == 'function') return {owner:c,name:p,fn:c.prototype[p]}; else return null; })(thisClass,"finetuneMethodAppearance");
-        //                         overridden = true;
-        //                     } catch(e) {
-        //                         thisClass = thisClass.getSuperclass();
-        //                     };
-        //                 };
-        //             } catch(e) {
-        //                 BeansWrapper.LOG_$LI$().info$java_lang_String$java_lang_Throwable("Failed to check if finetuneMethodAppearance is overidden in " + /* getName */(c => c["__class"]?c["__class"]:c["name"])(thisClass) + "; acting like if it was, but this way it won\'t utilize the shared class introspection cache.", e);
-        //                 overridden = true;
-        //                 testFailed = true;
-        //             };
-        //             if(overridden) {
-        //                 if(!testFailed && !BeansWrapper.ftmaDeprecationWarnLogged) {
-        //                     BeansWrapper.LOG_$LI$().warn$java_lang_String("Overriding " + /* getName */(c => c["__class"]?c["__class"]:c["name"])(BeansWrapper) + ".finetuneMethodAppearance is deprecated and will be banned sometimes in the future. Use setMethodAppearanceFineTuner instead.");
-        //                     BeansWrapper.ftmaDeprecationWarnLogged = true;
-        //                 }
-        //                 bwConf = <BeansWrapperConfiguration>/* clone */bwConf.clone(false);
-        //                 bwConf.setMethodAppearanceFineTuner(new BeansWrapper.BeansWrapper$1(this));
-        //             }
-        //         }
-        //         this.incompatibleImprovements = bwConf.getIncompatibleImprovements();
-        //         this.simpleMapWrapper = bwConf.isSimpleMapWrapper();
-        //         this.preferIndexedReadMethod = bwConf.getPreferIndexedReadMethod();
-        //         this.defaultDateType = bwConf.getDefaultDateType();
-        //         this.outerIdentity = bwConf.getOuterIdentity() != null?bwConf.getOuterIdentity():this;
-        //         this.strict = bwConf.isStrict();
-        //         if(!writeProtected) {
-        //             this.sharedIntrospectionLock = <any>new Object();
-        //             this.classIntrospector = new ClassIntrospector(_BeansAPI.getClassIntrospectorBuilder(bwConf), this.sharedIntrospectionLock);
-        //         } else {
-        //             this.classIntrospector = _BeansAPI.getClassIntrospectorBuilder(bwConf).build();
-        //             this.sharedIntrospectionLock = this.classIntrospector.getSharedLock();
-        //         }
-        //         this.falseModel = new BooleanModel(false, this);
-        //         this.trueModel = new BooleanModel(true, this);
-        //         this.staticModels = new StaticModels(this);
-        //         this.enumModels = new _EnumModels(this);
-        //         this.modelCache = new BeansModelCache(this);
-        //         this.setUseCache(bwConf.getUseModelCache());
-        //         this.finalizeConstruction(writeProtected);
-        //     })();
-        // } else if(((bwConf != null && bwConf instanceof <any>BeansWrapperConfiguration) || bwConf === null) && ((typeof writeProtected === 'boolean') || writeProtected === null) && finalizeConstruction === undefined) {
-        //     let __args = Array.prototype.slice.call(arguments);
-        //     {
-        //         let __args = Array.prototype.slice.call(arguments);
-        //         let finalizeConstruction : any = true;
-        //         if(this.sharedIntrospectionLock===undefined) this.sharedIntrospectionLock = null;
-        //         if(this.classIntrospector===undefined) this.classIntrospector = null;
-        //         if(this.staticModels===undefined) this.staticModels = null;
-        //         if(this.enumModels===undefined) this.enumModels = null;
-        //         if(this.modelCache===undefined) this.modelCache = null;
-        //         if(this.falseModel===undefined) this.falseModel = null;
-        //         if(this.trueModel===undefined) this.trueModel = null;
-        //         if(this.writeProtected===undefined) this.writeProtected = false;
-        //         if(this.defaultDateType===undefined) this.defaultDateType = 0;
-        //         if(this.simpleMapWrapper===undefined) this.simpleMapWrapper = false;
-        //         if(this.strict===undefined) this.strict = false;
-        //         if(this.preferIndexedReadMethod===undefined) this.preferIndexedReadMethod = false;
-        //         if(this.incompatibleImprovements===undefined) this.incompatibleImprovements = null;
-        //         this.nullModel = null;
-        //         this.outerIdentity = this;
-        //         this.methodsShadowItems = true;
-        //         this.BOOLEAN_FACTORY = new BeansWrapper.BeansWrapper$0(this);
-        //         if(this.sharedIntrospectionLock===undefined) this.sharedIntrospectionLock = null;
-        //         if(this.classIntrospector===undefined) this.classIntrospector = null;
-        //         if(this.staticModels===undefined) this.staticModels = null;
-        //         if(this.enumModels===undefined) this.enumModels = null;
-        //         if(this.modelCache===undefined) this.modelCache = null;
-        //         if(this.falseModel===undefined) this.falseModel = null;
-        //         if(this.trueModel===undefined) this.trueModel = null;
-        //         if(this.writeProtected===undefined) this.writeProtected = false;
-        //         if(this.defaultDateType===undefined) this.defaultDateType = 0;
-        //         if(this.simpleMapWrapper===undefined) this.simpleMapWrapper = false;
-        //         if(this.strict===undefined) this.strict = false;
-        //         if(this.preferIndexedReadMethod===undefined) this.preferIndexedReadMethod = false;
-        //         if(this.incompatibleImprovements===undefined) this.incompatibleImprovements = null;
-        //         (() => {
-        //             if(bwConf.getMethodAppearanceFineTuner() == null) {
-        //                 let thisClass : any = (<any>this.constructor);
-        //                 let overridden : boolean = false;
-        //                 let testFailed : boolean = false;
-        //                 try {
-        //                     while((!overridden && thisClass !== DefaultObjectWrapper && thisClass !== BeansWrapper && thisClass !== SimpleObjectWrapper)) {
-        //                         try {
-        //                             /* getDeclaredMethod */((c,p) => { if(c.prototype.hasOwnProperty(p) && typeof c.prototype[p] == 'function') return {owner:c,name:p,fn:c.prototype[p]}; else return null; })(thisClass,"finetuneMethodAppearance");
-        //                             overridden = true;
-        //                         } catch(e) {
-        //                             thisClass = thisClass.getSuperclass();
-        //                         };
-        //                     };
-        //                 } catch(e) {
-        //                     BeansWrapper.LOG_$LI$().info$java_lang_String$java_lang_Throwable("Failed to check if finetuneMethodAppearance is overidden in " + /* getName */(c => c["__class"]?c["__class"]:c["name"])(thisClass) + "; acting like if it was, but this way it won\'t utilize the shared class introspection cache.", e);
-        //                     overridden = true;
-        //                     testFailed = true;
-        //                 };
-        //                 if(overridden) {
-        //                     if(!testFailed && !BeansWrapper.ftmaDeprecationWarnLogged) {
-        //                         BeansWrapper.LOG_$LI$().warn$java_lang_String("Overriding " + /* getName */(c => c["__class"]?c["__class"]:c["name"])(BeansWrapper) + ".finetuneMethodAppearance is deprecated and will be banned sometimes in the future. Use setMethodAppearanceFineTuner instead.");
-        //                         BeansWrapper.ftmaDeprecationWarnLogged = true;
-        //                     }
-        //                     bwConf = <BeansWrapperConfiguration>/* clone */bwConf.clone(false);
-        //                     bwConf.setMethodAppearanceFineTuner(new BeansWrapper.BeansWrapper$1(this));
-        //                 }
-        //             }
-        //             this.incompatibleImprovements = bwConf.getIncompatibleImprovements();
-        //             this.simpleMapWrapper = bwConf.isSimpleMapWrapper();
-        //             this.preferIndexedReadMethod = bwConf.getPreferIndexedReadMethod();
-        //             this.defaultDateType = bwConf.getDefaultDateType();
-        //             this.outerIdentity = bwConf.getOuterIdentity() != null?bwConf.getOuterIdentity():this;
-        //             this.strict = bwConf.isStrict();
-        //             if(!writeProtected) {
-        //                 this.sharedIntrospectionLock = <any>new Object();
-        //                 this.classIntrospector = new ClassIntrospector(_BeansAPI.getClassIntrospectorBuilder(bwConf), this.sharedIntrospectionLock);
-        //             } else {
-        //                 this.classIntrospector = _BeansAPI.getClassIntrospectorBuilder(bwConf).build();
-        //                 this.sharedIntrospectionLock = this.classIntrospector.getSharedLock();
-        //             }
-        //             this.falseModel = new BooleanModel(false, this);
-        //             this.trueModel = new BooleanModel(true, this);
-        //             this.staticModels = new StaticModels(this);
-        //             this.enumModels = new _EnumModels(this);
-        //             this.modelCache = new BeansModelCache(this);
-        //             this.setUseCache(bwConf.getUseModelCache());
-        //             this.finalizeConstruction(writeProtected);
-        //         })();
-        //     }
-        // } else if(((bwConf != null && bwConf instanceof <any>Version) || bwConf === null) && writeProtected === undefined && finalizeConstruction === undefined) {
-        //     let __args = Array.prototype.slice.call(arguments);
-        //     let incompatibleImprovements : any = __args[0];
-        //     {
-        //         let __args = Array.prototype.slice.call(arguments);
-        //         let bwConf : any = new BeansWrapper.BeansWrapper$2(this, incompatibleImprovements);
-        //         let writeProtected : any = false;
-        //         {
-        //             let __args = Array.prototype.slice.call(arguments);
-        //             let finalizeConstruction : any = true;
-        //             if(this.sharedIntrospectionLock===undefined) this.sharedIntrospectionLock = null;
-        //             if(this.classIntrospector===undefined) this.classIntrospector = null;
-        //             if(this.staticModels===undefined) this.staticModels = null;
-        //             if(this.enumModels===undefined) this.enumModels = null;
-        //             if(this.modelCache===undefined) this.modelCache = null;
-        //             if(this.falseModel===undefined) this.falseModel = null;
-        //             if(this.trueModel===undefined) this.trueModel = null;
-        //             if(this.writeProtected===undefined) this.writeProtected = false;
-        //             if(this.defaultDateType===undefined) this.defaultDateType = 0;
-        //             if(this.simpleMapWrapper===undefined) this.simpleMapWrapper = false;
-        //             if(this.strict===undefined) this.strict = false;
-        //             if(this.preferIndexedReadMethod===undefined) this.preferIndexedReadMethod = false;
-        //             if(this.incompatibleImprovements===undefined) this.incompatibleImprovements = null;
-        //             this.nullModel = null;
-        //             this.outerIdentity = this;
-        //             this.methodsShadowItems = true;
-        //             this.BOOLEAN_FACTORY = new BeansWrapper.BeansWrapper$0(this);
-        //             if(this.sharedIntrospectionLock===undefined) this.sharedIntrospectionLock = null;
-        //             if(this.classIntrospector===undefined) this.classIntrospector = null;
-        //             if(this.staticModels===undefined) this.staticModels = null;
-        //             if(this.enumModels===undefined) this.enumModels = null;
-        //             if(this.modelCache===undefined) this.modelCache = null;
-        //             if(this.falseModel===undefined) this.falseModel = null;
-        //             if(this.trueModel===undefined) this.trueModel = null;
-        //             if(this.writeProtected===undefined) this.writeProtected = false;
-        //             if(this.defaultDateType===undefined) this.defaultDateType = 0;
-        //             if(this.simpleMapWrapper===undefined) this.simpleMapWrapper = false;
-        //             if(this.strict===undefined) this.strict = false;
-        //             if(this.preferIndexedReadMethod===undefined) this.preferIndexedReadMethod = false;
-        //             if(this.incompatibleImprovements===undefined) this.incompatibleImprovements = null;
-        //             (() => {
-        //                 if(bwConf.getMethodAppearanceFineTuner() == null) {
-        //                     let thisClass : any = (<any>this.constructor);
-        //                     let overridden : boolean = false;
-        //                     let testFailed : boolean = false;
-        //                     try {
-        //                         while((!overridden && thisClass !== DefaultObjectWrapper && thisClass !== BeansWrapper && thisClass !== SimpleObjectWrapper)) {
-        //                             try {
-        //                                 /* getDeclaredMethod */((c,p) => { if(c.prototype.hasOwnProperty(p) && typeof c.prototype[p] == 'function') return {owner:c,name:p,fn:c.prototype[p]}; else return null; })(thisClass,"finetuneMethodAppearance");
-        //                                 overridden = true;
-        //                             } catch(e) {
-        //                                 thisClass = thisClass.getSuperclass();
-        //                             };
-        //                         };
-        //                     } catch(e) {
-        //                         BeansWrapper.LOG_$LI$().info$java_lang_String$java_lang_Throwable("Failed to check if finetuneMethodAppearance is overidden in " + /* getName */(c => c["__class"]?c["__class"]:c["name"])(thisClass) + "; acting like if it was, but this way it won\'t utilize the shared class introspection cache.", e);
-        //                         overridden = true;
-        //                         testFailed = true;
-        //                     };
-        //                     if(overridden) {
-        //                         if(!testFailed && !BeansWrapper.ftmaDeprecationWarnLogged) {
-        //                             BeansWrapper.LOG_$LI$().warn$java_lang_String("Overriding " + /* getName */(c => c["__class"]?c["__class"]:c["name"])(BeansWrapper) + ".finetuneMethodAppearance is deprecated and will be banned sometimes in the future. Use setMethodAppearanceFineTuner instead.");
-        //                             BeansWrapper.ftmaDeprecationWarnLogged = true;
-        //                         }
-        //                         bwConf = <BeansWrapperConfiguration>/* clone */bwConf.clone(false);
-        //                         bwConf.setMethodAppearanceFineTuner(new BeansWrapper.BeansWrapper$1(this));
-        //                     }
-        //                 }
-        //                 this.incompatibleImprovements = bwConf.getIncompatibleImprovements();
-        //                 this.simpleMapWrapper = bwConf.isSimpleMapWrapper();
-        //                 this.preferIndexedReadMethod = bwConf.getPreferIndexedReadMethod();
-        //                 this.defaultDateType = bwConf.getDefaultDateType();
-        //                 this.outerIdentity = bwConf.getOuterIdentity() != null?bwConf.getOuterIdentity():this;
-        //                 this.strict = bwConf.isStrict();
-        //                 if(!writeProtected) {
-        //                     this.sharedIntrospectionLock = <any>new Object();
-        //                     this.classIntrospector = new ClassIntrospector(_BeansAPI.getClassIntrospectorBuilder(bwConf), this.sharedIntrospectionLock);
-        //                 } else {
-        //                     this.classIntrospector = _BeansAPI.getClassIntrospectorBuilder(bwConf).build();
-        //                     this.sharedIntrospectionLock = this.classIntrospector.getSharedLock();
-        //                 }
-        //                 this.falseModel = new BooleanModel(false, this);
-        //                 this.trueModel = new BooleanModel(true, this);
-        //                 this.staticModels = new StaticModels(this);
-        //                 this.enumModels = new _EnumModels(this);
-        //                 this.modelCache = new BeansModelCache(this);
-        //                 this.setUseCache(bwConf.getUseModelCache());
-        //                 this.finalizeConstruction(writeProtected);
-        //             })();
-        //         }
-        //     }
-        // } else if(bwConf === undefined && writeProtected === undefined && finalizeConstruction === undefined) {
-        //     let __args = Array.prototype.slice.call(arguments);
-        //     {
-        //         let __args = Array.prototype.slice.call(arguments);
-        //         let incompatibleImprovements : any = Configuration.DEFAULT_INCOMPATIBLE_IMPROVEMENTS_$LI$();
-        //         {
-        //             let __args = Array.prototype.slice.call(arguments);
-        //             let bwConf : any = new BeansWrapper.BeansWrapper$2(this, incompatibleImprovements);
-        //             let writeProtected : any = false;
-        //             {
-        //                 let __args = Array.prototype.slice.call(arguments);
-        //                 let finalizeConstruction : any = true;
-        //                 if(this.sharedIntrospectionLock===undefined) this.sharedIntrospectionLock = null;
-        //                 if(this.classIntrospector===undefined) this.classIntrospector = null;
-        //                 if(this.staticModels===undefined) this.staticModels = null;
-        //                 if(this.enumModels===undefined) this.enumModels = null;
-        //                 if(this.modelCache===undefined) this.modelCache = null;
-        //                 if(this.falseModel===undefined) this.falseModel = null;
-        //                 if(this.trueModel===undefined) this.trueModel = null;
-        //                 if(this.writeProtected===undefined) this.writeProtected = false;
-        //                 if(this.defaultDateType===undefined) this.defaultDateType = 0;
-        //                 if(this.simpleMapWrapper===undefined) this.simpleMapWrapper = false;
-        //                 if(this.strict===undefined) this.strict = false;
-        //                 if(this.preferIndexedReadMethod===undefined) this.preferIndexedReadMethod = false;
-        //                 if(this.incompatibleImprovements===undefined) this.incompatibleImprovements = null;
-        //                 this.nullModel = null;
-        //                 this.outerIdentity = this;
-        //                 this.methodsShadowItems = true;
-        //                 this.BOOLEAN_FACTORY = new BeansWrapper.BeansWrapper$0(this);
-        //                 if(this.sharedIntrospectionLock===undefined) this.sharedIntrospectionLock = null;
-        //                 if(this.classIntrospector===undefined) this.classIntrospector = null;
-        //                 if(this.staticModels===undefined) this.staticModels = null;
-        //                 if(this.enumModels===undefined) this.enumModels = null;
-        //                 if(this.modelCache===undefined) this.modelCache = null;
-        //                 if(this.falseModel===undefined) this.falseModel = null;
-        //                 if(this.trueModel===undefined) this.trueModel = null;
-        //                 if(this.writeProtected===undefined) this.writeProtected = false;
-        //                 if(this.defaultDateType===undefined) this.defaultDateType = 0;
-        //                 if(this.simpleMapWrapper===undefined) this.simpleMapWrapper = false;
-        //                 if(this.strict===undefined) this.strict = false;
-        //                 if(this.preferIndexedReadMethod===undefined) this.preferIndexedReadMethod = false;
-        //                 if(this.incompatibleImprovements===undefined) this.incompatibleImprovements = null;
-        //                 (() => {
-        //                     if(bwConf.getMethodAppearanceFineTuner() == null) {
-        //                         let thisClass : any = (<any>this.constructor);
-        //                         let overridden : boolean = false;
-        //                         let testFailed : boolean = false;
-        //                         try {
-        //                             while((!overridden && thisClass !== DefaultObjectWrapper && thisClass !== BeansWrapper && thisClass !== SimpleObjectWrapper)) {
-        //                                 try {
-        //                                     /* getDeclaredMethod */((c,p) => { if(c.prototype.hasOwnProperty(p) && typeof c.prototype[p] == 'function') return {owner:c,name:p,fn:c.prototype[p]}; else return null; })(thisClass,"finetuneMethodAppearance");
-        //                                     overridden = true;
-        //                                 } catch(e) {
-        //                                     thisClass = thisClass.getSuperclass();
-        //                                 };
-        //                             };
-        //                         } catch(e) {
-        //                             BeansWrapper.LOG_$LI$().info$java_lang_String$java_lang_Throwable("Failed to check if finetuneMethodAppearance is overidden in " + /* getName */(c => c["__class"]?c["__class"]:c["name"])(thisClass) + "; acting like if it was, but this way it won\'t utilize the shared class introspection cache.", e);
-        //                             overridden = true;
-        //                             testFailed = true;
-        //                         };
-        //                         if(overridden) {
-        //                             if(!testFailed && !BeansWrapper.ftmaDeprecationWarnLogged) {
-        //                                 BeansWrapper.LOG_$LI$().warn$java_lang_String("Overriding " + /* getName */(c => c["__class"]?c["__class"]:c["name"])(BeansWrapper) + ".finetuneMethodAppearance is deprecated and will be banned sometimes in the future. Use setMethodAppearanceFineTuner instead.");
-        //                                 BeansWrapper.ftmaDeprecationWarnLogged = true;
-        //                             }
-        //                             bwConf = <BeansWrapperConfiguration>/* clone */bwConf.clone(false);
-        //                             bwConf.setMethodAppearanceFineTuner(new BeansWrapper.BeansWrapper$1(this));
-        //                         }
-        //                     }
-        //                     this.incompatibleImprovements = bwConf.getIncompatibleImprovements();
-        //                     this.simpleMapWrapper = bwConf.isSimpleMapWrapper();
-        //                     this.preferIndexedReadMethod = bwConf.getPreferIndexedReadMethod();
-        //                     this.defaultDateType = bwConf.getDefaultDateType();
-        //                     this.outerIdentity = bwConf.getOuterIdentity() != null?bwConf.getOuterIdentity():this;
-        //                     this.strict = bwConf.isStrict();
-        //                     if(!writeProtected) {
-        //                         this.sharedIntrospectionLock = <any>new Object();
-        //                         this.classIntrospector = new ClassIntrospector(_BeansAPI.getClassIntrospectorBuilder(bwConf), this.sharedIntrospectionLock);
-        //                     } else {
-        //                         this.classIntrospector = _BeansAPI.getClassIntrospectorBuilder(bwConf).build();
-        //                         this.sharedIntrospectionLock = this.classIntrospector.getSharedLock();
-        //                     }
-        //                     this.falseModel = new BooleanModel(false, this);
-        //                     this.trueModel = new BooleanModel(true, this);
-        //                     this.staticModels = new StaticModels(this);
-        //                     this.enumModels = new _EnumModels(this);
-        //                     this.modelCache = new BeansModelCache(this);
-        //                     this.setUseCache(bwConf.getUseModelCache());
-        //                     this.finalizeConstruction(writeProtected);
-        //                 })();
-        //             }
-        //         }
-        //     }
-        // } else throw new Error('invalid overload');
+        if(arguments.length === 0) {
+            bwConf = new (require('./BeansWrapperConfiguration').BeansWrapperConfiguration)((require('../../template/Configuration').Configuration).DEFAULT_INCOMPATIBLE_IMPROVEMENTS);
+        }else if(arguments.length === 1) {
+            bwConf = new (require('./BeansWrapperConfiguration').BeansWrapperConfiguration)(arguments[0]);
+        } else {
+            if(finalizeConstruction === undefined) {
+                finalizeConstruction = true;
+            }
+        }
+
+        (() => {
+            if (bwConf.getMethodAppearanceFineTuner() == null) {
+                let thisClass: any = (<any>this.constructor);
+                let overridden: boolean = false;
+                let testFailed: boolean = false;
+                try {
+                    while ((!overridden && thisClass !== (require('../../template/DefaultObjectWrapper').DefaultObjectWrapper) && thisClass !== BeansWrapper && thisClass !== (require('../../template/SimpleObjectWrapper').SimpleObjectWrapper))) {
+                        try {
+                            /* getDeclaredMethod */
+                            ((c, p) => {
+                                if (c.prototype.hasOwnProperty(p) && typeof c.prototype[p] == 'function') return {
+                                    owner: c,
+                                    name: p,
+                                    fn: c.prototype[p]
+                                }; else return null;
+                            })(thisClass, "finetuneMethodAppearance");
+                            overridden = true;
+                        } catch (e) {
+                            thisClass = thisClass.getSuperclass();
+                        }
+                        ;
+                    }
+                    ;
+                } catch (e) {
+                    BeansWrapper.LOG_$LI$().info$java_lang_String$java_lang_Throwable("Failed to check if finetuneMethodAppearance is overidden in " + /* getName */(c => c["__class"] ? c["__class"] : c["name"])(thisClass) + "; acting like if it was, but this way it won\'t utilize the shared class introspection cache.", e);
+                    overridden = true;
+                    testFailed = true;
+                }
+                ;
+                if (overridden) {
+                    if (!testFailed && !BeansWrapper.ftmaDeprecationWarnLogged) {
+                        BeansWrapper.LOG_$LI$().warn$java_lang_String("Overriding " + /* getName */(c => c["__class"] ? c["__class"] : c["name"])(BeansWrapper) + ".finetuneMethodAppearance is deprecated and will be banned sometimes in the future. Use setMethodAppearanceFineTuner instead.");
+                        BeansWrapper.ftmaDeprecationWarnLogged = true;
+                    }
+                    bwConf = /*<BeansWrapperConfiguration>*//* clone */bwConf.clone(false);
+                    bwConf.setMethodAppearanceFineTuner(new BeansWrapper.BeansWrapper$1(this));
+                }
+            }
+            this.incompatibleImprovements = bwConf.getIncompatibleImprovements();
+            this.simpleMapWrapper = bwConf.isSimpleMapWrapper();
+            this.preferIndexedReadMethod = bwConf.getPreferIndexedReadMethod();
+            this.defaultDateType = bwConf.getDefaultDateType();
+            this.outerIdentity = bwConf.getOuterIdentity() != null ? bwConf.getOuterIdentity() : this;
+            this.strict = bwConf.isStrict();
+            if (!writeProtected) {
+                this.sharedIntrospectionLock = <any>new Object();
+                this.classIntrospector = new (require('./ClassIntrospector').ClassIntrospector)((require('./_BeansAPI')._BeansAPI).getClassIntrospectorBuilder(bwConf), this.sharedIntrospectionLock);
+            } else {
+                this.classIntrospector = (require('./_BeansAPI')._BeansAPI).getClassIntrospectorBuilder(bwConf).build();
+                this.sharedIntrospectionLock = this.classIntrospector.getSharedLock();
+            }
+            this.falseModel = new (require('./BooleanModel').BooleanModel)(false, this);
+            this.trueModel = new (require('./BooleanModel').BooleanModel)(true, this);
+            this.staticModels = new (require('./StaticModels').StaticModels)(this);
+            this.enumModels = new (require('./_EnumModels')._EnumModels)(this);
+            this.modelCache = new (require('./BeansModelCache').BeansModelCache)(this);
+            this.setUseCache(bwConf.getUseModelCache());
+            this.finalizeConstruction(writeProtected);
+        })();
     }
 
     /**
@@ -1040,7 +760,11 @@ export class BeansWrapper implements RichObjectWrapper, WriteProtectable {
 
     public wrap$java_lang_Object(object : any) : TemplateModel {
         if(object == null) return this.nullModel;
-        return this.modelCache.getInstance(object);
+        // return this.modelCache.getInstance(object);
+        if(Array.isArray(object)) {
+            return new (require('./ArrayModel').ArrayModel)(<Array<any>>object, this);
+        }
+        return new (require('./BeanModel').BeanModel)(object, this);
     }
 
     public wrap$java_lang_Object$java_lang_reflect_Method(object : any, method : Function) : any/*TemplateMethodModelEx*/ {
@@ -1812,176 +1536,176 @@ BeansWrapper["__interfaces"] = ["freemarker.template.utility.WriteProtectable","
 
 export namespace BeansWrapper {
 
-    // /**
-    //  * Used for
-    //  * {link MethodAppearanceFineTuner#process}
-    //  * to store the results; see there.
-    //  * @class
-    //  */
-    // export class MethodAppearanceDecision {
-    //     exposeAsProperty : PropertyDescriptor;
-    //
-    //     replaceExistingProperty : boolean;
-    //
-    //     exposeMethodAs : string;
-    //
-    //     methodShadowsProperty : boolean;
-    //
-    //     setDefaults(m : Function) {
-    //         this.exposeAsProperty = null;
-    //         this.replaceExistingProperty = false;
-    //         this.exposeMethodAs = /* getName */m.name;
-    //         this.methodShadowsProperty = true;
-    //     }
-    //
-    //     /**
-    //      * See in the documentation of {link MethodAppearanceFineTuner#process}.
-    //      * @return {PropertyDescriptor}
-    //      */
-    //     public getExposeAsProperty() : PropertyDescriptor {
-    //         return this.exposeAsProperty;
-    //     }
-    //
-    //     /**
-    //      * See in the documentation of {link MethodAppearanceFineTuner#process}.
-    //      * Note that you may also want to call
-    //      * {link #setMethodShadowsProperty(boolean) setMethodShadowsProperty(false)} when you call this.
-    //      * @param {PropertyDescriptor} exposeAsProperty
-    //      */
-    //     public setExposeAsProperty(exposeAsProperty : PropertyDescriptor) {
-    //         this.exposeAsProperty = exposeAsProperty;
-    //     }
-    //
-    //     /**
-    //      * Getter pair of {link #setReplaceExistingProperty(boolean)}.
-    //      *
-    //      * @since 2.3.28
-    //      * @return {boolean}
-    //      */
-    //     public getReplaceExistingProperty() : boolean {
-    //         return this.replaceExistingProperty;
-    //     }
-    //
-    //     /**
-    //      * If {link #getExposeAsProperty()} is non-{@code null}, and a {link PropertyDescriptor} with the same
-    //      * property name was already added to the class introspection data, this decides if that will be replaced
-    //      * with the {link PropertyDescriptor} returned by {link #getExposeAsProperty()}. The default is {@code false},
-    //      * that is, the old {link PropertyDescriptor} is kept, and the new one is ignored.
-    //      * JavaBean properties discovered with the standard (non-{link MethodAppearanceFineTuner}) mechanism
-    //      * are added before those created by the {link MethodAppearanceFineTuner}, so with this you can decide if a
-    //      * real JavaBeans property can be replaced by the "fake" one created with
-    //      * {link #setExposeAsProperty(PropertyDescriptor)}.
-    //      *
-    //      * @since 2.3.28
-    //      * @param {boolean} overrideExistingProperty
-    //      */
-    //     public setReplaceExistingProperty(overrideExistingProperty : boolean) {
-    //         this.replaceExistingProperty = overrideExistingProperty;
-    //     }
-    //
-    //     /**
-    //      * See in the documentation of {link MethodAppearanceFineTuner#process}.
-    //      * @return {String}
-    //      */
-    //     public getExposeMethodAs() : string {
-    //         return this.exposeMethodAs;
-    //     }
-    //
-    //     /**
-    //      * See in the documentation of {link MethodAppearanceFineTuner#process}.
-    //      * @param {String} exposeAsMethod
-    //      */
-    //     public setExposeMethodAs(exposeAsMethod : string) {
-    //         this.exposeMethodAs = exposeAsMethod;
-    //     }
-    //
-    //     /**
-    //      * See in the documentation of {link MethodAppearanceFineTuner#process}.
-    //      * @return {boolean}
-    //      */
-    //     public getMethodShadowsProperty() : boolean {
-    //         return this.methodShadowsProperty;
-    //     }
-    //
-    //     /**
-    //      * See in the documentation of {link MethodAppearanceFineTuner#process}.
-    //      * @param {boolean} shadowEarlierProperty
-    //      */
-    //     public setMethodShadowsProperty(shadowEarlierProperty : boolean) {
-    //         this.methodShadowsProperty = shadowEarlierProperty;
-    //     }
-    //
-    //     constructor() {
-    //         if(this.exposeAsProperty===undefined) this.exposeAsProperty = null;
-    //         if(this.replaceExistingProperty===undefined) this.replaceExistingProperty = false;
-    //         if(this.exposeMethodAs===undefined) this.exposeMethodAs = null;
-    //         if(this.methodShadowsProperty===undefined) this.methodShadowsProperty = false;
-    //     }
-    // }
-    // MethodAppearanceDecision["__class"] = "freemarker.ext.beans.BeansWrapper.MethodAppearanceDecision";
-    //
-    //
-    // /**
-    //  * Used for {link MethodAppearanceFineTuner#process} as input parameter; see there.
-    //  * @class
-    //  */
-    // export class MethodAppearanceDecisionInput {
-    //     method : Function;
-    //
-    //     containingClass : any;
-    //
-    //     setMethod(method : Function) {
-    //         this.method = method;
-    //     }
-    //
-    //     setContainingClass(containingClass : any) {
-    //         this.containingClass = containingClass;
-    //     }
-    //
-    //     public getMethod() : Function {
-    //         return this.method;
-    //     }
-    //
-    //     public getContainingClass() : any {
-    //         return this.containingClass;
-    //     }
-    //
-    //     constructor() {
-    //         if(this.method===undefined) this.method = null;
-    //         if(this.containingClass===undefined) this.containingClass = null;
-    //     }
-    // }
-    // MethodAppearanceDecisionInput["__class"] = "freemarker.ext.beans.BeansWrapper.MethodAppearanceDecisionInput";
-    //
-    //
-    // export class BeansWrapper$0 implements ModelFactory {
-    //     public __parent: any;
-    //     public create(object : any, wrapper : ObjectWrapper) : TemplateModel {
-    //         return <boolean>object?this.__parent.trueModel:this.__parent.falseModel;
-    //     }
-    //
-    //     constructor(__parent: any) {
-    //         this.__parent = __parent;
-    //     }
-    // }
-    // BeansWrapper$0["__interfaces"] = ["freemarker.ext.util.ModelFactory"];
-    //
-    //
-    //
-    // export class BeansWrapper$1 implements MethodAppearanceFineTuner {
-    //     public __parent: any;
-    //     public process(__in : BeansWrapper.MethodAppearanceDecisionInput, out : BeansWrapper.MethodAppearanceDecision) {
-    //         this.__parent.finetuneMethodAppearance(__in.getContainingClass(), __in.getMethod(), out);
-    //     }
-    //
-    //     constructor(__parent: any) {
-    //         this.__parent = __parent;
-    //     }
-    // }
-    // BeansWrapper$1["__interfaces"] = ["freemarker.ext.beans.MethodAppearanceFineTuner"];
-    //
-    //
-    //
+    /**
+     * Used for
+     * {link MethodAppearanceFineTuner#process}
+     * to store the results; see there.
+     * @class
+     */
+    export class MethodAppearanceDecision {
+        exposeAsProperty : PropertyDescriptor;
+
+        replaceExistingProperty : boolean;
+
+        exposeMethodAs : string;
+
+        methodShadowsProperty : boolean;
+
+        setDefaults(m : Function) {
+            this.exposeAsProperty = null;
+            this.replaceExistingProperty = false;
+            this.exposeMethodAs = /* getName */m.name;
+            this.methodShadowsProperty = true;
+        }
+
+        /**
+         * See in the documentation of {link MethodAppearanceFineTuner#process}.
+         * @return {PropertyDescriptor}
+         */
+        public getExposeAsProperty() : PropertyDescriptor {
+            return this.exposeAsProperty;
+        }
+
+        /**
+         * See in the documentation of {link MethodAppearanceFineTuner#process}.
+         * Note that you may also want to call
+         * {link #setMethodShadowsProperty(boolean) setMethodShadowsProperty(false)} when you call this.
+         * @param {PropertyDescriptor} exposeAsProperty
+         */
+        public setExposeAsProperty(exposeAsProperty : PropertyDescriptor) {
+            this.exposeAsProperty = exposeAsProperty;
+        }
+
+        /**
+         * Getter pair of {link #setReplaceExistingProperty(boolean)}.
+         *
+         * @since 2.3.28
+         * @return {boolean}
+         */
+        public getReplaceExistingProperty() : boolean {
+            return this.replaceExistingProperty;
+        }
+
+        /**
+         * If {link #getExposeAsProperty()} is non-{@code null}, and a {link PropertyDescriptor} with the same
+         * property name was already added to the class introspection data, this decides if that will be replaced
+         * with the {link PropertyDescriptor} returned by {link #getExposeAsProperty()}. The default is {@code false},
+         * that is, the old {link PropertyDescriptor} is kept, and the new one is ignored.
+         * JavaBean properties discovered with the standard (non-{link MethodAppearanceFineTuner}) mechanism
+         * are added before those created by the {link MethodAppearanceFineTuner}, so with this you can decide if a
+         * real JavaBeans property can be replaced by the "fake" one created with
+         * {link #setExposeAsProperty(PropertyDescriptor)}.
+         *
+         * @since 2.3.28
+         * @param {boolean} overrideExistingProperty
+         */
+        public setReplaceExistingProperty(overrideExistingProperty : boolean) {
+            this.replaceExistingProperty = overrideExistingProperty;
+        }
+
+        /**
+         * See in the documentation of {link MethodAppearanceFineTuner#process}.
+         * @return {String}
+         */
+        public getExposeMethodAs() : string {
+            return this.exposeMethodAs;
+        }
+
+        /**
+         * See in the documentation of {link MethodAppearanceFineTuner#process}.
+         * @param {String} exposeAsMethod
+         */
+        public setExposeMethodAs(exposeAsMethod : string) {
+            this.exposeMethodAs = exposeAsMethod;
+        }
+
+        /**
+         * See in the documentation of {link MethodAppearanceFineTuner#process}.
+         * @return {boolean}
+         */
+        public getMethodShadowsProperty() : boolean {
+            return this.methodShadowsProperty;
+        }
+
+        /**
+         * See in the documentation of {link MethodAppearanceFineTuner#process}.
+         * @param {boolean} shadowEarlierProperty
+         */
+        public setMethodShadowsProperty(shadowEarlierProperty : boolean) {
+            this.methodShadowsProperty = shadowEarlierProperty;
+        }
+
+        constructor() {
+            if(this.exposeAsProperty===undefined) this.exposeAsProperty = null;
+            if(this.replaceExistingProperty===undefined) this.replaceExistingProperty = false;
+            if(this.exposeMethodAs===undefined) this.exposeMethodAs = null;
+            if(this.methodShadowsProperty===undefined) this.methodShadowsProperty = false;
+        }
+    }
+    MethodAppearanceDecision["__class"] = "freemarker.ext.beans.BeansWrapper.MethodAppearanceDecision";
+
+
+    /**
+     * Used for {link MethodAppearanceFineTuner#process} as input parameter; see there.
+     * @class
+     */
+    export class MethodAppearanceDecisionInput {
+        method : Function;
+
+        containingClass : any;
+
+        setMethod(method : Function) {
+            this.method = method;
+        }
+
+        setContainingClass(containingClass : any) {
+            this.containingClass = containingClass;
+        }
+
+        public getMethod() : Function {
+            return this.method;
+        }
+
+        public getContainingClass() : any {
+            return this.containingClass;
+        }
+
+        constructor() {
+            if(this.method===undefined) this.method = null;
+            if(this.containingClass===undefined) this.containingClass = null;
+        }
+    }
+    MethodAppearanceDecisionInput["__class"] = "freemarker.ext.beans.BeansWrapper.MethodAppearanceDecisionInput";
+
+
+    export class BeansWrapper$0 implements ModelFactory {
+        public __parent: any;
+        public create(object : any, wrapper : ObjectWrapper) : TemplateModel {
+            return <boolean>object?this.__parent.trueModel:this.__parent.falseModel;
+        }
+
+        constructor(__parent: any) {
+            this.__parent = __parent;
+        }
+    }
+    BeansWrapper$0["__interfaces"] = ["freemarker.ext.util.ModelFactory"];
+
+
+
+    export class BeansWrapper$1 implements MethodAppearanceFineTuner {
+        public __parent: any;
+        public process(__in : BeansWrapper.MethodAppearanceDecisionInput, out : BeansWrapper.MethodAppearanceDecision) {
+            this.__parent.finetuneMethodAppearance(__in.getContainingClass(), __in.getMethod(), out);
+        }
+
+        constructor(__parent: any) {
+            this.__parent = __parent;
+        }
+    }
+    BeansWrapper$1["__interfaces"] = ["freemarker.ext.beans.MethodAppearanceFineTuner"];
+
+
+
     // export class BeansWrapper$2 extends BeansWrapperConfiguration {
     //     public __parent: any;
     //     constructor(__parent: any, __arg0: any) {
@@ -1990,30 +1714,30 @@ export namespace BeansWrapper {
     //     }
     // }
     // BeansWrapper$2["__interfaces"] = ["java.lang.Cloneable"];
-    //
-    //
-    //
-    // export class BeansWrapper$3 implements ModelFactory {
-    //     public create(object : any, wrapper : ObjectWrapper) : TemplateModel {
-    //         return new IteratorModel(<Iterator><any>object, <BeansWrapper><any>wrapper);
-    //     }
-    //
-    //     constructor() {
-    //     }
-    // }
-    // BeansWrapper$3["__interfaces"] = ["freemarker.ext.util.ModelFactory"];
-    //
-    //
-    //
-    // export class BeansWrapper$4 implements ModelFactory {
-    //     public create(object : any, wrapper : ObjectWrapper) : TemplateModel {
-    //         return new EnumerationModel(<Enumeration><any>object, <BeansWrapper><any>wrapper);
-    //     }
-    //
-    //     constructor() {
-    //     }
-    // }
-    // BeansWrapper$4["__interfaces"] = ["freemarker.ext.util.ModelFactory"];
+
+
+
+    export class BeansWrapper$3 implements ModelFactory {
+        public create(object : any, wrapper : ObjectWrapper) : TemplateModel {
+            return new (require('./IteratorModel').IteratorModel)(/*<Iterator>*/<any>object, <BeansWrapper><any>wrapper);
+        }
+
+        constructor() {
+        }
+    }
+    BeansWrapper$3["__interfaces"] = ["freemarker.ext.util.ModelFactory"];
+
+
+
+    export class BeansWrapper$4 implements ModelFactory {
+        public create(object : any, wrapper : /*ObjectWrapper*/any) : TemplateModel {
+            return new (require('./EnumerationModel').EnumerationModel)(/*<Enumeration>*/<any>object, <BeansWrapper><any>wrapper);
+        }
+
+        constructor() {
+        }
+    }
+    BeansWrapper$4["__interfaces"] = ["freemarker.ext.util.ModelFactory"];
 
 
 }

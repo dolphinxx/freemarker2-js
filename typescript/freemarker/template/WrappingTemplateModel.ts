@@ -1,7 +1,6 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
 import {TemplateModel} from './TemplateModel';
 import {TemplateModelException} from './TemplateModelException';
-import {DefaultObjectWrapper} from "./DefaultObjectWrapper";
 
 /**
  * Convenience base-class for containers that wrap their contained arbitrary Java objects into {link TemplateModel}
@@ -12,7 +11,7 @@ export abstract class WrappingTemplateModel {
     /**
      * @deprecated Because it's a VM-wide modifiable field
      */
-    static defaultObjectWrapper : any = new DefaultObjectWrapper();
+    static defaultObjectWrapper : any;
 
     /*private*/ objectWrapper : any;
 
@@ -49,6 +48,9 @@ export abstract class WrappingTemplateModel {
     }
 
     public constructor(objectWrapper? : any) {
+        if(WrappingTemplateModel.defaultObjectWrapper == null) {
+            WrappingTemplateModel.defaultObjectWrapper = new (require('./DefaultObjectWrapper').DefaultObjectWrapper)()
+        }
         if(((objectWrapper != null && (objectWrapper["__interfaces"] != null && objectWrapper["__interfaces"].indexOf("freemarker.template.ObjectWrapper") >= 0 || objectWrapper.constructor != null && objectWrapper.constructor["__interfaces"] != null && objectWrapper.constructor["__interfaces"].indexOf("freemarker.template.ObjectWrapper") >= 0)) || objectWrapper === null)) {
             let __args = Array.prototype.slice.call(arguments);
             if(this.objectWrapper===undefined) this.objectWrapper = null;

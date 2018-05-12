@@ -2,6 +2,7 @@
 import {TemplateValueFormatFactory} from './TemplateValueFormatFactory';
 import {TemplateDateFormat} from './TemplateDateFormat';
 import {TemplateValueFormatException} from './TemplateValueFormatException';
+import {Locale} from "../../java/util/Locale";
 
 /**
  * Factory for a certain kind of date/time/dateTime formatting ({link TemplateDateFormat}). Usually a singleton
@@ -54,7 +55,7 @@ export abstract class TemplateDateFormatFactory extends TemplateValueFormatFacto
      * {link TemplateDateModel#UNKNOWN} and that's unsupported by this factory.
      * @return {TemplateDateFormat}
      */
-    public abstract get(params : string, dateType : number, locale : string, timeZone : string, zonelessInput : boolean, env : /*Environment*/any) : TemplateDateFormat;
+    public abstract get(params : string, dateType : number, locale : Locale, timeZone : string, zonelessInput : boolean, env : /*Environment*/any) : TemplateDateFormat;
 }
 TemplateDateFormatFactory["__class"] = "freemarker.core.TemplateDateFormatFactory";
 

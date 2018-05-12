@@ -1,7 +1,7 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import {Configuration} from '../template/Configuration';
 import {Version} from '../template/Version';
 import {DateUtil} from '../template/utility/DateUtil';
+import {System} from "../../java/lang/System";
 
 /**
  * FreeMarker command-line utility, the Main-Class of <tt>freemarker.jar</tt>.
@@ -11,19 +11,20 @@ import {DateUtil} from '../template/utility/DateUtil';
  * @class
  */
 export class CommandLine {
-    public static main(args : Array) {
+    public static main(args : Array<any>) {
+        const Configuration = require('../template/Configuration').Configuration;
         let ver : Version = Configuration.getVersion();
         console.info();
-        java.lang.System.out.print("Apache FreeMarker version ");
-        java.lang.System.out.print(ver);
+        System.out.print("Apache FreeMarker version ");
+        System.out.print(ver);
         if(!/* endsWith */((str, searchString) => { let pos = str.length - searchString.length; let lastIndex = str.indexOf(searchString, pos); return lastIndex !== -1 && lastIndex === pos; })(ver.toString(), "Z") && ver.getBuildDate() != null) {
-            java.lang.System.out.print(" (built on ");
-            java.lang.System.out.print(DateUtil.dateToISO8601String(ver.getBuildDate(), true, true, true, DateUtil.ACCURACY_SECONDS, DateUtil.UTC_$LI$(), new DateUtil.TrivialDateToISO8601CalendarFactory()));
-            java.lang.System.out.print(")");
+            System.out.print(" (built on ");
+            System.out.print(DateUtil.dateToISO8601String(ver.getBuildDate(), true, true, true, DateUtil.ACCURACY_SECONDS, DateUtil.UTC_$LI$(), new DateUtil.TrivialDateToISO8601CalendarFactory()));
+            System.out.print(")");
         }
         console.info();
         if(ver.isGAECompliant() != null) {
-            java.lang.System.out.print("Google App Engine complian variant: ");
+            System.out.print("Google App Engine complian variant: ");
             console.info(ver.isGAECompliant()?"Yes":"No");
         }
     }

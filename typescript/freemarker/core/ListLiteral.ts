@@ -18,7 +18,7 @@ export class ListLiteral extends Expression {
         super();
         if(this.items===undefined) this.items = null;
         this.items = items;
-        items.trimToSize();
+        // items.trimToSize();
     }
 
     /**
@@ -50,7 +50,7 @@ export class ListLiteral extends Expression {
         switch((size)) {
         case 0:
             {
-                return Collections.EMPTY_LIST;
+                return []
             }
             case 1:
             {
@@ -78,7 +78,7 @@ export class ListLiteral extends Expression {
         switch((size)) {
         case 0:
             {
-                return Collections.EMPTY_LIST;
+                return [];
             }
             case 1:
             {

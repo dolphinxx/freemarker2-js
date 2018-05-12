@@ -7,6 +7,7 @@ import {Map} from '../../java/util/Map';
 import {List} from "../../java/util/List";
 import {ClassUtil} from "../template/utility/ClassUtil";
 import {_MiscTemplateException} from "./_MiscTemplateException";
+import {Locale} from "../../java/util/Locale";
 
 /**
  * Creates a new instance. Normally you do not need to use this constructor,
@@ -460,7 +461,7 @@ export class Configurable {
 
     /*private*/ customAttributes : Map<any, any>;
 
-    /*private*/ locale : string;
+    /*private*/ locale : Locale;
 
     /*private*/ numberFormat : string;
 
@@ -1020,7 +1021,7 @@ export class Configurable {
      * see Configuration#getTemplate(String, Locale)
      * @param {Locale} locale
      */
-    public setLocale(locale : string) {
+    public setLocale(locale : Locale) {
         (require('../template/utility/NullArgumentException').NullArgumentException).check$java_lang_String$java_lang_Object("locale", locale);
         this.locale = locale;
         /* setProperty */this.properties.set(Configurable.LOCALE_KEY_$LI$(), locale.toString());
@@ -1030,7 +1031,7 @@ export class Configurable {
      * Getter pair of {link #setLocale(Locale)}. Not {@code null}.
      * @return {Locale}
      */
-    public getLocale() : string {
+    public getLocale() : Locale {
         if(this.locale != null) {
             return this.locale;
         }

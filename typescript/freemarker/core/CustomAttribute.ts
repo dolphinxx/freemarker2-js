@@ -1,10 +1,10 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import {Configuration} from '../template/Configuration';
 import {Template} from '../template/Template';
 import {Environment} from './Environment';
 import {Configurable} from './Configurable';
 import {TemplateConfiguration} from './TemplateConfiguration';
 import {BugException} from './BugException';
+import {ClassUtil} from "../template/utility/ClassUtil";
 
 /**
  * Creates a new custom attribute with the specified scope
@@ -68,6 +68,7 @@ export class CustomAttribute {
      * @param {Environment} env
      */
     public get(env? : any) : any {
+        const Configuration = require('../template/Configuration').Configuration;
         if(((ClassUtil.isInstanceOf(env, 'freemarker.core.Environment')) || env === null)) {
             return <any>this.get$freemarker_core_Environment(env);
         } else if(((env != null && env instanceof <any>Template) || env === null)) {
@@ -99,7 +100,7 @@ export class CustomAttribute {
         return templateConfiguration.getCustomAttribute$java_lang_Object$freemarker_core_CustomAttribute(this.key, this);
     }
 
-    public get$freemarker_template_Configuration(cfg : Configuration) : any {
+    public get$freemarker_template_Configuration(cfg : /*Configuration*/any) : any {
         if(this.scope !== CustomAttribute.SCOPE_CONFIGURATION) {
             throw Object.defineProperty(new Error("This is not a template-scope attribute"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.UnsupportedOperationException','java.lang.Object','java.lang.RuntimeException','java.lang.Exception'] });
         }
@@ -123,6 +124,7 @@ export class CustomAttribute {
      * @param {Environment} env
      */
     public set(value? : any, env? : any) : any {
+        const Configuration = require('../template/Configuration').Configuration;
         if(((value != null) || value === null) && ((ClassUtil.isInstanceOf(env, 'freemarker.core.Environment')) || env === null)) {
             return <any>this.set$java_lang_Object$freemarker_core_Environment(value, env);
         } else if(((value != null) || value === null) && ((env != null && env instanceof <any>Template) || env === null)) {
@@ -154,7 +156,7 @@ export class CustomAttribute {
         templateConfiguration.setCustomAttribute$java_lang_Object$java_lang_Object(this.key, value);
     }
 
-    public set$java_lang_Object$freemarker_template_Configuration(value : any, cfg : Configuration) {
+    public set$java_lang_Object$freemarker_template_Configuration(value : any, cfg : /*Configuration*/any) {
         if(this.scope !== CustomAttribute.SCOPE_CONFIGURATION) {
             throw Object.defineProperty(new Error("This is not a configuration-scope attribute"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.UnsupportedOperationException','java.lang.Object','java.lang.RuntimeException','java.lang.Exception'] });
         }

@@ -17,6 +17,8 @@
 // console.log(new (require('../dist/freemarker/template/Configuration')).Configuration());
 // console.log(new (require('../dist/freemarker/core/Macro')).Macro());
 // console.log(require('../dist/freemarker/core/MixedContent').MixedContent);
+const {Time} =require("../dist/java/sql/Time");
+
 process.env.NODE_PATH = __dirname + '/dist/';
 require('module').Module._initPaths();
 const path = require('path');
@@ -29,8 +31,12 @@ const StringReader = require('../dist/java/io/StringReader').StringReader;
 const SimpleHash = require('../dist/freemarker/template/SimpleHash').SimpleHash;
 const FileTemplateLoader = require('../dist/freemarker/cache/FileTemplateLoader').FileTemplateLoader;
 const TemplateExceptionHandler = require('../dist/freemarker/template/TemplateExceptionHandler').TemplateExceptionHandler;
+const {Locale} = require('../dist/java/util/Locale');
 const config = new Configuration();
-config.setLocale('zh_CN');
+config.setDateFormat("yyyy-MM-dd");
+config.setTimeFormat("HH:mm:ss");
+config.setDateTimeFormat("yyyy-MM-dd HH:mm:ss");
+config.setLocale(new Locale('zh_CN'));
 config.setEncoding('UTF-8');
 config.setTemplateLoader(new FileTemplateLoader(path.resolve(__dirname, '../ftl')));
 config.setTemplateExceptionHandler(TemplateExceptionHandler.DEBUG_HANDLER);
@@ -41,11 +47,10 @@ let writer = new StringWriter();
 let exception = null;
 try{
     const template = config.getTemplate$java_lang_String('foo.ftl');
-    template.process(new SimpleHash({"name": "Freemarker", "language": "french", "mobile": true}), writer);
+    template.process(new SimpleHash({"name": "Freemarker", "language": "french", "mobile": true, "items": [{"value": "apple", "date": new Date()}, {"value": "pear", "date": new Time(new Date().getTime())}]}), writer);
 } catch(e) {
     exception = e;
 }
-const a = new Map();
 console.log('----------------------------\n');
 console.log(writer.toString());
 console.log('\n----------------------------');

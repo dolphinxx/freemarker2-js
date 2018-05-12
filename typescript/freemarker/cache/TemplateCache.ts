@@ -24,6 +24,7 @@ import {Boolean} from '../../java/lang/Boolean';
 import {TemplateLookupContext} from './TemplateLookupContext';
 import {StringTokenizer} from "../../java/util/StringTokenizer";
 import {ClassUtil} from "../template/utility/ClassUtil";
+import {Locale} from "../../java/util/Locale";
 
 /**
  * @param {*} templateLoader         The {link TemplateLoader} to use. Can be {@code null}, though then every request will result in
@@ -439,7 +440,7 @@ export class TemplateCache {
         return this.templateConfigurations;
     }
 
-    public getTemplate$java_lang_String$java_util_Locale$java_lang_Object$java_lang_String$boolean(name: string, locale: string, customLookupCondition: any, encoding: string, parseAsFTL: boolean): TemplateCache.MaybeMissingTemplate {
+    public getTemplate$java_lang_String$java_util_Locale$java_lang_Object$java_lang_String$boolean(name: string, locale: Locale, customLookupCondition: any, encoding: string, parseAsFTL: boolean): TemplateCache.MaybeMissingTemplate {
         NullArgumentException.check$java_lang_String$java_lang_Object("name", name);
         NullArgumentException.check$java_lang_String$java_lang_Object("locale", locale);
         NullArgumentException.check$java_lang_String$java_lang_Object("encoding", encoding);

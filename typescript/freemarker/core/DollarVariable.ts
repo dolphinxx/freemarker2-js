@@ -1,5 +1,4 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
-import {Configuration} from '../template/Configuration';
 import {StringUtil} from '../template/utility/StringUtil';
 import {Writer} from '../../java/io/Writer';
 import {Interpolation} from './Interpolation';
@@ -100,6 +99,7 @@ export class DollarVariable extends Interpolation {
     }
 
     public dump$boolean$boolean(canonical : boolean, inStringLiteral : boolean) : string {
+        const Configuration = require('../template/Configuration').Configuration;
         let sb : StringBuilder = new StringBuilder("");
         let syntax : number = this.getTemplate().getInterpolationSyntax();
         sb.append(syntax !== Configuration.SQUARE_BRACKET_INTERPOLATION_SYNTAX?"${":"[=");

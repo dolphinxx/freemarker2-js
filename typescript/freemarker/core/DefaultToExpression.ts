@@ -8,7 +8,6 @@ import {TemplateScalarModel} from '../template/TemplateScalarModel';
 import {TemplateSequenceModel} from '../template/TemplateSequenceModel';
 import {Constants} from '../template/utility/Constants';
 import {Expression} from './Expression';
-import {Environment} from './Environment';
 import {ParentheticalExpression} from './ParentheticalExpression';
 import {ParameterRole} from './ParameterRole';
 
@@ -181,10 +180,3 @@ export namespace DefaultToExpression {
 
 
 }
-
-
-
-
-DefaultToExpression.EMPTY_STRING_AND_SEQUENCE_AND_HASH_$LI$();
-
-DefaultToExpression.EMPTY_COLLECTION_$LI$();

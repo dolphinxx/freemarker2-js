@@ -7,6 +7,8 @@ import {List} from "../../java/util/List";
 import {Map} from "../../java/util/Map";
 import {Iterator} from "../../java/util/Iterator";
 import {Iterable} from "../../java/lang/Iterable";
+import {Time} from "../../java/sql/Time";
+import {Timestamp} from "../../java/sql/Timestamp";
 
 /**
  * Use {link DefaultObjectWrapperBuilder} instead if possible. Instances created with this constructor won't share
@@ -83,18 +85,21 @@ export class DefaultObjectWrapper extends BeansWrapper {
         if (typeof obj === 'number') {
             return new (require('./SimpleNumber').SimpleNumber)(<number> obj);
         }
-        // if (obj instanceof java.util.Date) {
-        //     if (obj instanceof java.sql.Date) {
-        //         return new SimpleDate((java.sql.Date) obj);
-        //     }
-        //     if (obj instanceof java.sql.Time) {
-        //         return new SimpleDate((java.sql.Time) obj);
-        //     }
-        //     if (obj instanceof java.sql.Timestamp) {
-        //         return new SimpleDate((java.sql.Timestamp) obj);
-        //     }
-        //     return new SimpleDate((java.util.Date) obj, getDefaultDateType());
-        // }
+        if(obj instanceof Date) {
+            return new (require('./SimpleDate').SimpleDate)(obj);
+        }
+        if (obj instanceof Date) {
+            if (obj instanceof Time) {
+                return new (require('./SimpleDate').SimpleDate)(<Time> obj);
+            }
+            if (obj instanceof Timestamp) {
+                return new (require('./SimpleDate').SimpleDate)(<Timestamp> obj);
+            }
+            if (obj instanceof Date) {
+                return new (require('./SimpleDate').SimpleDate)(<Date> obj);
+            }
+            return new (require('./SimpleDate').SimpleDate)(<Date> obj, this.getDefaultDateType());
+        }
         if (Array.isArray(obj)) {
             if (this.useAdaptersForContainers) {
                 return (require('./DefaultArrayAdapter').DefaultArrayAdapter).adapt(obj, this);

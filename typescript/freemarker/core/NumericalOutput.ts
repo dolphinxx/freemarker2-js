@@ -8,6 +8,8 @@ import {TemplateElement} from './TemplateElement';
 import {Environment} from './Environment';
 import {StringBuilder} from '../../java/lang/StringBuilder';
 import {ParameterRole} from './ParameterRole';
+import {Locale} from "../../java/util/Locale";
+import {NumberFormat} from "../../java/text/NumberFormat";
 
 /**
  * An interpolation like <code>#{numericalExp; format}</code>; it's deprecated, but still supported. The class name is
@@ -241,9 +243,9 @@ export namespace NumericalOutput {
     export class FormatHolder {
         format : NumberFormat;
 
-        locale : string;
+        locale : Locale;
 
-        constructor(format : NumberFormat, locale : string) {
+        constructor(format : NumberFormat, locale : Locale) {
             if(this.format===undefined) this.format = null;
             if(this.locale===undefined) this.locale = null;
             this.format = format;

@@ -2,6 +2,7 @@
 import {ISOLikeTemplateDateFormatFactory} from './ISOLikeTemplateDateFormatFactory';
 import {TemplateDateFormat} from './TemplateDateFormat';
 import {ISOTemplateDateFormat} from './ISOTemplateDateFormat';
+import {Locale} from "../../java/util/Locale";
 
 export class ISOTemplateDateFormatFactory extends ISOLikeTemplateDateFormatFactory {
     static INSTANCE : ISOTemplateDateFormatFactory; public static INSTANCE_$LI$() : ISOTemplateDateFormatFactory { if(ISOTemplateDateFormatFactory.INSTANCE == null) ISOTemplateDateFormatFactory.INSTANCE = new ISOTemplateDateFormatFactory(); return ISOTemplateDateFormatFactory.INSTANCE; };
@@ -20,7 +21,7 @@ export class ISOTemplateDateFormatFactory extends ISOLikeTemplateDateFormatFacto
      * @param {Environment} env
      * @return {TemplateDateFormat}
      */
-    public get(params : string, dateType : number, locale : string, timeZone : string, zonelessInput : boolean, env : /*Environment*/any) : TemplateDateFormat {
+    public get(params : string, dateType : number, locale : Locale, timeZone : string, zonelessInput : boolean, env : /*Environment*/any) : TemplateDateFormat {
         return new ISOTemplateDateFormat(params, 3, dateType, zonelessInput, timeZone, this, env);
     }
 }
