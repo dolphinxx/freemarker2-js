@@ -106,7 +106,7 @@ export class BuiltinVariable extends Expression {
         if(this.parseTimeValue===undefined) this.parseTimeValue = null;
         let name : string = nameTk.image;
         this.parseTimeValue = parseTimeValue;
-        if(BuiltinVariable.SPEC_VAR_NAMES_$LI$().indexOf(name) !== -1) {
+        if(BuiltinVariable.SPEC_VAR_NAMES_$LI$().indexOf(name) === -1) {
             let sb : StringBuilder = new StringBuilder("");
             sb.append("Unknown special variable name: ");
             sb.append(StringUtil.jQuote$java_lang_Object(name)).append(".");
