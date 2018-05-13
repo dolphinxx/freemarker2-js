@@ -30,8 +30,43 @@ const ExamplesTest = /** @class */ (function (_super) {
 
     function ExamplesTest() {
         const _this = _super.call(this) || this;
+        this.getScriptFileName();
         return _this;
     }
+
+    ExamplesTest.prototype. getCallerFile = function() {
+        var originalFunc = Error.prepareStackTrace;
+
+        var callerFile;
+        try {
+            var err = new Error();
+            var currentFile;
+
+            Error.prepareStackTrace = function (err, stack) { return stack; };
+
+            currentFile = err.stack.shift().getFileName();
+
+            while (err.stack.length) {
+                callerFile = err.stack.shift().getFileName();
+
+                if(currentFile !== callerFile) break;
+            }
+        } catch (e) {}
+
+        Error.prepareStackTrace = originalFunc;
+
+        return callerFile;
+    };
+
+    ExamplesTest.prototype.getScriptFileName = function () {
+        if (this.filename !== undefined) {
+            return this.filename;
+        }
+
+        let _filename = this.getCallerFile().replace(/\\/g, '/');
+        this.filename = _filename.substring(_filename.lastIndexOf('/') + 1);
+        return this.filename;
+    };
 
     ExamplesTest.prototype.loadPropertiesFile = function (name) {
         const result = new Map();

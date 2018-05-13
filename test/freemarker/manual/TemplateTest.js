@@ -289,6 +289,8 @@ const TemplateTest = /** @class */ (function () {
         console.log('\x1b[32m%s\x1b[0m', `${description} in ${this.getScriptFileName()} passed!`);
     };
 
+    TemplateTest.prototype.testSkip = function () {};
+
     return TemplateTest;
 }());
 exports.TemplateTest = TemplateTest;
