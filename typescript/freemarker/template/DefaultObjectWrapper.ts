@@ -86,9 +86,6 @@ export class DefaultObjectWrapper extends BeansWrapper {
             return new (require('./SimpleNumber').SimpleNumber)(<number> obj);
         }
         if(obj instanceof Date) {
-            return new (require('./SimpleDate').SimpleDate)(obj);
-        }
-        if (obj instanceof Date) {
             if (obj instanceof Time) {
                 return new (require('./SimpleDate').SimpleDate)(<Time> obj);
             }
@@ -96,7 +93,7 @@ export class DefaultObjectWrapper extends BeansWrapper {
                 return new (require('./SimpleDate').SimpleDate)(<Timestamp> obj);
             }
             if (obj instanceof Date) {
-                return new (require('./SimpleDate').SimpleDate)(<Date> obj);
+                return new (require('./SimpleDate').SimpleDate)(<Date> obj, (require('./TemplateDateModel').TemplateDateModel).DATETIME);
             }
             return new (require('./SimpleDate').SimpleDate)(<Date> obj, this.getDefaultDateType());
         }

@@ -107,7 +107,7 @@ export class Set<T = any> implements Collection<T> {
 
     forEach(action: Function): void {
         for (let i = 0; i < this.items.length; i++) {
-            action.call(this.items[i]);
+            action(this.items[i]);
         }
     }
 

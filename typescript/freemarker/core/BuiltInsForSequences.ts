@@ -151,7 +151,7 @@ export namespace BuiltInsForSequences {
                 public get(relIndex : number) : TemplateModel {
                     let absIndex : number = this.baseIndex + relIndex;
                     if(absIndex < this.__parent.wrappedTsm.size()) {
-                        return this.__parent.wrappedTsm['get$int'](absIndex);
+                        return this.__parent.wrappedTsm.get(absIndex);
                     } else {
                         return absIndex < this.__parent.numberOfChunks * this.__parent.chunkSize?this.__parent.fillerItem:null;
                     }
@@ -195,7 +195,7 @@ export namespace BuiltInsForSequences {
             if(seq.size() === 0) {
                 return null;
             }
-            return seq['get$int'](0);
+            return seq.get(0);
         }
 
         calculateResultForColletion(coll : TemplateCollectionModel) : TemplateModel {
@@ -311,7 +311,7 @@ export namespace BuiltInsForSequences {
             if(size === 0) {
                 return null;
             }
-            return tsm['get$int'](size - 1);
+            return tsm.get(size - 1);
         }
 
         constructor() {
@@ -357,7 +357,7 @@ export namespace BuiltInsForSequences {
             }
 
             public get(index : number) : TemplateModel {
-                return this.seq['get$int'](this.seq.size() - 1 - index);
+                return this.seq.get(this.seq.size() - 1 - index);
             }
 
             public size() : number {
@@ -449,7 +449,7 @@ export namespace BuiltInsForSequences {
                 let arg : TemplateModel = <TemplateModel><any>/* get */args[0];
                 let size : number = this.m_seq.size();
                 for(let i : number = 0; i < size; i++) {
-                    if(BuiltInsForSequences.modelsEqual(i, this.m_seq['get$int'](i), arg, this.m_env)) return TemplateBooleanModel.TRUE;
+                    if(BuiltInsForSequences.modelsEqual(i, this.m_seq.get(i), arg, this.m_env)) return TemplateBooleanModel.TRUE;
                 }
                 return TemplateBooleanModel.FALSE;
             }
@@ -599,11 +599,11 @@ export namespace BuiltInsForSequences {
             public findInSeq$freemarker_template_TemplateModel$int$int(target : TemplateModel, scanStartIndex : number, seqSize : number) : number {
                 if(this.__parent.findFirst) {
                     for(let i : number = scanStartIndex; i < seqSize; i++) {
-                        if(BuiltInsForSequences.modelsEqual(i, this.m_seq['get$int'](i), target, this.m_env)) return i;
+                        if(BuiltInsForSequences.modelsEqual(i, this.m_seq.get(i), target, this.m_env)) return i;
                     }
                 } else {
                     for(let i : number = scanStartIndex; i >= 0; i--) {
-                        if(BuiltInsForSequences.modelsEqual(i, this.m_seq['get$int'](i), target, this.m_env)) return i;
+                        if(BuiltInsForSequences.modelsEqual(i, this.m_seq.get(i), target, this.m_env)) return i;
                     }
                 }
                 return -1;
@@ -661,11 +661,11 @@ export namespace BuiltInsForSequences {
             let keyType : number = sortBI.KEY_TYPE_NOT_YET_DETECTED;
             let keyComparator : any = <any>(null);
             for(let i : number = 0; i < ln; i++) {
-                let item : TemplateModel = seq['get$int'](i);
+                let item : TemplateModel = seq.get(i);
                 let key : TemplateModel = item;
                 for(let keyNameI : number = 0; keyNameI < keyNamesLn; keyNameI++) {
                     try {
-                        key = (<TemplateHashModel><any>key)['get$java_lang_String'](keyNames[keyNameI]);
+                        key = (<TemplateHashModel><any>key).get(keyNames[keyNameI]);
                     } catch(e) {
                         if(!(key != null && (key["__interfaces"] != null && key["__interfaces"].indexOf("freemarker.template.TemplateHashModel") >= 0 || key.constructor != null && key.constructor["__interfaces"] != null && key.constructor["__interfaces"].indexOf("freemarker.template.TemplateHashModel") >= 0))) {
                             throw new _TemplateModelException(sortBI.startErrorMessage$int$int(keyNamesLn, i), (keyNameI === 0?"Sequence items must be hashes when using ?sort_by. ":"The " + StringUtil.jQuote$java_lang_Object(keyNames[keyNameI - 1])), " subvariable is not a hash, so ?sort_by ", "can\'t proceed with getting the ", new _DelayedJQuote(keyNames[keyNameI]), " subvariable.");
@@ -956,7 +956,7 @@ export namespace BuiltInsForSequences {
         calculateResultForSequence(seq : TemplateSequenceModel, env : /*Environment*/any) : TemplateModel {
             let best : TemplateModel = null;
             for(let i : number = 0; i < seq.size(); i++) {
-                let cur : TemplateModel = seq['get$int'](i);
+                let cur : TemplateModel = seq.get(i);
                 if(cur != null && (best == null || EvalUtil.compare$freemarker_template_TemplateModel$freemarker_core_Expression$int$java_lang_String$freemarker_template_TemplateModel$freemarker_core_Expression$freemarker_core_Expression$boolean$boolean$boolean$boolean$freemarker_core_Environment(cur, null, this.comparatorOperator, null, best, null, this, true, false, false, false, env))) {
                     best = cur;
                 }
@@ -1011,7 +1011,7 @@ export namespace BuiltInsForSequences {
                     let ln : number = seq.size();
                     subvars = (s => { let a=[]; while(s-->0) a.push(null); return a; })(ln);
                     for(let i : number = 0; i < ln; i++) {
-                        let item : any = seq['get$int'](i);
+                        let item : any = seq.get(i);
                         try {
                             subvars[i] = (<TemplateScalarModel><any>item).getAsString();
                         } catch(e) {

@@ -3,6 +3,7 @@ import {UnexpectedTypeException} from './UnexpectedTypeException';
 import {Environment} from './Environment';
 import {_ErrorDescriptionBuilder} from './_ErrorDescriptionBuilder';
 import {Expression} from './Expression';
+import {ClassUtil} from "../template/utility/ClassUtil";
 
 /**
  * Indicates that a {link TemplateMethodModel} value was expected, but the value had a different type.

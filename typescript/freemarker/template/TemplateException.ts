@@ -10,6 +10,7 @@ import {PrintWriterStackTraceWriter} from './PrintWriterStackTraceWriter';
 import {PrintStreamStackTraceWriter} from './PrintStreamStackTraceWriter';
 import {StackTraceWriter} from './StackTraceWriter';
 import {PrintStream} from "../../java/io/PrintStream";
+import {Exception} from "../../java/lang/Exception";
 
 /**
  * The same as {link #TemplateException(String, Throwable, Environment)}; it's exists only for binary
@@ -20,7 +21,7 @@ import {PrintStream} from "../../java/io/PrintStream";
  * @class
  * @extends Error
  */
-export class TemplateException {
+export class TemplateException extends Exception{
     static FTL_INSTRUCTION_STACK_TRACE_TITLE : string = "FTL stack trace (\"~\" means nesting-related):";
 
     /*private*/ descriptionBuilder : _ErrorDescriptionBuilder;
@@ -73,7 +74,6 @@ export class TemplateException {
             blamedExpression = arguments[2];
             descriptionBuilder = arguments[3];
         } else if(arguments.length === 3) {
-
         } else if(arguments.length === 2) {
             if(typeof arguments[0] === 'string') {
                 cause = null;
@@ -88,6 +88,7 @@ export class TemplateException {
             cause = null;
             env = arguments[0];
         }
+        super(renderedDescription, cause);
         // if(env == null) {
         //     env = (require('../core/Environment').Environment).getCurrentEnvironment();
         // }

@@ -205,7 +205,7 @@ export namespace AddConcatExpression {
 
         public get(i : number) : TemplateModel {
             let ls : number = this.left.size();
-            return i < ls?this.left['get$int'](i):this.right['get$int'](i - ls);
+            return i < ls?this.left.get(i):this.right.get(i - ls);
         }
     }
     ConcatenatedSequence["__class"] = "freemarker.core.AddConcatExpression.ConcatenatedSequence";
@@ -226,8 +226,8 @@ export namespace AddConcatExpression {
         }
 
         public get(key : string) : TemplateModel {
-            let model : TemplateModel = this.right['get$java_lang_String'](key);
-            return (model != null)?model:this.left['get$java_lang_String'](key);
+            let model : TemplateModel = this.right.get(key);
+            return (model != null)?model:this.left.get(key);
         }
 
         public isEmpty() : boolean {

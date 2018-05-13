@@ -130,7 +130,7 @@ export class DateUtil {
             return true;
         }
         let offset : string = name.substring(3);
-        if(/* startsWith */((str, searchString, position = 0) => str.substr(position, searchString.length) === searchString)(offset, "+")) {
+        if(offset.startsWith("+")) {
             return /* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(offset,"+0")) || /* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(offset,"+00")) || /* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(offset,"+00:00"));
         } else {
             return /* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(offset,"-0")) || /* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(offset,"-00")) || /* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(offset,"-00:00"));
@@ -203,116 +203,115 @@ export class DateUtil {
     }
 
     static dateToString(date : Date, datePart : boolean, timePart : boolean, offsetPart : boolean, accuracy : number, timeZone : string, xsMode : boolean, calendarFactory : DateUtil.DateToISO8601CalendarFactory) : string {
-        // if(!xsMode && !timePart && offsetPart) {
-        //     throw Object.defineProperty(new Error("ISO 8601:2004 doesn\'t specify any formats where the offset is shown but the time isn\'t."), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.lang.RuntimeException','java.lang.IllegalArgumentException','java.lang.Exception'] });
-        // }
-        // if(timeZone == null) {
-        //     timeZone = DateUtil.UTC_$LI$();
-        // }
-        // let cal : Date = calendarFactory.get(timeZone, date);
-        // let maxLength : number;
-        // if(!timePart) {
-        //     maxLength = 10 + (xsMode?6:0);
-        // } else {
-        //     if(!datePart) {
-        //         maxLength = 12 + 6;
-        //     } else {
-        //         maxLength = 10 + 1 + 12 + 6;
-        //     }
-        // }
-        // let res : string[] = (s => { let a=[]; while(s-->0) a.push(null); return a; })(maxLength);
-        // let dstIdx : number = 0;
-        // if(datePart) {
-        //     let x : number = /* get */(d => d["UTC"]?d.getUTCFullYear():d.getFullYear())(cal);
-        //     if(x > 0 && cal.get(Date.ERA) === Date.BC) {
-        //         x = -x + (xsMode?0:1);
-        //     }
-        //     if(x >= 0 && x < 9999) {
-        //         res[dstIdx++] = String.fromCharCode(('0'.charCodeAt(0) + (x / 1000|0)));
-        //         res[dstIdx++] = String.fromCharCode(('0'.charCodeAt(0) + (x % 1000 / 100|0)));
-        //         res[dstIdx++] = String.fromCharCode(('0'.charCodeAt(0) + (x % 100 / 10|0)));
-        //         res[dstIdx++] = String.fromCharCode(('0'.charCodeAt(0) + x % 10));
-        //     } else {
-        //         let yearString : string = /* valueOf */new String(x).toString();
-        //         maxLength = maxLength - 4 + yearString.length;
-        //         res = (s => { let a=[]; while(s-->0) a.push(null); return a; })(maxLength);
-        //         for(let i : number = 0; i < yearString.length; i++) {
-        //             res[dstIdx++] = yearString.charAt(i);
-        //         };
-        //     }
-        //     res[dstIdx++] = '-';
-        //     x = /* get */(d => d["UTC"]?d.getUTCMonth():d.getMonth())(cal) + 1;
-        //     dstIdx = DateUtil.append00(res, dstIdx, x);
-        //     res[dstIdx++] = '-';
-        //     x = /* get */(d => d["UTC"]?d.getUTCDate():d.getDate())(cal);
-        //     dstIdx = DateUtil.append00(res, dstIdx, x);
-        //     if(timePart) {
-        //         res[dstIdx++] = 'T';
-        //     }
-        // }
-        // if(timePart) {
-        //     let x : number = /* get */(d => d["UTC"]?d.getUTCHours():d.getHours())(cal);
-        //     dstIdx = DateUtil.append00(res, dstIdx, x);
-        //     if(accuracy >= DateUtil.ACCURACY_MINUTES) {
-        //         res[dstIdx++] = ':';
-        //         x = /* get */(d => d["UTC"]?d.getUTCMinutes():d.getMinutes())(cal);
-        //         dstIdx = DateUtil.append00(res, dstIdx, x);
-        //         if(accuracy >= DateUtil.ACCURACY_SECONDS) {
-        //             res[dstIdx++] = ':';
-        //             x = /* get */(d => d["UTC"]?d.getUTCSeconds():d.getSeconds())(cal);
-        //             dstIdx = DateUtil.append00(res, dstIdx, x);
-        //             if(accuracy >= DateUtil.ACCURACY_MILLISECONDS) {
-        //                 x = /* get */(d => d["UTC"]?d.getUTCMilliseconds():d.getMilliseconds())(cal);
-        //                 let forcedDigits : number = accuracy === DateUtil.ACCURACY_MILLISECONDS_FORCED?3:0;
-        //                 if(x !== 0 || forcedDigits !== 0) {
-        //                     if(x > 999) {
-        //                         throw Object.defineProperty(new Error("Calendar.MILLISECOND > 999"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.lang.RuntimeException','java.lang.Exception'] });
-        //                     }
-        //                     res[dstIdx++] = '.';
-        //                     do {
-        //                         res[dstIdx++] = String.fromCharCode(('0'.charCodeAt(0) + ((x / 100|0))));
-        //                         forcedDigits--;
-        //                         x = x % 100 * 10;
-        //                     } while((x !== 0 || forcedDigits > 0));
-        //                 }
-        //             }
-        //         }
-        //     }
-        // }
-        // if(offsetPart) {
-        //     if(timeZone === DateUtil.UTC_$LI$()) {
-        //         res[dstIdx++] = 'Z';
-        //     } else {
-        //         let dt : number = timeZone.getOffset(date.getTime());
-        //         let positive : boolean;
-        //         if(dt < 0) {
-        //             positive = false;
-        //             dt = -dt;
-        //         } else {
-        //             positive = true;
-        //         }
-        //         dt /= 1000;
-        //         let offS : number = dt % 60;
-        //         dt /= 60;
-        //         let offM : number = dt % 60;
-        //         dt /= 60;
-        //         let offH : number = dt;
-        //         if(offS === 0 && offM === 0 && offH === 0) {
-        //             res[dstIdx++] = 'Z';
-        //         } else {
-        //             res[dstIdx++] = positive?'+':'-';
-        //             dstIdx = DateUtil.append00(res, dstIdx, offH);
-        //             res[dstIdx++] = ':';
-        //             dstIdx = DateUtil.append00(res, dstIdx, offM);
-        //             if(offS !== 0) {
-        //                 res[dstIdx++] = ':';
-        //                 dstIdx = DateUtil.append00(res, dstIdx, offS);
-        //             }
-        //         }
-        //     }
-        // }
-        // return res.join('').substr(0, dstIdx);
-        throw new Error();
+        if(!xsMode && !timePart && offsetPart) {
+            throw Object.defineProperty(new Error("ISO 8601:2004 doesn\'t specify any formats where the offset is shown but the time isn\'t."), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.lang.RuntimeException','java.lang.IllegalArgumentException','java.lang.Exception'] });
+        }
+        if(timeZone == null) {
+            timeZone = DateUtil.UTC_$LI$();
+        }
+        let cal : Date = calendarFactory.get(timeZone, date);
+        let maxLength : number;
+        if(!timePart) {
+            maxLength = 10 + (xsMode?6:0);
+        } else {
+            if(!datePart) {
+                maxLength = 12 + 6;
+            } else {
+                maxLength = 10 + 1 + 12 + 6;
+            }
+        }
+        let res : string[] = (s => { let a=[]; while(s-->0) a.push(null); return a; })(maxLength);
+        let dstIdx : number = 0;
+        if(datePart) {
+            let x : number = /* get */(d => d["UTC"]?d.getUTCFullYear():d.getFullYear())(cal);
+            if(x > 0 /*&& cal.get(Date.ERA) === Date.BC*/) {
+                x = -x + (xsMode?0:1);
+            }
+            if(x >= 0 && x < 9999) {
+                res[dstIdx++] = String.fromCharCode(('0'.charCodeAt(0) + (x / 1000|0)));
+                res[dstIdx++] = String.fromCharCode(('0'.charCodeAt(0) + (x % 1000 / 100|0)));
+                res[dstIdx++] = String.fromCharCode(('0'.charCodeAt(0) + (x % 100 / 10|0)));
+                res[dstIdx++] = String.fromCharCode(('0'.charCodeAt(0) + x % 10));
+            } else {
+                let yearString : string = /* valueOf */new String(x).toString();
+                maxLength = maxLength - 4 + yearString.length;
+                res = (s => { let a=[]; while(s-->0) a.push(null); return a; })(maxLength);
+                for(let i : number = 0; i < yearString.length; i++) {
+                    res[dstIdx++] = yearString.charAt(i);
+                };
+            }
+            res[dstIdx++] = '-';
+            x = /* get */(d => d["UTC"]?d.getUTCMonth():d.getMonth())(cal) + 1;
+            dstIdx = DateUtil.append00(res, dstIdx, x);
+            res[dstIdx++] = '-';
+            x = /* get */(d => d["UTC"]?d.getUTCDate():d.getDate())(cal);
+            dstIdx = DateUtil.append00(res, dstIdx, x);
+            if(timePart) {
+                res[dstIdx++] = 'T';
+            }
+        }
+        if(timePart) {
+            let x : number = /* get */(d => d["UTC"]?d.getUTCHours():d.getHours())(cal);
+            dstIdx = DateUtil.append00(res, dstIdx, x);
+            if(accuracy >= DateUtil.ACCURACY_MINUTES) {
+                res[dstIdx++] = ':';
+                x = /* get */(d => d["UTC"]?d.getUTCMinutes():d.getMinutes())(cal);
+                dstIdx = DateUtil.append00(res, dstIdx, x);
+                if(accuracy >= DateUtil.ACCURACY_SECONDS) {
+                    res[dstIdx++] = ':';
+                    x = /* get */(d => d["UTC"]?d.getUTCSeconds():d.getSeconds())(cal);
+                    dstIdx = DateUtil.append00(res, dstIdx, x);
+                    if(accuracy >= DateUtil.ACCURACY_MILLISECONDS) {
+                        x = /* get */(d => d["UTC"]?d.getUTCMilliseconds():d.getMilliseconds())(cal);
+                        let forcedDigits : number = accuracy === DateUtil.ACCURACY_MILLISECONDS_FORCED?3:0;
+                        if(x !== 0 || forcedDigits !== 0) {
+                            if(x > 999) {
+                                throw Object.defineProperty(new Error("Calendar.MILLISECOND > 999"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.lang.RuntimeException','java.lang.Exception'] });
+                            }
+                            res[dstIdx++] = '.';
+                            do {
+                                res[dstIdx++] = String.fromCharCode(('0'.charCodeAt(0) + ((x / 100|0))));
+                                forcedDigits--;
+                                x = x % 100 * 10;
+                            } while((x !== 0 || forcedDigits > 0));
+                        }
+                    }
+                }
+            }
+        }
+        if(offsetPart) {
+            if(timeZone === DateUtil.UTC_$LI$()) {
+                res[dstIdx++] = 'Z';
+            } else {
+                let dt : number = /*timeZone.getOffset(date.getTime())*/date.getTimezoneOffset();
+                let positive : boolean;
+                if(dt < 0) {
+                    positive = false;
+                    dt = -dt;
+                } else {
+                    positive = true;
+                }
+                dt /= 1000;
+                let offS : number = dt % 60;
+                dt /= 60;
+                let offM : number = dt % 60;
+                dt /= 60;
+                let offH : number = dt;
+                if(offS === 0 && offM === 0 && offH === 0) {
+                    res[dstIdx++] = 'Z';
+                } else {
+                    res[dstIdx++] = positive?'+':'-';
+                    dstIdx = DateUtil.append00(res, dstIdx, offH);
+                    res[dstIdx++] = ':';
+                    dstIdx = DateUtil.append00(res, dstIdx, offM);
+                    if(offS !== 0) {
+                        res[dstIdx++] = ':';
+                        dstIdx = DateUtil.append00(res, dstIdx, offS);
+                    }
+                }
+            }
+        }
+        return res.join('').substr(0, dstIdx);
     }
 
     /**
@@ -374,20 +373,20 @@ export class DateUtil {
         NullArgumentException.check$java_lang_String$java_lang_Object("defaultTZ", defaultTZ);
         try {
             let year : number = DateUtil.groupToInt(m.group(1), "year", Number.MIN_VALUE, Number.MAX_VALUE);
-            let era : number;
+            // let era : number;
             if(year <= 0) {
-                era = Date.BC;
+                // era = Date.BC;
                 year = -year + (xsMode?0:1);
                 if(year === 0) {
                     throw new DateUtil.DateParseException(DateUtil.MSG_YEAR_0_NOT_ALLOWED);
                 }
             } else {
-                era = Date.AD;
+                // era = Date.AD;
             }
             let month : number = DateUtil.groupToInt(m.group(2), "month", 1, 12) - 1;
             let day : number = DateUtil.groupToInt(m.group(3), "day-of-month", 1, 31);
             let tz : string = xsMode?DateUtil.parseMatchingTimeZone(m.group(4), defaultTZ):defaultTZ;
-            return calToDateConverter.calculate(era, year, month, day, 0, 0, 0, 0, false, tz);
+            return calToDateConverter.calculate(/*era*/-1, year, month, day, 0, 0, 0, 0, false, tz);
         } catch(e) {
             throw new DateUtil.DateParseException("Date calculation faliure. Probably the date is formally correct, but refers to an unexistent date (like February 30).");
         }
@@ -455,7 +454,7 @@ export class DateUtil {
             } else {
                 day = 1;
             }
-            return calToDateConverter.calculate(Date.AD, 1970, 0, day, hours, minutes, secs, millisecs, false, tz);
+            return calToDateConverter.calculate(/*Date.AD*/-1, 1970, 0, day, hours, minutes, secs, millisecs, false, tz);
         } catch(e) {
             throw new DateUtil.DateParseException("Unexpected time calculation faliure.");
         }
@@ -502,15 +501,15 @@ export class DateUtil {
         NullArgumentException.check$java_lang_String$java_lang_Object("defaultTZ", defaultTZ);
         try {
             let year : number = DateUtil.groupToInt(m.group(1), "year", Number.MIN_VALUE, Number.MAX_VALUE);
-            let era : number;
+            // let era : number;
             if(year <= 0) {
-                era = Date.BC;
+                // era = Date.BC;
                 year = -year + (xsMode?0:1);
                 if(year === 0) {
                     throw new DateUtil.DateParseException(DateUtil.MSG_YEAR_0_NOT_ALLOWED);
                 }
             } else {
-                era = Date.AD;
+                // era = Date.AD;
             }
             let month : number = DateUtil.groupToInt(m.group(2), "month", 1, 12) - 1;
             let day : number = DateUtil.groupToInt(m.group(3), "day-of-month", 1, 31);
@@ -533,7 +532,7 @@ export class DateUtil {
                     throw new DateUtil.DateParseException("Hour 24 is only allowed in the case of midnight.");
                 }
             }
-            return calToDateConverter.calculate(era, year, month, day, hours, minutes, secs, millisecs, hourWas24, tz);
+            return calToDateConverter.calculate(-1, year, month, day, hours, minutes, secs, millisecs, hourWas24, tz);
         } catch(e) {
             throw new DateUtil.DateParseException("Date-time calculation faliure. Probably the date-time is formally correct, but refers to an unexistent date-time (like February 30).");
         }
@@ -681,14 +680,17 @@ export namespace DateUtil {
         lastlySetTimeZone : string;
 
         public get(tz : string, date : Date) : Date {
+            // if(this.calendar == null) {
+            //     this.calendar = <Date>new Date(tz, string.US);
+            //     this.calendar.setGregorianChange(new Date(Number.MIN_VALUE));
+            // } else {
+            //     if(this.lastlySetTimeZone !== tz) {
+            //         this.calendar.setTimeZone(tz);
+            //         this.lastlySetTimeZone = tz;
+            //     }
+            // }
             if(this.calendar == null) {
-                this.calendar = <Date>new Date(tz, string.US);
-                this.calendar.setGregorianChange(new Date(Number.MIN_VALUE));
-            } else {
-                if(this.lastlySetTimeZone !== tz) {
-                    this.calendar.setTimeZone(tz);
-                    this.lastlySetTimeZone = tz;
-                }
+                this.calendar = new Date();
             }
             /* setTime */this.calendar.setTime(date.getTime());
             return this.calendar;
@@ -714,17 +716,20 @@ export namespace DateUtil {
         lastlySetTimeZone : string;
 
         public calculate(era : number, year : number, month : number, day : number, hours : number, minutes : number, secs : number, millisecs : number, addOneDay : boolean, tz : string) : Date {
+            // if(this.calendar == null) {
+            //     this.calendar = <Date>new Date(tz, string.US);
+            //     this.calendar.setLenient(false);
+            //     this.calendar.setGregorianChange(new Date(Number.MIN_VALUE));
+            // } else {
+            //     if(this.lastlySetTimeZone !== tz) {
+            //         this.calendar.setTimeZone(tz);
+            //         this.lastlySetTimeZone = tz;
+            //     }
+            // }
             if(this.calendar == null) {
-                this.calendar = <Date>new Date(tz, string.US);
-                this.calendar.setLenient(false);
-                this.calendar.setGregorianChange(new Date(Number.MIN_VALUE));
-            } else {
-                if(this.lastlySetTimeZone !== tz) {
-                    this.calendar.setTimeZone(tz);
-                    this.lastlySetTimeZone = tz;
-                }
+                this.calendar = new Date();
             }
-            this.calendar.set(Date.ERA, era);
+            // this.calendar.set(Date.ERA, era);
             /* set */((d, p) => d["UTC"]?d.setUTCFullYear(p):d.setFullYear(p))(this.calendar, year);
             /* set */((d, p) => d["UTC"]?d.setUTCMonth(p):d.setMonth(p))(this.calendar, month);
             /* set */((d, p) => d["UTC"]?d.setUTCDate(p):d.setDate(p))(this.calendar, day);
@@ -733,7 +738,8 @@ export namespace DateUtil {
             /* set */((d, p) => d["UTC"]?d.setUTCSeconds(p):d.setSeconds(p))(this.calendar, secs);
             /* set */((d, p) => d["UTC"]?d.setUTCMilliseconds(p):d.setMilliseconds(p))(this.calendar, millisecs);
             if(addOneDay) {
-                this.calendar.add(Date.DAY_OF_MONTH, 1);
+                this.calendar.setDate(this.calendar.getDate() + 1);
+                // this.calendar.add(Date.DAY_OF_MONTH, 1);
             }
             return /* getTime */(new Date(this.calendar.getTime()));
         }

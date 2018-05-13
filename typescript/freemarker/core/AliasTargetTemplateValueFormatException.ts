@@ -12,15 +12,20 @@ import {TemplateValueFormatException} from './TemplateValueFormatException';
  */
 export class AliasTargetTemplateValueFormatException extends TemplateValueFormatException {
     public constructor(message? : any, cause? : any) {
-        if(((typeof message === 'string') || message === null) && ((cause != null && (cause["__classes"] && cause["__classes"].indexOf("java.lang.Throwable") >= 0) || cause != null && cause instanceof <any>Error) || cause === null)) {
-            let __args = Array.prototype.slice.call(arguments);
-            super(message, cause);
-            (<any>Object).setPrototypeOf(this, AliasTargetTemplateValueFormatException.prototype);
-        } else if(((typeof message === 'string') || message === null) && cause === undefined) {
-            let __args = Array.prototype.slice.call(arguments);
-            super(message);
-            (<any>Object).setPrototypeOf(this, AliasTargetTemplateValueFormatException.prototype);
-        } else throw new Error('invalid overload');
+        if(arguments.length === 1) {
+            super(arguments[0]);
+            return;
+        }
+        super(arguments[0], arguments[1]);
+        // if(((typeof message === 'string') || message === null) && ((cause != null && (cause["__classes"] && cause["__classes"].indexOf("java.lang.Throwable") >= 0) || cause != null && cause instanceof <any>Error) || cause === null)) {
+        //     let __args = Array.prototype.slice.call(arguments);
+        //     super(message, cause);
+        //     (<any>Object).setPrototypeOf(this, AliasTargetTemplateValueFormatException.prototype);
+        // } else if(((typeof message === 'string') || message === null) && cause === undefined) {
+        //     let __args = Array.prototype.slice.call(arguments);
+        //     super(message);
+        //     (<any>Object).setPrototypeOf(this, AliasTargetTemplateValueFormatException.prototype);
+        // } else throw new Error('invalid overload');
     }
 }
 AliasTargetTemplateValueFormatException["__class"] = "freemarker.core.AliasTargetTemplateValueFormatException";

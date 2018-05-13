@@ -1,10 +1,12 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
+import {Exception} from "../../java/lang/Exception";
+
 /**
  * Exception that's not really an exception, just used for flow control.
  * @extends Error
  * @class
  */
-export class FlowControlException extends Error {
+export class FlowControlException extends Exception {
     public constructor(message? : any) {
         if(((typeof message === 'string') || message === null)) {
             let __args = Array.prototype.slice.call(arguments);

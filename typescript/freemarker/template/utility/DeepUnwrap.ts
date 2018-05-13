@@ -91,7 +91,7 @@ export class DeepUnwrap {
             let size : number = seq.size();
             let list : Array<any> = <any>([]);
             for(let i : number = 0; i < size; ++i) {
-                /* add */(list.push(DeepUnwrap.unwrap$freemarker_template_TemplateModel$freemarker_template_TemplateModel$boolean(seq['get$int'](i), nullModel, permissive))>0);
+                /* add */(list.push(DeepUnwrap.unwrap$freemarker_template_TemplateModel$freemarker_template_TemplateModel$boolean(seq.get(i), nullModel, permissive))>0);
             }
             return list;
         }
@@ -117,7 +117,7 @@ export class DeepUnwrap {
                 let keys : TemplateModelIterator = hash.keys().iterator();
                 while((keys.hasNext())) {
                     let key : string = <string>DeepUnwrap.unwrap$freemarker_template_TemplateModel$freemarker_template_TemplateModel$boolean(keys.next(), nullModel, permissive);
-                    /* put */map.set(key, DeepUnwrap.unwrap$freemarker_template_TemplateModel$freemarker_template_TemplateModel$boolean(hash['get$java_lang_String'](key), nullModel, permissive));
+                    /* put */map.set(key, DeepUnwrap.unwrap$freemarker_template_TemplateModel$freemarker_template_TemplateModel$boolean(hash.get(key), nullModel, permissive));
                 }
             }
             return map;

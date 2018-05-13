@@ -80,16 +80,13 @@ export abstract class Expression extends TemplateObject {
                 throw __e;
 
             }
-            if(__e != null && (__e["__classes"] && __e["__classes"].indexOf("java.lang.Exception") >= 0) || __e != null && __e instanceof <any>Error) {
-                let e : Error = <Error>__e;
-                if(env != null && (require('./EvalUtil').EvalUtil).shouldWrapUncheckedException(e, env)) {
-                    throw new (require('./_MiscTemplateException')._MiscTemplateException)(this, e, env, "Expression has thrown an unchecked exception; see the cause exception.");
-                } else if(e != null && (e["__classes"] && e["__classes"].indexOf("java.lang.RuntimeException") >= 0) || e != null && e instanceof <any>Error) {
-                    throw <Error>e;
-                } else {
-                    throw new (require('../template/utility/UndeclaredThrowableException').UndeclaredThrowableException)(e);
-                }
-
+            let e: Error = <Error>__e;
+            if (env != null && (require('./EvalUtil').EvalUtil).shouldWrapUncheckedException(e, env)) {
+                throw new (require('./_MiscTemplateException')._MiscTemplateException)(this, e, env, "Expression has thrown an unchecked exception; see the cause exception.");
+            } else if (e != null && (e["__classes"] && e["__classes"].indexOf("java.lang.RuntimeException") >= 0) || e != null && e instanceof <any>Error) {
+                throw <Error>e;
+            } else {
+                throw new (require('../template/utility/UndeclaredThrowableException').UndeclaredThrowableException)(e);
             }
         }
     }

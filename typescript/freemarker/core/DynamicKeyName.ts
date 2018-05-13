@@ -96,7 +96,7 @@ export class DynamicKeyName extends Expression {
             } catch(e) {
                 size = Number.MAX_VALUE;
             }
-            return index < size?tsm['get$int'](index):null;
+            return index < size?tsm.get(index):null;
         }
         try {
             let s : string = this.target.evalAndCoerceToPlainText$freemarker_core_Environment(env);
@@ -118,7 +118,7 @@ export class DynamicKeyName extends Expression {
 
     /*private*/ dealWithStringKey(targetModel : TemplateModel, key : string, env : /*Environment*/any) : TemplateModel {
         if(targetModel != null && (targetModel["__interfaces"] != null && targetModel["__interfaces"].indexOf("freemarker.template.TemplateHashModel") >= 0 || targetModel.constructor != null && targetModel.constructor["__interfaces"] != null && targetModel.constructor["__interfaces"].indexOf("freemarker.template.TemplateHashModel") >= 0)) {
-            return (<TemplateHashModel><any>targetModel)['get$java_lang_String'](key);
+            return (<TemplateHashModel><any>targetModel).get(key);
         }
         throw new NonHashException(this.target, targetModel, env);
     }
@@ -180,7 +180,7 @@ export class DynamicKeyName extends Expression {
             let list : Array<any> = <any>([]);
             let srcIdx : number = firstIdx;
             for(let i : number = 0; i < resultSize; i++) {
-                /* add */(list.push(targetSeq['get$int'](srcIdx))>0);
+                /* add */(list.push(targetSeq.get(srcIdx))>0);
                 srcIdx += step;
             }
             return new SimpleSequence(list, null);

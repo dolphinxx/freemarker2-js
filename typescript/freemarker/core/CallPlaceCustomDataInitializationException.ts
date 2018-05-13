@@ -1,4 +1,6 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
+import {Exception} from "../../java/lang/Exception";
+
 /**
  * Thrown by {link DirectiveCallPlace#getOrCreateCustomData(Object, freemarker.template.utility.ObjectFactory)}
  * 
@@ -8,7 +10,7 @@
  * @class
  * @extends Error
  */
-export class CallPlaceCustomDataInitializationException extends Error {
+export class CallPlaceCustomDataInitializationException extends Exception {
     public constructor(message : string, cause : Error) {
         super(message); this.message=message;
         (<any>Object).setPrototypeOf(this, CallPlaceCustomDataInitializationException.prototype);

@@ -55,7 +55,7 @@ export class CollectionAndSequence implements TemplateCollectionModel, TemplateS
 
     public get(i : number) : TemplateModel {
         if(this.sequence != null) {
-            return this.sequence['get$int'](i);
+            return this.sequence.get(i);
         } else {
             this.initSequence();
             return /* get */this.data[i];
@@ -106,7 +106,7 @@ export namespace CollectionAndSequence {
         }
 
         public next() : TemplateModel {
-            return this.sequence['get$int'](this.index++);
+            return this.sequence.get(this.index++);
         }
 
         public hasNext() : boolean {

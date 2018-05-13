@@ -153,7 +153,7 @@ export class ListLiteral extends Expression {
                     throw new _MiscTemplateException((<StringLiteral>itemExpr), "Couldn\'t import library ", new _DelayedJQuote(s), ": ", new _DelayedGetMessage(ioe));
                 }
             } else {
-                result.add$java_lang_Object(val['get$int'](i));
+                result.add$java_lang_Object(val.get(i));
             }
         }
         return result;

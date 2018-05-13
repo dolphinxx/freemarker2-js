@@ -6071,7 +6071,7 @@ export class FMParser implements FMParserConstants {
                                 let keys : TemplateCollectionModel = prefixMap.keys();
                                 for(let it : TemplateModelIterator = keys.iterator(); it.hasNext(); ) {
                                     let prefix : string = (<TemplateScalarModel><any>it.next()).getAsString();
-                                    let valueModel : TemplateModel = prefixMap['get$java_lang_String'](prefix);
+                                    let valueModel : TemplateModel = prefixMap.get(prefix);
                                     if(!(valueModel != null && (valueModel["__interfaces"] != null && valueModel["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0 || valueModel.constructor != null && valueModel.constructor["__interfaces"] != null && valueModel.constructor["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0))) {
                                         {
                                             if(true) throw new ParseException("Non-string value in prefix to namespace hash.", exp);
@@ -6099,7 +6099,7 @@ export class FMParser implements FMParserConstants {
                                 let keys : TemplateCollectionModel = attributeMap.keys();
                                 for(let it : TemplateModelIterator = keys.iterator(); it.hasNext(); ) {
                                     let attName : string = (<TemplateScalarModel><any>it.next()).getAsString();
-                                    let attValue : any = DeepUnwrap.unwrap$freemarker_template_TemplateModel(attributeMap['get$java_lang_String'](attName));
+                                    let attValue : any = DeepUnwrap.unwrap$freemarker_template_TemplateModel(attributeMap.get(attName));
                                     this.template.setCustomAttribute$java_lang_Object$java_lang_Object(attName, attValue);
                                 }
                             } catch(tme) {

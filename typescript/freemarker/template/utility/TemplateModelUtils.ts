@@ -74,7 +74,7 @@ export namespace TemplateModelUtils {
             }
 
             public getValue() : TemplateModel {
-                return this.__parent.hash['get$java_lang_String']((<TemplateScalarModel><any>this.key).getAsString());
+                return this.__parent.hash.get((<TemplateScalarModel><any>this.key).getAsString());
             }
 
             constructor(__parent: any, private key: any) {

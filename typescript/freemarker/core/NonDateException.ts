@@ -2,6 +2,7 @@
 import {UnexpectedTypeException} from './UnexpectedTypeException';
 import {Environment} from './Environment';
 import {Expression} from './Expression';
+import {ClassUtil} from "../template/utility/ClassUtil";
 
 /**
  * Indicates that a {link TemplateDateModel} value was expected, but the value had a different type.

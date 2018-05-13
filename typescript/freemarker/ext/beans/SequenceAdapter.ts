@@ -45,7 +45,7 @@ export class SequenceAdapter implements TemplateModelAdapter {
      */
     public get(index : number) : any {
         try {
-            return this.wrapper.unwrap$freemarker_template_TemplateModel(this.model['get$int'](index));
+            return this.wrapper.unwrap$freemarker_template_TemplateModel(this.model.get(index));
         } catch(e) {
             throw new UndeclaredThrowableException(e);
         }

@@ -1,5 +1,6 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
 import {StringUtil} from '../template/utility/StringUtil';
+import {Exception} from "../../java/lang/Exception";
 
 /**
  * Don't use this; used internally by FreeMarker, might changes without notice.
@@ -10,7 +11,7 @@ import {StringUtil} from '../template/utility/StringUtil';
  * @class
  * @extends Error
  */
-export class _ObjectBuilderSettingEvaluationException extends Error {
+export class _ObjectBuilderSettingEvaluationException extends Exception {
     public constructor(expected? : any, src? : any, location? : any) {
         if(((typeof expected === 'string') || expected === null) && ((typeof src === 'string') || src === null) && ((typeof location === 'number') || location === null)) {
             let __args = Array.prototype.slice.call(arguments);

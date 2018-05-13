@@ -1,4 +1,6 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
+import {Exception} from "../../java/lang/Exception";
+
 /**
  * Error while getting, creating or applying {link TemplateValueFormat}-s (including its subclasses, like
  * {link TemplateNumberFormat}).
@@ -9,17 +11,22 @@
  * @class
  * @extends Error
  */
-export abstract class TemplateValueFormatException extends Error {
+export abstract class TemplateValueFormatException extends Exception {
     public constructor(message? : any, cause? : any) {
-        if(((typeof message === 'string') || message === null) && ((cause != null && (cause["__classes"] && cause["__classes"].indexOf("java.lang.Throwable") >= 0) || cause != null && cause instanceof <any>Error) || cause === null)) {
-            let __args = Array.prototype.slice.call(arguments);
-            super(message); this.message=message;
-            (<any>Object).setPrototypeOf(this, TemplateValueFormatException.prototype);
-        } else if(((typeof message === 'string') || message === null) && cause === undefined) {
-            let __args = Array.prototype.slice.call(arguments);
-            super(message); this.message=message;
-            (<any>Object).setPrototypeOf(this, TemplateValueFormatException.prototype);
-        } else throw new Error('invalid overload');
+        if(arguments.length === 2) {
+            super(arguments[0], arguments[1]);
+            return;
+        }
+        super(arguments[0]);
+        //if(((typeof message === 'string') || message === null) && ((cause != null && (cause["__classes"] && cause["__classes"].indexOf("java.lang.Throwable") >= 0) || cause != null && cause instanceof <any>Error) || cause === null)) {
+        //     let __args = Array.prototype.slice.call(arguments);
+        //     super(message); this.message=message;
+        //     (<any>Object).setPrototypeOf(this, TemplateValueFormatException.prototype);
+        // } else if(((typeof message === 'string') || message === null) && cause === undefined) {
+        //     let __args = Array.prototype.slice.call(arguments);
+        //     super(message); this.message=message;
+        //     (<any>Object).setPrototypeOf(this, TemplateValueFormatException.prototype);
+        // } else throw new Error('invalid overload');
     }
 }
 TemplateValueFormatException["__class"] = "freemarker.core.TemplateValueFormatException";

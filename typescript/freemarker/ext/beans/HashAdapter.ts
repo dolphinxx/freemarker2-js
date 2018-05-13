@@ -62,7 +62,7 @@ export class HashAdapter implements TemplateModelAdapter {
      */
     public get(key : any) : any {
         try {
-            return this.wrapper.unwrap$freemarker_template_TemplateModel(this.model['get$java_lang_String'](/* valueOf */new String(key).toString()));
+            return this.wrapper.unwrap$freemarker_template_TemplateModel(this.model.get(/* valueOf */String(key)));
         } catch(e) {
             throw new UndeclaredThrowableException(e);
         }

@@ -1101,7 +1101,7 @@ export class BeansWrapper implements RichObjectWrapper, WriteProtectable {
         // /* put */recursionStops.set(seq, array);
         // try {
         //     for(let i : number = 0; i < size; i++) {
-        //         let seqItem : TemplateModel = seq['get$int'](i);
+        //         let seqItem : TemplateModel = seq.get(i);
         //         let val : any = this.tryUnwrapTo$freemarker_template_TemplateModel$java_lang_Class$int$java_util_Map(seqItem, componentType, 0, recursionStops);
         //         if(val === ObjectWrapperAndUnwrapper.CANT_UNWRAP_TO_TARGET_CLASS) {
         //             if(tryOnly) {

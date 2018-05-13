@@ -637,7 +637,7 @@ export class _ObjectBuilderSettingEvaluator {
         //             }
         //             beanTM = /*<TemplateHashModel>*/<any>wrappedObj;
         //         }
-        //         let m : /*TemplateModel*/any = beanTM['get$java_lang_String'](/* getName */beanPropSetter.name);
+        //         let m : /*TemplateModel*/any = beanTM.get(/* getName */beanPropSetter.name);
         //         if(m == null) {
         //             throw new _ObjectBuilderSettingEvaluationException("Can\'t find " + beanPropSetter + " as FreeMarker method.");
         //         }

@@ -1276,26 +1276,23 @@ export class Configurable {
     }
 
     validateFormatNames(keySet : Set<any>) {
-        for(let index129=0; index129 < keySet.size(); index129++) {
-            let name = keySet[index129];
-            {
-                if(name.length === 0) {
-                    throw Object.defineProperty(new Error("Format names can\'t be 0 length"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.lang.RuntimeException','java.lang.IllegalArgumentException','java.lang.Exception'] });
-                }
-                let firstChar : string = name.charAt(0);
-                if((c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(firstChar) == '@'.charCodeAt(0)) {
-                    throw Object.defineProperty(new Error("Format names can\'t start with \'@\'. \'@\' is only used when referring to them from format strings. In: " + name), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.lang.RuntimeException','java.lang.IllegalArgumentException','java.lang.Exception'] });
-                }
-                if(!Character.isLetter(firstChar)) {
-                    throw Object.defineProperty(new Error("Format name must start with letter: " + name), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.lang.RuntimeException','java.lang.IllegalArgumentException','java.lang.Exception'] });
-                }
-                for(let i : number = 1; i < name.length; i++) {
-                    if(!Character.isLetterOrDigit(name.charAt(i))) {
-                        throw Object.defineProperty(new Error("Format name can only contain letters and digits: " + name), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.lang.RuntimeException','java.lang.IllegalArgumentException','java.lang.Exception'] });
-                    }
+        keySet.forEach(name => {
+            if(name.length === 0) {
+                throw Object.defineProperty(new Error("Format names can\'t be 0 length"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.lang.RuntimeException','java.lang.IllegalArgumentException','java.lang.Exception'] });
+            }
+            let firstChar : string = name.charAt(0);
+            if((c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(firstChar) == '@'.charCodeAt(0)) {
+                throw Object.defineProperty(new Error("Format names can\'t start with \'@\'. \'@\' is only used when referring to them from format strings. In: " + name), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.lang.RuntimeException','java.lang.IllegalArgumentException','java.lang.Exception'] });
+            }
+            if(!Character.isLetter(firstChar)) {
+                throw Object.defineProperty(new Error("Format name must start with letter: " + name), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.lang.RuntimeException','java.lang.IllegalArgumentException','java.lang.Exception'] });
+            }
+            for(let i : number = 1; i < name.length; i++) {
+                if(!Character.isLetterOrDigit(name.charAt(i))) {
+                    throw Object.defineProperty(new Error("Format name can only contain letters and digits: " + name), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.lang.RuntimeException','java.lang.IllegalArgumentException','java.lang.Exception'] });
                 }
             }
-        }
+        });
     }
 
     /**

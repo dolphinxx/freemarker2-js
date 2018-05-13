@@ -1,5 +1,6 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
 import {ClassUtil} from './ClassUtil';
+import {ArithmeticException} from "../../../java/lang/ArithmeticException";
 
 /**
  * Number- and math-related utilities.
@@ -29,7 +30,7 @@ export class NumberUtil {
         // } else {
         //     throw new UnsupportedNumberClassException((<any>num.constructor));
         // }
-        return !Number.isFinite(num);
+        return !isFinite(num);
     }
 
     public static isNaN(num : number) : boolean {
@@ -153,8 +154,8 @@ export class NumberUtil {
         return num;
     }
 
-    /*private*/ static newLossyConverionException(fromValue : number, toType? : any) : Error {
-        return Object.defineProperty(new Error("Can\'t convert " + fromValue + " to type " + ClassUtil.getShortClassName(toType) + " without loss."), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.ArithmeticException','java.lang.Object','java.lang.RuntimeException','java.lang.Exception'] });
+    /*private*/ static newLossyConverionException(fromValue : number, toType? : any) : ArithmeticException {
+        return new ArithmeticException("Can\'t convert " + fromValue + " to type " + ClassUtil.getShortClassName(toType) + " without loss.");
     }
 }
 NumberUtil["__class"] = "freemarker.template.utility.NumberUtil";

@@ -343,7 +343,7 @@ export namespace IteratorBlock {
                 if(listNotEmpty) {
                     if(this.loopVarName != null) {
                         listLoop: for(this.index = 0; this.index < size; this.index++) {
-                            this.loopVar = seqModel['get$int'](this.index);
+                            this.loopVar = seqModel.get(this.index);
                             this.__hasNext = (size > this.index + 1);
                             try {
                                 env.visit$freemarker_core_TemplateElement_A(childBuffer);
@@ -417,7 +417,7 @@ export namespace IteratorBlock {
                                 if(!(this.loopVar != null && (this.loopVar["__interfaces"] != null && this.loopVar["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0 || this.loopVar.constructor != null && this.loopVar.constructor["__interfaces"] != null && this.loopVar.constructor["__interfaces"].indexOf("freemarker.template.TemplateScalarModel") >= 0))) {
                                     throw _MessageUtil.newKeyValuePairListingNonStringKeyExceptionMessage(this.loopVar, <TemplateHashModelEx><any>this.listedValue);
                                 }
-                                this.loopVar2 = listedHash['get$java_lang_String']((<TemplateScalarModel><any>this.loopVar).getAsString());
+                                this.loopVar2 = listedHash.get((<TemplateScalarModel><any>this.loopVar).getAsString());
                                 this.__hasNext = keysIter.hasNext();
                                 try {
                                     env.visit$freemarker_core_TemplateElement_A(childBuffer);

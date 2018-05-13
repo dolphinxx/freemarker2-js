@@ -6,6 +6,7 @@ import {NonHashException} from './NonHashException';
 import {_CoreStringUtils} from './_CoreStringUtils';
 import {ParameterRole} from './ParameterRole';
 import {Identifier} from './Identifier';
+import {ClassUtil} from "../template/utility/ClassUtil";
 
 /**
  * The dot operator. Used to reference items inside a
@@ -33,8 +34,8 @@ export class Dot extends Expression {
      */
     _eval(env : /*Environment*/any) : TemplateModel {
         let leftModel : TemplateModel = this.target.eval(env);
-        if(leftModel != null && (leftModel["__interfaces"] != null && leftModel["__interfaces"].indexOf("freemarker.template.TemplateHashModel") >= 0 || leftModel.constructor != null && leftModel.constructor["__interfaces"] != null && leftModel.constructor["__interfaces"].indexOf("freemarker.template.TemplateHashModel") >= 0)) {
-            return (<TemplateHashModel><any>leftModel)['get$java_lang_String'](this.key);
+        if(leftModel != null && ClassUtil.isAssignableFrom(leftModel, "freemarker.template.TemplateHashModel")/*(leftModel["__interfaces"] != null && leftModel["__interfaces"].indexOf("freemarker.template.TemplateHashModel") >= 0 || leftModel.constructor != null && leftModel.constructor["__interfaces"] != null && leftModel.constructor["__interfaces"].indexOf("freemarker.template.TemplateHashModel") >= 0)*/) {
+            return (<TemplateHashModel><any>leftModel).get(this.key);
         }
         if(leftModel == null && env.isClassicCompatible()) {
             return null;

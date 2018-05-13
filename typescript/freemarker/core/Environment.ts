@@ -949,7 +949,7 @@ export class Environment extends Configurable {
         }
         let size : number = children.size();
         for(let i : number = 0; i < size; i++) {
-            let child : TemplateNodeModel = <TemplateNodeModel><any>children['get$int'](i);
+            let child : TemplateNodeModel = <TemplateNodeModel><any>children.get(i);
             if(child != null) {
                 this.invokeNodeHandlerFor(child, namespaces);
             }
@@ -1310,7 +1310,7 @@ export class Environment extends Configurable {
     public getTemplateNumberFormat(formatString? : any, exp? : any, useTempModelExc? : any) : any {
         if(((typeof formatString === 'string') || formatString === null) && ((exp != null && exp instanceof <any>Expression) || exp === null) && ((typeof useTempModelExc === 'boolean') || useTempModelExc === null)) {
             return <any>this.getTemplateNumberFormat$java_lang_String$freemarker_core_Expression$boolean(formatString, exp, useTempModelExc);
-        } else if(((typeof formatString === 'string') || formatString === null) && ((typeof exp === 'string') || exp === null) && useTempModelExc === undefined) {
+        } else if(((typeof formatString === 'string') || formatString === null) && ((exp instanceof Locale) || exp === null) && useTempModelExc === undefined) {
             return <any>this.getTemplateNumberFormat$java_lang_String$java_util_Locale(formatString, exp);
         } else if(((formatString != null && formatString instanceof <any>Expression) || formatString === null) && ((typeof exp === 'boolean') || exp === null) && useTempModelExc === undefined) {
             return <any>this.getTemplateNumberFormat$freemarker_core_Expression$boolean(formatString, exp);
@@ -1352,7 +1352,7 @@ export class Environment extends Configurable {
      */
     getTemplateNumberFormatWithoutCache(formatString : string, locale : Locale) : TemplateNumberFormat {
         let formatStringLen : number = formatString.length;
-        if(formatStringLen > 1 && (c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(formatString.charAt(0)) == '@'.charCodeAt(0) && (this.isIcI2324OrLater() || this.hasCustomFormats()) && Character.isLetter(formatString.charAt(1))) {
+        if(formatStringLen > 1 && formatString.charAt(0) === '@' && (this.isIcI2324OrLater() || this.hasCustomFormats()) && Character.isLetter(formatString.charAt(1))) {
             let name : string;
             let params : string;
             {
@@ -1871,7 +1871,7 @@ export class Environment extends Configurable {
     public getGlobalVariable(name : string) : TemplateModel {
         let result : TemplateModel = this.globalNamespace.get$java_lang_String(name);
         if(result == null) {
-            result = this.rootDataModel['get$java_lang_String'](name);
+            result = this.rootDataModel.get(name);
         }
         if(result == null) {
             result = this.configuration.getSharedVariable(name);
@@ -2214,7 +2214,7 @@ export class Environment extends Configurable {
         for(i = startIndex; i < size; i++) {
             let ns : Environment.Namespace = null;
             try {
-                ns = <Environment.Namespace><any>this.nodeNamespaces['get$int'](i);
+                ns = <Environment.Namespace><any>this.nodeNamespaces.get(i);
             } catch(cce) {
                 throw new _MiscTemplateException(this, "A \"using\" clause should contain a sequence of namespaces or strings that indicate the location of importable macro libraries.");
             }
@@ -2952,7 +2952,7 @@ export namespace Environment {
         }
 
         public get$java_lang_String(key : string) : TemplateModel {
-            let value : TemplateModel = this.__parent.rootDataModel['get$java_lang_String'](key);
+            let value : TemplateModel = this.__parent.rootDataModel.get(key);
             return value != null?value:this.__parent.configuration.getSharedVariable(key);
         }
 
@@ -2989,7 +2989,7 @@ export namespace Environment {
         }
 
         public get$java_lang_String(key : string) : TemplateModel {
-            let value : TemplateModel = this.__parent.rootDataModel['get$java_lang_String'](key);
+            let value : TemplateModel = this.__parent.rootDataModel.get(key);
             return value != null?value:this.__parent.configuration.getSharedVariable(key);
         }
 
@@ -3016,7 +3016,7 @@ export namespace Environment {
         public get$java_lang_String(key : string) : TemplateModel {
             let result : TemplateModel = this.__parent.globalNamespace.get$java_lang_String(key);
             if(result == null) {
-                result = this.__parent.rootDataModel['get$java_lang_String'](key);
+                result = this.__parent.rootDataModel.get(key);
             }
             if(result == null) {
                 result = this.__parent.configuration.getSharedVariable(key);

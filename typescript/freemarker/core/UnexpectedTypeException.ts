@@ -21,39 +21,62 @@ import {ClassUtil} from "../template/utility/ClassUtil";
  */
 export class UnexpectedTypeException extends TemplateException {
     public constructor(blamed? : any, model? : any, expectedTypesDesc? : any, expectedTypes? : any, tip? : any, env? : any) {
-        if(((blamed != null && blamed instanceof <any>Expression) || blamed === null) && ((model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateModel")) || model === null) && ((typeof expectedTypesDesc === 'string') || expectedTypesDesc === null) && ((expectedTypes != null && expectedTypes instanceof <any>Array && (expectedTypes.length==0 || expectedTypes[0] == null ||(expectedTypes[0] != null))) || expectedTypes === null) && ((typeof tip === 'string') || tip === null) && ((ClassUtil.isInstanceOf(env, 'freemarker.core.Environment')) || env === null)) {
-            let __args = Array.prototype.slice.call(arguments);
-            super(null, env, blamed, UnexpectedTypeException.newDesciptionBuilder(blamed, null, model, expectedTypesDesc, expectedTypes, env).tip$java_lang_String(tip));
-            (<any>Object).setPrototypeOf(this, UnexpectedTypeException.prototype);
-        } else if(((blamed != null && blamed instanceof <any>Expression) || blamed === null) && ((model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateModel")) || model === null) && ((typeof expectedTypesDesc === 'string') || expectedTypesDesc === null) && ((expectedTypes != null && expectedTypes instanceof <any>Array && (expectedTypes.length==0 || expectedTypes[0] == null ||(expectedTypes[0] != null))) || expectedTypes === null) && ((tip != null && tip instanceof <any>Array && (tip.length==0 || tip[0] == null ||(tip[0] != null))) || tip === null) && ((ClassUtil.isInstanceOf(env, 'freemarker.core.Environment')) || env === null)) {
-            let __args = Array.prototype.slice.call(arguments);
-            let tips : any = __args[4];
-            super(null, env, blamed, (o => o.tips.apply(o, tips))(UnexpectedTypeException.newDesciptionBuilder(blamed, null, model, expectedTypesDesc, expectedTypes, env)));
-            (<any>Object).setPrototypeOf(this, UnexpectedTypeException.prototype);
-        } else if(((typeof blamed === 'string') || blamed === null) && ((model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateModel")) || model === null) && ((typeof expectedTypesDesc === 'string') || expectedTypesDesc === null) && ((expectedTypes != null && expectedTypes instanceof <any>Array && (expectedTypes.length==0 || expectedTypes[0] == null ||(expectedTypes[0] != null))) || expectedTypes === null) && ((tip != null && tip instanceof <any>Array && (tip.length==0 || tip[0] == null ||(tip[0] != null))) || tip === null) && ((ClassUtil.isInstanceOf(env, 'freemarker.core.Environment')) || env === null)) {
-            let __args = Array.prototype.slice.call(arguments);
-            let blamedAssignmentTargetVarName : any = __args[0];
-            let tips : any = __args[4];
-            super(null, env, null, (o => o.tips.apply(o, tips))(UnexpectedTypeException.newDesciptionBuilder(null, blamedAssignmentTargetVarName, model, expectedTypesDesc, expectedTypes, env)));
-            (<any>Object).setPrototypeOf(this, UnexpectedTypeException.prototype);
-        } else if(((blamed != null && blamed instanceof <any>Expression) || blamed === null) && ((model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateModel")) || model === null) && ((typeof expectedTypesDesc === 'string') || expectedTypesDesc === null) && ((expectedTypes != null && expectedTypes instanceof <any>Array && (expectedTypes.length==0 || expectedTypes[0] == null ||(expectedTypes[0] != null))) || expectedTypes === null) && ((ClassUtil.isInstanceOf(tip, 'freemarker.core.Environment')) || tip === null) && env === undefined) {
-            let __args = Array.prototype.slice.call(arguments);
-            let env : any = __args[4];
-            super(null, env, blamed, UnexpectedTypeException.newDesciptionBuilder(blamed, null, model, expectedTypesDesc, expectedTypes, env));
-            (<any>Object).setPrototypeOf(this, UnexpectedTypeException.prototype);
-        } else if(((ClassUtil.isInstanceOf(blamed, 'freemarker.core.Environment')) || blamed === null) && ((typeof model === 'string') || model === null) && expectedTypesDesc === undefined && expectedTypes === undefined && tip === undefined && env === undefined) {
-            let __args = Array.prototype.slice.call(arguments);
-            let env : any = __args[0];
-            let description : any = __args[1];
-            super(description, env);
-            (<any>Object).setPrototypeOf(this, UnexpectedTypeException.prototype);
-        } else if(((ClassUtil.isInstanceOf(blamed, 'freemarker.core.Environment')) || blamed === null) && ((model != null && model instanceof <any>_ErrorDescriptionBuilder) || model === null) && expectedTypesDesc === undefined && expectedTypes === undefined && tip === undefined && env === undefined) {
-            let __args = Array.prototype.slice.call(arguments);
-            let env : any = __args[0];
-            let description : any = __args[1];
-            super(null, env, null, description);
-            (<any>Object).setPrototypeOf(this, UnexpectedTypeException.prototype);
-        } else throw new Error('invalid overload');
+        if (typeof arguments[0] === 'string') {
+            super(null, arguments[5], null, UnexpectedTypeException.newDesciptionBuilder(null, arguments[0], arguments[1], arguments[2], arguments[3], arguments[5]).tips(arguments[4]));
+            return;
+        }
+        if (arguments[0] instanceof Expression) {
+            if (arguments.length === 5) {
+                super(null, arguments[4], arguments[0], UnexpectedTypeException.newDesciptionBuilder(arguments[0], null, arguments[1], arguments[2], arguments[3], arguments[4]));
+                return;
+            }
+            if (typeof arguments[4] === 'string') {
+
+                super(null, arguments[5], arguments[1], UnexpectedTypeException.newDesciptionBuilder(arguments[0], null, arguments[1], arguments[2], arguments[3], arguments[5]).tip(arguments[4]));
+            } else {
+                super(null, arguments[5], arguments[1], UnexpectedTypeException.newDesciptionBuilder(arguments[0], null, arguments[1], arguments[2], arguments[3], arguments[5]).tips(arguments[4]));
+
+            }
+            if (typeof arguments[1] === 'string') {
+                super(arguments[1], arguments[0]);
+                return;
+            }
+            super(null, arguments[0], null, arguments[1]);
+            return;
+        }
+        // if(((blamed != null && blamed instanceof <any>Expression) || blamed === null) && ((model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateModel")) || model === null) && ((typeof expectedTypesDesc === 'string') || expectedTypesDesc === null) && ((expectedTypes != null && expectedTypes instanceof <any>Array && (expectedTypes.length==0 || expectedTypes[0] == null ||(expectedTypes[0] != null))) || expectedTypes === null) && ((typeof tip === 'string') || tip === null) && ((ClassUtil.isInstanceOf(env, 'freemarker.core.Environment')) || env === null)) {
+        //     let __args = Array.prototype.slice.call(arguments);
+        //     super(null, env, blamed, UnexpectedTypeException.newDesciptionBuilder(blamed, null, model, expectedTypesDesc, expectedTypes, env).tip$java_lang_String(tip));
+        //     (<any>Object).setPrototypeOf(this, UnexpectedTypeException.prototype);
+        // } else if(((blamed != null && blamed instanceof <any>Expression) || blamed === null) && ((model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateModel")) || model === null) && ((typeof expectedTypesDesc === 'string') || expectedTypesDesc === null) && ((expectedTypes != null && expectedTypes instanceof <any>Array && (expectedTypes.length==0 || expectedTypes[0] == null ||(expectedTypes[0] != null))) || expectedTypes === null) && ((tip != null && tip instanceof <any>Array && (tip.length==0 || tip[0] == null ||(tip[0] != null))) || tip === null) && ((ClassUtil.isInstanceOf(env, 'freemarker.core.Environment')) || env === null)) {
+        //     let __args = Array.prototype.slice.call(arguments);
+        //     let tips : any = __args[4];
+        //     super(null, env, blamed, (o => o.tips.apply(o, tips))(UnexpectedTypeException.newDesciptionBuilder(blamed, null, model, expectedTypesDesc, expectedTypes, env)));
+        //     (<any>Object).setPrototypeOf(this, UnexpectedTypeException.prototype);
+        // } else if(((typeof blamed === 'string') || blamed === null) && ((model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateModel")) || model === null) && ((typeof expectedTypesDesc === 'string') || expectedTypesDesc === null) && ((expectedTypes != null && expectedTypes instanceof <any>Array && (expectedTypes.length==0 || expectedTypes[0] == null ||(expectedTypes[0] != null))) || expectedTypes === null) && ((tip != null && tip instanceof <any>Array && (tip.length==0 || tip[0] == null ||(tip[0] != null))) || tip === null) && ((ClassUtil.isInstanceOf(env, 'freemarker.core.Environment')) || env === null)) {
+        //     let __args = Array.prototype.slice.call(arguments);
+        //     let blamedAssignmentTargetVarName : any = __args[0];
+        //     let tips : any = __args[4];
+        //     super(null, env, null, (o => o.tips.apply(o, tips))(UnexpectedTypeException.newDesciptionBuilder(null, blamedAssignmentTargetVarName, model, expectedTypesDesc, expectedTypes, env)));
+        //     (<any>Object).setPrototypeOf(this, UnexpectedTypeException.prototype);
+        // } else if(((blamed != null && blamed instanceof <any>Expression) || blamed === null) && ((model != null && ClassUtil.isAssignableFrom(model, "freemarker.template.TemplateModel")) || model === null) && ((typeof expectedTypesDesc === 'string') || expectedTypesDesc === null) && ((expectedTypes != null && expectedTypes instanceof <any>Array && (expectedTypes.length==0 || expectedTypes[0] == null ||(expectedTypes[0] != null))) || expectedTypes === null) && ((ClassUtil.isInstanceOf(tip, 'freemarker.core.Environment')) || tip === null) && env === undefined) {
+        //     let __args = Array.prototype.slice.call(arguments);
+        //     let env : any = __args[4];
+        //     super(null, env, blamed, UnexpectedTypeException.newDesciptionBuilder(blamed, null, model, expectedTypesDesc, expectedTypes, env));
+        //     (<any>Object).setPrototypeOf(this, UnexpectedTypeException.prototype);
+        // } else if(((ClassUtil.isInstanceOf(blamed, 'freemarker.core.Environment')) || blamed === null) && ((typeof model === 'string') || model === null) && expectedTypesDesc === undefined && expectedTypes === undefined && tip === undefined && env === undefined) {
+        //     let __args = Array.prototype.slice.call(arguments);
+        //     let env : any = __args[0];
+        //     let description : any = __args[1];
+        //     super(description, env);
+        //     (<any>Object).setPrototypeOf(this, UnexpectedTypeException.prototype);
+        // } else if(((ClassUtil.isInstanceOf(blamed, 'freemarker.core.Environment')) || blamed === null) && ((model != null && model instanceof <any>_ErrorDescriptionBuilder) || model === null) && expectedTypesDesc === undefined && expectedTypes === undefined && tip === undefined && env === undefined) {
+        //     let __args = Array.prototype.slice.call(arguments);
+        //     let env : any = __args[0];
+        //     let description : any = __args[1];
+        //     super(null, env, null, description);
+        //     (<any>Object).setPrototypeOf(this, UnexpectedTypeException.prototype);
+        // } else throw new Error('invalid overload');
     }
 
     /**
