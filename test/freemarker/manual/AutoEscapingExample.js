@@ -1,6 +1,4 @@
-const {ExamplesTest} = require('./ExamplesTest');
-
-const test = new ExamplesTest();
+const test = new (require('./ExamplesTest').ExamplesTest)();
 
 test.test('testInfoBox', () => test.assertOutputForNamed("AutoEscapingExample-infoBox.ftlh"));
 test.test('testCapture', () => test.assertOutputForNamed("AutoEscapingExample-capture.ftlh"));

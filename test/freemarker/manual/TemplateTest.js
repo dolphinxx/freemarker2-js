@@ -276,7 +276,15 @@ const TemplateTest = /** @class */ (function () {
             test();
         }catch(e) {
             console.log('\x1b[31m%s\x1b[0m', `${description} in ${this.getScriptFileName()} failed!`);
-            throw e;
+            if(e.message) {
+                console.error(e.message);
+            }
+            if(e.cause) {
+                console.error(e.cause);
+            } else {
+                throw e;
+            }
+            return;
         }
         console.log('\x1b[32m%s\x1b[0m', `${description} in ${this.getScriptFileName()} passed!`);
     };

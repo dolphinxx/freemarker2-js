@@ -8,6 +8,7 @@ import {List} from "../../java/util/List";
 import {ClassUtil} from "../template/utility/ClassUtil";
 import {_MiscTemplateException} from "./_MiscTemplateException";
 import {Locale} from "../../java/util/Locale";
+import {Entry} from "../../java/util/Entry";
 
 /**
  * Creates a new instance. Normally you do not need to use this constructor,
@@ -3174,10 +3175,13 @@ export class Configurable {
         const _SettingEvaluationEnvironment = (require('./_SettingEvaluationEnvironment')._SettingEvaluationEnvironment);
         let prevEnv : /*_SettingEvaluationEnvironment*/any = _SettingEvaluationEnvironment.startScope();
         try {
-            for(let it : any = /* iterator */((a) => { var i = 0; return { next: function() { return i<a.length?a[i++]:null; }, hasNext: function() { return i<a.length; }}})(/* keySet */((m) => { let r=[]; m.forEach((v, k, m) => r.push(k)); return r; })(<any>props)); it.hasNext(); ) {
-                let key : string = <string>it.next();
-                this.setSetting(key, /* getProperty */props.get(key).trim());
-            }
+            props.forEach((entry) => {
+                this.setSetting(entry.getKey(), entry.getValue().trim());
+            });
+            // for(let it : any = /* iterator */((a) => { var i = 0; return { next: function() { return i<a.length?a[i++]:null; }, hasNext: function() { return i<a.length; }}})(/* keySet */((m) => { let r=[]; m.forEach((v, k, m) => r.push(k)); return r; })(<any>props)); it.hasNext(); ) {
+            //     let key : string = <string>it.next();
+            //     this.setSetting(key, /* getProperty */props.get(key).trim());
+            // }
         } finally {
             _SettingEvaluationEnvironment.endScope(prevEnv);
         }

@@ -8,6 +8,9 @@ import {Character} from '../../java/lang/Character';
 import {BugException} from './BugException';
 import {Map} from "../../java/util/Map";
 import {List} from "../../java/util/List";
+import {Locale} from "../../java/util/Locale";
+import {ClassUtil} from "../template/utility/ClassUtil";
+import {IllegalArgumentException} from "../../java/lang/IllegalArgumentException";
 
 /**
  * Don't use this; used internally by FreeMarker, might changes without notice.
@@ -78,8 +81,12 @@ export class _ObjectBuilderSettingEvaluator {
         try {
             value = this.ensureEvaled(this.fetchValue(false, true, false, true));
         } catch(e) {
-            e.rethrowLegacy();
-            value = null;
+            if(e instanceof _ObjectBuilderSettingEvaluator.LegacyExceptionWrapperSettingEvaluationExpression) {
+                e.rethrowLegacy();
+                value = null;
+            } else {
+                throw e;
+            }
         }
         this.skipWS();
         if(this.pos !== this.src.length) {
@@ -107,39 +114,38 @@ export class _ObjectBuilderSettingEvaluator {
     }
 
     fetchBuilderCall(optional : boolean, topLevel : boolean) : any {
-        // let startPos : number = this.pos;
-        // let exp : _ObjectBuilderSettingEvaluator.BuilderCallExpression = new _ObjectBuilderSettingEvaluator.BuilderCallExpression(this);
-        // exp.canBeStaticField = true;
-        // let fetchedClassName : string = this.fetchClassName(optional);
-        // {
-        //     if(fetchedClassName == null) {
-        //         if(!optional) {
-        //             throw new _ObjectBuilderSettingEvaluationException("class name", this.src, this.pos);
-        //         }
-        //         return _ObjectBuilderSettingEvaluator.VOID_$LI$();
-        //     }
-        //     exp.className = _ObjectBuilderSettingEvaluator.shorthandToFullQualified(fetchedClassName);
-        //     if(!/* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(fetchedClassName,exp.className))) {
-        //         this.modernMode = true;
-        //         exp.canBeStaticField = false;
-        //     }
-        // };
-        // this.skipWS();
-        // let openParen : string = this.fetchOptionalChar("(");
-        // if((c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(openParen) == 0 && !topLevel) {
-        //     if(fetchedClassName.indexOf('.') !== -1) {
-        //         exp.mustBeStaticField = true;
-        //     } else {
-        //         this.pos = startPos;
-        //         return _ObjectBuilderSettingEvaluator.VOID_$LI$();
-        //     }
-        // }
-        // if((c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(openParen) != 0) {
-        //     this.fetchParameterListInto(exp);
-        //     exp.canBeStaticField = false;
-        // }
-        // return exp;
-        throw new Error();
+        let startPos : number = this.pos;
+        let exp : _ObjectBuilderSettingEvaluator.BuilderCallExpression = new _ObjectBuilderSettingEvaluator.BuilderCallExpression(this);
+        exp.canBeStaticField = true;
+        let fetchedClassName : string = this.fetchClassName(optional);
+        {
+            if(fetchedClassName == null) {
+                if(!optional) {
+                    throw new _ObjectBuilderSettingEvaluationException("class name", this.src, this.pos);
+                }
+                return _ObjectBuilderSettingEvaluator.VOID_$LI$();
+            }
+            exp.className = _ObjectBuilderSettingEvaluator.shorthandToFullQualified(fetchedClassName);
+            if(!/* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(fetchedClassName,exp.className))) {
+                this.modernMode = true;
+                exp.canBeStaticField = false;
+            }
+        }
+        this.skipWS();
+        let openParen : string = this.fetchOptionalChar("(");
+        if((c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(openParen) == 0 && !topLevel) {
+            if(fetchedClassName.indexOf('.') !== -1) {
+                exp.mustBeStaticField = true;
+            } else {
+                this.pos = startPos;
+                return _ObjectBuilderSettingEvaluator.VOID_$LI$();
+            }
+        }
+        if((c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(openParen) != 0) {
+            this.fetchParameterListInto(exp);
+            exp.canBeStaticField = false;
+        }
+        return exp;
     }
 
     fetchParameterListInto(exp : _ObjectBuilderSettingEvaluator.ExpressionWithParameters) {
@@ -152,12 +158,12 @@ export class _ObjectBuilderSettingEvaluator {
                 if(paramNameOrValue !== _ObjectBuilderSettingEvaluator.VOID_$LI$()) {
                     this.skipWS();
                     if(paramNameOrValue != null && paramNameOrValue instanceof <any>_ObjectBuilderSettingEvaluator.Name) {
-                        /* add */(exp.namedParamNames.push((<_ObjectBuilderSettingEvaluator.Name>paramNameOrValue).name)>0);
+                        /* add */exp.namedParamNames.push((<_ObjectBuilderSettingEvaluator.Name>paramNameOrValue).name);
                         this.skipWS();
                         this.fetchRequiredChar("=");
                         this.skipWS();
                         let paramValue : any = this.fetchValue(false, false, true, true);
-                        /* add */(exp.namedParamValues.push(this.ensureEvaled(paramValue))>0);
+                        /* add */exp.namedParamValues.push(this.ensureEvaled(paramValue));
                     } else {
                         if(!/* isEmpty */(exp.namedParamNames.length == 0)) {
                             throw new _ObjectBuilderSettingEvaluationException("Positional parameters must precede named parameters");
@@ -165,7 +171,7 @@ export class _ObjectBuilderSettingEvaluator {
                         if(!exp.getAllowPositionalParameters()) {
                             throw new _ObjectBuilderSettingEvaluationException("Positional parameters not supported here");
                         }
-                        /* add */(exp.positionalParamValues.push(this.ensureEvaled(paramNameOrValue))>0);
+                        /* add */exp.positionalParamValues.push(this.ensureEvaled(paramNameOrValue));
                     }
                     this.skipWS();
                 }
@@ -281,102 +287,101 @@ export class _ObjectBuilderSettingEvaluator {
     }
 
     fetchNumberLike(optional : boolean, resultCoerced : boolean) : any {
-        // let startPos : number = this.pos;
-        // let isVersion : boolean = false;
-        // let hasDot : boolean = false;
-        // seekTokenEnd: while((true)) {
-        //     if(this.pos === this.src.length) {
-        //         break seekTokenEnd;
-        //     }
-        //     let c : string = this.src.charAt(this.pos);
-        //     if((c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(c) == '.'.charCodeAt(0)) {
-        //         if(hasDot) {
-        //             isVersion = true;
-        //         } else {
-        //             hasDot = true;
-        //         }
-        //     } else if(!(this.isASCIIDigit(c) || (c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(c) == '-'.charCodeAt(0))) {
-        //         break seekTokenEnd;
-        //     }
-        //     this.pos++;
-        // };
-        // if(startPos === this.pos) {
-        //     if(optional) {
-        //         return _ObjectBuilderSettingEvaluator.VOID_$LI$();
-        //     } else {
-        //         throw new _ObjectBuilderSettingEvaluationException("number-like", this.src, this.pos);
-        //     }
-        // }
-        // let numStr : string = this.src.substring(startPos, this.pos);
-        // if(isVersion) {
-        //     try {
-        //         return new Version(numStr);
-        //     } catch(e) {
-        //         throw new _ObjectBuilderSettingEvaluationException("Malformed version number: " + numStr, e);
-        //     };
-        // } else {
-        //     let typePostfix : string = null;
-        //     seekTypePostfixEnd: while((true)) {
-        //         if(this.pos === this.src.length) {
-        //             break seekTypePostfixEnd;
-        //         }
-        //         let c : string = this.src.charAt(this.pos);
-        //         if(Character.isLetter(c)) {
-        //             if(typePostfix == null) {
-        //                 typePostfix = /* valueOf */new String(c).toString();
-        //             } else {
-        //                 typePostfix += c;
-        //             }
-        //         } else {
-        //             break seekTypePostfixEnd;
-        //         }
-        //         this.pos++;
-        //     };
-        //     try {
-        //         if(/* endsWith */((str, searchString) => { let pos = str.length - searchString.length; let lastIndex = str.indexOf(searchString, pos); return lastIndex !== -1 && lastIndex === pos; })(numStr, ".")) {
-        //             throw Object.defineProperty(new Error("A number can\'t end with a dot"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.NumberFormatException','java.lang.Object','java.lang.RuntimeException','java.lang.IllegalArgumentException','java.lang.Exception'] });
-        //         }
-        //         if(/* startsWith */((str, searchString, position = 0) => str.substr(position, searchString.length) === searchString)(numStr, ".") || /* startsWith */((str, searchString, position = 0) => str.substr(position, searchString.length) === searchString)(numStr, "-.") || /* startsWith */((str, searchString, position = 0) => str.substr(position, searchString.length) === searchString)(numStr, "+.")) {
-        //             throw Object.defineProperty(new Error("A number can\'t start with a dot"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.NumberFormatException','java.lang.Object','java.lang.RuntimeException','java.lang.IllegalArgumentException','java.lang.Exception'] });
-        //         }
-        //         if(typePostfix == null) {
-        //             if(numStr.indexOf('.') === -1) {
-        //                 let biNum : BigInteger = new BigInteger(numStr);
-        //                 let bitLength : number = biNum.bitLength();
-        //                 if(bitLength <= 31) {
-        //                     return biNum.intValue();
-        //                 } else if(bitLength <= 63) {
-        //                     return biNum.longValue();
-        //                 } else {
-        //                     return biNum;
-        //                 }
-        //             } else {
-        //                 if(resultCoerced) {
-        //                     return new BigDecimal(numStr);
-        //                 } else {
-        //                     return parseFloat(numStr);
-        //                 }
-        //             }
-        //         } else {
-        //             if(/* equalsIgnoreCase */((o1, o2) => o1.toUpperCase() === (o2===null?o2:o2.toUpperCase()))(typePostfix, "l")) {
-        //                 return parseFloat(numStr);
-        //             } else if(/* equalsIgnoreCase */((o1, o2) => o1.toUpperCase() === (o2===null?o2:o2.toUpperCase()))(typePostfix, "bi")) {
-        //                 return new BigInteger(numStr);
-        //             } else if(/* equalsIgnoreCase */((o1, o2) => o1.toUpperCase() === (o2===null?o2:o2.toUpperCase()))(typePostfix, "bd")) {
-        //                 return new BigDecimal(numStr);
-        //             } else if(/* equalsIgnoreCase */((o1, o2) => o1.toUpperCase() === (o2===null?o2:o2.toUpperCase()))(typePostfix, "d")) {
-        //                 return parseFloat(numStr);
-        //             } else if(/* equalsIgnoreCase */((o1, o2) => o1.toUpperCase() === (o2===null?o2:o2.toUpperCase()))(typePostfix, "f")) {
-        //                 return parseFloat(numStr);
-        //             } else {
-        //                 throw new _ObjectBuilderSettingEvaluationException("Unrecognized number type postfix: " + typePostfix);
-        //             }
-        //         }
-        //     } catch(e) {
-        //         throw new _ObjectBuilderSettingEvaluationException("Malformed number: " + numStr, e);
-        //     };
-        // }
-        throw new Error();
+        let startPos : number = this.pos;
+        let isVersion : boolean = false;
+        let hasDot : boolean = false;
+        seekTokenEnd: while((true)) {
+            if(this.pos === this.src.length) {
+                break seekTokenEnd;
+            }
+            let c : string = this.src.charAt(this.pos);
+            if((c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(c) == '.'.charCodeAt(0)) {
+                if(hasDot) {
+                    isVersion = true;
+                } else {
+                    hasDot = true;
+                }
+            } else if(!(this.isASCIIDigit(c) || (c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(c) == '-'.charCodeAt(0))) {
+                break seekTokenEnd;
+            }
+            this.pos++;
+        }
+        if(startPos === this.pos) {
+            if(optional) {
+                return _ObjectBuilderSettingEvaluator.VOID_$LI$();
+            } else {
+                throw new _ObjectBuilderSettingEvaluationException("number-like", this.src, this.pos);
+            }
+        }
+        let numStr : string = this.src.substring(startPos, this.pos);
+        if(isVersion) {
+            try {
+                return new (require('../template/Version').Version)(numStr);
+            } catch(e) {
+                throw new _ObjectBuilderSettingEvaluationException("Malformed version number: " + numStr, e);
+            }
+        } else {
+            let typePostfix : string = null;
+            seekTypePostfixEnd: while((true)) {
+                if(this.pos === this.src.length) {
+                    break seekTypePostfixEnd;
+                }
+                let c : string = this.src.charAt(this.pos);
+                if(Character.isLetter(c)) {
+                    if(typePostfix == null) {
+                        typePostfix = /* valueOf */new String(c).toString();
+                    } else {
+                        typePostfix += c;
+                    }
+                } else {
+                    break seekTypePostfixEnd;
+                }
+                this.pos++;
+            }
+            try {
+                if(numStr.endsWith(".")) {
+                    throw Object.defineProperty(new Error("A number can\'t end with a dot"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.NumberFormatException','java.lang.Object','java.lang.RuntimeException','java.lang.IllegalArgumentException','java.lang.Exception'] });
+                }
+                if(/* startsWith */((str, searchString, position = 0) => str.substr(position, searchString.length) === searchString)(numStr, ".") || /* startsWith */((str, searchString, position = 0) => str.substr(position, searchString.length) === searchString)(numStr, "-.") || /* startsWith */((str, searchString, position = 0) => str.substr(position, searchString.length) === searchString)(numStr, "+.")) {
+                    throw Object.defineProperty(new Error("A number can\'t start with a dot"), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.NumberFormatException','java.lang.Object','java.lang.RuntimeException','java.lang.IllegalArgumentException','java.lang.Exception'] });
+                }
+                if(typePostfix == null) {
+                    if(numStr.indexOf('.') === -1) {
+                        let biNum : number = parseFloat(numStr);
+                        // let bitLength : number = biNum.bitLength();
+                        // if(bitLength <= 31) {
+                        //     return biNum;
+                        // } else if(bitLength <= 63) {
+                        //     return biNum;
+                        // } else {
+                            return biNum;
+                        // }
+                    } else {
+                        if(resultCoerced) {
+                            return parseFloat(numStr);
+                        } else {
+                            return parseFloat(numStr);
+                        }
+                    }
+                } else {
+                    if(/* equalsIgnoreCase */((o1, o2) => o1.toUpperCase() === (o2===null?o2:o2.toUpperCase()))(typePostfix, "l")) {
+                        return parseFloat(numStr);
+                    } else if(/* equalsIgnoreCase */((o1, o2) => o1.toUpperCase() === (o2===null?o2:o2.toUpperCase()))(typePostfix, "bi")) {
+                        return parseFloat(numStr);
+                    } else if(/* equalsIgnoreCase */((o1, o2) => o1.toUpperCase() === (o2===null?o2:o2.toUpperCase()))(typePostfix, "bd")) {
+                        return parseFloat(numStr);
+                    } else if(/* equalsIgnoreCase */((o1, o2) => o1.toUpperCase() === (o2===null?o2:o2.toUpperCase()))(typePostfix, "d")) {
+                        return parseFloat(numStr);
+                    } else if(/* equalsIgnoreCase */((o1, o2) => o1.toUpperCase() === (o2===null?o2:o2.toUpperCase()))(typePostfix, "f")) {
+                        return parseFloat(numStr);
+                    } else {
+                        throw new _ObjectBuilderSettingEvaluationException("Unrecognized number type postfix: " + typePostfix);
+                    }
+                }
+            } catch(e) {
+                throw new _ObjectBuilderSettingEvaluationException("Malformed number: " + numStr, e);
+            }
+        }
     }
 
     fetchStringLiteral(optional : boolean) : any {
@@ -544,45 +549,61 @@ export class _ObjectBuilderSettingEvaluator {
         return this.isIdentifierStart(c) || this.isASCIIDigit(c);
     }
 
-    // static shorthandToFullQualified(className : string) : string {
-    //     if(_ObjectBuilderSettingEvaluator.SHORTHANDS == null) {
-    //         _ObjectBuilderSettingEvaluator.SHORTHANDS = <any>(new Map<any, any>());
-    //         _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, DefaultObjectWrapper);
-    //         _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, BeansWrapper);
-    //         _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, SimpleObjectWrapper);
-    //         _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, TemplateConfiguration);
-    //         _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, PathGlobMatcher);
-    //         _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, FileNameGlobMatcher);
-    //         _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, FileExtensionMatcher);
-    //         _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, PathRegexMatcher);
-    //         _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, AndMatcher);
-    //         _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, OrMatcher);
-    //         _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, NotMatcher);
-    //         _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, ConditionalTemplateConfigurationFactory);
-    //         _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, MergingTemplateConfigurationFactory);
-    //         _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, FirstMatchTemplateConfigurationFactory);
-    //         _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, HTMLOutputFormat);
-    //         _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, XHTMLOutputFormat);
-    //         _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, XMLOutputFormat);
-    //         _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, RTFOutputFormat);
-    //         _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, PlainTextOutputFormat);
-    //         _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, UndefinedOutputFormat);
-    //         _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, String);
-    //         /* put */_ObjectBuilderSettingEvaluator.SHORTHANDS.set("TimeZone", "freemarker.core._TimeZone");
-    //         _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, Configuration);
-    //     }
-    //     let fullClassName : string = /* get */_ObjectBuilderSettingEvaluator.SHORTHANDS.get(className);
-    //     return fullClassName == null?className:fullClassName;
-    // }
+    static shorthandToFullQualified(className : string) : string {
+        if(_ObjectBuilderSettingEvaluator.SHORTHANDS == null) {
+            _ObjectBuilderSettingEvaluator.SHORTHANDS = <any>(new Map<any, any>());
+            _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, (require('../template/DefaultObjectWrapper').DefaultObjectWrapper));
+            _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, (require('../ext/beans/BeansWrapper').BeansWrapper));
+            _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, (require('../template/SimpleObjectWrapper').SimpleObjectWrapper));
+            _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, (require('../core/TemplateConfiguration').TemplateConfiguration));
+            _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, (require('../cache/PathGlobMatcher').PathGlobMatcher));
+            _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, (require('../cache/FileNameGlobMatcher').FileNameGlobMatcher));
+            _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, (require('../cache/FileExtensionMatcher').FileExtensionMatcher));
+            _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, (require('../cache/PathRegexMatcher').PathRegexMatcher));
+            _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, (require('../cache/AndMatcher').AndMatcher));
+            _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, (require('../cache/OrMatcher').OrMatcher));
+            _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, (require('../cache/NotMatcher').NotMatcher));
+            _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, (require('../cache/ConditionalTemplateConfigurationFactory').ConditionalTemplateConfigurationFactory));
+            _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, (require('../cache/MergingTemplateConfigurationFactory').MergingTemplateConfigurationFactory));
+            _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, (require('../cache/FirstMatchTemplateConfigurationFactory').FirstMatchTemplateConfigurationFactory));
+            _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, (require('../core/HTMLOutputFormat').HTMLOutputFormat));
+            _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, (require('../core/XHTMLOutputFormat').XHTMLOutputFormat));
+            _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, (require('../core/XMLOutputFormat').XMLOutputFormat));
+            _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, (require('../core/RTFOutputFormat').RTFOutputFormat));
+            _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, (require('../core/PlainTextOutputFormat').PlainTextOutputFormat));
+            _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, (require('../core/UndefinedOutputFormat').UndefinedOutputFormat));
+            _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, Locale);
+            /* put */_ObjectBuilderSettingEvaluator.SHORTHANDS.set("TimeZone", "freemarker.core._TimeZone");
+            _ObjectBuilderSettingEvaluator.addWithSimpleName(_ObjectBuilderSettingEvaluator.SHORTHANDS, (require('../template/Configuration').Configuration));
+        }
+        let fullClassName : string = /* get */_ObjectBuilderSettingEvaluator.SHORTHANDS.get(className);
+        return fullClassName == null?className:fullClassName;
+    }
 
     static addWithSimpleName(map : Map<any, any>, pClass : any) {
-        /* put */map.set(/* getSimpleName */(c => c["__class"]?c["__class"].substring(c["__class"].lastIndexOf('.')+1):c["name"].substring(c["name"].lastIndexOf('.')+1))(pClass), /* getName */(c => c["__class"]?c["__class"]:c["name"])(pClass));
+        map.put(ClassUtil.getClassShortName(pClass), ClassUtil.getClassName(pClass));
+        // /* put */map.set(/* getSimpleName */(c => c["__class"]?c["__class"].substring(c["__class"].lastIndexOf('.')+1):c["name"].substring(c["name"].lastIndexOf('.')+1))(pClass), /* getName */(c => c["__class"]?c["__class"]:c["name"])(pClass));
     }
 
     setJavaBeanProperties(bean : any, namedParamNames : Array<any>, namedParamValues : Array<any>) {
-        // if(/* isEmpty */(namedParamNames.length == 0)) {
-        //     return;
-        // }
+        if(namedParamNames.length == 0) {
+            return;
+        }
+        for(let i:number = 0;i<namedParamNames.length;i++) {
+            let field:string = namedParamNames[i];
+            let setter:string = ClassUtil.getSetter(field);
+            if(bean.__proto__[setter] && typeof bean[setter] === 'function') {
+                bean[setter].apply(bean, [namedParamValues[i]]);
+            } else if(bean.__proto__[field]) {
+                if(typeof bean[field] === 'function') {
+                    bean[field].apply(bean, [namedParamValues[i]]);
+                } else {
+                    bean[field] = namedParamValues[i];
+                }
+            } else {
+                throw new Error();
+            }
+        }
         // let cl : any = (<any>bean.constructor);
         // let beanPropSetters : Map<any, any>;
         // try {
@@ -594,11 +615,11 @@ export class _ObjectBuilderSettingEvaluator {
         //         if(writeMethod != null) {
         //             /* put */beanPropSetters.set(propDesc.getName(), writeMethod);
         //         }
-        //     };
+        //     }
         // } catch(e) {
         //     throw new _ObjectBuilderSettingEvaluationException("Failed to inspect " + /* getName */(c => c["__class"]?c["__class"]:c["name"])(cl) + " class", e);
-        // };
-        // let beanTM : TemplateHashModel = null;
+        // }
+        // let beanTM : /*TemplateHashModel*/any = null;
         // for(let i : number = 0; i < /* size */(<number>namedParamNames.length); i++) {
         //     let name : string = <string>/* get */namedParamNames[i];
         //     if(!/* containsKey */beanPropSetters.has(name)) {
@@ -610,13 +631,13 @@ export class _ObjectBuilderSettingEvaluator {
         //     }
         //     try {
         //         if(beanTM == null) {
-        //             let wrappedObj : TemplateModel = this.env.getObjectWrapper().wrap$java_lang_Object(bean);
+        //             let wrappedObj : /*TemplateModel*/any = this.env.getObjectWrapper().wrap$java_lang_Object(bean);
         //             if(!(wrappedObj != null && (wrappedObj["__interfaces"] != null && wrappedObj["__interfaces"].indexOf("freemarker.template.TemplateHashModel") >= 0 || wrappedObj.constructor != null && wrappedObj.constructor["__interfaces"] != null && wrappedObj.constructor["__interfaces"].indexOf("freemarker.template.TemplateHashModel") >= 0))) {
         //                 throw new _ObjectBuilderSettingEvaluationException("The " + /* getName */(c => c["__class"]?c["__class"]:c["name"])(cl) + " class is not a wrapped as TemplateHashModel.");
         //             }
-        //             beanTM = <TemplateHashModel><any>wrappedObj;
+        //             beanTM = /*<TemplateHashModel>*/<any>wrappedObj;
         //         }
-        //         let m : TemplateModel = beanTM['get$java_lang_String'](/* getName */beanPropSetter.name);
+        //         let m : /*TemplateModel*/any = beanTM['get$java_lang_String'](/* getName */beanPropSetter.name);
         //         if(m == null) {
         //             throw new _ObjectBuilderSettingEvaluationException("Can\'t find " + beanPropSetter + " as FreeMarker method.");
         //         }
@@ -625,12 +646,11 @@ export class _ObjectBuilderSettingEvaluator {
         //         }
         //         let args : Array<any> = <any>([]);
         //         /* add */(args.push(this.env.getObjectWrapper().wrap$java_lang_Object(/* get */namedParamValues[i]))>0);
-        //         (<TemplateMethodModelEx><any>m).exec(args);
+        //         (/*<TemplateMethodModelEx>*/<any>m).exec(args);
         //     } catch(e) {
         //         throw new _ObjectBuilderSettingEvaluationException("Failed to set " + StringUtil.jQuote$java_lang_Object(name), e);
-        //     };
-        // };
-        throw new Error();
+        //     }
+        // }
     }
 }
 _ObjectBuilderSettingEvaluator["__class"] = "freemarker.core._ObjectBuilderSettingEvaluator";
@@ -805,119 +825,125 @@ export namespace _ObjectBuilderSettingEvaluator {
          * @return {Object}
          */
         eval() : any {
-            // if(this.mustBeStaticField) {
-            //     if(!this.canBeStaticField) {
-            //         throw new BugException();
-            //     }
-            //     return this.getStaticFieldValue(this.className);
-            // }
-            // let cl : any;
-            // if(!this.__parent.modernMode) {
-            //     try {
-            //         try {
-            //             return /* newInstance */new (ClassUtil.forName(this.className))();
-            //         } catch(__e) {
-            //             if(__e != null && (__e["__classes"] && __e["__classes"].indexOf("java.lang.InstantiationException") >= 0)) {
-            //                 let e : Error = <Error>__e;
-            //                 throw new _ObjectBuilderSettingEvaluator.LegacyExceptionWrapperSettingEvaluationExpression(e);
-            //
-            //             }
-            //             if(__e != null && (__e["__classes"] && __e["__classes"].indexOf("java.lang.IllegalAccessException") >= 0)) {
-            //                 let e : Error = <Error>__e;
-            //                 throw new _ObjectBuilderSettingEvaluator.LegacyExceptionWrapperSettingEvaluationExpression(e);
-            //
-            //             }
-            //             if(__e != null && (__e["__classes"] && __e["__classes"].indexOf("java.lang.ClassNotFoundException") >= 0)) {
-            //                 let e : Error = <Error>__e;
-            //                 throw new _ObjectBuilderSettingEvaluator.LegacyExceptionWrapperSettingEvaluationExpression(e);
-            //
-            //             }
-            //         };
-            //     } catch(e) {
-            //         if(!this.canBeStaticField || this.className.indexOf('.') === -1) {
-            //             throw e;
-            //         }
-            //         try {
-            //             return this.getStaticFieldValue(this.className);
-            //         } catch(e2) {
-            //             throw e;
-            //         };
-            //     };
-            // }
-            // let clIsBuilderClass : boolean;
-            // try {
-            //     cl = ClassUtil.forName(this.className + _ObjectBuilderSettingEvaluator.BUILDER_CLASS_POSTFIX);
-            //     clIsBuilderClass = true;
-            // } catch(e) {
-            //     clIsBuilderClass = false;
-            //     try {
-            //         cl = ClassUtil.forName(this.className);
-            //     } catch(e2) {
-            //         let failedToGetAsStaticField : boolean;
-            //         if(this.canBeStaticField) {
-            //             try {
-            //                 return this.getStaticFieldValue(this.className);
-            //             } catch(e3) {
-            //                 failedToGetAsStaticField = true;
-            //             };
-            //         } else {
-            //             failedToGetAsStaticField = false;
-            //         }
-            //         throw new _ObjectBuilderSettingEvaluationException("Failed to get class " + StringUtil.jQuote$java_lang_Object(this.className) + (failedToGetAsStaticField?" (also failed to resolve name as static field)":"") + ".", e2);
-            //     };
-            // };
-            // if(!clIsBuilderClass && this.hasNoParameters()) {
-            //     try {
-            //         let f : Field = /* getField */((c,p) => { return {owner:c,name:p}; })(cl,_ObjectBuilderSettingEvaluator.INSTANCE_FIELD_NAME);
-            //         if((f.getModifiers() & (Modifier.PUBLIC | Modifier.STATIC)) === (Modifier.PUBLIC | Modifier.STATIC)) {
-            //             return /* get */null[f.name];
-            //         }
-            //     } catch(__e) {
-            //         if(__e != null && (__e["__classes"] && __e["__classes"].indexOf("java.lang.NoSuchFieldException") >= 0)) {
-            //             let e : Error = <Error>__e;
-            //
-            //         }
-            //         if(__e != null && (__e["__classes"] && __e["__classes"].indexOf("java.lang.Exception") >= 0) || __e != null && __e instanceof <any>Error) {
-            //             let e : Error = <Error>__e;
-            //             throw new _ObjectBuilderSettingEvaluationException("Error when trying to access " + StringUtil.jQuote$java_lang_Object(this.className) + "." + _ObjectBuilderSettingEvaluator.INSTANCE_FIELD_NAME, e);
-            //
-            //         }
-            //     };
-            // }
-            // let constructorResult : any = this.callConstructor(cl);
-            // this.__parent.setJavaBeanProperties(constructorResult, this.namedParamNames, this.namedParamValues);
-            // let result : any;
-            // if(clIsBuilderClass) {
-            //     result = this.callBuild(constructorResult);
-            // } else {
-            //     if(constructorResult != null && (constructorResult["__interfaces"] != null && constructorResult["__interfaces"].indexOf("freemarker.template.utility.WriteProtectable") >= 0 || constructorResult.constructor != null && constructorResult.constructor["__interfaces"] != null && constructorResult.constructor["__interfaces"].indexOf("freemarker.template.utility.WriteProtectable") >= 0)) {
-            //         (<WriteProtectable><any>constructorResult).writeProtect();
-            //     }
-            //     result = constructorResult;
-            // }
-            // return result;
-            throw new Error();
+            if(this.mustBeStaticField) {
+                if(!this.canBeStaticField) {
+                    throw new BugException();
+                }
+                return this.getStaticFieldValue(this.className);
+            }
+            let cl : any;
+            if(!this.__parent.modernMode) {
+                try {
+                    // try {
+                        return /* newInstance */new (ClassUtil.forName(this.className))();
+                    // } catch(__e) {
+                    //     if(__e != null && (__e["__classes"] && __e["__classes"].indexOf("java.lang.InstantiationException") >= 0)) {
+                    //         let e : Error = <Error>__e;
+                    //         throw new _ObjectBuilderSettingEvaluator.LegacyExceptionWrapperSettingEvaluationExpression(e);
+                    //
+                    //     }
+                    //     if(__e != null && (__e["__classes"] && __e["__classes"].indexOf("java.lang.IllegalAccessException") >= 0)) {
+                    //         let e : Error = <Error>__e;
+                    //         throw new _ObjectBuilderSettingEvaluator.LegacyExceptionWrapperSettingEvaluationExpression(e);
+                    //
+                    //     }
+                    //     if(__e != null && (__e["__classes"] && __e["__classes"].indexOf("java.lang.ClassNotFoundException") >= 0)) {
+                    //         let e : Error = <Error>__e;
+                    //         throw new _ObjectBuilderSettingEvaluator.LegacyExceptionWrapperSettingEvaluationExpression(e);
+                    //
+                    //     }
+                    // };
+                } catch(e) {
+                    if(!this.canBeStaticField || this.className.indexOf('.') === -1) {
+                        throw e;
+                    }
+                    try {
+                        return this.getStaticFieldValue(this.className);
+                    } catch(e2) {
+                        throw e;
+                    }
+                }
+            }
+            let clIsBuilderClass : boolean;
+            try {
+                cl = ClassUtil.forName(this.className + _ObjectBuilderSettingEvaluator.BUILDER_CLASS_POSTFIX);
+                clIsBuilderClass = true;
+            } catch(e) {
+                clIsBuilderClass = false;
+                try {
+                    cl = ClassUtil.forName(this.className);
+                } catch(e2) {
+                    let failedToGetAsStaticField : boolean;
+                    if(this.canBeStaticField) {
+                        try {
+                            return this.getStaticFieldValue(this.className);
+                        } catch(e3) {
+                            failedToGetAsStaticField = true;
+                        }
+                    } else {
+                        failedToGetAsStaticField = false;
+                    }
+                    throw new _ObjectBuilderSettingEvaluationException("Failed to get class " + StringUtil.jQuote$java_lang_Object(this.className) + (failedToGetAsStaticField?" (also failed to resolve name as static field)":"") + ".", e2);
+                }
+            }
+            if(!clIsBuilderClass && this.hasNoParameters()) {
+                if(cl.hasOwnProperty(_ObjectBuilderSettingEvaluator.INSTANCE_FIELD_NAME)) {
+                    return cl[_ObjectBuilderSettingEvaluator.INSTANCE_FIELD_NAME];
+                }
+                // try {
+                //     let f : Field = /* getField */((c,p) => { return {owner:c,name:p}; })(cl,_ObjectBuilderSettingEvaluator.INSTANCE_FIELD_NAME);
+                //     if((f.getModifiers() & (Modifier.PUBLIC | Modifier.STATIC)) === (Modifier.PUBLIC | Modifier.STATIC)) {
+                //         return /* get */null[f.name];
+                //     }
+                // } catch(__e) {
+                //     if(__e != null && (__e["__classes"] && __e["__classes"].indexOf("java.lang.NoSuchFieldException") >= 0)) {
+                //         let e : Error = <Error>__e;
+                //
+                //     }
+                //     if(__e != null && (__e["__classes"] && __e["__classes"].indexOf("java.lang.Exception") >= 0) || __e != null && __e instanceof <any>Error) {
+                //         let e : Error = <Error>__e;
+                //         throw new _ObjectBuilderSettingEvaluationException("Error when trying to access " + StringUtil.jQuote$java_lang_Object(this.className) + "." + _ObjectBuilderSettingEvaluator.INSTANCE_FIELD_NAME, e);
+                //
+                //     }
+                // }
+            }
+            let constructorResult : any = this.callConstructor(cl);
+            this.__parent.setJavaBeanProperties(constructorResult, this.namedParamNames, this.namedParamValues);
+            let result : any;
+            if(clIsBuilderClass) {
+                result = this.callBuild(constructorResult);
+            } else {
+                if(constructorResult != null && ClassUtil.isAssignableFrom(constructorResult, "freemarker.template.utility.WriteProtectable")/*(constructorResult["__interfaces"] != null && constructorResult["__interfaces"].indexOf("freemarker.template.utility.WriteProtectable") >= 0 || constructorResult.constructor != null && constructorResult.constructor["__interfaces"] != null && constructorResult.constructor["__interfaces"].indexOf("freemarker.template.utility.WriteProtectable") >= 0)*/) {
+                    (/*<WriteProtectable>*/<any>constructorResult).writeProtect();
+                }
+                result = constructorResult;
+            }
+            return result;
         }
 
         getStaticFieldValue(dottedName : string) : any {
-            // let lastDotIdx : number = dottedName.lastIndexOf('.');
-            // if(lastDotIdx === -1) {
-            //     throw Object.defineProperty(new Error(), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.lang.RuntimeException','java.lang.IllegalArgumentException','java.lang.Exception'] });
-            // }
-            // let className : string = _ObjectBuilderSettingEvaluator.shorthandToFullQualified(dottedName.substring(0, lastDotIdx));
-            // let fieldName : string = dottedName.substring(lastDotIdx + 1);
-            // let cl : any;
-            // try {
-            //     cl = ClassUtil.forName(className);
-            // } catch(e) {
-            //     throw new _ObjectBuilderSettingEvaluationException("Failed to get field\'s parent class, " + StringUtil.jQuote$java_lang_Object(className) + ".", e);
-            // };
+            let lastDotIdx : number = dottedName.lastIndexOf('.');
+            if(lastDotIdx === -1) {
+                throw Object.defineProperty(new Error(), '__classes', { configurable: true, value: ['java.lang.Throwable','java.lang.Object','java.lang.RuntimeException','java.lang.IllegalArgumentException','java.lang.Exception'] });
+            }
+            let className : string = _ObjectBuilderSettingEvaluator.shorthandToFullQualified(dottedName.substring(0, lastDotIdx));
+            let fieldName : string = dottedName.substring(lastDotIdx + 1);
+            let cl : any;
+            try {
+                cl = ClassUtil.forName(className);
+            } catch(e) {
+                throw new _ObjectBuilderSettingEvaluationException("Failed to get field\'s parent class, " + StringUtil.jQuote$java_lang_Object(className) + ".", e);
+            }
+            if(!cl.hasOwnProperty(fieldName)) {
+                throw new _ObjectBuilderSettingEvaluationException("Failed to get field value: " + fieldName);
+            }
+            return cl[fieldName];
             // let field : Field;
             // try {
             //     field = /* getField */((c,p) => { return {owner:c,name:p}; })(cl,fieldName);
             // } catch(e) {
             //     throw new _ObjectBuilderSettingEvaluationException("Failed to get field " + StringUtil.jQuote$java_lang_Object(fieldName) + " from class " + StringUtil.jQuote$java_lang_Object(className) + ".", e);
-            // };
+            // }
             // if((field.getModifiers() & Modifier.STATIC) === 0) {
             //     throw new _ObjectBuilderSettingEvaluationException("Referred field isn\'t static: " + field);
             // }
@@ -931,8 +957,7 @@ export namespace _ObjectBuilderSettingEvaluator {
             //     return /* get */null[field.name];
             // } catch(e) {
             //     throw new _ObjectBuilderSettingEvaluationException("Failed to get field value: " + field, e);
-            // };
-            throw new Error();
+            // }
         }
 
         callConstructor(cl : any) : any {
@@ -947,7 +972,7 @@ export namespace _ObjectBuilderSettingEvaluator {
                 let tmArgs : Array<any> = <any>([]);
                 for(let i : number = 0; i < /* size */(<number>this.positionalParamValues.length); i++) {
                     try {
-                        /* add */(tmArgs.push(ow.wrap$java_lang_Object(/* get */this.positionalParamValues[i]))>0);
+                        /* add */tmArgs.push(ow.wrap$java_lang_Object(/* get */this.positionalParamValues[i]));
                     } catch(e) {
                         throw new _ObjectBuilderSettingEvaluationException("Failed to wrap arg #" + (i + 1), e);
                     }
@@ -961,8 +986,12 @@ export namespace _ObjectBuilderSettingEvaluator {
         }
 
         callBuild(constructorResult : any) : any {
-            // let cl : any = (<any>constructorResult.constructor);
-            // let buildMethod : Function;
+            let cl : any = (<any>constructorResult.constructor);
+            let buildMethod : Function;
+            if(!constructorResult.hasOwnProperty(_ObjectBuilderSettingEvaluator.BUILD_METHOD_NAME) || (typeof constructorResult[_ObjectBuilderSettingEvaluator.BUILD_METHOD_NAME] !== 'function')) {
+                throw new _ObjectBuilderSettingEvaluationException("The " + /* getName */(c => c["__class"]?c["__class"]:c["name"])(cl) + " builder class must have a public " + _ObjectBuilderSettingEvaluator.BUILD_METHOD_NAME + "() method");
+            }
+            buildMethod = constructorResult[_ObjectBuilderSettingEvaluator.BUILD_METHOD_NAME];
             // try {
             //     buildMethod = /* getMethod */((c,p) => { if(c.prototype.hasOwnProperty(p) && typeof c.prototype[p] == 'function') return {owner:c,name:p,fn:c.prototype[p]}; else return null; })((<any>constructorResult.constructor),_ObjectBuilderSettingEvaluator.BUILD_METHOD_NAME);
             // } catch(__e) {
@@ -976,19 +1005,18 @@ export namespace _ObjectBuilderSettingEvaluator {
             //         throw new _ObjectBuilderSettingEvaluationException("Failed to get the " + _ObjectBuilderSettingEvaluator.BUILD_METHOD_NAME + "() method of the " + /* getName */(c => c["__class"]?c["__class"]:c["name"])(cl) + " builder class", e);
             //
             //     }
-            // };
-            // try {
-            //     return /* invoke */buildMethod.fn.apply(constructorResult, [<Array>null]);
-            // } catch(e) {
-            //     let cause : Error;
-            //     if(e != null && (e["__classes"] && e["__classes"].indexOf("java.lang.reflect.InvocationTargetException") >= 0)) {
-            //         cause = (<Error>e).getTargetException();
-            //     } else {
-            //         cause = e;
-            //     }
-            //     throw new _ObjectBuilderSettingEvaluationException("Failed to call " + _ObjectBuilderSettingEvaluator.BUILD_METHOD_NAME + "() method on " + /* getName */(c => c["__class"]?c["__class"]:c["name"])(cl) + " instance", cause);
-            // };
-            throw new Error();
+            // }
+            try {
+                return /* invoke */buildMethod.apply(constructorResult, []);
+            } catch(e) {
+                let cause : Error;
+                // if(e != null && (e["__classes"] && e["__classes"].indexOf("java.lang.reflect.InvocationTargetException") >= 0)) {
+                //     cause = (<Error>e).getTargetException();
+                // } else {
+                    cause = e;
+                // }
+                throw new _ObjectBuilderSettingEvaluationException("Failed to call " + _ObjectBuilderSettingEvaluator.BUILD_METHOD_NAME + "() method on " + /* getName */(c => c["__class"]?c["__class"]:c["name"])(cl) + " instance", cause);
+            }
         }
 
         hasNoParameters() : boolean {

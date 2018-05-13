@@ -1328,10 +1328,19 @@ export class BeansWrapper implements RichObjectWrapper, WriteProtectable {
      * constructor. Overloaded constructors and varargs are supported. Only public constructors will be called.
      * 
      * @param {*} clazz     The class whose constructor we will call.
-     * @param {List} arguments The list of {link TemplateModel}-s to pass to the constructor after unwrapping them
+     * @param {List} __arguments The list of {link TemplateModel}-s to pass to the constructor after unwrapping them
      * @return {Object} The instance created; it's not wrapped into {link TemplateModel}.
      */
     public newInstance(clazz : any, __arguments : Array<any>) : any {
+        try{
+            const args:Array<any> = [];
+            for(let o of __arguments) {
+                args.push(this.unwrap(o));
+            }
+            return new clazz(...args);
+        }catch(e) {
+            throw new TemplateModelException("Error while creating new instance of class " + /* getName */(c => c["__class"]?c["__class"]:c["name"])(clazz) + "; see cause exception", e);
+        }
         // try {
         //     let ctors : any = /* get */this.classIntrospector.get(clazz).get(ClassIntrospector.CONSTRUCTORS_KEY_$LI$());
         //     if(ctors == null) {
@@ -1372,7 +1381,6 @@ export class BeansWrapper implements RichObjectWrapper, WriteProtectable {
         //
         //     }
         // };
-        throw new Error();
     }
 
     /**
@@ -1434,7 +1442,7 @@ export class BeansWrapper implements RichObjectWrapper, WriteProtectable {
         //         }
         //         args[i] = BeansWrapper.coerceBigDecimal(<BigDecimal>arg, formalTypes[i]);
         //     }
-        // };
+        // }
         throw new Error();
     }
 

@@ -213,8 +213,8 @@ export class Character implements Serializable {
     }
 
     public static isDigit(c: string): boolean {
-        let result: RegExpMatchArray = (/* valueOf */new String(c).toString()).match(Character.digitRegex());
-        return result != null && result.length > 0;
+        const matchResult:RegExpMatchArray = c.match(Character.digitRegex());
+        return matchResult != null && matchResult.length > 0;
     }
 
     static digitRegex(): RegExp {
@@ -226,7 +226,8 @@ export class Character implements Serializable {
     }
 
     public static isLetter(c: string): boolean {
-        return (/* valueOf */new String(c).toString()).match(Character.leterRegex()).length > 0;
+        const matchResult:RegExpMatchArray = c.match(Character.leterRegex());
+        return matchResult != null && matchResult.length > 0;
     }
 
     static leterRegex(): RegExp {
@@ -234,7 +235,8 @@ export class Character implements Serializable {
     }
 
     public static isLetterOrDigit(c: string): boolean {
-        return (/* valueOf */new String(c).toString()).match(Character.leterOrDigitRegex()).length > 0;
+        const matchResult:RegExpMatchArray = c.match(Character.leterOrDigitRegex());
+        return matchResult != null && matchResult.length > 0;
     }
 
     static leterOrDigitRegex(): RegExp {

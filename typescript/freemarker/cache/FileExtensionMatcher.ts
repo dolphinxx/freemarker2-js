@@ -42,7 +42,8 @@ export class FileExtensionMatcher extends TemplateSourceMatcher {
         if(ln < extLn + 1 || (c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(sourceName.charAt(ln - extLn - 1)) != '.'.charCodeAt(0)) {
             return false;
         }
-        return sourceName.regionMatches(this.__caseInsensitive, ln - extLn, this.extension, 0, extLn);
+        return sourceName.substring(ln - extLn, ln) === this.extension.substring(0, extLn);
+        // return sourceName.regionMatches(this.__caseInsensitive, ln - extLn, this.extension, 0, extLn);
     }
 
     public isCaseInsensitive() : boolean {

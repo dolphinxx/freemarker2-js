@@ -386,7 +386,7 @@ export class Map<K = any, V = any> implements _Iterable<Entry<K, V>>, Iterable<E
      */
     public forEach(action: Function): void {
         for (let i = 0; i < this.keys.length; i++) {
-            action.call(new Entry(this.keys[i], this.valueArray[i]));
+            action(new Entry(this.keys[i], this.valueArray[i]));
         }
     }
 

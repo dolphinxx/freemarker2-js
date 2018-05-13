@@ -13,6 +13,19 @@ export class ClassUtil {
     constructor() {
     }
 
+    public static getSetter(field: string): string {
+        if (field == null) {
+            return null;
+        }
+        if (field.charAt(0) === field.charAt(0).toLowerCase()) {
+            return 'set' + field.charAt(0).toUpperCase() + field.substring(1);
+        }
+        if (field.length > 1 && field.charAt(1) === field.charAt(1).toUpperCase()) {
+            return 'set' + field.charAt(0).toLowerCase() + field.substring(1);
+        }
+        return 'set' + field;
+    }
+
     public static isInstanceOf(instance: any, type: any): boolean {
         if (instance === null || instance === undefined) {
             return false;
@@ -98,6 +111,13 @@ export class ClassUtil {
      * @return {*}
      */
     public static forName(className: string): any {
+        if (className.indexOf('.') === -1) {
+            return eval(className);
+        }
+        let rootRelative = '../../../';
+        let shortName = ClassUtil.getClassShortName(className);
+        let path = rootRelative + className.replace(/\./g, '/');
+        return require(path)[shortName];
         // try {
         //     let ctcl : ClassLoader = java.lang.Thread.currentThread().getContextClassLoader();
         //     if(ctcl != null) {
@@ -114,9 +134,60 @@ export class ClassUtil {
         //     }
         // };
         // return /* forName */eval(className.split('.').slice(-1)[0]);
+    }
+
+    public static getClassName(pClass: any): string {
+        // if (pClass == null) {
+        //     return null;
+        // } else if (Array.isArray(pClass)) {
+        //     return pClass + "[]";
+        // } else {
+        //     return (typeof pClass === 'string') ? pClass : (/* getName */(c => c["__class"] ? c["__class"] : c["name"])(pClass));
+        // }
+        if (pClass == null) {
+            return null;
+        }
+        if (Array.isArray(pClass)) {
+            if (pClass.length === 0) {
+                return pClass + "[]";
+            } else {
+                return ClassUtil.getClassName(pClass[0]) + '[]';
+            }
+        }
+        let className: string = null;
+        if (typeof pClass === 'string') {
+            className = pClass;
+        } else if (pClass.hasOwnProperty('__class')) {
+            className = pClass['__class'];
+        } else if (pClass.hasOwnProperty('name')) {
+            className = pClass['name'];
+        }
+        return className;
+    }
+
+    /**
+     * get short class name, like java Class.getShortName();
+     * @param pClass
+     * @returns {any}
+     */
+    public static getClassShortName(pClass: any) {
+        const className: string = ClassUtil.getClassName(pClass);
+        if (className != null) {
+            let lastDotIndex: number = className.lastIndexOf('.');
+            if (lastDotIndex === -1) {
+                return className;
+            }
+            return className.substring(lastDotIndex + 1);
+        }
         throw new Error();
     }
 
+    /**
+     * freemarker's getShortClassName
+     * @param pClass
+     * @param {boolean} shortenFreeMarkerClasses
+     * @returns {string}
+     */
     public static getShortClassName(pClass: any, shortenFreeMarkerClasses: boolean = false): string {
         if (pClass == null) {
             return null;
@@ -124,10 +195,10 @@ export class ClassUtil {
             return pClass + "[]";
         } else {
             let cn: string = (typeof pClass === 'string') ? pClass : (/* getName */(c => c["__class"] ? c["__class"] : c["name"])(pClass));
-            if(cn == null) {
+            if (cn == null) {
                 return null;
             }
-            if (cn.startsWith("java.lang.") ||cn.startsWith("java.util.")) {
+            if (cn.startsWith("java.lang.") || cn.startsWith("java.util.")) {
                 return cn.substring(10);
             } else {
                 if (shortenFreeMarkerClasses) {
@@ -139,7 +210,7 @@ export class ClassUtil {
                         return "f.c" + cn.substring(15);
                     } else if (cn.startsWith("freemarker.ext.")) {
                         return "f.e" + cn.substring(14);
-                    } else if (cn.startsWith( "freemarker.")) {
+                    } else if (cn.startsWith("freemarker.")) {
                         return "f" + cn.substring(10);
                     }
                 }

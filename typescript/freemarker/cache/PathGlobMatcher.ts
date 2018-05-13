@@ -1,6 +1,7 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
 import {StringUtil} from '../template/utility/StringUtil';
 import {TemplateSourceMatcher} from './TemplateSourceMatcher';
+import {Pattern} from "../../java/util/regex/Pattern";
 
 /**
  * @param {String} glob Glob with the syntax defined by {link StringUtil#globToRegularExpression(String, boolean)}. Must not

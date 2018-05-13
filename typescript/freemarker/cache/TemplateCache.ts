@@ -653,21 +653,21 @@ export class TemplateCache {
                 configurable: true,
                 value: ['java.lang.Throwable', 'java.io.IOException', 'java.lang.Object', 'java.lang.Exception']
             });
-            try {
+            // try {
                 /* invoke */
                 TemplateCache.INIT_CAUSE_$LI$().apply(ioe, [cause]);
-            } catch (__e) {
-                if (__e != null && (__e["__classes"] && __e["__classes"].indexOf("java.lang.RuntimeException") >= 0) || __e != null && __e instanceof <any>Error) {
-                    let ex: Error = <Error>__e;
-                    throw ex;
-
-                }
-                if (__e != null && (__e["__classes"] && __e["__classes"].indexOf("java.lang.Exception") >= 0) || __e != null && __e instanceof <any>Error) {
-                    let ex: Error = <Error>__e;
-                    throw new UndeclaredThrowableException(ex);
-
-                }
-            }
+            // } catch (__e) {
+            //     if (__e != null && (__e["__classes"] && __e["__classes"].indexOf("java.lang.RuntimeException") >= 0) || __e != null && __e instanceof <any>Error) {
+            //         let ex: Error = <Error>__e;
+            //         throw ex;
+            //
+            //     }
+            //     if (__e != null && (__e["__classes"] && __e["__classes"].indexOf("java.lang.Exception") >= 0) || __e != null && __e instanceof <any>Error) {
+            //         let ex: Error = <Error>__e;
+            //         throw new UndeclaredThrowableException(ex);
+            //
+            //     }
+            // }
         } else {
             ioe = Object.defineProperty(new Error(message + "\nCaused by: " + /* getName */(c => c["__class"] ? c["__class"] : c["name"])((<any>cause.constructor)) + ": " + cause.message), '__classes', {
                 configurable: true,
@@ -703,7 +703,10 @@ export class TemplateCache {
         try {
             tc = this.templateConfigurations != null ? this.templateConfigurations.get(sourceName, source) : null;
         } catch (e) {
-            throw this.newIOException("Error while getting TemplateConfiguration; see cause exception.", e);
+            if(ClassUtil.isAssignableFrom(e, 'freemarker.cache.TemplateConfigurationFactoryException')) {
+                throw this.newIOException("Error while getting TemplateConfiguration; see cause exception.", e);
+            }
+            throw e;
         }
         if (tc != null) {
             if (tc.isEncodingSet()) {

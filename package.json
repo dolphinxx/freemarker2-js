@@ -23,6 +23,7 @@
     "j4ts": "0.0.4-0.6.0-SNAPSHOT",
     "mathjs": "^4.1.2",
     "moment": "^2.22.1",
-    "moment-jdateformatparser": "^1.1.0"
+    "moment-jdateformatparser": "^1.1.0",
+    "properties-reader": "0.0.16"
   }
 }
