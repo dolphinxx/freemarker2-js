@@ -177,7 +177,7 @@ export class DecimalFormatSymbols implements Serializable {
      */
     public constructor( locale?:Locale ) {
         if(locale === undefined) {
-            locale = new Locale(global.DEFAULT_LOCALE);
+            locale = Locale.getDefault();
         }
         this.initialize( locale );
 }

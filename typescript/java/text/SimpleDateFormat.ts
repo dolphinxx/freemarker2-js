@@ -12,7 +12,7 @@ export class SimpleDateFormat extends DateFormat {
     public constructor(pattern:string, locale?:Locale) {
         super();
         if(locale === undefined) {
-            locale = new Locale(global.DEFAULT_LOCALE);
+            locale = Locale.getDefault();
         }
         this.javaPattern = pattern;
         this.pattern = moment().toMomentFormatString(pattern);

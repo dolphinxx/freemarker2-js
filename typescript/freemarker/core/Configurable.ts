@@ -2894,7 +2894,7 @@ export class Configurable {
         try {
             if(/* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(Configurable.LOCALE_KEY_$LI$(),name))) {
                 if(/* equalsIgnoreCase */((o1, o2) => o1.toUpperCase() === (o2===null?o2:o2.toUpperCase()))(Configurable.JVM_DEFAULT, value)) {
-                    this.setLocale(/* getDefault */(global.DEFAULT_LOCALE));
+                    this.setLocale(/* getDefault */(Locale.getDefault()));
                 } else {
                     this.setLocale(StringUtil.deduceLocale(value));
                 }

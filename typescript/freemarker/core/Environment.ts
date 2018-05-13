@@ -1271,7 +1271,7 @@ export class Environment extends Configurable {
     }
 
     public getTemplateNumberFormat$java_lang_String$java_util_Locale(formatString : string, locale : Locale) : TemplateNumberFormat {
-        if(locale === this.getLocale()) {
+        if(locale.equals(this.getLocale())) {
             this.getTemplateNumberFormat$java_lang_String(formatString);
         }
         return this.getTemplateNumberFormatWithoutCache(formatString, locale);

@@ -1059,7 +1059,7 @@ export namespace TemplateCache {
                     } else {
                         return o1 === o2;
                     }
-                })(this.name, tk.name)) && this.locale === tk.locale && this.nullSafeEquals(this.customLookupCondition, tk.customLookupCondition) && /* equals */(<any>((o1: any, o2: any) => {
+                })(this.name, tk.name)) && this.locale.equals(tk.locale) && this.nullSafeEquals(this.customLookupCondition, tk.customLookupCondition) && /* equals */(<any>((o1: any, o2: any) => {
                     if (o1 && o1.equals) {
                         return o1.equals(o2);
                     } else {

@@ -1,4 +1,6 @@
 /* Generated from Java with JSweet 2.2.0-SNAPSHOT - http://www.jsweet.org */
+import {Exception} from "../../java/lang/Exception";
+
 /**
  * Thrown when {link Configuration#getTemplate(String)} (or similar) doesn't find a template.
  * This extends {link FileNotFoundException} for backward compatibility, but in fact has nothing to do with files, as
@@ -14,15 +16,13 @@
  * @class
  * @extends Error
  */
-export class TemplateNotFoundException {
+export class TemplateNotFoundException extends Exception{
     /*private*/ templateName : string;
 
     /*private*/ customLookupCondition : any;
 
     public constructor(templateName : string, customLookupCondition : any, message : string) {
-        (<any>Object).setPrototypeOf(this, TemplateNotFoundException.prototype);
-        if(this.templateName===undefined) this.templateName = null;
-        if(this.customLookupCondition===undefined) this.customLookupCondition = null;
+        super(message);
         this.templateName = templateName;
         this.customLookupCondition = customLookupCondition;
     }

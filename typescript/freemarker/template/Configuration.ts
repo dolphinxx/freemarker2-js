@@ -1907,7 +1907,7 @@ export class Configuration extends Configurable implements ParserConfiguration {
     }
 
     static getDefaultLocale() : Locale {
-        return /* getDefault */(global.DEFAULT_LOCALE);
+        return /* getDefault */(Locale.getDefault());
     }
 
     /**

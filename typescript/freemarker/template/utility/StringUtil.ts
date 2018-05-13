@@ -664,7 +664,7 @@ export class StringUtil {
 
     public static deduceLocale(input : string) : string {
         // if(input == null) return null;
-        // let locale : Locale = /* getDefault */(global.DEFAULT_LOCALE);
+        // let locale : Locale = /* getDefault */(Locale.getDefault());
         // if(input.length > 0 && (c => c.charCodeAt==null?<any>c:c.charCodeAt(0))(input.charAt(0)) == '\"'.charCodeAt(0)) input = input.substring(1, input.length - 1);
         // let st : StringTokenizer = new StringTokenizer(input, ",_ ");
         // let lang : string = "";

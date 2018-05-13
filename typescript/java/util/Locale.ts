@@ -1,11 +1,12 @@
-import {inspect} from "util";
-
+const osLocale = require('os-locale');
 export class Locale {
     public language: string;
     public country: string;
     private text:string;
 
-    public constructor(language: string, country?: string) {
+    private static DEFAULT:Locale;
+
+    private constructor(language: string, country?: string) {
         if(arguments.length === 1) {
             this.text = language;
             let s = language.split('_');
@@ -41,4 +42,12 @@ export class Locale {
         }
         return (<Locale>another).getLanguage() === this.language && (<Locale>another).getCountry() === this.country;
     }
+
+    public static getDefault() {
+        if(Locale.DEFAULT == null) {
+            Locale.DEFAULT = new Locale(osLocale.sync());
+        }
+        return Locale.DEFAULT;
+    }
 }
+Locale['__class'] = 'java.util.Locale';

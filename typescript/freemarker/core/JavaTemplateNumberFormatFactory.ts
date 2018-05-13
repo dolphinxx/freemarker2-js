@@ -99,7 +99,7 @@ export namespace JavaTemplateNumberFormatFactory {
         public equals(o : any) : boolean {
             if(o != null && o instanceof <any>JavaTemplateNumberFormatFactory.CacheKey) {
                 let fk : JavaTemplateNumberFormatFactory.CacheKey = <JavaTemplateNumberFormatFactory.CacheKey>o;
-                return /* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(fk.pattern,this.pattern)) && fk.locale === this.locale;
+                return /* equals */(<any>((o1: any, o2: any) => { if(o1 && o1.equals) { return o1.equals(o2); } else { return o1 === o2; } })(fk.pattern,this.pattern)) && fk.locale.equals(this.locale);
             }
             return false;
         }

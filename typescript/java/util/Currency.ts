@@ -198,7 +198,7 @@ export class Currency {
 
     public getSymbol(locale?: Locale): string {
         if(locale === undefined) {
-            locale = new Locale(global.DEFAULT_LOCALE);
+            locale = Locale.getDefault();
         }
         if (Currency.SYMBOL_POOL == null) {
             Currency.initSymbolPool();
